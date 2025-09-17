@@ -28,9 +28,9 @@ public init(context: Option<CanvasRenderingContext2D>)
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| context | [CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d) | Yes | - | Multiple Canvas components cannot share the same [CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d) object. For details, see the [CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d) object. |
+| context | Option<CanvasRenderingContext2D> | Yes | - | Multiple Canvas components cannot share the same [CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d) object. For details, see [CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d). |
 
 ## Common Attributes/Common Events
 
@@ -54,9 +54,9 @@ public func onReady(callback: () -> Unit): This
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | () -> Unit | Yes | - | Event callback when the Canvas component initialization is complete or when the Canvas component size changes.<br>When this event is triggered, the canvas is cleared. After this event, the width and height of the Canvas component are determined and can be obtained. Canvas-related APIs can be used for drawing. When only the position of the Canvas component changes, only the [onAreaChange](./cj-ui-framework.md#func-onareachangeareaarea---unit) event is triggered, not the onReady event. The [onAreaChange](./cj-ui-framework.md#func-onareachangeareaarea---unit) event is triggered after the onReady event. |
+| callback | () -> Unit | Yes | - | Event callback when the Canvas component initialization is complete or when the Canvas component size changes.<br>When this event is triggered, the canvas is cleared. After this event, the width and height of the Canvas component are determined and can be obtained. You can use Canvas-related APIs for drawing. When only the position of the Canvas component changes, only the [onAreaChange](./cj-ui-framework.md#func-onareachangeareaarea---unit) event is triggered, not the onReady event. The [onAreaChange](./cj-ui-framework.md#func-onareachangeareaarea---unit) event is triggered after the onReady event. |
 
 ## Basic Type Definitions
 
@@ -78,7 +78,7 @@ public class CanvasGradient {}
 public func addColorStop(offset: Float64, color: ResourceColor): Unit
 ```
 
-**Function:** Sets gradient breakpoints, including offset and color.
+**Function:** Sets gradient breakpoint values, including offset and color.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,10 +86,10 @@ public func addColorStop(offset: Float64, color: ResourceColor): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| offset | Float64 | Yes | - | Sets the position of the gradient point relative to the start point as a proportion of the total length, ranging from 0 to 1. Setting offset < 0 or offset > 1 will have no gradient effect. |
-| color | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | Sets the color of the gradient. For the color format, refer to the string type description in [ResourceColor](./cj-common-types.md#interface-resourcecolor). If the color is not set in the correct format, there will be no gradient effect. |
+| offset | Float64 | Yes | - | Sets the position of the gradient point relative to the starting point as a proportion of the total length, ranging from 0 to 1. Setting offset < 0 or offset > 1 will have no gradient effect. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the gradient color. For the color format, refer to the string type description in [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor). If the color is not set in the correct format, there will be no gradient effect. |
 
 ### class RenderingContextSettings
 
@@ -112,7 +112,7 @@ public class RenderingContextSettings {
 public var antialias: Bool
 ```
 
-**Function:** Indicates whether anti-aliasing is enabled for the canvas.
+**Function:** Indicates whether the canvas has anti-aliasing enabled.
 
 **Type:** Bool
 
@@ -128,9 +128,9 @@ public init(antialias!: Bool = false)
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| antialias | Bool | No | false | **Named parameter.** Indicates whether anti-aliasing is enabled for the canvas. Initial value: false |
+| antialias | Bool | No | false | **Named parameter.** Indicates whether the canvas has anti-aliasing enabled. Initial value: false |
 
 ### class TextMetrics
 
@@ -183,7 +183,7 @@ public let width: Float64
 
 ### Example 1 (Using Methods in CanvasRenderingContext2D)
 
-This example demonstrates how to use methods in CanvasRenderingContext2D for drawing within a Canvas component.
+This example demonstrates how to use methods in CanvasRenderingContext2D for drawing in a Canvas component.
 
 <!-- run -->
 
@@ -192,6 +192,7 @@ This example demonstrates how to use methods in CanvasRenderingContext2D for dra
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+
 @Entry
 @Component
 class EntryView {
@@ -199,12 +200,11 @@ class EntryView {
     var context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
 
     func build() {
-        Flex(
-            FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
-            justifyContent: FlexAlign.Center)) {
+        Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center,
+            justifyContent: FlexAlign.Center) {
             Canvas(this.context).width(100.percent).height(100.percent).backgroundColor(0xffff00).onReady(
                 {
-                => this.context.fillRect(0, 30, 100, 100)
+                => this.context.fillRect(0.0, 30.0, 100.0, 100.0)
             })
         }.width(100.percent).height(100.percent)
     }

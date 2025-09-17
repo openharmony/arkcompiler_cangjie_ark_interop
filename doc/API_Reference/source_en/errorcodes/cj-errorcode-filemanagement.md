@@ -16,7 +16,7 @@ Operation not permitted
 
 **Possible Causes**
 
-The current user's file operation is not permitted.
+The current user's file operation is not allowed.
 
 **Resolution Steps**
 
@@ -49,7 +49,7 @@ The process does not exist.
 **Resolution Steps**
 
 1. Check if the process was unexpectedly terminated.
-2. Verify if the relevant service is running.
+2. Verify if the related service is running.
 
 ### 13900004 Interrupted System Call
 
@@ -63,7 +63,7 @@ The system call was interrupted by another thread.
 
 **Resolution Steps**
 
-1. Check multi-threaded code logic.
+1. Check the multi-threading code logic.
 2. Retry the system call.
 
 ### 13900005 I/O Error
@@ -293,7 +293,7 @@ Invalid input parameter.
 
 **Resolution Steps**
 
-Verify parameter validity.
+Verify the parameter validity.
 
 ### 13900021 Too Many Open File Descriptors
 
@@ -405,9 +405,9 @@ The file has reached the maximum number of links.
 
 **Resolution Steps**
 
-Clean up unnecessary links.
+Clean up unused links.
 
-### 13900029 Resource Deadlock Error
+### 13900029 Resource Deadlock Would Occur
 
 **Error Message**
 
@@ -462,9 +462,9 @@ The specified directory is not empty.
 **Resolution Steps**
 
 1. Verify the directory path.
-2. Verify the path is empty.
+2. Ensure the path is empty.
 
-### 13900033 Too Many Symbolic Links
+### 13900033 Too Many Symbolic Links Encountered
 
 **Error Message**
 
@@ -514,7 +514,7 @@ Device not a stream
 
 **Possible Causes**
 
-The file descriptor points to a non-stream device.
+The file descriptor does not point to a stream device.
 
 **Resolution Steps**
 
@@ -560,7 +560,7 @@ The file descriptor is corrupted.
 
 **Resolution Steps**
 
-Verify the file descriptor is valid.
+Verify the file descriptor validity.
 
 ### 13900040 Interrupted System Call Should Be Restarted
 
@@ -605,7 +605,7 @@ Internal error.
 1. Retry the interface.
 2. Restart the service.
 
-### 13900043 No Locks Available
+### 13900043 No Record Locks Available
 
 **Error Message**
 
@@ -619,7 +619,7 @@ Insufficient system resources.
 
 Release lock resources and retry.
 
-### 13900044 Network Unreachable
+### 13900044 Network Is Unreachable
 
 **Error Message**
 
@@ -641,12 +641,12 @@ Connection failed
 
 **Possible Causes**
 
-Device, WiFi, or Bluetooth state anomaly, causing connection failure.
+Device, WiFi, or Bluetooth status anomaly, causing connection failure.
 
 **Resolution Steps**
 
-1. Check the device and ensure its state is normal.
-2. Check WiFi and Bluetooth and ensure their states are normal.
+1. Check the device and ensure its status is normal.
+2. Check WiFi and Bluetooth and ensure their status is normal.
 
 ### 13900046 Connection Failed
 
@@ -656,26 +656,26 @@ Software caused connection abort
 
 **Possible Causes**
 
-Device offline or WiFi/Bluetooth disconnection.
+Device offline or WiFi/Bluetooth disconnected.
 
 **Resolution Steps**
 
-1. Check the device and ensure its state is normal.
-2. Check WiFi and Bluetooth and ensure their states are normal.## User Data Management Error Codes
+1. Check the device and ensure its status is normal.
+2. Check WiFi and Bluetooth and ensure their status is normal.## User Data Management Error Codes
 
-### 14000001 Invalid Filename
+### 14000001 Invalid File Name
 
 **Error Message**
 
 Invalid display name
 
-**Possible Cause**
+**Possible Causes**
 
-The filename contains illegal characters.
+The file name contains invalid characters.
 
-**Resolution**
+**Resolution Steps**
 
-Remove illegal characters.
+Remove invalid characters.
 
 ### 14000002 Invalid URI
 
@@ -683,11 +683,11 @@ Remove illegal characters.
 
 Invalid uri
 
-**Possible Cause**
+**Possible Causes**
 
 The URI is invalid.
 
-**Resolution**
+**Resolution Steps**
 
 Use the URI obtained directly from the query.
 
@@ -697,13 +697,13 @@ Use the URI obtained directly from the query.
 
 Invalid file name extension
 
-**Possible Cause**
+**Possible Causes**
 
 Named according to file type.
 
-**Resolution**
+**Resolution Steps**
 
-Check the file extension.
+Check the file name extension.
 
 ### 14000004 File Moved to Recycle Bin
 
@@ -711,11 +711,11 @@ Check the file extension.
 
 File has been put into trash bin
 
-**Possible Cause**
+**Possible Causes**
 
 The file has been deleted and moved to the recycle bin.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the file has been moved to the recycle bin.
 
@@ -725,11 +725,11 @@ Check if the file has been moved to the recycle bin.
 
 System inner fail
 
-**Possible Cause**
+**Possible Causes**
 
-System exception occurred due to unknown error.
+System exception, unknown error occurred.
 
-**Resolution**
+**Resolution Steps**
 
 Clear background processes or restart the device.
 
@@ -739,11 +739,11 @@ Clear background processes or restart the device.
 
 Member is not a valid PhotoKey
 
-**Possible Cause**
+**Possible Causes**
 
 The input string is not a member name of the class or interface.
 
-**Resolution**
+**Resolution Steps**
 
 Ensure the input string is a member name of the class or interface.
 
@@ -755,27 +755,27 @@ Ensure the input string is a member name of the class or interface.
 
 IPC error
 
-**Possible Cause**
+**Possible Causes**
 
 The called service does not exist.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the service is running.
 
-### 13600002 Unsupported Filesystem Type
+### 13600002 Unsupported File System Type
 
 **Error Message**
 
 Not supported filesystem
 
-**Possible Cause**
+**Possible Causes**
 
-The filesystem type being operated is not supported.
+The file system type being operated is not supported.
 
-**Resolution**
+**Resolution Steps**
 
-Modify to the correct filesystem type.
+Modify to the correct file system type.
 
 ### 13600003 Mount Failure
 
@@ -783,13 +783,13 @@ Modify to the correct filesystem type.
 
 Failed to mount
 
-**Possible Cause**
+**Possible Causes**
 
 Failed to execute the mount command.
 
-**Resolution**
+**Resolution Steps**
 
-Remove and reinsert the card to attempt remounting.
+Remove the card and attempt to remount.
 
 ### 13600004 Unmount Failure
 
@@ -797,13 +797,13 @@ Remove and reinsert the card to attempt remounting.
 
 Failed to unmount
 
-**Possible Cause**
+**Possible Causes**
 
 The device is busy.
 
-**Resolution**
+**Resolution Steps**
 
-Check if external card files are being used by threads and terminate the occupying threads.
+Check if external card files are occupied by threads, and terminate the occupying threads.
 
 ### 13600005 Incorrect Volume State
 
@@ -811,11 +811,11 @@ Check if external card files are being used by threads and terminate the occupyi
 
 Incorrect volume state
 
-**Possible Cause**
+**Possible Causes**
 
 The volume state being operated is incorrect.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the current volume state is correct.
 
@@ -825,11 +825,11 @@ Check if the current volume state is correct.
 
 Prepare directory or node error
 
-**Possible Cause**
+**Possible Causes**
 
 The directory or node already exists.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the target directory or node exists.
 
@@ -839,11 +839,11 @@ Check if the target directory or node exists.
 
 Delete directory or node error
 
-**Possible Cause**
+**Possible Causes**
 
 The directory or node has already been deleted.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the target directory or node exists.
 
@@ -853,12 +853,12 @@ Check if the target directory or node exists.
 
 No such object
 
-**Possible Cause**
+**Possible Causes**
 
 1. Incorrect volume ID entered.  
 2. Incorrect package name entered.
 
-**Resolution**
+**Resolution Steps**
 
 1. Check if the entered volume exists.  
 2. Check if the entered application package name exists.
@@ -869,11 +869,11 @@ No such object
 
 User id out of range
 
-**Possible Cause**
+**Possible Causes**
 
 Incorrect user ID entered.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the entered user ID is within the normal range.
 
@@ -885,12 +885,12 @@ Check if the entered user ID is within the normal range.
 
 IPC error
 
-**Possible Cause**
+**Possible Causes**
 
 1. Server-side service is unavailable.  
 2. Extension mechanism exception.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the server-side service exists.
 
@@ -900,11 +900,11 @@ Check if the server-side service exists.
 
 Invalid uri
 
-**Possible Cause**
+**Possible Causes**
 
 Illegal URI used.
 
-**Resolution**
+**Resolution Steps**
 
 Check the URI format.
 
@@ -914,13 +914,13 @@ Check the URI format.
 
 Fail to get fileextension info
 
-**Possible Cause**
+**Possible Causes**
 
 BMS interface exception.
 
-**Resolution**
+**Resolution Steps**
 
-System basic capability issue.
+System capability issue.
 
 ### 14300004 Abnormal Result Returned by js-server
 
@@ -928,11 +928,11 @@ System basic capability issue.
 
 Get wrong result
 
-**Possible Cause**
+**Possible Causes**
 
-Server-side returned improper actual data.
+Server-side returned inappropriate data.
 
-**Resolution**
+**Resolution Steps**
 
 Check the server-side return value.
 
@@ -942,12 +942,12 @@ Check the server-side return value.
 
 Fail to register notification
 
-**Possible Cause**
+**Possible Causes**
 
 1. Server-side service is unavailable.  
 2. Extension mechanism exception.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the server-side service exists.
 
@@ -957,12 +957,12 @@ Check if the server-side service exists.
 
 Fail to remove notification
 
-**Possible Cause**
+**Possible Causes**
 
 1. Server-side service is unavailable.  
 2. Extension mechanism exception.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the server-side service exists.
 
@@ -972,11 +972,11 @@ Check if the server-side service exists.
 
 Fail to init notification agent
 
-**Possible Cause**
+**Possible Causes**
 
 Attempted to cancel notification without prior registration.
 
-**Resolution**
+**Resolution Steps**
 
 Check if registration was completed.
 
@@ -986,16 +986,16 @@ Check if registration was completed.
 
 Fail to notify agent
 
-**Possible Cause**
+**Possible Causes**
 
 1. Service unavailable.  
 2. Extension mechanism exception.
 
-**Resolution**
+**Resolution Steps**
 
 Check if the client is abnormal.
 
-## Device-Cloud Sync Error Codes
+## Cloud Sync Error Codes
 
 ### 22400001 Cloud Status Not Ready
 
@@ -1003,12 +1003,12 @@ Check if the client is abnormal.
 
 Cloud status not ready
 
-**Possible Cause**
+**Possible Causes**
 
-1. Cloud service not enabled.  
-2. Application cloud sync switch is off.
+1. Cloud service is not enabled.  
+2. Application cloud sync switch is turned off.
 
-**Resolution**
+**Resolution Steps**
 
 1. Check if the account is logged in.  
 2. Check if the cloud sync switch is turned on.
@@ -1019,11 +1019,11 @@ Cloud status not ready
 
 Network unavailable
 
-**Possible Cause**
+**Possible Causes**
 
 Device is offline or network is unavailable.
 
-**Resolution**
+**Resolution Steps**
 
 Check network status.
 
@@ -1033,10 +1033,10 @@ Check network status.
 
 Battery level warning
 
-**Possible Cause**
+**Possible Causes**
 
 Battery level is too low.
 
-**Resolution**
+**Resolution Steps**
 
 Enable charging mode or retry after battery level recovers.

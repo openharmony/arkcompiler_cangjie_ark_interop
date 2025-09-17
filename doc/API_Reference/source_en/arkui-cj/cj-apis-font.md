@@ -1,6 +1,6 @@
 # ohos.font (Custom Font)
 
-This module provides functionality for registering custom fonts.
+This module provides the capability to register custom fonts.
 
 ## Import Module
 
@@ -20,10 +20,10 @@ public class Font {}
 
 **Since:** 21
 
-### static func getFontByName(String)
+### func getFontByName(String)
 
 ```cangjie
-public static func getFontByName(fontName: String): ?FontInfo
+public func getFontByName(fontName: String): ?FontInfo
 ```
 
 **Description:** Retrieves detailed information about a system font based on the specified font name.
@@ -34,20 +34,20 @@ public static func getFontByName(fontName: String): ?FontInfo
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| fontName | String | Yes | - | The name of the system font. |
+| Parameter | Type   | Required | Default | Description          |
+|:----------|:-------|:---------|:--------|:---------------------|
+| fontName  | String | Yes      | -       | The name of the system font. |
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
+| Type                  | Description               |
+|:----------------------|:--------------------------|
 | ?[FontInfo](#class-fontinfo) | Detailed font information. |
 
-### static func getSystemFontList()
+### func getSystemFontList()
 
 ```cangjie
-public static func getSystemFontList(): Array<String>
+public func getSystemFontList(): Array<String>
 ```
 
 **Description:** Retrieves the list of system fonts.
@@ -58,14 +58,14 @@ public static func getSystemFontList(): Array<String>
 
 **Return Value:**
 
-| Type | Description |
-|:----|:----|
-| Array\<String> | List of system fonts. |
+| Type           | Description            |
+|:---------------|:-----------------------|
+| Array\<String> | List of system fonts.  |
 
-### static func registerFont(ResourceStr, ResourceStr)
+### func registerFont(ResourceStr, ResourceStr)
 
 ```cangjie
-public static func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit
+public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Unit
 ```
 
 **Description:** Registers a custom font in the font management system.
@@ -76,10 +76,10 @@ public static func registerFont(familyName!: ResourceStr, familySrc!: ResourceSt
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| familyName | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The name of the font to register. |
-| familySrc | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The file path of the font to register. |
+| Parameter  | Type                                                                 | Required | Default | Description                                                                 |
+|:-----------|:---------------------------------------------------------------------|:---------|:--------|:----------------------------------------------------------------------------|
+| familyName | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes      | -       | **Named parameter.** The name of the font to be registered.                 |
+| familySrc  | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes      | -       | **Named parameter.** The file path of the font to be registered.           |
 
 ## class FontInfo
 
@@ -238,7 +238,7 @@ public var symbolic: Bool
 public var weight: UInt32
 ```
 
-**Description:** When weight > 0, indicates that this font set only contains fonts with the specified weight. When weight = 0, indicates that this font set contains all fonts.
+**Description:** When weight > 0, it indicates that this font set only contains fonts with the specified weight. When weight = 0, it indicates that this font set contains all fonts.
 
 **Type:** UInt32
 
@@ -281,7 +281,7 @@ import kit.LocalizationKit.*
 @Component
 class EntryView {
     protected func onAppear() {
-        Font.registerFont(
+        getUIContext().getFont().registerFont(
             familyName: "Deyihei",
             familySrc: "/resources/rawfile/SmileySans-Oblique.ttf"
         )
@@ -309,6 +309,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -318,7 +319,7 @@ class EntryView {
             Column {
                 Button("HelloWorld")
                 .onClick {evt =>
-                    let list = Font.getSystemFontList()
+                    let list = getUIContext().getFont().getSystemFontList()
                     Hilog.info(0, "AppLogCj", "${list.size}")
                 }
             }.width(100.percent)
@@ -336,6 +337,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -345,7 +347,7 @@ class EntryView {
             Column {
                 Button("HelloWorld")
                 .onClick {evt =>
-                    let info = Font.getFontByName("HarmonyOS Sans Italic")
+                    let info = getUIContext().getFont().getFontByName("HarmonyOS Sans Italic")
                     match (info) {
                         case Some(v) =>
                             Hilog.info(0, "AppLogCj", "${v.path}")

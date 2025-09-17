@@ -33,15 +33,15 @@ public init(
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The src cannot be dynamically changed via state variables (e.g., @State). |
+| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The src cannot dynamically change addresses via state variables (e.g., @State). |
 | controller | [WebviewController](../apis/ArkWeb/cj-apis-webview.md#class-webviewcontroller) | Yes | - | **Named parameter.** Sets the Web controller. |
 
-## Universal Attributes/Events
+## Common Attributes/Common Events
 
-**Universal Attributes:** Only supports [aspectRatio](./cj-universal-attribute-layoutconstraints.md#func-aspectratioint64), [backdropBlur](./cj-universal-attribute-background.md#func-backdropblurfloat64), [backgroundColor](./cj-universal-attribute-background.md#func-backgroundcolorresourcecolor), [bindContentCover](./cj-universal-attribute-menu.md), [bindContextMenu](./cj-universal-attribute-menu.md#func-bindcontextmenu---unit-responsetype), [bindMenu](./cj-universal-attribute-menu.md#func-bindmenu---unit), [bindSheet](./cj-universal-attribute-sheettransition.md#func-bindsheetbool----unit-sheetoptions), [borderColor](./cj-information-display-progress.md#var-bordercolor), [borderRadius](./cj-common-types.md#class-borderradiuses), [borderStyle](./cj-common-types.md#enum-borderstyle), [borderWidth](./cj-information-display-badge.md#var-borderwidth), [clip](./cj-common-types.md#clip), [constraintSize](./cj-universal-attribute-size.md#func-constraintsizelength-length-length-length), [defaultFocus](./cj-universal-attribute-focus.md#func-defaultfocusbool), [focusable](./cj-universal-attribute-popup.md#var-focusable), [tabIndex](./cj-universal-attribute-focus.md#func-tabindexint32), [groupDefaultFocus](./cj-universal-attribute-focus.md#func-groupdefaultfocusbool), [displayPriority](./cj-universal-attribute-layoutconstraints.md#func-displaypriorityint32), [draggable](./cj-image-video-image.md#func-draggablebool), [enabled](./cj-universal-attribute-enable.md#func-enabledbool), [flexBasis](./cj-universal-attribute-flexlayout.md#func-flexbasislength), [flexShrink](./cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64), [layoutWeight](./cj-universal-attribute-size.md#func-layoutweightint32), [id](./cj-universal-attribute-componentid.md), [height](./cj-universal-attribute-size.md#func-heightlength), [touchable](./cj-apis-window.md#let-touchable), [margin](./cj-universal-attribute-size.md#func-marginlength), [markAnchor](./cj-universal-attribute-location.md#func-markanchorlength-length), [mask](./cj-scroll-swipe-swiper.md#func-maskbool), [offset](./cj-apis-componentutils.md#class-offset), [width](./cj-apis-display.md#var-width), [zIndex](./cj-animation-sharedtransition.md#var-zindex), [visibility](./cj-common-types.md#enum-visibility), [scale](./cj-animation-pagetransition.md#func-scalefloat32-float32-float32-length-length), [transform](./cj-apis-componentutils.md#let-transform), [responseRegion](./cj-universal-attribute-touchtarget.md#func-responseregionarrayarrayrectangle), [size](./cj-apis-componentutils.md#let-size), [opacity](./cj-animation-pagetransition.md#func-opacityfloat64), [shadow](./cj-information-display-progress.md#var-shadow), [gesture](./cj-universal-gesture-bind.md#func-gesturegesturetype), [sharedTransition](./cj-animation-sharedtransition.md#func-sharedtransitionstring-sharedtransitionoptions), [transition](./cj-animation-transition.md#func-transition).
+Common Attributes: Only supports [aspectRatio](./cj-universal-attribute-layoutconstraints.md#func-aspectratiofloat64), [backdropBlur](./cj-universal-attribute-background.md#func-backdropblurfloat64), [backgroundColor](./cj-universal-attribute-background.md#func-backgroundcolorresourcecolor), [bindContentCover](./cj-universal-attribute-menu.md), [bindContextMenu](./cj-universal-attribute-menu.md#func-bindcontextmenucustombuilder-responsetype-contextmenuoptions), [bindMenu](./cj-universal-attribute-menu.md#func-bindmenuarraymenuelement), [bindSheet](./cj-universal-attribute-sheettransition.md#func-bindsheetbool-custombuilder-sheetoptions), [borderColor](./cj-universal-attribute-border.md#func-bordercolorresourcecolor), [borderRadius](./cj-common-types.md#class-borderradiuses), [borderStyle](./cj-common-types.md#enum-borderstyle), [borderWidth](./cj-universal-attribute-border.md#func-borderwidthlength), [clip](./cj-common-types.md#clip), [constraintSize](./cj-universal-attribute-size.md#func-constraintsizelength-length-length-length), [defaultFocus](./cj-universal-attribute-focus.md#func-defaultfocusbool), [focusable](./cj-universal-attribute-focus.md#func-focusablebool), [tabIndex](./cj-universal-attribute-focus.md#func-tabindexint32), [groupDefaultFocus](./cj-universal-attribute-focus.md#func-groupdefaultfocusbool), [displayPriority](./cj-universal-attribute-layoutconstraints.md#func-displaypriorityint32), [enabled](./cj-universal-attribute-enable.md#func-enabledbool), [flexBasis](./cj-universal-attribute-flexlayout.md#func-flexbasislength), [flexShrink](./cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64), [layoutWeight](./cj-universal-attribute-size.md#func-layoutweightint32), [id](./cj-universal-attribute-componentid.md), [height](./cj-universal-attribute-size.md#func-heightoptionlength), [margin](./cj-universal-attribute-size.md#func-marginlength), [markAnchor](./cj-universal-attribute-location.md#func-markanchorlength-length), [mask](./cj-scroll-swipe-swiper.md#func-maskbool), [offset](./cj-apis-componentutils.md#class-offset), [width](./cj-universal-attribute-size.md#func-widthoptionlength), [zIndex](./cj-universal-attribute-zorder.md#func-zindexint32), [visibility](./cj-common-types.md#enum-visibility), [scale](./cj-animation-pagetransition.md#func-scalefloat32-float32-float32-length-length), [transform](./cj-canvas-drawing-canvasrenderingcontext2d.md#func-transformfloat64-float64-float64-float64-float64-float64), [responseRegion](./cj-universal-attribute-touchtarget.md#func-responseregionrectangle), [size](./cj-universal-attribute-size.md#func-sizelength-length), [opacity](./cj-animation-pagetransition.md#func-opacityfloat64), [shadow](./cj-universal-attribute-imageeffect.md#func-shadowfloat64-resourcecolor-float64-float64), [gesture](./cj-universal-gesture-bind.md#func-gesturemask), [sharedTransition](./cj-animation-sharedtransition.md#func-sharedtransitionstring-sharedtransitionoptions), [transition](./cj-animation-transition.md#func-transitiontransitioneffect).
 
 <!-- note -->
-**Universal Events:** Only supports [onAppear](./cj-universal-attribute-menu.md#var-onappear), [onDisAppear](./cj-universal-attribute-menu.md#var-ondisappear), [onBlur](cj-ui-framework.md#func-onblur---unit), [onFocus](cj-ui-framework.md#func-onblur---unit), [onDragEnd](./cj-universal-event-drag.md#func-ondragenddrageventstring---unit), [onDragEnter](./cj-universal-event-drag.md#func-ondragenterdrageventstring---unit), [onDragStart](./cj-universal-event-drag.md#func-ondragstartdrageventstring------unit), [onDragMove](./cj-universal-event-drag.md#func-ondragmovedrageventstring---unit), [onDragLeave](./cj-universal-event-drag.md#func-ondragleavedrageventstring---unit), [onDrop](./cj-universal-event-drag.md#func-ondropdrageventstring---unit), [onHover](./cj-universal-event-mouse.md), [onMouse](./cj-universal-event-mouse.md#func-onmousemouseevent), [onKeyEvent](./cj-universal-event-key.md#func-onkeyeventkeyevent-unit), [onTouch](./cj-universal-event-touch.md#func-ontouchtouchevent-unit), [onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-bool-float64-unit---unit).
+Common Events: Only supports [onAppear](./cj-ui-framework.md#func-onappear---unit), [onDisAppear](./cj-ui-framework.md#func-ondisappear---unit), [onBlur](cj-ui-framework.md#func-onblur---unit), [onFocus](cj-ui-framework.md#func-onblur---unit), [onDragEnter](./cj-universal-event-drag.md#func-ondragenterdraginfo---unit), [onDragStart](./cj-universal-event-drag.md#func-ondragstartdraginfo---unit), [onDragMove](./cj-universal-event-drag.md#func-ondragmovedraginfo---unit), [onDragLeave](./cj-universal-event-drag.md#func-ondragleavedraginfo---unit), [onDrop](./cj-universal-event-drag.md#func-ondropdraginfo---unit), [onHover](./cj-universal-event-mouse.md), [onMouse](./cj-universal-event-mouse.md#func-onmousemouseevent---unit), [onKeyEvent](./cj-universal-event-key.md#func-onkeyeventkeyevent---unit), [onTouch](./cj-universal-event-touch.md#func-ontouchtouchevent---unit), [onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit).
 
 ## Component Attributes
 
@@ -51,7 +51,7 @@ public init(
 public func darkMode(mode: WebDarkMode): This
 ```
 
-**Functionality:** Sets the Web dark mode, which is disabled by default. When dark mode is enabled, the Web will apply the dark styles defined in the webpage's media query `prefers-color-scheme`. If no dark styles are defined, the original styles remain. To enable forced dark mode, it is recommended to use it in conjunction with [forceDarkAccess](#func-forcedarkaccessbool).
+**Functionality:** Sets the Web dark mode, which is disabled by default. When dark mode is enabled, the Web will apply the dark styles defined in the webpage's media query prefers-color-scheme. If no dark styles are defined, the original appearance is maintained. To enable forced dark mode, it is recommended to use it in conjunction with [forceDarkAccess](#func-forcedarkaccessbool).
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -79,7 +79,7 @@ public func domStorageAccess(domStorageAccess: Bool): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| domStorageAccess | Bool | Yes | - | Whether to enable the Document Object Model Storage API (DOM Storage API) permissions. `true` means enabled, `false` means disabled. <br> Initial value: false. |
+| domStorageAccess | Bool | Yes | - | Whether to enable the Document Object Model Storage API (DOM Storage API) permissions. true means enabled, false means disabled. <br> Initial value: false. |
 
 ### func fileAccess(Bool)
 
@@ -87,7 +87,7 @@ public func domStorageAccess(domStorageAccess: Bool): This
 public func fileAccess(fileAccess: Bool): This
 ```
 
-**Functionality:** Sets whether to enable access to the application's file system, which is enabled by default. Files in the `rawfile` path are not affected by this attribute and remain accessible.
+**Functionality:** Sets whether to enable access to the application's file system, which is enabled by default. Files in the rawfile path are not affected by this attribute and remain accessible.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -105,7 +105,7 @@ public func fileAccess(fileAccess: Bool): This
 public func forceDarkAccess(access: Bool): This
 ```
 
-**Functionality:** Sets whether to enable forced dark mode for webpages. Disabled by default. This attribute only takes effect when dark mode is enabled via `darkMode`.
+**Functionality:** Sets whether to enable forced dark mode for webpages. Disabled by default. This attribute only takes effect when darkMode is enabled.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -115,7 +115,7 @@ public func forceDarkAccess(access: Bool): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| access | Bool | Yes | - | Whether to enable forced dark mode for webpages. `true`: enabled, `false`: disabled. |
+| access | Bool | Yes | - | Sets whether to enable forced dark mode for webpages. true: enabled, false: disabled. |
 
 ### func geolocationAccess(Bool)
 
@@ -133,7 +133,7 @@ public func geolocationAccess(geolocationAccess: Bool): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| geolocationAccess | Bool | Yes | - | Whether to enable geolocation permissions. |
+| geolocationAccess | Bool | Yes | - | Sets whether to enable geolocation permissions. |
 
 ### func imageAccess(Bool)
 
@@ -160,7 +160,7 @@ public func javaScriptProxy(funcList!: Array<(String) -> String>, name!: String,
     controller!: WebviewController): This
 ```
 
-**Functionality:** Injects a JavaScript object into the `window` object, allowing methods of this object to be called within the `window` object.
+**Functionality:** Injects a JavaScript object into the window object and calls the object's methods within the window object.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -170,9 +170,9 @@ public func javaScriptProxy(funcList!: Array<(String) -> String>, name!: String,
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| funcList | Array\<(String)->String> | Yes | - | **Named parameter.** The synchronous methods of the JavaScript object to be registered on the application side. |
-| name | String | Yes | - | **Named parameter.** The name of the registered object, which matches the object name used in `window`. |
-| methodList | Array\<String> | Yes | - | **Named parameter.** The asynchronous methods of the JavaScript object to be registered on the application side. |
+| funcList | Array\<(String)->String> | Yes | - | **Named parameter.** The synchronous methods of the JavaScript object on the application side participating in registration. |
+| name | String | Yes | - | **Named parameter.** The name of the registered object, consistent with the object name called in the window. |
+| methodList | Array\<String> | Yes | - | **Named parameter.** The asynchronous methods of the JavaScript object on the application side participating in registration. |
 | controller | [WebviewController](../apis/ArkWeb/cj-apis-webview.md#class-webviewcontroller) | Yes | - | **Named parameter.** Sets the Web controller. |
 
 ### func mixedMode(MixedMode)
@@ -181,7 +181,7 @@ public func javaScriptProxy(funcList!: Array<(String) -> String>, name!: String,
 public func mixedMode(mixedMode: MixedMode): This
 ```
 
-**Functionality:** Sets whether to allow loading mixed content (HTTP and HTTPS), which is disallowed by default.
+**Functionality:** Sets whether to allow loading mixed content of Hypertext Transfer Protocol (HTTP) and Hypertext Transfer Protocol Secure (HTTPS), which is disallowed by default.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -191,7 +191,7 @@ public func mixedMode(mixedMode: MixedMode): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| mixedMode | [MixedMode](#enum-mixmode) | Yes | - | Mixed content. <br> Initial value: MixedMode.None, meaning secure origins are not allowed to load insecure content. |
+| mixedMode | [MixedMode](#enum-mixedmode) | Yes | - | Mixed content. <br> Initial value: MixedMode.None, indicating that secure origins are not allowed to load content from insecure origins. |
 
 ### func nestedScroll(NestedScrollMode, NestedScrollMode)
 
@@ -202,7 +202,7 @@ public func nestedScroll(
 ): This
 ```
 
-**Functionality:** Sets the nested scroll mode for forward and backward directions, enabling scroll linkage with parent components.
+**Functionality:** Sets the nested scroll mode in both forward and backward directions to achieve scroll linkage with the parent component.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -221,7 +221,7 @@ public func nestedScroll(
 public func verticalScrollBarAccess(verticalScrollBar: Bool): This
 ```
 
-**Functionality:** Sets whether to display the vertical scrollbar, including both system-default and custom scrollbars. Displayed by default.
+**Functionality:** Sets whether to display the vertical scrollbar, including the system default scrollbar and user-defined scrollbars. Displayed by default.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -231,7 +231,7 @@ public func verticalScrollBarAccess(verticalScrollBar: Bool): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| verticalScrollBar | Bool | Yes | - | Whether to display the vertical scrollbar. `true` means display, `false` means hide. <br> Initial value: true. |
+| verticalScrollBar | Bool | Yes | - | Whether to display the vertical scrollbar. true means to display the vertical scrollbar, false means not to display it. <br> Initial value: true. |
 
 ### func zoomAccess(Bool)
 
@@ -239,7 +239,7 @@ public func verticalScrollBarAccess(verticalScrollBar: Bool): This
 public func zoomAccess(zoomAccess: Bool): This
 ```
 
-**Functionality:** Sets whether to support gesture-based zooming, which is allowed by default.
+**Functionality:** Sets whether to support zooming via gestures, which is allowed by default.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -249,7 +249,7 @@ public func zoomAccess(zoomAccess: Bool): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| zoomAccess | Bool | Yes | - | Whether to support gesture-based zooming. `true` means support, `false` means no support. <br> Initial value: true. |
+| zoomAccess | Bool | Yes | - | Whether to support zooming via gestures. true means to support zooming via gestures, false means not to support it. <br> Initial value: true. |
 
 ## Component Events
 
@@ -259,7 +259,7 @@ public func zoomAccess(zoomAccess: Bool): This
 public func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): This
 ```
 
-**Functionality:** Triggers this callback before the Web component loads a URL, allowing the decision to block the access. Allowed by default.
+**Functionality:** Triggers this callback before the Web component loads a URL, used to determine whether to block this access. Allowed by default.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -269,7 +269,7 @@ public func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): Thi
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnLoadInterceptEvent](#class-onloadinterceptevent),Bool> | Yes | - | Callback function triggered when resource loading is intercepted. <br> Returns a boolean. `true` means block the loading, otherwise allow it. |
+| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnLoadInterceptEvent](#class-onloadinterceptevent),Bool> | Yes | - | Callback function triggered when resource loading is intercepted. <br> Return value boolean. Returns true to block this loading, otherwise allows it. |
 
 ### func onPageBegin(Callback\<OnPageBeginEvent,Unit>)
 
@@ -277,7 +277,7 @@ public func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): Thi
 public func onPageBegin(callback: Callback<OnPageBeginEvent, Unit>): This
 ```
 
-**Functionality:** Triggers this callback when webpage loading starts, only for the main frame. Loading of iframe or frameset content does not trigger this callback.
+**Functionality:** Triggers this callback when the webpage starts loading, and only triggers in the main frame. Loading content in iframe or frameset does not trigger this callback.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -295,7 +295,7 @@ public func onPageBegin(callback: Callback<OnPageBeginEvent, Unit>): This
 public func onPageEnd(callback: Callback<OnPageEndEvent, Unit>): This
 ```
 
-**Functionality:** Triggers this callback when webpage loading completes, only for the main frame.
+**Functionality:** Triggers this callback when the webpage finishes loading, and only triggers in the main frame.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -305,7 +305,7 @@ public func onPageEnd(callback: Callback<OnPageEndEvent, Unit>): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageEndEvent](#class-onpageendevent),Unit> | Yes | - | Callback function triggered when webpage loading ends. |
+| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageEndEvent](#class-onpageendevent),Unit> | Yes | - | Triggered when webpage loading ends. |
 
 ### func onlineImageAccess(Bool)
 
@@ -323,7 +323,7 @@ public func onlineImageAccess(onlineImageAccess: Bool): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| onlineImageAccess | Bool | Yes | - | Whether to allow loading image resources from the network. `true` means allow, `false` means disallow. <br> Initial value: true. |
+| onlineImageAccess | Bool | Yes | - | Whether to allow loading image resources from the network. true means to allow loading image resources from the network, false means not to allow it. <br> Initial value: true. |
 
 ## Basic Type Definitions
 
@@ -370,20 +370,17 @@ public var headerValue: String
 
 **Read/Write Capability:** Readable and Writable
 
-**System Capability:** SystemCapability.Web.Webview.Core
-
-**Initial Version:**### class OnPageBeginEvent
+**System Capability:**### class OnPageBeginEvent
 
 ```cangjie
 public class OnPageBeginEvent {
     public var url: String
 
-
     public init(url: String)
 }
 ```
 
-**Description:** <font color="red" face="bold">please add description</font>
+**Description:** Defines the function triggered when a webpage starts loading.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -399,7 +396,7 @@ public var url: String
 
 **Type:** String
 
-**Access:** Read-Write
+**Read-Write Attribute:** Read-Write
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -412,7 +409,7 @@ public var url: String
 public init(url: String)
 ```
 
-**Description:** <font color="red" face="bold">please add description</font>
+**Description:** Constructor.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -420,7 +417,7 @@ public init(url: String)
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | url | String | Yes | - | The URL of the currently loading page. |
 
@@ -430,12 +427,11 @@ public init(url: String)
 public class OnPageEndEvent {
     public var url: String
 
-
     public init(url: String)
 }
 ```
 
-**Description:** <font color="red" face="bold">please add description</font>
+**Description:** Defines the function triggered when a webpage finishes loading.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -447,11 +443,11 @@ public class OnPageEndEvent {
 public var url: String
 ```
 
-**Description:** The URL of the currently loading page.
+**Description:** The URL of the currently loaded page.
 
 **Type:** String
 
-**Access:** Read-Write
+**Read-Write Attribute:** Read-Write
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -464,7 +460,7 @@ public var url: String
 public init(url: String)
 ```
 
-**Description:** <font color="red" face="bold">please add description</font>
+**Description:** Constructor.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -472,16 +468,15 @@ public init(url: String)
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| url | String | Yes | - | The URL of the currently loading page. |
+| url | String | Yes | - | The URL of the currently loaded page. |
 
 ### class OnPermissionRequestEvent
 
 ```cangjie
 public class OnPermissionRequestEvent {
     public var request: PermissionRequest
-
 
     public init(request: PermissionRequest)
 }
@@ -499,11 +494,11 @@ public class OnPermissionRequestEvent {
 public var request: PermissionRequest
 ```
 
-**Description:** The object returned by the Web component for granting or denying permissions. Example code can be found in the [onPermissionRequest](#class-onpermissionrequestevent) event.
+**Description:** The object returned by the Web component for granting or denying permissions. For sample code, refer to the [onPermissionRequest](#class-onpermissionrequestevent) event.
 
 **Type:** [PermissionRequest](#class-permissionrequest)
 
-**Access:** Read-Write
+**Read-Write Attribute:** Read-Write
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -516,7 +511,7 @@ public var request: PermissionRequest
 public init(request: PermissionRequest)
 ```
 
-**Description:** <font color="red" face="bold">please add description</font>
+**Description:** Constructor.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -524,9 +519,9 @@ public init(request: PermissionRequest)
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| request | [PermissionRequest](#class-permissionrequest) | Yes | - | <font color="red" face="bold">please add description</font> |
+| request | [PermissionRequest](#class-permissionrequest) | Yes | - | The object returned by the Web component for granting or denying permissions. |
 
 ### class PermissionRequest
 
@@ -534,7 +529,7 @@ public init(request: PermissionRequest)
 public class PermissionRequest {}
 ```
 
-**Description:** The object returned by the Web component for granting or denying permissions. Example code can be found in the [onPermissionRequest](#class-onpermissionrequestevent) event.
+**Description:** The object returned by the Web component for granting or denying permissions. For sample code, refer to the [onPermissionRequest](#class-onpermissionrequestevent) event.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -560,7 +555,7 @@ public func deny(): Unit
 public func getAccessibleResource(): Array<String>
 ```
 
-**Description:** Retrieves the list of permission resources requested by the webpage.
+**Description:** Gets the list of permission resources requested by the webpage.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -579,7 +574,7 @@ public func getAccessibleResource(): Array<String>
 public func getOrigin(): String
 ```
 
-**Description:** Retrieves the origin of the webpage.
+**Description:** Gets the origin of the webpage.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -606,9 +601,9 @@ public func grant(resources: Array<String>): Unit
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| resources | Array\<String> | Yes | - | Screen capture configuration. |
+| resources | Array\<String> | Yes | - | The screen capture configuration. |
 
 ### class WebResourceRequest
 
@@ -616,7 +611,7 @@ public func grant(resources: Array<String>): Unit
 public class WebResourceRequest {}
 ```
 
-**Description:** The Web component resource response object. Example code can be found in the [onHttpErrorReceive](#class-onhttperrorreceiveevent) event.
+**Description:** The Web component resource response object.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -629,7 +624,7 @@ public class WebResourceRequest {}
 public func getRequestHeader(): Array<Header>
 ```
 
-**Description:** Retrieves the request header information of the resource.
+**Description:** Gets the request header information of the resource.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -648,7 +643,7 @@ public func getRequestHeader(): Array<Header>
 public func getRequestMethod(): String
 ```
 
-**Description:** Retrieves the request method.
+**Description:** Gets the request method.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -667,7 +662,8 @@ public func getRequestMethod(): String
 public func getRequestUrl(): String
 ```
 
-**Description:** Retrieves the URL information of the resource request.
+**Description:** Gets the URL information of the resource request.
+
 **System Capability:** SystemCapability.Web.Webview.Core
 
 **Since:** 21
@@ -695,7 +691,7 @@ public func isMainFrame(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the resource request is for the main frame, false otherwise. |
+| Bool | Whether the resource request is for the main frame. `true` indicates it is for the main frame; `false` indicates it is not. |
 
 #### func isRedirect()
 
@@ -704,7 +700,7 @@ public func isMainFrame(): Bool
 public func isRedirect(): Bool
 ```
 
-**Description:** Determines whether the resource request has been redirected by the server.
+**Description:** Determines whether the resource request is redirected by the server.
 
 **System Capability:** SystemCapability.Web.Webview.Core
 
@@ -714,7 +710,7 @@ public func isRedirect(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the resource request has been redirected by the server, false otherwise. |
+| Bool | Whether the resource request is redirected by the server. `true` indicates it is redirected; `false` indicates it is not. |
 
 #### func isRequestGesture()
 
@@ -733,7 +729,7 @@ public func isRequestGesture(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the resource request is associated with a gesture (e.g., a click), false otherwise. |
+| Bool | Whether the resource request is associated with a gesture. `true` indicates it is associated; `false` indicates it is not. |
 
 ### enum MixedMode
 
@@ -774,7 +770,7 @@ All
 Compatible
 ```
 
-**Description:** Compatibility mode: Mixed content compatibility mode, where some insecure content may be loaded.
+**Description:** Compatibility mode: Mixed content compatibility mode where some insecure content may be loaded.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -786,7 +782,7 @@ Compatible
 None
 ```
 
-**Description:** Strict mode: Disallows loading HTTP and HTTPS mixed content. Prevents secure origins from loading insecure content.
+**Description:** Strict mode: Disallows loading HTTP and HTTPS mixed content. Prevents secure origins from loading insecure origin content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -802,7 +798,7 @@ public operator func !=(other: MixedMode): Bool
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [MixedMode](#enum-mixedmode) | Yes | - | The other enum value to compare. |
 
@@ -810,7 +806,7 @@ public operator func !=(other: MixedMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are not equal, false otherwise. |
+| Bool | Returns `true` if the two enum values are not equal; otherwise, returns `false`. |
 
 #### func ==(MixedMode)
 
@@ -822,7 +818,7 @@ public operator func ==(other: MixedMode): Bool
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [MixedMode](#enum-mixedmode) | Yes | - | The other enum value to compare. |
 
@@ -830,7 +826,7 @@ public operator func ==(other: MixedMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, false otherwise. |## Sample Code
+| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |## Sample Code
 
 <!-- run -->
 
@@ -839,6 +835,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.ArkWeb.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -846,7 +843,7 @@ class EntryView {
     let webController = WebviewController()
     @State var url: String = "www.example.com"
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Button("refresh")
             .onClick {
                 evt =>

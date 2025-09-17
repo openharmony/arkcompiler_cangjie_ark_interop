@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> Only takes effect when the parent component is [Flex](./cj-row-column-stack-flex.md), [Column](./cj-row-column-stack-column.md), [Row](./cj-row-column-stack-row.md), or [GridRow](./cj-grid-layout-gridrow.md) (only for [alignSelf](./cj-universal-attribute-flexlayout.md#func-alignselfitemalign)).
+> Only takes effect when the parent component is [Flex](./cj-row-column-stack-flex.md), [Column](./cj-row-column-stack-column.md), [Row](./cj-row-column-stack-row.md), or [GridRow](./cj-grid-layout-gridrow.md) (specifically for [alignSelf](./cj-universal-attribute-flexlayout.md#func-alignselfitemalign)).
 
 ## Import Module
 
@@ -26,7 +26,7 @@ public func alignSelf(value: ItemAlign): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ItemAlign](#) | Yes | - | Item alignment mode. |
+| value | [ItemAlign](./cj-common-types.md#enum-itemalign) | Yes | - | Item alignment. |
 
 ## func flexBasis(Length)
 
@@ -44,7 +44,7 @@ public func flexBasis(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The basis size of the component in the main axis direction of the parent container. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The basis size of the component in the main axis direction of the parent container. |
 
 ## func flexGrow(Float64)
 
@@ -80,7 +80,7 @@ public func flexGrow(value: Int64): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Int64 | Yes | - | The proportion of remaining space in the main axis direction of the parent container allocated to the component with this attribute.<br>Value range: (0,+∞), Initial value: 0. |
+| value | Int64 | Yes | - | The proportion of the remaining space in the main axis direction of the parent container allocated to the component where this attribute is set.<br>Range: (0, +∞), Initial value: 0. |
 
 ## func flexShrink(Float64)
 
@@ -116,4 +116,4 @@ public func flexShrink(value: Int64): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Int64 | Yes | - | The proportion of compressed size allocated to the component with this attribute when the parent container is compressed.<br>Initial value: 0 when parent is Column or Row.<br>Initial value: 1 when parent is Flex. |
+| value | Int64 | Yes | - | The proportion of the compressed size of the parent container allocated to the component where this attribute is set.<br>Initial value: 0 when the parent container is Column or Row.<br>Initial value: 1 when the parent container is Flex. |

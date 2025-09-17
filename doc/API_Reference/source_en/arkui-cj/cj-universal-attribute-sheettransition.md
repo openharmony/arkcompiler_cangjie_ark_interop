@@ -26,47 +26,11 @@ public func bindSheet(isShow: Bool, builder: CustomBuilder, options!: SheetOptio
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | isShow | Bool | Yes | - | Whether to display. |
-| builder | [CustomBuilder](#type-custombuilder) | Yes | - | Custom builder. |
-| options | [SheetOptions](#) | No | SheetOptions() | Bottom panel options. |
-
-## func dismiss()
-
-```cangjie
-public func dismiss(): Unit
-```
-
-**Function:** Callback function for closing a semi-modal page. Called by developers when exiting the page.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-## func dismiss()
-
-```cangjie
-public func dismiss(): Unit
-```
-
-**Function:** Callback function for closing a semi-modal panel. Called by developers when exiting, not required if no exit is needed.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-## func springBack()
-
-```cangjie
-public func springBack()
-```
-
-**Function:** Controls the rebound effect before closing a semi-modal page. Called by developers when a semi-modal rebound is needed.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
+| builder | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | Custom builder. |
+| options | [SheetOptions](#class-sheetoptions) | No | SheetOptions() | Bottom panel options. |
 
 ## func !=(ScrollSizeMode)
 
@@ -74,19 +38,19 @@ public func springBack()
 public operator func !=(other: ScrollSizeMode): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enumeration values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [ScrollSizeMode](#enum-scrollsizemode) | Yes | - | Another enum value. |
+| other | [ScrollSizeMode](#enum-scrollsizemode) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
 
 ## func ==(ScrollSizeMode)
 
@@ -94,19 +58,19 @@ public operator func !=(other: ScrollSizeMode): Bool
 public operator func ==(other: ScrollSizeMode): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [ScrollSizeMode](#enum-scrollsizemode) | Yes | - | Another enum value. |
+| other | [ScrollSizeMode](#enum-scrollsizemode) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
 
 ## func !=(SheetMode)
 
@@ -114,19 +78,19 @@ public operator func ==(other: ScrollSizeMode): Bool
 public operator func !=(other: SheetMode): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enumeration values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [SheetMode](#enum-sheetmode) | Yes | - | Another enum value. |
+| other | [SheetMode](#enum-sheetmode) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
 
 ## func ==(SheetMode)
 
@@ -134,19 +98,19 @@ public operator func !=(other: SheetMode): Bool
 public operator func ==(other: SheetMode): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [SheetMode](#enum-sheetmode) | Yes | - | Another enum value. |
+| other | [SheetMode](#enum-sheetmode) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
 
 ## func !=(SheetSize)
 
@@ -154,19 +118,19 @@ public operator func ==(other: SheetMode): Bool
 public operator func !=(other: SheetSize): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enumeration values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [SheetSize](#enum-sheetsize) | Yes | - | Another enum value. |
+| other | [SheetSize](#enum-sheetsize) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
 
 ## func ==(SheetSize)
 
@@ -174,19 +138,19 @@ public operator func !=(other: SheetSize): Bool
 public operator func ==(other: SheetSize): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [SheetSize](#enum-sheetsize) | Yes | - | Another enum value. |
+| other | [SheetSize](#enum-sheetsize) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
 
 ## func !=(SheetType)
 
@@ -194,19 +158,19 @@ public operator func ==(other: SheetSize): Bool
 public operator func !=(other: SheetType): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enumeration values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [SheetType](#enum-sheettype) | Yes | - | Another enum value. |
+| other | [SheetType](#enum-sheettype) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are not equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
 
 ## func ==(SheetType)
 
@@ -214,19 +178,19 @@ public operator func !=(other: SheetType): Bool
 public operator func ==(other: SheetType): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [SheetType](#enum-sheettype) | Yes | - | Another enum value. |
+| other | [SheetType](#enum-sheettype) | Yes | - | Another enumeration value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enum values are equal, otherwise `false`. |
+| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
 
 ## Basic Type Definitions
 
@@ -262,13 +226,13 @@ public init(backgroundColor!: ?ResourceColor = Option.None, onAppear!: ?() -> Un
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | backgroundColor | ?[ResourceColor](cj-common-types.md#interface-resourcecolor) | No | Option.None | **Named parameter.** Background color of the semi-modal page, default is white. |
-| onAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is displayed (after animation ends). |
-| onDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is dismissed (after animation ends). |
-| onWillAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is displayed (before animation starts). |
-| onWillDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is dismissed (before animation starts).<br>**Note:** Modifying state variables in the `onWillDisappear` function is not allowed, as it may cause unstable component behavior. |
+| onAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page appears (after animation ends). |
+| onDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page disappears (after animation ends). |
+| onWillAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is about to appear (before animation starts). |
+| onWillDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is about to disappear (before animation starts).<br>**Note:** Modifying state variables in the `onWillDisappear` function is not allowed, as it may cause unstable component behavior. |
 
 ### class DismissSheetAction
 
@@ -278,7 +242,7 @@ public class DismissSheetAction {
 }
 ```
 
-**Function:** Callback function type for closing a semi-modal page.
+**Function:** Callback function type for closing semi-modal pages.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -300,13 +264,37 @@ public var reason: DismissReason
 
 **Since:** 21
 
+#### func dismiss()
+
+```cangjie
+public func dismiss(): Unit
+```
+
+**Function:** Callback function for closing the semi-modal page. Developers should call this when exiting the page.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 ### class SheetDismiss
 
 ```cangjie
 public class SheetDismiss {}
 ```
 
-**Function:** Controls the closing type of a semi-modal.
+**Function:** Controls the type of semi-modal closure.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### func dismiss()
+
+```cangjie
+public func dismiss(): Unit
+```
+
+**Function:** Callback function for closing the semi-modal panel. Developers should call this when exiting, otherwise no action is needed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -359,7 +347,7 @@ public class SheetOptions <: BindOptions {
 
 - [BindOptions](#class-bindoptions)
 
-### init(Option\<ResourceColor>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<SheetSize>, Option\<Array\<SheetSize>>, Option\<SheetType>, Option\<Bool>, Option\<Bool>, Option\<BlurStyle>, Option\<Color>, Option\<() -> Unit>, Option\<Bool>, Option\<(SheetDismiss) -> Unit>, Option\<(DismissSheetAction) -> Unit>, Option\<(SpringBackAction) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<Length>, Option\<Color>, Option\<EdgeStyles>, Option\<Length>, Option\<ShadowOptions>, Option\<SheetMode>, Option\<ScrollSizeMode>)
+#### init(Option\<ResourceColor>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<SheetSize>, Option\<Array\<SheetSize>>, Option\<SheetType>, Option\<Bool>, Option\<Bool>, Option\<BlurStyle>, Option\<Color>, Option\<() -> Unit>, Option\<Bool>, Option\<(SheetDismiss) -> Unit>, Option\<(DismissSheetAction) -> Unit>, Option\<(SpringBackAction) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<Length>, Option\<Color>, Option\<EdgeStyles>, Option\<Length>, Option\<ShadowOptions>, Option\<SheetMode>, Option\<ScrollSizeMode>)
 
 ```cangjie
 public init(
@@ -402,28 +390,39 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| backgroundColor | [ResourceColor](cj-common-types.md#interface-resourcecolor) | No | Color.White | **Named parameter.** Background color of the semi-modal page, default is white. |
-| onAppear | ()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is displayed (after animation ends). |
-| onDisappear | ()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is dismissed (after animation ends). |
-| onWillAppear | ()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is displayed (before animation starts). |
-| onWillDisappear | ()->Unit | No | Option.None | **Named parameter.** Callback function when the semi-modal page is dismissed (before animation starts).<br>**Note:** Modifying state variables in the `onWillDisappear` function is not allowed, as it may cause unstable component behavior. |
-| height | [SheetSize](#enum-sheetsize) | No | Option.None | **Named parameter.** Height of the semi-modal.<br>**Note:**<br>For bottom pop-ups in portrait mode, this property is invalid when `detents` is set.<br>For bottom pop-ups in portrait mode, the maximum height is 8vp from the signal bar.<br>For bottom pop-ups in landscape mode, this property is invalid, and the height is 8vp from the top of the screen.<br>For center pop-ups and follow-hand pop-ups, setting the type to `SheetSize.LARGE` or `SheetSize.MEDIUM` is invalid, and the default height is 560vp. The minimum height is 320vp, and the maximum height is 90% of the short side of the window. If the height set using `Length` or the adaptive height using `SheetSize.FIT_CONTENT` exceeds the maximum height, the maximum height is displayed; if it is less than the minimum height, the minimum height is displayed. |
-| detents | Array\<[SheetSize](#enum-sheetsize)> | No | Option.None | **Named parameter.** Height levels for switching the semi-modal page.<br>**Note:**<br>Effective for bottom pop-ups in portrait mode, the first height in the array is the initial height.<br>The panel can switch levels by following hand movements. Whether it slides to the target level after release depends on two conditions: speed and distance. If the speed exceeds the threshold, it slides to the target level in the direction of the hand movement; if the speed is below the threshold, the distance condition is introduced. If the displacement distance > 1/2 of the current position to the target position, it slides to the target level in the direction of the hand movement; otherwise, it returns to the current level. Speed threshold: 1000, distance threshold: 50%. |
-| preferType | [SheetType](#enum-sheettype) | No | Option.None | **Named parameter.** Style of the semi-modal page.<br>**Note:**<br>`preferType` cannot be set to `SheetType.BOTTOM`. |
-| showClose | Bool | No |### class SpringBackAction
+| backgroundColor | Option<ResourceColor> | No | Color.White | **Named parameter.** Background color of the semi-modal page, default is white. |
+| onAppear | Option<() -> Unit> | No | Option.None | **Named parameter.** Callback function when the semi-modal page appears (after animation ends). |
+| onDisappear | Option<() -> Unit> | No | Option.None | **Named parameter.** Callback function when the semi-modal page disappears (after animation ends). |
+| onWillAppear | Option<() -> Unit> | No | Option.None | **Named parameter.** Callback function when the semi-modal page is about to appear (before animation starts). |
+| onWillDisappear | Option<() -> Unit> | No | Option.None | **Named parameter.** Callback function when the semi-modal page is about to disappear (before animation starts).<br>**Note:**<br>Modifying state variables in the `onWillDisappear` function is not allowed, as it may cause unstable component behavior. |
+| height | Option<SheetSize> | No | Option.None | **Named parameter.** Height of the semi-modal.<br>**Note:**<br>For bottom pop-ups in portrait mode, this property is invalid when `detents` is set.<br>For bottom pop-ups in portrait mode, the maximum height is 8vp from the signal bar.<br>For bottom pop-ups in landscape mode, this property is invalid, and the height is 8vp from the top of the screen.<br>For center pop-ups and follow-hand pop-ups, setting the type to `SheetSize.LARGE` and `SheetSize.MEDIUM` is invalid, and the default height is 560vp. The minimum height for center and follow-hand pop-ups is 320vp, and the maximum height is 90% of the short side of the window. If the height set using `Length` or the adaptive height using `SheetSize.FIT_CONTENT` exceeds the maximum height, the maximum height is displayed; if it is less than the minimum height, the minimum height is displayed. |
+| detents | Option<Array<SheetSize>> | No | Option.None | **Named parameter.** Height switching levels for the semi-modal page.<br>**Note:**<br>Effective for bottom pop-ups in portrait mode, with the first height in the tuple as the initial height.<br>The panel can switch levels by following hand movements. Whether it slides to the target level after releasing depends on two conditions: speed and distance. If the speed exceeds the threshold, it slides to the target level in the direction of the hand movement; if the speed is below the threshold, the distance condition is introduced. If the displacement distance > 1/2 of the current position to the target position, it slides to the target level in the direction of the hand movement; otherwise, it returns to the current level. Speed threshold: 1000, distance threshold: 50%. |
+| preferType | Option<SheetType> | No | Option.None | **Named parameter.** Style of the semi-modal page.<br>**Note:**<br>`preferType` cannot be set to `SheetType.BOTTOM`. |
+| showClose | Option<Bool> | No | Option.None | **Named parameter.** Whether to display the close icon, default is to show. When using the close icon to close the semi### class SpringBackAction
 
 ```cangjie
 public class SpringBackAction {}
 ```
 
-**Function:** Controls the rebound type before closing a semi-modal dialog.
+**Function:** Controls the rebound type before semi-modal closure.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
+#### func springBack()
+
+```cangjie
+public func springBack()
+```
+
+**Function:** Controls the rebound function before semi-modal page closure. Developers should call this when semi-modal rebound is required.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 ### enum ScrollSizeMode
 
@@ -457,7 +456,7 @@ Continuous
 
 **Since:** 21
 
-### FollowDetent
+#### FollowDetent
 
 ```cangjie
 FollowDetent
@@ -468,7 +467,6 @@ FollowDetent
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
 
 ### enum SheetMode
 
@@ -500,13 +498,13 @@ Embedded
 
 > **Note:**
 >
-> Currently, it only supports mounting on Page or NavDestination nodes. If NavDestination exists, it will be mounted on NavDestination preferentially. It only supports top-level display within these two types of pages.<br>In this mode, newly launched pages can overlay the semi-modal dialog, and the semi-modal dialog will persist after page navigation returns, with its content preserved.<br>In this mode, ensure that the target page node (e.g., Page node) is already mounted on the tree before invoking the semi-modal dialog; otherwise, the semi-modal dialog cannot be mounted within the corresponding page node.
+> Currently, it only supports mounting on Page or NavDestination nodes. If NavDestination exists, it will be prioritized for mounting. It only supports top-level display within these two types of pages.<br>In this mode, newly launched pages can overlay the semi-modal dialog, and the semi-modal panel remains after page return without content loss.<br>In this mode, ensure the target page node (e.g., Page node) is mounted before invoking the semi-modal; otherwise, the semi-modal cannot be mounted to the corresponding page node.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-### Overlay
+#### Overlay
 
 ```cangjie
 Overlay
@@ -517,8 +515,6 @@ Overlay
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-
 
 ### enum SheetSize
 
@@ -531,7 +527,7 @@ public enum SheetSize <: Equatable<SheetSize> {
 }
 ```
 
-**Function:** Sets the height levels for semi-modal page transitions.
+**Function:** Sets the height switching levels for semi-modal pages.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -547,7 +543,7 @@ public enum SheetSize <: Equatable<SheetSize> {
 FitContent
 ```
 
-**Function:** Specifies the semi-modal height to adapt to the content height.
+**Function:** Specifies the semi-modal height to adapt to content height.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -559,7 +555,7 @@ FitContent
 Large
 ```
 
-**Function:** Specifies the semi-modal height to be almost the screen height.
+**Function:** Specifies the semi-modal height to be nearly the screen height.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -576,8 +572,6 @@ Medium
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-
 
 ### enum SheetType
 
@@ -612,7 +606,7 @@ Bottom
 
 **Since:** 21
 
-### Center
+#### Center
 
 ```cangjie
 Center
@@ -630,7 +624,7 @@ Center
 Popup
 ```
 
-**Function:** Follow-hand dialog. The follow-hand dialog panel does not support follow-hand sliding, and sliding down the panel will not close it.
+**Function:** Follow-hand dialog. The follow-hand dialog panel does not support follow-hand sliding; sliding down the panel does not close it.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 

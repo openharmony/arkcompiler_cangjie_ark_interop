@@ -1,4 +1,4 @@
-# Foreground Color Setting
+# Foreground Color Settings
 
 Sets the foreground color of a component.
 
@@ -22,9 +22,9 @@ public func foregroundColor(value: ColoringStrategy): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ColoringStrategy](#) | Yes | - | The color strategy. |
+| value | [ColoringStrategy](./cj-common-types.md#enum-coloringstrategy) | Yes | - | Color strategy. |
 
 ## func foregroundColor(ResourceColor)
 
@@ -40,6 +40,6 @@ public func foregroundColor(value: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | The foreground color of the component or sets the foreground color based on the intelligent color picking strategy. Property animation is not supported. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The foreground color of the component or setting the foreground color based on intelligent color picking strategy. Property animation is not supported. |

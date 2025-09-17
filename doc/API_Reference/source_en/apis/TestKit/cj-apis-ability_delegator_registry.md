@@ -1,21 +1,21 @@
 # ohos.app.ability.ability_delegator_registry
 
-The AbilityDelegatorRegistry module provides the capability to globally register and store [AbilityDelegator](#class-abilitydelegator) and [AbilityDelegatorArgs](#class-abilitydelegatorargs) objects, including functions to retrieve the application's [AbilityDelegator](#class-abilitydelegator) object and unit test parameter objects. The interfaces in this module are exclusively for use within testing frameworks.
+The AbilityDelegatorRegistry module provides the capability to store registered [AbilityDelegator](#class-abilitydelegator) and [AbilityDelegatorArgs](#class-abilitydelegatorargs) objects in a global registry, including obtaining the application's [AbilityDelegator](#class-abilitydelegator) object and unit test parameter objects. The interfaces in this module can only be used within test frameworks.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.TestKit.*
 ```
 
-## Usage Guidelines
+## Usage Instructions
 
-API sample code usage instructions:
+API example code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates that the example can be compiled and executed in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of the example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#cangjie-example-code-instructions).
 
 ## class AbilityDelegator
 
@@ -23,7 +23,7 @@ For details about the aforementioned sample projects and configuration templates
 public class AbilityDelegator {}
 ```
 
-**Description:** AbilityDelegator is used to create and manage an [AbilityMonitor](#class-abilitymonitor) object (which monitors lifecycle state changes of specified [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)), including adding/removing [AbilityMonitor](#class-abilitymonitor) instances, waiting for [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) to reach the OnCreate lifecycle, setting wait times, retrieving specified Ability's lifecycle state, obtaining the current top [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) of the application, and launching specified [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability).
+**Description:** AbilityDelegator is used to create and manage an [AbilityMonitor](#class-abilitymonitor) object (which monitors lifecycle state changes of a specified [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)), including adding and removing [AbilityMonitor](#class-abilitymonitor) instances, waiting for a [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) to reach the OnCreate lifecycle, setting wait times, obtaining the lifecycle state of a specified Ability, retrieving the top [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) of the current application, and starting a specified [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -43,17 +43,17 @@ public func addAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | monitor | [AbilityMonitor](#class-abilitymonitor) | Yes | - | [AbilityMonitor](#class-abilitymonitor) instance. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | AddAbilityMonitor failed. |
 
 ### func addAbilityStageMonitor(AbilityStageMonitor)
@@ -62,7 +62,7 @@ For detailed error code descriptions, see [Universal Error Codes](../../errorcod
 public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 ```
 
-**Description:** Adds an [AbilityStageMonitor](#class-abilitystagemonitor) object to monitor lifecycle state changes of specified [AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage).
+**Description:** Adds an [AbilityStageMonitor](#class-abilitystagemonitor) object to monitor lifecycle state changes of a specified [AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,17 +70,17 @@ public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | monitor | [AbilityStageMonitor](#class-abilitystagemonitor) | Yes | - | [AbilityStageMonitor](#class-abilitystagemonitor) instance. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | AddAbilityStageMonitor failed. |
 
 ### func doAbilityBackground(UIAbility)
@@ -89,7 +89,7 @@ For detailed error code descriptions, see [Universal Error Codes](../../errorcod
 public func doAbilityBackground(ability: UIAbility): Unit
 ```
 
-**Description:** Schedules the specified [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) to transition to the Background lifecycle state.
+**Description:** Schedules the lifecycle state of the specified [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) to the Background state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -97,17 +97,17 @@ public func doAbilityBackground(ability: UIAbility): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| ability | [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) | Yes | - | [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) object. |
+| ability | [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) | Yes | - | [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) object. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | DoAbilityBackground failed. |
 
 ### func doAbilityForeground(UIAbility)
@@ -116,7 +116,7 @@ For detailed error code descriptions, see [Universal Error Codes](../../errorcod
 public func doAbilityForeground(ability: UIAbility): Unit
 ```
 
-**Description:** Schedules the specified [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) to transition to the Foreground lifecycle state.
+**Description:** Schedules the lifecycle state of the specified [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) to the Foreground state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -124,17 +124,17 @@ public func doAbilityForeground(ability: UIAbility): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| ability | [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) | Yes | - | [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) object. |
+| ability | [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) | Yes | - | [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) object. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | DoAbilityForeground failed. |
 
 ### func executeShellCommand(String, Int64)
@@ -151,7 +151,7 @@ public func executeShellCommand(cmd: String, timeoutSecs!: Int64 = 0): ShellCmdR
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | cmd | String | Yes | - | Shell command string. |
 | timeoutSecs | Int64 | No | 0 | Command timeout duration in seconds (s). |
@@ -176,9 +176,9 @@ public func finishTest(msg: String, code: Int64): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| msg | String | Yes | - | Log message string. |
+| msg | String | Yes | - | Log string. |
 | code | Int64 | Yes | - | Log code. |
 
 ### func getAbilityState(UIAbility)
@@ -187,7 +187,7 @@ public func finishTest(msg: String, code: Int64): Unit
 public func getAbilityState(ability: UIAbility): AbilityLifecycleState
 ```
 
-**Description:** Retrieves the lifecycle state of the specified ability.
+**Description:** Obtains the lifecycle state of the specified ability.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -195,9 +195,9 @@ public func getAbilityState(ability: UIAbility): AbilityLifecycleState
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| ability | [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) | Yes | - | Specified [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) object. |
+| ability | [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) | Yes | - | Specified [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) object. |
 
 **Return Value:**
 
@@ -207,11 +207,11 @@ public func getAbilityState(ability: UIAbility): AbilityLifecycleState
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 ### func getAppContext()
 
@@ -219,7 +219,7 @@ For detailed error code descriptions, see [Universal Error Codes](../../errorcod
 public func getAppContext(): Context
 ```
 
-**Description:** Retrieves the application Context.
+**Description:** Obtains the application Context.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -229,7 +229,7 @@ public func getAppContext(): Context
 
 | Type | Description |
 | :---- | :---- |
-| [Context](../AbilityKit/cj-apis-ability.md#class-context) | Application Context. |
+| [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) | Application Context. |
 
 ### func getCurrentTopAbility()
 
@@ -237,7 +237,7 @@ public func getAppContext(): Context
 public func getCurrentTopAbility(): UIAbility
 ```
 
-**Description:** Retrieves the current top [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) of the application.
+**Description:** Obtains the top [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) of the current application.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -247,15 +247,15 @@ public func getCurrentTopAbility(): UIAbility
 
 | Type | Description |
 | :---- | :---- |
-| [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) | Returns the [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) instance. |
+| [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) | Returns the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | GetCurrentTopAbility failed. |
 
 ### func print(String)
@@ -272,17 +272,17 @@ public func print(msg: String): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| msg | String | Yes | - | Log message string. |
+| msg | String | Yes | - | Log string. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 ### func removeAbilityMonitor(AbilityMonitor)
 
@@ -298,17 +298,17 @@ public func removeAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | monitor | [AbilityMonitor](#class-abilitymonitor) | Yes | - | [AbilityMonitor](#class-abilitymonitor) instance. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | RemoveAbilityMonitor failed. |
 
 ### func removeAbilityStageMonitor(AbilityStageMonitor)
@@ -325,17 +325,17 @@ public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | monitor | [AbilityStageMonitor](#class-abilitystagemonitor) | Yes | - | [AbilityStageMonitor](#class-abilitystagemonitor) instance. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | RemoveAbilityStageMonitor failed. |
 
 ### func startAbility(Want)
@@ -344,7 +344,7 @@ For detailed error code descriptions, see [Universal Error Codes](../../errorcod
 public func startAbility(want: Want): Future<Unit>
 ```
 
-**Description:** Launches the specified [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability).
+**Description:** Starts the specified [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -352,9 +352,9 @@ public func startAbility(want: Want): Future<Unit>
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| want | [Want](../AbilityKit/cj-apis-ability.md#class-want) | Yes | - | Parameters for launching [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability). |
+| want | [Want](../AbilityKit/cj-apis-app-ability-want.md#class-want) | Yes | - | Parameters for starting the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability). |
 
 ### func waitAbilityMonitor(AbilityMonitor, Int64)
 
@@ -362,7 +362,8 @@ public func startAbility(want: Want): Future<Unit>
 public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility
 ```
 
-**Description:** Sets a wait time and waits for the [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) matching the [AbilityMonitor](#class-abilitymonitor) instance to reach the [onCreate](../AbilityKit/cj-apis-ability.md#func-oncreatewant-launchparam) lifecycle, then returns the [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) instance.
+doc/API_Reference/source_en/apis/AbilityKit/
+**Description:** Sets a wait time and waits for the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) matching the [AbilityMonitor](#class-abilitymonitor) instance to reach the [onCreate](../AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) lifecycle, then returns the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -370,7 +371,7 @@ public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000):
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | monitor | [AbilityMonitor](#class-abilitymonitor) | Yes | - | [AbilityMonitor](#class-abilitymonitor) instance. |
 | timeout | Int64 | No | 5000 | Maximum wait time in milliseconds (ms). |
@@ -379,15 +380,15 @@ public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000):
 
 | Type | Description |
 | :---- | :---- |
-| [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) | Returns the [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) instance. |
+| [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) | Returns the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
   | 16000100 | WaitAbilityMonitor failed. |
 
 ### func waitAbilityStageMonitor(AbilityStageMonitor, Int64)
@@ -396,7 +397,7 @@ For detailed error code descriptions, see [Universal Error Codes](../../errorcod
 public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int64 = 5000): AbilityStage
 ```
 
-**Description:** Waits for and returns the [AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage) object that matches the conditions set in the given [AbilityStageMonitor](#class-abilitystagemonitor).
+**Description:** Waits for and returns the [AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage) object that matches the conditions set in the given [AbilityStageMonitor](#class-abilitystagemonitor).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -404,7 +405,7 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
 
 **Parameters:**
 
-| Name | Type | Mandatory | Default | Description |
+| Name | Type | Mandatory | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | monitor | [AbilityStageMonitor](#class-abilitystagemonitor) | Yes | - | [AbilityStageMonitor](#class-abilitystagemonitor) instance. |
 | timeout | Int64 | No | 5000 | Maximum timeout wait time in milliseconds (ms). |
@@ -413,16 +414,15 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
 
 | Type | Description |
 | :---- | :---- |
-| [AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage) | Returns the [AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage) object. |
+| [AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage) | Returns the [AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage) object. |
 
 **Exceptions:**
 
-For detailed error code descriptions, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are unspecified. 2. Incorrect parameter types. |
-  | 16000100 | WaitAbilityStageMonitor failed. |## class AbilityDelegatorArgs
+  | 401## class AbilityDelegatorArgs
 
 ```cangjie
 public class AbilityDelegatorArgs {}
@@ -440,11 +440,11 @@ public class AbilityDelegatorArgs {}
 public mut prop bundleName: String
 ```
 
-**Description:** Package name of the current application under test.
+**Description:** The package name of the currently tested application.
 
 **Type:** String
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -458,9 +458,9 @@ public mut prop parameters: HashMap<String,String>
 
 **Description:** Parameters for launching the current unit test.
 
-**Type:** [HashMap<String,String>](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md#HashMap)
+**Type:** HashMap\<String,String>
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -476,7 +476,7 @@ public mut prop testCaseNames: String
 
 **Type:** String
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -488,11 +488,11 @@ public mut prop testCaseNames: String
 public mut prop testRunnerClassName: String
 ```
 
-**Description:** Name of the test executor for executing test cases.
+**Description:** The name of the test runner that executes the test cases.
 
 **Type:** String
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -526,7 +526,7 @@ public static func getAbilityDelegator(): AbilityDelegator
 
 |Type|Description|
 |:----|:----|
-|[AbilityDelegator](#class-abilitydelegator)|[AbilityDelegator](#class-abilitydelegator) object that can be used to dispatch test framework-related functionalities.|
+|[AbilityDelegator](#class-abilitydelegator)|The [AbilityDelegator](#class-abilitydelegator) object, which can be used to dispatch test framework-related functionalities.|
 
 ### static func getArguments()
 
@@ -544,7 +544,7 @@ public static func getArguments(): AbilityDelegatorArgs
 
 |Type|Description|
 |:----|:----|
-|[AbilityDelegatorArgs](#class-abilitydelegatorargs)|[AbilityDelegatorArgs](#class-abilitydelegatorargs) object that can be used to obtain test parameters.|
+|[AbilityDelegatorArgs](#class-abilitydelegatorargs)|The [AbilityDelegatorArgs](#class-abilitydelegatorargs) object, which can be used to obtain test parameters.|
 
 ## class AbilityMonitor
 
@@ -573,7 +573,7 @@ public class AbilityMonitor <: FFIData {
 }
 ```
 
-**Description:** The [AbilityMonitor](#class-abilitymonitor) module provides the capability to match monitored ability objects that meet specified conditions. The most recently matched ability object will be stored in [AbilityMonitor](#class-abilitymonitor).
+**Description:** The [AbilityMonitor](#class-abilitymonitor) module provides the capability to match ability objects that meet specified conditions. The most recently matched ability object will be stored in [AbilityMonitor](#class-abilitymonitor).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -581,7 +581,7 @@ public class AbilityMonitor <: FFIData {
 
 **Parent Type:**
 
-- [FFIData](../AbilityKit/cj-apis-ability.md#class-ffidata)
+- FFIData
 
 ### var abilityName
 
@@ -589,11 +589,11 @@ public class AbilityMonitor <: FFIData {
 public var abilityName: String
 ```
 
-**Description:** Name of the ability bound to the current [AbilityMonitor](#class-abilitymonitor).
+**Description:** The name of the ability bound to the current [AbilityMonitor](#class-abilitymonitor).
 
 **Type:** String
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -605,11 +605,11 @@ public var abilityName: String
 public var moduleName: String
 ```
 
-**Description:** Name of the module bound to the current [AbilityMonitor](#class-abilitymonitor).
+**Description:** The module name bound to the current [AbilityMonitor](#class-abilitymonitor).
 
 **Type:** String
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -623,9 +623,9 @@ public var onAbilityBackground:?(UIAbility) -> Unit
 
 **Description:** Callback function when the ability state changes to background. If this property is not set, the lifecycle callback will not be received.
 
-**Type:** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**Type:** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -637,11 +637,11 @@ public var onAbilityBackground:?(UIAbility) -> Unit
 public var onAbilityCreate:?(UIAbility) -> Unit
 ```
 
-**Description:** Callback function when the ability is initialized upon launch. If this property is not set, the lifecycle callback will not be received.
+**Description:** Callback function when the ability is initialized. If this property is not set, the lifecycle callback will not be received.
 
-**Type:** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**Type:** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -655,9 +655,9 @@ public var onAbilityDestroy:?(UIAbility) -> Unit
 
 **Description:** Callback function before the ability is destroyed. If this property is not set, the lifecycle callback will not be received.
 
-**Type:** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**Type:** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -671,9 +671,9 @@ public var onAbilityForeground:?(UIAbility) -> Unit
 
 **Description:** Callback function when the ability state changes to foreground. If this property is not set, the lifecycle callback will not be received.
 
-**Type:** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**Type:** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -687,9 +687,9 @@ public var onWindowStageCreate:?(UIAbility) -> Unit
 
 **Description:** Callback function when the window stage is created. If this property is not set, the lifecycle callback will not be received.
 
-**Type:** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**Type:** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -703,9 +703,9 @@ public var onWindowStageDestroy:?(UIAbility) -> Unit
 
 **Description:** Callback function before the window stage is destroyed. If this property is not set, the lifecycle callback will not be received.
 
-**Type:** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**Type:** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -717,11 +717,11 @@ public var onWindowStageDestroy:?(UIAbility) -> Unit
 public var onWindowStageRestore:?(UIAbility) -> Unit
 ```
 
-**Description:** Callback function when the window stage is reloaded. If this property is not set, the lifecycle callback will not be received.
+**Description:** Callback function when the window stage is restored. If this property is not set, the lifecycle callback will not be received.
 
-**Type:** ?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability))->Unit
+**Type:** ?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability))->Unit
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -753,15 +753,15 @@ public init(
 
 |Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-|abilityName|String|Yes|-|Name of the ability bound to the current [AbilityMonitor](#class-abilitymonitor).|
-|moduleName|String|No|""| **Named parameter.** Name of the module bound to the current [AbilityMonitor](#class-abilitymonitor).|
-|onAbilityCreate|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the ability is initialized upon launch. None means this property is not set, and the lifecycle callback will not be received.|
-|onAbilityForeground|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the ability state changes to foreground. None means this property is not set, and the lifecycle callback will not be received.|
-|onAbilityBackground|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the ability state changes to background. None means this property is not set, and the lifecycle callback will not be received.|
-|onAbilityDestroy|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function before the ability is destroyed. None means this property is not set, and the lifecycle callback will not be received.|
-|onWindowStageCreate|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the window stage is created. None means this property is not set, and the lifecycle callback will not be received.|
-|onWindowStageRestore|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the window stage is reloaded. None means this property is not set, and the lifecycle callback will not be received.|
-|onWindowStageDestroy|?([UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function before the window stage is destroyed. None means this property is not set, and the lifecycle callback will not be received.|
+|abilityName|String|Yes|-|The name of the ability bound to the current [AbilityMonitor](#class-abilitymonitor).|
+|moduleName|String|No|""| **Named parameter.** The module name bound to the current [AbilityMonitor](#class-abilitymonitor).|
+|onAbilityCreate|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the ability is initialized. None means this property is not set, and the lifecycle callback will not be received.|
+|onAbilityForeground|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the ability state changes to foreground. None means this property is not set, and the lifecycle callback will not be received.|
+|onAbilityBackground|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the ability state changes to background. None means this property is not set, and the lifecycle callback will not be received.|
+|onAbilityDestroy|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function before the ability is destroyed. None means this property is not set, and the lifecycle callback will not be received.|
+|onWindowStageCreate|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the window stage is created. None means this property is not set, and the lifecycle callback will not be received.|
+|onWindowStageRestore|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function when the window stage is restored. None means this property is not set, and the lifecycle callback will not be received.|
+|onWindowStageDestroy|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|No|None| **Named parameter.** Callback function before the window stage is destroyed. None means this property is not set, and the lifecycle callback will not be received.|
 
 ## class AbilityStageMonitor
 
@@ -776,7 +776,7 @@ public class AbilityStageMonitor <: FFIData {
 }
 ```
 
-**Description:** The [AbilityStageMonitor](#class-abilitystagemonitor) module provides the capability to match monitored [AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage) objects that meet specified conditions. The most recently matched [AbilityStage](../AbilityKit/cj-apis-ability.md#class-abilitystage) object will be stored in [AbilityStageMonitor](#class-abilitystagemonitor).
+**Description:** The [AbilityStageMonitor](#class-abilitystagemonitor) module provides the capability to match [AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage) objects that meet specified conditions. The most recently matched [AbilityStage](../AbilityKit/cj-apis-app-ability-ability_stage.md#class-abilitystage) object will be stored in [AbilityStageMonitor](#class-abilitystagemonitor).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -784,7 +784,7 @@ public class AbilityStageMonitor <: FFIData {
 
 **Parent Type:**
 
-- [FFIData](../AbilityKit/cj-apis-ability.md#class-ffidata)
+- FFIData
 
 ### var moduleName
 
@@ -792,11 +792,11 @@ public class AbilityStageMonitor <: FFIData {
 public var moduleName: String
 ```
 
-**Description:** Module name of the AbilityStage to be monitored.
+**Description:** The module name of the abilityStage to be monitored.
 
 **Type:** String
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -808,11 +808,11 @@ public var moduleName: String
 public var srcEntrance: String
 ```
 
-**Description:** Source path of the AbilityStage to be monitored.
+**Description:** The source path of the abilityStage to be monitored.
 
 **Type:** String
 
-**Access:** Read-Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -837,8 +837,8 @@ public init(
 
 |Parameter|Type|Required|Default Value|Description|
 |:---|:---|:---|:---|:---|
-|moduleName|String|Yes|-|Module name of the AbilityStage to be monitored.|
-|srcEntrance|String|Yes|-|Source path of the AbilityStage to be monitored.|## class ShellCmdResult
+|moduleName|String|Yes|-|The module name of the abilityStage to be monitored.|
+|srcEntrance|String|Yes|-|The source path of the abilityStage to be monitored.|## class ShellCmdResult
 
 ```cangjie
 public class ShellCmdResult {}
@@ -860,7 +860,7 @@ public mut prop exitCode: Int32
 
 **Type:** Int32
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -876,7 +876,7 @@ public mut prop stdResult: String
 
 **Type:** String
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -895,7 +895,7 @@ public enum AbilityLifecycleState <: Equatable<AbilityLifecycleState> & ToString
 }
 ```
 
-**Function:** [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) lifecycle state. This enumeration type can be used with the [getAbilityState](#func-getabilitystateuiability) method of [AbilityDelegator](#class-abilitydelegator) to return different ability lifecycle states.
+**Function:** [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) lifecycle states. This enumeration type can be used with the [getAbilityState](#func-getabilitystateuiability) method of [AbilityDelegator](#class-abilitydelegator) to return different ability lifecycle states.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -912,7 +912,7 @@ public enum AbilityLifecycleState <: Equatable<AbilityLifecycleState> & ToString
 Background
 ```
 
-**Function:** Indicates that [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) is in the background state.
+**Function:** Indicates the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is in background state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -924,7 +924,7 @@ Background
 Create
 ```
 
-**Function:** Indicates that [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) is in the created state.
+**Function:** Indicates the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is in created state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -936,7 +936,7 @@ Create
 Destroy
 ```
 
-**Function:** Indicates that [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) is in the destroyed state.
+**Function:** Indicates the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is in destroyed state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -948,7 +948,7 @@ Destroy
 Foreground
 ```
 
-**Function:** Indicates that [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) is in the foreground state.
+**Function:** Indicates the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is in foreground state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -960,7 +960,7 @@ Foreground
 Uninitialized
 ```
 
-**Function:** Indicates that [UIAbility](../AbilityKit/cj-apis-ability.md#class-uiability) is in the invalid state.
+**Function:** Indicates the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is in invalid state.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -976,15 +976,15 @@ public operator func !=(other: AbilityLifecycleState): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [AbilityLifecycleState](#enum-abilitylifecyclestate) | Yes | - | Another enumeration value. |
+|other|[AbilityLifecycleState](#enum-abilitylifecyclestate)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enumeration values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enumeration values are unequal, otherwise returns false.|
 
 ### func ==(AbilityLifecycleState)
 
@@ -996,15 +996,15 @@ public operator func ==(other: AbilityLifecycleState): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [AbilityLifecycleState](#enum-abilitylifecyclestate) | Yes | - | Another enumeration value. |
+|other|[AbilityLifecycleState](#enum-abilitylifecyclestate)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
+|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
 
 ### func toString()
 
@@ -1016,6 +1016,6 @@ public func toString(): String
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | The string representation of the current enumeration. |
+|String|String representation of the current enumeration.|

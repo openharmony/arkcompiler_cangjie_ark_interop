@@ -1,6 +1,6 @@
 # ohos.ability_access_ctrl (Application Access Control Management)
 
-Application access control provides permission management capabilities, including authentication, authorization, and revocation of authorization.
+Application access control provides permission management capabilities for applications, including authentication, authorization, and revocation of authorization.
 
 ## Import Module
 
@@ -12,10 +12,10 @@ import kit.AbilityKit.*
 
 API sample code usage instructions:
 
-- If the sample code's first line contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code has a "// index.cj" comment in its first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For the above sample project and configuration template, please refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## class AbilityAccessCtrl
 
@@ -87,8 +87,8 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| tokenID | UInt32 | Yes | - | Identity identifier of the target application to be verified. Can be obtained through the application's [ApplicationInfo](cj-apis-bundle_manager.md#struct-applicationinfo). |
-| permissionName | [Permissions](#type-permissions) | Yes | - | Name of the permission to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
+| tokenID | UInt32 | Yes | - | Identity of the target application to be verified. Can be obtained through the application's [ApplicationInfo](cj-apis-bundle_manager.md#class-applicationinfo). |
+| permissionName | [Permissions](#type-permissions) | Yes | - | Name of the permission to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
 
 **Return Value:**
 
@@ -98,12 +98,12 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_en/errorcodes/cj-errorcode-access-token.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
   | 401 | The parameter check failed. |
-  | 12100001 | The parameter is invalid. The tokenID is 0, or the string size of permissionName exceeds 256. |
+  | 12100001 | The parameter is invalid. The tokenID is 0, or the string size of permissionName is larger than 256. |
 
 **Example:**
 
@@ -115,8 +115,8 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 import kit.AbilityKit.*
 
 let atManager = AbilityAccessCtrl.createAtManager()
-let tokenID : UInt32 = 0 // System applications can obtain tokenID via bundleManager.getApplicationInfo, while regular applications can use bundleManager.getBundleInfoForSelf
-let status = atManager.checkAccessToken(tokenID, "ohos.permission.GRANT_SENSITIVE_PERMISSIONS")
+let tokenID : UInt32 = 1 // tokenID can be obtained by system applications through bundleManager.getApplicationInfo, and by regular applications through bundleManager.getBundleInfoForSelf
+let status = atManager.checkAccessToken(tokenID, "ohos.permission.READ_CONTACTS")
 ```
 
 ### func requestPermissionsFromUser(UIAbilityContext, Array\<Permissions>, AsyncCallback\<PermissionRequestResult>)
@@ -126,9 +126,9 @@ public func requestPermissionsFromUser(context: UIAbilityContext, permissionList
     requestCallback: AsyncCallback<PermissionRequestResult>): Unit
 ```
 
-**Description:** Used to display a dialog requesting user authorization.
+**Description:** Used to display a dialog box requesting user authorization.
 
-If the user denies authorization, the dialog cannot be displayed again. The user must manually grant the permission in the system application "Settings" interface.
+If the user denies the authorization, the dialog box cannot be displayed again. The user must manually grant the permission in the "Settings" interface of the system application.
 
 **System Capability:** SystemCapability.Security.AccessToken
 
@@ -138,13 +138,13 @@ If the user denies authorization, the dialog cannot be displayed again. The user
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | Context of the <!--RP1-->UIAbility<!--RP1End--> requesting the permission. |
-| permissionList | Array\<[Permissions](#type-permissions)> | Yes | - | Names of the permissions to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
-| requestCallback | AsyncCallback\<[AccessCtrlPermissionRequestResult](#class-accessctrlpermissionrequestresult)> | Yes | - | Callback function that returns whether the interface call was successful. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | Context of the <!--RP1-->UIAbility<!--RP1End--> requesting the permission. |
+| permissionList | Array\<[Permissions](#type-permissions)> | Yes | - | Names of the permissions to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
+| requestCallback | AsyncCallback\<[PermissionRequestResult](cj-apis-sercurity-permission_request_result.md#class-permissionrequestresultarraystring-arrayint32-arraybool)> | Yes | - | Callback function that returns whether the interface call was successful. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Access Control Error Codes](../../../source_en/errorcodes/cj-errorcode-access-token.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -153,7 +153,7 @@ If the user denies authorization, the dialog cannot be displayed again. The user
 
 - IllegalArgumentException:
 
-| Error Message | Possible Cause | Handling Steps |
+  | Error Message | Possible Cause | Handling Steps |
   | :---- | :--- | :--- |
   | The context is invalid. | todo | todo |
 
@@ -167,7 +167,6 @@ If the user denies authorization, the dialog cannot be displayed again. The user
 import kit.AbilityKit.*
 import kit.PerformanceAnalysisKit.Hilog
 import ohos.business_exception.*
-import ohos.arkui.state_management.AppStorage
 
 // This code can be added to the dependency definitions
 var resultCallback = {
@@ -184,7 +183,7 @@ var resultCallback = {
     }
 }
 
-let ctx = AppStorage.get<UIAbilityContext>("abilityContext").getOrThrow() // Context application context needs to be obtained. See Usage Instructions for details.
+let ctx = Global.abilityContext // The Context application context needs to be obtained. See the Usage Instructions for details.
 let atManager = AbilityAccessCtrl.createAtManager()
 let permissionList = ["ohos.permission.READ_CONTACTS", "ohos.permission.CAMERA"]
 atManager.requestPermissionsFromUser(ctx, permissionList, resultCallback)

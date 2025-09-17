@@ -20,7 +20,7 @@ None
 public init(width!: Length = 0.vp, height!: Length = 0.vp)
 ```
 
-**Function:** Draws an ellipse with specified width and height. Invalid values will be treated as initial values.
+**Function:** Draws an ellipse with specified width and height. Invalid values will be processed as initial values.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +47,7 @@ Universal Events: All supported.
 public override func initial()
 ```
 
-**Function:** Draws an ellipse with width and height both set to 0. The [width](./cj-universal-attribute-size.md#func-widthlength) or [height](./cj-universal-attribute-size.md#func-heightlength) attribute must be set to a non-zero value for the ellipse to be visible.
+**Function:** Draws an ellipse with width and height set to 0. Requires setting either the [width](./cj-universal-attribute-size.md#func-widthlength) or [height](./cj-universal-attribute-size.md#func-heightlength) attribute to a non-zero value for visibility.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +73,7 @@ class EntryView {
             Ellipse()
                 .width(150)
                 .height(100)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .stroke(Color.Red)
                 .strokeWidth(3)
                 .padding(top: 10)

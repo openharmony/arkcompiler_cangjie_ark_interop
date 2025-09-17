@@ -4,8 +4,8 @@ Use RenderingContext to draw on Canvas components, with drawable objects includi
 
 > **NOTE**
 >
-> - When calling the drawing interfaces described in this document, instructions are stored in the command queue of the associated Canvas component. These instructions are only dequeued and executed when the current frame enters the rendering phase and the associated Canvas component is visible. Therefore, when the Canvas component is not visible, frequent calls to drawing interfaces should be avoided to prevent command accumulation in the queue, which could lead to excessive memory usage.
-> - When the width or height of a Canvas component exceeds 8000px, CPU rendering is used, which may cause significant performance degradation.
+> - The drawing interfaces described in this document are stored in the command queue of the associated Canvas component when called. These commands are only dequeued and executed when the current frame enters the rendering phase and the associated Canvas component is visible. Therefore, when the Canvas component is invisible, frequent calls to drawing interfaces should be avoided to prevent command accumulation in the queue, thereby mitigating excessive memory usage.
+> - When the width or height of the Canvas component exceeds 8000px, CPU rendering is used, which may cause significant performance degradation.
 
 ## Import Module
 
@@ -18,11 +18,316 @@ import kit.ArkUI.*
 ```cangjie
 public class CanvasRenderingContext2D {
     public init(settings: RenderingContextSettings)
-    public init(settings: RenderingContextSettings, unit: LengthMetricsUnit)
 }
 ```
 
-**Description:** Represents the type used for drawing on Canvas components with RenderingContext, supporting drawable objects like rectangles, text, images, etc.
+**Description:** Represents the type used for drawing with RenderingContext on Canvas components, supporting drawable objects such as rectangles, text, images, etc.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop direction
+
+```cangjie
+public mut prop direction: Option<CanvasDirection>
+```
+
+**Description:** Text drawing direction.
+
+**Type:** [Option\<CanvasDirection>](./cj-common-types.md#enum-canvasdirection)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop filter
+
+```cangjie
+public mut prop filter: Option<String>
+```
+
+**Description:** Provides filter effects such as blur and grayscale.
+
+**Type:** Option<String>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop globalAlpha
+
+```cangjie
+public mut prop globalAlpha: Option<Float64>
+```
+
+**Description:** Transparency.
+
+**Type:** Option\<Float64>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop globalCompositeOperation
+
+```cangjie
+public mut prop globalCompositeOperation: Option<GlobalCompositeOperation>
+```
+
+**Description:** The compositing operation type applied when drawing new shapes.
+
+**Type:** Option\<GlobalCompositeOperation>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop height
+
+```cangjie
+public prop height: Float64
+```
+
+**Description:** Default value is 0, bound to the height of the specified canvas.
+
+**Type:** Float64
+
+**Read/Write:** Read-only
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop imageSmoothingEnabled
+
+```cangjie
+public mut prop imageSmoothingEnabled: Option<Bool>
+```
+
+**Description:** Specifies whether to smooth images.
+
+**Type:** Option\<Bool>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop imageSmoothingQuality
+
+```cangjie
+public mut prop imageSmoothingQuality: Option<ImageSmoothingQuality>
+```
+
+**Description:** Current image smoothing level.
+
+**Type:** Option\<ImageSmoothingQuality>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop lineCap
+
+```cangjie
+public mut prop lineCap: Option<LineCapStyle>
+```
+
+**Description:** Line segment endpoint property.
+
+**Type:** Option\<LineCapStyle>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop lineDashOffset
+
+```cangjie
+public mut prop lineDashOffset: Option<Float64>
+```
+
+**Description:** Dashed line offset property.
+
+**Type:** Option\<Float64>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop lineJoin
+
+```cangjie
+public mut prop lineJoin: Option<LineJoinStyle>
+```
+
+**Description:** Line segment joint property.
+
+**Type:** Option\<LineJoinStyle>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop lineWidth
+
+```cangjie
+public mut prop lineWidth: Option<Float64>
+```
+
+**Description:** Line thickness property.
+
+**Type:** Option\<Float64>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop miterLimit
+
+```cangjie
+public mut prop miterLimit: Option<Float64>
+```
+
+**Description:** The value of this parameter cannot be 0 or negative.
+
+**Type:** Option\<Float64>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop shadowBlur
+
+```cangjie
+public mut prop shadowBlur: Option<Float64>
+```
+
+**Description:** Shadow blur radius.
+
+**Type:** Option\<Float64>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop shadowColor
+
+```cangjie
+public mut prop shadowColor: Option<ResourceColor>
+```
+
+**Description:** Shadow color.
+
+**Type:** Option\<ResourceColor>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop shadowOffsetX
+
+```cangjie
+public mut prop shadowOffsetX: Option<Float64>
+```
+
+**Description:** Horizontal offset distance of the shadow.
+
+**Type:** Option\<Float64>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop shadowOffsetY
+
+```cangjie
+public mut prop shadowOffsetY: Option<Float64>
+```
+
+**Description:** Vertical offset distance of the shadow.
+
+**Type:** Option\<Float64>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop textAlign
+
+```cangjie
+public mut prop textAlign: Option<CanvasTextAlign>
+```
+
+**Description:** Text alignment mode.
+
+**Type:** Option\<CanvasTextAlign>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop textBaseline
+
+```cangjie
+public mut prop textBaseline: Option<CanvasTextBaseline>
+```
+
+**Description:** Text baseline.
+
+**Type:** Option\<CanvasTextBaseline>
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop width
+
+```cangjie
+public prop width: Float64
+```
+
+**Description:** Default value is 0, bound to the width of the specified canvas.
+
+**Type:** Float64
+
+**Read/Write:** Read-only
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
@@ -40,9 +345,9 @@ public init(settings: RenderingContextSettings)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| settings | [RenderingContextSettings](./cj-canvas-drawing-canvas.md#class-renderingcontextsettings) | Yes | - | Parameters for configuring the CanvasRenderingContext2D object. |
+| Name | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| settings | [RenderingContextSettings](./cj-canvas-drawing-canvas.md#class-renderingcontextsettings) | Yes | - | Parameters used to configure the CanvasRenderingContext2D object. |
 
 ### func arc(Float64, Float64, Float64, Float64, Float64, Bool)
 
@@ -65,14 +370,14 @@ public func arc(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
+| Name | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | x | Float64 | Yes | - | The x-coordinate of the arc's center.<br>Default unit: vp. |
 | y | Float64 | Yes | - | The y-coordinate of the arc's center.<br>Default unit: vp. |
 | radius | Float64 | Yes | - | The radius of the arc.<br>Default unit: vp. |
 | startAngle | Float64 | Yes | - | The starting angle of the arc.<br>Unit: radians. |
 | endAngle | Float64 | Yes | - | The ending angle of the arc.<br>Unit: radians. |
-| counterclockwise | Bool | No | false | **Named parameter.** Whether to draw the arc counterclockwise.<br>true: Draws the arc counterclockwise.<br>false: Draws the arc clockwise. |
+| counterclockwise | Bool | No | false | **Named parameter.** Whether to draw the arc counterclockwise.<br>true: Draw the arc counterclockwise.<br>false: Draw the arc clockwise. |
 
 ### func arcTo(Float64, Float64, Float64, Float64, Float64)
 
@@ -80,7 +385,7 @@ public func arc(
 public func arcTo(x1: Float64, y1: Float64, x2: Float64, y2: Float64, radius: Float64): Unit
 ```
 
-**Description:** Creates an arc path based on the points the arc passes through and its radius.
+**Description:** Creates an arc path based on the points the arc passes through and the arc radius.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,15 +393,13 @@ public func arcTo(x1: Float64, y1: Float64, x2: Float64, y2: Float64, radius: Fl
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
+| Name | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
 | x1 | Float64 | Yes | - | The x-coordinate of the first point the arc passes through.<br>Default unit: vp. |
 | y1 | Float64 | Yes | - | The y-coordinate of the first point the arc passes through.<br>Default unit: vp. |
 | x2 | Float64 | Yes | - | The x-coordinate of the second point the arc passes through.<br>Default unit: vp. |
 | y2 | Float64 | Yes | - | The y-coordinate of the second point the arc passes through.<br>Default unit: vp. |
-| radius | Float64 | Yes | - | The radius of the arc.<br>Default unit: vp. |
-
-### func beginPath()
+| radius | Float64 | Yes | - | The radius of the arc.<br>Default unit: vp. |### func beginPath()
 
 ```cangjie
 public func beginPath(): Unit
@@ -122,14 +425,14 @@ public func bezierCurveTo(cp1x: Float64, cp1y: Float64, cp2x: Float64, cp2y: Flo
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| cp1x | Float64 | Yes | - | The x-coordinate of the first Bézier control point.<br>Default unit: vp. |
-| cp1y | Float64 | Yes | - | The y-coordinate of the first Bézier control point.<br>Default unit: vp. |
-| cp2x | Float64 | Yes | - | The x-coordinate of the second Bézier control point.<br>Default unit: vp. |
-| cp2y | Float64 | Yes | - | The y-coordinate of the second Bézier control point.<br>Default unit: vp. |
-| x | Float64 | Yes | - | The x-coordinate of the path's endpoint.<br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the path's endpoint.<br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| cp1x      | Float64 | Yes      | -       | The x-coordinate of the first Bézier control point.<br>Default unit: vp. |
+| cp1y      | Float64 | Yes      | -       | The y-coordinate of the first Bézier control point.<br>Default unit: vp. |
+| cp2x      | Float64 | Yes      | -       | The x-coordinate of the second Bézier control point.<br>Default unit: vp. |
+| cp2y      | Float64 | Yes      | -       | The y-coordinate of the second Bézier control point.<br>Default unit: vp. |
+| x         | Float64 | Yes      | -       | The x-coordinate of the end point.<br>Default unit: vp. |
+| y         | Float64 | Yes      | -       | The y-coordinate of the end point.<br>Default unit: vp. |
 
 ### func clearRect(Float64, Float64, Float64, Float64)
 
@@ -137,7 +440,7 @@ public func bezierCurveTo(cp1x: Float64, cp1y: Float64, cp2x: Float64, cp2y: Flo
 public func clearRect(x: Float64, y: Float64, width: Float64, height: Float64): Unit
 ```
 
-**Description:** Clears the drawing content within the specified area.
+**Description:** Clears the drawing content of a rectangular area.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,17 +448,17 @@ public func clearRect(x: Float64, y: Float64, width: Float64, height: Float64): 
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| x | Float64 | Yes | - | The x-coordinate of the rectangle's top-left corner.<br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the rectangle's top-left corner.<br>Default unit: vp. |
-| width | Float64 | Yes | - | The width of the rectangle.<br>Default unit: vp. |
-| height | Float64 | Yes | - | The height of the rectangle.<br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x         | Float64 | Yes      | -       | The x-coordinate of the top-left corner of the rectangle.<br>Default unit: vp. |
+| y         | Float64 | Yes      | -       | The y-coordinate of the top-left corner of the rectangle.<br>Default unit: vp. |
+| width     | Float64 | Yes      | -       | The width of the rectangle.<br>Default unit: vp. |
+| height    | Float64 | Yes      | -       | The height of the rectangle.<br>Default unit: vp. |
 
 ### func clip(CanvasFillRule)
 
 ```cangjie
-public func clip(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
+public func clip(fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 ```
 
 **Description:** Sets the current path as the clipping path.
@@ -166,14 +469,14 @@ public func clip(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| fillRule | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No | CanvasFillRule.nonzero | The rule for clipping objects.<br>Options: nonzero, evenodd.<br>Default: nonzero. |
+| Parameter | Type                              | Required | Default               | Description |
+|:----------|:----------------------------------|:---------|:----------------------|:------------|
+| fillRule  | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No       | CanvasFillRule.NonZero | Specifies the rule for clipping objects.<br/>Options: nonzero, evenodd.<br>Default: nonzero. |
 
 ### func clip(Path2D, CanvasFillRule)
 
 ```cangjie
-public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
+public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 ```
 
 **Description:** Sets the current path as the clipping path.
@@ -184,10 +487,10 @@ public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzer
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| path | [Path2D](./cj-canvas-drawing-path2d.md#class-path2d) | Yes | - | The Path2D clipping path. |
-| fillRule | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No | CanvasFillRule.nonzero | **Named parameter.** The rule for clipping objects.<br>Options: nonzero, evenodd. |
+| Parameter | Type                              | Required | Default               | Description |
+|:----------|:----------------------------------|:---------|:----------------------|:------------|
+| path      | [Path2D](./cj-canvas-drawing-path2d.md#class-path2d) | Yes      | -                     | The Path2D clipping path. |
+| fillRule  | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No       | CanvasFillRule.nonzero | **Named parameter.** Specifies the rule for clipping objects.<br/>Options: nonzero, evenodd. |
 
 ### func closePath()
 
@@ -195,7 +498,7 @@ public func clip(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzer
 public func closePath(): Unit
 ```
 
-**Description:** Closes the current path to form a closed shape.
+**Description:** Closes the current path to form a closed path.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -215,16 +518,16 @@ public func createConicGradient(startAngle: Float64, x: Float64, y: Float64): Ca
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| startAngle | Float64 | Yes | - | The starting angle for the gradient, measured in radians from the horizontal right side, moving clockwise. |
-| x | Float64 | Yes | - | The x-coordinate of the conic gradient's center.<br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the conic gradient's center.<br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| startAngle | Float64 | Yes      | -       | The starting angle of the gradient. Measured from the horizontal right side of the center, moving clockwise.<br>Unit: radians. |
+| x         | Float64 | Yes      | -       | The x-coordinate of the center of the conic gradient.<br>Default unit: vp. |
+| y         | Float64 | Yes      | -       | The y-coordinate of the center of the conic gradient.<br>Default unit: vp. |
 
 **Return Value:**
 
-| Type | Description |
-|:-----|:------------|
+| Type                              | Description |
+|:----------------------------------|:------------|
 | [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | A new CanvasGradient object for creating gradient effects on the canvas. |
 
 ### func createImageData(Float64, Float64)
@@ -233,7 +536,7 @@ public func createConicGradient(startAngle: Float64, x: Float64, y: Float64): Ca
 public func createImageData(sw: Float64, sh: Float64): ImageData
 ```
 
-**Description:** Creates a new, blank ImageData object of the specified size (refer to [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata)). This operation involves memory copying and is time-consuming; avoid frequent use.
+**Description:** Creates a new, blank ImageData object with the specified dimensions. Refer to [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata). This interface involves memory copying and is high-latency; avoid frequent use.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -241,15 +544,15 @@ public func createImageData(sw: Float64, sh: Float64): ImageData
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| sw | Float64 | Yes | - | The width of the ImageData.<br>Default unit: vp. |
-| sh | Float64 | Yes | - | The height of the ImageData.<br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| sw        | Float64 | Yes      | -       | The width of the ImageData.<br>Default unit: vp. |
+| sh        | Float64 | Yes      | -       | The height of the ImageData.<br>Default unit: vp. |
 
 **Return Value:**
 
-| Type | Description |
-|:-----|:------------|
+| Type                              | Description |
+|:----------------------------------|:------------|
 | [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata) | A new ImageData object. |
 
 ### func createImageData(ImageData)
@@ -258,7 +561,7 @@ public func createImageData(sw: Float64, sh: Float64): ImageData
 public func createImageData(imageData: ImageData): ImageData
 ```
 
-**Description:** Creates a new ImageData object with the same width and height as an existing one (without copying image data; refer to [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata)). This operation involves memory copying and is time-consuming; avoid frequent use. Example usage is the same as [putImageData](#func-putimagedataimagedata-float64-float64).
+**Description:** Creates a new ImageData object with the same width and height as an existing ImageData object (without copying image data). Refer to [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata). This interface involves memory copying and is high-latency; avoid frequent use. For an example of `createImageData`, see [putImageData](#func-putimagedataimagedata-float64-float64-float64-float64-float64-float64).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,14 +569,14 @@ public func createImageData(imageData: ImageData): ImageData
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| imageData | [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata) | Yes | - | The existing ImageData object. |
+| Parameter | Type                              | Required | Default | Description |
+|:----------|:----------------------------------|:---------|:--------|:------------|
+| imageData | [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata) | Yes      | -       | An existing ImageData object. |
 
 **Return Value:**
 
-| Type | Description |
-|:-----|:------------|
+| Type                              | Description |
+|:----------------------------------|:------------|
 | [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata) | A new ImageData object. |
 
 ### func createLinearGradient(Float64, Float64, Float64, Float64)
@@ -290,18 +593,18 @@ public func createLinearGradient(x0: Float64, y0: Float64, x1: Float64, y1: Floa
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| x0 | Float64 | Yes | - | The x-coordinate of the starting point.<br>Default unit: vp. |
-| y0 | Float64 | Yes | - | The y-coordinate of the starting point.<br>Default unit: vp. |
-| x1 | Float64 | Yes | - | The x-coordinate of the ending point.<br>Default unit: vp. |
-| y1 | Float64 | Yes | - | The y-coordinate of the ending point.<br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x0        | Float64 | Yes      | -       | The x-coordinate of the start point.<br>Default unit: vp. |
+| y0        | Float64 | Yes      | -       | The y-coordinate of the start point.<br>Default unit: vp. |
+| x1        | Float64 | Yes      | -       | The x-coordinate of the end point.<br>Default unit: vp. |
+| y1        | Float64 | Yes      | -       | The y-coordinate of the end point.<br>Default unit: vp. |
 
 **Return Value:**
 
-| Type | Description |
-|:-----|:------------|
-| [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | A gradient object. Must be released after use (see [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient)). |
+| Type                              | Description |
+|:----------------------------------|:------------|
+| [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | A gradient object. Release after use. See [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient). |
 
 ### func createPattern(ImageBitmap, Repetition)
 
@@ -317,16 +620,16 @@ public func createPattern(image: ImageBitmap, repetition: Repetition): CanvasPat
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| image | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes | - | The image source object (refer to ImageBitmap). |
-| repetition | [Repetition](./cj-common-types.md#enum-repetition) | Yes | - | The image repetition method:<br>repeat: Repeats the image along both x and y axes;<br>repeat-x: Repeats the image along the x-axis;<br>repeat-y: Repeats the image along the y-axis;<br>no-repeat: Does not repeat the image;<br>clamp: Uses edge colors for out-of-bounds drawing;<br>mirror: Repeats and flips the image along both axes. |
+| Parameter | Type                              | Required | Default | Description |
+|:----------|:----------------------------------|:---------|:--------|:------------|
+| image     | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes      | -       | The image source object. Refer to the ImageBitmap object. |
+| repetition | [Repetition](./cj-common-types.md#enum-repetition) | Yes      | -       | Specifies how the image is repeated:<br>- `repeat`: Repeats the image along both x and y axes.<br>- `repeat-x`: Repeats the image along the x-axis.<br>- `repeat-y`: Repeats the image along the y-axis.<br>- `no-repeat`: Does not repeat the image.<br>- `clamp`: Uses edge colors for areas outside the original bounds.<br>- `mirror`: Repeats and flips the image along both x and y axes. |
 
 **Return Value:**
 
-| Type | Description |
-|:-----|:------------|
-| [CanvasPattern](./cj-canvas-drawing-canvaspattern.md#class-canvaspattern) | A pattern object for image filling. |
+| Type                              | Description |
+|:----------------------------------|:------------|
+| [CanvasPattern](./cj-canvas-drawing-canvaspattern.md#class-canvaspattern) | A pattern object created by specifying an image and repetition method. |
 
 ### func createRadialGradient(Float64, Float64, Float64, Float64, Float64, Float64)
 
@@ -342,20 +645,20 @@ public func createRadialGradient(x0: Float64, y0: Float64, r0: Float64, x1: Floa
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| x0 | Float64 | Yes | - | The x-coordinate of the starting circle.<br>Default unit: vp. |
-| y0 | Float64 | Yes | - | The y-coordinate of the starting circle.<br>Default unit: vp. |
-| r0 | Float64 | Yes | - | The radius of the starting circle (must be non-negative and finite).<br>Default unit: vp. |
-| x1 | Float64 | Yes | - | The x-coordinate of the ending circle.<br>Default unit: vp. |
-| y1 | Float64 | Yes | - | The y-coordinate of the ending circle.<br>Default unit: vp. |
-| r1 | Float64 | Yes | - | The radius of the ending circle (must be non-negative and finite).<br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x0        | Float64 | Yes      | -       | The x-coordinate of the start circle.<br>Default unit: vp. |
+| y0        | Float64 | Yes      | -       | The y-coordinate of the start circle.<br>Default unit: vp. |
+| r0        | Float64 | Yes      | -       | The radius of the start circle. Must be non-negative and finite.<br>Default unit: vp. |
+| x1        | Float64 | Yes      | -       | The x-coordinate of the end circle.<br>Default unit: vp. |
+| y1        | Float64 | Yes      | -       | The y-coordinate of the end circle.<br>Default unit: vp. |
+| r1        | Float64 | Yes      | -       | The radius of the end circle. Must be non-negative and finite.<br>Default unit: vp. |
 
 **Return Value:**
 
-| Type | Description |
-|:-----|:------------|
-| [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | A gradient object. Must be released after use (see [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient)). |
+| Type                              | Description |
+|:----------------------------------|:------------|
+| [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | A gradient object. Release after use. See [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient). |
 
 ### func drawImage(ImageBitmap, Float64, Float64)
 
@@ -371,11 +674,11 @@ public func drawImage(image: ImageBitmap, dx: Float64, dy: Float64): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
-| image | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes | - | The image resource (refer to [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap)). |
-| dx | Float64 | Yes | - | The x-coordinate of the drawing area's top-left corner.<br>Default unit: vp. |
-| dy | Float64 | Yes | - | The y-coordinate of the drawing area's top-left corner.<br>Default unit: vp. |
+| Parameter | Type                              | Required | Default | Description |
+|:----------|:----------------------------------|:---------|:--------|:------------|
+| image     | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes      | -       | The image resource. Refer to [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap). |
+| dx        | Float64 | Yes      | -       | The x-coordinate of the top-left corner of the drawing area.<br>Default unit: vp. |
+| dy        | Float64 | Yes      | -       | The y-coordinate of the top-left corner of the drawing area.<br>Default unit: vp. |
 
 ### func drawImage(ImageBitmap, Float64, Float64, Float64, Float64)
 
@@ -391,8 +694,14 @@ public func drawImage(image: ImageBitmap, dx: Float64, dy: Float64, dWidth: Floa
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---------|:-----|:--------|:--------|:------------|
+| Parameter | Type                              | Required | Default | Description |
+|:----------|:----------------------------------|:---------|:--------|:------------|
+| image     | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes      | -       | The image resource. Refer to [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap). |
+| dx        | Float64 | Yes      | -       | The x-coordinate of the top-left corner of the drawing area.<br>Default unit: vp. |
+| dy        | Float64 | Yes      | -       | The y-coordinate of the top-left corner of the drawing area.<br>Default unit: vp. |
+| dWidth    | Float64 | Yes      | -       | The width of the drawing area. If the width differs from the cropped image width, the image width is stretched or compressed to match.<br>Default unit: vp. |
+| dHeight   | Float64 | Yes      | -       | The height of the drawing area. If the height differs from the cropped image height, the image height is stretched or compressed to match.<br>Default unit: vp. |
+
 ### func drawImage(ImageBitmap, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64)
 
 ```cangjie
@@ -409,7 +718,7 @@ public func drawImage(
 ): Unit
 ```
 
-**Function:** Performs image drawing.
+**Description:** Draws an image.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -417,17 +726,17 @@ public func drawImage(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| image | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes | - | Image resource. Refer to [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap). |
-| sx | Float64 | Yes | - | The x-coordinate value from the top-left corner of the source image when cropping. <br>Unit: px. |
-| sy | Float64 | Yes | - | The y-coordinate value from the top-left corner of the source image when cropping. <br>Unit: px. |
-| sWidth | Float64 | Yes | - | The width to crop from the source image. <br>Unit: px. |
-| sHeight | Float64 | Yes | - | The height to crop from the source image. <br>Unit: px. |
-| dx | Float64 | Yes | - | The x-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-| dy | Float64 | Yes | - | The y-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-| dWidth | Float64 | Yes | - | The width of the drawing area. If the width of the drawing area does not match the width of the cropped image, the image width will be stretched or compressed to fit the drawing area width. <br>Default unit: vp. |
-| dHeight | Float64 | Yes | - | The height of the drawing area. If the height of the drawing area does not match the height of the cropped image, the image height will be stretched or compressed to fit the drawing area height. <br>Default unit: vp. |
+| Parameter | Type                              | Required | Default | Description |
+|:----------|:----------------------------------|:---------|:--------|:------------|
+| image     | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes      | -       | The image resource. Refer to [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap). |
+| sx        | Float64 | Yes      | -       | The x-coordinate for cropping the source image from its top-left corner.<br>Unit: px. |
+| sy        | Float64 | Yes      | -       | The y-coordinate for cropping the source image from its top-left corner.<br>Unit: px. |
+| sWidth    | Float64 | Yes      | -       | The width to crop from the source image.<br>Unit: px. |
+| sHeight   | Float64 | Yes      | -       | The height to crop from the source image.<br>Unit: px. |
+| dx        | Float64 | Yes      | -       | The x-coordinate of the top-left corner of the drawing area.<br>Default unit: vp. |
+| dy        | Float64 | Yes      | -       | The y-coordinate of the top-left corner of the drawing area.<br>Default unit: vp. |
+| dWidth    | Float64 | Yes      | -       | The width of the drawing area. If the width differs from the cropped image width, the image width is stretched or compressed to match.<br>Default unit: vp. |
+| dHeight   | Float64 | Yes      | -       | The height of the drawing area. If the height differs from the cropped image height, the image height is stretched or compressed to match.<br>Default unit: vp. |
 
 ### func drawImage(PixelMap, Float64, Float64)
 
@@ -435,79 +744,9 @@ public func drawImage(
 public func drawImage(pixelMap: PixelMap, dx: Float64, dy: Float64): Unit
 ```
 
-**Function:** Performs image drawing.
+**Description:** Draws an image.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| pixelMap | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | Image resource. Refer to [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap). |
-| dx | Float64 | Yes | - | The x-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-| dy | Float64 | Yes | - | The y-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-
-### func drawImage(PixelMap, Float64, Float64, Float64, Float64)
-
-```cangjie
-public func drawImage(pixelMap: PixelMap, dx: Float64, dy: Float64, dWidth: Float64, dHeight: Float64): Unit
-```
-
-**Function:** Performs image drawing.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| pixelMap | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | Image resource. Refer to [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap). |
-| dx | Float64 | Yes | - | The x-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-| dy | Float64 | Yes | - | The y-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-| dWidth | Float64 | Yes | - | The width of the drawing area. If the width of the drawing area does not match the width of the cropped image, the image width will be stretched or compressed to fit the drawing area width. <br>Default unit: vp. |
-| dHeight | Float64 | Yes | - | The height of the drawing area. If the height of the drawing area does not match the height of the cropped image, the image height will be stretched or compressed to fit the drawing area height. <br>Default unit: vp. |
-
-### func drawImage(PixelMap, Float64, Float64, Float64, Float64, Float64, Float64, Float64, Float64)
-
-```cangjie
-public func drawImage(
-    pixelMap: PixelMap,
-    sx: Float64,
-    sy: Float64,
-    sWidth: Float64,
-    sHeight: Float64,
-    dx: Float64,
-    dy: Float64,
-    dWidth: Float64,
-    dHeight: Float64
-): Unit
-```
-
-**Function:** Performs image drawing.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| pixelMap | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | Image resource. Refer to [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap). |
-| sx | Float64 | Yes | - | The x-coordinate value from the top-left corner of the source image when cropping. <br>Unit: px. |
-| sy | Float64 | Yes | - | The y-coordinate value from the top-left corner of the source image when cropping. <br>Unit: px. |
-| sWidth | Float64 | Yes | - | The width to crop from the source image. <br>Unit: px. |
-| sHeight | Float64 | Yes | - | The height to crop from the source image. <br>Unit: px. |
-| dx | Float64 | Yes | - | The x-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-| dy | Float64 | Yes | - | The y-coordinate of the top-left corner of the drawing area. <br>Default unit: vp. |
-| dWidth | Float64 | Yes | - | The width of the drawing area. If the width of the drawing area does not match the width of the cropped image, the image width will be stretched or compressed to fit the drawing area width. <br>Default unit: vp. |
-| dHeight | Float64 | Yes | - | The height of the drawing area. If the height of the drawing area does not match the height of the cropped image, the image height will be stretched or compressed to fit the drawing area height. <br>Default unit: vp. |
-
-### func ellipse(Float64, Float64, Float64, Float64, Float64, Float64, Float64, Bool)
+**### func ellipse(Float64, Float64, Float64, Float64, Float64, Float64, Float64, Bool)
 
 ```cangjie
 public func ellipse(
@@ -530,21 +769,21 @@ public func ellipse(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | The x-coordinate of the ellipse's center. Unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the ellipse's center. Unit: vp. |
-| radiusX | Float64 | Yes | - | The radius of the ellipse along the x-axis. Unit: vp. |
-| radiusY | Float64 | Yes | - | The radius of the ellipse along the y-axis. Unit: vp. |
-| rotation | Float64 | Yes | - | The rotation angle of the ellipse in radians. |
-| startAngle | Float64 | Yes | - | The starting angle of the ellipse in radians. |
-| endAngle | Float64 | Yes | - | The ending angle of the ellipse in radians. |
-| anticlockwise | Bool | No | false | **Named parameter.** Whether to draw the ellipse counterclockwise. <br>true: Draw counterclockwise. <br>false: Draw clockwise. |
+| x | Float64 | Yes | - | The x-coordinate of the ellipse's center, in vp. |
+| y | Float64 | Yes | - | The y-coordinate of the ellipse's center, in vp. |
+| radiusX | Float64 | Yes | - | The radius of the ellipse along the x-axis, in vp. |
+| radiusY | Float64 | Yes | - | The radius of the ellipse along the y-axis, in vp. |
+| rotation | Float64 | Yes | - | The rotation angle of the ellipse, in radians. |
+| startAngle | Float64 | Yes | - | The starting angle of the ellipse drawing, in radians. |
+| endAngle | Float64 | Yes | - | The ending angle of the ellipse drawing, in radians. |
+| anticlockwise | Bool | No | false | **Named parameter.** Whether to draw the ellipse counterclockwise.<br/>true: Draw counterclockwise.<br/>false: Draw clockwise. |
 
 ### func fill(CanvasFillRule)
 
 ```cangjie
-public func fill(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
+public func fill(fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 ```
 
 **Function:** Fills a closed path.
@@ -555,14 +794,14 @@ public func fill(fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| fillRule | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No | Specifies the rule for clipping objects. <br>Options: nonzero, evenodd. <br>Default: nonzero. |
+| fillRule | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No | CanvasFillRule.NonZero | Specifies the rule for clipping objects.<br/>Options: nonzero, evenodd.<br>Default: nonzero. |
 
 ### func fill(Path2D, CanvasFillRule)
 
 ```cangjie
-public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzero): Unit
+public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.NonZero): Unit
 ```
 
 **Function:** Fills a closed path.
@@ -573,10 +812,10 @@ public func fill(path: Path2D, fillRule!: CanvasFillRule = CanvasFillRule.nonzer
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | path | [Path2D](./cj-canvas-drawing-path2d.md#class-path2d) | Yes | - | The Path2D clipping path. |
-| fillRule | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No | CanvasFillRule.nonzero | **Named parameter.** Specifies the rule for clipping objects. <br>Options: nonzero, evenodd. |
+| fillRule | [CanvasFillRule](./cj-common-types.md#enum-canvasfillrule) | No | CanvasFillRule.NonZero | **Named parameter.** Specifies the rule for clipping objects.<br/>Options: nonzero, evenodd. |
 
 ### func fillRect(Float64, Float64, Float64, Float64)
 
@@ -592,12 +831,12 @@ public func fillRect(x: Float64, y: Float64, width: Float64, height: Float64): U
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | The x-coordinate of the top-left corner of the rectangle. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the top-left corner of the rectangle. <br>Default unit: vp. |
-| width | Float64 | Yes | - | The width of the rectangle. <br>Default unit: vp. |
-| height | Float64 | Yes | - | The height of the rectangle. <br>Default unit: vp. |
+| x | Float64 | Yes | - | The x-coordinate of the rectangle's top-left corner, in vp. |
+| y | Float64 | Yes | - | The y-coordinate of the rectangle's top-left corner, in vp. |
+| width | Float64 | Yes | - | The width of the rectangle, in vp. |
+| height | Float64 | Yes | - | The height of the rectangle, in vp. |
 
 ### func fillStyle(ResourceColor)
 
@@ -613,9 +852,9 @@ public func fillStyle(color: ResourceColor): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color to fill the area. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color used to fill the area. |
 
 ### func fillStyle(CanvasGradient)
 
@@ -631,7 +870,7 @@ public func fillStyle(gradient: CanvasGradient): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | gradient | [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | Yes | - | The gradient object created using the createLinearGradient method. |
 
@@ -649,9 +888,9 @@ public func fillStyle(pattern: CanvasPattern): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| pattern | [CanvasPattern](./cj-canvas-drawing-canvaspattern.md#class-canvaspattern) | Yes | - | The template object created by specifying an image and repetition method for filling. |
+| pattern | [CanvasPattern](./cj-canvas-drawing-canvaspattern.md#class-canvaspattern) | Yes | - | The template object created by specifying an image and repetition method for image filling. |
 
 ### func fillText(String, Float64, Float64, Option\<Float64>)
 
@@ -667,12 +906,12 @@ public func fillText(text: String, x: Float64, y: Float64, maxWidth!: Option<Flo
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| text | String | Yes | - | The text content to draw. |
-| x | Float64 | Yes | - | The x-coordinate of the bottom-left corner of the text. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the bottom-left corner of the text. <br>Default unit: vp. |
-| maxWidth | Float64 | No | Option.None | The maximum allowed width of the text. <br>Default unit: vp. <br>Default: No width limit. |
+| text | String | Yes | - | The text content to be drawn. |
+| x | Float64 | Yes | - | The x-coordinate of the text's bottom-left corner, in vp. |
+| y | Float64 | Yes | - | The y-coordinate of the text's bottom-left corner, in vp. |
+| maxWidth | Option<Float64> | No | Option.None | The maximum allowed width of the text, in vp.<br>Default: No width limit. |
 
 ### func font(FontStyle, FontWeight, Length, String)
 
@@ -693,7 +932,7 @@ public func font(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Specifies the font weight. |
@@ -706,7 +945,7 @@ public func font(
 public func getImageData(sx: Float64, sy: Float64, sw: Float64, sh: Float64): ImageData
 ```
 
-**Function:** Creates an ImageData object from the pixels of the current canvas in the specified area. This interface involves memory copying and is high-latency; avoid frequent use.
+**Function:** Creates an ImageData object from the pixels in the specified area of the current canvas. This operation involves memory copying and is time-consuming; avoid frequent use.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -714,12 +953,12 @@ public func getImageData(sx: Float64, sy: Float64, sw: Float64, sh: Float64): Im
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| sx | Float64 | Yes | - | The x-coordinate of the top-left corner of the area to output. <br>Default unit: vp. |
-| sy | Float64 | Yes | - | The y-coordinate of the top-left corner of the area to output. <br>Default unit: vp. |
-| sw | Float64 | Yes | - | The width of the area to output. <br>Default unit: vp. |
-| sh | Float64 | Yes | - | The height of the area to output. <br>Default unit: vp. |
+| sx | Float64 | Yes | - | The x-coordinate of the top-left corner of the area to output, in vp. |
+| sy | Float64 | Yes | - | The y-coordinate of the top-left corner of the area to output, in vp. |
+| sw | Float64 | Yes | - | The width of the area to output, in vp. |
+| sh | Float64 | Yes | - | The height of the area to output, in vp. |
 
 **Return Value:**
 
@@ -743,7 +982,7 @@ public func getLineDash(): Array<Float64>
 
 | Type | Description |
 |:----|:----|
-| Array\<Float64> | Returns an array describing how line segments alternate and their spacing lengths. <br>Default unit: vp. |
+| Array\<Float64> | Returns an array describing how line segments alternate and their spacing lengths, in vp. |
 
 ### func getPixelMap(Float64, Float64, Float64, Float64)
 
@@ -751,7 +990,7 @@ public func getLineDash(): Array<Float64>
 public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Float64): PixelMap
 ```
 
-**Function:** Creates a [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object from the pixels of the current canvas in the specified area.
+**Function:** Creates a [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object from the pixels in the specified area of the current canvas.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -759,23 +998,71 @@ public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Flo
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| left | Float64 | Yes | - | The x-coordinate of the top-left### func measureText(String)
+| left | Float64 | Yes | - | The x-coordinate of the top-left corner of the area to output, in vp. |
+| top | Float64 | Yes | - | The y-coordinate of the top-left corner of the area to output, in vp. |
+| width | Float64 | Yes | - | The width of the area to output, in vp. |
+| height | Float64 | Yes | - | The height of the area to output, in vp. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | A new [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object. |
+
+### func getTransform()
+
+```cangjie
+public func getTransform(): Matrix2D
+```
+
+**Function:** Gets the current transformation matrix applied to the context.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| [Matrix2D](./cj-canvas-drawing-matrix2d.md#class-matrix2d) | The matrix object. |
+
+### func lineTo(Float64, Float64)
+
+```cangjie
+public func lineTo(x: Float64, y: Float64): Unit
+```
+
+**Function:** Connects the current point to the specified point with a path.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| x | Float64 | Yes | - | The x-coordinate of the specified point, in vp. |
+| y | Float64 | Yes | - | The y-coordinate of the specified point, in vp. |
+
+### func measureText(String)
 
 ```cangjie
 public func measureText(text: String): TextMetrics
 ```
 
-**Function:** This method returns a text measurement object, through which the width value of the specified text can be obtained. The width values obtained may vary across different devices.
+**Function:** Returns a text measurement object that provides the width of the specified text. The width may vary across devices.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | text | String | Yes | - | The text to be measured. |
 
@@ -783,7 +1070,7 @@ public func measureText(text: String): TextMetrics
 
 | Type | Description |
 |:----|:----|
-| [TextMetrics](cj-canvas-drawing-canvas.md#class-textmetrics) | The dimension information of the text. |
+| [TextMetrics](cj-canvas-drawing-canvas.md#class-textmetrics) | The dimensions of the text. |
 
 ### func moveTo(Float64, Float64)
 
@@ -795,14 +1082,14 @@ public func moveTo(x: Float64, y: Float64): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | The x-coordinate of the specified position. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the specified position. <br>Default unit: vp. |
+| x | Float64 | Yes | - | The x-coordinate of the specified point, in vp. |
+| y | Float64 | Yes | - | The y-coordinate of the specified point, in vp. |
 
 ### func putImageData(ImageData, Length, Length)
 
@@ -814,15 +1101,15 @@ public func putImageData(imageData: ImageData, dx: Length, dy: Length): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | imageData | [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata) | Yes | - | The ImageData object containing pixel values. |
-| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The offset of the fill area in the x-axis direction. <br>Default unit: vp. |
-| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The offset of the fill area in the y-axis direction. <br>Default unit: vp. |
+| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The x-axis offset of the fill area, in vp. |
+| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The y-axis offset of the fill area, in vp. |
 
 ### func putImageData(ImageData, Float64, Float64, Float64, Float64, Float64, Float64)
 
@@ -842,19 +1129,19 @@ public func putImageData(
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | imageData | [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata) | Yes | - | The ImageData object containing pixel values. |
-| dx | Float64 | Yes | - | The offset of the fill area in the x-axis direction. <br>Default unit: vp. |
-| dy | Float64 | Yes | - | The offset of the fill area in the y-axis direction. <br>Default unit: vp. |
-| dirtyX | Float64 | Yes | - | The x-axis offset of the top-left corner of the source image data rectangle from the top-left corner of the source image. <br>Default unit: vp. |
-| dirtyY | Float64 | Yes | - | The y-axis offset of the top-left corner of the source image data rectangle from the top-left corner of the source image. <br>Default unit: vp. |
-| dirtyWidth | Float64 | Yes | - | The width of the source image data rectangle. <br>Default unit: vp. |
-| dirtyHeight | Float64 | Yes | - | The height of the source image data rectangle. <br>Default unit: vp. |
+| dx | Float64 | Yes | - | The x-axis offset of the fill area, in vp. |
+| dy | Float64 | Yes | - | The y-axis offset of the fill area, in vp. |
+| dirtyX | Float64 | Yes | - | The x-axis offset of the source image data's clipping rectangle from the top-left corner of the source image, in vp. |
+| dirtyY | Float64 | Yes | - | The y-axis offset of the source image data's clipping rectangle from the top-left corner of the source image, in vp. |
+| dirtyWidth | Float64 | Yes | - | The width of the source image data's clipping rectangle, in vp. |
+| dirtyHeight | Float64 | Yes | - | The height of the source image data's clipping rectangle, in vp. |
 
 ### func quadraticCurveTo(Float64, Float64, Float64, Float64)
 
@@ -866,18 +1153,16 @@ public func quadraticCurveTo(cpx: Float64, cpy: Float64, x: Float64, y: Float64)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| cpx | Float64 | Yes | - | The x-coordinate of the Bézier parameter. <br>Default unit: vp. |
-| cpy | Float64 | Yes | - | The y-coordinate of the Bézier parameter. <br>Default unit: vp. |
-| x | Float64 | Yes | - | The x-coordinate of the end point of the path. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the end point of the path. <br>Default unit: vp. |
-
-### func rect(Float64, Float64, Float64, Float64)
+| cpx | Float64 | Yes | - | The x-coordinate of the Bézier parameter, in vp. |
+| cpy | Float64 | Yes | - | The y-coordinate of the Bézier parameter, in vp. |
+| x | Float64 | Yes | - | The x-coordinate of the path's endpoint, in vp. |
+| y | Float64 | Yes | - | The y-coordinate of the path's endpoint, in vp. |### func rect(Float64, Float64, Float64, Float64)
 
 ```cangjie
 public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit
@@ -887,16 +1172,16 @@ public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | The x-coordinate of the top-left corner of the rectangle. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the top-left corner of the rectangle. <br>Default unit: vp. |
-| width | Float64 | Yes | - | The width of the rectangle. <br>Default unit: vp. |
-| height | Float64 | Yes | - | The height of the rectangle. <br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x         | Float64 | Yes      | -       | Specifies the x-coordinate of the top-left corner of the rectangle.<br>Default unit: vp. |
+| y         | Float64 | Yes      | -       | Specifies the y-coordinate of the top-left corner of the rectangle.<br>Default unit: vp. |
+| width     | Float64 | Yes      | -       | Specifies the width of the rectangle.<br>Default unit: vp. |
+| height    | Float64 | Yes      | -       | Specifies the height of the rectangle.<br>Default unit: vp. |
 
 ### func reset()
 
@@ -904,11 +1189,11 @@ public func rect(x: Float64, y: Float64, width: Float64, height: Float64): Unit
 public func reset(): Unit
 ```
 
-**Function:** Resets the CanvasRenderingContext2D to its default state, clearing the background buffer, drawing state stack, drawing paths, and styles.
+**Function:** Resets the CanvasRenderingContext2D to its default state, clearing the background buffer, drawing state stack, drawing path, and styles.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func resetTransform()
 
@@ -920,7 +1205,7 @@ public func resetTransform(): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func restore()
 
@@ -930,15 +1215,9 @@ public func restore(): Unit
 
 **Function:** Restores the saved drawing context.
 
-> **Note:**
->
-> - When the number of `restore()` calls does not exceed the number of `save()` calls, the stored drawing state is popped from the stack, and the properties, clipping path, and transformation matrix values of the CanvasRenderingContext2D object are restored.
-> - When the number of `restore()` calls exceeds the number of `save()` calls, this method does nothing.
-> - When there is no saved state, this method does nothing.
-
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func restoreLayer()
 
@@ -946,11 +1225,11 @@ public func restore(): Unit
 public func restoreLayer(): Unit
 ```
 
-**Function:** Restores the image transformation and clipping state to the state before `saveLayer` and draws the layer on the canvas.
+**Function:** Restores the image transformation and clipping state to the state before `saveLayer` and draws the layer onto the canvas.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func rotate(Float64)
 
@@ -962,13 +1241,13 @@ public func rotate(angle: Float64): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| angle | Float64 | Yes | - | Sets the radian value for clockwise rotation. Degrees can be converted to radians using `Float64.PI / 180`. <br>Unit: radians. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| angle     | Float64 | Yes      | -       | Sets the radian value for clockwise rotation. Use `Float64.PI / 180` to convert degrees to radians.<br>Unit: radians. |
 
 ### func save()
 
@@ -980,7 +1259,7 @@ public func save(): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func saveLayer()
 
@@ -988,11 +1267,11 @@ public func save(): Unit
 public func saveLayer(): Unit
 ```
 
-**Function:** Creates a layer.
+**Function:** Creates a new layer.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func scale(Float64, Float64)
 
@@ -1004,14 +1283,14 @@ public func scale(x: Float64, y: Float64): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | The scaling factor in the horizontal direction. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The scaling factor in the vertical direction. <br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x         | Float64 | Yes      | -       | Sets the horizontal scaling factor.<br>Default unit: vp. |
+| y         | Float64 | Yes      | -       | Sets the vertical scaling factor.<br>Default unit: vp. |
 
 ### func setLineDash(Array\<Float64>)
 
@@ -1019,17 +1298,17 @@ public func scale(x: Float64, y: Float64): Unit
 public func setLineDash(dashArr: Array<Float64>): Unit
 ```
 
-**Function:** Sets the dashed line style of the canvas.
+**Function:** Sets the dashed line style for the canvas.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| dashArr | Array\<Float64> | Yes | - | An array describing the alternating line segments and spacing lengths. <br>Default unit: vp. |
+| Parameter | Type          | Required | Default | Description |
+|:----------|:--------------|:---------|:--------|:------------|
+| dashArr   | Array\<Float64> | Yes      | -       | An array describing the alternating line segments and spacing lengths.<br>Default unit: vp. |
 
 ### func setPixelMap(Option\<PixelMap>)
 
@@ -1037,17 +1316,17 @@ public func setLineDash(dashArr: Array<Float64>): Unit
 public func setPixelMap(pixelMap: Option<PixelMap>): Unit
 ```
 
-**Function:** Draws the current [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object on the canvas. Example usage is the same as [getPixelMap](#func-getpixelmapfloat-float-float-float).
+**Function:** Draws the provided [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object onto the canvas. Example usage is the same as [getPixelMap](#func-getpixelmapfloat64-float64-float64-float64).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| pixelMap | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | The PixelMap object containing pixel values. <br>Initial value: None. |
+| Parameter | Type            | Required | Default | Description |
+|:----------|:----------------|:---------|:--------|:------------|
+| pixelMap  | Option<PixelMap> | Yes      | -       | A PixelMap object containing pixel values.<br>Initial value: None. |
 
 ### func setTransform(Float64, Float64, Float64, Float64, Float64, Float64)
 
@@ -1062,22 +1341,22 @@ public func setTransform(
 ): Unit
 ```
 
-**Function:** Corresponds to a transformation matrix. To transform a shape, set the corresponding parameters of this transformation matrix. Multiplying the coordinates of each vertex of the shape by this matrix yields the new vertex coordinates. The `setTransform()` method resets the existing transformation matrix and creates a new one.
+**Function:** Corresponds to a transformation matrix. To transform a shape, set the relevant parameters of this matrix, then multiply the coordinates of each vertex by this matrix to obtain the new vertex coordinates. The `setTransform()` method resets the existing transformation matrix and creates a new one.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| scaleX | Float64 | Yes | - | The horizontal scaling factor. |
-| skewX | Float64 | Yes | - | The horizontal skew factor. |
-| skewY | Float64 | Yes | - | The vertical skew factor. |
-| scaleY | Float64 | Yes | - | The vertical scaling factor. |
-| translateX | Float64 | Yes | - | The horizontal translation value. <br>Default unit: vp. |
-| translateY | Float64 | Yes | - | The vertical translation value. <br>Default unit: vp. |
+| Parameter  | Type    | Required | Default | Description |
+|:-----------|:--------|:---------|:--------|:------------|
+| scaleX     | Float64 | Yes      | -       | Specifies the horizontal scaling factor. |
+| skewX      | Float64 | Yes      | -       | Specifies the horizontal skew factor. |
+| skewY      | Float64 | Yes      | -       | Specifies the vertical skew factor. |
+| scaleY     | Float64 | Yes      | -       | Specifies the vertical scaling factor. |
+| translateX | Float64 | Yes      | -       | Specifies the horizontal translation value.<br>Default unit: vp. |
+| translateY | Float64 | Yes      | -       | Specifies the vertical translation value.<br>Default unit: vp. |
 
 ### func setTransform(Option\<Matrix2D>)
 
@@ -1085,17 +1364,17 @@ public func setTransform(
 public func setTransform(matrix: Option<Matrix2D>): Unit
 ```
 
-**Function:** Resets the existing transformation matrix and creates a new one using a Matrix2D object as a template.
+**Function:** Resets the existing transformation matrix and creates a new one using the provided Matrix2D object as a template.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| matrix | [Matrix2D](./cj-canvas-drawing-matrix2d.md#class-matrix2d) | Yes | - | The transformation matrix. |
+| Parameter | Type            | Required | Default | Description |
+|:----------|:----------------|:---------|:--------|:------------|
+| matrix    | Option<Matrix2D> | Yes      | -       | The transformation matrix. |
 
 ### func stroke()
 
@@ -1103,11 +1382,11 @@ public func setTransform(matrix: Option<Matrix2D>): Unit
 public func stroke(): Unit
 ```
 
-**Function:** Performs a stroke drawing operation.
+**Function:** Performs a stroke operation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func stroke(Path2D)
 
@@ -1115,17 +1394,17 @@ public func stroke(): Unit
 public func stroke(path2D: Path2D): Unit
 ```
 
-**Function:** Performs a stroke drawing operation.
+**Function:** Performs a stroke operation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| path2D | [Path2D](./cj-canvas-drawing-path2d.md#class-path2d) | Yes | - | The Path2D to be drawn. |
+| Parameter | Type                          | Required | Default | Description |
+|:----------|:------------------------------|:---------|:--------|:------------|
+| path2D    | [Path2D](./cj-canvas-drawing-path2d.md#class-path2d) | Yes      | -       | The Path2D to be stroked. |
 
 ### func strokeRect(Float64, Float64, Float64, Float64)
 
@@ -1137,16 +1416,16 @@ public func strokeRect(x: Float64, y: Float64, width: Float64, height: Float64):
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| x | Float64 | Yes | - | The x-coordinate of the top-left corner of the rectangle. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the top-left corner of the rectangle. <br>Default unit: vp. |
-| width | Float64 | Yes | - | The width of the rectangle. <br>Default unit: vp. |
-| height | Float64 | Yes | - | The height of the rectangle. <br>Default unit: vp. |
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x         | Float64 | Yes      | -       | Specifies the x-coordinate of the top-left corner of the rectangle.<br>Default unit: vp. |
+| y         | Float64 | Yes      | -       | Specifies the y-coordinate of the top-left corner of the rectangle.<br>Default unit: vp. |
+| width     | Float64 | Yes      | -       | Specifies the width of the rectangle.<br>Default unit: vp. |
+| height    | Float64 | Yes      | -       | Specifies the height of the rectangle.<br>Default unit: vp. |
 
 ### func strokeStyle(ResourceColor)
 
@@ -1158,13 +1437,13 @@ public func strokeStyle(color: ResourceColor): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color used to fill the area. |
+| Parameter | Type                                      | Required | Default | Description |
+|:----------|:------------------------------------------|:---------|:--------|:------------|
+| color     | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes      | -       | Specifies the color for the stroke. |
 
 ### func strokeStyle(CanvasGradient)
 
@@ -1176,13 +1455,13 @@ public func strokeStyle(gradient: CanvasGradient): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| gradient | [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | Yes | - | The gradient object, created using the `createLinearGradient` method. |
+| Parameter | Type                                      | Required | Default | Description |
+|:----------|:------------------------------------------|:---------|:--------|:------------|
+| gradient  | [CanvasGradient](cj-canvas-drawing-canvas.md#class-canvasgradient) | Yes      | -       | Specifies the gradient object, created using the `createLinearGradient` method. |
 
 ### func strokeStyle(CanvasPattern)
 
@@ -1194,13 +1473,13 @@ public func strokeStyle(pattern: CanvasPattern): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| pattern | [CanvasPattern](./cj-canvas-drawing-canvaspattern.md#class-canvaspattern) | Yes | - | A template for image filling created using the `createPattern` method, specifying the image and repetition mode. |
+| Parameter | Type                                      | Required | Default | Description |
+|:----------|:------------------------------------------|:---------|:--------|:------------|
+| pattern   | [CanvasPattern](./cj-canvas-drawing-canvaspattern.md#class-canvaspattern) | Yes      | -       | Specifies the image and repetition mode for creating a pattern fill, created using the `createPattern` method. |
 
 ### func strokeText(String, Float64, Float64, Option\<Float64>)
 
@@ -1212,16 +1491,108 @@ public func strokeText(text: String, x: Float64, y: Float64, maxWidth!: Option<F
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| text | String | Yes | - | The text content to be drawn. |
-| x | Float64 | Yes | - | The x-coordinate of the bottom-left corner of the text. <br>Default unit: vp. |
-| y | Float64 | Yes | - | The y-coordinate of the bottom-left corner of the text. <br>Default unit: vp. |
-| maxWidth | Float64 | No | Option.None | The maximum width of the text to be drawn. <br>## Sample Code
+| Parameter | Type          | Required | Default     | Description |
+|:----------|:--------------|:---------|:------------|:------------|
+| text      | String        | Yes      | -           | The text content to be drawn. |
+| x         | Float64       | Yes      | -           | The x-coordinate of the bottom-left corner of the text.<br>Default unit: vp. |
+| y         | Float64       | Yes      | -           | The y-coordinate of the bottom-left corner of the text.<br>Default unit: vp. |
+| maxWidth  | Float64       | No       | Option.None | The maximum width of the text.<br>Default unit: vp. |
+
+### func toDataURL(ImageType, Float64)
+
+```cangjie
+public func toDataURL(imageType!: ImageType = ImageType.Png, quality!: Float64 = 0.92): String
+```
+
+**Function:** Generates a URL containing the displayed image. This operation involves memory copying and is time-consuming; avoid frequent use.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type                          | Required | Default      | Description |
+|:----------|:------------------------------|:---------|:-------------|:------------|
+| imageType | [ImageType](./cj-common-types.md#enum-imagetype) | No       | ImageType.Png | **Named parameter.** Specifies the image format. |
+| quality   | Float64                       | No       | 0.92         | **Named parameter.** For image formats `image/jpeg` or `image/webp`, specifies the image quality from 0 to 1. If out of range, the default value 0.92 is used. |
+
+**Return Value:**
+
+| Type   | Description |
+|:-------|:------------|
+| String | The URL of the generated image. |
+
+### func transferFromImageBitmap(ImageBitmap)
+
+```cangjie
+public func transferFromImageBitmap(bitmap: ImageBitmap): Unit
+```
+
+**Function:** Displays the given ImageBitmap object.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type                                      | Required | Default | Description |
+|:----------|:------------------------------------------|:---------|:--------|:------------|
+| bitmap    | [ImageBitmap](./cj-canvas-drawing-imagebitmap.md#class-imagebitmap) | Yes      | -       | The ImageBitmap object to be displayed. |
+
+### func transform(Float64, Float64, Float64, Float64, Float64, Float64)
+
+```cangjie
+public func transform(
+    scaleX: Float64,
+    skewX: Float64,
+    skewY: Float64,
+    scaleY: Float64,
+    translateX: Float64,
+    translateY: Float64
+): Unit
+```
+
+**Function:** The `transform` method corresponds to a transformation matrix. To transform a shape, set the relevant parameters of this matrix, then multiply the coordinates of each vertex by this matrix to obtain the new vertex coordinates. Matrix transformations can be stacked.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter  | Type    | Required | Default | Description |
+|:-----------|:--------|:---------|:--------|:------------|
+| scaleX     | Float64 | Yes      | -       | Specifies the horizontal scaling factor. |
+| skewX      | Float64 | Yes      | -       | Specifies the horizontal skew factor. |
+| skewY      | Float64 | Yes      | -       | Specifies the vertical skew factor. |
+| scaleY     | Float64 | Yes      | -       | Specifies the vertical scaling factor. |
+| translateX | Float64 | Yes      | -       | Specifies the horizontal translation value.<br>Default unit: vp. |
+| translateY | Float64 | Yes      | -       | Specifies the vertical translation value.<br>Default unit: vp. |
+
+### func translate(Float64, Float64)
+
+```cangjie
+public func translate(x: Float64, y: Float64): Unit
+```
+
+**Function:** Moves the origin of the current coordinate system.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type    | Required | Default | Description |
+|:----------|:--------|:---------|:--------|:------------|
+| x         | Float64 | Yes      | -       | Specifies the horizontal translation value.<br>Default unit: vp. |
+| y         | Float64 | Yes      | -       | Specifies the vertical translation value.<br>Default unit: vp. |## Sample Code
 
 <!-- run -->
 
@@ -1238,15 +1609,15 @@ class EntryView {
     private let context: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)
     @State var message: String = ""
     func build() {
-            Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center))  {
+            Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)  {
                 Canvas(this.context)
                     .width(100.percent)
                     .height(100.percent)
                     .backgroundColor(0xffff00)
                     .onReady({=>
-                        this.context.fillRect(10, 10, 50, 50)
-                        this.context.translate(70, 70)
-                        this.context.fillRect(10, 10, 50, 50)
+                        this.context.fillRect(10.0, 10.0, 50.0, 50.0)
+                        this.context.translate(70.0, 70.0)
+                        this.context.fillRect(10.0, 10.0, 50.0, 50.0)
                         })
             }.width(100.percent).height(100.percent)
     }

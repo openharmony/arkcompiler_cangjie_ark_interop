@@ -8,7 +8,7 @@ Provides a search box component for users to input search content.
 import kit.ArkUI.*
 ```
 
-## Child Components
+## Subcomponents
 
 None
 
@@ -34,20 +34,20 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | ResourceStr | No | "" | **Named parameter.** Currently displayed search text content. |
 | placeholder | ResourceStr | No | "" | **Named parameter.** Hint text when there is no input. |
-| icon | [Option](../apis/BasicServicesKit/cj-apis-base.md#type-option)\<[AppResource](<font color="red" face="bold">please add link</font>)> | No | Option.None | Search icon path, using the system search icon by default.<br>**Note:** <br>The icon data source supports local and network images.<br> - Supported image formats include png, jpg, bmp, svg, gif, pixelmap, and heif.<br> - Supports Base64 strings. Format: data:image/[png\|jpeg\|bmp\|webp\| **Named parameter.** heif];base64,[base64 data], where [base64 data] is the Base64 string data.<br>If set simultaneously with the searchIcon property, searchIcon takes precedence. |
+| icon | Option\<[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)> | No | Option.None | Search icon path, using the system search icon by default.<br>**Note:** <br>The icon data source supports local and network images.<br> - Supported image formats include png, jpg, bmp, svg, gif, pixelmap, and heif.<br> - Supports Base64 strings. Format: data:image/[png\|jpeg\|bmp\|webp\| **Named parameter.** heif];base64,[base64 data], where [base64 data] is the Base64 string data.<br>If set together with the searchIcon property, searchIcon takes precedence. |
 | controller | [SearchController](#class-searchcontroller) | No | Option.None | **Named parameter.** Search component controller. |
 
-## Common Attributes/Common Events
+## Common Properties/Common Events
 
-Common Attributes: All supported.
+Common properties: All supported.
 
-Common Events: All supported.
+Common events: All supported.
 
-## Component Attributes
+## Component Properties
 
 ### func copyOption(CopyOptions)
 
@@ -64,7 +64,7 @@ public func copyOption(value: CopyOptions): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | [CopyOptions](./cj-common-types.md#enum-copyoptions) | Yes | - | Copy options for the search component.<br>Initial value: CopyOptions.LocalDevice, supports copying within the device. |
 
@@ -72,7 +72,7 @@ public func copyOption(value: CopyOptions): This
 
 ```cangjie
 
-public func placeholderColor(color: ResourceColor): This
+public func placeholderColor(value: ResourceColor): This
 ```
 
 **Function:** Sets the placeholder text color.
@@ -83,16 +83,16 @@ public func placeholderColor(color: ResourceColor): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Target color.<br>Initial value: 0x99000000. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Target color.<br>Initial value: 0x99000000. |
 
 ### func placeholderFont(Length, FontWeight, FontStyle, ResourceStr)
 
 ```cangjie
 
 public func placeholderFont(
-    size!: Length = DEFAULT_SIZE.fp,
+    size!: Length = 16.fp,
     weight!: FontWeight = FontWeight.W400,
     style!: FontStyle = FontStyle.Normal,
     family!: ResourceStr = ""
@@ -107,9 +107,9 @@ public func placeholderFont(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | DEFAULT_SIZE.fp | **Named parameter.** Placeholder text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | **Named parameter.** Placeholder text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.W400 | **Named parameter.** Target font weight for the placeholder. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Target font style for the placeholder. |
 | family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Font family for the placeholder. |
@@ -117,7 +117,6 @@ public func placeholderFont(
 ### func searchButton(String)
 
 ```cangjie
-
 public func searchButton(value: ResourceStr): This
 ```
 
@@ -129,7 +128,7 @@ public func searchButton(value: ResourceStr): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | ResourceStr | Yes | - | Text content of the search button at the end of the search box. |
 
@@ -138,7 +137,7 @@ public func searchButton(value: ResourceStr): This
 ```cangjie
 
 public func textFont(
-    size!: Length = DEFAULT_SIZE.fp,
+    size!: Length = 16.fp,
     weight!: FontWeight = FontWeight.W400,
     style!: FontStyle = FontStyle.Normal,
     family!: ResourceStr = ""
@@ -153,9 +152,9 @@ public func textFont(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | DEFAULT_SIZE.fp | **Named parameter.** Text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | **Named parameter.** Text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.W400 | **Named parameter.** Target font weight for the input. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Target font style for the input. |
 | family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Font family for the input. |
@@ -177,9 +176,9 @@ public func onChange(callback: (String) -> Unit): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (String)->Unit | Yes | - | Callback function triggered when the current input text content changes. |
+| callback | (String)->Unit | Yes | - | Callback function, triggered when the current input text content changes. |
 
 ### func onCopy((String) -> Unit)
 
@@ -196,9 +195,9 @@ public func onCopy(callback: (String) -> Unit): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (String)->Unit | Yes | - | Callback function triggered when copying. Parameter: Returns the copied text content. |
+| callback | (String)->Unit | Yes | - | Callback function, triggered when cutting. Parameter: Returns the cut text content. |
 
 ### func onCut((String) -> Unit)
 
@@ -215,9 +214,9 @@ public func onCut(callback: (String) -> Unit): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (String)->Unit | Yes | - | Callback function triggered when cutting. Parameter: Returns the cut text content. |
+| callback | (String)->Unit | Yes | - | Callback function, triggered when cutting. Parameter: Returns the cut text content. |
 
 ### func onPaste((String) -> Unit)
 
@@ -234,9 +233,9 @@ public func onPaste(callback: (String) -> Unit): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (String)->Unit | Yes | - | Callback function triggered when the component performs a system clipboard paste operation. |
+| callback | (String)->Unit | Yes | - | Callback function, triggered when the component triggers a system clipboard paste operation. |
 
 ### func onSubmit((String) -> Unit)
 
@@ -253,17 +252,16 @@ public func onSubmit(callback: (String) -> Unit): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | (String)->Unit | Yes | - | Callback function triggered when submitting search content. Parameter: Current text content entered in the search box. |
+| callback | (String)->Unit | Yes | - | Callback function, triggered when submitting search content. Parameter: Current text content input in the search box. |
 
 ## Basic Type Definitions
 
 ### class SearchController
 
 ```cangjie
-public class SearchController {
-
+public class SearchController TextContentControllerBase{
 
     public init()
 }
@@ -303,7 +301,7 @@ public func caretPosition(value: Int32): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | Int32 | Yes | - | The character length from the start of the string to the cursor position. |
 
@@ -324,7 +322,7 @@ class EntryView {
 
     let controller = SearchController()
     func build() {
-        Flex(FlexParams(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center)) {
+        Flex(direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center) {
           Text(submitValue)
           Text(changeValue)
           Search(value: "", placeholder: "Type to search", controller: controller)

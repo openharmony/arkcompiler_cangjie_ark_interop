@@ -23,9 +23,9 @@ public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length link) | No | 0.vp | Horizontal spacing between layout elements.<br>Does not take effect when space is negative or justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, FlexAlign.SpaceEvenly.<br> Initial value: 0, Unit: vp <br> **Note:** Optional values are numbers greater than or equal to 0. |
+| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Horizontal spacing between elements. <br>Does not take effect when space is negative or justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, FlexAlign.SpaceEvenly. <br> Initial value: 0, Unit: vp <br> **Note:** Optional values are numbers greater than or equal to 0. |
 | child | ()->Unit | No | { => } | Child components within the container. |
 
 ## Common Attributes/Common Events
@@ -51,9 +51,9 @@ public func alignItems(value: VerticalAlign): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [VerticalAlign](cj-common-types.md#enum-verticalalign) | Yes | - | Vertical alignment format of child components.<br> Initial value: FlexAlign.Start |
+| value | [VerticalAlign](cj-common-types.md#enum-verticalalign) | Yes | - | Vertical alignment format of child components. <br> Initial value: FlexAlign.Start |
 
 ### func justifyContent(FlexAlign)
 
@@ -70,13 +70,13 @@ public func justifyContent(value: FlexAlign): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [FlexAlign](cj-common-types.md#enum-flexalign) | Yes | - | Horizontal alignment format of child components.<br> Initial value: FlexAlign.Start |
+| value | [FlexAlign](cj-common-types.md#enum-flexalign) | Yes | - | Horizontal alignment format of child components. <br> Initial value: FlexAlign.Start |
 
 ## Example Code
 
-This example demonstrates the usage of Row's alignItems and justifyContent attributes.
+This example demonstrates the usage of Row's alignItems and justifyContent properties.
 
 <!-- run -->
 
@@ -89,13 +89,13 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-            Column(5) {
+            Column(space: 5) {
             // Set horizontal spacing between child components to 5
                 Text("space")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)
                 .width(90.percent)
-                Row(5) {
+                Row(space: 5) {
                     Row()
                     .width(30.percent)
                     .height(50)

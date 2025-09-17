@@ -24,7 +24,7 @@ public func align(value: Alignment): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Alignment](#) | Yes | - | Alignment method. |
+| value | [Alignment](./cj-common-types.md#enum-alignment) | Yes | - | Alignment method. |
 
 ## func alignRules(AlignRuleOption)
 
@@ -42,7 +42,7 @@ public func alignRules(value: AlignRuleOption): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [AlignRuleOption](#) | Yes | - | Alignment rule options. |
+| value | [AlignRuleOption](./cj-universal-attribute-location.md#class-alignruleoption) | Yes | - | Alignment rule options. |
 
 ## func direction(Direction)
 
@@ -60,7 +60,7 @@ public func direction(value: Direction): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Direction](#) | Yes | - | Layout direction. |
+| value | [Direction](./cj-common-types.md#enum-direction) | Yes | - | Layout direction. |
 
 ## func markAnchor(Length, Length)
 
@@ -78,8 +78,8 @@ public func markAnchor(x!: Length, y!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
+| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
+| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
 
 ## func offset(Length, Length)
 
@@ -97,8 +97,8 @@ public func offset(x!: Length, y!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
+| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
+| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
 
 ## func position(Length, Length)
 
@@ -116,8 +116,8 @@ public func position(x!: Length, y!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
+| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
+| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
 
 ## Basic Type Definitions
 
@@ -125,13 +125,13 @@ public func position(x!: Length, y!: Length): This
 
 ```cangjie
 public class AlignRuleOption {
-    public var left:?HorizontalAlignment = None
-    public var right:?HorizontalAlignment = None
-    public var middle:?HorizontalAlignment = None
-    public var top:?VerticalAlignment = None
-    public var bottom:?VerticalAlignment = None
-    public var center:?VerticalAlignment = None
-    public var bias: Bias = Bias()
+    public var left:?HorizontalAlignment
+    public var right:?HorizontalAlignment
+    public var middle:?HorizontalAlignment
+    public var top:?VerticalAlignment
+    public var bottom:?VerticalAlignment
+    public var center:?VerticalAlignment 
+    public var bias: Bias
     public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = None,
         middle!: ?HorizontalAlignment = None, top!: ?VerticalAlignment = None,
         bottom!: ?VerticalAlignment = None, center!: ?VerticalAlignment = None,
@@ -165,12 +165,12 @@ public var bias: Bias = Bias()
 #### var bottom
 
 ```cangjie
-public var bottom:?VerticalAlignment = None
+public var bottom:?VerticalAlignment
 ```
 
-**Function:** Sets the bottom alignment method for the component.
+**Function:** Sets the bottom alignment of the component.
 
-**Type:** ?[VerticalAlignment](#class-verticalalignment)
+**Type:** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -181,12 +181,12 @@ public var bottom:?VerticalAlignment = None
 #### var center
 
 ```cangjie
-public var center:?VerticalAlignment = None
+public var center:?VerticalAlignment
 ```
 
-**Function:** Sets the vertical center alignment method for the component.
+**Function:** Sets the vertical center alignment of the component.
 
-**Type:** ?[VerticalAlignment](#class-verticalalignment)
+**Type:** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -197,12 +197,12 @@ public var center:?VerticalAlignment = None
 #### var left
 
 ```cangjie
-public var left:?HorizontalAlignment = None
+public var left:?HorizontalAlignment
 ```
 
-**Function:** Sets the left alignment method for the component.
+**Function:** Sets the left alignment of the component.
 
-**Type:** ?[HorizontalAlignment](#class-horizontalalignment)
+**Type:** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -213,12 +213,12 @@ public var left:?HorizontalAlignment = None
 #### var middle
 
 ```cangjie
-public var middle:?HorizontalAlignment = None
+public var middle:?HorizontalAlignment
 ```
 
-**Function:** Sets the horizontal center alignment method for the component.
+**Function:** Sets the horizontal center alignment of the component.
 
-**Type:** ?[HorizontalAlignment](#class-horizontalalignment)
+**Type:** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -229,12 +229,12 @@ public var middle:?HorizontalAlignment = None
 #### var right
 
 ```cangjie
-public var right:?HorizontalAlignment = None
+public var right:?HorizontalAlignment
 ```
 
-**Function:** Sets the right alignment method for the component.
+**Function:** Sets the right alignment of the component.
 
-**Type:** ?[HorizontalAlignment](#class-horizontalalignment)
+**Type:** ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -245,12 +245,12 @@ public var right:?HorizontalAlignment = None
 #### var top
 
 ```cangjie
-public var top:?VerticalAlignment = None
+public var top:?VerticalAlignment
 ```
 
-**Function:** Sets the top alignment method for the component.
+**Function:** Sets the top alignment of the component.
 
-**Type:** ?[VerticalAlignment](#class-verticalalignment)
+**Type:** ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment)
 
 **Read-Write Capability:** Read-Write
 
@@ -278,21 +278,21 @@ public init(left!: ?HorizontalAlignment = None, right!: ?HorizontalAlignment = N
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| left | ?[HorizontalAlignment](#class-horizontalalignment) | No | None | Sets the left alignment method for the component. |
-| right | ?[HorizontalAlignment](#class-horizontalalignment) | No | None | Sets the right alignment method for the component. |
-| middle | ?[HorizontalAlignment](#class-horizontalalignment) | No | None | Sets the horizontal center alignment method for the component. |
-| top | ?[VerticalAlignment](#class-verticalalignment) | No | None | Sets the top alignment method for the component. |
-| bottom | ?[VerticalAlignment](#class-verticalalignment) | No | None | Sets the bottom alignment method for the component. |
-| center | ?[VerticalAlignment](#class-verticalalignment) | No | None | Sets the vertical center alignment method for the component. |
+| left | ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the left alignment of the component. |
+| right | ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the right alignment of the component. |
+| middle | ?[HorizontalAlignment](./cj-common-types.md#class-horizontalalignment) | No | None | Sets the horizontal center alignment of the component. |
+| top | ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment) | No | None | Sets the top alignment of the component. |
+| bottom | ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment) | No | None | Sets the bottom alignment of the component. |
+| center | ?[VerticalAlignment](./cj-common-types.md#class-verticalalignment) | No | None | Sets the vertical center alignment of the component. |
 | bias | [Bias](#class-bias) | No | Bias() | Sets the offset for component alignment. |
 
 ### class Bias
 
 ```cangjie
 public class Bias {
-    public var horizontal: Float32 = 0.5
-    public var vertical: Float32 = 0.5
-    public init(horizontal!: Float32 = 0.5, vertical!: Float32 = 0.5)
+    public var horizontal: Float32, 
+    public var vertical: Float32, 
+    public init(horizontal!: Float32, vertical!: Float32)
 }
 ```
 
@@ -305,10 +305,10 @@ public class Bias {
 #### var horizontal
 
 ```cangjie
-public var horizontal: Float32 = 0.5
+public var horizontal: Float32
 ```
 
-**Function:** Sets the horizontal offset for the component.
+**Function:** Sets the horizontal offset of the component.
 
 **Type:** Float32
 
@@ -321,10 +321,10 @@ public var horizontal: Float32 = 0.5
 #### var vertical
 
 ```cangjie
-public var vertical: Float32 = 0.5
+public var vertical: Float32
 ```
 
-**Function:** Sets the vertical offset for the component.
+**Function:** Sets the vertical offset of the component.
 
 **Type:** Float32
 
@@ -350,5 +350,5 @@ public init(horizontal!: Float32 = 0.5, vertical!: Float32 = 0.5)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| horizontal | Float32 | No | 0.5 | Sets the horizontal offset for the component. |
-| vertical | Float32 | No | 0.5 | Sets the vertical offset for the component. |
+| horizontal | Float32 | No | 0.5 | Sets the horizontal offset of the component. |
+| vertical | Float32 | No | 0.5 | Sets the vertical offset of the component. |

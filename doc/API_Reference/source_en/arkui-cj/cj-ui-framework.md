@@ -18,14 +18,14 @@ public func bind(builder: (CustomView) -> ViewBuilder, thisView: CustomView)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | builder | ([CustomView](#class-customview))->[ViewBuilder](#class-viewbuilder) | Yes | - | The function type decorated with @Builder. |
-| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually `this`). |
+| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually this). |
 
 ## func bind\<T1, T2, T3>((CustomView,ObservedProperty\<T1>,ObservedProperty\<T2>,ObservedProperty\<T3>) -> ViewBuilder, CustomView)
 
@@ -40,14 +40,14 @@ public func bind<T1, T2, T3>(
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | builder | ([CustomView](#class-customview),[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)\<T1>,[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)\<T2>,[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)\<T3>)->[ViewBuilder](#class-viewbuilder) | Yes | - | The function type decorated with @Builder. |
-| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually `this`). |
+| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually this). |
 
 ## func bind\<T1, T2>((CustomView,ObservedProperty\<T1>,ObservedProperty\<T2>) -> ViewBuilder, CustomView)
 
@@ -62,14 +62,14 @@ public func bind<T1, T2>(
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | builder | ([CustomView](#class-customview),[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)\<T1>,[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)\<T2>)->[ViewBuilder](#class-viewbuilder) | Yes | - | The function type decorated with @Builder. |
-| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually `this`). |
+| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually this). |
 
 ## func bind\<T1>((CustomView,ObservedProperty\<T1>) -> ViewBuilder, CustomView)
 
@@ -81,14 +81,14 @@ public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder,
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | builder | ([CustomView](#class-customview),[ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)\<T1>)->[ViewBuilder](#class-viewbuilder) | Yes | - | The function type decorated with @Builder. |
-| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually `this`). |
+| thisView | [CustomView](#class-customview) | Yes | - | The current custom component object (usually this). |
 
 ## func loadNativeView(CustomView)
 
@@ -96,11 +96,11 @@ public func bind<T1>(builder: (CustomView, ObservedProperty<T1>) -> ViewBuilder,
 public func loadNativeView(view: CustomView): Bool
 ```
 
-**Function:** A basic function used by the UI framework.
+**Function:** Basic function used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -129,7 +129,7 @@ public interface Observer {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func aboutToBeDeleted()
 
@@ -137,7 +137,7 @@ public interface Observer {
 func aboutToBeDeleted(): Unit
 ```
 
-**Function:** Deletes a persistent storage object. Used by the UI framework.
+**Function:** Deletes the persistent storage object. Used by the UI framework.
 
 ### func id()
 
@@ -145,7 +145,7 @@ func aboutToBeDeleted(): Unit
 func id(): Int64
 ```
 
-**Function:** Gets the ID of a persistent storage object.
+**Function:** Gets the ID of the persistent storage object.
 
 **Return Value:**
 
@@ -165,7 +165,7 @@ func notifyRead(info: String): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| info | String | Yes | - | <font color="red" face="bold">please add description</font> |
+| info | String | Yes | - | UI framework information. |
 
 ### func onStateUpdate(String, ArrayList\<Int64>)
 
@@ -192,7 +192,7 @@ public class CJEntry {}
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### static func getInstance()
 
@@ -204,7 +204,7 @@ public static func getInstance(): CJEntry
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
@@ -222,14 +222,14 @@ public func registerEntry(name: String, call: () -> Bool): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| name | String | Yes | - | The registration name. |
-| call | ()->Bool | Yes | - | The callback function. |
+| name | String | Yes | - | Registration name. |
+| call | ()->Bool | Yes | - | Callback function. |
 
 ## class CJPageEntry
 
@@ -238,6 +238,10 @@ public class CJPageEntry {}
 ```
 
 **Function:** Used to provide global functions called by Native.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 ### static func getInstance()
 
@@ -253,6 +257,10 @@ public static func getInstance(): CJPageEntry
 |:----|:----|
 | [CJPageEntry](#class-cjpageentry) | The corresponding CJPageEntry object. |
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 ### func registerHybridPage(String, CustomView)
 
 ```cangjie
@@ -265,8 +273,12 @@ public func registerHybridPage(name: String, cjPage: CustomView): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| name | String | Yes | - | The registration name. |
-| cjPage | [CustomView](#class-customview) | Yes | - | The callback function. |
+| name | String | Yes | - | Registration name. |
+| cjPage | [CustomView](#class-customview) | Yes | - | Callback function. |
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 ### func removeHybridPage(String)
 
@@ -280,7 +292,11 @@ public func removeHybridPage(name: String): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| name | String | Yes | - | The name of the hybrid page. |
+| name | String | Yes | - | Hybrid page name. |
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
 
 ## class ContainerBase
 
@@ -292,9 +308,9 @@ public abstract class ContainerBase <: ViewBase {}
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
-**Parent Types:**
+**Parent Type:**
 
 - [ViewBase](#class-viewbase)
 
@@ -308,7 +324,7 @@ public open override func initial()
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ## class CustomView
 
@@ -324,12 +340,12 @@ public abstract class CustomView <: RemoteView & Observer {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parent Types:**
 
-- [RemoteView](<font color="red" face="bold">please add link</font>)
-- [Observer](<font color="red" face="bold">please add link</font>)
+- RemoteView
+- Observer
 
 ### var isReusable
 
@@ -341,7 +357,7 @@ public var isReusable: Bool = false
 
 **Type:** Bool
 
-**Read/Write:** Read-Write
+**Read/Write Permission:** Read-write
 
 ### let nativeView
 
@@ -353,11 +369,11 @@ public let nativeView: View
 
 **Type:** [View](#class-view)
 
-**Read/Write:** Read-Only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 ### init(Option\<CustomView>, Option\<LocalStorage>)
 
@@ -369,14 +385,14 @@ public init(parent: Option<CustomView>, localStorage: Option<LocalStorage>)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| parent | Option\<[CustomView](#class-customview)> | Yes | - | The parent component. |
-| localStorage | Option<[LocalStorage](./cj-state-rendering-appstatemanagement.md#class-localstorage)> | Yes | - | The persistent storage object. |
+| parent | Option\<[CustomView](#class-customview)> | Yes | - | Parent component. |
+| localStorage | Option<[LocalStorage](./cj-state-rendering-appstatemanagement.md#class-localstorage)> | Yes | - | Persistent storage object. |
 
 ### static func create(CustomView)
 
@@ -388,15 +404,13 @@ public static func create(view: CustomView)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| view | [CustomView](#class-customview) | Yes | - | - |
-
-### static func createRecycle(CustomView, Bool, String, () -> Unit)
+| view | [CustomView](#class-customview) | Yes | - | - |### static func createRecycle(CustomView, Bool, String, () -> Unit)
 
 ```cangjie
 public static func createRecycle(view: CustomView, isRecycling: Bool, name: String, callback: () -> Unit)
@@ -410,12 +424,14 @@ public static func createRecycle(view: CustomView, isRecycling: Bool, name: Stri
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | view | [CustomView](#class-customview) | Yes | - | - |
 | isRecycling | Bool | Yes | - | - |
 | name | String | Yes | - | - |
-| callback | ()->Unit | Yes | - | - |### func aboutToBeDeleted()
+| callback | ()->Unit | Yes | - | - |
+
+### func aboutToBeDeleted()
 
 ```cangjie
 public func aboutToBeDeleted(): Unit
@@ -425,7 +441,7 @@ public func aboutToBeDeleted(): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func aboutToRecycleInternal()
 
@@ -437,7 +453,7 @@ public override func aboutToRecycleInternal(): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func aboutToReuseInternal(ReuseParams)
 
@@ -449,11 +465,11 @@ public override func aboutToReuseInternal(param: ReuseParams): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | param | [ReuseParams](../apis/BasicServicesKit/cj-apis-base.md#class-reuseparams) | Yes | - | - |
 
@@ -467,11 +483,11 @@ public func addChildById(id: Int64, child: CustomView): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | id | Int64 | Yes | - | - |
 | child | [CustomView](#class-customview) | Yes | - | - |
@@ -486,13 +502,13 @@ public func addProvideVar(value: ObservedPropertyAbstract, name: String)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>) | Yes | - | - |
+| value | ObservedPropertyAbstract | Yes | - | - |
 | name | String | Yes | - | - |
 
 ### func build()
@@ -505,7 +521,7 @@ public func build(): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func declareWatch\<T>(ObservedProperty\<T>, () -> Unit)
 
@@ -517,11 +533,11 @@ public func declareWatch<T>(propMember: ObservedProperty<T>, callBack: () -> Uni
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | propMember | [ObservedProperty](./cj-state-rendering-componentstatemanagement.md#class-observedproperty)\<T> | Yes | - | - |
 | callBack | ()->Unit | Yes | - | - |
@@ -536,11 +552,11 @@ public func delayCompleteRerender(deep: Bool)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | deep | Bool | Yes | - | - |
 
@@ -554,7 +570,7 @@ public func flushDelayCompleteRerender()
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func forEachUpdateFunction\<T>(Int64, CollectionEx\<T>, (T,Int64) -> Unit, (T,Int64) -> String)
 
@@ -576,11 +592,11 @@ public func forEachUpdateFunction<T>(
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | elmtId | Int64 | Yes | - | - |
 | arr | [CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T> | Yes | - | - |
@@ -597,11 +613,11 @@ public override func forceCompleteRerender(deep: Bool): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | deep | Bool | Yes | - | Whether to recursively refresh child components. |
 
@@ -615,7 +631,7 @@ public func getLocalStorage(): LocalStorage
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -633,13 +649,13 @@ public func id(): Int64
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Int64 | Returns the object with the specified target control's ID attribute. |
+| Int64 | Returns the object specifying the target control's ID attribute. |
 
 ### func ifElseBranchUpdateFunction(Int32, () -> Unit)
 
@@ -651,11 +667,11 @@ public func ifElseBranchUpdateFunction(branchId: Int32, branchFunc: () -> Unit)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | branchId | Int32 | Yes | - | - |
 | branchFunc | ()->Unit | Yes | - | - |
@@ -670,11 +686,11 @@ public func initializeConsume(name: String): ObservedPropertyAbstract
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | name | String | Yes | - | - |
 
@@ -682,7 +698,7 @@ public func initializeConsume(name: String): ObservedPropertyAbstract
 
 | Type | Description |
 |:----|:----|
-| [ObservedPropertyAbstract](<font color="red" face="bold">please add link</font>) | - |
+| ObservedPropertyAbstract | - |
 
 ### func markLazyForEachProcess(String)
 
@@ -694,11 +710,11 @@ public func markLazyForEachProcess(groupId: String): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | groupId | String | Yes | - | - |
 
@@ -712,11 +728,11 @@ public func notifyRead(stateInfo: String): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | stateInfo | String | Yes | - | - |
 
@@ -730,11 +746,11 @@ public func observeComponentCreation(compilerAssignedUpdateFunc: UpdateFuncNew):
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | compilerAssignedUpdateFunc | UpdateFuncNew | Yes | - | - |
 
@@ -748,11 +764,11 @@ public func observeRecycleComponentCreation(name: String, recycleUpdateFunc: Rec
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | name | String | Yes | - | - |
 | recycleUpdateFunc | RecycleUpdateFunc | Yes | - | - |
@@ -767,11 +783,11 @@ public func onStateUpdate(stateInfo: String, dependentElmtIds: ArrayList<Int64>)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | stateInfo | String | Yes | - | - |
 | dependentElmtIds | ArrayList\<Int64> | Yes | - | - |
@@ -786,11 +802,11 @@ public func purgeDeletedElmtIds(rmElmtIds: ArrayList<Int64>)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | rmElmtIds | ArrayList\<Int64> | Yes | - | - |
 
@@ -804,11 +820,11 @@ public func removeChildById(id: Int64): Bool
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | id | Int64 | Yes | - | - |
 
@@ -828,11 +844,11 @@ public func removeChildGroupById(groupId: String): Bool
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | groupId | String | Yes | - | - |
 
@@ -852,7 +868,7 @@ public func resetLazyForEachProcess(): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func resetRecycleCustomNode()
 
@@ -864,7 +880,7 @@ public func resetRecycleCustomNode()
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func setParent(Option\<CustomView>)
 
@@ -876,11 +892,11 @@ public func setParent(parent: Option<CustomView>): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | parent | Option<[CustomView](#class-customview)> | Yes | - | - |
 
@@ -894,7 +910,7 @@ public func updateDirtyElements()
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func updateElement(Int64)
 
@@ -906,14 +922,13 @@ public func updateElement(elmtId: Int64): Unit
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| elmtId | Int64 | Yes | - | - |```markdown
-## class ForEach
+| elmtId | Int64 | Yes | - | - |## class ForEach
 
 ```cangjie
 public class ForEach <: UINodeBase {
@@ -929,7 +944,7 @@ public class ForEach <: UINodeBase {
 
 **Parent Type:**
 
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
+- UINodeBase
 
 ### init(() -> Unit)
 
@@ -945,21 +960,21 @@ public init(subcomponent: () -> Unit)
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|subcomponent|()->Unit|Yes|-|Subcomponent.|
+| subcomponent | ()->Unit | Yes | - | Subcomponent. |
 
 ### static func create\<T>(Int64, CustomView, CollectionEx\<T>, ItemGenFuncType\<T>, KeyGenFuncType\<T>)
 
 ```cangjie
 public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: CollectionEx<T>,
-    itemGeneratorFunc!: ItemGenFuncType<T>,
-    keyGeneratorFunc!: KeyGenFuncType<T> = {
-        realData: T, idx: Int64 => match (realData) {
-            case realDataStr: ToString => realDataStr.toString()
-            case _ => idx.toString()
-        }
-    }): Unit
+itemGeneratorFunc!: ItemGenFuncType<T>,
+keyGeneratorFunc!: KeyGenFuncType<T> = {
+    realData: T, idx: Int64 => match (realData) {
+        case realDataStr: ToString => realDataStr.toString()
+        case _ => idx.toString()
+    }
+}): Unit
 ```
 
 **Function:** For UI framework usage.
@@ -970,13 +985,13 @@ public static func create<T>(viewID: Int64, parentView: CustomView, dataSource: 
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|viewID|Int64|Yes|-|Component ID.|
-|parentView|[CustomView](#class-customview)|Yes|-|Parent component.|
-|dataSource|[CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|Yes|-|Data source.|
-|itemGeneratorFunc|ItemGenFuncType\<T>|Yes|-|**Named parameter.** Component generator function.|
-|keyGeneratorFunc|KeyGenFuncType\<T>|No|{ realData: T, idx: Int64 => match(realData) {<br/>case realDataStr: ToString => realDataStr.toString()<br/>case _ => idx.toString()<br/>} }|**Named parameter.** Key generator function.|
+| viewID | Int64 | Yes | - | Component ID. |
+| parentView | [CustomView](#class-customview) | Yes | - | Parent component. |
+| dataSource | [CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T> | Yes | - | Data source. |
+| itemGeneratorFunc | ItemGenFuncType\<T> | Yes | - | **Named parameter.** Component generator function. |
+| keyGeneratorFunc | KeyGenFuncType\<T> | No | { realData: T, idx: Int64 =>} | **Named parameter.** Key generator function. |
 
 ### static func create()
 
@@ -1034,6 +1049,10 @@ public open class HybridComponentBase <: SharedObject {}
 
 **Function:** Base class for hybrid components, used by hybrid frameworks.
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 **Parent Type:**
 
 - [SharedObject](../arkinterop/cj-apis-ark_interop.md#class-sharedobject)
@@ -1045,15 +1064,15 @@ public static func registerHybridComponent(compName: String, loadHandle: () -> C
     unloadHandle: () -> Unit)
 ```
 
-**Function:** Registers hybrid components, for UI framework usage.
+**Function:** Registers a hybrid component for UI framework usage.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|compName|String|Yes|-|Component name.|
-|loadHandle|()->CPointer\<Unit>|Yes|-|Component load handler.|
-|unloadHandle|()->Unit|Yes|-|Component unload handler.|
+| compName | String | Yes | - | Component name. |
+| loadHandle | ()->CPointer\<Unit> | Yes | - | Component load handler. |
+| unloadHandle | ()->Unit | Yes | - | Component unload handler. |
 
 ## class If
 
@@ -1063,7 +1082,7 @@ public class If <: UINodeBase {
 }
 ```
 
-**Function:** Definition structure for if/else components, used by UI framework.
+**Function:** Definition structure for if/else components, used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1071,7 +1090,7 @@ public class If <: UINodeBase {
 
 **Parent Type:**
 
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
+- UINodeBase
 
 ### init(() -> Unit)
 
@@ -1079,7 +1098,7 @@ public class If <: UINodeBase {
 public init(subcomponent: () -> Unit)
 ```
 
-**Function:** Creates an If type object.
+**Function:** Creates an If-type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1087,9 +1106,9 @@ public init(subcomponent: () -> Unit)
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|subcomponent|()->Unit|Yes|-|Subcomponent.|
+| subcomponent | ()->Unit | Yes | - | Subcomponent. |
 
 ### static func branchId(Int32)
 
@@ -1105,9 +1124,9 @@ public static func branchId(value: Int32): Unit
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|value|Int32|Yes|-|-|
+| value | Int32 | Yes | - | - |
 
 ### static func getBranchId()
 
@@ -1123,9 +1142,9 @@ public static func getBranchId(): Int32
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Int32|-|
+| Int32 | - |
 
 ### func initial()
 
@@ -1154,18 +1173,14 @@ public func update(): Unit
 ## class InteractableView
 
 ```cangjie
-abstract sealed class InteractableView <: RemoteData {}
+abstract sealed class InteractableView {}
 ```
 
-**Function:** Base class for components. For more methods, refer to the general events section of Cangjie components.
+**Function:** Base class for components. For more methods, refer to the common events section of Cangjie components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-**Parent Type:**
-
-- [RemoteData](<font color="red" face="bold">please add link</font>)
 
 ### func onAppear(() -> Unit)
 
@@ -1181,9 +1196,9 @@ public func onAppear(event: () -> Unit): This
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|event|()->Unit|Yes|-|Callback function triggered when the component appears.|
+| event | ()->Unit | Yes | - | Callback function triggered when the component appears. |
 
 ### func onAreaChange((Area,Area) -> Unit)
 
@@ -1193,7 +1208,7 @@ public func onAreaChange(event: (Area, Area) -> Unit): This
 
 **Function:** Triggered when the component's area changes. Only responds to callbacks caused by layout changes affecting component size or position.
 
-Rendering attribute changes caused by drawing (e.g., translate, offset) will not trigger callbacks. Components whose position is determined by drawing changes (e.g., bindSheet) will also not trigger callbacks.
+Rendering attribute changes due to drawing (e.g., translate, offset) will not trigger callbacks. Components whose position is determined by drawing changes (e.g., bindSheet) will also not trigger callbacks.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1201,9 +1216,9 @@ Rendering attribute changes caused by drawing (e.g., translate, offset) will not
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|event|([Area](./cj-common-types.md#class-area),[Area](./cj-common-types.md#class-area))->Unit|Yes|-|Callback triggered when the component's area changes.<br/>Parameter 1: Component area information before the change.<br/>Parameter 2: Component area information after the change.|
+| event | ([Area](./cj-common-types.md#class-area),[Area](./cj-common-types.md#class-area))->Unit | Yes | - | Callback triggered when the component's area changes.<br/>Parameter 1: Component area information before the change.<br/>Parameter 2: Component area information after the change. |
 
 ### func onBlur(() -> Unit)
 
@@ -1211,7 +1226,7 @@ Rendering attribute changes caused by drawing (e.g., translate, offset) will not
 public func onBlur(event: () -> Unit): This
 ```
 
-**Function:** Triggered when the component loses focus.
+**Function:** Triggered when the current component loses focus.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1219,27 +1234,9 @@ public func onBlur(event: () -> Unit): This
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|event|()->Unit|Yes|-|Callback function triggered when the component loses focus.|
-
-### func onClick((ClickEvent) -> Unit)
-
-```cangjie
-public func onClick(event: (ClickEvent) -> Unit): This
-```
-
-**Function:** Triggered when the component is clicked.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([ClickEvent](#class-clickevent))->Unit|Yes|-|Callback function triggered when the component is clicked.|
+| event | ()->Unit | Yes | - | Callback function triggered when the component loses focus. |
 
 ### func onDisAppear(() -> Unit)
 
@@ -1255,142 +1252,9 @@ public func onDisAppear(event: () -> Unit): This
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|event|()->Unit|Yes|-|Callback function triggered when the component disappears.|
-
-### func onDragEnter((DragInfo) -> Unit)
-
-```cangjie
-public func onDragEnter(event: (DragInfo) -> Unit): This
-```
-
-**Function:** Triggered when a drag enters the component's bounds.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|Yes|-|Callback function triggered when a drag enters the component's bounds.|
-
-### func onDragLeave((DragInfo) -> Unit)
-
-```cangjie
-public func onDragLeave(event: (DragInfo) -> Unit): This
-```
-
-**Function:** Triggered when a drag leaves the component's bounds.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|Yes|-|Callback function triggered when a drag leaves the component's bounds.|
-
-### func onDragMove((DragInfo) -> Unit)
-
-```cangjie
-public func onDragMove(event: (DragInfo) -> Unit): This
-```
-
-**Function:** Triggered when a drag moves within the component's bounds.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|Yes|-|Callback function triggered when a drag moves within the component's bounds.|
-
-### func onDragStart((DragInfo) -> DragItemInfo)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> DragItemInfo): This
-```
-
-**Function:** Triggered when dragging starts on the bound component after a long press (≥500ms) and finger movement (≥10vp).
-
-For components that natively support drag-out capability, if the developer sets onDragStart, the developer's onDragStart takes precedence, and the system's default drag-out capability is determined based on execution:
-
-- If the developer returns a custom drag image, the system's default drag image is not used.
-- If the developer sets drag data, the system's default drag data is not populated.
-
-Text components [Search](./cj-text-input-search.md), [TextInput](./cj-text-input-textinput.md), [TextArea](./cj-text-input-textarea.md), [RichEditor](./cj-text-input-richeditor.md) do not support custom drag images for selected text content. When onDragStart is used with menu preview or with components that natively support drag-out, custom content on previews and menu items cannot be dragged.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->[DragItemInfo](#class-dragiteminfo)|Yes|-|Callback function triggered when dragging starts. Input parameter is drag event information, including drag point coordinates. Return parameter is component information displayed during dragging.|
-
-### func onDragStart((DragInfo) -> CustomBuilder)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> CustomBuilder): This
-```
-
-**Function:** Overloaded drag event. Triggered when dragging starts on the bound component after a long press (≥500ms) and finger movement (≥10vp).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->[CustomBuilder](./cj-common-types.md#type-custombuilder)|Yes|-|Callback function triggered when dragging starts. Input parameter is drag event information, including drag point coordinates. Return parameter is component information displayed during dragging, used with @Builder and bind methods.|
-
-### func onDragStart((DragInfo) -> Unit)
-
-```cangjie
-public func onDragStart(event: (DragInfo) -> Unit): This
-```
-
-**Function:** Overloaded drag event. Triggered when dragging starts on the bound component after a long press (≥500ms) and finger movement (≥10vp).
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|Yes|-|Callback function triggered when dragging starts. Input parameter is drag event information, including drag point coordinates. Return parameter is component information displayed during dragging.|
-
-### func onDrop((DragInfo) -> Unit)
-
-```cangjie
-public func onDrop(event: (DragInfo) -> Unit): This
-```
-
-**Function:** Components bound with this event can serve as drag release targets. Triggered when drag behavior stops within the component's bounds.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([DragInfo](#class-draginfo))->Unit|Yes|-|Callback function triggered when drag behavior stops within the component's bounds. Input parameter is drag event information, including drag point coordinates.|
+| event | ()->Unit | Yes | - | Callback function triggered when the component disappears. |
 
 ### func onFocus(() -> Unit)
 
@@ -1406,17 +1270,17 @@ public func onFocus(event: () -> Unit): This
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|event|()->Unit|Yes|-|Callback function triggered when the component gains focus.|
+| event | ()->Unit | Yes | - | Callback function triggered when the component gains focus. |
 
-### func onHover((Bool) -> Unit)
+### func onVisibleAreaChange(Array\<Float64>, (Bool,Float64) -> Unit)
 
 ```cangjie
-public func onHover(event: (Bool) -> Unit): This
+public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -> Unit): This
 ```
 
-**Function:** Triggered when the mouse hovers over the component.
+**Function:** Triggered when the component's visible area changes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1424,69 +1288,18 @@ public func onHover(event: (Bool) -> Unit): This
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|event|(Bool)->Unit|Yes|-|Callback function triggered when the mouse hover state changes.|
+| raitos | Array\<Float64> | Yes | - | Array of visible area ratios. |
+| event | (Bool,Float64)->Unit | Yes | - | Callback function triggered when the visible area changes. |
 
-### func onKeyEvent((KeyEvent) -> Unit)
+## class LocalStorageInterOp
 
 ```cangjie
-public func onKeyEvent(event: (KeyEvent) -> Unit): This
+class LocalStorageInterOp {}
 ```
 
-**Function:** Triggered when a key action occurs while the bound component has focus.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([KeyEvent](#class-keyevent))->Unit|Yes|-|Callback function triggered when a key action occurs while the bound component has focus.|
-
-### func onMouse((MouseEvent) -> Unit)
-
-```cangjie
-public func onMouse(event: (MouseEvent) -> Unit): This
-```
-
-**Function:** Triggered when the component is clicked by a mouse button or when the mouse moves over the component.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([MouseEvent](#class-mouseevent))->Unit|Yes|-|Callback function triggered when the component is clicked by a mouse button or when the mouse moves over it. MouseEvent parameter includes timestamp, mouse button, action, coordinates of the click point relative to the entire screen, and coordinates relative to the current component.|
-
-### func onTouch((TouchEvent) -> Unit)
-
-```cangjie
-public func onTouch(event: (TouchEvent) -> Unit): This
-```
-
-**Function:** Triggered by finger touch actions.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|event|([TouchEvent](#class-touche## class LocalStorageInterOp
-
-```cangjie
-public open class LocalStorageInterOp {}
-```
-
-**Description:** Class used internally by LocalStorage.
+**Function:** Class used internally by LocalStorage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1498,7 +1311,7 @@ public open class LocalStorageInterOp {}
 public static func getOrCreate(): LocalStorageInterOp
 ```
 
-**Description:** For UI framework usage.
+**Function:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1516,7 +1329,7 @@ public static func getOrCreate(): LocalStorageInterOp
 public func `prop`<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T>
 ```
 
-**Description:** For UI framework usage.
+**Function:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1524,302 +1337,313 @@ public func `prop`<T>(propName: String): ObservedProperty<T> where T <: JSIntero
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | <font color="red" face="bold">please add description</font> |
+| propName | String | Yes | - | Framework name. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [ObservedProperty](<font color="red" face="bold">please add link</font>)\<T> | The property name in LocalStorageInterOp. |
-
-### func aboutToBeDeleted()
+| ObservedProperty\<T> | Property name in LocalStorageInterOp. |### func aboutToBeDeleted()
 
 ```cangjie
+
 public func aboutToBeDeleted(): Bool
 ```
 
-**Description:** Cancels the one-way/two-way synchronization relationship between the ObservedProperty instance and AppStorage/LocalStorage, and invalidates the ObservedProperty instance. After calling this method, the ObservedProperty instance can no longer be used to call set or get methods.
+**Function:** Cancels the one-way/two-way synchronization relationship between the ObservedProperty instance and AppStorage/LocalStorage, and invalidates the ObservedProperty instance. After calling the aboutToBeDeleted method, the set or get methods of the ObservedProperty instance can no longer be used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | - |
+|Bool|-|
 
 ### func clear()
 
 ```cangjie
+
 public func clear(): Bool
 ```
 
-**Description:** Deletes all properties in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Deletes all properties in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if all properties in LocalStorageInterOp have no subscribers and are successfully deleted. Otherwise, returns false. |
+|Bool|Returns true if the properties in LocalStorageInterOp no longer have subscribers and are successfully deleted. Otherwise, returns false.|
 
 ### func delete(String)
 
 ```cangjie
+
 public func delete(propName: String): Bool
 ```
 
-**Description:** Deletes the property corresponding to propName in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Deletes the property corresponding to propName in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorageInterOp. |
+|propName|String|Yes|-|The property name in LocalStorageInterOp.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the corresponding property exists in [LocalStorageInterOp](#class-localstorageinterop) and has no subscribers. Returns false if the property does not exist or still has subscribers. |
+|Bool|Returns true if the corresponding property exists in [LocalStorageInterOp](#class-localstorageinterop) and no longer has subscribers. Returns false if the property does not exist or still has subscribers.|
 
 ### func get\<T>(String) where T \<: JSInteropType \<T>
 
 ```cangjie
+
 public func get<T>(propName: String): T where T <: JSInteropType<T>
 ```
 
-**Description:** Gets the property value corresponding to propName in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Retrieves the property value corresponding to propName in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in [LocalStorageInterOp](#class-localstorageinterop). |
+|propName|String|Yes|-|The property name in [LocalStorageInterOp](#class-localstorageinterop).|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| T | The current component instance. |
+|T|The current component instance.|
 
 ### func has(String)
 
 ```cangjie
+
 public func has(propName: String): Bool
 ```
 
-**Description:** Checks whether the property corresponding to propName exists in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Determines whether the property corresponding to propName exists in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in [LocalStorageInterOp](#class-localstorageinterop). |
+|propName|String|Yes|-|The property name in [LocalStorageInterOp](#class-localstorageinterop).|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the property exists in [LocalStorageInterOp](#class-localstorageinterop). Otherwise, returns false. |
+|Bool|Returns true if the property corresponding to propName exists in [LocalStorageInterOp](#class-localstorageinterop). Otherwise, returns false.|
 
 ### func hasChanged(JSContext, JSCallInfo)
 
 ```cangjie
+
 public func hasChanged(context: JSContext, callInfo: JSCallInfo): JSValue
 ```
 
-**Description:** For UI framework usage.
+**Function:** Used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| context | [JSContext](<font color="red" face="bold">please add link</font>) | Yes | - | The interoperability context. |
-| callInfo | [JSCallInfo](<font color="red" face="bold">please add link</font>) | Yes | - | Information about the ArkTS function call. |
+|context|JSContext|Yes|-|The interoperability context.|
+|callInfo|JSCallInfo|Yes|-|Relevant information about the ArkTS function call.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| [JSValue](<font color="red" face="bold">please add link</font>) | - |
+|JSValue|-|
 
 ### func keys()
 
 ```cangjie
+
 public func keys()
 ```
 
-**Description:** Returns all property names in LocalStorageInterOp.
+**Function:** Returns all property names in LocalStorageInterOp.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func link\<T>(String) where T \<: JSInteropType \<T>
 
 ```cangjie
+
 public func link<T>(propName: String): ObservedProperty<T> where T <: JSInteropType<T>
 ```
 
-**Description:** Establishes a two-way data binding with the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Establishes a two-way data binding with the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in LocalStorageInterOp. |
+|propName|String|Yes|-|The property name in LocalStorageInterOp.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| [ObservedProperty](<font color="red" face="bold">please add link</font>)\<T> | The two-way bound data. |
+|ObservedProperty\<T>|The two-way bound data.|
 
 ### func set\<T>(String, T) where T \<: JSInteropType \<T>
 
 ```cangjie
+
 public func set<T>(propName: String, value: T): Bool where T <: JSInteropType<T>
 ```
 
-**Description:** Sets the value of the property corresponding to propName in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Sets the value of the property corresponding to propName in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in [LocalStorageInterOp](#class-localstorageinterop). |
-| value | T | Yes | - | The property value. |
+|propName|String|Yes|-|The property name in [LocalStorageInterOp](#class-localstorageinterop).|
+|value|T|Yes|-|The property value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns false if the property does not exist in [LocalStorageInterOp](#class-localstorageinterop) or the setting fails. Returns true if the setting is successful. |
+|Bool|Returns false if the property corresponding to propName does not exist in [LocalStorageInterOp](#class-localstorageinterop) or the setting fails. Returns true if the setting is successful.|
 
 ### func setAndLink\<T>(String, T) where T \<: JSInteropType \<T>
 
 ```cangjie
+
 public func setAndLink<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T>
 ```
 
-**Description:** Establishes a two-way data binding with the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Establishes a two-way data binding with the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in AppStorage. |
-| value | T | Yes | - | If propName does not exist in [LocalStorageInterOp](#class-localstorageinterop), defaultValue is used to initialize the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop). |
+|propName|String|Yes|-|The property name in AppStorage.|
+|value|T|Yes|-|If propName does not exist in [LocalStorageInterOp](#class-localstorageinterop), defaultValue is used to initialize the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| [ObservedProperty](<font color="red" face="bold">please add link</font>)\<T> | The two-way bound data for the corresponding property. |
+|ObservedProperty\<T>|The two-way bound data for the property corresponding to propName.|
 
 ### func setAndProp\<T>(String, T) where T \<: JSInteropType \<T>
 
 ```cangjie
+
 public func setAndProp<T>(propName: String, value: T): ObservedProperty<T> where T <: JSInteropType<T>
 ```
 
-**Description:** Establishes a one-way property binding with the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Establishes a one-way property binding with the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in [LocalStorageInterOp](#class-localstorageinterop). |
-| value | T | Yes | - | If propName does not exist in [LocalStorageInterOp](#class-localstorageinterop), defaultValue is used to initialize the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop). |
+|propName|String|Yes|-|The property name in [LocalStorageInterOp](#class-localstorageinterop).|
+|value|T|Yes|-|If propName does not exist in [LocalStorageInterOp](#class-localstorageinterop), defaultValue is used to initialize the corresponding propName in [LocalStorageInterOp](#class-localstorageinterop).|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| [ObservedProperty](<font color="red" face="bold">please add link</font>)\<T> | The one-way bound data. |
+|ObservedProperty\<T>|The one-way bound data.|
 
 ### func setOrCreate\<T>(String, T) where T \<: JSInteropType \<T>
 
 ```cangjie
+
 public func setOrCreate<T>(propName: String, value: T): Bool where T <: JSInteropType<T>
 ```
 
-**Description:** Sets the value of the property corresponding to propName to newValue.
+**Function:** Sets the value of the property corresponding to propName to newValue.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| propName | String | Yes | - | The property name in [LocalStorageInterOp](#class-localstorageinterop). |
-| value | T | Yes | - | The property value. |
+|propName|String|Yes|-|The property name in [LocalStorageInterOp](#class-localstorageinterop).|
+|value|T|Yes|-|The property value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | The result of the property value setting. |
+|Bool|The result of setting the property value.|
 
 ### func size()
 
 ```cangjie
+
 public func size(): Int64
 ```
 
-**Description:** Returns the number of properties in [LocalStorageInterOp](#class-localstorageinterop).
+**Function:** Returns the number of properties in [LocalStorageInterOp](#class-localstorageinterop).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Int64 | The number of properties in [LocalStorageInterOp](#class-localstorageinterop). |
+|Int64|The number of properties in [LocalStorageInterOp](#class-localstorageinterop).|
 
 ## class Observable
 
@@ -1827,101 +1651,106 @@ public func size(): Int64
 public open class Observable {}
 ```
 
-**Description:** Base class used for framework state management.
+**Function:** The base class used for framework state management.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func isSubscribed(Observer)
 
 ```cangjie
+
 public func isSubscribed(observer: Observer): Bool
 ```
 
-**Description:** Checks whether the observer is subscribed. For UI framework usage.
+**Function:** Determines whether an observer is subscribed. Used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| observer | [Observer](#interface-observer) | Yes | - | The observer. |
+|observer|[Observer](#interface-observer)|Yes|-|The observer.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | The subscription result. |
+|Bool|The subscription result.|
 
 ### func numberOfSubscribers()
 
 ```cangjie
+
 public func numberOfSubscribers(): Int64
 ```
 
-**Description:** For UI framework usage.
+**Function:** Used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Int64 | The number of observers. |
+|Int64|The number of observers.|
 
 ### func subscribe(Observer)
 
 ```cangjie
+
 public func subscribe(observer: Observer): Unit
 ```
 
-**Description:** For UI framework usage.
+**Function:** Used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| observer | [Observer](#interface-observer) | Yes | - | The observer. |
+|observer|[Observer](#interface-observer)|Yes|-|The observer.|
 
 ### func unsubscribe(Observer)
 
 ```cangjie
+
 public func unsubscribe(observer: Observer): Unit
 ```
 
-**Description:** For UI framework usage.
+**Function:** Used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| observer | [Observer](#interface-observer) | Yes | - | The observer. |
+|observer|[Observer](#interface-observer)|Yes|-|The observer.|
 
 ### func unsubscribeAll()
 
 ```cangjie
+
 public func unsubscribeAll(): Unit
 ```
 
-**Description:** For UI framework usage.
+**Function:** Used by the UI framework.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21## class ObservedComplexAbstract
+**Initial Version:** 21## class ObservedComplexAbstract
 
 ```cangjie
 public abstract class ObservedComplexAbstract <: Observable {}
@@ -1933,7 +1762,7 @@ public abstract class ObservedComplexAbstract <: Observable {}
 
 **Since:** 21
 
-**Parent Class:**
+**Inherits from:**
 
 - [Observable](#class-observable)
 
@@ -1952,7 +1781,7 @@ public func addPropsInfo(info: String): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | info | String | Yes | - | Property information. |
 
@@ -1969,7 +1798,7 @@ public func getInfo(): String
 
 **Since:** 21
 
-**Return Value:**
+**Return value:**
 
 | Type | Description |
 |:----|:----|
@@ -1988,7 +1817,7 @@ public func getPropsInfo(): ArrayList<String>
 
 **Since:** 21
 
-**Return Value:**
+**Return value:**
 
 | Type | Description |
 |:----|:----|
@@ -2009,7 +1838,7 @@ public func inheritObservers(newObservers: ArrayList<Observer>)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | newObservers | ArrayList\<[Observer](#interface-observer)> | Yes | - | List of observers. |
 
@@ -2041,7 +1870,7 @@ public func set(v: ObservedComplexAbstract): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | v | [ObservedComplexAbstract](#class-observedcomplexabstract) | Yes | - | - |
 
@@ -2060,7 +1889,7 @@ public func setDependentElementIds(dependentElementIds: ArrayList<Int64>)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | dependentElementIds | ArrayList\<Int64> | Yes | - | - |
 
@@ -2079,7 +1908,7 @@ public func setInfo(info: String)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | info | String | Yes | - | - |
 
@@ -2098,7 +1927,7 @@ public func subscribeInner(observer: Observer): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | observer | [Observer](#interface-observer) | Yes | - | Observer. |
 
@@ -2117,7 +1946,7 @@ public func unsubscribeInner(observer: Observer): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | observer | [Observer](#interface-observer) | Yes | - | Observer. |
 
@@ -2133,7 +1962,7 @@ public abstract class ObservedObject <: ObservedComplexAbstract {}
 
 **Since:** 21
 
-**Parent Class:**
+**Inherits from:**
 
 - [ObservedComplexAbstract](#class-observedcomplexabstract)
 
@@ -2152,7 +1981,7 @@ public func addPublishVar(publishVar: ObservedPropertyAbstract)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | publishVar | [ObservedPropertyAbstract](#class-observedpropertyabstract) | Yes | - | - |
 
@@ -2169,7 +1998,7 @@ public func getPublishVar(): ArrayList<ObservedPropertyAbstract>
 
 **Since:** 21
 
-**Return Value:**
+**Return value:**
 
 | Type | Description |
 |:----|:----|
@@ -2190,7 +2019,7 @@ public func subscribeInner(observer: Observer): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | observer | [Observer](#interface-observer) | Yes | - | Observer. |
 
@@ -2209,7 +2038,7 @@ public func unsubscribeInner(observer: Observer): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | observer | [Observer](#interface-observer) | Yes | - | Observer. |
 
@@ -2217,7 +2046,6 @@ public func unsubscribeInner(observer: Observer): Unit
 
 ```cangjie
 public abstract class ObservedPropertyAbstract <: Observable {
-
 
     public init(info: String)
 }
@@ -2229,7 +2057,7 @@ public abstract class ObservedPropertyAbstract <: Observable {
 
 **Since:** 21
 
-**Parent Class:**
+**Inherits from:**
 
 - [Observable](#class-observable)
 
@@ -2248,7 +2076,7 @@ public init(info: String)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | info | String | Yes | - | - |
 
@@ -2265,7 +2093,7 @@ public func getInfo(): String
 
 **Since:** 21
 
-**Return Value:**
+**Return value:**
 
 | Type | Description |
 |:----|:----|
@@ -2299,7 +2127,7 @@ public func purgeDependencyOnElmtId(rmElmtId: Int64): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | rmElmtId | Int64 | Yes | - | - |
 
@@ -2318,7 +2146,7 @@ public func subscribeEx(observer: Observer): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | observer | [Observer](#interface-observer) | Yes | - | Observer. |
 
@@ -2337,16 +2165,15 @@ public func unsubscribeEx(observer: Observer): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| observer | [Observer](#interface-observer) | Yes | - | Observer. |```markdown
-## class SubscriberManager
+| observer | [Observer](#interface-observer) | Yes | - | Observer. |## class SubscriberManager
 
 ```cangjie
 public class SubscriberManager {}
 ```
 
-**Function:** Base class used for framework state management.
+**Description:** Base class used for framework state management.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2358,7 +2185,7 @@ public class SubscriberManager {}
 public static func getInstance(): SubscriberManager
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2368,7 +2195,7 @@ public static func getInstance(): SubscriberManager
 
 | Type | Description |
 |:----|:----|
-| [SubscriberManager](#class-subscribermanager) | Subscriber manager. |
+|[SubscriberManager](#class-subscribermanager)|Subscriber manager.|
 
 ### func add(Observer)
 
@@ -2376,7 +2203,7 @@ public static func getInstance(): SubscriberManager
 public func add(value: Observer): Bool
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2384,15 +2211,15 @@ public func add(value: Observer): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Observer](#interface-observer) | Yes | - | Observer. |
+|value|[Observer](#interface-observer)|Yes|-|Observer.|
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | - |
+|Bool|-|
 
 ### func delete(Observer)
 
@@ -2400,7 +2227,7 @@ public func add(value: Observer): Bool
 public func delete(value: Observer): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2408,9 +2235,9 @@ public func delete(value: Observer): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Observer](#interface-observer) | Yes | - | Observer. |
+|value|[Observer](#interface-observer)|Yes|-|Observer.|
 
 ### func dumpSubscriberInfo()
 
@@ -2418,7 +2245,7 @@ public func delete(value: Observer): Unit
 public func dumpSubscriberInfo(): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2430,7 +2257,7 @@ public func dumpSubscriberInfo(): Unit
 public func get(id: Int64): Option<Observer>
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2438,15 +2265,15 @@ public func get(id: Int64): Option<Observer>
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| id | Int64 | Yes | - | Observer ID. |
+|id|Int64|Yes|-|Observer ID.|
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [Option](<font color="red" face="bold">please add link</font>)\<[Observer](#interface-observer)> | Observer. |
+|Option\<[Observer](#interface-observer)>|Observer.|
 
 ### func has(Int64)
 
@@ -2454,7 +2281,7 @@ public func get(id: Int64): Option<Observer>
 public func has(id: Int64): Bool
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2462,15 +2289,15 @@ public func has(id: Int64): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| id | Int64 | Yes | - | Observer ID. |
+|id|Int64|Yes|-|Observer ID.|
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Judgment result. |
+|Bool|Determination result.|
 
 ### func makeId()
 
@@ -2478,7 +2305,7 @@ public func has(id: Int64): Bool
 public func makeId(): Int64
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2488,7 +2315,7 @@ public func makeId(): Int64
 
 | Type | Description |
 |:----|:----|
-| Int64 | ID. |
+|Int64|ID.|
 
 ### func sizeOfManager()
 
@@ -2496,7 +2323,7 @@ public func makeId(): Int64
 public func sizeOfManager(): Int64
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2506,7 +2333,7 @@ public func sizeOfManager(): Int64
 
 | Type | Description |
 |:----|:----|
-| Int64 | Manager size. |
+|Int64|Manager size.|
 
 ## class LegalCallCheck
 
@@ -2514,7 +2341,7 @@ public func sizeOfManager(): Int64
 public class LegalCallCheck {}
 ```
 
-**Function:** Checks if component generation is legal. For UI framework usage.
+**Description:** Checks whether component generation is legal. For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2526,13 +2353,13 @@ public class LegalCallCheck {}
 public static func check(_: ViewBuilder)
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| _ | [ViewBuilder](<font color="red" face="bold">please add link</font>) | Yes | - | For UI framework usage. |
+|_|ViewBuilder|Yes|-|For UI framework usage.|
 
 ### static func check(CustomView)
 
@@ -2540,13 +2367,13 @@ public static func check(_: ViewBuilder)
 public static func check(_: CustomView)
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| _ | [CustomView](<font color="red" face="bold">please add link</font>) | Yes | - | For UI framework usage. |
+|_|CustomView|Yes|-|For UI framework usage.|
 
 ## class View
 
@@ -2554,13 +2381,13 @@ public static func check(_: CustomView)
 public open class View <: ViewBase {}
 ```
 
-**Function:** Base class for UI framework usage.
+**Description:** Base class for UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-**Parent Type:**
+**Parent Class:**
 
 - [ViewBase](#class-viewbase)
 
@@ -2570,7 +2397,7 @@ public open class View <: ViewBase {}
 public static func create(view: View): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2578,9 +2405,9 @@ public static func create(view: View): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| view | [View](#class-view) | Yes | - | - |
+|view|[View](#class-view)|Yes|-|-|
 
 ### static func create(Int64)
 
@@ -2588,7 +2415,7 @@ public static func create(view: View): Unit
 public static func create(remoteId: Int64): View
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2596,15 +2423,15 @@ public static func create(remoteId: Int64): View
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| remoteId | Int64 | Yes | - | - |
+|remoteId|Int64|Yes|-|-|
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [View](#class-view) | - |
+|[View](#class-view)|-|
 
 ### static func createRecycle(View, Bool, String, () -> Unit)
 
@@ -2612,7 +2439,7 @@ public static func create(remoteId: Int64): View
 public static func createRecycle(componentCall: View, isRecycling: Bool, reuseId: String, callback: () -> Unit)
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2620,12 +2447,12 @@ public static func createRecycle(componentCall: View, isRecycling: Bool, reuseId
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| componentCall | [View](#class-view) | Yes | - | - |
-| isRecycling | Bool | Yes | - | - |
-| reuseId | String | Yes | - | - |
-| callback | ()->Unit | Yes | - | - |
+|componentCall|[View](#class-view)|Yes|-|-|
+|isRecycling|Bool|Yes|-|-|
+|reuseId|String|Yes|-|-|
+|callback|()->Unit|Yes|-|-|
 
 ### func deletedElmtIdsHaveBeenPurged(ArrayList\<Int64>)
 
@@ -2633,7 +2460,7 @@ public static func createRecycle(componentCall: View, isRecycling: Bool, reuseId
 public func deletedElmtIdsHaveBeenPurged(elmtIds: ArrayList<Int64>): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2641,9 +2468,9 @@ public func deletedElmtIdsHaveBeenPurged(elmtIds: ArrayList<Int64>): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| elmtIds | ArrayList\<Int64> | Yes | - | - |
+|elmtIds|ArrayList\<Int64>|Yes|-|-|
 
 ### func destroy()
 
@@ -2651,7 +2478,7 @@ public func deletedElmtIdsHaveBeenPurged(elmtIds: ArrayList<Int64>): Unit
 public func destroy(): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2663,7 +2490,7 @@ public func destroy(): Unit
 public func finishUpdateFunc(elmtId: Int64): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2671,9 +2498,9 @@ public func finishUpdateFunc(elmtId: Int64): Unit
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| elmtId | Int64 | Yes | - | - |
+|elmtId|Int64|Yes|-|-|
 
 ### func getDeletedElemtIds()
 
@@ -2681,7 +2508,7 @@ public func finishUpdateFunc(elmtId: Int64): Unit
 public func getDeletedElemtIds(): ArrayList<Int64>
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2691,7 +2518,7 @@ public func getDeletedElemtIds(): ArrayList<Int64>
 
 | Type | Description |
 |:----|:----|
-| ArrayList\<Int64> | - |
+|ArrayList\<Int64>|-|
 
 ### func isFirstRender()
 
@@ -2699,7 +2526,7 @@ public func getDeletedElemtIds(): ArrayList<Int64>
 public func isFirstRender(): Bool
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2709,7 +2536,7 @@ public func isFirstRender(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | - |
+|Bool|-|
 
 ### func isStatic()
 
@@ -2717,7 +2544,7 @@ public func isFirstRender(): Bool
 public func isStatic(): Bool
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2727,7 +2554,7 @@ public func isStatic(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | - |
+|Bool|-|
 
 ### func markNeedUpdate()
 
@@ -2735,7 +2562,7 @@ public func isStatic(): Bool
 public func markNeedUpdate(): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2747,7 +2574,7 @@ public func markNeedUpdate(): Unit
 public func markStatic(): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2759,7 +2586,7 @@ public func markStatic(): Unit
 public func needsUpdate(): Bool
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2769,7 +2596,7 @@ public func needsUpdate(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | - |
+|Bool|-|
 
 ### func resetRecycleCustomNode()
 
@@ -2777,7 +2604,7 @@ public func needsUpdate(): Bool
 public func resetRecycleCustomNode()
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2789,7 +2616,7 @@ public func resetRecycleCustomNode()
 public func restoreInstanceId(): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2801,12 +2628,11 @@ public func restoreInstanceId(): Unit
 public func syncInstanceId(): Unit
 ```
 
-**Function:** For UI framework usage.
+**Description:** For UI framework usage.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
-```## class ViewBase
+**Since:** 21## class ViewBase
 
 ```cangjie
 public open class ViewBase <: InteractableView & UINodeBase {}
@@ -2821,7 +2647,7 @@ public open class ViewBase <: InteractableView & UINodeBase {}
 **Parent Types:**
 
 - [InteractableView](#class-interactableview)
-- [UINodeBase](<font color="red" face="bold">please add link</font>)
+- UINodeBase
 
 ### func initial()
 
@@ -2846,7 +2672,6 @@ public open func update(): Unit
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
 
 ## class ViewBuilder
 
@@ -2880,7 +2705,7 @@ public let build:() -> Unit
 public ViewBuilder(public let build: () -> Unit)
 ```
 
-**Function:** Creates a ViewBuilder type object.
+**Function:** Creates a ViewBuilder object.
 
 **Parameters:**
 
@@ -3013,3 +2838,93 @@ func update(): Unit
 ```
 
 **Function:** Used by the UI framework.
+
+## class RemoteView
+
+```cangjie
+public abstract class RemoteView <: FFIData {
+    public init()
+}
+```
+
+**Function:** Base class for components used by the UI framework.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parent Types:**
+
+- [FFIData](./cj-common-types.md#ffidata)
+
+### init()
+
+```cangjie
+public init()
+```
+
+**Function:** Used by the UI framework.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### func build()
+
+```cangjie
+public func build(): Unit // abstract
+```
+
+**Function:** Used by the UI framework.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### func forceCompleteRerender(Bool)
+
+```cangjie
+public open func forceCompleteRerender(deep: Bool): Unit
+```
+
+**Function:** Used by the UI framework.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|deep|Bool|Yes|-|Whether to perform deep re-rendering.|
+
+### func purgeVariableDependenciesOnElmtId(Int64)
+
+```cangjie
+public open func purgeVariableDependenciesOnElmtId(_: Int64): Unit
+```
+
+**Function:** Used by the UI framework.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|_|Int64|Yes|-|Element ID to be removed.|
+
+### func rerender()
+
+```cangjie
+public open func rerender(): Unit
+```
+
+**Function:** Used by the UI framework.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21

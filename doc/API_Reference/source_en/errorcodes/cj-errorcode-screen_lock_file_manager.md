@@ -8,7 +8,7 @@ Invalid DataType.
 
 **Error Description**
 
-Invalid parameters were passed when calling the interface for applying or canceling sensitive data access permissions under lock screen.
+Parameter error occurred when calling the interface for applying or canceling sensitive data access permissions under lock screen.
 
 **Possible Causes**
 
@@ -16,9 +16,9 @@ This error code indicates parameter validation failure, where the input dataType
 
 **Resolution Steps**
 
-Check the input parameters and correct them to valid values.
+Check input parameters and correct them to valid values.
 
-## 29300002 System Service Abnormal Operation
+## 29300002 System Service Abnormal
 
 **Error Message**
 
@@ -26,18 +26,18 @@ The system ability work abnormally.
 
 **Error Description**
 
-This error code indicates abnormal operation of the system service.
+This error code indicates abnormal operation of system services.
 
 **Possible Causes**
 
-1. The lock screen sensitive data management service failed to start properly.
-2. IPC data read/write operations failed.
+1. The lock screen sensitive data management service failed to start normally.
+2. IPC data read/write operation failed.
 
 **Resolution Steps**
 
-The system service encountered internal operational issues. Please retry later or restart the device.
+Internal system service exception occurred. Please retry later or restart the device.
 
-## 29300003 Application Has Not Enabled Lock Screen Sensitive Data Protection
+## 29300003 Application Has Not Enabled Lock Screen Data Protection
 
 **Error Message**
 
@@ -49,12 +49,12 @@ The application has not enabled lock screen sensitive data protection functional
 
 **Possible Causes**
 
-1. The application did not configure the ohos.permission.PROTECT_SCREEN_LOCK_DATA permission in requestpermissions to enable lock screen sensitive data protection.
-2. The current hardware does not support lock screen sensitive data protection functionality.
+1. The application did not configure ohos.permission.PROTECT_SCREEN_LOCK_DATA permission in requestpermissions to enable lock screen sensitive data protection.
+2. Current hardware does not support lock screen sensitive data protection functionality.
 
 **Resolution Steps**
 
-Configure the ohos.permission.PROTECT_SCREEN_LOCK_DATA permission in requestpermissions to enable lock screen sensitive data protection for the application.
+Configure ohos.permission.PROTECT_SCREEN_LOCK_DATA permission in requestpermissions to enable application lock screen sensitive data protection.
 
 ## 29300004 Lock Screen Sensitive Data Access Permission Released
 
@@ -68,13 +68,13 @@ Lock screen sensitive data access permission has been released.
 
 **Possible Causes**
 
-The lock screen sensitive data access permission has been released.
+Lock screen sensitive data access permission has been released.
 
 **Resolution Steps**
 
-Sensitive data cannot be accessed under lock screen. If needed, prompt the user to unlock the screen again. Sensitive data will become available after unlocking.
+Sensitive data cannot be accessed under lock screen. If needed, prompt the user to unlock the screen first. Sensitive data will become available after unlocking.
 
-## 29300005 Lock Screen Sensitive Data Access Permission Not Requested
+## 29300005 Lock Screen Data Access Permission Not Requested
 
 **Error Message**
 
@@ -82,12 +82,12 @@ File access was not acquired.
 
 **Error Description**
 
-The interface for canceling sensitive data access permissions under lock screen was called without first requesting the permission.
+Attempted to call the cancel interface for sensitive data access permissions under lock screen without first requesting the permission.
 
 **Possible Causes**
 
-This error code indicates that the lock screen sensitive data access permission was not requested prior to release.
+This error code indicates that lock screen sensitive data access permission was not requested prior to release.
 
 **Resolution Steps**
 
-Check whether the current interface is being used in conjunction with the request interface. Ensure to request lock screen sensitive data access permission before releasing it.
+Check whether the current interface is properly paired. Always request lock screen sensitive data access permission before releasing it.

@@ -1,6 +1,6 @@
 # ohos.device_info (Device Information)
 
-This module provides terminal device information query capabilities, which cannot be configured by developers.
+This module provides terminal device information queries, which cannot be configured by developers.
 
 ## Importing the Module
 
@@ -16,10 +16,10 @@ ohos.permission.sec.ACCESS_UDID
 
 API sample code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the above sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
 
 ## class DeviceInfo
 
@@ -31,7 +31,7 @@ public class DeviceInfo {}
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop ODID
 
@@ -47,7 +47,7 @@ public static prop ODID: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop abiList
 
@@ -63,7 +63,7 @@ public static prop abiList: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop bootloaderVersion
 
@@ -79,7 +79,7 @@ public static prop bootloaderVersion: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop brand
 
@@ -95,7 +95,7 @@ public static prop brand: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop buildHost
 
@@ -111,7 +111,7 @@ public static prop buildHost: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop buildRootHash
 
@@ -127,7 +127,7 @@ public static prop buildRootHash: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop buildTime
 
@@ -143,7 +143,7 @@ public static prop buildTime: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop buildType
 
@@ -159,7 +159,7 @@ public static prop buildType: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop buildUser
 
@@ -175,23 +175,23 @@ public static prop buildUser: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop buildVersion
 
 ```cangjie
-public static prop buildVersion: Int64
+public static prop buildVersion: Int32
 ```
 
 **Function:** Build version number, identifying the compiled build version.
 
-**Type:** Int64
+**Type:** Int32
 
 **Access:** Read-only
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop deviceType
 
@@ -207,7 +207,7 @@ public static prop deviceType: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop displayVersion
 
@@ -223,7 +223,7 @@ public static prop displayVersion: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop distributionOSApiName
 
@@ -239,23 +239,23 @@ public static prop distributionOSApiName: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop distributionOSApiVersion
 
 ```cangjie
-public static prop distributionOSApiVersion: Int64
+public static prop distributionOSApiVersion: Int32
 ```
 
 **Function:** Distribution OS API version.
 
-**Type:** Int64
+**Type:** Int32
 
 **Access:** Read-only
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop distributionOSName
 
@@ -271,7 +271,7 @@ public static prop distributionOSName: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop distributionOSReleaseType
 
@@ -287,7 +287,7 @@ public static prop distributionOSReleaseType: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop distributionOSVersion
 
@@ -303,39 +303,39 @@ public static prop distributionOSVersion: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop featureVersion
 
 ```cangjie
-public static prop featureVersion: Int64
+public static prop featureVersion: Int32
 ```
 
 **Function:** Feature version number, identifying planned new feature versions.
 
-**Type:** Int64
+**Type:** Int32
 
 **Access:** Read-only
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop firstApiVersion
 
 ```cangjie
-public static prop firstApiVersion: Int64
+public static prop firstApiVersion: Int32
 ```
 
 **Function:** First version system software API version.
 
-**Type:** Int64
+**Type:** Int32
 
 **Access:** Read-only
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop hardwareModel
 
@@ -351,7 +351,7 @@ public static prop hardwareModel: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop hardwareProfile
 
@@ -367,7 +367,7 @@ public static prop hardwareProfile: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop incrementalVersion
 
@@ -383,23 +383,23 @@ public static prop incrementalVersion: String
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21
+**Since Version:** 21
 
 ### static prop majorVersion
 
 ```cangjie
-public static prop majorVersion: Int64
+public static prop majorVersion: Int32
 ```
 
-**Function:** Major version number, incremented with major version updates.
+**Function:** Major version number, incremented with main version updates.
 
-**Type:** Int64
+**Type:** Int32
 
 **Access:** Read-only
 
 **System Capability:** SystemCapability.Startup.SystemInfo
 
-**Since:** 21### static prop manufacture
+**Since Version:** 21### static prop manufacture
 
 ```cangjie
 public static prop manufacture: String
@@ -453,7 +453,7 @@ public static prop osFullName: String
 public static prop osReleaseType: String
 ```
 
-**Function:** Operating system release type. Possible values:<br/>-&nbsp;Canary: Early preview version released to specific developers, with no API stability guarantee.<br/>-&nbsp;Beta: Public beta version released to developers, with no API stability guarantee.<br/>-&nbsp;Release: Official version publicly released to developers, with API stability guaranteed.
+**Function:** Operating system release type, with possible values:<br/>-&nbsp;Canary: Early preview version for specific developers, with no API stability guarantee.<br/>-&nbsp;Beta: Publicly released Beta version for developers, with no API stability guarantee.<br/>-&nbsp;Release: Publicly released stable version for developers, with API stability guarantee.
 
 **Type:** String
 
@@ -498,12 +498,12 @@ public static prop productSeries: String
 ### static prop sdkApiVersion
 
 ```cangjie
-public static prop sdkApiVersion: Int64
+public static prop sdkApiVersion: Int32
 ```
 
 **Function:** System software API version.
 
-**Type:** Int64
+**Type:** Int32
 
 **Read/Write Permission:** Read-only
 
@@ -530,12 +530,12 @@ public static prop securityPatchTag: String
 ### static prop seniorVersion
 
 ```cangjie
-public static prop seniorVersion: Int64
+public static prop seniorVersion: Int32
 ```
 
 **Function:** Senior version number, incremented with major architectural changes or significant feature additions.
 
-**Type:** Int64
+**Type:** Int32
 
 **Read/Write Permission:** Read-only
 

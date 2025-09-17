@@ -75,9 +75,9 @@ public var curve: Curve
 
 **Function:** Animation curve.
 
-**Type:** [Curve]
+**Type:** [Curve](#enum-curve)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,7 +93,7 @@ public var delay: Int32
 
 **Type:** Int32
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +109,7 @@ public var duration: Int32
 
 **Type:** Int32
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,9 +123,9 @@ public var expectedFrameRateRange: Option<ExpectedFrameRateRange>
 
 **Function:** Sets the expected frame rate for animation.
 
-**Type:** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](#class-expectedframeraterange)>
+**Type:** Option\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)>
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,9 +139,9 @@ public var finishCallbackType: FinishCallbackType
 
 **Function:** Defines the type of onFinish callback in animation.
 
-**Type:** [FinishCallbackType]
+**Type:** [FinishCallbackType](#enum-finishcallbacktype)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,7 +157,7 @@ public var iterations: Int32
 
 **Type:** Int32
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,9 +171,9 @@ public var onFinish: Option <() -> Unit>
 
 **Function:** Animation completion callback.
 
-**Type:** [Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<()->Unit>
+**Type:** Option\<()->Unit>
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,9 +187,9 @@ public var playMode: PlayMode
 
 **Function:** Animation play mode. Default is restart from beginning after completion.
 
-**Type:** [PlayMode]
+**Type:** [PlayMode](#enum-playmode)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,11 +201,11 @@ public var playMode: PlayMode
 public var tempo: Float32
 ```
 
-**Function:** Animation playback speed. Higher values mean faster playback. 0 means no animation effect.
+**Function:** Animation playback speed. Higher values play faster, lower values play slower. 0 means no animation effect.
 
 **Type:** Float32
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,17 +235,17 @@ public init(
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|duration|Int32|No|1000|Animation duration in milliseconds. Values less than 0 are treated as 0.|
-|tempo|Float32|No|1.0|Animation playback speed. Higher values mean faster playback. 0 means no animation effect.|
-|curve|[Curve]|No|Curve.EaseInOut|Animation curve.|
-|delay|Int32|No|0|Animation delay time in milliseconds (ms). Default is no delay.|
-|iterations|Int32|No|1|Number of animation iterations. Default is 1. -1 means infinite iterations. 0 means no animation effect.|
-|playMode|[PlayMode]|No|PlayMode.Normal|Animation play mode. Default is restart from beginning after completion.|
-|onFinish|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<()->Unit>|No|Option.None|Animation completion callback.|
-|finishCallbackType|[FinishCallbackType]|No|FinishCallbackType.Removed|Defines the type of onFinish callback in animation.|
-|expectedFrameRateRange|[Option](cj-common-types.md#initoptionint-optionfloat-optioncurve-optionint-optionint-optionplaymode-option---unit-optionfinishcallbacktype-optionexpectedframeraterange)\<[ExpectedFrameRateRange](#class-expectedframeraterange)>|No|Option.None|Sets the expected frame rate for animation.|
+| duration | Int32 | No | 1000 | Animation duration in milliseconds. Values less than 0 are treated as 0. |
+| tempo | Float32 | No | 1.0 | Animation playback speed. Higher values play faster, lower values play slower. 0 means no animation effect. |
+| curve | Curve | No | Curve.EaseInOut | Animation curve. |
+| delay | Int32 | No | 0 | Animation delay time in milliseconds (ms). Default is no delay. |
+| iterations | Int32 | No | 1 | Number of animation iterations. Default is 1. -1 means infinite iterations. 0 means no animation effect. |
+| playMode | [PlayMode](#enum-playmode) | No | PlayMode.Normal | Animation play mode. Default is restart from beginning after completion. |
+| onFinish | Option\<()->Unit> | No | Option.None | Animation completion callback. |
+| finishCallbackType | [FinishCallbackType](#enum-finishcallbacktype) | No | FinishCallbackType.Removed | Defines the type of onFinish callback in animation. |
+| expectedFrameRateRange | Option\<[ExpectedFrameRateRange](./cj-animation-animateto.md#class-expectedframeraterange)> | No | Option.None | Sets the expected frame rate for animation. |
 
 ## class Area
 
@@ -276,11 +276,11 @@ public class Area {
 public var globalPosition: Position
 ```
 
-**Function:** Defines the position relationship between the top-left corner of the target element and the top-left corner of the screen.
+**Function:** Defines the positional relationship between the top-left corner of the target element and the top-left corner of the screen.
 
 **Type:** [Position](#class-position)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,9 +294,9 @@ public var height: Length
 
 **Function:** Defines the height of the target element.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,7 +312,7 @@ public var position: Position
 
 **Type:** [Position](#class-position)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,9 +326,9 @@ public var width: Length
 
 **Function:** Defines the width of the target element.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,12 +353,12 @@ public init(
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|Yes|-|Width of the target element in vp.|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|Yes|-|Height of the target element in vp.|
-|position|[Position](#class-position)|Yes|-|Position of the target element's top-left corner relative to its parent element's top-left corner.|
-|globalPosition|[Position](#class-position)|Yes|-|Position of the target element's top-left corner relative to the page's top-left corner.|
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of the target element in vp. |
+| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of the target element in vp. |
+| position | [Position](#class-position) | Yes | - | Position of the top-left corner of the target element relative to the top-left corner of its parent element. |
+| globalPosition | [Position](#class-position) | Yes | - | Position of the top-left corner of the target element relative to the top-left corner of the page. |
 
 ## class BorderRadiuses
 
@@ -373,7 +373,7 @@ public class BorderRadiuses {
 }
 ```
 
-**Function:** Border radius type, used to describe the corner radius of component borders.
+**Function:** Border radius type, used to describe the border radius of components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -387,9 +387,9 @@ public var bottomLeft: Length
 
 **Function:** Bottom-left corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -403,9 +403,9 @@ public var bottomRight: Length
 
 **Function:** Bottom-right corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -419,9 +419,9 @@ public var topLeft: Length
 
 **Function:** Top-left corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -435,9 +435,9 @@ public var topRight: Length
 
 **Function:** Top-right corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Readable/Writable:** Yes
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,12 +458,14 @@ public init(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bottomLeft!: Leng
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|topLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|No|0.vp|Top-left corner radius of the component.|
-|topRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|No|0.vp|Top-right corner radius of the component.|
-|bottomLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|No|0.vp|Bottom-left corner radius of the component.|
-|bottomRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)|No|0.vp|Bottom-right corner radius of the component.|## class DismissContentCoverAction
+| topLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-left corner radius of the component. |
+| topRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-right corner radius of the component. |
+| bottomLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-left corner radius of the component. |
+| bottomRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-right corner radius of the component. |
+
+## class DismissContentCoverAction
 
 ```cangjie
 public class DismissContentCoverAction {
@@ -485,7 +487,7 @@ public let reason: DismissReason
 
 **Function:** Type of dismissal reason.
 
-**Type:** [DismissReason](#enum-dismissreason)
+**Type:** [DismissReason](./cj-dialog-actionsheet.md#enum-dismissreason)
 
 **Access:** Read-only
 
@@ -499,7 +501,7 @@ public let reason: DismissReason
 public func dismiss(): Unit
 ```
 
-**Function:** Explicitly triggers modal page dismissal, serving as the sole entry point for controlling dismissal.
+**Function:** Explicitly triggers modal page dismissal, serving as the sole entry point for controlling closure.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -522,7 +524,7 @@ public class EdgeStyles {
 }
 ```
 
-**Function:** Border styles, used to describe the styling of a component's four edges.
+**Function:** Border styles used to describe the styling of a component's four edges.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -536,7 +538,7 @@ public var bottom: BorderStyle
 
 **Function:** Sets the bottom border style of a component.
 
-**Type:** [BorderStyle]
+**Type:** [BorderStyle](#enum-borderstyle)
 
 **Access:** Read-write
 
@@ -552,7 +554,7 @@ public var left: BorderStyle
 
 **Function:** Sets the left border style of a component.
 
-**Type:** [BorderStyle]
+**Type:** [BorderStyle](#enum-borderstyle)
 
 **Access:** Read-write
 
@@ -568,7 +570,7 @@ public var right: BorderStyle
 
 **Function:** Sets the right border style of a component.
 
-**Type:** [BorderStyle]
+**Type:** [BorderStyle](#enum-borderstyle)
 
 **Access:** Read-write
 
@@ -584,7 +586,7 @@ public var top: BorderStyle
 
 **Function:** Sets the top border style of a component.
 
-**Type:** [BorderStyle]
+**Type:** [BorderStyle](#enum-borderstyle)
 
 **Access:** Read-write
 
@@ -613,10 +615,10 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [BorderStyle] | No | BorderStyle.Solid | Top border style of the component. |
-| right | [BorderStyle] | No | BorderStyle.Solid | Right border style of the component. |
-| bottom | [BorderStyle] | No | BorderStyle.Solid | Bottom border style of the component. |
-| left | [BorderStyle] | No | BorderStyle.Solid | Left border style of the component. |
+| top | [BorderStyle](#enum-borderstyle) | No | BorderStyle.Solid | Top border style of the component. |
+| right | [BorderStyle](#enum-borderstyle) | No | BorderStyle.Solid | Right border style of the component. |
+| bottom | [BorderStyle](#enum-borderstyle) | No | BorderStyle.Solid | Bottom border style of the component. |
+| left | [BorderStyle](#enum-borderstyle) | No | BorderStyle.Solid | Left border style of the component. |
 
 ## class Font
 
@@ -658,9 +660,9 @@ public var family:?ResourceStr
 public var size:?Length
 ```
 
-**Function:** Sets text size in fp units.
+**Function:** Sets text size using fp units.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -676,7 +678,7 @@ public var style:?FontStyle
 
 **Function:** Sets the font style for text.
 
-**Type:** ?[FontStyle]
+**Type:** ?[FontStyle](#enum-fontstyle)
 
 **Access:** Read-write
 
@@ -692,7 +694,7 @@ public var weight:?FontWeight
 
 **Function:** Sets the font weight for text.
 
-**Type:** ?[FontWeight]
+**Type:** ?[FontWeight](#enum-fontweight)
 
 **Access:** Read-write
 
@@ -716,10 +718,10 @@ public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?Resour
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | None | Sets text size in fp units when Length is Int64 or Float64. Percentage values are not supported. |
-| weight | ?[FontWeight] | No | None | Sets the font weight for text. |
-| family | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | Sets the font list for text. Multiple fonts can be specified, separated by commas, with priority given in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font. |
-| style | ?[FontStyle] | No | None | Sets the font style for text. |
+| size | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | Sets text size using fp units when Length is Int64 or Float64. Percentage values are not supported. |
+| weight | ?[FontWeight](#enum-fontweight) | No | None | Sets the font weight for text. |
+| family | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | Sets the font list for text. Multiple fonts can be specified using commas (e.g., 'Arial, HarmonyOS Sans'), with priority given in order. Currently supports 'HarmonyOS Sans' font. |
+| style | ?[FontStyle](#enum-fontstyle) | No | None | Sets the font style for text. |
 
 ## class Fonts
 
@@ -762,9 +764,9 @@ public var family: String
 public var size: Length
 ```
 
-**Function:** Sets text size in fp units.
+**Function:** Sets text size using fp units.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -780,7 +782,7 @@ public var style: FontStyle
 
 **Function:** Sets the font style for text.
 
-**Type:** [FontStyle]
+**Type:** [FontStyle](#enum-fontstyle)
 
 **Access:** Read-write
 
@@ -796,7 +798,7 @@ public var weight: FontWeight
 
 **Function:** Sets the font weight for text.
 
-**Type:** [FontWeight]
+**Type:** [FontWeight](#enum-fontweight)
 
 **Access:** Read-write
 
@@ -821,10 +823,10 @@ public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, fami
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 16.fp | Sets text size in fp units when Length is Int64 or Float64. Percentage values are not supported. |
-| weight | [FontWeight] | No | FontWeight.Normal | Sets the font weight for text. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | Sets the font list for text. Multiple fonts can be specified, separated by commas, with priority given in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font. |
-| style | [FontStyle] | No | FontStyle.Normal | Sets the font style for text. |
+| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | Sets text size using fp units when Length is Int64 or Float64. Percentage values are not supported. |
+| weight | [FontWeight](#enum-fontweight) | No | FontWeight.Normal | Sets the font weight for text. |
+| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | Sets the font list for text. Multiple fonts can be specified using commas (e.g., 'Arial, HarmonyOS Sans'), with priority given in order. Currently supports 'HarmonyOS Sans' font. |
+| style | [FontStyle](#enum-fontstyle) | No | FontStyle.Normal | Sets the font style for text. |
 
 ## class HorizontalAlignment
 
@@ -850,7 +852,7 @@ public var align: HorizontalAlign
 
 **Function:** Sets the horizontal alignment of a component.
 
-**Type:** [HorizontalAlign]
+**Type:** [HorizontalAlign](#enum-horizontalalign)
 
 **Access:** Read-write
 
@@ -891,7 +893,8 @@ public init(anchor: String, align: HorizontalAlign)
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | anchor | String | Yes | - | Sets the anchor point for horizontal alignment of a component. |
-| align | [HorizontalAlign] | Yes | - | Sets the horizontal alignment of a component. |## class Margin
+| align | [HorizontalAlign](#enum-horizontalalign) | Yes | - | Sets the horizontal alignment of a component. |
+```## class Margin
 
 ```cangjie
 public class Margin {
@@ -899,7 +902,7 @@ public class Margin {
 }
 ```
 
-**Function:** Margin type, used to describe the margins of a component in different directions.
+**Description:** Margin type, used to describe the margins of a component in different directions.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -911,7 +914,7 @@ public class Margin {
 public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp)
 ```
 
-**Function:** Initializes a margin-type object.
+**Description:** Initializes a margin type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -921,10 +924,10 @@ public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | Top margin, the distance from the top of the component to external elements. |
-| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | Right margin, the distance from the right boundary of the component to external elements. |
-| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | Bottom margin, the distance from the bottom of the component to external elements. |
-| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | Left margin, the distance from the left boundary of the component to external elements. |
+| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top margin, the distance from the top of the component to external elements. |
+| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Right margin, the distance from the right boundary of the component to external elements. |
+| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom margin, the distance from the bottom of the component to external elements. |
+| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Left margin, the distance from the left boundary of the component to external elements. |
 
 ## class Offset
 
@@ -936,7 +939,7 @@ public class Offset {
 }
 ```
 
-**Function:** Relative layout coordinate offset for positioning.
+**Description:** Coordinate offset for relative layout completion.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -948,11 +951,11 @@ public class Offset {
 public var dx: Length
 ```
 
-**Function:** Horizontal offset.
+**Description:** Horizontal offset.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -964,11 +967,11 @@ public var dx: Length
 public var dy: Length
 ```
 
-**Function:** Vertical offset.
+**Description:** Vertical offset.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -980,7 +983,7 @@ public var dy: Length
 public init(dx: Length, dy: Length)
 ```
 
-**Function:** Constructs an Offset-type object.
+**Description:** Constructs an Offset type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -990,8 +993,8 @@ public init(dx: Length, dy: Length)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | Yes | - | X-coordinate. |
-| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | Yes | - | Y-coordinate. |
+| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | X-coordinate. |
+| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Y-coordinate. |
 
 ## class OverlayOffset
 
@@ -1003,7 +1006,7 @@ public class OverlayOffset {
 }
 ```
 
-**Function:** Sets the offset for overlays.
+**Description:** Sets the offset for overlays.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1015,11 +1018,11 @@ public class OverlayOffset {
 public var x: Float64
 ```
 
-**Function:** Horizontal offset.
+**Description:** Horizontal offset.
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1031,11 +1034,11 @@ public var x: Float64
 public var y: Float64
 ```
 
-**Function:** Vertical offset.
+**Description:** Vertical offset.
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1047,7 +1050,7 @@ public var y: Float64
 public init(x!: Float64 = 0.0, y!: Float64 = 0.0)
 ```
 
-**Function:** Constructs an overlay offset.
+**Description:** Constructs an overlay offset.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1068,7 +1071,7 @@ public class PopupButton {
 }
 ```
 
-**Function:** Constructs a popup button.
+**Description:** Constructs a popup button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1080,7 +1083,7 @@ public class PopupButton {
 public init(value!: String, action!: () -> Unit)
 ```
 
-**Function:** Constructs a popup button.
+**Description:** Constructs a popup button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1090,8 +1093,8 @@ public init(value!: String, action!: () -> Unit)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | String | Yes | - | The text content of the button. |
-| action | () -> Unit | Yes | - | The click event of the button. |
+| value | String | Yes | - | Text content of the button. |
+| action | () -> Unit | Yes | - | Click event of the button. |
 
 ## class PopupStateChangeParam
 
@@ -1102,7 +1105,7 @@ public class PopupStateChangeParam {
 }
 ```
 
-**Function:** Sets popup state parameters.
+**Description:** Sets popup state parameters.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1114,11 +1117,11 @@ public class PopupStateChangeParam {
 public var isVisible: Bool
 ```
 
-**Function:** Whether the popup is visible.
+**Description:** Whether the popup is visible.
 
 **Type:** Bool
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1130,7 +1133,7 @@ public var isVisible: Bool
 public init(value: Bool)
 ```
 
-**Function:** Sets popup state parameters.
+**Description:** Sets popup state parameters.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1152,7 +1155,7 @@ public class Position {
 }
 ```
 
-**Function:** Position information.
+**Description:** Position information.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1164,11 +1167,11 @@ public class Position {
 public var x: Length
 ```
 
-**Function:** Defines the X-coordinate.
+**Description:** Defines the X-coordinate.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1180,11 +1183,11 @@ public var x: Length
 public var y: Length
 ```
 
-**Function:** Defines the Y-coordinate.
+**Description:** Defines the Y-coordinate.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1196,7 +1199,7 @@ public var y: Length
 public init(x!: Length = 0, y!: Length = 0)
 ```
 
-**Function:** Constructs a Position-type object.
+**Description:** Constructs a Position type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1206,8 +1209,8 @@ public init(x!: Length = 0, y!: Length = 0)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0 | X-coordinate, in vp units. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0 | Y-coordinate, in vp units. |
+| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | X-coordinate, in vp units. |
+| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | Y-coordinate, in vp units. |
 
 ## class Rectangle
 
@@ -1221,7 +1224,7 @@ public class Rectangle {
 }
 ```
 
-**Function:** Defines the region position type.
+**Description:** Defines the area position type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1233,11 +1236,11 @@ public class Rectangle {
 public var height: Length
 ```
 
-**Function:** Height of the touch hotspot.
+**Description:** Height of the touch hotspot.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1249,11 +1252,11 @@ public var height: Length
 public var width: Length
 ```
 
-**Function:** Width of the touch hotspot.
+**Description:** Width of the touch hotspot.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1265,11 +1268,11 @@ public var width: Length
 public var x: Length
 ```
 
-**Function:** X-coordinate of the touch point relative to the top-left corner of the component.
+**Description:** X-coordinate of the touch point relative to the top-left corner of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1281,11 +1284,11 @@ public var x: Length
 public var y: Length
 ```
 
-**Function:** Y-coordinate of the touch point relative to the top-left corner of the component.
+**Description:** Y-coordinate of the touch point relative to the top-left corner of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length)
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
-**Read-Write Capability:** Read-write
+**Read-Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1297,7 +1300,7 @@ public var y: Length
 public init(x!: Length = 0.vp, y!: Length = 0.vp, width!: Length = 100.percent, height!: Length = 100.percent)
 ```
 
-**Function:** Constructs a Rectangle-type object.
+**Description:** Constructs a Rectangle type object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1307,10 +1310,10 @@ public init(x!: Length = 0.vp, y!: Length = 0.vp, width!: Length = 100.percent, 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** X-coordinate of the touch point relative to the top-left corner of the component. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Y-coordinate of the touch point relative to the top-left corner of the component. |
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 100.percent | **Named parameter.** Width of the touch hotspot. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(cj-common-types.md#interface-length) | No | 100.percent | **Named parameter.** Height of the touch hotspot. |## class VerticalAlignment
+| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** X-coordinate of the touch point relative to the top-left corner of the component. |
+| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Y-coordinate of the touch point relative to the top-left corner of the component. |
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Width of the touch hotspot. |
+| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Height of the touch hotspot. |## class VerticalAlignment
 
 ```cangjie
 public class VerticalAlignment {
@@ -1334,9 +1337,9 @@ public var align: VerticalAlign
 
 **Function:** Sets the vertical alignment method of the component.
 
-**Type:** [VerticalAlign]
+**Type:** [VerticalAlign](#enum-verticalalign)
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1352,7 +1355,7 @@ public var anchor: String
 
 **Type:** String
 
-**Readable/Writable:** Readable and Writable
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1372,10 +1375,10 @@ public init(anchor: String, align: VerticalAlign)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | anchor | String | Yes | - | Sets the anchor point for vertical alignment of the component. |
-| align | [VerticalAlign] | Yes | - | Sets the vertical alignment method of the component. |
+| align | [VerticalAlign](#enum-verticalalign) | Yes | - | Sets the vertical alignment method of the component. |
 
 ## enum AdaptiveColor
 
@@ -1395,7 +1398,7 @@ public enum AdaptiveColor <: Equatable<AdaptiveColor> {
 
 **Parent Type:**
 
-- Equatable\<AdaptiveColor\>
+- Equatable\<AdaptiveColor>
 
 ### Average
 
@@ -1427,11 +1430,11 @@ Default
 public operator func !=(other: AdaptiveColor): Bool
 ```
 
-**Function:** Compares whether two AdaptiveColor values are not equal.
+**Function:** Compares whether two AdaptiveColor values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AdaptiveColor](#enum-adaptivecolor) | Yes | - | Another AdaptiveColor value to compare |
 
@@ -1439,7 +1442,7 @@ public operator func !=(other: AdaptiveColor): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two AdaptiveColor values are not equal, otherwise returns false |
+| Bool | Returns true if the two AdaptiveColor values are unequal, otherwise returns false |
 
 ### func ==(AdaptiveColor)
 
@@ -1451,7 +1454,7 @@ public operator func ==(other: AdaptiveColor): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [AdaptiveColor](#enum-adaptivecolor) | Yes | - | Another AdaptiveColor value to compare |
 
@@ -1460,6 +1463,191 @@ public operator func ==(other: AdaptiveColor): Bool
 | Type | Description |
 |:----|:----|
 | Bool | Returns true if the two AdaptiveColor values are equal, otherwise returns false |
+
+## enum LengthType
+
+```cangjie
+public enum LengthType <: Length & Equatable<LengthType> {
+    | px(Float64)
+    | vp(Float64)
+    | fp(Float64)
+    | percent(Float64)
+    | lpx(Float64)
+}
+```
+
+**Function:** Length type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<LengthType>
+- Length
+
+### fp(Float64)
+
+```cangjie
+fp(Float64)
+```
+
+**Function:** Font pixel unit.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### lpx(Float64)
+
+```cangjie
+lpx(Float64)
+```
+
+**Function:** Logical pixel unit.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### percent(Float64)
+
+```cangjie
+percent(Float64)
+```
+
+**Function:** Percentage.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### px(Float64)
+
+```cangjie
+px(Float64)
+```
+
+**Function:** Basic pixel unit.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### vp(Float64)
+
+```cangjie
+vp(Float64)
+```
+
+**Function:** Screen density unit.
+
+### prop value
+
+```cangjie
+public prop value: Float64
+```
+
+**Function:** Pixel value.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### prop unitType
+
+```cangjie
+public prop unitType: LengthType
+```
+
+**Function:** Pixel unit.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**Function:** Gets the integer value corresponding to LengthType.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Int32 | Integer value corresponding to LengthType |
+
+### static func parse(Int32): LengthType
+
+```cangjie
+public static func parse(value: Int32): LengthType
+```
+
+**Function:** Parses LengthType.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| value | Int32 | Yes | - | Integer value of LengthType. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| LengthType | Enumeration value of LengthType. |
+
+### func !=(LengthType)
+
+```cangjie
+public operator func !=(other: LengthType): Bool
+```
+
+**Function:** Determines whether two LengthType values are unequal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [LengthType](#enum-lengthtype) | Yes | - | Another LengthType value to compare. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if unequal, otherwise returns false. |
+
+### func ==(LengthType)
+
+```cangjie
+public operator func ==(other: LengthType): Bool
+```
+
+**Function:** Determines whether two LengthType values are equal.
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| other | [LengthType](#enum-lengthtype) | Yes | - | Another LengthType value to compare. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if equal, otherwise returns false. |
 
 ## enum Alignment
 
@@ -1486,7 +1674,7 @@ public enum Alignment <: Equatable<Alignment> {
 
 **Parent Type:**
 
-- Equatable\<Alignment\>
+- Equatable\<Alignment>
 
 ### Bottom
 
@@ -1602,11 +1790,11 @@ TopStart
 public operator func !=(other: Alignment): Bool
 ```
 
-**Function:** Compares whether two Alignment values are not equal.
+**Function:** Compares whether two Alignment values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [Alignment](#enum-alignment) | Yes | - | Another Alignment value to compare |
 
@@ -1614,7 +1802,7 @@ public operator func !=(other: Alignment): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two Alignment values are not equal, otherwise returns false |
+| Bool | Returns true if the two Alignment values are unequal, otherwise returns false |
 
 ### func ==(Alignment)
 
@@ -1626,7 +1814,7 @@ public operator func ==(other: Alignment): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [Alignment](#enum-alignment) | Yes | - | Another Alignment value to compare |
 
@@ -1642,7 +1830,7 @@ public operator func ==(other: Alignment): Bool
 public func getValue(): Int32
 ```
 
-**Function:** Gets the integer value corresponding to the Alignment.
+**Function:** Gets the integer value corresponding to Alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1652,9 +1840,7 @@ public func getValue(): Int32
 
 | Type | Description |
 |:----|:----|
-| Int32 | The integer value corresponding to the Alignment |
-
-## enum AnimationStatus
+| Int32 | Integer value corresponding to Alignment |## enum AnimationStatus
 
 ```cangjie
 public enum AnimationStatus <: Equatable<AnimationStatus> {
@@ -1666,7 +1852,7 @@ public enum AnimationStatus <: Equatable<AnimationStatus> {
 }
 ```
 
-**Function:** Animation playback status.
+**Description:** Animation playback status.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1682,7 +1868,7 @@ public enum AnimationStatus <: Equatable<AnimationStatus> {
 Initial
 ```
 
-**Function:** Initial state of the animation.
+**Description:** Initial state of animation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1694,7 +1880,7 @@ Initial
 Paused
 ```
 
-**Function:** Animation is paused.
+**Description:** Animation is paused.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1706,7 +1892,7 @@ Paused
 Running
 ```
 
-**Function:** Animation is playing.
+**Description:** Animation is playing.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1718,7 +1904,7 @@ Running
 Stopped
 ```
 
-**Function:** Animation is stopped.
+**Description:** Animation is stopped.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1730,7 +1916,7 @@ Stopped
 public operator func !=(other: AnimationStatus): Bool
 ```
 
-**Function:** Compares whether two AnimationStatus values are not equal.
+**Description:** Compares whether two AnimationStatus values are unequal.
 
 **Parameters:**
 
@@ -1742,7 +1928,7 @@ public operator func !=(other: AnimationStatus): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two AnimationStatus values are not equal, otherwise returns false |
+| Bool | Returns true if the two AnimationStatus values are unequal, otherwise returns false |
 
 ### func ==(AnimationStatus)
 
@@ -1750,7 +1936,7 @@ public operator func !=(other: AnimationStatus): Bool
 public operator func ==(other: AnimationStatus): Bool
 ```
 
-**Function:** Compares whether two AnimationStatus values are equal.
+**Description:** Compares whether two AnimationStatus values are equal.
 
 **Parameters:**
 
@@ -1762,7 +1948,9 @@ public operator func ==(other: AnimationStatus): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two AnimationStatus values are equal, otherwise returns false |## enum ArrowPointPosition
+| Bool | Returns true if the two AnimationStatus values are equal, otherwise returns false |
+
+## enum ArrowPointPosition
 
 ```cangjie
 public enum ArrowPointPosition <: Equatable<ArrowPointPosition> {
@@ -1773,7 +1961,7 @@ public enum ArrowPointPosition <: Equatable<ArrowPointPosition> {
 }
 ```
 
-**Function:** Arrow pointing position.
+**Description:** Arrow pointing position.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1789,7 +1977,7 @@ public enum ArrowPointPosition <: Equatable<ArrowPointPosition> {
 CENTER
 ```
 
-**Function:** Positioned at the center of the parent component.
+**Description:** Centered position within the parent component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1801,7 +1989,7 @@ CENTER
 END
 ```
 
-**Function:** Horizontal direction: positioned at the far right of the parent component; Vertical direction: positioned at the bottom of the parent component.
+**Description:** Horizontal direction: Rightmost position of the parent component; Vertical direction: Bottommost position of the parent component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1813,51 +2001,11 @@ END
 START
 ```
 
-**Function:** Horizontal direction: positioned at the far left of the parent component; Vertical direction: positioned at the top of the parent component.
+**Description:** Horizontal direction: Leftmost position of the parent component; Vertical direction: Topmost position of the parent component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-### func !=(ArrowPointPosition)
-
-```cangjie
-public operator func !=(other: ArrowPointPosition): Bool
-```
-
-**Function:** Compares whether two ArrowPointPosition values are unequal.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [ArrowPointPosition](#enum-arrowpointposition) | Yes | - | Another ArrowPointPosition value to compare |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the two ArrowPointPosition values are unequal, otherwise returns false |
-
-### func ==(ArrowPointPosition)
-
-```cangjie
-public operator func ==(other: ArrowPointPosition): Bool
-```
-
-**Function:** Compares whether two ArrowPointPosition values are equal.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [ArrowPointPosition](#enum-arrowpointposition) | Yes | - | Another ArrowPointPosition value to compare |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the two ArrowPointPosition values are equal, otherwise returns false |
 
 ## enum Axis
 
@@ -1869,7 +2017,7 @@ public enum Axis <: Equatable<Axis> {
 }
 ```
 
-**Function:** Axis direction.
+**Description:** Axis direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1885,7 +2033,7 @@ public enum Axis <: Equatable<Axis> {
 Horizontal
 ```
 
-**Function:** Horizontal direction.
+**Description:** Horizontal direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1897,7 +2045,7 @@ Horizontal
 Vertical
 ```
 
-**Function:** Vertical direction.
+**Description:** Vertical direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1909,11 +2057,11 @@ Vertical
 public operator func !=(other: Axis): Bool
 ```
 
-**Function:** Compares whether two Axis values are unequal.
+**Description:** Compares whether two Axis values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [Axis](#enum-axis) | Yes | - | Another Axis value to compare |
 
@@ -1929,11 +2077,11 @@ public operator func !=(other: Axis): Bool
 public operator func ==(other: Axis): Bool
 ```
 
-**Function:** Compares whether two Axis values are equal.
+**Description:** Compares whether two Axis values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [Axis](#enum-axis) | Yes | - | Another Axis value to compare |
 
@@ -1954,7 +2102,7 @@ public enum BarState <: Equatable<BarState> {
 }
 ```
 
-**Function:** Scrollbar display mode.
+**Description:** Scrollbar display mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1970,7 +2118,7 @@ public enum BarState <: Equatable<BarState> {
 Auto
 ```
 
-**Function:** Display on demand (appears when touched, disappears after 2 seconds).
+**Description:** Display on demand (shown when touched, disappears after 2s).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1982,7 +2130,7 @@ Auto
 Off
 ```
 
-**Function:** Not displayed.
+**Description:** Not displayed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1994,7 +2142,7 @@ Off
 On
 ```
 
-**Function:** Permanently displayed.
+**Description:** Permanently displayed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2006,11 +2154,11 @@ On
 public operator func !=(other: BarState): Bool
 ```
 
-**Function:** Compares whether two BarState values are unequal.
+**Description:** Compares whether two BarState values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [BarState](#enum-barstate) | Yes | - | Another BarState value to compare |
 
@@ -2026,11 +2174,11 @@ public operator func !=(other: BarState): Bool
 public operator func ==(other: BarState): Bool
 ```
 
-**Function:** Compares whether two BarState values are equal.
+**Description:** Compares whether two BarState values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [BarState](#enum-barstate) | Yes | - | Another BarState value to compare |
 
@@ -2052,7 +2200,7 @@ public enum BarrierDirection <: Equatable<BarrierDirection> {
 }
 ```
 
-**Function:** Defines the direction of barrier lines.
+**Description:** Defines the direction of the barrier line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2068,7 +2216,7 @@ public enum BarrierDirection <: Equatable<BarrierDirection> {
 BOTTOM
 ```
 
-**Function:** The barrier is at the bottom of all its referencedId elements.
+**Description:** The barrier is at the bottommost position of all its referencedId components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2080,7 +2228,7 @@ BOTTOM
 LEFT
 ```
 
-**Function:** The barrier is at the far left of all its referencedId elements.
+**Description:** The barrier is at the leftmost position of all its referencedId components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2092,7 +2240,7 @@ LEFT
 RIGHT
 ```
 
-**Function:** The barrier is at the far right of all its referencedId elements.
+**Description:** The barrier is at the rightmost position of all its referencedId components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2104,7 +2252,7 @@ RIGHT
 TOP
 ```
 
-**Function:** The barrier is at the top of all its referencedId elements.
+**Description:** The barrier is at the topmost position of all its referencedId components.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2116,13 +2264,13 @@ TOP
 public operator func !=(other: BarrierDirection): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [BarrierDirection](#enum-barrierdirection) | Yes | - | Another enum value to compare |
+| other | [BarrierDirection](#enum-barrierdirection) | Yes | - | Another enum value |
 
 **Return Value:**
 
@@ -2136,21 +2284,19 @@ public operator func !=(other: BarrierDirection): Bool
 public operator func ==(other: BarrierDirection): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [BarrierDirection](#enum-barrierdirection) | Yes | - | Another enum value to compare |
+| other | [BarrierDirection](#enum-barrierdirection) | Yes | - | Another enum value |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false |
-
-## enum BorderStyle
+| Bool | Returns true if the two enum values are equal, otherwise returns false |## enum BorderStyle
 
 ```cangjie
 public enum BorderStyle <: Equatable<BorderStyle> {
@@ -2161,7 +2307,7 @@ public enum BorderStyle <: Equatable<BorderStyle> {
 }
 ```
 
-**Function:** Border style, used to describe the style of a component's four borders.
+**Function:** Border style, used to describe the style of all four borders of a component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2177,7 +2323,7 @@ public enum BorderStyle <: Equatable<BorderStyle> {
 Dashed
 ```
 
-**Function:** Displayed as a series of short square dashes.
+**Function:** Displays as a series of short square dashes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2189,7 +2335,7 @@ Dashed
 Dotted
 ```
 
-**Function:** Displayed as a series of dots, with the dot radius being half of borderWidth.
+**Function:** Displays as a series of round dots, with the dot radius being half of the borderWidth.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2201,7 +2347,7 @@ Dotted
 Solid
 ```
 
-**Function:** Displayed as a solid line.
+**Function:** Displays as a solid line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2213,19 +2359,19 @@ Solid
 public operator func !=(other: BorderStyle): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [BorderStyle](#enum-borderstyle) | Yes | - | Another enum value to compare |
+|other|[BorderStyle](#enum-borderstyle)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(BorderStyle)
 
@@ -2237,33 +2383,16 @@ public operator func ==(other: BorderStyle): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [BorderStyle](#enum-borderstyle) | Yes | - | Another enum value to compare |
+|other|[BorderStyle](#enum-borderstyle)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the numerical value corresponding to the enum type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The numerical value corresponding to the enum type. |```markdown
 ## enum CanvasDirection
 
 ```cangjie
@@ -2275,7 +2404,7 @@ public enum CanvasDirection <: Equatable<CanvasDirection> {
 }
 ```
 
-**Function:** Sets the text direction used when rendering text.
+**Function:** Sets the text direction used when drawing text.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2291,7 +2420,7 @@ public enum CanvasDirection <: Equatable<CanvasDirection> {
 inherit
 ```
 
-**Function:** Inherits the text direction set in the common properties of the canvas component.
+**Function:** Inherits the text direction already set in the common attributes of the canvas component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2538,7 +2667,7 @@ public enum ColoringStrategy <: Equatable<ColoringStrategy> {
 }
 ```
 
-**Function:** Smart color selection enum type.
+**Function:** Smart coloring strategy enum type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2554,7 +2683,7 @@ public enum ColoringStrategy <: Equatable<ColoringStrategy> {
 INVERT
 ```
 
-**Function:** Sets the foreground color to the inverse of the control's background color. This enum can only be set in foregroundColor.
+**Function:** Sets the foreground color to the inverse of the component's background color. This enum can only be set in foregroundColor.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2598,30 +2727,10 @@ public operator func ==(other: ColoringStrategy): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-### func getValue()
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|## enum GlobalCompositeOperation
 
 ```cangjie
-public func getValue(): String
-```
-
-**Function:** Gets the value corresponding to the enum type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|String|The value corresponding to the enum type.|
-
-## enum CompositeOperation
-
-```cangjie
-public enum CompositeOperation <: Equatable<CompositeOperation> {
+public enum GlobalCompositeOperation {
     | SourceOver
     | SourceAtop
     | SourceIn
@@ -2637,15 +2746,11 @@ public enum CompositeOperation <: Equatable<CompositeOperation> {
 }
 ```
 
-**Function:** Sets the method for composite operations.
+**Function:** Sets the method of composite operation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-**Parent Type:**
-
-- Equatable\<CompositeOperation>
 
 ### Copy
 
@@ -2653,7 +2758,7 @@ public enum CompositeOperation <: Equatable<CompositeOperation> {
 Copy
 ```
 
-**Function:** Displays newly drawn content while ignoring existing content.
+**Function:** Displays newly drawn content while ignoring existing drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2665,7 +2770,7 @@ Copy
 DestinationAtop
 ```
 
-**Function:** Displays existing content on top of newly drawn content.
+**Function:** Displays existing drawn content on top of newly drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2677,7 +2782,7 @@ DestinationAtop
 DestinationIn
 ```
 
-**Function:** Displays existing content within newly drawn content.
+**Function:** Displays existing drawn content within newly drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2689,7 +2794,7 @@ DestinationIn
 DestinationOut
 ```
 
-**Function:** Displays existing content outside newly drawn content.
+**Function:** Displays existing drawn content outside of newly drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2701,7 +2806,7 @@ DestinationOut
 DestinationOver
 ```
 
-**Function:** Displays existing content above newly drawn content.
+**Function:** Displays existing drawn content above newly drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2713,7 +2818,7 @@ DestinationOver
 Lighter
 ```
 
-**Function:** Displays both newly drawn and existing content.
+**Function:** Displays both newly drawn content and existing drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2725,7 +2830,7 @@ Lighter
 SourceAtop
 ```
 
-**Function:** Displays newly drawn content on top of existing content.
+**Function:** Displays newly drawn content on top of existing drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2737,7 +2842,7 @@ SourceAtop
 SourceIn
 ```
 
-**Function:** Displays newly drawn content within existing content.
+**Function:** Displays newly drawn content within existing drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2749,7 +2854,7 @@ SourceIn
 SourceOut
 ```
 
-**Function:** Displays newly drawn content outside existing content.
+**Function:** Displays newly drawn content outside of existing drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2761,7 +2866,7 @@ SourceOut
 SourceOver
 ```
 
-**Function:** Displays newly drawn content over existing content (default value).
+**Function:** Displays newly drawn content over existing drawn content (default value).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2773,16 +2878,16 @@ SourceOver
 Xor
 ```
 
-**Function:** Displays the XOR result of newly drawn and existing content.
+**Function:** Displays the XOR result of newly drawn content and existing drawn content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-### func !=(CompositeOperation)
+### func !=(GlobalCompositeOperation)
 
 ```cangjie
-public operator func !=(other: CompositeOperation): Bool
+public operator func !=(other: GlobalCompositeOperation): Bool
 ```
 
 **Function:** Determines whether two enum values are not equal.
@@ -2791,7 +2896,7 @@ public operator func !=(other: CompositeOperation): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|Yes|-|Another enum value.|
+|other|[GlobalCompositeOperation](#enum-globalcompositeoperation)|Yes|-|Another enum value.|
 
 **Return Value:**
 
@@ -2799,10 +2904,10 @@ public operator func !=(other: CompositeOperation): Bool
 |:----|:----|
 |Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
-### func ==(CompositeOperation)
+### func ==(GlobalCompositeOperation)
 
 ```cangjie
-public operator func ==(other: CompositeOperation): Bool
+public operator func ==(other: GlobalCompositeOperation): Bool
 ```
 
 **Function:** Determines whether two enum values are equal.
@@ -2811,14 +2916,15 @@ public operator func ==(other: CompositeOperation): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[CompositeOperation](#enum-compositeoperation)|Yes|-|Another enum value.|
+|other|[GlobalCompositeOperation](#enum-globalcompositeoperation)|Yes|-|Another enum value.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
 |Bool|Returns true if the two enum values are equal, otherwise returns false.|
-```## enum ContentType
+
+## enum ContentType
 
 ```cangjie
 public enum ContentType <: Equatable<ContentType> {
@@ -2863,7 +2969,7 @@ public enum ContentType <: Equatable<ContentType> {
 BANK_CARD_NUMBER
 ```
 
-**Function:** [Bank card number] When contextual auto-fill is enabled, supports automatic saving and filling of bank card numbers.
+**Function:** [Bank Card Number] When contextual auto-fill is enabled, supports automatic saving and filling of bank card numbers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2899,7 +3005,7 @@ COUNTRY_ADDRESS
 DETAIL_INFO_WITHOUT_STREET
 ```
 
-**Function:** [Detailed address (excluding street)] When contextual auto-fill is enabled, supports automatic saving and filling of detailed addresses (excluding street information).
+**Function:** [Detailed Address (Excluding Street)] When contextual auto-fill is enabled, supports automatic saving and filling of detailed addresses (excluding street information).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2923,7 +3029,7 @@ DISTRICT_ADDRESS
 EMAIL_ADDRESS
 ```
 
-**Function:** [Email address] When contextual auto-fill is enabled, supports automatic saving and filling of email addresses.
+**Function:** [Email Address] When contextual auto-fill is enabled, supports automatic saving and filling of email addresses.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2935,7 +3041,7 @@ EMAIL_ADDRESS
 FORMAT_ADDRESS
 ```
 
-**Function:** [Formatted address] When contextual auto-fill is enabled, supports automatic saving and filling of formatted addresses.
+**Function:** [Formatted Address] When contextual auto-fill is enabled, supports automatic saving and filling of formatted addresses.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2947,7 +3053,7 @@ FORMAT_ADDRESS
 FULL_PHONE_NUMBER
 ```
 
-**Function:** [Complete phone number] When contextual auto-fill is enabled, supports automatic saving and filling of complete phone numbers.
+**Function:** [Complete Phone Number] When contextual auto-fill is enabled, supports automatic saving and filling of complete phone numbers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2959,7 +3065,7 @@ FULL_PHONE_NUMBER
 FULL_STREET_ADDRESS
 ```
 
-**Function:** [Complete street address] When contextual auto-fill is enabled, supports automatic saving and filling of complete street addresses.
+**Function:** [Complete Street Address] When contextual auto-fill is enabled, supports automatic saving and filling of complete street addresses.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2971,7 +3077,7 @@ FULL_STREET_ADDRESS
 HOUSE_NUMBER
 ```
 
-**Function:** [House number] When contextual auto-fill is enabled, supports automatic saving and filling of house numbers.
+**Function:** [House Number] When contextual auto-fill is enabled, supports automatic saving and filling of house numbers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2983,7 +3089,7 @@ HOUSE_NUMBER
 ID_CARD_NUMBER
 ```
 
-**Function:** [ID card number] When contextual auto-fill is enabled, supports automatic saving and filling of ID card numbers.
+**Function:** [ID Card Number] When contextual auto-fill is enabled, supports automatic saving and filling of ID card numbers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2995,7 +3101,7 @@ ID_CARD_NUMBER
 NEW_PASSWORD
 ```
 
-**Function:** [New password] When password vault is enabled, supports automatic generation of new passwords.
+**Function:** [New Password] When password vault is enabled, supports automatic generation of new passwords.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3031,7 +3137,7 @@ PASSWORD
 PERSON_FIRST_NAME
 ```
 
-**Function:** [First name] When contextual auto-fill is enabled, supports automatic saving and filling of first names.
+**Function:** [First Name] When contextual auto-fill is enabled, supports automatic saving and filling of first names.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3043,7 +3149,7 @@ PERSON_FIRST_NAME
 PERSON_FULL_NAME
 ```
 
-**Function:** [Full name] When contextual auto-fill is enabled, supports automatic saving and filling of full names.
+**Function:** [Full Name] When contextual auto-fill is enabled, supports automatic saving and filling of full names.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3055,7 +3161,7 @@ PERSON_FULL_NAME
 PERSON_LAST_NAME
 ```
 
-**Function:** [Last name] When contextual auto-fill is enabled, supports automatic saving and filling of last names.
+**Function:** [Last Name] When contextual auto-fill is enabled, supports automatic saving and filling of last names.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3067,7 +3173,7 @@ PERSON_LAST_NAME
 PHONE_COUNTRY_CODE
 ```
 
-**Function:** [Country code] When contextual auto-fill is enabled, supports automatic saving and filling of country codes.
+**Function:** [Country Code] When contextual auto-fill is enabled, supports automatic saving and filling of country codes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3079,7 +3185,7 @@ PHONE_COUNTRY_CODE
 PHONE_NUMBER
 ```
 
-**Function:** [Phone number] When contextual auto-fill is enabled, supports automatic saving and filling of phone numbers.
+**Function:** [Phone Number] When contextual auto-fill is enabled, supports automatic saving and filling of phone numbers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3147,9 +3253,7 @@ public operator func ==(other: ContentType): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-## enum ControlSize
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|## enum ControlSize
 
 ```cangjie
 public enum ControlSize <: Equatable<ControlSize> {
@@ -3159,7 +3263,7 @@ public enum ControlSize <: Equatable<ControlSize> {
 }
 ```
 
-**Function:** Control size dimensions.
+**Function:** Controls the size dimension.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3199,7 +3303,7 @@ Small
 public operator func !=(other: ControlSize): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -3211,7 +3315,7 @@ public operator func !=(other: ControlSize): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
 
 ### func ==(ControlSize)
 
@@ -3232,7 +3336,8 @@ public operator func ==(other: ControlSize): Bool
 |Type|Description|
 |:----|:----|
 |Bool|Returns true if the two enum values are equal, otherwise returns false.|
-```## enum CopyOptions
+
+## enum CopyOptions
 
 ```cangjie
 public enum CopyOptions <: Equatable<CopyOptions> {
@@ -3271,7 +3376,7 @@ InApp
 LocalDevice
 ```
 
-**Function:** Supports copying within the device.
+**Function:** Supports device-local copying.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3295,19 +3400,19 @@ None
 public operator func !=(other: CopyOptions): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [CopyOptions](#enum-copyoptions) | Yes | - | Another enum value. |
+|other|[CopyOptions](#enum-copyoptions)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
 
 ### func ==(CopyOptions)
 
@@ -3319,15 +3424,15 @@ public operator func ==(other: CopyOptions): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [CopyOptions](#enum-copyoptions) | Yes | - | Another enum value. |
+|other|[CopyOptions](#enum-copyoptions)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ## enum Curve
 
@@ -3350,7 +3455,7 @@ public enum Curve <: Equatable<Curve> {
 }
 ```
 
-**Function:** Animation curve.
+**Function:** Animation curves.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3366,7 +3471,7 @@ public enum Curve <: Equatable<Curve> {
 Ease
 ```
 
-**Function:** Indicates that the animation starts slowly, then speeds up, and slows down before ending, CubicBezier(0.25, 0.1, 0.25, 1.0).
+**Function:** Indicates an animation that starts slowly, accelerates, then slows down before ending (CubicBezier(0.25, 0.1, 0.25, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3378,7 +3483,7 @@ Ease
 EaseIn
 ```
 
-**Function:** Indicates that the animation starts slowly, CubicBezier(0.42, 0.0, 1.0, 1.0).
+**Function:** Indicates an animation that starts slowly (CubicBezier(0.42, 0.0, 1.0, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3390,7 +3495,7 @@ EaseIn
 EaseInOut
 ```
 
-**Function:** Indicates that the animation starts and ends slowly, CubicBezier(0.42, 0.0, 0.58, 1.0).
+**Function:** Indicates an animation that starts and ends slowly (CubicBezier(0.42, 0.0, 0.58, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3402,7 +3507,7 @@ EaseInOut
 EaseOut
 ```
 
-**Function:** Indicates that the animation ends slowly, CubicBezier(0.0, 0.0, 0.58, 1.0).
+**Function:** Indicates an animation that ends slowly (CubicBezier(0.0, 0.0, 0.58, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3414,7 +3519,7 @@ EaseOut
 ExtremeDeceleration
 ```
 
-**Function:** Extreme deceleration curve, cubic-bezier(0.0, 0.0, 0.0, 1.0).
+**Function:** Extreme deceleration curve (cubic-bezier(0.0, 0.0, 0.0, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3426,7 +3531,7 @@ ExtremeDeceleration
 FastOutLinearIn
 ```
 
-**Function:** Acceleration curve, cubic-bezier(0.4, 0.0, 1.0, 1.0).
+**Function:** Acceleration curve (cubic-bezier(0.4, 0.0, 1.0, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3438,7 +3543,7 @@ FastOutLinearIn
 FastOutSlowIn
 ```
 
-**Function:** Standard curve, cubic-bezier(0.4, 0.0, 0.2, 1.0).
+**Function:** Standard curve (cubic-bezier(0.4, 0.0, 0.2, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3450,7 +3555,7 @@ FastOutSlowIn
 Friction
 ```
 
-**Function:** Damping curve, CubicBezier(0.2, 0.0, 0.2, 1.0).
+**Function:** Damping curve (CubicBezier(0.2, 0.0, 0.2, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3462,7 +3567,7 @@ Friction
 Linear
 ```
 
-**Function:** Indicates that the animation speed remains constant from start to end.
+**Function:** Indicates an animation with constant speed from start to end.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3474,7 +3579,7 @@ Linear
 LinearOutSlowIn
 ```
 
-**Function:** Deceleration curve, cubic-bezier(0.0, 0.0, 0.2, 1.0).
+**Function:** Deceleration curve (cubic-bezier(0.0, 0.0, 0.2, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3486,7 +3591,7 @@ LinearOutSlowIn
 Rhythm
 ```
 
-**Function:** Rhythm curve, CubicBezier(0.7, 0.0, 0.2, 1.0).
+**Function:** Rhythm curve (CubicBezier(0.7, 0.0, 0.2, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3498,7 +3603,7 @@ Rhythm
 Sharp
 ```
 
-**Function:** Sharp curve, CubicBezier(0.4, 0.0, 0.6, 1.0).
+**Function:** Sharp curve (CubicBezier(0.4, 0.0, 0.6, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3510,7 +3615,7 @@ Sharp
 Smooth
 ```
 
-**Function:** Smooth curve, CubicBezier(0.4, 0.0, 0.2, 1.0).
+**Function:** Smooth curve (CubicBezier(0.4, 0.0, 0.2, 1.0)).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3522,19 +3627,19 @@ Smooth
 public operator func !=(other: Curve): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [Curve](#enum-curve) | Yes | - | Another enum value. |
+|other|[Curve](#enum-curve)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
 
 ### func ==(Curve)
 
@@ -3546,17 +3651,15 @@ public operator func ==(other: Curve): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [Curve](#enum-curve) | Yes | - | Another enum value. |
+|other|[Curve](#enum-curve)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
-
-## enum DialogAlignment
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|## enum DialogAlignment
 
 ```cangjie
 public enum DialogAlignment <: Equatable<DialogAlignment> {
@@ -3574,7 +3677,7 @@ public enum DialogAlignment <: Equatable<DialogAlignment> {
 }
 ```
 
-**Function:** Vertical alignment of dialog.
+**Function:** Vertical alignment method for dialog boxes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3590,7 +3693,7 @@ public enum DialogAlignment <: Equatable<DialogAlignment> {
 Bottom
 ```
 
-**Function:** Aligns to the bottom vertically.
+**Function:** Bottom vertical alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3602,7 +3705,7 @@ Bottom
 BottomEnd
 ```
 
-**Function:** Aligns to the bottom right.
+**Function:** Bottom-right alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3614,7 +3717,7 @@ BottomEnd
 BottomStart
 ```
 
-**Function:** Aligns to the bottom left.
+**Function:** Bottom-left alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3626,7 +3729,7 @@ BottomStart
 Center
 ```
 
-**Function:** Aligns to the center vertically.
+**Function:** Center vertical alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3638,7 +3741,7 @@ Center
 CenterEnd
 ```
 
-**Function:** Aligns to the right center.
+**Function:** Middle-right alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3650,7 +3753,7 @@ CenterEnd
 CenterStart
 ```
 
-**Function:** Aligns to the left center.
+**Function:** Middle-left alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3674,7 +3777,7 @@ Default
 Top
 ```
 
-**Function:** Aligns to the top vertically.
+**Function:** Top vertical alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3686,7 +3789,7 @@ Top
 TopEnd
 ```
 
-**Function:** Aligns to the top right.
+**Function:** Top-right alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3698,7 +3801,7 @@ TopEnd
 TopStart
 ```
 
-**Function:** Aligns to the top left.
+**Function:** Top-left alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3710,19 +3813,19 @@ TopStart
 public operator func !=(other: DialogAlignment): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [DialogAlignment](#enum-dialogalignment) | Yes | - | Enum value to compare. |
+|other|[DialogAlignment](#enum-dialogalignment)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
+|Bool|Returns true if the enum values are unequal, otherwise returns false.|
 
 ### func ==(DialogAlignment)
 
@@ -3734,33 +3837,16 @@ public operator func ==(other: DialogAlignment): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [DialogAlignment](#enum-dialogalignment) | Yes | - | Returns true if the two enum values are equal, otherwise returns false. |
+|other|[DialogAlignment](#enum-dialogalignment)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the enum values are equal, otherwise returns false.|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | Value represented by the current enum. |```markdown
 ## enum DialogButtonStyle
 
 ```cangjie
@@ -3771,7 +3857,7 @@ public enum DialogButtonStyle <: Equatable<DialogButtonStyle> {
 }
 ```
 
-**Function:** Dialog button style.
+**Function:** Dialog button styles.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3817,13 +3903,13 @@ public operator func !=(other: DialogButtonStyle): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[DialogButtonStyle](#enum-dialogbuttonstyle)|Yes|-|Enum value to compare|
+|other|[DialogButtonStyle](#enum-dialogbuttonstyle)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise returns false.|
 
 ### func ==(DialogButtonStyle)
 
@@ -3837,13 +3923,13 @@ public operator func ==(other: DialogButtonStyle): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[DialogButtonStyle](#enum-dialogbuttonstyle)|Yes|-|Enum value to compare|
+|other|[DialogButtonStyle](#enum-dialogbuttonstyle)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+|Bool|Returns true if the enum values are equal, otherwise returns false.|
 
 ## enum Direction
 
@@ -3872,7 +3958,7 @@ public enum Direction <: Equatable<Direction> {
 Auto
 ```
 
-**Function:** Uses the system default layout direction.
+**Function:** Uses system default layout direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3884,7 +3970,7 @@ Auto
 Ltr
 ```
 
-**Function:** Elements are laid out from left to right.
+**Function:** Left-to-right element layout.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3896,7 +3982,7 @@ Ltr
 Rtl
 ```
 
-**Function:** Elements are laid out from right to left.
+**Function:** Right-to-left element layout.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3914,13 +4000,13 @@ public operator func !=(other: Direction): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[Direction](#enum-direction)|Yes|-|Enum value to compare|
+|other|[Direction](#enum-direction)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise returns false.|
 
 ### func ==(Direction)
 
@@ -3934,13 +4020,13 @@ public operator func ==(other: Direction): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[Direction](#enum-direction)|Yes|-|Enum value to compare|
+|other|[Direction](#enum-direction)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+|Bool|Returns true if the enum values are equal, otherwise returns false.|
 
 ## enum Edge
 
@@ -3970,7 +4056,7 @@ public enum Edge <: Equatable<Edge> {
 Bottom
 ```
 
-**Function:** Bottom edge in vertical direction.
+**Function:** Bottom vertical edge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3982,7 +4068,7 @@ Bottom
 End
 ```
 
-**Function:** End position in horizontal direction.
+**Function:** Horizontal end position.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3994,7 +4080,7 @@ End
 Start
 ```
 
-**Function:** Start position in horizontal direction.
+**Function:** Horizontal start position.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4006,7 +4092,7 @@ Start
 Top
 ```
 
-**Function:** Top edge in vertical direction.
+**Function:** Top vertical edge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4024,13 +4110,13 @@ public operator func !=(other: Edge): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[Edge](#enum-edge)|Yes|-|Enum value to compare|
+|other|[Edge](#enum-edge)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise returns false.|
 
 ### func ==(Edge)
 
@@ -4044,15 +4130,13 @@ public operator func ==(other: Edge): Bool
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[Edge](#enum-edge)|Yes|-|Enum value to compare|
+|other|[Edge](#enum-edge)|Yes|-|Enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-## enum EdgeEffect
+|Bool|Returns true if the enum values are equal, otherwise returns false.|## enum EdgeEffect
 
 ```cangjie
 public enum EdgeEffect <: Equatable<EdgeEffect> {
@@ -4063,7 +4147,7 @@ public enum EdgeEffect <: Equatable<EdgeEffect> {
 }
 ```
 
-**Function:** Edge sliding effect.
+**Function:** Edge scrolling effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4079,7 +4163,7 @@ public enum EdgeEffect <: Equatable<EdgeEffect> {
 Fade
 ```
 
-**Function:** Shadow effect, showing arc-shaped shadows when sliding to the edge.
+**Function:** Shadow effect. A circular shadow appears when scrolling to the edge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4091,7 +4175,7 @@ Fade
 None
 ```
 
-**Function:** No effect when sliding to the edge.
+**Function:** No effect when scrolling to the edge.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4103,7 +4187,7 @@ None
 Spring
 ```
 
-**Function:** Elastic physics animation, allowing continued sliding beyond the edge based on initial velocity or touch events, with rebound upon release.
+**Function:** Elastic physics animation effect. When scrolling to the edge, continued scrolling is possible based on initial velocity or touch events, with a rebound upon release.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4119,15 +4203,15 @@ public operator func !=(other: EdgeEffect): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[EdgeEffect](#enum-edgeeffect)|Yes|-|Enum value to compare|
+| other | [EdgeEffect](#enum-edgeeffect) | Yes | - | Enum value to compare |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(EdgeEffect)
 
@@ -4139,15 +4223,15 @@ public operator func ==(other: EdgeEffect): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[EdgeEffect](#enum-edgeeffect)|Yes|-|Enum value to compare|
+| other | [EdgeEffect](#enum-edgeeffect) | Yes | - | Enum value to compare |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum FillMode
 
@@ -4161,7 +4245,7 @@ public enum FillMode <: Equatable<FillMode> {
 }
 ```
 
-**Function:** State before and after animation playback in the current direction.
+**Function:** State before animation starts and after it ends in the current playback direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4177,7 +4261,7 @@ public enum FillMode <: Equatable<FillMode> {
 Backwards
 ```
 
-**Function:** The animation will immediately apply the value defined in the first keyframe when applied to the target and retain this value during the delay period. The first keyframe depends on playMode: for Normal or Alternate, it's the 'from' state; for Reverse or AlternateReverse, it's the 'to' state.
+**Function:** The animation will immediately apply the value defined in the first keyframe when applied to the target and retain this value during the delay period. The first keyframe depends on playMode: it is the 'from' state when playMode is Normal or Alternate, and the 'to' state when playMode is Reverse or AlternateReverse.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4189,7 +4273,7 @@ Backwards
 Both
 ```
 
-**Function:** The animation will follow both Forwards and Backwards rules, extending animation properties in both directions.
+**Function:** The animation will follow the rules of both Forwards and Backwards, extending animation properties in both directions.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4213,7 +4297,7 @@ Forwards
 None
 ```
 
-**Function:** No styles are applied to the target when the animation is not playing, and it reverts to the initial default state after completion.
+**Function:** No styles are applied to the target when the animation is not executing, and the initial default state is restored after animation completion.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4229,15 +4313,15 @@ public operator func !=(other: FillMode): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[FillMode](#enum-fillmode)|Yes|-|Enum value to compare|
+| other | [FillMode](#enum-fillmode) | Yes | - | Enum value to compare |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(FillMode)
 
@@ -4249,16 +4333,17 @@ public operator func ==(other: FillMode): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[FillMode](#enum-fillmode)|Yes|-|Enum value to compare|
+| other | [FillMode](#enum-fillmode) | Yes | - | Enum value to compare |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-```## enum FinishCallbackType
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+
+## enum FinishCallbackType
 
 ```cangjie
 public enum FinishCallbackType <: Equatable<FinishCallbackType> {
@@ -4268,7 +4353,7 @@ public enum FinishCallbackType <: Equatable<FinishCallbackType> {
 }
 ```
 
-**Description:** Callback type when animation finishes.
+**Function:** Callback type when animation ends.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4284,7 +4369,7 @@ public enum FinishCallbackType <: Equatable<FinishCallbackType> {
 Logically
 ```
 
-**Description:** Triggers callback when the animation is in a logically descending state but may still be in its long tail state.
+**Function:** The callback is triggered when the animation is in a logically descending state but may still be in its long tail state.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4296,7 +4381,7 @@ Logically
 Removed
 ```
 
-**Description:** Triggers callback when the entire animation ends and is immediately removed.
+**Function:** The callback is triggered when the entire animation ends and is immediately removed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4308,19 +4393,19 @@ Removed
 public operator func !=(other: FinishCallbackType): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[FinishCallbackType](#enum-finishcallbacktype)|Yes|-|Enum value to compare|
+| other | [FinishCallbackType](#enum-finishcallbacktype) | Yes | - | Enum value to compare |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(FinishCallbackType)
 
@@ -4328,19 +4413,19 @@ public operator func !=(other: FinishCallbackType): Bool
 public operator func ==(other: FinishCallbackType): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[FinishCallbackType](#enum-finishcallbacktype)|Yes|-|Value represented by current enum.|
+| other | [FinishCallbackType](#enum-finishcallbacktype) | Yes | - | Value represented by the current enum. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum FlexAlign
 
@@ -4356,7 +4441,7 @@ public enum FlexAlign <: Equatable<FlexAlign> {
 }
 ```
 
-**Description:** Flex container alignment mode.
+**Function:** Flex container alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4372,7 +4457,7 @@ public enum FlexAlign <: Equatable<FlexAlign> {
 Center
 ```
 
-**Description:** Elements are center-aligned along the main axis, with the distance from the first element to the start edge equal to that from the last element to the end edge.
+**Function:** Elements are center-aligned along the main axis, with the distance from the first element to the start of the line equal to the distance from the last element to the end of the line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4384,7 +4469,7 @@ Center
 End
 ```
 
-**Description:** Elements are end-aligned along the main axis, with the last element aligned to the end edge and other elements aligned to the subsequent one.
+**Function:** Elements are aligned to the end of the main axis, with the last element aligned to the end of the line and other elements aligned to the next one.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4396,7 +4481,7 @@ End
 SpaceAround
 ```
 
-**Description:** Flex items are evenly distributed along the main axis with equal spacing between adjacent elements. The distance from the first element to the start edge and from the last element to the end edge is half of the spacing between adjacent elements.
+**Function:** Flex items are evenly distributed along the main axis, with equal spacing between adjacent elements. The distance from the first element to the start of the line and from the last element to the end of the line is half the spacing between adjacent elements.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4408,7 +4493,7 @@ SpaceAround
 SpaceBetween
 ```
 
-**Description:** Flex items are evenly distributed along the main axis with equal spacing between adjacent elements. The first element is aligned to the start edge and the last element to the end edge.
+**Function:** Flex items are evenly distributed along the main axis, with equal spacing between adjacent elements. The first element is aligned to the start of the line, and the last element is aligned to the end of the line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4420,7 +4505,7 @@ SpaceBetween
 SpaceEvenly
 ```
 
-**Description:** Flex items are evenly distributed along the main axis with equal spacing between adjacent elements. The distance from the first element to the start edge and from the last element to the end edge equals the spacing between adjacent elements.
+**Function:** Flex items are evenly distributed along the main axis, with equal spacing between adjacent elements. The distance from the first element to the start of the line and from the last element to the end of the line is equal to the spacing between adjacent elements.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4432,7 +4517,7 @@ SpaceEvenly
 Start
 ```
 
-**Description:** Elements are start-aligned along the main axis, with the first element aligned to the start edge and other elements aligned to the preceding one.
+**Function:** Elements are aligned to the start of the main axis, with the first element aligned to the start of the line and other elements aligned to the previous one.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4444,19 +4529,19 @@ Start
 public operator func !=(other: FlexAlign): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[FlexAlign](#enum-flexalign)|Yes|-|Enum value to compare|
+| other | [FlexAlign](#enum-flexalign) | Yes | - | Enum value to compare |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(FlexAlign)
 
@@ -4464,21 +4549,19 @@ public operator func !=(other: FlexAlign): Bool
 public operator func ==(other: FlexAlign): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[FlexAlign](#enum-flexalign)|Yes|-|Enum value to compare|
+| other | [FlexAlign](#enum-flexalign) | Yes | - | Enum value to compare |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if two enum values are equal, otherwise returns false.|
-
-## enum FlexDirection
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |## enum FlexDirection
 
 ```cangjie
 public enum FlexDirection <: Equatable<FlexDirection> {
@@ -4490,7 +4573,7 @@ public enum FlexDirection <: Equatable<FlexDirection> {
 }
 ```
 
-**Description:** Flex container layout direction.
+**Function:** Flex container direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4506,7 +4589,7 @@ public enum FlexDirection <: Equatable<FlexDirection> {
 Column
 ```
 
-**Description:** Main axis follows column direction as layout mode.
+**Function:** Sets the main axis to column direction as the layout mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4518,7 +4601,7 @@ Column
 ColumnReverse
 ```
 
-**Description:** Layout in opposite direction to Column.
+**Function:** Layout in the opposite direction of Column.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4530,7 +4613,7 @@ ColumnReverse
 Row
 ```
 
-**Description:** Main axis follows row direction as layout mode.
+**Function:** Sets the main axis to row direction as the layout mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4542,7 +4625,7 @@ Row
 RowReverse
 ```
 
-**Description:** Layout in opposite direction to Row.
+**Function:** Layout in the opposite direction of Row.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4554,7 +4637,7 @@ RowReverse
 public operator func !=(other: FlexDirection): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -4574,7 +4657,7 @@ public operator func !=(other: FlexDirection): Bool
 public operator func ==(other: FlexDirection): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
@@ -4599,7 +4682,7 @@ public enum FlexWrap <: Equatable<FlexWrap> {
 }
 ```
 
-**Description:** Flex container constraint mode.
+**Function:** Flex container constraint mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4615,7 +4698,7 @@ public enum FlexWrap <: Equatable<FlexWrap> {
 NoWrap
 ```
 
-**Description:** Flex container elements are laid out in single row/column, with children constrained within the container as much as possible. When children have minimum size constraints, the Flex container won't enforce elastic compression.
+**Function:** Single-row/column layout for Flex container elements, with child elements constrained within the container as much as possible. When child elements have minimum size constraints or other settings, the Flex container will not enforce elastic compression on them.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4627,7 +4710,7 @@ NoWrap
 Wrap
 ```
 
-**Description:** Flex container elements are arranged in multiple rows/columns, allowing children to exceed container bounds.
+**Function:** Multi-row/column arrangement for Flex container elements, allowing child items to exceed the container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4639,7 +4722,7 @@ Wrap
 WrapReverse
 ```
 
-**Description:** Layout in opposite direction to Wrap.
+**Function:** Layout in the opposite direction of Wrap.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4651,7 +4734,7 @@ WrapReverse
 public operator func !=(other: FlexWrap): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -4671,7 +4754,7 @@ public operator func !=(other: FlexWrap): Bool
 public operator func ==(other: FlexWrap): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
@@ -4683,115 +4766,7 @@ public operator func ==(other: FlexWrap): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if two enum values are equal, otherwise returns false.|## enum FoldStatus
-
-```cangjie
-public enum FoldStatus <: Equatable<FoldStatus> {
-    | FOLD_STATUS_UNKNOWN
-    | FOLD_STATUS_EXPANDED
-    | FOLD_STATUS_FOLDED
-    | FOLD_STATUS_HALF_FOLDED
-    | ...
-}
-```
-
-**Description:** Represents the folding state of a foldable device.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parent Type:**
-
-- Equatable\<FoldStatus>
-
-### FOLD_STATUS_EXPANDED
-
-```cangjie
-FOLD_STATUS_EXPANDED
-```
-
-**Description:** Indicates the device is currently in a fully expanded state.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### FOLD_STATUS_FOLDED
-
-```cangjie
-FOLD_STATUS_FOLDED
-```
-
-**Description:** Indicates the device is currently in a folded state.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### FOLD_STATUS_HALF_FOLDED
-
-```cangjie
-FOLD_STATUS_HALF_FOLDED
-```
-
-**Description:** Indicates the device is currently in a half-folded state. Half-folded refers to an intermediate state between fully expanded and fully folded.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### FOLD_STATUS_UNKNOWN
-
-```cangjie
-FOLD_STATUS_UNKNOWN
-```
-
-**Description:** Indicates the device's current folding state is unknown.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### func !=(FoldStatus)
-
-```cangjie
-public operator func !=(other: FoldStatus): Bool
-```
-
-**Description:** Determines whether two enum values are unequal.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [FoldStatus](#enum-foldstatus) | Yes | - | The enum value to compare |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
-
-### func ==(FoldStatus)
-
-```cangjie
-public operator func ==(other: FoldStatus): Bool
-```
-
-**Description:** Determines whether two enum values are equal.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [FoldStatus](#enum-foldstatus) | Yes | - | The enum value to compare |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+|Bool|Returns true if two enum values are equal, otherwise returns false.|
 
 ## enum FontStyle
 
@@ -4803,7 +4778,7 @@ public enum FontStyle <: Equatable<FontStyle> {
 }
 ```
 
-**Description:** Font style.
+**Function:** Font style.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4819,7 +4794,7 @@ public enum FontStyle <: Equatable<FontStyle> {
 Italic
 ```
 
-**Description:** Italic font style.
+**Function:** Italic font style.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4831,7 +4806,7 @@ Italic
 Normal
 ```
 
-**Description:** Standard font style.
+**Function:** Standard font style.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4843,19 +4818,19 @@ Normal
 public operator func !=(other: FontStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [FontStyle](#enum-fontstyle) | Yes | - | The enum value to compare |
+|other|[FontStyle](#enum-fontstyle)|Yes|-|Enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+|Bool|Returns true if two enum values are unequal, otherwise returns false.|
 
 ### func ==(FontStyle)
 
@@ -4863,37 +4838,19 @@ public operator func !=(other: FontStyle): Bool
 public operator func ==(other: FontStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [FontStyle](#enum-fontstyle) | Yes | - | The enum value to compare |
+|other|[FontStyle](#enum-fontstyle)|Yes|-|Enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Description:** Gets the integer value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The integer value represented by the current enum. |
+|Bool|Returns true if two enum values are equal, otherwise returns false.|
 
 ## enum FontWeight
 
@@ -4918,7 +4875,7 @@ public enum FontWeight <: Equatable<FontWeight> {
 }
 ```
 
-**Description:** Sets the font weight of text. Setting values too large may result in truncation with certain fonts.
+**Function:** Sets the font weight of text. Setting too large may result in truncation in different fonts.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4934,7 +4891,7 @@ public enum FontWeight <: Equatable<FontWeight> {
 Bold
 ```
 
-**Description:** Bold font weight.
+**Function:** Bold font weight.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4946,7 +4903,7 @@ Bold
 Bolder
 ```
 
-**Description:** Very bold font weight.
+**Function:** Very bold font weight.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4958,7 +4915,7 @@ Bolder
 Lighter
 ```
 
-**Description:** Light font weight.
+**Function:** Light font weight.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4970,7 +4927,7 @@ Lighter
 Medium
 ```
 
-**Description:** Medium font weight.
+**Function:** Medium font weight.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4982,7 +4939,7 @@ Medium
 Normal
 ```
 
-**Description:** Normal font weight.
+**Function:** Normal font weight.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4994,7 +4951,7 @@ Normal
 Regular
 ```
 
-**Description:** Slightly bold font weight.
+**Function:** Slightly bold font weight.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5006,7 +4963,7 @@ Regular
 W100
 ```
 
-**Description:** 100 (lightest).
+**Function:** 100 (lightest).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5018,7 +4975,7 @@ W100
 W200
 ```
 
-**Description:** 200.
+**Function:** 200.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5030,7 +4987,7 @@ W200
 W300
 ```
 
-**Description:** 300.
+**Function:** 300.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5042,7 +4999,7 @@ W300
 W400
 ```
 
-**Description:** 400 (normal).
+**Function:** 400 (normal).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5054,7 +5011,7 @@ W400
 W500
 ```
 
-**Description:** 500.
+**Function:** 500.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5066,7 +5023,7 @@ W500
 W600
 ```
 
-**Description:** 600.
+**Function:** 600.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5078,7 +5035,7 @@ W600
 W700
 ```
 
-**Description:** 700.
+**Function:** 700.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5090,7 +5047,7 @@ W700
 W800
 ```
 
-**Description:** 800.
+**Function:** 800.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5102,7 +5059,7 @@ W800
 W900
 ```
 
-**Description:** 900 (boldest).
+**Function:** 900 (boldest).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5114,19 +5071,19 @@ W900
 public operator func !=(other: FontWeight): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [FontWeight](#enum-fontweight) | Yes | - | The enum value to compare |
+|other|[FontWeight](#enum-fontweight)|Yes|-|Enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+|Bool|Returns true if two enum values are unequal, otherwise returns false.|
 
 ### func ==(FontWeight)
 
@@ -5134,58 +5091,22 @@ public operator func !=(other: FontWeight): Bool
 public operator func ==(other: FontWeight): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [FontWeight](#enum-fontweight) | Yes | - | The enum value to compare |
+|other|[FontWeight](#enum-fontweight)|Yes|-|Enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
-
-### func getValue()
+|Bool|Returns true if two enum values are equal, otherwise returns false.|## enum BlurStyle
 
 ```cangjie
-public func getValue(): String
-```
-
-**Description:** Gets the string value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The string value represented by the current enum. |
-
-### func getValueInt()
-
-```cangjie
-public func getValueInt(): UInt32
-```
-
-**Description:** Gets the integer value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| UInt32 | The integer value represented by the current enum. |## enum ForegroundBlurStyle
-
-```cangjie
-public enum ForegroundBlurStyle <: Equatable<ForegroundBlurStyle> {
+public enum BlurStyle {
     | None
     | Thin
     | Regular
@@ -5203,7 +5124,7 @@ public enum ForegroundBlurStyle <: Equatable<ForegroundBlurStyle> {
 }
 ```
 
-**Description:** Foreground blur styles.
+**Function:** Foreground blur style.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5219,7 +5140,7 @@ public enum ForegroundBlurStyle <: Equatable<ForegroundBlurStyle> {
 BackgroundRegular
 ```
 
-**Description:** Medium-depth background blur effect.
+**Function:** Medium depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5231,7 +5152,7 @@ BackgroundRegular
 BackgroundThick
 ```
 
-**Description:** Far-depth background blur effect.
+**Function:** Far depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5243,7 +5164,7 @@ BackgroundThick
 BackgroundThin
 ```
 
-**Description:** Near-depth background blur effect.
+**Function:** Near depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5255,7 +5176,7 @@ BackgroundThin
 BackgroundUltraThick
 ```
 
-**Description:** Ultra far-depth background blur effect.
+**Function:** Ultra-far depth-of-field blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5267,7 +5188,7 @@ BackgroundUltraThick
 ComponentRegular
 ```
 
-**Description:** Standard component material blur effect.
+**Function:** Component standard material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5279,7 +5200,7 @@ ComponentRegular
 ComponentThick
 ```
 
-**Description:** Thick component material blur effect.
+**Function:** Component thick material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5291,7 +5212,7 @@ ComponentThick
 ComponentThin
 ```
 
-**Description:** Thin component material blur effect.
+**Function:** Component thin material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5303,7 +5224,7 @@ ComponentThin
 ComponentUltraThick
 ```
 
-**Description:** Ultra thick component material blur effect.
+**Function:** Component ultra-thick material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5315,7 +5236,7 @@ ComponentUltraThick
 ComponentUltraThin
 ```
 
-**Description:** Ultra thin component material blur effect.
+**Function:** Component ultra-thin material blur.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5327,7 +5248,7 @@ ComponentUltraThin
 None
 ```
 
-**Description:** No blur effect.
+**Function:** No blur effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5339,7 +5260,7 @@ None
 Regular
 ```
 
-**Description:** Standard blur effect.
+**Function:** Standard blur effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5351,7 +5272,7 @@ Regular
 Thick
 ```
 
-**Description:** Thick blur effect.
+**Function:** Thick blur effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5363,51 +5284,11 @@ Thick
 Thin
 ```
 
-**Description:** Thin blur effect.
+**Function:** Thin blur effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-### func !=(ForegroundBlurStyle)
-
-```cangjie
-public operator func !=(other: ForegroundBlurStyle): Bool
-```
-
-**Description:** Determines whether two enum values are unequal.
-
-**Parameters:**
-
-|Parameter|Type|Mandatory|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|other|[ForegroundBlurStyle](#enum-foregroundblurstyle)|Yes|-|Another enum value for comparison.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the enum values are unequal, otherwise returns false.|
-
-### func ==(ForegroundBlurStyle)
-
-```cangjie
-public operator func ==(other: ForegroundBlurStyle): Bool
-```
-
-**Description:** Determines whether two enum values are equal.
-
-**Parameters:**
-
-|Parameter|Type|Mandatory|Default Value|Description|
-|:---|:---|:---|:---|:---|
-|other|[ForegroundBlurStyle](#enum-foregroundblurstyle)|Yes|-|Another enum value for comparison.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the enum values are equal, otherwise returns false.|
 
 ## enum FunctionKey
 
@@ -5431,7 +5312,7 @@ public enum FunctionKey <: Equatable<FunctionKey> {
 }
 ```
 
-**Description:** Keyboard function keys.
+**Function:** Keyboard function keys.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5447,7 +5328,7 @@ public enum FunctionKey <: Equatable<FunctionKey> {
 ESC
 ```
 
-**Description:** Represents the ESC function key on the keyboard.
+**Function:** Represents the ESC function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5459,7 +5340,7 @@ ESC
 F1
 ```
 
-**Description:** Represents the F1 function key on the keyboard.
+**Function:** Represents the F1 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5471,7 +5352,7 @@ F1
 F10
 ```
 
-**Description:** Represents the F10 function key on the keyboard.
+**Function:** Represents the F10 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5483,7 +5364,7 @@ F10
 F11
 ```
 
-**Description:** Represents the F11 function key on the keyboard.
+**Function:** Represents the F11 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5495,7 +5376,7 @@ F11
 F12
 ```
 
-**Description:** Represents the F12 function key on the keyboard.
+**Function:** Represents the F12 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5507,7 +5388,7 @@ F12
 F2
 ```
 
-**Description:** Represents the F2 function key on the keyboard.
+**Function:** Represents the F2 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5519,7 +5400,7 @@ F2
 F3
 ```
 
-**Description:** Represents the F3 function key on the keyboard.
+**Function:** Represents the F3 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5531,7 +5412,7 @@ F3
 F4
 ```
 
-**Description:** Represents the F4 function key on the keyboard.
+**Function:** Represents the F4 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5543,7 +5424,7 @@ F4
 F5
 ```
 
-**Description:** Represents the F5 function key on the keyboard.
+**Function:** Represents the F5 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5555,7 +5436,7 @@ F5
 F6
 ```
 
-**Description:** Represents the F6 function key on the keyboard.
+**Function:** Represents the F6 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5567,7 +5448,7 @@ F6
 F7
 ```
 
-**Description:** Represents the F7 function key on the keyboard.
+**Function:** Represents the F7 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5579,7 +5460,7 @@ F7
 F8
 ```
 
-**Description:** Represents the F8 function key on the keyboard.
+**Function:** Represents the F8 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5591,7 +5472,7 @@ F8
 F9
 ```
 
-**Description:** Represents the F9 function key on the keyboard.
+**Function:** Represents the F9 function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5603,7 +5484,7 @@ F9
 TAB
 ```
 
-**Description:** Represents the TAB function key on the keyboard.
+**Function:** Represents the TAB function key on keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5615,11 +5496,11 @@ TAB
 public operator func !=(other: FunctionKey): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Checks if two enum values are not equal.
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
 |other|[FunctionKey](#enum-functionkey)|Yes|-|Another enum value for comparison.|
 
@@ -5627,7 +5508,7 @@ public operator func !=(other: FunctionKey): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the enum values are not equal, otherwise returns false.|
 
 ### func ==(FunctionKey)
 
@@ -5635,11 +5516,11 @@ public operator func !=(other: FunctionKey): Bool
 public operator func ==(other: FunctionKey): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Checks if two enum values are equal.
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
 |other|[FunctionKey](#enum-functionkey)|Yes|-|Another enum value for comparison.|
 
@@ -5792,7 +5673,7 @@ public operator func !=(other: GradientDirection): Bool
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[GradientDirection](#enum-gradientdirection)|Yes|-|Another enumeration value to compare.|
 
@@ -5812,7 +5693,7 @@ public operator func ==(other: GradientDirection): Bool
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[GradientDirection](#enum-gradientdirection)|Yes|-|Another enumeration value to compare.|
 
@@ -5849,7 +5730,7 @@ public enum HorizontalAlign <: Equatable<HorizontalAlign> {
 Center
 ```
 
-**Function:** Center alignment (default mode).
+**Function:** Center alignment, which is the default alignment mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5861,7 +5742,7 @@ Center
 End
 ```
 
-**Function:** Aligns to the end according to language direction.
+**Function:** Aligns to the end according to the language direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5873,7 +5754,7 @@ End
 Start
 ```
 
-**Function:** Aligns to the start according to language direction.
+**Function:** Aligns to the start according to the language direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5889,7 +5770,7 @@ public operator func !=(other: HorizontalAlign): Bool
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[HorizontalAlign](#enum-horizontalalign)|Yes|-|Another enumeration value to compare.|
 
@@ -5909,7 +5790,7 @@ public operator func ==(other: HorizontalAlign): Bool
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[HorizontalAlign](#enum-horizontalalign)|Yes|-|Another enumeration value to compare.|
 
@@ -5949,7 +5830,7 @@ public enum ImageFit <: Equatable<ImageFit> {
 Auto
 ```
 
-**Function:** The image will be appropriately scaled based on its own dimensions and the component's dimensions to fill the view while maintaining aspect ratio.
+**Function:** The image will be appropriately scaled based on its own dimensions and the component's dimensions to fill the view while maintaining its aspect ratio.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5961,7 +5842,7 @@ Auto
 Contain
 ```
 
-**Function:** Scales the image while maintaining aspect ratio to ensure it is fully displayed within the boundaries.
+**Function:** Scales the image while maintaining its aspect ratio to ensure the entire image is displayed within the view boundaries.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5973,7 +5854,7 @@ Contain
 Cover
 ```
 
-**Function:** Scales the image while maintaining aspect ratio to ensure both sides are equal to or larger than the display boundaries.
+**Function:** Scales the image while maintaining its aspect ratio to ensure both sides of the image are equal to or larger than the view boundaries.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5985,7 +5866,7 @@ Cover
 Fill
 ```
 
-**Function:** Scales the image without maintaining aspect ratio, stretching it to fill the entire display boundary.
+**Function:** Scales the image without maintaining its aspect ratio, stretching it to fill the entire view boundaries.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6009,7 +5890,7 @@ None
 ScaleDown
 ```
 
-**Function:** The image is proportionally scaled down but not enlarged, maintaining aspect ratio.
+**Function:** The image is proportionally scaled down but not enlarged, maintaining its aspect ratio.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6025,7 +5906,7 @@ public operator func !=(other: ImageFit): Bool
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[ImageFit](#enum-imagefit)|Yes|-|Another enumeration value to compare.|
 
@@ -6045,7 +5926,7 @@ public operator func ==(other: ImageFit): Bool
 
 **Parameters:**
 
-|Parameter|Type|Mandatory|Default Value|Description|
+|Name|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |other|[ImageFit](#enum-imagefit)|Yes|-|Another enumeration value to compare.|
 
@@ -6093,7 +5974,7 @@ NoRepeat
 X
 ```
 
-**Function:** Repeat the image only on the horizontal axis.
+**Function:** Repeat the image only on the horizontal axis when drawing.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6105,7 +5986,7 @@ X
 XY
 ```
 
-**Function:** Repeat the image on both axes.
+**Function:** Repeat the image on both axes when drawing.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6117,51 +5998,11 @@ XY
 Y
 ```
 
-**Function:** Repeat the image only on the vertical axis.
+**Function:** Repeat the image only on the vertical axis when drawing.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
-
-### func !=(ImageRepeat)
-
-```cangjie
-public operator func !=(other: ImageRepeat): Bool
-```
-
-**Function:** Determines whether two enum values are unequal.
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|other|[ImageRepeat](#enum-imagerepeat)|Yes|-|Image repetition mode.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
-
-### func ==(ImageRepeat)
-
-```cangjie
-public operator func ==(other: ImageRepeat): Bool
-```
-
-**Function:** Determines whether two enum values are equal.
-
-**Parameters:**
-
-|Parameter|Type|Required|Default|Description|
-|:---|:---|:---|:---|:---|
-|other|[ImageRepeat](#enum-imagerepeat)|Yes|-|Another enum value.|
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ## enum ImageSize
 
@@ -6202,7 +6043,7 @@ Auto
 Contain
 ```
 
-**Function:** Scales the image while maintaining its aspect ratio to ensure it is fully displayed within the display boundaries.
+**Function:** Scales the image while maintaining aspect ratio to ensure the entire image is displayed within the boundaries.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6214,7 +6055,7 @@ Contain
 Cover
 ```
 
-**Function:** Scales the image while maintaining its aspect ratio to ensure both sides of the image are greater than or equal to the display boundaries.
+**Function:** Scales the image while maintaining aspect ratio to ensure both sides of the image are equal to or larger than the display boundaries.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6226,7 +6067,7 @@ Cover
 public operator func !=(other: ImageSize): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
@@ -6238,7 +6079,7 @@ public operator func !=(other: ImageSize): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(ImageSize)
 
@@ -6336,7 +6177,7 @@ TOP
 public operator func !=(other: ImageSpanAlignment): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
@@ -6348,7 +6189,7 @@ public operator func !=(other: ImageSpanAlignment): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(ImageSpanAlignment)
 
@@ -6433,7 +6274,7 @@ webp
 public operator func !=(other: ImageType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
@@ -6445,7 +6286,7 @@ public operator func !=(other: ImageType): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(ImageType)
 
@@ -6465,7 +6306,9 @@ public operator func ==(other: ImageType): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|## enum ItemAlign
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+
+## enum ItemAlign
 
 ```cangjie
 public enum ItemAlign <: Equatable<ItemAlign> {
@@ -6479,7 +6322,7 @@ public enum ItemAlign <: Equatable<ItemAlign> {
 }
 ```
 
-**Description:** Element alignment mode.
+**Function:** Element alignment mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6495,7 +6338,7 @@ public enum ItemAlign <: Equatable<ItemAlign> {
 Auto
 ```
 
-**Description:** Uses the default configuration in the Flex container.
+**Function:** Uses the default configuration in the Flex container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6507,7 +6350,7 @@ Auto
 Baseline
 ```
 
-**Description:** Aligns elements along the text baseline in the cross-axis direction within the Flex container.
+**Function:** Aligns elements along the text baseline in the cross-axis direction within the Flex container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6519,7 +6362,7 @@ Baseline
 Center
 ```
 
-**Description:** Centers elements in the cross-axis direction within the Flex container.
+**Function:** Aligns elements to the center in the cross-axis direction within the Flex container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6531,7 +6374,7 @@ Center
 End
 ```
 
-**Description:** Aligns elements to the end in the cross-axis direction within the Flex container.
+**Function:** Aligns elements to the end in the cross-axis direction within the Flex container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6543,7 +6386,7 @@ End
 Start
 ```
 
-**Description:** Aligns elements to the start in the cross-axis direction within the Flex container.
+**Function:** Aligns elements to the start in the cross-axis direction within the Flex container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6555,7 +6398,7 @@ Start
 Stretch
 ```
 
-**Description:** Stretches elements to fill the cross-axis direction within the Flex container. When the container is Flex with Wrap set to FlexWrap.Wrap or FlexWrap.WrapReverse, elements stretch to match the size of the longest element in the current row/column's cross-axis. In other cases, elements stretch to the container size regardless of their set dimensions.
+**Function:** Stretches elements to fill the cross-axis direction within the Flex container. When the container is Flex and Wrap is set to FlexWrap.Wrap or FlexWrap.WrapReverse, elements stretch to match the size of the longest element in the current row/column's cross-axis direction. In other cases, regardless of whether the element size is set, it stretches to the container size.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6567,19 +6410,19 @@ Stretch
 public operator func !=(other: ItemAlign): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [ItemAlign](#enum-itemalign) | Yes | - | Another enum value. |
+|other|[ItemAlign](#enum-itemalign)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(ItemAlign)
 
@@ -6587,21 +6430,19 @@ public operator func !=(other: ItemAlign): Bool
 public operator func ==(other: ItemAlign): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [ItemAlign](#enum-itemalign) | Yes | - | Another enum value. |
+|other|[ItemAlign](#enum-itemalign)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
-
-## enum KeySource
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|## enum KeySource
 
 ```cangjie
 public enum KeySource <: Equatable<KeySource> {
@@ -6611,7 +6452,7 @@ public enum KeySource <: Equatable<KeySource> {
 }
 ```
 
-**Description:** Key press source.
+**Function:** Key event source.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6627,7 +6468,7 @@ public enum KeySource <: Equatable<KeySource> {
 Keyboard
 ```
 
-**Description:** Keyboard key press.
+**Function:** Keyboard input.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6639,7 +6480,7 @@ Keyboard
 Unknown
 ```
 
-**Description:** Unknown source.
+**Function:** Unknown source.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6651,11 +6492,11 @@ Unknown
 public operator func !=(other: KeySource): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [KeySource](#enum-keysource) | Yes | - | Another enum value. |
 
@@ -6671,11 +6512,11 @@ public operator func !=(other: KeySource): Bool
 public operator func ==(other: KeySource): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [KeySource](#enum-keysource) | Yes | - | Another enum value. |
 
@@ -6684,42 +6525,6 @@ public operator func ==(other: KeySource): Bool
 | Type | Description |
 |:----|:----|
 | Bool | Returns true if the two enum values are equal, otherwise returns false. |
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Description:** Gets the parameter value, returning the integer value corresponding to whether the unlock result is reused.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value represented by the current enum. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Description:** Gets the string representation of the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The string representation of the current enum. |
 
 ## enum KeyType
 
@@ -6732,7 +6537,7 @@ public enum KeyType <: Equatable<KeyType> {
 }
 ```
 
-**Description:** Key press type.
+**Function:** Key event type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6748,7 +6553,7 @@ public enum KeyType <: Equatable<KeyType> {
 Down
 ```
 
-**Description:** Key press down.
+**Function:** Key press.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6760,7 +6565,7 @@ Down
 Unknown
 ```
 
-**Description:** Unknown type.
+**Function:** Unknown type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6772,7 +6577,7 @@ Unknown
 Up
 ```
 
-**Description:** Key release.
+**Function:** Key release.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6784,11 +6589,11 @@ Up
 public operator func !=(other: KeyType): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [KeyType](#enum-keytype) | Yes | - | Another enum value. |
 
@@ -6804,11 +6609,11 @@ public operator func !=(other: KeyType): Bool
 public operator func ==(other: KeyType): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [KeyType](#enum-keytype) | Yes | - | Another enum value. |
 
@@ -6818,53 +6623,17 @@ public operator func ==(other: KeyType): Bool
 |:----|:----|
 | Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
-### func getValue()
+## enum SafeAreaEdge
 
 ```cangjie
-public func getValue(): Int32
-```
-
-**Description:** Gets the parameter value, returning the integer value corresponding to whether the unlock result is reused.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value represented by the current enum. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Description:** Gets the string representation of the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The string representation of the current enum. |
-
-## enum LayoutSafeAreaEdge
-
-```cangjie
-public enum LayoutSafeAreaEdge <: Equatable<LayoutSafeAreaEdge> {
+public enum SafeAreaEdge {
     | TOP
     | BOTTOM
     | ...
 }
 ```
 
-**Description:** Direction for extending the safe area.
+**Function:** Safe area extension direction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6872,7 +6641,7 @@ public enum LayoutSafeAreaEdge <: Equatable<LayoutSafeAreaEdge> {
 
 **Parent Type:**
 
-- Equatable\<LayoutSafeAreaEdge>
+- Equatable\<SafeAreaEdge>
 
 ### BOTTOM
 
@@ -6880,7 +6649,7 @@ public enum LayoutSafeAreaEdge <: Equatable<LayoutSafeAreaEdge> {
 BOTTOM
 ```
 
-**Description:** Bottom area.
+**Function:** Bottom area.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6892,25 +6661,25 @@ BOTTOM
 TOP
 ```
 
-**Description:** Top area.
+**Function:** Top area.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-### func !=(LayoutSafeAreaEdge)
+### func !=(SafeAreaEdge)
 
 ```cangjie
-public operator func !=(other: LayoutSafeAreaEdge): Bool
+public operator func !=(other: SafeAreaEdge): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [LayoutSafeAreaEdge](#enum-layoutsafeareaedge) | Yes | - | Another enum value. |
+| other | [SafeAreaEdge](#enum-safeareaedge) | Yes | - | Another enum value. |
 
 **Return Value:**
 
@@ -6918,91 +6687,21 @@ public operator func !=(other: LayoutSafeAreaEdge): Bool
 |:----|:----|
 | Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
-### func ==(LayoutSafeAreaEdge)
+### func ==(SafeAreaEdge)
 
 ```cangjie
-public operator func ==(other: LayoutSafeAreaEdge): Bool
+public operator func ==(other: SafeAreaEdge): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [LayoutSafeAreaEdge](#enum-layoutsafeareaedge) | Yes | - | Another enum value. |
+| other | [SafeAreaEdge](#enum-safeareaedge) | Yes | - | Another enum value. |
 
 **Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |```markdown
-## enum LayoutSafeAreaType
-
-```cangjie
-public enum LayoutSafeAreaType <: Equatable<LayoutSafeAreaType> {
-    | SYSTEM
-    | ...
-}
-```
-
-**Description:** Enumeration type for extending layout safe areas.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Parent Type:**
-
-- Equatable\<LayoutSafeAreaType>
-
-### SYSTEM
-
-```cangjie
-SYSTEM
-```
-
-**Description:** System default non-safe area, including status bar and navigation bar.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### func !=(LayoutSafeAreaType)
-
-```cangjie
-public operator func !=(other: LayoutSafeAreaType): Bool
-```
-
-**Description:** Determines whether two enum values are unequal.
-
-**Parameters:**
-
-| Name | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [LayoutSafeAreaType](#enum-layoutsafeareatype) | Yes | - | Another enum value. |
-
-**Returns:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
-
-### func ==(LayoutSafeAreaType)
-
-```cangjie
-public operator func ==(other: LayoutSafeAreaType): Bool
-```
-
-**Description:** Determines whether two enum values are equal.
-
-**Parameters:**
-
-| Name | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [LayoutSafeAreaType](#enum-layoutsafeareatype) | Yes | - | Another enum value. |
-
-**Returns:**
 
 | Type | Description |
 |:----|:----|
@@ -7018,7 +6717,7 @@ public enum LengthMetricsUnit <: Equatable<LengthMetricsUnit> {
 }
 ```
 
-**Description:** Enumeration for length property units.
+**Function:** Length property unit enumeration.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7034,7 +6733,7 @@ public enum LengthMetricsUnit <: Equatable<LengthMetricsUnit> {
 DEFAULT
 ```
 
-**Description:** Length type describing lengths in default vp pixel units.
+**Function:** Length type, describing lengths in default vp pixel units.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7046,7 +6745,7 @@ DEFAULT
 PX
 ```
 
-**Description:** Length type describing lengths in px pixel units.
+**Function:** Length type, describing lengths in px pixel units.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7058,15 +6757,15 @@ PX
 public operator func !=(other: LengthMetricsUnit): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [LengthMetricsUnit](#enum-lengthmetricsunit) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
 | Type | Description |
 |:----|:----|
@@ -7078,15 +6777,15 @@ public operator func !=(other: LengthMetricsUnit): Bool
 public operator func ==(other: LengthMetricsUnit): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [LengthMetricsUnit](#enum-lengthmetricsunit) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
 | Type | Description |
 |:----|:----|
@@ -7103,7 +6802,7 @@ public enum LineBreakStrategy <: Equatable<LineBreakStrategy> {
 }
 ```
 
-**Description:** Text line breaking rules.
+**Function:** Text line breaking rules.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7119,7 +6818,7 @@ public enum LineBreakStrategy <: Equatable<LineBreakStrategy> {
 BALANCED
 ```
 
-**Description:** Attempts to maintain equal line widths within a paragraph without word breaks where possible.
+**Function:** Attempts to ensure uniform line widths within a paragraph without word breaks.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7131,7 +6830,7 @@ BALANCED
 GREEDY
 ```
 
-**Description:** Displays as many characters as possible per line before breaking.
+**Function:** Maximizes characters per line until no more can fit before breaking.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7143,7 +6842,7 @@ GREEDY
 HIGH_QUALITY
 ```
 
-**Description:** Builds upon BALANCED strategy while attempting to fill lines more completely, potentially leaving more whitespace on the last line.
+**Function:** Builds upon BALANCED, prioritizing line filling with lower weight on the last line, potentially leaving more whitespace.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7155,15 +6854,15 @@ HIGH_QUALITY
 public operator func !=(other: LineBreakStrategy): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [LineBreakStrategy](#enum-linebreakstrategy) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
 | Type | Description |
 |:----|:----|
@@ -7175,21 +6874,19 @@ public operator func !=(other: LineBreakStrategy): Bool
 public operator func ==(other: LineBreakStrategy): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [LineBreakStrategy](#enum-linebreakstrategy) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
-
-## enum LineCapStyle
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |## enum LineCapStyle
 
 ```cangjie
 public enum LineCapStyle <: Equatable<LineCapStyle> {
@@ -7200,7 +6897,7 @@ public enum LineCapStyle <: Equatable<LineCapStyle> {
 }
 ```
 
-**Description:** Line ending styles.
+**Function:** Line style
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7216,7 +6913,7 @@ public enum LineCapStyle <: Equatable<LineCapStyle> {
 Butt
 ```
 
-**Description:** Flat line endings without extensions.
+**Function:** Line ends are straight edges without additional extensions
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7228,7 +6925,7 @@ Butt
 Round
 ```
 
-**Description:** Line endings extend with semicircles having diameters equal to line width.
+**Function:** Extends line ends with semicircles whose diameter equals the line width
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7240,7 +6937,7 @@ Round
 Square
 ```
 
-**Description:** Line endings extend with squares having side lengths equal to line width.
+**Function:** Extends line ends with semicircles whose diameter equals the line width
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7252,19 +6949,19 @@ Square
 public operator func !=(other: LineCapStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [LineCapStyle](#enum-linecapstyle) | Yes | - | Another enum value. |
+|other|[LineCapStyle](#enum-linecapstyle)|Yes|-|Another enum value.|
 
-**Returns:**
+**Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
 ### func ==(LineCapStyle)
 
@@ -7272,19 +6969,19 @@ public operator func !=(other: LineCapStyle): Bool
 public operator func ==(other: LineCapStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [LineCapStyle](#enum-linecapstyle) | Yes | - | Another enum value. |
+|other|[LineCapStyle](#enum-linecapstyle)|Yes|-|Another enum value.|
 
-**Returns:**
+**Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
 ## enum LineJoinStyle
 
@@ -7297,7 +6994,7 @@ public enum LineJoinStyle <: Equatable<LineJoinStyle> {
 }
 ```
 
-**Description:** Path segment connection styles.
+**Function:** Path segment connection method.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7313,7 +7010,7 @@ public enum LineJoinStyle <: Equatable<LineJoinStyle> {
 Bevel
 ```
 
-**Description:** Connects path segments with beveled corners.
+**Function:** Connects path segments with beveled edges.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7325,7 +7022,7 @@ Bevel
 Miter
 ```
 
-**Description:** Connects path segments with sharp corners.
+**Function:** Connects path segments with sharp corners.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7337,7 +7034,7 @@ Miter
 Round
 ```
 
-**Description:** Connects path segments with rounded corners.
+**Function:** Connects path segments with rounded corners.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7349,19 +7046,19 @@ Round
 public operator func !=(other: LineJoinStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [LineJoinStyle](#enum-linejoinstyle) | Yes | - | Another enum value. |
+|other|[LineJoinStyle](#enum-linejoinstyle)|Yes|-|Another enum value.|
 
-**Returns:**
+**Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
 ### func ==(LineJoinStyle)
 
@@ -7369,20 +7066,21 @@ public operator func !=(other: LineJoinStyle): Bool
 public operator func ==(other: LineJoinStyle): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [LineJoinStyle](#enum-linejoinstyle) | Yes | - | Another enum value. |
+|other|[LineJoinStyle](#enum-linejoinstyle)|Yes|-|Another enum value.|
 
-**Returns:**
+**Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
-```## enum ListItemAlign
+|Bool|Returns true if the enum values are equal, otherwise false.|
+
+## enum ListItemAlign
 
 ```cangjie
 public enum ListItemAlign <: Equatable<ListItemAlign> {
@@ -7393,7 +7091,7 @@ public enum ListItemAlign <: Equatable<ListItemAlign> {
 }
 ```
 
-**Function:** Alignment of ListItem along the cross axis in a List.
+**Function:** Cross-axis alignment of ListItem within List.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7409,7 +7107,7 @@ public enum ListItemAlign <: Equatable<ListItemAlign> {
 Center
 ```
 
-**Function:** Center alignment of ListItem along the cross axis in a List.
+**Function:** Aligns ListItem to the center along the cross-axis within List.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7421,7 +7119,7 @@ Center
 End
 ```
 
-**Function:** End alignment of ListItem along the cross axis in a List.
+**Function:** Aligns ListItem to the end along the cross-axis within List.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7433,7 +7131,7 @@ End
 Start
 ```
 
-**Function:** Start alignment of ListItem along the cross axis in a List.
+**Function:** Aligns ListItem to the start along the cross-axis within List.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7445,7 +7143,7 @@ Start
 public operator func !=(other: ListItemAlign): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -7457,7 +7155,7 @@ public operator func !=(other: ListItemAlign): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
 ### func ==(ListItemAlign)
 
@@ -7477,25 +7175,7 @@ public operator func ==(other: ListItemAlign): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the parameter value, returns whether the unlock result reuses the corresponding integer value.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Int32|The value represented by the current enum.|
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
 ## enum MenuPolicy
 
@@ -7508,7 +7188,7 @@ public enum MenuPolicy <: Equatable<MenuPolicy> {
 }
 ```
 
-**Function:** Policy for menu popup.
+**Function:** Menu display policy.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7524,7 +7204,7 @@ public enum MenuPolicy <: Equatable<MenuPolicy> {
 Default
 ```
 
-**Function:** Determines whether to pop up the menu based on the underlying default logic.
+**Function:** Determines menu display based on default underlying logic.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7536,7 +7216,7 @@ Default
 Hide
 ```
 
-**Function:** Never pops up the menu.
+**Function:** Always hides the menu.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7548,7 +7228,7 @@ Hide
 Show
 ```
 
-**Function:** Always pops up the menu.
+**Function:** Always shows the menu.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7560,7 +7240,7 @@ Show
 public operator func !=(other: MenuPolicy): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -7572,7 +7252,7 @@ public operator func !=(other: MenuPolicy): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
 ### func ==(MenuPolicy)
 
@@ -7592,7 +7272,7 @@ public operator func ==(other: MenuPolicy): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
 ## enum ModalTransition
 
@@ -7645,7 +7325,7 @@ Default
 None
 ```
 
-**Function:** Full-screen modal without transition animation.
+**Function:** No transition animation for full-screen modal.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7657,7 +7337,7 @@ None
 public operator func !=(other: ModalTransition): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -7669,7 +7349,7 @@ public operator func !=(other: ModalTransition): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
 ### func ==(ModalTransition)
 
@@ -7689,9 +7369,7 @@ public operator func ==(other: ModalTransition): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-## enum ModifierKey
+|Bool|Returns true if the enum values are equal, otherwise false.|## enum ModifierKey
 
 ```cangjie
 public enum ModifierKey <: Equatable<ModifierKey> {
@@ -7702,7 +7380,7 @@ public enum ModifierKey <: Equatable<ModifierKey> {
 }
 ```
 
-**Function:** Input method modifier key type.
+**Description:** Input method modifier key types.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7718,7 +7396,7 @@ public enum ModifierKey <: Equatable<ModifierKey> {
 ALT
 ```
 
-**Function:** Represents the Alt key on the keyboard.
+**Description:** Represents the Alt key on the keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7730,7 +7408,7 @@ ALT
 CTRL
 ```
 
-**Function:** Represents the Ctrl key on the keyboard.
+**Description:** Represents the Ctrl key on the keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7742,7 +7420,7 @@ CTRL
 SHIFT
 ```
 
-**Function:** Represents the Shift key on the keyboard.
+**Description:** Represents the Shift key on the keyboard.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7754,19 +7432,19 @@ SHIFT
 public operator func !=(other: ModifierKey): Bool
 ```
 
-**Function:** Determines whether two enum values are not equal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[ModifierKey](#enum-modifierkey)|Yes|-|Another enum value.|
+| other | [ModifierKey](#enum-modifierkey) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(ModifierKey)
 
@@ -7774,37 +7452,21 @@ public operator func !=(other: ModifierKey): Bool
 public operator func ==(other: ModifierKey): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[ModifierKey](#enum-modifierkey)|Yes|-|Another enum value.|
+| other | [ModifierKey](#enum-modifierkey) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Gets the string representation of the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|String|The string representation of the current enum.|## enum MouseAction
+## enum MouseAction
 
 ```cangjie
 public enum MouseAction <: Equatable<MouseAction> {
@@ -7817,7 +7479,7 @@ public enum MouseAction <: Equatable<MouseAction> {
 }
 ```
 
-**Function:** Mouse actions.
+**Description:** Mouse actions.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7833,8 +7495,7 @@ public enum MouseAction <: Equatable<MouseAction> {
 Hover
 ```
 
-**Function:** Mouse hover.  
-**Note:** This enumeration value is invalid.
+**Description:** Mouse hover. **Note:** This enum value is invalid.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7846,7 +7507,7 @@ Hover
 Move
 ```
 
-**Function:** Mouse movement.
+**Description:** Mouse movement.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7858,7 +7519,7 @@ Move
 None
 ```
 
-**Function:** No operation.
+**Description:** No operation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7870,7 +7531,7 @@ None
 Press
 ```
 
-**Function:** Mouse button press.
+**Description:** Mouse button press.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7882,7 +7543,7 @@ Press
 Release
 ```
 
-**Function:** Mouse button release.
+**Description:** Mouse button release.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7894,19 +7555,19 @@ Release
 public operator func !=(other: MouseAction): Bool
 ```
 
-**Function:** Determines whether two enumeration values are not equal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [MouseAction](#enum-mouseaction) | Yes | - | Another enumeration value. |
+| other | [MouseAction](#enum-mouseaction) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(MouseAction)
 
@@ -7914,55 +7575,19 @@ public operator func !=(other: MouseAction): Bool
 public operator func ==(other: MouseAction): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [MouseAction](#enum-mouseaction) | Yes | - | Another enumeration value. |
+| other | [MouseAction](#enum-mouseaction) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the value of the enumeration.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value of the enumeration. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Gets the string representation of the current enumeration.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The string representation of the enumeration. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum MouseButton
 
@@ -7978,7 +7603,7 @@ public enum MouseButton <: Equatable<MouseButton> {
 }
 ```
 
-**Function:** Mouse buttons.
+**Description:** Mouse buttons.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7994,7 +7619,7 @@ public enum MouseButton <: Equatable<MouseButton> {
 Back
 ```
 
-**Function:** The back button on the left side of the mouse.
+**Description:** The left back button on the mouse.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8006,7 +7631,7 @@ Back
 Forward
 ```
 
-**Function:** The forward button on the left side of the mouse.
+**Description:** The left forward button on the mouse.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8018,7 +7643,7 @@ Forward
 Left
 ```
 
-**Function:** The left mouse button.
+**Description:** The left mouse button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8030,7 +7655,7 @@ Left
 Middle
 ```
 
-**Function:** The middle mouse button.
+**Description:** The middle mouse button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8042,7 +7667,7 @@ Middle
 None
 ```
 
-**Function:** No button.
+**Description:** No button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8054,7 +7679,7 @@ None
 Right
 ```
 
-**Function:** The right mouse button.
+**Description:** The right mouse button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8066,19 +7691,19 @@ Right
 public operator func !=(other: MouseButton): Bool
 ```
 
-**Function:** Determines whether two enumeration values are not equal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [MouseButton](#enum-mousebutton) | Yes | - | Another enumeration value. |
+| other | [MouseButton](#enum-mousebutton) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(MouseButton)
 
@@ -8086,55 +7711,19 @@ public operator func !=(other: MouseButton): Bool
 public operator func ==(other: MouseButton): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [MouseButton](#enum-mousebutton) | Yes | - | Another enumeration value. |
+| other | [MouseButton](#enum-mousebutton) | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the value of the enumeration.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value of the enumeration. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Gets the string representation of the current enumeration.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The string representation of the enumeration. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum NavigationType
 
@@ -8147,7 +7736,7 @@ public enum NavigationType <: Equatable<NavigationType> {
 }
 ```
 
-**Function:** Page routing methods.
+**Description:** Page routing methods.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8163,7 +7752,7 @@ public enum NavigationType <: Equatable<NavigationType> {
 Back
 ```
 
-**Function:** Returns to the specified page. If the specified page does not exist in the stack, no action is taken. If no page is specified, returns to the previous page.
+**Description:** Returns to the specified page. No response if the specified page does not exist in the stack. Returns to the previous page if no specific page is specified.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8175,7 +7764,7 @@ Back
 Push
 ```
 
-**Function:** Navigates to the specified page within the application.
+**Description:** Navigates to a specified page within the application.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8187,7 +7776,7 @@ Push
 Replace
 ```
 
-**Function:** Replaces the current page with another page within the application and destroys the replaced page.
+**Description:** Replaces the current page with another page within the application and destroys the replaced page.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8199,19 +7788,19 @@ Replace
 public operator func !=(other: NavigationType): Bool
 ```
 
-**Function:** Determines whether two enumeration values are not equal.
+**Description:** Compares whether two enum values are unequal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [NavigationType](#enum-navigationtype) | Yes | - | Another enumeration value to compare. |
+| other | [NavigationType](#enum-navigationtype) | Yes | - | Another enum value to compare. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(NavigationType)
 
@@ -8219,20 +7808,19 @@ public operator func !=(other: NavigationType): Bool
 public operator func ==(other: NavigationType): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
+**Description:** Compares whether two enum values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [NavigationType](#enum-navigationtype) | Yes | - | Another enumeration value to compare. |
+| other | [NavigationType](#enum-navigationtype) | Yes | - | Another enum value to compare. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enumeration values are equal, otherwise returns `false`. |```markdown
-## enum NestedScrollMode
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |## enum NestedScrollMode
 
 ```cangjie
 public enum NestedScrollMode <: Equatable<NestedScrollMode> {
@@ -8244,7 +7832,7 @@ public enum NestedScrollMode <: Equatable<NestedScrollMode> {
 }
 ```
 
-**Description:** Nested scrolling options when scrollable components reach the end of their scroll range.
+**Description:** Nested scrolling options when scrollable components reach the end.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8260,7 +7848,7 @@ public enum NestedScrollMode <: Equatable<NestedScrollMode> {
 PARALLEL
 ```
 
-**Description:** Both the component and its parent scroll simultaneously. When both reach their edges, if the component has edge effects, they will be triggered; otherwise, the parent's edge effects will be triggered.
+**Description:** Both the current component and its parent scroll simultaneously. When both reach their edges, if the current component has edge effects, they will be triggered; otherwise, the parent component's edge effects will be triggered.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8272,7 +7860,7 @@ PARALLEL
 PARENT_FIRST
 ```
 
-**Description:** The parent component scrolls first until it reaches its edge, then the component scrolls. When the component reaches its edge, if it has edge effects, they will be triggered; otherwise, the parent's edge effects will be triggered.
+**Description:** The parent component scrolls first until it reaches its edge, then the current component scrolls. When the current component reaches its edge, if it has edge effects, they will be triggered; otherwise, the parent component's edge effects will be triggered.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8284,7 +7872,7 @@ PARENT_FIRST
 SELF_FIRST
 ```
 
-**Description:** The component scrolls first until it reaches its edge, then the parent component scrolls. When the parent reaches its edge, if it has edge effects, they will be triggered; otherwise, the child's edge effects will be triggered.
+**Description:** The current component scrolls first until it reaches its edge, then the parent component scrolls. When the parent component reaches its edge, if it has edge effects, they will be triggered; otherwise, the child component's edge effects will be triggered.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8296,7 +7884,7 @@ SELF_FIRST
 SELF_ONLY
 ```
 
-**Description:** Only the component itself scrolls without interacting with its parent component.
+**Description:** Only the current component scrolls without interacting with its parent component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8308,7 +7896,7 @@ SELF_ONLY
 public operator func !=(other: NestedScrollMode): Bool
 ```
 
-**Description:** Determines whether two enum values are not equal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -8320,7 +7908,7 @@ public operator func !=(other: NestedScrollMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are not equal, otherwise returns false. |
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(NestedScrollMode)
 
@@ -8340,7 +7928,7 @@ public operator func ==(other: NestedScrollMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum OptionWidthMode
 
@@ -8368,7 +7956,7 @@ public enum OptionWidthMode <: Equatable<OptionWidthMode> {
 FIT_CONTENT
 ```
 
-**Description:** When set, the dropdown menu width displays by default as 2 grid units.
+**Description:** When set, the dropdown menu width defaults to 2 grid units.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8392,7 +7980,7 @@ FIT_TRIGGER
 public operator func !=(other: OptionWidthMode): Bool
 ```
 
-**Description:** Determines whether two enum values are not equal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -8404,7 +7992,7 @@ public operator func !=(other: OptionWidthMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are not equal, otherwise returns false. |
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(OptionWidthMode)
 
@@ -8424,12 +8012,12 @@ public operator func ==(other: OptionWidthMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum Placement
 
 ```cangjie
-public enum Placement <: Equatable<Placement> {
+public enum Placement {
     | Left
     | Right
     | Top
@@ -8619,7 +8207,7 @@ TopRight
 public operator func !=(other: Placement): Bool
 ```
 
-**Description:** Determines whether two enum values are not equal.
+**Description:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
@@ -8631,7 +8219,7 @@ public operator func !=(other: Placement): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are not equal, otherwise returns false. |
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 ### func ==(Placement)
 
@@ -8651,8 +8239,7 @@ public operator func ==(other: Placement): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
-```## enum PlayMode
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |## enum PlayMode
 
 ```cangjie
 public enum PlayMode <: Equatable<PlayMode> {
@@ -8680,7 +8267,7 @@ public enum PlayMode <: Equatable<PlayMode> {
 Alternate
 ```
 
-**Function:** The animation plays forward on odd iterations (1st, 3rd, 5th...) and backward on even iterations (2nd, 4th, 6th...).
+**Function:** The animation plays forward on odd counts (1, 3, 5...) and backward on even counts (2, 4, 6...).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8692,7 +8279,7 @@ Alternate
 AlternateReverse
 ```
 
-**Function:** The animation plays backward on odd iterations (1st, 3rd, 5th...) and forward on even iterations (2nd, 4th, 6th...).
+**Function:** The animation plays backward on odd counts (1, 3, 5...) and forward on even counts (2, 4, 6...).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8728,19 +8315,19 @@ Reverse
 public operator func !=(other: PlayMode): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [PlayMode](#enum-playmode) | Yes | - | Another enum value. |
+|other|[PlayMode](#enum-playmode)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(PlayMode)
 
@@ -8752,15 +8339,15 @@ public operator func ==(other: PlayMode): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [PlayMode](#enum-playmode) | Yes | - | Another enum value. |
+|other|[PlayMode](#enum-playmode)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ## enum ProgressType
 
@@ -8791,7 +8378,7 @@ public enum ProgressType <: Equatable<ProgressType> {
 Capsule
 ```
 
-**Function:** Capsule style. The progress display effect at the rounded ends is the same as Eclipse; the middle segment's progress display effect is the same as Linear. Automatically adapts to vertical display when height exceeds width.
+**Function:** Capsule style. The progress display effect at the rounded ends is the same as Eclipse; the progress display effect in the middle section is the same as Linear. Automatically adjusts to vertical display when height exceeds width.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8803,7 +8390,7 @@ Capsule
 Eclipse
 ```
 
-**Function:** Circular style, displaying a progress effect similar to lunar phases, transitioning from a crescent to a full moon.
+**Function:** Circular style, displaying a progress effect similar to lunar phases, transitioning from crescent to full moon.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8851,19 +8438,19 @@ ScaleRing
 public operator func !=(other: ProgressType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [ProgressType](#enum-progresstype) | Yes | - | Another enum value. |
+|other|[ProgressType](#enum-progresstype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(ProgressType)
 
@@ -8875,20 +8462,20 @@ public operator func ==(other: ProgressType): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [ProgressType](#enum-progresstype) | Yes | - | Another enum value. |
+|other|[ProgressType](#enum-progresstype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
-## enum QualityType
+## enum ImageSmoothingQuality
 
 ```cangjie
-public enum QualityType <: Equatable<QualityType> {
+public enum ImageSmoothingQuality {
     | Low
     | Medium
     | High
@@ -8896,7 +8483,7 @@ public enum QualityType <: Equatable<QualityType> {
 }
 ```
 
-**Function:** Sets image smoothness quality.
+**Function:** Sets image smoothing quality.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8904,7 +8491,7 @@ public enum QualityType <: Equatable<QualityType> {
 
 **Parent Type:**
 
-- Equatable\<QualityType>
+- Equatable\<ImageSmoothingQuality>
 
 ### High
 
@@ -8942,45 +8529,45 @@ Medium
 
 **Since:** 21
 
-### func !=(QualityType)
+### func !=(ImageSmoothingQuality)
 
 ```cangjie
-public operator func !=(other: QualityType): Bool
+public operator func !=(other: ImageSmoothingQuality): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [QualityType](#enum-qualitytype) | Yes | - | Another enum value. |
+|other|[ImageSmoothingQuality](#enum-imagesmoothingquality)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
-### func ==(QualityType)
+### func ==(ImageSmoothingQuality)
 
 ```cangjie
-public operator func ==(other: QualityType): Bool
+public operator func ==(other: ImageSmoothingQuality): Bool
 ```
 
 **Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [QualityType](#enum-qualitytype) | Yes | - | Another enum value. |
+|other|[ImageSmoothingQuality](#enum-imagesmoothingquality)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ## enum RefreshStatus
 
@@ -8995,7 +8582,7 @@ public enum RefreshStatus <: Equatable<RefreshStatus> {
 }
 ```
 
-**Function:** Pull-down refresh state.
+**Function:** Pull-down status.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9011,7 +8598,7 @@ public enum RefreshStatus <: Equatable<RefreshStatus> {
 Done
 ```
 
-**Function:** Refresh completed, returning to initial state (top position).
+**Function:** Refresh completed, returning to the initial state (top).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9023,7 +8610,7 @@ Done
 Drag
 ```
 
-**Function:** Pulling down, with pull distance less than refresh threshold.
+**Function:** Pulling down, with the pull distance less than the refresh distance.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9047,7 +8634,7 @@ Inactive
 OverDrag
 ```
 
-**Function:** Pulling down, with pull distance exceeding refresh threshold.
+**Function:** Pulling down, with the pull distance exceeding the refresh distance.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9059,7 +8646,7 @@ OverDrag
 Refresh
 ```
 
-**Function:** Pull-down completed, bouncing back to refresh threshold, entering refresh state.
+**Function:** Pull-down completed, bouncing back to the refresh distance and entering the refresh state.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9071,19 +8658,19 @@ Refresh
 public operator func !=(other: RefreshStatus): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [RefreshStatus](#enum-refreshstatus) | Yes | - | Another enum value. |
+|other|[RefreshStatus](#enum-refreshstatus)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are not equal, otherwise returns false.|
 
 ### func ==(RefreshStatus)
 
@@ -9095,15 +8682,17 @@ public operator func ==(other: RefreshStatus): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [RefreshStatus](#enum-refreshstatus) | Yes | - | Another enum value. |
+|other|[RefreshStatus](#enum-refreshstatus)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |## enum Repetition
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+
+## enum Repetition
 
 ```cangjie
 public enum Repetition <: Equatable<Repetition> {
@@ -9117,7 +8706,7 @@ public enum Repetition <: Equatable<Repetition> {
 }
 ```
 
-**Function:** Sets the image repetition mode.
+**Function:** Specifies the image repetition mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9145,7 +8734,7 @@ clamp
 mirror
 ```
 
-**Function:** Repeats and mirrors the image along both x-axis and y-axis.
+**Function:** Repeats and flips the image along both the x-axis and y-axis.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9157,7 +8746,7 @@ mirror
 no_repeat
 ```
 
-**Function:** Does not repeat the image.
+**Function:** Does not repeat the image when drawing.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9169,7 +8758,7 @@ no_repeat
 repeat
 ```
 
-**Function:** Repeats the image along both x-axis and y-axis.
+**Function:** Repeats the image along both the x-axis and y-axis.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9217,7 +8806,7 @@ public operator func !=(other: Repetition): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |
 
 ### func ==(Repetition)
 
@@ -9237,25 +8826,7 @@ public operator func ==(other: Repetition): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Gets the string representation of the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The string representation of the enum. |
+| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |
 
 ## enum ResponseType
 
@@ -9283,7 +8854,7 @@ public enum ResponseType <: Equatable<ResponseType> {
 LongPress
 ```
 
-**Function:** Triggers menu popup via long press.
+**Function:** Triggers menu display via long press.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9295,7 +8866,7 @@ LongPress
 RightClick
 ```
 
-**Function:** Triggers menu popup via right mouse click.
+**Function:** Triggers menu display via right mouse click.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9319,7 +8890,7 @@ public operator func !=(other: ResponseType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |
 
 ### func ==(ResponseType)
 
@@ -9339,7 +8910,7 @@ public operator func ==(other: ResponseType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |
 
 ## enum ScrollBarDirection
 
@@ -9403,7 +8974,7 @@ public operator func !=(other: ScrollBarDirection): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |
 
 ### func ==(ScrollBarDirection)
 
@@ -9423,7 +8994,7 @@ public operator func ==(other: ScrollBarDirection): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |
 
 ## enum ScrollDirection
 
@@ -9435,7 +9006,7 @@ public enum ScrollDirection <: Equatable<ScrollDirection> {
 }
 ```
 
-**Function:** Scroll direction enum.
+**Function:** Scroll direction enumeration.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9487,7 +9058,7 @@ public operator func !=(other: ScrollDirection): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |
 
 ### func ==(ScrollDirection)
 
@@ -9507,7 +9078,9 @@ public operator func ==(other: ScrollDirection): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |## enum ScrollSource
+| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |
+
+## enum ScrollSource
 
 ```cangjie
 public enum ScrollSource <: Equatable<ScrollSource> {
@@ -9611,7 +9184,7 @@ SCROLLER_ANIMATION
 SCROLL_BAR
 ```
 
-**Function:** Scrollbar drag event.
+**Function:** Drag event of the scrollbar.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9623,7 +9196,7 @@ SCROLL_BAR
 SCROLL_BAR_FLING
 ```
 
-**Function:** Velocity-based inertial scrolling after scrollbar drag ends.
+**Function:** Inertial scrolling with velocity after scrollbar drag ends.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9639,15 +9212,15 @@ public operator func !=(other: ScrollSource): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[ScrollSource](#enum-scrollsource)|Yes|-|Another enum value.|
+| other | [ScrollSource](#enum-scrollsource) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |
 
 ### func ==(ScrollSource)
 
@@ -9659,17 +9232,16 @@ public operator func ==(other: ScrollSource): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[ScrollSource](#enum-scrollsource)|Yes|-|Another enum value.|
+| other | [ScrollSource](#enum-scrollsource) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-## enum ScrollState
+| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |
+```## enum ScrollState
 
 ```cangjie
 public enum ScrollState <: Equatable<ScrollState> {
@@ -9744,7 +9316,7 @@ public operator func !=(other: ScrollState): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns `true` if the two enum values are unequal, otherwise returns `false`.|
 
 ### func ==(ScrollState)
 
@@ -9764,43 +9336,7 @@ public operator func ==(other: ScrollState): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the value of the enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Int32|The value of the enum.|
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Function:** Gets the string representation of the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|String|The string representation of the enum.|
+|Bool|Returns `true` if the two enum values are equal, otherwise returns `false`.|
 
 ## enum ShadowStyle
 
@@ -9880,7 +9416,7 @@ OuterDefaultXS
 OuterFloatingMD
 ```
 
-**Function:** Floating medium shadow.
+**Function:** Medium floating shadow.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9892,7 +9428,7 @@ OuterFloatingMD
 OuterFloatingSM
 ```
 
-**Function:** Floating small shadow.
+**Function:** Small floating shadow.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9916,7 +9452,7 @@ public operator func !=(other: ShadowStyle): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns `true` if the two enum values are unequal, otherwise returns `false`.|
 
 ### func ==(ShadowStyle)
 
@@ -9936,7 +9472,9 @@ public operator func ==(other: ShadowStyle): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|## enum ShadowType
+|Bool|Returns `true` if the two enum values are equal, otherwise returns `false`.|
+
+## enum ShadowType
 
 ```cangjie
 public enum ShadowType <: Equatable<ShadowType> {
@@ -9974,7 +9512,7 @@ Blur
 Color
 ```
 
-**Function:** Color.
+**Function:** Color effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -9998,7 +9536,7 @@ public operator func !=(other: ShadowType): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns `true` if the two enum values are unequal, otherwise returns `false`.|
 
 ### func ==(ShadowType)
 
@@ -10018,7 +9556,7 @@ public operator func ==(other: ShadowType): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+|Bool|Returns `true` if the two enum values are equal, otherwise returns `false`.|
 
 ## enum SharedTransitionEffectType
 
@@ -10046,7 +9584,7 @@ public enum SharedTransitionEffectType <: Equatable<SharedTransitionEffectType> 
 Exchange
 ```
 
-**Function:** Moves the source page element to the target page element position with appropriate scaling.
+**Function:** Moves the source page element to the target page element's position with appropriate scaling.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -10058,7 +9596,7 @@ Exchange
 Static
 ```
 
-**Function:** The position of the target page element remains unchanged, and opacity animation can be configured. Currently, only static effects configured for redirecting to the target page will take effect.
+**Function:** The target page element's position remains unchanged, and opacity animation can be configured. Currently, only static effects configured for redirecting to the target page will take effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -10082,7 +9620,7 @@ public operator func !=(other: SharedTransitionEffectType): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns `true` if the two enum values are unequal, otherwise returns `false`.|
 
 ### func ==(SharedTransitionEffectType)
 
@@ -10102,9 +9640,7 @@ public operator func ==(other: SharedTransitionEffectType): Bool
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
-
-## enum SideBarContainerType
+|Bool|Returns `true` if the two enum values are equal, otherwise returns `false`.|## enum SideBarContainerType
 
 ```cangjie
 public enum SideBarContainerType <: Equatable<SideBarContainerType> {
@@ -10115,7 +9651,7 @@ public enum SideBarContainerType <: Equatable<SideBarContainerType> {
 }
 ```
 
-**Function:** Enumeration for sidebar style within the container.
+**Function:** Enumeration for sidebar container styles.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -10131,9 +9667,9 @@ public enum SideBarContainerType <: Equatable<SideBarContainerType> {
 Auto
 ```
 
-**Function:** When the component size is greater than or equal to [minSideBarWidth](./cj-grid-layout-sidebar.md#func-minsidebarwidthlength) + [minContentWidth](./cj-grid-layout-sidebar.md#func-mincontentwidthlength), the Embed mode is used for display.
+**Function:** When the component size is greater than or equal to [minSideBarWidth](./cj-grid-layout-sidebar.md#func-minsidebarwidthlength) + [minContentWidth](./cj-grid-layout-sidebar.md#func-mincontentwidthlength), the Embed mode is displayed.
 
-When the component size is less than [minSideBarWidth](./cj-grid-layout-sidebar.md#func-minsidebarwidthlength) + [minContentWidth](./cj-grid-layout-sidebar.md#func-mincontentwidthlength), the Overlay mode is used for display. contagrid
+When the component size is less than [minSideBarWidth](./cj-grid-layout-sidebar.md#func-minsidebarwidthlength) + [minContentWidth](./cj-grid-layout-sidebar.md#func-mincontentwidthlength), the Overlay mode is displayed.
 
 If [minSideBarWidth](./cj-grid-layout-sidebar.md#func-minsidebarwidthlength) or [minContentWidth](./cj-grid-layout-sidebar.md#func-mincontentwidthlength) is not set, the default values of the unset interfaces will be used for calculation. If the calculated value is less than 600vp, 600vp will be used as the breakpoint value for mode switching.
 
@@ -10153,7 +9689,7 @@ When the component size is less than [minSideBarWidth](./cj-grid-layout-sidebar.
 
 If [minSideBarWidth](./cj-grid-layout-sidebar.md#func-minsidebarwidthlength) or [minContentWidth](./cj-grid-layout-sidebar.md#func-mincontentwidthlength) is not set, the default values of the unset interfaces will be used for calculation.
 
-After the component automatically hides the sidebar, if the sidebar is summoned by clicking the control button, it will be displayed floating above the content area.
+After the sidebar is automatically hidden, if it is summoned by clicking the control button, it will be displayed floating above the content area.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -10177,19 +9713,19 @@ Overlay
 public operator func !=(other: SideBarContainerType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enumeration values are not equal.
 
 **Parameters:**
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[SideBarContainerType](#enum-sidebarcontainertype)|Yes|-|Another enum value.|
+|other|[SideBarContainerType](#enum-sidebarcontainertype)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the two enumeration values are not equal, otherwise returns false.|
 
 ### func ==(SideBarContainerType)
 
@@ -10197,19 +9733,19 @@ public operator func !=(other: SideBarContainerType): Bool
 public operator func ==(other: SideBarContainerType): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[SideBarContainerType](#enum-sidebarcontainertype)|Yes|-|Another enum value.|
+|other|[SideBarContainerType](#enum-sidebarcontainertype)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
 
 ## enum SideBarPosition
 
@@ -10261,19 +9797,19 @@ Start
 public operator func !=(other: SideBarPosition): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enumeration values are not equal.
 
 **Parameters:**
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[SideBarPosition](#enum-sidebarposition)|Yes|-|Another enum value.|
+|other|[SideBarPosition](#enum-sidebarposition)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the two enumeration values are not equal, otherwise returns false.|
 
 ### func ==(SideBarPosition)
 
@@ -10281,19 +9817,19 @@ public operator func !=(other: SideBarPosition): Bool
 public operator func ==(other: SideBarPosition): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[SideBarPosition](#enum-sidebarposition)|Yes|-|Another enum value.|
+|other|[SideBarPosition](#enum-sidebarposition)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
 
 ## enum SourceTool
 
@@ -10373,7 +9909,7 @@ Pen
 Touchpad
 ```
 
-**Function:** Touchpad input. Single-finger input on the touchpad is treated as a mouse input operation.
+**Function:** Touchpad input. Single-finger input on a touchpad is treated as a mouse operation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -10397,19 +9933,19 @@ Unknown
 public operator func !=(other: SourceTool): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enumeration values are not equal.
 
 **Parameters:**
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[SourceTool](#enum-sourcetool)|Yes|-|Another enum value.|
+|other|[SourceTool](#enum-sourcetool)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+|Bool|Returns true if the two enumeration values are not equal, otherwise returns false.|
 
 ### func ==(SourceTool)
 
@@ -10417,19 +9953,21 @@ public operator func !=(other: SourceTool): Bool
 public operator func ==(other: SourceTool): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[SourceTool](#enum-sourcetool)|Yes|-|Another enum value.|
+|other|[SourceTool](#enum-sourcetool)|Yes|-|Another enumeration value.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|## enum SourceType
+|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
+
+## enum SourceType
 
 ```cangjie
 public enum SourceType <: Equatable<SourceType> {
@@ -10440,111 +9978,91 @@ public enum SourceType <: Equatable<SourceType> {
 }
 ```
 
-**Function:** Event input device  
+**Function:** Event input device.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-**Parent Type:**  
+**Parent Type:**
 
-- Equatable\<SourceType>  
+- Equatable\<SourceType>
 
-### Mouse  
-
-```cangjie
-Mouse  
-```
-
-**Function:** Mouse  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
-
-**Since:** 21  
-
-### TouchScreen  
+### Mouse
 
 ```cangjie
-TouchScreen  
+Mouse
 ```
 
-**Function:** Touchscreen  
+**Function:** Mouse.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### Unknown  
+### TouchScreen
 
 ```cangjie
-Unknown  
+TouchScreen
 ```
 
-**Function:** Unknown device  
+**Function:** Touchscreen.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### func !=(SourceType)  
+### Unknown
 
 ```cangjie
-public operator func !=(other: SourceType): Bool  
+Unknown
 ```
 
-**Function:** Determines whether two enum values are unequal.  
+**Function:** Unknown device.
 
-**Parameters:**  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [SourceType](#enum-sourcetype) | Yes | - | Another enum value. |  
+**Since:** 21
 
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |  
-
-### func ==(SourceType)  
+### func !=(SourceType)
 
 ```cangjie
-public operator func ==(other: SourceType): Bool  
+public operator func !=(other: SourceType): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.  
+**Function:** Determines whether two enumeration values are not equal.
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [SourceType](#enum-sourcetype) | Yes | - | Another enum value. |  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[SourceType](#enum-sourcetype)|Yes|-|Another enumeration value.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the two enumeration values are not equal, otherwise returns false.|
 
-### func toString()  
+### func ==(SourceType)
 
 ```cangjie
-public func toString(): String  
+public operator func ==(other: SourceType): Bool
 ```
 
-**Function:** Gets the string representation of the current enum.  
+**Function:** Determines whether two enumeration values are equal.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**Parameters:**
 
-**Since:** 21  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[SourceType](#enum-sourcetype)|Yes|-|Another enumeration value.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| String | The string representation of the enum. |  
-
-## enum StickyStyle  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|## enum StickyStyle
 
 ```cangjie
 public enum StickyStyle <: Equatable<StickyStyle> {
@@ -10556,123 +10074,105 @@ public enum StickyStyle <: Equatable<StickyStyle> {
 }
 ```
 
-**Function:** Sets whether the header and footer in ListItemGroup should stick to the top or bottom.  
+**Function:** Configures whether headers and footers in ListItemGroup should stick to the top or bottom.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-**Parent Type:**  
+**Parent Type:**
 
-- Equatable\<StickyStyle>  
+- Equatable\<StickyStyle>
 
-### Both  
-
-```cangjie
-Both  
-```
-
-**Function:** Sets the header of ListItemGroup to stick to the top and the footer to stick to the bottom.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
-
-**Since:** 21  
-
-### Footer  
+### Both
 
 ```cangjie
-Footer  
+Both
 ```
 
-**Function:** Sets the footer of ListItemGroup to stick to the bottom.  
+**Function:** Makes the header stick to the top and the footer stick to the bottom in ListItemGroup.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### Header  
+### Footer
 
 ```cangjie
-Header  
+Footer
 ```
 
-**Function:** Sets the header of ListItemGroup to stick to the top.  
+**Function:** Makes the footer stick to the bottom in ListItemGroup.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### None  
+### Header
 
 ```cangjie
-None  
+Header
 ```
 
-**Function:** Sets the header of ListItemGroup not to stick to the top and the footer not to stick to the bottom.  
+**Function:** Makes the header stick to the top in ListItemGroup.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### func !=(StickyStyle)  
+### None
 
 ```cangjie
-public operator func !=(other: StickyStyle): Bool  
+None
 ```
 
-**Function:** Determines whether two enum values are unequal.  
+**Function:** Disables sticky behavior for both header and footer in ListItemGroup.
 
-**Parameters:**  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [StickyStyle](#enum-stickystyle) | Yes | - | Another enum value. |  
+**Since:** 21
 
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |  
-
-### func ==(StickyStyle)  
+### func !=(StickyStyle)
 
 ```cangjie
-public operator func ==(other: StickyStyle): Bool  
+public operator func !=(other: StickyStyle): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.  
+**Function:** Determines whether two enum values are unequal.
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [StickyStyle](#enum-stickystyle) | Yes | - | Another enum value. |  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[StickyStyle](#enum-stickystyle)|Yes|-|Another enum value.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
-### func getValue()  
+### func ==(StickyStyle)
 
 ```cangjie
-public func getValue(): Int32  
+public operator func ==(other: StickyStyle): Bool
 ```
 
-**Function:** Gets the value of the enum.  
+**Function:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**Parameters:**
 
-**Since:** 21  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[StickyStyle](#enum-stickystyle)|Yes|-|Another enum value.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Int32 | The value of the enum. |  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
-## enum SwipeEdgeEffect  
+## enum SwipeEdgeEffect
 
 ```cangjie
 public enum SwipeEdgeEffect <: Equatable<SwipeEdgeEffect> {
@@ -10682,99 +10182,99 @@ public enum SwipeEdgeEffect <: Equatable<SwipeEdgeEffect> {
 }
 ```
 
-**Function:** Swipe effect for ListItem.  
+**Function:** Swipe effect for ListItem.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-**Parent Type:**  
+**Parent Type:**
 
-- Equatable\<SwipeEdgeEffect>  
+- Equatable\<SwipeEdgeEffect>
 
-### None  
-
-```cangjie
-None  
-```
-
-**Function:** The swipe distance of ListItem cannot exceed the size of the swiped-out component.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
-
-**Since:** 21  
-
-### Spring  
+### None
 
 ```cangjie
-Spring  
+None
 ```
 
-**Function:** The swipe distance of ListItem can exceed the size of the swiped-out component and will rebound according to the spring damping curve upon release.  
+**Function:** ListItem cannot be swiped beyond the size of the swiped-out component.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### func !=(SwipeEdgeEffect)  
+### Spring
 
 ```cangjie
-public operator func !=(other: SwipeEdgeEffect): Bool  
+Spring
 ```
 
-**Function:** Determines whether two enum values are unequal.  
+**Function:** ListItem can be swiped beyond the size of the swiped-out component and will rebound according to a spring damping curve when released.
 
-**Parameters:**  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [SwipeEdgeEffect](#enum-swipeedgeeffect) | Yes | - | The enum value to compare. |  
+**Since:** 21
 
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |  
-
-### func ==(SwipeEdgeEffect)  
+### func !=(SwipeEdgeEffect)
 
 ```cangjie
-public operator func ==(other: SwipeEdgeEffect): Bool  
+public operator func !=(other: SwipeEdgeEffect): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.  
+**Function:** Determines whether two enum values are unequal.
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [SwipeEdgeEffect](#enum-swipeedgeeffect) | Yes | - | The enum value to compare. |  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[SwipeEdgeEffect](#enum-swipeedgeeffect)|Yes|-|Enum value to compare.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
-### func getValue()  
+### func ==(SwipeEdgeEffect)
 
 ```cangjie
-public func getValue(): Int32  
+public operator func ==(other: SwipeEdgeEffect): Bool
 ```
 
-**Function:** Gets the value represented by the current enum.  
+**Function:** Determines whether two enum values are equal.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**Parameters:**
 
-**Since:** 21  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[SwipeEdgeEffect](#enum-swipeedgeeffect)|Yes|-|Enum value to compare.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Int32 | The value represented by the current enum. |  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
-## enum TextAlign  
+### func getValue()
+
+```cangjie
+public func getValue(): Int32
+```
+
+**Function:** Gets the integer value represented by the current enum.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Int32|The integer value represented by the current enum.|
+
+## enum TextAlign
 
 ```cangjie
 public enum TextAlign <: Equatable<TextAlign> {
@@ -10785,116 +10285,99 @@ public enum TextAlign <: Equatable<TextAlign> {
 }
 ```
 
-**Function:** Text alignment.  
+**Function:** Text alignment mode.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-**Parent Type:**  
+**Parent Type:**
 
-- Equatable\<TextAlign>  
+- Equatable\<TextAlign>
 
-### Center  
+### Center
 
 ```cangjie
-Center  
+Center
 ```
 
-**Function:** Horizontally center-aligned.  
+**Function:** Horizontally center-aligned.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### End  
+### End
 
 ```cangjie
-End  
+End
 ```
 
-**Function:** Horizontally end-aligned.  
+**Function:** Horizontally aligned to the end.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### Start  
+### Start
 
 ```cangjie
-Start  
+Start
 ```
 
-**Function:** Horizontally start-aligned.  
+**Function:** Horizontally aligned to the start.
 
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21  
+**Since:** 21
 
-### func !=(TextAlign)  
+### func !=(TextAlign)
 
 ```cangjie
-public operator func !=(other: TextAlign): Bool  
+public operator func !=(other: TextAlign): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.  
+**Function:** Determines whether two enum values are unequal.
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [TextAlign](#enum-textalign) | Yes | - | The enum value to compare. |  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[TextAlign](#enum-textalign)|Yes|-|Enum value to compare.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are unequal, otherwise returns `false`. |  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the enum values are unequal, otherwise false.|
 
-### func ==(TextAlign)  
+### func ==(TextAlign)
 
 ```cangjie
-public operator func ==(other: TextAlign): Bool  
+public operator func ==(other: TextAlign): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.  
+**Function:** Determines whether two enum values are equal.
 
-**Parameters:**  
+**Parameters:**
 
-| Parameter | Type | Required | Default | Description |  
-|:---|:---|:---|:---|:---|  
-| other | [TextAlign](#enum-textalign) | Yes | - | The enum value to compare. |  
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|other|[TextAlign](#enum-textalign)|Yes|-|Enum value to compare.|
 
-**Return Value:**  
+**Return Value:**
 
-| Type | Description |  
-|:----|:----|  
-| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |  
+|Type|Description|
+|:----|:----|
+|Bool|Returns true if the enum values are equal, otherwise false.|
 
-### func getValue()  
-
-```cangjie
-public func getValue(): Int32  
-```
-
-**Function:** Gets the value represented by the current enum.  
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full  
-
-**Since:** 21  
-
-**Return Value:**  
-
-| Type | Description |  
-|:----|:----|  
-| Int32 | The value represented by the current enum. |## enum TextAlignStyle
+## enum CanvasTextAlign
 
 ```cangjie
-public enum TextAlignStyle <: Equatable<TextAlignStyle> {
+public enum CanvasTextAlign {
     | Left
     | Right
     | Center
-    | Justify
     | Start
     | End
     | ...
@@ -10929,7 +10412,7 @@ Center
 End
 ```
 
-**Function:** Aligns text to the end of the boundary line.
+**Function:** Text aligned to the end of the boundary line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -10977,74 +10460,14 @@ Right
 Start
 ```
 
-**Function:** Aligns text to the start of the boundary line.
+**Function:** Text aligned to the start of the boundary line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
-
-### func !=(TextAlignStyle)
+**Since:** 21## enum CanvasTextBaseline
 
 ```cangjie
-public operator func !=(other: TextAlignStyle): Bool
-```
-
-**Function:** Determines whether two enum values are unequal.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| other | [TextAlignStyle](#enum-textalignstyle) | Yes | - | Enum value to compare |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
-
-### func ==(TextAlignStyle)
-
-```cangjie
-public operator func ==(other: TextAlignStyle): Bool
-```
-
-**Function:** Determines whether two enum values are equal.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default Value | Description |
-|:---|:---|:---|:---|:---|
-| other | [TextAlignStyle](#enum-textalignstyle) | Yes | - | Enum value to compare |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value represented by the current enum. |
-
-## enum TextBaseline
-
-```cangjie
-public enum TextBaseline <: Equatable<TextBaseline> {
+public enum CanvasTextBaseline {
     | Alphabetic
     | Ideographic
     | Top
@@ -11055,7 +10478,7 @@ public enum TextBaseline <: Equatable<TextBaseline> {
 }
 ```
 
-**Function:** Sets the horizontal alignment method in text rendering.
+**Description:** Sets the horizontal alignment method for text rendering.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11063,7 +10486,7 @@ public enum TextBaseline <: Equatable<TextBaseline> {
 
 **Parent Type:**
 
-- Equatable\<TextBaseline>
+- Equatable\<CanvasTextBaseline>
 
 ### Alphabetic
 
@@ -11071,7 +10494,7 @@ public enum TextBaseline <: Equatable<TextBaseline> {
 Alphabetic
 ```
 
-**Function:** The text baseline is the standard alphabetic baseline.
+**Description:** The text baseline is the standard alphabetic baseline.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11083,7 +10506,7 @@ Alphabetic
 Bottom
 ```
 
-**Function:** The text baseline is at the bottom of the text block. The difference from the ideographic baseline is that the ideographic baseline does not need to consider descender letters.
+**Description:** The text baseline is at the bottom of the text block. The difference from the ideographic baseline is that the ideographic baseline does not need to consider descender letters.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11095,7 +10518,7 @@ Bottom
 Hanging
 ```
 
-**Function:** The text baseline is the hanging baseline.
+**Description:** The text baseline is the hanging baseline.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11107,7 +10530,7 @@ Hanging
 Ideographic
 ```
 
-**Function:** The text baseline is the ideographic baseline; if the character itself extends beyond the alphabetic baseline, the ideographic baseline position is at the bottom of the character itself.
+**Description:** The text baseline is the ideographic baseline; if the character itself extends below the alphabetic baseline, the ideographic baseline position is at the bottom of the character itself.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11119,7 +10542,7 @@ Ideographic
 Middle
 ```
 
-**Function:** The text baseline is in the middle of the text block.
+**Description:** The text baseline is at the middle of the text block.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11131,51 +10554,51 @@ Middle
 Top
 ```
 
-**Function:** The text baseline is at the top of the text block.
+**Description:** The text baseline is at the top of the text block.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-### func !=(TextBaseline)
+### func !=(CanvasTextBaseline)
 
 ```cangjie
-public operator func !=(other: TextBaseline): Bool
+public operator func !=(other: CanvasTextBaseline): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Description:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextBaseline](#enum-textbaseline) | Yes | - | Enum value to compare |
+| other | [CanvasTextBaseline](#enum-canvastextbaseline) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
-### func ==(TextBaseline)
+### func ==(CanvasTextBaseline)
 
 ```cangjie
-public operator func ==(other: TextBaseline): Bool
+public operator func ==(other: CanvasTextBaseline): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextBaseline](#enum-textbaseline) | Yes | - | Enum value to compare |
+| other | [CanvasTextBaseline](#enum-canvastextbaseline) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum TextCase
 
@@ -11188,7 +10611,7 @@ public enum TextCase <: Equatable<TextCase> {
 }
 ```
 
-**Function:** Text case format.
+**Description:** Text case formatting.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11204,7 +10627,7 @@ public enum TextCase <: Equatable<TextCase> {
 LowerCase
 ```
 
-**Function:** Text is displayed in all lowercase.
+**Description:** Text is rendered in all lowercase.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11216,7 +10639,7 @@ LowerCase
 Normal
 ```
 
-**Function:** Preserves the original text case.
+**Description:** Preserves the original case of the text.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11228,7 +10651,7 @@ Normal
 UpperCase
 ```
 
-**Function:** Text is displayed in all uppercase.
+**Description:** Text is rendered in all uppercase.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11240,19 +10663,19 @@ UpperCase
 public operator func !=(other: TextCase): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Description:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextCase](#enum-textcase) | Yes | - | Enum value to compare |
+| other | [TextCase](#enum-textcase) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 ### func ==(TextCase)
 
@@ -11260,37 +10683,21 @@ public operator func !=(other: TextCase): Bool
 public operator func ==(other: TextCase): Bool
 ```
 
-**Function:** Determines whether two enum values are equal.
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextCase](#enum-textcase) | Yes | - | Enum value to compare |
+| other | [TextCase](#enum-textcase) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value represented by the current enum. |## enum TextContentStyle
+## enum TextContentStyle
 
 ```cangjie
 public enum TextContentStyle <: Equatable<TextContentStyle> {
@@ -11300,7 +10707,7 @@ public enum TextContentStyle <: Equatable<TextContentStyle> {
 }
 ```
 
-**Function:** Polymorphic styles for text boxes.
+**Description:** Polymorphic styles for text boxes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11316,7 +10723,7 @@ public enum TextContentStyle <: Equatable<TextContentStyle> {
 DEFAULT
 ```
 
-**Function:** Default style with cursor width of 1.5vp. Cursor height is related to text selection background height and font size.
+**Description:** Default style. The cursor width is 1.5vp, and the cursor height is related to the text selection background height and font size.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11328,9 +10735,9 @@ DEFAULT
 INLINE
 ```
 
-**Function:** Inline input style. The text selection background height matches the input box height.
-Inline input is used in scenarios with clear edit/non-edit state distinctions, such as renaming in file list views.
-The showError property is not supported.
+**Description:** Inline input style. The text selection background height matches the input box height.
+Inline input is used in scenarios with clear distinctions between edit and non-edit states, such as renaming in a file list view.
+The `showError` property is not supported.
 Text dragging is not supported in inline mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -11343,19 +10750,19 @@ Text dragging is not supported in inline mode.
 public operator func !=(other: TextContentStyle): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal
+**Description:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextContentStyle](#enum-textcontentstyle) | Yes | - | Enum value to compare |
+| other | [TextContentStyle](#enum-textcontentstyle) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are unequal, otherwise false. |
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 ### func ==(TextContentStyle)
 
@@ -11363,19 +10770,19 @@ public operator func !=(other: TextContentStyle): Bool
 public operator func ==(other: TextContentStyle): Bool
 ```
 
-**Function:** Determines whether two enum values are equal
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextContentStyle](#enum-textcontentstyle) | Yes | - | Enum value to compare |
+| other | [TextContentStyle](#enum-textcontentstyle) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are equal, otherwise false. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ## enum TextDecorationStyle
 
@@ -11390,7 +10797,7 @@ public enum TextDecorationStyle <: Equatable<TextDecorationStyle> {
 }
 ```
 
-**Function:** Sets text decoration line styles.
+**Description:** Sets the style of text decoration lines.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11406,7 +10813,7 @@ public enum TextDecorationStyle <: Equatable<TextDecorationStyle> {
 DASHED
 ```
 
-**Function:** Dashed line.
+**Description:** Dashed line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11418,7 +10825,7 @@ DASHED
 DOTTED
 ```
 
-**Function:** Dotted line.
+**Description:** Dotted line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11430,7 +10837,7 @@ DOTTED
 DOUBLE
 ```
 
-**Function:** Double solid line.
+**Description:** Double solid line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11442,7 +10849,7 @@ DOUBLE
 SOLID
 ```
 
-**Function:** Single solid line (default).
+**Description:** Single solid line (default value).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11454,7 +10861,7 @@ SOLID
 WAVY
 ```
 
-**Function:** Wavy line.
+**Description:** Wavy line.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11466,19 +10873,19 @@ WAVY
 public operator func !=(other: TextDecorationStyle): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal
+**Description:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextDecorationStyle](#enum-textdecorationstyle) | Yes | - | Enum value to compare |
+| other | [TextDecorationStyle](#enum-textdecorationstyle) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are unequal, otherwise false. |
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 ### func ==(TextDecorationStyle)
 
@@ -11486,21 +10893,19 @@ public operator func !=(other: TextDecorationStyle): Bool
 public operator func ==(other: TextDecorationStyle): Bool
 ```
 
-**Function:** Determines whether two enum values are equal
+**Description:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextDecorationStyle](#enum-textdecorationstyle) | Yes | - | Enum value to compare |
+| other | [TextDecorationStyle](#enum-textdecorationstyle) | Yes | - | The enum value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are equal, otherwise false. |
-
-## enum TextDecorationType
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |## enum TextDecorationType
 
 ```cangjie
 public enum TextDecorationType <: Equatable<TextDecorationType> {
@@ -11512,7 +10917,7 @@ public enum TextDecorationType <: Equatable<TextDecorationType> {
 }
 ```
 
-**Function:** Enumeration of decoration line types.
+**Function:** Enumeration for text decoration line types.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11528,7 +10933,7 @@ public enum TextDecorationType <: Equatable<TextDecorationType> {
 LineThrough
 ```
 
-**Function:** Decoration line through text.
+**Function:** A decorative line that strikes through the text.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11540,7 +10945,7 @@ LineThrough
 None
 ```
 
-**Function:** No text decoration line.
+**Function:** No text decoration line is applied.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11552,7 +10957,7 @@ None
 Overline
 ```
 
-**Function:** Overline text decoration.
+**Function:** A decorative line above the text.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11564,7 +10969,7 @@ Overline
 Underline
 ```
 
-**Function:** Underline text decoration.
+**Function:** A decorative line below the text.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11576,19 +10981,19 @@ Underline
 public operator func !=(other: TextDecorationType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal
+**Function:** Determines whether two enumeration values are unequal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextDecorationType](#enum-textdecorationtype) | Yes | - | Enum value to compare |
+| other | [TextDecorationType](#enum-textdecorationtype) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are unequal, otherwise false. |
+| Bool | Returns true if the two enumeration values are unequal, otherwise returns false. |
 
 ### func ==(TextDecorationType)
 
@@ -11596,19 +11001,19 @@ public operator func !=(other: TextDecorationType): Bool
 public operator func ==(other: TextDecorationType): Bool
 ```
 
-**Function:** Determines whether two enum values are equal
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextDecorationType](#enum-textdecorationtype) | Yes | - | Enum value to compare |
+| other | [TextDecorationType](#enum-textdecorationtype) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are equal, otherwise false. |
+| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
 
 ## enum TextHeightAdaptivePolicy
 
@@ -11621,7 +11026,7 @@ public enum TextHeightAdaptivePolicy <: Equatable<TextHeightAdaptivePolicy> {
 }
 ```
 
-**Function:** Sets text height adaptation methods.
+**Function:** Sets the text height adaptation method.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11637,7 +11042,7 @@ public enum TextHeightAdaptivePolicy <: Equatable<TextHeightAdaptivePolicy> {
 LAYOUT_CONSTRAINT_FIRST
 ```
 
-**Function:** Sets text height adaptation method to prioritize layout constraints (height).
+**Function:** Sets the text height adaptation method to prioritize layout constraints (height).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11649,7 +11054,7 @@ LAYOUT_CONSTRAINT_FIRST
 MAX_LINES_FIRST
 ```
 
-**Function:** Sets text height adaptation method to prioritize MaxLines.
+**Function:** Sets the text height adaptation method to prioritize MaxLines.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11661,7 +11066,7 @@ MAX_LINES_FIRST
 MIN_FONT_SIZE_FIRST
 ```
 
-**Function:** Sets text height adaptation method to prioritize font size reduction.
+**Function:** Sets the text height adaptation method to prioritize font size reduction.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11673,19 +11078,19 @@ MIN_FONT_SIZE_FIRST
 public operator func !=(other: TextHeightAdaptivePolicy): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal
+**Function:** Determines whether two enumeration values are unequal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextHeightAdaptivePolicy](#enum-textheightadaptivepolicy) | Yes | - | Enum value to compare |
+| other | [TextHeightAdaptivePolicy](#enum-textheightadaptivepolicy) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are unequal, otherwise false. |
+| Bool | Returns true if the two enumeration values are unequal, otherwise returns false. |
 
 ### func ==(TextHeightAdaptivePolicy)
 
@@ -11693,37 +11098,21 @@ public operator func !=(other: TextHeightAdaptivePolicy): Bool
 public operator func ==(other: TextHeightAdaptivePolicy): Bool
 ```
 
-**Function:** Determines whether two enum values are equal
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextHeightAdaptivePolicy](#enum-textheightadaptivepolicy) | Yes | - | Enum value to compare |
+| other | [TextHeightAdaptivePolicy](#enum-textheightadaptivepolicy) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if enum values are equal, otherwise false. |
+| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value represented by the current enum. |## enum TextOverflow
+## enum TextOverflow
 
 ```cangjie
 public enum TextOverflow <: Equatable<TextOverflow> {
@@ -11734,7 +11123,7 @@ public enum TextOverflow <: Equatable<TextOverflow> {
 }
 ```
 
-**Description:** Display method when text overflows.
+**Function:** Display method for overflow text.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11750,7 +11139,7 @@ public enum TextOverflow <: Equatable<TextOverflow> {
 Clip
 ```
 
-**Description:** Truncates text at the maximum line when it overflows.
+**Function:** Overflow text is clipped according to the maximum number of lines.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11762,7 +11151,7 @@ Clip
 Ellipsis
 ```
 
-**Description:** Replaces overflowing text with ellipsis when it cannot be fully displayed.
+**Function:** Overflow text is replaced with ellipsis when it cannot be fully displayed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11774,7 +11163,7 @@ Ellipsis
 None
 ```
 
-**Description:** Truncates text at the maximum line when it overflows.
+**Function:** Overflow text is clipped according to the maximum number of lines.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11786,19 +11175,19 @@ None
 public operator func !=(other: TextOverflow): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enumeration values are unequal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextOverflow](#enum-textoverflow) | Yes | - | The enum value to compare |
+| other | [TextOverflow](#enum-textoverflow) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+| Bool | Returns true if the two enumeration values are unequal, otherwise returns false. |
 
 ### func ==(TextOverflow)
 
@@ -11806,37 +11195,19 @@ public operator func !=(other: TextOverflow): Bool
 public operator func ==(other: TextOverflow): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [TextOverflow](#enum-textoverflow) | Yes | - | The enum value to compare |
+| other | [TextOverflow](#enum-textoverflow) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
-
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Description:** Gets the value represented by the current enum.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Int32 | The value represented by the current enum. |
+| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |
 
 ## enum ThemeColorMode
 
@@ -11849,7 +11220,7 @@ public enum ThemeColorMode <: Equatable<ThemeColorMode> {
 }
 ```
 
-**Description:** Theme color mode.
+**Function:** Theme color mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11865,7 +11236,7 @@ public enum ThemeColorMode <: Equatable<ThemeColorMode> {
 Dark
 ```
 
-**Description:** Fixed dark mode.
+**Function:** Fixed dark mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11877,7 +11248,7 @@ Dark
 Light
 ```
 
-**Description:** Fixed light mode.
+**Function:** Fixed light mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11889,7 +11260,7 @@ Light
 System
 ```
 
-**Description:** Follows the system's dark/light mode.
+**Function:** Follows the system's light/dark mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11901,19 +11272,19 @@ System
 public operator func !=(other: ThemeColorMode): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enumeration values are unequal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [ThemeColorMode](#enum-themecolormode) | Yes | - | The enum value to compare |
+| other | [ThemeColorMode](#enum-themecolormode) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+| Bool | Returns true if the two enumeration values are unequal, otherwise returns false. |
 
 ### func ==(ThemeColorMode)
 
@@ -11921,21 +11292,19 @@ public operator func !=(other: ThemeColorMode): Bool
 public operator func ==(other: ThemeColorMode): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enumeration values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [ThemeColorMode](#enum-themecolormode) | Yes | - | The enum value to compare |
+| other | [ThemeColorMode](#enum-themecolormode) | Yes | - | The enumeration value to compare |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
-
-## enum TitleHeight
+| Bool | Returns true if the two enumeration values are equal, otherwise returns false. |## enum TitleHeight
 
 ```cangjie
 public enum TitleHeight <: Equatable<TitleHeight> {
@@ -11945,7 +11314,7 @@ public enum TitleHeight <: Equatable<TitleHeight> {
 }
 ```
 
-**Description:** Sets the title bar height.
+**Function:** Sets the height of the title bar.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11961,7 +11330,7 @@ public enum TitleHeight <: Equatable<TitleHeight> {
 MainOnly
 ```
 
-**Description:** Recommended height for title bar with only main title (56vp).
+**Function:** Recommended height (56vp) for title bar when only main title exists.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11973,7 +11342,7 @@ MainOnly
 MainWithSub
 ```
 
-**Description:** Recommended height for title bar with both main and sub titles (82vp).
+**Function:** Recommended height (82vp) for title bar when both main title and subtitle exist.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -11985,19 +11354,19 @@ MainWithSub
 public operator func !=(other: TitleHeight): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [TitleHeight](#enum-titleheight) | Yes | - | The enum value to compare |
+|other|[TitleHeight](#enum-titleheight)|Yes|-|Enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+|Bool|Returns true if two enum values are unequal, otherwise returns false.|
 
 ### func ==(TitleHeight)
 
@@ -12005,19 +11374,19 @@ public operator func !=(other: TitleHeight): Bool
 public operator func ==(other: TitleHeight): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [TitleHeight](#enum-titleheight) | Yes | - | The enum value to compare |
+|other|[TitleHeight](#enum-titleheight)|Yes|-|Enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+|Bool|Returns true if two enum values are equal, otherwise returns false.|
 
 ## enum TouchType
 
@@ -12032,7 +11401,7 @@ public enum TouchType <: Equatable<TouchType> {
 }
 ```
 
-**Description:** Touch trigger method.
+**Function:** Touch trigger method.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12048,7 +11417,7 @@ public enum TouchType <: Equatable<TouchType> {
 Cancel
 ```
 
-**Description:** Triggered when a touch event is canceled.
+**Function:** Triggered when touch event is canceled.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12060,7 +11429,7 @@ Cancel
 Down
 ```
 
-**Description:** Triggered when a finger is pressed down.
+**Function:** Triggered when finger presses down.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12072,7 +11441,7 @@ Down
 Move
 ```
 
-**Description:** Triggered when a finger moves on the screen while pressed.
+**Function:** Triggered when finger moves while pressing on screen.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12084,7 +11453,7 @@ Move
 Unknown
 ```
 
-**Description:** Triggered for unknown touch operations.
+**Function:** Triggered for unknown touch operations.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12096,7 +11465,7 @@ Unknown
 Up
 ```
 
-**Description:** Triggered when a finger is lifted.
+**Function:** Triggered when finger lifts up.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12108,19 +11477,19 @@ Up
 public operator func !=(other: TouchType): Bool
 ```
 
-**Description:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [TouchType](#enum-touchtype) | Yes | - | Another enum value to compare |
+|other|[TouchType](#enum-touchtype)|Yes|-|Another enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false |
+|Bool|Returns true if two enum values are unequal, otherwise returns false|
 
 ### func ==(TouchType)
 
@@ -12128,55 +11497,21 @@ public operator func !=(other: TouchType): Bool
 public operator func ==(other: TouchType): Bool
 ```
 
-**Description:** Determines whether two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-| other | [TouchType](#enum-touchtype) | Yes | - | Another enum value to compare |
+|other|[TouchType](#enum-touchtype)|Yes|-|Another enum value to compare|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+|Bool|Returns true if two enum values are equal, otherwise returns false.|
 
-### func getValue()
-
-```cangjie
-public func getValue(): UInt8
-```
-
-**Description:** Gets the enum type value.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| UInt8 | The enum type value. |
-
-### func toString()
-
-```cangjie
-public func toString(): String
-```
-
-**Description:** Converts the enum type value to a string type.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| String | The string type corresponding to the enum value. |## enum VerticalAlign
+## enum VerticalAlign
 
 ```cangjie
 public enum VerticalAlign <: Equatable<VerticalAlign> {
@@ -12215,7 +11550,7 @@ Bottom
 Center
 ```
 
-**Function:** Center alignment (default alignment method).
+**Function:** Center alignment (default alignment).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12239,19 +11574,19 @@ Top
 public operator func !=(other: VerticalAlign): Bool
 ```
 
-**Function:** Determines whether two enumeration values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[VerticalAlign](#enum-verticalalign)|Yes|-|Another enumeration value to compare.|
+|other|[VerticalAlign](#enum-verticalalign)|Yes|-|Another enum value to compare|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are unequal, otherwise returns false.|
+|Bool|Returns true if two enum values are unequal, otherwise returns false.|
 
 ### func ==(VerticalAlign)
 
@@ -12259,19 +11594,19 @@ public operator func !=(other: VerticalAlign): Bool
 public operator func ==(other: VerticalAlign): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[VerticalAlign](#enum-verticalalign)|Yes|-|Another enumeration value to compare.|
+|other|[VerticalAlign](#enum-verticalalign)|Yes|-|Another enum value to compare|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
+|Bool|Returns true if two enum values are equal, otherwise returns false.|
 
 ## enum Visibility
 
@@ -12284,7 +11619,7 @@ public enum Visibility <: Equatable<Visibility> {
 }
 ```
 
-**Function:** Controls whether the current component is displayed or hidden.
+**Function:** Shows or hides the current component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12300,7 +11635,7 @@ public enum Visibility <: Equatable<Visibility> {
 Hidden
 ```
 
-**Function:** Hidden but still occupies layout space.
+**Function:** Hidden but participates in layout as placeholder.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12312,7 +11647,7 @@ Hidden
 None
 ```
 
-**Function:** Hidden and does not occupy layout space.
+**Function:** Hidden and does not participate in layout (no placeholder).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12324,7 +11659,7 @@ None
 Visible
 ```
 
-**Function:** Displayed.
+**Function:** Visible.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12336,19 +11671,19 @@ Visible
 public operator func !=(other: Visibility): Bool
 ```
 
-**Function:** Determines whether two enumeration values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[Visibility](#enum-visibility)|Yes|-|Another enumeration value to compare.|
+|other|[Visibility](#enum-visibility)|Yes|-|Another enum value to compare|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are unequal, otherwise returns false.|
+|Bool|Returns true if two enum values are unequal, otherwise returns false.|
 
 ### func ==(Visibility)
 
@@ -12356,21 +11691,19 @@ public operator func !=(other: Visibility): Bool
 public operator func ==(other: Visibility): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[Visibility](#enum-visibility)|Yes|-|Another enumeration value to compare.|
+|other|[Visibility](#enum-visibility)|Yes|-|Another enum value to compare|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
-
-## enum WebDarkMode
+|Bool|Returns true if two enum values are equal, otherwise returns false.|## enum WebDarkMode
 
 ```cangjie
 public enum WebDarkMode <: Equatable<WebDarkMode> {
@@ -12381,7 +11714,7 @@ public enum WebDarkMode <: Equatable<WebDarkMode> {
 }
 ```
 
-**Function:** Web dark mode (disabled by default).
+**Function:** Web dark mode, disabled by default.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12433,19 +11766,19 @@ On
 public operator func !=(other: WebDarkMode): Bool
 ```
 
-**Function:** Determines whether two enumeration values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[WebDarkMode](#enum-webdarkmode)|Yes|-|Another enumeration value to compare.|
+|other|[WebDarkMode](#enum-webdarkmode)|Yes|-|Another enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are unequal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise returns false.|
 
 ### func ==(WebDarkMode)
 
@@ -12453,19 +11786,19 @@ public operator func !=(other: WebDarkMode): Bool
 public operator func ==(other: WebDarkMode): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[WebDarkMode](#enum-webdarkmode)|Yes|-|Another enumeration value to compare.|
+|other|[WebDarkMode](#enum-webdarkmode)|Yes|-|Another enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
+|Bool|Returns true if the enum values are equal, otherwise returns false.|
 
 ## enum WordBreak
 
@@ -12478,7 +11811,7 @@ public enum WordBreak <: Equatable<WordBreak> {
 }
 ```
 
-**Function:** Sets text line-breaking rules.
+**Function:** Sets text line breaking rules.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12506,7 +11839,7 @@ BreakAll
 BreakWord
 ```
 
-**Function:** Similar to BREAKALL, for Non-CJK text, line breaks can occur between any two characters. When there are break points (such as whitespace) in a line of text, priority is given to breaking at these points to ensure words remain intact. If no break points exist in a line, breaks occur between any two characters. For CJK text, the effect is the same as NORMAL.
+**Function:** Similar to BREAKALL, for Non-CJK text, line breaks can occur between any two characters. When a line contains break opportunities (e.g., whitespace), priority is given to breaking at those points to maintain word integrity. If no break opportunities exist in a line, breaks occur between any two characters. For CJK text, the effect is the same as NORMAL.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12518,7 +11851,7 @@ BreakWord
 Normal
 ```
 
-**Function:** CJK (Chinese, Japanese, Korean) text can break between any two characters, while Non-CJK text (such as English) can only break at whitespace.
+**Function:** CJK (Chinese, Japanese, Korean) text can break between any two characters, while Non-CJK text (e.g., English) can only break at whitespace.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -12530,19 +11863,19 @@ Normal
 public operator func !=(other: WordBreak): Bool
 ```
 
-**Function:** Determines whether two enumeration values are unequal.
+**Function:** Determines whether two enum values are unequal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[WordBreak](#enum-wordbreak)|Yes|-|Another enumeration value to compare.|
+|other|[WordBreak](#enum-wordbreak)|Yes|-|Another enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are unequal, otherwise returns false.|
+|Bool|Returns true if the enum values are unequal, otherwise returns false.|
 
 ### func ==(WordBreak)
 
@@ -12550,48 +11883,32 @@ public operator func !=(other: WordBreak): Bool
 public operator func ==(other: WordBreak): Bool
 ```
 
-**Function:** Determines whether two enumeration values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|other|[WordBreak](#enum-wordbreak)|Yes|-|Another enumeration value to compare.|
+|other|[WordBreak](#enum-wordbreak)|Yes|-|Another enum value to compare.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|Bool|Returns true if the two enumeration values are equal, otherwise returns false.|
+|Bool|Returns true if the enum values are equal, otherwise returns false.|
 
-### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**Function:** Gets the integer value of the enumeration.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-**Return Value:**
-
-|Type|Description|
-|:----|:----|
-|Int32|Returns the integer value of the enumeration.|## type CustomBuilder
+## type CustomBuilder
 
 ```cangjie
-public type CustomBuilder =() -> Unit
+public type CustomBuilder = () -> Unit
 ```
 
-**Function:** [CustomBuilder](#type-custombuilder) is a type alias for [() -> Unit](#).
+**Function:** [CustomBuilder](#type-custombuilder) is a type alias for () -> Unit.
 
 ## type TransitionFinishCallback
 
 ```cangjie
-public type TransitionFinishCallback =(Bool) -> Unit
+public type TransitionFinishCallback = (Bool) -> Unit
 ```
 
-**Function:** [TransitionFinishCallback](#type-transitionfinishcallback) is a type alias for [(Bool) -> Unit](#).
+**Function:** [TransitionFinishCallback](#type-transitionfinishcallback) is a type alias for (Bool) -> Unit.

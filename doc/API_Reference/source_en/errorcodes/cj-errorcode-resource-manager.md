@@ -96,15 +96,15 @@ Verify whether the input relative path meets expectations.
 
 **Error Message**
 
-If the resource is re-referenced too much.
+If the resource is re-referenced too many times.
 
 **Error Description**
 
-Excessive reference resolution count detected.
+Excessive reference parsing count detected.
 
 **Possible Causes**
 
-Circular resource reference situation occurred.
+Circular resource reference occurred.
 
 **Resolution Steps**
 
@@ -114,7 +114,7 @@ Check resource reference locations and eliminate circular references.
 
 **Error Message**
 
-If the resource obtained by resId has formatting error.
+If the resource obtained by resId has formatting errors.
 
 **Error Description**
 
@@ -134,7 +134,7 @@ Verify whether the args parameter types match the placeholder count and types.
 
 **Error Message**
 
-If the resource obtained by resName has formatting error.
+If the resource obtained by resName has formatting errors.
 
 **Error Description**
 
@@ -150,15 +150,15 @@ String resource obtained by resName failed to format.
 
 Verify whether the args parameter types match the placeholder count and types.
 
-## 9001009 Failed to Get System Resource Manager
+## 9001009 Failed to Obtain System Resource Manager
 
 **Error Message**
 
-If application can't access system resource.
+If the application cannot access system resources.
 
 **Error Description**
 
-Failed to obtain system resource manager.
+Failed to obtain the system resource manager.
 
 **Possible Causes**
 
@@ -180,7 +180,7 @@ The input overlay path is invalid.
 
 **Possible Causes**
 
-The path doesn't exist or cannot be accessed as it's not located under the corresponding application's installation path.
+The path doesn't exist or cannot be accessed as it's not located in the corresponding application's installation directory.
 
 **Resolution Steps**
 

@@ -1,6 +1,6 @@
 # ohos.geo_location_manager (Location Services)
 
-Location services provide basic functionalities including GNSS positioning, network positioning (cellular base station, WLAN, Bluetooth positioning technologies), geocoding, reverse geocoding, country codes, and geo-fencing.
+Location services provide basic functionalities including GNSS positioning, network positioning (cellular base station, WLAN, Bluetooth positioning technologies), geocoding, reverse geocoding, country codes, and geofencing.
 
 > **Note:**
 >
@@ -26,12 +26,12 @@ ohos.permission.LOCATION_IN_BACKGROUND: Used for scenarios where the application
 
 ## Usage Instructions
 
-API sample code usage instructions:
+API example code usage instructions:
 
-- If the sample code has a "// index.cj" comment on the first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of the example code has a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For the above example projects and configuration templates, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#cangjie-example-code-instructions).
 
 ## class CurrentLocationRequest
 
@@ -47,7 +47,7 @@ public class CurrentLocationRequest {
 }
 ```
 
-**Function:** Parameters for current location information request.
+**Function:** Parameters for current location information requests.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -61,9 +61,9 @@ public var maxAccuracy: Float32
 
 **Function:** Represents accuracy information in meters.
 
-Only effective in precise location scenarios (when both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (only ohos.permission.APPROXIMATELY_LOCATION permission is granted).
+Only effective in precise location scenarios (where both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (where only ohos.permission.APPROXIMATELY_LOCATION is granted).
 
-Default value is 0, valid range is greater than or equal to 0.
+Default value is 0, with a valid range of greater than or equal to 0.
 
 When scenario is Navigation/TrajectoryTracking/CarHailing or priority is Accuracy, it is recommended to set maxAccuracy to a value greater than 10.
 
@@ -115,7 +115,7 @@ public var scenario: LocationRequestScenario
 public var timeoutMs: Int32
 ```
 
-**Function:** Represents timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000.
+**Function:** Represents the timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000.
 
 **Type:** Int32
 
@@ -145,8 +145,8 @@ public init(priority!: LocationRequestPriority = LocationRequestPriority.FirstFi
 |:---|:---|:---|:---|:---|
 | priority | [LocationRequestPriority](#enum-locationrequestpriority) | No | LocationRequestPriority.FirstFix | **Named parameter.** Represents priority information. When scenario is set to Unset, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to Unset, the location request cannot be initiated. Valid values are defined in [LocationRequestPriority](#enum-locationrequestpriority). |
 | scenario | [LocationRequestScenario](#enum-locationrequestscenario) | No | LocationRequestScenario.Unset | **Named parameter.** Represents scenario information. When scenario is set to Unset, the priority parameter takes effect; otherwise, it does not. If both scenario and priority are set to Unset, the location request cannot be initiated. Valid values are defined in [LocationRequestScenario](#enum-locationrequestscenario). |
-| maxAccuracy | Float32 | No | 0.0 | **Named parameter.** Represents accuracy information in meters.<br/>Only effective in precise location scenarios (when both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (only ohos.permission.APPROXIMATELY_LOCATION permission is granted).<br/>Default value is 0, valid range is greater than or equal to 0.<br/>When scenario is Navigation/TrajectoryTracking/CarHailing or priority is Accuracy, it is recommended to set maxAccuracy to a value greater than 10.<br/>When scenario is DailyLifeService/NoPower or priority is LowPower/FirstFix, it is recommended to set maxAccuracy to a value greater than 100. |
-| timeoutMs | Int32 | No | 5000 | **Named parameter.** Represents timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000. |
+| maxAccuracy | Float32 | No | 0.0 | **Named parameter.** Represents accuracy information in meters.<br/>Only effective in precise location scenarios (where both ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions are granted). This field is meaningless in approximate location scenarios (where only ohos.permission.APPROXIMATELY_LOCATION is granted).<br/>Default value is 0, with a valid range of greater than or equal to 0.<br/>When scenario is Navigation/TrajectoryTracking/CarHailing or priority is Accuracy, it is recommended to set maxAccuracy to a value greater than 10.<br/>When scenario is DailyLifeService/NoPower or priority is LowPower/FirstFix, it is recommended to set maxAccuracy to a value greater than 100. |
+| timeoutMs | Int32 | No | 5000 | **Named parameter.** Represents the timeout duration in milliseconds, with a minimum of 1000 milliseconds. Valid range is greater than or equal to 1000. |
 
 ## class GeoLocationManager
 
@@ -154,7 +154,7 @@ public init(priority!: LocationRequestPriority = LocationRequestPriority.FirstFi
 public class GeoLocationManager {}
 ```
 
-**Function:** Class for providing location services.
+**Function:** A class used to provide location services.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -284,7 +284,7 @@ public static func isLocationEnabled(): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | true: Location service switch is enabled;<br/>false: Location service switch is disabled. |
+| Bool | true: Location services are enabled;<br/>false: Location services are disabled. |
 
 **Example:**
 
@@ -346,7 +346,7 @@ public var accuracy: Float64
 ### var additionSize
 
 ```cangjie
-public var additionSize: Int64
+public var additionSize: ?Int64
 ```
 
 **Function:** Number of additional information items. Valid range is greater than or equal to 0.
@@ -362,7 +362,7 @@ public var additionSize: Int64
 ### var additions
 
 ```cangjie
-public var additions: Array<String>
+public var additions: ?Array<String>
 ```
 
 **Function:** Additional information.
@@ -378,12 +378,12 @@ public var additions: Array<String>
 ### var additionsMap
 
 ```cangjie
-public var additionsMap: Map<String, String>
+public var additionsMap: ?Map<String, String>
 ```
 
 **Function:** Additional information. The specific content and order are consistent with additions.
 
-**Type:** [Map](../../../../User_Manual/source_zh_cn/collections/collection_hashmap.md)\<String,String>
+**Type:** Map
 
 **Read/Write Capability:** Readable and Writable
 
@@ -410,7 +410,7 @@ public var altitude: Float64
 ### var altitudeAccuracy
 
 ```cangjie
-public var altitudeAccuracy: Float64
+public var altitudeAccuracy: ?Float64
 ```
 
 **Function:** Represents the accuracy of altitude information in meters.
@@ -442,7 +442,7 @@ public var direction: Float64
 ### var directionAccuracy
 
 ```cangjie
-public var directionAccuracy: Float64
+public var directionAccuracy: ?Float64
 ```
 
 **Function:** Represents the accuracy of heading information in degrees, with a valid range of 0 to 360.
@@ -490,7 +490,7 @@ public var longitude: Float64
 ### var sourceType
 
 ```cangjie
-public var sourceType: LocationSourceType
+public var sourceType: ?LocationSourceType
 ```
 
 **Function:** Represents the source of the location result.
@@ -506,7 +506,7 @@ public var sourceType: LocationSourceType
 ### var speed
 
 ```cangjie
-public var speed: Float64
+public var speed: ?Float64
 ```
 
 **Function:** Represents speed information in meters per second.
@@ -570,7 +570,7 @@ public var timeStamp: Int64
 ### var uncertaintyOfTimeSinceBoot
 
 ```cangjie
-public var uncertaintyOfTimeSinceBoot: Int64
+public var uncertaintyOfTimeSinceBoot: ?Int64
 ```
 
 **Function:** Represents the uncertainty of the location timestamp.
@@ -581,7 +581,9 @@ public var uncertaintyOfTimeSinceBoot: Int64
 
 **System Capability:** SystemCapability.Location.Location.Core
 
-**Since:** 21## class SingleLocationRequest
+**Since:** 21
+
+## class SingleLocationRequest
 
 ```cangjie
 public class SingleLocationRequest {
@@ -591,7 +593,7 @@ public class SingleLocationRequest {
 }
 ```
 
-**Description:** Request parameters for single-shot location.
+**Function:** Request parameters for single-shot positioning.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -603,7 +605,7 @@ public class SingleLocationRequest {
 public var locatingPriority: LocatingPriority
 ```
 
-**Description:** Indicates priority information. For valid values, see definition of [LocatingPriority](#enum-locatingpriority).
+**Function:** Indicates priority information. For valid values, see the definition of [LocatingPriority](#enum-locatingpriority).
 
 **Type:** [LocatingPriority](#enum-locatingpriority)
 
@@ -619,7 +621,7 @@ public var locatingPriority: LocatingPriority
 public var locatingTimeoutMs: Int32
 ```
 
-**Description:** Indicates timeout duration in milliseconds, with a minimum of 1000 ms. Valid value range: ≥1000.
+**Function:** Indicates the timeout duration in milliseconds, with a minimum of 1000 ms. The value must be greater than or equal to 1000.
 
 **Type:** Int32
 
@@ -635,7 +637,7 @@ public var locatingTimeoutMs: Int32
 public init(locatingPriority: LocatingPriority, locatingTimeoutMs: Int32)
 ```
 
-**Description:** Constructs a SingleLocationRequest object.
+**Function:** Constructs a SingleLocationRequest object.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -643,10 +645,10 @@ public init(locatingPriority: LocatingPriority, locatingTimeoutMs: Int32)
 
 **Parameters:**
 
-|Name|Type|Mandatory|Default|Description|
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|locatingPriority|[LocatingPriority](#enum-locatingpriority)|Yes|-|Indicates priority information. For valid values, see definition of [LocatingPriority](#enum-locatingpriority).|
-|locatingTimeoutMs|Int32|Yes|-|Indicates timeout duration in milliseconds, with a minimum of 1000 ms. Valid value range: ≥1000.|
+| locatingPriority | [LocatingPriority](#enum-locatingpriority) | Yes | - | Indicates priority information. For valid values, see the definition of [LocatingPriority](#enum-locatingpriority). |
+| locatingTimeoutMs | Int32 | Yes | - | Indicates the timeout duration in milliseconds, with a minimum of 1000 ms. The value must be greater than or equal to 1000. |
 
 ## enum LocatingPriority
 
@@ -658,7 +660,7 @@ public enum LocatingPriority {
 }
 ```
 
-**Description:** Priority types in single-shot location requests.
+**Function:** Priority types in single-shot location requests.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -670,9 +672,9 @@ public enum LocatingPriority {
 PriorityAccuracy
 ```
 
-**Description:** Indicates accuracy priority.
+**Function:** Indicates accuracy priority.
 
-The accuracy-first strategy uses both GNSS and network positioning technologies, returning the best accuracy result within a period (determined by the smaller value between [SingleLocationRequest](#class-singlelocationrequest).locatingTimeoutMs and 30 seconds). This consumes more hardware resources and power.
+The accuracy-first strategy uses both GNSS and network positioning technologies and returns the most accurate result within a period, which is the shorter of [SingleLocationRequest](#class-singlelocationrequest).locatingTimeoutMs and 30 seconds. This strategy consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -684,9 +686,9 @@ The accuracy-first strategy uses both GNSS and network positioning technologies,
 PriorityLocatingSpeed
 ```
 
-**Description:** Indicates fast location acquisition priority. Applications requiring quick positioning can set this priority type.
+**Function:** Indicates fast location acquisition priority. If an application wants to quickly obtain a location, this priority type can be set.
 
-The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios, returning the first acquired result. This consumes more hardware resources and power.
+The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios. The first obtained location result is returned to the application. This strategy consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -704,7 +706,7 @@ public enum LocationRequestPriority {
 }
 ```
 
-**Description:** Priority types for location information in location requests.
+**Function:** Priority types for location information in location requests.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -716,9 +718,9 @@ public enum LocationRequestPriority {
 Accuracy
 ```
 
-**Description:** Indicates accuracy priority.
+**Function:** Indicates accuracy priority.
 
-The accuracy-first strategy primarily uses GNSS positioning, with network positioning as fallback before stable GNSS results are available. During continuous positioning, network positioning is used if no GNSS result is obtained within 30 seconds. This consumes more hardware resources and power.
+The accuracy-first strategy mainly uses GNSS positioning technology. Network positioning technology is used before GNSS provides stable location results. During continuous positioning, if no GNSS location result is obtained for more than 30 seconds, network positioning technology is used. This strategy consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -730,9 +732,9 @@ The accuracy-first strategy primarily uses GNSS positioning, with network positi
 FirstFix
 ```
 
-**Description:** Indicates fast location acquisition priority. Applications requiring quick positioning can set this field.
+**Function:** Indicates fast location acquisition priority. If an application wants to quickly obtain a location, this priority type can be set.
 
-The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios. When multiple positioning technologies provide results, the system selects the one with better accuracy. This consumes more hardware resources and power.
+The speed-first strategy uses both GNSS and network positioning technologies to quickly obtain location results in both indoor and outdoor scenarios. When multiple positioning technologies provide location results, the system selects the most accurate one to return to the application. This strategy consumes more hardware resources and power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -744,9 +746,9 @@ The speed-first strategy uses both GNSS and network positioning technologies to 
 LowPower
 ```
 
-**Description:** Indicates low power priority.
+**Function:** Indicates low power priority.
 
-The low-power strategy uses only network positioning technology, providing location services in both indoor and outdoor scenarios. Since it relies on nearby base stations, visible WLANs, and Bluetooth devices, accuracy may vary significantly. Recommended for scenarios with low accuracy requirements to effectively conserve power.
+The low-power strategy uses only network positioning technology, which can provide location services in both indoor and outdoor scenarios. Since it relies on the distribution of nearby base stations, visible WLANs, and Bluetooth devices, the accuracy of location results may vary significantly. This strategy is recommended for scenarios where high accuracy is not required, as it effectively reduces power consumption.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -758,7 +760,7 @@ The low-power strategy uses only network positioning technology, providing locat
 Unset
 ```
 
-**Description:** Indicates unset priority, meaning [LocationRequestPriority](#enum-locationrequestpriority) is invalid.
+**Function:** Indicates that the priority is not set, meaning [LocationRequestPriority](#enum-locationrequestpriority) is invalid.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -778,11 +780,11 @@ public enum LocationRequestScenario {
 }
 ```
 
-**Description:** Positioning scenario types in location requests.
+**Function:** Positioning scenario types in location requests.
 
 > **Note:**
 >
-> When using Navigation/TrajectoryTracking/CarHailing scenarios for single-shot or continuous positioning, network positioning will be used as fallback before stable GNSS results are available. During continuous positioning, network positioning will be used if no GNSS result is obtained within 30 seconds.
+> When using Navigation/TrajectoryTracking/CarHailing scenarios for single-shot or continuous positioning, network positioning technology is used before GNSS provides stable location results. During continuous positioning, if no GNSS location result is obtained for more than 30 seconds, network positioning technology is used to obtain the location.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -794,11 +796,11 @@ public enum LocationRequestScenario {
 CarHailing
 ```
 
-**Description:** Indicates ride-hailing scenario.
+**Function:** Indicates ride-hailing scenario.
 
-Applicable for locating current position during ride-hailing, such as in ride-sharing apps.
+Applicable to scenarios where users need to locate their current position for ride-hailing services, such as ride-hailing applications.
 
-Primarily uses GNSS positioning, with higher power consumption.
+Mainly uses GNSS positioning technology, which consumes more power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -810,11 +812,11 @@ Primarily uses GNSS positioning, with higher power consumption.
 DailyLifeService
 ```
 
-**Description:** Indicates daily service usage scenario.
+**Function:** Indicates daily service scenario.
 
-Applicable for scenarios not requiring precise user location, such as news, e-commerce, or food delivery apps.
+Applicable to scenarios where precise user location is not required, such as news, online shopping, and food delivery applications.
 
-Uses only network positioning technology with lower power consumption.
+This scenario uses only network positioning technology, which consumes less power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -826,11 +828,11 @@ Uses only network positioning technology with lower power consumption.
 Navigation
 ```
 
-**Description:** Indicates navigation scenario.
+**Function:** Indicates navigation scenario.
 
-Applicable for obtaining real-time device location outdoors, such as in vehicle or pedestrian navigation.
+Applicable to scenarios where real-time device location is needed outdoors, such as vehicle and pedestrian navigation.
 
-Primarily uses GNSS positioning with higher power consumption.
+Mainly uses GNSS positioning technology, which consumes more power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -842,7 +844,7 @@ Primarily uses GNSS positioning with higher power consumption.
 NoPower
 ```
 
-**Description:** Indicates no-power scenario. In this scenario, positioning is not actively triggered; location results are returned only when other applications perform positioning.
+**Function:** Indicates no-power scenario. In this scenario, positioning is not actively triggered. Location results are returned to the current application only when other applications perform positioning.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -854,11 +856,11 @@ NoPower
 TrajectoryTracking
 ```
 
-**Description:** Indicates trajectory tracking scenario.
+**Function:** Indicates trajectory tracking scenario.
 
-Applicable for recording user movement trajectories, such as in fitness apps.
+Applicable to scenarios where user location trajectories need to be recorded, such as fitness applications tracking movement paths.
 
-Primarily uses GNSS positioning with higher power consumption.
+Mainly uses GNSS positioning technology, which consumes more power.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -870,9 +872,7 @@ Primarily uses GNSS positioning with higher power consumption.
 Unset
 ```
 
-**Description:** Indicates unset scenario.
-
-Indicates that the [LocationRequestScenario](#enum-locationrequestscenario) field is invalid.
+**Function:** Indicates that the scenario is not set, meaning [LocationRequestScenario](#enum-locationrequestscenario) is invalid.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -890,7 +890,7 @@ public enum LocationSourceType {
 }
 ```
 
-**Description:** Source types of positioning results.
+**Function:** Source types of location results.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -902,7 +902,7 @@ public enum LocationSourceType {
 Gnss
 ```
 
-**Description:** Indicates positioning result comes from GNSS technology.
+**Function:** Indicates that the location result comes from GNSS positioning technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -914,7 +914,7 @@ Gnss
 Indoor
 ```
 
-**Description:** Indicates positioning result comes from indoor high-precision positioning technology.
+**Function:** Indicates that the location result comes from indoor high-precision positioning technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -926,7 +926,7 @@ Indoor
 Network
 ```
 
-**Description:** Indicates positioning result comes from network positioning technology.
+**Function:** Indicates that the location result comes from network positioning technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
@@ -938,8 +938,9 @@ Network
 Rtk
 ```
 
-**Description:** Indicates positioning result comes from outdoor high-precision positioning technology.
+**Function:** Indicates that the location result comes from outdoor high-precision positioning technology.
 
 **System Capability:** SystemCapability.Location.Location.Core
 
 **Since:** 21
+```

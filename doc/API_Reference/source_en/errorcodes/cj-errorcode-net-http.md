@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following only covers error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> This document only covers module-specific error codes. For universal error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 2300001 Unsupported Protocol
 
@@ -20,9 +20,9 @@ The protocol version passed in is not supported by the server.
 
 **Resolution Steps**
 
-Check whether the protocol version passed in is valid and investigate the server implementation.
+Verify the protocol version passed in and check the server implementation.
 
-## 2300003 URL Format Error
+## 2300003 Malformed URL
 
 **Error Message**
 
@@ -30,17 +30,17 @@ URL using bad/illegal format or missing URL.
 
 **Error Description**
 
-The URL format is incorrect.
+Malformed URL.
 
 **Possible Causes**
 
-The URL passed in may be malformed.
+The URL format passed in may be incorrect.
 
 **Resolution Steps**
 
-Verify the format of the URL passed in.
+Check the URL format passed in.
 
-## 2300005 Proxy Server Domain Resolution Failed
+## 2300005 Proxy Server DNS Resolution Failed
 
 **Error Message**
 
@@ -52,13 +52,13 @@ The proxy server's domain name cannot be resolved.
 
 **Possible Causes**
 
-The server's URL is incorrect.
+The server URL is incorrect.
 
 **Resolution Steps**
 
-Check whether the proxy server's URL is correct.
+Verify the proxy server's URL.
 
-## 2300006 Domain Resolution Failed
+## 2300006 Hostname Resolution Failed
 
 **Error Message**
 
@@ -70,15 +70,15 @@ The server's domain name cannot be resolved.
 
 **Possible Causes**
 
-1. The server's URL passed in is incorrect.  
+1. The server URL passed in is incorrect.
 2. Network connectivity issues.
 
 **Resolution Steps**
 
-1. Verify whether the server's URL entered is valid.  
-2. Check the network connection status.
+1. Verify the server URL passed in.
+2. Check the network connection.
 
-## 2300007 Failed to Connect to Server
+## 2300007 Connection to Server Failed
 
 **Error Message**
 
@@ -86,17 +86,17 @@ Couldn't connect to server.
 
 **Error Description**
 
-Unable to connect to the server.
+Failed to connect to the server.
 
 **Possible Causes**
 
-The URL passed in may be malformed.
+The URL format passed in is incorrect.
 
 **Resolution Steps**
 
-Verify the format of the URL passed in.
+Check the URL format passed in.
 
-## 2300008 Server Returned Illegal Data
+## 2300008 Illegal Server Response
 
 **Error Message**
 
@@ -108,13 +108,13 @@ The server returned illegal data.
 
 **Possible Causes**
 
-The server encountered an error and returned non-HTTP formatted data.
+The server returned non-HTTP formatted data due to an error.
 
 **Resolution Steps**
 
 Investigate the server implementation.
 
-## 2300009 Access to Remote Resource Denied
+## 2300009 Remote Resource Access Denied
 
 **Error Message**
 
@@ -126,7 +126,7 @@ Access to the remote resource is denied.
 
 **Possible Causes**
 
-The specified content is blocked by the server.
+The specified content is denied by the server.
 
 **Resolution Steps**
 
@@ -140,7 +140,7 @@ Error in the HTTP2 framing layer.
 
 **Error Description**
 
-An error occurred at the HTTP2 layer.
+HTTP2 layer error.
 
 **Possible Causes**
 
@@ -148,9 +148,9 @@ The server does not support HTTP2.
 
 **Resolution Steps**
 
-Capture network packets and verify whether the server supports HTTP2.
+Capture packets and verify if the server supports HTTP2.
 
-## 2300018 Incomplete Server Response Data
+## 2300018 Incomplete Server Response
 
 **Error Message**
 
@@ -158,7 +158,7 @@ Transferred a partial file.
 
 **Error Description**
 
-The data returned by the server is incomplete.
+The server returned incomplete data.
 
 **Possible Causes**
 
@@ -176,15 +176,15 @@ Failed writing received data to disk/application.
 
 **Error Description**
 
-Failed to write received data to disk or the application.
+Failed to write received data to disk/application.
 
 **Possible Causes**
 
-The application lacks file write permissions, or the file to be downloaded exceeds 5MB.
+The application lacks file write permissions or the file to be downloaded exceeds 5MB.
 
 **Resolution Steps**
 
-Check the application permissions and the size of the file to be downloaded.
+Check application permissions and the size of the file to be downloaded.
 
 ## 2300025 Upload Failed
 
@@ -194,7 +194,7 @@ Upload failed.
 
 **Error Description**
 
-The upload operation failed.
+Upload failed.
 
 **Possible Causes**
 
@@ -212,7 +212,7 @@ Failed to open/read local data from file/application.
 
 **Error Description**
 
-Failed to open or read local data from a file or the application.
+Failed to open/read local data from file/application.
 
 **Possible Causes**
 
@@ -220,7 +220,7 @@ The application lacks file read permissions.
 
 **Resolution Steps**
 
-Check the application permissions.
+Check application permissions.
 
 ## 2300027 Out of Memory
 
@@ -230,15 +230,15 @@ Out of memory.
 
 **Error Description**
 
-Insufficient memory.
+Out of memory.
 
 **Possible Causes**
 
-The system is out of memory.
+Insufficient memory.
 
 **Resolution Steps**
 
-Check the system memory status.
+Check system memory.
 
 ## 2300028 Operation Timeout
 
@@ -248,7 +248,7 @@ Timeout was reached.
 
 **Error Description**
 
-The operation timed out.
+Operation timeout.
 
 **Possible Causes**
 
@@ -266,7 +266,7 @@ Number of redirects hit maximum amount.
 
 **Error Description**
 
-The maximum number of redirects has been reached.
+Maximum number of redirects reached.
 
 **Possible Causes**
 
@@ -276,7 +276,7 @@ Too many redirects.
 
 Investigate the server implementation.
 
-## 2300052 Server Returned No Content
+## 2300052 Empty Server Response
 
 **Error Message**
 
@@ -310,7 +310,7 @@ Network issues.
 
 **Resolution Steps**
 
-Investigate network conditions.
+Investigate the network.
 
 ## 2300056 Failed to Receive Network Data
 
@@ -328,7 +328,7 @@ Network issues.
 
 **Resolution Steps**
 
-Investigate network conditions.
+Investigate network issues.
 
 ## 2300058 Local SSL Certificate Error
 
@@ -338,17 +338,17 @@ Problem with the local SSL certificate.
 
 **Error Description**
 
-An error occurred with the local SSL certificate.
+Local SSL certificate error.
 
 **Possible Causes**
 
-The SSL certificate format is invalid.
+The SSL certificate format is incorrect.
 
 **Resolution Steps**
 
-Verify the SSL certificate format.
+Check the SSL certificate format.
 
-## 2300059 Specified Cipher Not Supported
+## 2300059 Specified Cipher Unavailable
 
 **Error Message**
 
@@ -360,13 +360,13 @@ The specified cipher cannot be used.
 
 **Possible Causes**
 
-The encryption algorithm negotiated between the client and server is not supported by the system.
+The encryption algorithm negotiated between client and server is not supported by the system.
 
 **Resolution Steps**
 
-Capture packets to analyze the negotiated algorithm.
+Capture packets and analyze the negotiated algorithm.
 
-## 2300060 Remote Server SSL Certificate or SSH Key Invalid
+## 2300060 Invalid Remote Server SSL Certificate or SSH Key
 
 **Error Message**
 
@@ -378,13 +378,13 @@ The remote server's SSL certificate or SSH key is invalid.
 
 **Possible Causes**
 
-Unable to verify the server's identity, possibly due to an expired certificate.
+Failed to verify the server's identity, possibly due to an expired certificate.
 
 **Resolution Steps**
 
-Check the validity of the certificate.
+Check the certificate validity.
 
-## 2300061 Unrecognized or Invalid HTTP Encoding Format
+## 2300061 Unrecognized or Malformed HTTP Encoding
 
 **Error Message**
 
@@ -392,7 +392,7 @@ Unrecognized or bad HTTP Content or Transfer-Encoding.
 
 **Error Description**
 
-Unrecognized or invalid HTTP encoding format.
+Unrecognized or malformed HTTP encoding.
 
 **Possible Causes**
 
@@ -430,7 +430,7 @@ Insufficient server disk space.
 
 **Possible Causes**
 
-Server disk is full.
+The server disk is full.
 
 **Resolution Steps**
 
@@ -452,7 +452,7 @@ During file upload, the server indicates the file already exists.
 
 **Resolution Steps**
 
-Troubleshoot server configuration.
+Investigate server configuration.
 
 ## 2300077 SSL CA Certificate Missing or Access Denied
 
@@ -462,17 +462,17 @@ Problem with the SSL CA cert (path? access rights?).
 
 **Error Description**
 
-SSL CA certificate does not exist or access is denied.
+SSL CA certificate is missing or access is denied.
 
 **Possible Causes**
 
-Certificate is missing or lacks proper access permissions.
+The certificate does not exist or lacks proper access permissions.
 
 **Resolution Steps**
 
 Verify certificate existence and access permissions.
 
-## 2300078 Requested File Not Found in URL
+## 2300078 Requested File Not Found via URL
 
 **Error Message**
 
@@ -480,15 +480,15 @@ Remote file not found.
 
 **Error Description**
 
-The file requested by URL does not exist.
+The file requested via URL does not exist.
 
 **Possible Causes**
 
-The file specified in the URL request does not exist.
+The file specified in the URL request cannot be found.
 
 **Resolution Steps**
 
-Check if the requested file exists at the URL location.
+Check if the requested file exists at the specified URL.
 
 ## 2300094 Authentication Failure
 
@@ -506,7 +506,7 @@ The provided authentication credentials do not match server records.
 
 **Resolution Steps**
 
-Verify if authentication fields match server requirements.
+Verify whether the authentication fields match server requirements.
 
 ## 2300999 Unknown Error
 
@@ -524,4 +524,4 @@ Undetermined error condition.
 
 **Resolution Steps**
 
-Undefined error resolution.
+Undetermined resolution steps.

@@ -11,6 +11,7 @@ None
 ### init(Length, Length)
 
 ```cangjie
+
 public init(width!: Length = 0.vp, height!: Length = 0.vp)
 ```
 
@@ -22,12 +23,12 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Width, value range ≥0.<br>Initial value: 0.<br>Default unit: vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length) | No | 0.vp | **Named parameter.** Height, value range ≥0.<br>Initial value: 0.<br>Default unit: vp. |
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width, value range ≥0.<br>Initial value: 0.<br>Default unit: vp. |
+| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height, value range ≥0.<br>Initial value: 0.<br>Default unit: vp. |
 
-## Common Attributes/Events
+## Common Attributes/Common Events
 
 Common Attributes: All supported.
 
@@ -38,10 +39,11 @@ Common Events: All supported.
 ### func initial()
 
 ```cangjie
+
 public override func initial()
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Creates an object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,14 +62,14 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(10) {
-            // Draw a circle with diameter of 150
+        Column(space: 10) {
+            // Draws a circle with diameter of 150
             Circle(width: 150, height: 150)
-            // Draw a red dashed circular ring with diameter of 150 (when width and height are unequal, the shorter edge is used as diameter)
+            // Draws a red dashed circular ring with diameter of 150 (when width and height are unequal, the shorter edge is used as diameter)
             Circle()
                 .width(150)
                 .height(200)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .strokeWidth(3)
                 .stroke(Color.Red)
                 .strokeDashArray([1, 2])

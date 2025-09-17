@@ -1,8 +1,8 @@
 # ohos.telephony.call
 
-This module provides call management functionalities, including making phone calls, redirecting to the dial interface, obtaining call states, formatting phone numbers, etc.
+This module provides call management functionalities, including making phone calls, redirecting to the dialer interface, obtaining call states, formatting phone numbers, etc.
 
-## Import Module
+## Importing the Module
 
 ```cangjie
 import kit.TelephonyKit.*
@@ -10,12 +10,12 @@ import kit.TelephonyKit.*
 
 ## Usage Instructions
 
-API example code usage instructions:
+API sample code usage instructions:
 
-- If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the example requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of the sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above example projects and configuration templates, refer to [Cangjie Example Code Guide](../../../guide/cj-example-code-guide.md).
+For the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
 
 ## class Call
 
@@ -23,11 +23,11 @@ For the above example projects and configuration templates, refer to [Cangjie Ex
 public class Call {}
 ```
 
-**Functionality:** Call management class, providing functionalities such as making phone calls, redirecting to the dial interface, obtaining call states, formatting phone numbers, etc.
+**Functionality:** A class for making phone calls, providing call management functionalities, including interfaces for making calls, redirecting to the dialer interface, obtaining call states, formatting phone numbers, etc.
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 ### static func formatPhoneNumber(String, NumberFormatOptions)
 
@@ -40,17 +40,17 @@ public static func formatPhoneNumber(
 
 **Functionality:** Formats a phone number with optional formatting parameters.
 
-The formatted phone number is a standard numeric string, e.g., "138 xxxx xxxx", "0755 xxxx xxxx".
+The formatted phone number will be a standard numeric string, e.g., "138 xxxx xxxx", "0755 xxxx xxxx".
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| phoneNumber | String | Yes | - | Phone number. |
+| phoneNumber | String | Yes | - | The phone number. |
 | options | [NumberFormatOptions](#class-numberformatoptions) | No | NumberFormatOptions() | **Named parameter.** Formatting parameters, such as country code. |
 
 **Return Value:**
@@ -65,7 +65,7 @@ The formatted phone number is a standard numeric string, e.g., "138 xxxx xxxx", 
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -83,20 +83,20 @@ The phone number to be formatted must match the provided country code. For examp
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| phoneNumber | String | Yes | - | Phone number. |
-| countryCode | String | Yes | - | Country code, supports all country codes, e.g., China (CN). |
+| phoneNumber | String | Yes | - | The phone number. |
+| countryCode | String | Yes | - | The country code, supporting all country codes, e.g., China (CN). |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| String | Returns the E.164 formatted phone number result. |
+| String | Returns the phone number formatted in E.164 representation. |
 
 **Exceptions:**
 
@@ -104,7 +104,7 @@ The phone number to be formatted must match the provided country code. For examp
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -116,11 +116,11 @@ The phone number to be formatted must match the provided country code. For examp
 public static func getCallState(): CallState
 ```
 
-**Functionality:** Obtains the current call state.
+**Functionality:** Retrieves the current call state.
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
@@ -134,17 +134,17 @@ public static func getCallState(): CallState
 public static func hasCall(): Bool
 ```
 
-**Functionality:** Checks whether there is an ongoing call.
+**Functionality:** Determines whether a call is in progress.
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns the call existence status. true indicates an ongoing call; false indicates no ongoing call. |
+| Bool | Returns the determination result. `true` indicates a call is in progress; `false` indicates no call is in progress. |
 
 ### static func hasVoiceCapability()
 
@@ -152,17 +152,17 @@ public static func hasCall(): Bool
 public static func hasVoiceCapability(): Bool
 ```
 
-**Functionality:** Checks whether the current device supports voice call capability.
+**Functionality:** Checks whether the current device supports voice call capabilities.
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns the voice call capability status. true indicates the device supports voice calls; false indicates it does not. |
+| Bool | Returns the determination result. `true` indicates the device supports voice calls; `false` indicates it does not. |
 
 ### static func isEmergencyPhoneNumber(String, EmergencyNumberOptions)
 
@@ -170,24 +170,24 @@ public static func hasVoiceCapability(): Bool
 public static func isEmergencyPhoneNumber(phoneNumber: String, options!: EmergencyNumberOptions = EmergencyNumberOptions(slotId: 0)): Bool
 ```
 
-**Functionality:** Determines whether a phone number is an emergency number based on the provided parameters.
+**Functionality:** Determines whether the given phone number is an emergency number based on the provided parameters.
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| phoneNumber | String | Yes | - | Phone number. |
+| phoneNumber | String | Yes | - | The phone number. |
 | options | [EmergencyNumberOptions](#class-emergencynumberoptions) | No | EmergencyNumberOptions(slotId: 0) | Phone number parameters. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns the emergency number check result. true indicates an emergency number; false indicates otherwise. |
+| Bool | Returns the determination result. `true` indicates it is an emergency number; `false` indicates it is not. |
 
 **Exceptions:**
 
@@ -195,7 +195,7 @@ public static func isEmergencyPhoneNumber(phoneNumber: String, options!: Emergen
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -207,17 +207,17 @@ public static func isEmergencyPhoneNumber(phoneNumber: String, options!: Emergen
 public static func makeCall(phoneNumber: String): Unit
 ```
 
-**Functionality:** Redirects to the dial interface and displays the phone number to be dialed. Background calls require the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission.
+**Functionality:** Redirects to the dialer interface and displays the number to be dialed. Background calls require the `ohos.permission.START_ABILITIES_FROM_BACKGROUND` permission.
 
 **System Capability:** SystemCapability.Applications.Contacts
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| phoneNumber | String | Yes | - | Phone number. |
+| phoneNumber | String | Yes | - | The phone number. |
 
 **Exceptions:**
 
@@ -225,7 +225,7 @@ public static func makeCall(phoneNumber: String): Unit
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -237,18 +237,18 @@ public static func makeCall(phoneNumber: String): Unit
 public static func makeCall(context: UIAbilityContext, phoneNumber: String): Unit
 ```
 
-**Functionality:** Redirects to the dial interface and displays the phone number to be dialed. Background calls require the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission.
+**Functionality:** Redirects to the dialer interface and displays the number to be dialed. Background calls require the `ohos.permission.START_ABILITIES_FROM_BACKGROUND` permission.
 
 **System Capability:** SystemCapability.Applications.Contacts
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| context | [UIAbilityContext](../AbilityKit/cj-apis-ability.md#class-uiabilitycontext) | Yes | - | Application context Context. |
-| phoneNumber | String | Yes | - | Phone number. |
+| context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | The application context Context. |
+| phoneNumber | String | Yes | - | The phone number. |
 
 **Exceptions:**
 
@@ -256,7 +256,7 @@ public static func makeCall(context: UIAbilityContext, phoneNumber: String): Uni
 
   | Error Code ID | Error Message |
   | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; |
   | 8300001 | Invalid parameter value. |
   | 8300002 | Operation failed. Cannot connect to service. |
   | 8300003 | System internal error. |
@@ -275,7 +275,7 @@ public class EmergencyNumberOptions {
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 ### var slotId
 
@@ -287,11 +287,11 @@ public var slotId: Int32
 
 **Type:** Int32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 ### init(Int32)
 
@@ -303,7 +303,7 @@ public init(slotId!: Int32 = 0)
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -324,7 +324,7 @@ public class NumberFormatOptions {
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 ### var countryCode
 
@@ -332,15 +332,15 @@ public class NumberFormatOptions {
 public var countryCode: String
 ```
 
-**Functionality:** Country code, supports all country codes, e.g., CN (China). Default: CN.
+**Functionality:** The country code, supporting all country codes, e.g., CN (China). Default: "CN".
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Capability:** Readable and Writable
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 ### init(String)
 
@@ -352,13 +352,13 @@ public init(countryCode!: String = "CN")
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| countryCode | String | No | "CN" | Country code, supports all country codes, e.g., CN (China). Default: CN. |
+| countryCode | String | No | "CN" | The country code, supporting all country codes, e.g., CN (China). Default: "CN". |
 
 **Example:**
 
@@ -390,7 +390,7 @@ public enum CallState <: Equatable<CallState> & ToString {
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21
+**Initial Version:** 21
 
 **Parent Types:**
 
@@ -407,7 +407,7 @@ CallStateAnswered
 
 **System Capability:** SystemCapability.Telephony.CallManager
 
-**Since Version:** 21### CallStateIdle
+**Initial Version:** 21### CallStateIdle
 
 ```cangjie
 CallStateIdle
@@ -477,7 +477,7 @@ public operator func !=(other: CallState): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are unequal, otherwise returns false. |
+| Bool | Returns `true` if the enum values are unequal, otherwise `false`. |
 
 ### func ==(CallState)
 
@@ -501,7 +501,7 @@ public operator func ==(other: CallState): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+| Bool | Returns `true` if the enum values are equal, otherwise `false`. |
 
 ### func toString()
 

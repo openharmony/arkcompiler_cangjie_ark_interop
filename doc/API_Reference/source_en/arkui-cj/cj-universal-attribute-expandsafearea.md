@@ -1,10 +1,10 @@
 # Safe Area
 
-The safe area refers to the display region of a page that, by default, does not overlap with system-defined non-safe areas such as the status bar or navigation bar. By default, interfaces developed by developers are laid out within the safe area. Property methods are provided to allow developers to extend component rendering beyond the safe area constraints. The [expandSafeArea](./cj-universal-attribute-expandsafearea.md#func-expandsafeareaarraysafeareatype-arraysafeareaedge) attribute enables components to expand their rendering area outside the safe area without altering the layout. The [setKeyboardAvoidMode](./cj-universal-attribute-expandsafearea.md#func-setkeyboardavoidmodevalue-keyboardavoidmode) method configures the page's avoidance behavior when a virtual keyboard is displayed. For components like title bars where text should not overlap with non-safe areas, it is recommended to use the `expandSafeArea` attribute to achieve an immersive effect. Alternatively, the immersive mode can be directly set via the window interface [setWindowLayoutFullScreen](./cj-apis-window.md#).
+The safe area refers to the display area of a page that, by default, does not overlap with system-defined non-safe areas such as the status bar or navigation bar. By default, interfaces developed by developers are laid out within the safe area. Property methods are provided to allow developers to extend component rendering beyond the safe area constraints. The [expandSafeArea](./cj-universal-attribute-expandsafearea.md#func-expandsafeareaarraysafeareatype-arraysafeareaedge) attribute enables components to expand their rendering area beyond the safe area without altering the layout. The [setKeyboardAvoidMode](./cj-universal-attribute-expandsafearea.md#func-setkeyboardavoidmodevalue-keyboardavoidmode) method configures the page's avoidance mode when a virtual keyboard pops up. For components like title bars where text should not overlap with non-safe areas, it is recommended to use the `expandSafeArea` attribute to achieve an immersive effect. Alternatively, the immersive mode can be directly set via the window interface [setWindowLayoutFullScreen](./cj-apis-window.md#).
 
 > **Note:**
 >
-> By default, the camera cutout area is not considered a non-safe area, and the page does not avoid it.
+> By default, the camera cutout area is not considered a non-safe area, and the page does not avoid the cutout.
 
 ```json5
 "metadata": [
@@ -37,8 +37,8 @@ public func expandSafeArea(types!: ?Array<SafeAreaType> = None, edges!: ?Array<S
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| types | ?Array\<[SafeAreaType](#)> | No | None | Array of safe area types. |
-| edges | ?Array\<[SafeAreaEdge](#)> | No | None | Array of safe area edges. |
+| types | ?Array\<[SafeAreaType](#enum-safeareatype)> | No | None | Array of safe area types. |
+| edges | ?Array\<[SafeAreaEdge](#enum-safeareaedge)> | No | None | Array of safe area edges. |
 
 ## func !=(SafeAreaEdge)
 
@@ -58,7 +58,7 @@ public operator func !=(other: SafeAreaEdge): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are unequal; otherwise, returns `false`. |
+| Bool | Returns `true` if the two enum values are unequal; otherwise, returns `false`. |
 
 ## func ==(SafeAreaEdge)
 
@@ -78,7 +78,7 @@ public operator func ==(other: SafeAreaEdge): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are equal; otherwise, returns `false`. |
+| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
 
 ## func !=(SafeAreaType)
 
@@ -98,7 +98,7 @@ public operator func !=(other: SafeAreaType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are unequal; otherwise, returns `false`. |
+| Bool | Returns `true` if the two enum values are unequal; otherwise, returns `false`. |
 
 ## func ==(SafeAreaType)
 
@@ -118,7 +118,7 @@ public operator func ==(other: SafeAreaType): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the enum values are equal; otherwise, returns `false`. |
+| Bool | Returns `true` if the two enum values are equal; otherwise, returns `false`. |
 
 ## Basic Type Definitions
 
@@ -219,7 +219,7 @@ public enum SafeAreaType <: Equatable<SafeAreaType> {
 CUTOUT
 ```
 
-**Function:** Non-safe area of the device, such as notches or camera cutouts.
+**Function:** Non-safe area of the device, such as notches or punch-hole screens.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,7 +243,7 @@ KEYBOARD
 SYSTEM
 ```
 
-**Function:** System-defined default non-safe area, including the status bar and navigation bar.
+**Function:** System default non-safe area, including the status bar and navigation bar.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 

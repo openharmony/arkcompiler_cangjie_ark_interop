@@ -1,6 +1,6 @@
 # GridCol
 
-A grid sub-component that must be used as a child component of a grid container component ([GridRow](./cj-grid-layout-gridrow.md)).
+A grid column component that must be used as a child component of a grid container component ([GridRow](./cj-grid-layout-gridrow.md)).
 
 ## Import Module
 
@@ -20,20 +20,20 @@ Can contain a single child component.
 public init(span!: Int32 = 1, offset!: Int32 = 0, order!: Int32 = 0, child!: () -> Unit = {=>})
 ```
 
-**Function:** Creates a grid layout sub-component.
+**Function:** Creates a grid layout child component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| span | Int32 | No | 1 | **Named parameter.** The number of columns the grid sub-component occupies in the grid container component ([GridRow](./cj-grid-layout-gridrow.md)).<br>A span of 0 means the element does not participate in layout calculations and will not be rendered. |
-| offset | Int32 | No | 0 | **Named parameter.** The number of columns the grid sub-component is offset relative to the previous grid sub-component. |
-| order | Int32 | No | 0 | **Named parameter.** The sequence number of the element, used to sort grid sub-components from smallest to largest based on their sequence numbers. |
-| child | () -> Unit | No | { => } | **Named parameter.** The child component of the GridCol container. |
+| span | Int32 | No | 1 | **Named parameter.** The number of columns the grid column component occupies in the grid container component ([GridRow](./cj-grid-layout-gridrow.md)).<br>A span of 0 means the element does not participate in layout calculations and will not be rendered. |
+| offset | Int32 | No | 0 | **Named parameter.** The number of columns the grid column component is offset relative to the previous grid column component. |
+| order | Int32 | No | 0 | **Named parameter.** The sequence number of the element, used to sort grid column components from smallest to largest based on their sequence numbers. |
+| child | ()->Unit | No | { => } | **Named parameter.** The child component of the GridCol container. |
 
 ### init(GridColColumnOption, GridColColumnOption, GridColColumnOption, () -> Unit)
 
@@ -46,20 +46,20 @@ public init(
 )
 ```
 
-**Function:** Creates a grid sub-component.
+**Function:** Creates a grid column component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | span | [GridColColumnOption](#class-gridcolcolumnoption) | Yes | - | **Named parameter.** The number of columns occupied. |
-| offset | [GridColColumnOption](#class-gridcolcolumnoption) | Yes | - | **Named parameter.** The number of columns offset relative to the previous grid sub-component. |
-| order | [GridColColumnOption](#class-gridcolcolumnoption) | Yes | - | **Named parameter.** The sequence number of the element, used to sort grid sub-components from smallest to largest based on their sequence numbers. |
-| child | () -> Unit | No | { => } | **Named parameter.** The child component of the GridCol container. |
+| offset | [GridColColumnOption](#class-gridcolcolumnoption) | Yes | - | **Named parameter.** The number of columns offset relative to the previous grid column component. |
+| order | [GridColColumnOption](#class-gridcolcolumnoption) | Yes | - | **Named parameter.** The sequence number of the element, used to sort grid column components from smallest to largest based on their sequence numbers. |
+| child | ()->Unit | No | { => } | **Named parameter.** The child component of the GridCol container. |
 
 ## Common Attributes/Common Events
 
@@ -75,17 +75,17 @@ Common Events: All supported.
 public func gridColOffset(value: Int32): This
 ```
 
-**Function:** Sets the number of columns offset relative to the previous grid sub-component.
+**Function:** Sets the number of columns offset relative to the previous grid column component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Int32 | Yes | - | The number of columns offset relative to the previous grid sub-component.<br>Must be a positive integer. Initial value: 0. |
+| value | Int32 | Yes | - | The number of columns offset relative to the previous grid column component.<br>Must be a positive integer. Initial value: 0. |
 
 ### func gridColOffset(GridColColumnOption)
 
@@ -98,17 +98,17 @@ public func gridColOffset(value: Int32): This
 public func gridColOffset(value: GridColColumnOption): This
 ```
 
-**Function:** Sets the number of columns offset relative to the previous grid sub-component.
+**Function:** Sets the number of columns offset relative to the previous grid column component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [GridColColumnOption](#class-gridcolcolumnoption) | Yes | - | The number of columns offset relative to the previous grid sub-component. |
+| value | [GridColColumnOption](#class-gridcolcolumnoption) | Yes | - | The number of columns offset relative to the previous grid column component. |
 
 ### func order(Int32)
 
@@ -116,17 +116,17 @@ public func gridColOffset(value: GridColColumnOption): This
 public func order(value: Int32): This
 ```
 
-**Function:** Sets the number of columns offset relative to the previous grid sub-component.
+**Function:** Sets the number of columns offset relative to the previous grid column component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Int32 | Yes | - | The number of columns offset relative to the previous grid sub-component.<br>Must be a positive integer. Initial value: 0. |
+| value | Int32 | Yes | - | The number of columns offset relative to the previous grid column component.<br>Must be a positive integer. Initial value: 0. |
 
 ### func order(GridColColumnOption)
 
@@ -134,11 +134,11 @@ public func order(value: Int32): This
 public func order(value: GridColColumnOption): This
 ```
 
-**Function:** Sets the sequence number of the element, used to sort grid sub-components from smallest to largest based on their sequence numbers.
+**Function:** Sets the sequence number of the element, used to sort grid column components from smallest to largest based on their sequence numbers.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -156,7 +156,7 @@ public func span(value: Int32): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -174,7 +174,7 @@ public func span(value: GridColColumnOption): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
@@ -188,12 +188,12 @@ public func span(value: GridColColumnOption): This
 
 ```cangjie
 public class GridColColumnOption {
-    public var xs: Int32 = 12
-    public var sm: Int32 = 12
-    public var md: Int32 = 12
-    public var lg: Int32 = 12
-    public var xl: Int32 = 12
-    public var xxl: Int32 = 12
+    public var xs: Int32
+    public var sm: Int32
+    public var md: Int32 
+    public var lg: Int32
+    public var xl: Int32
+    public var xxl: Int32
     public init(
         xs!: Int32 = 12,
         sm!: Int32 = 12,
@@ -206,107 +206,107 @@ public class GridColColumnOption {
 }
 ```
 
-**Function:** Used to customize the number of grid units occupied by the grid sub-component on devices with different widths.
+**Function:** Used to customize the number of grid units occupied by the grid column component on devices with different widths.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var lg
 
 ```cangjie
-public var lg: Int32 = 12
+public var lg: Int32
 ```
 
-**Function:** **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with lg grid size.
+**Function:** **Named parameter.** The number of columns occupied or offset by the grid column component on devices with lg grid size.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-Write
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var md
 
 ```cangjie
-public var md: Int32 = 12
+public var md: Int32
 ```
 
-**Function:** **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with md grid size.
+**Function:** **Named parameter.** The number of columns occupied or offset by the grid column component on devices with md grid size.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-Write
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var sm
 
 ```cangjie
-public var sm: Int32 = 12
+public var sm: Int32
 ```
 
-**Function:** **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with sm grid size.
+**Function:** **Named parameter.** The number of columns occupied or offset by the grid column component on devices with sm grid size.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-Write
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var xl
 
 ```cangjie
-public var xl: Int32 = 12
+public var xl: Int32
 ```
 
-**Function:** **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with xl grid size.
+**Function:** **Named parameter.** The number of columns occupied or offset by the grid column component on devices with xl grid size.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-Write
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var xs
 
 ```cangjie
-public var xs: Int32 = 12
+public var xs: Int32
 ```
 
-**Function:** **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with xs grid size.
+**Function:** **Named parameter.** The number of columns occupied or offset by the grid column component on devices with xs grid size.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-Write
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### var xxl
 
 ```cangjie
-public var xxl: Int32 = 12
+public var xxl: Int32
 ```
 
-**Function:** **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with xxl grid size.
+**Function:** **Named parameter.** The number of columns occupied or offset by the grid column component on devices with xxl grid size.
 
 **Type:** Int32
 
-**Read-Write Capability:** Read-Write
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### init(Int32, Int32, Int32, Int32, Int32, Int32)
 
@@ -325,18 +325,18 @@ public init(
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| xs | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with xs grid size. |
-| sm | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with sm grid size. |
-| md | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with md grid size. |
-| lg | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with lg grid size. |
-| xl | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with xl grid size. |
-| xxl | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid sub-component on devices with xxl grid size. |
+| xs | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid column component on devices with xs grid size. |
+| sm | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid column component on devices with sm grid size. |
+| md | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid column component on devices with md grid size. |
+| lg | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid column component on devices with lg grid size. |
+| xl | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid column component on devices with xl grid size. |
+| xxl | Int32 | No | 12 | **Named parameter.** The number of columns occupied or offset by the grid column component on devices with xxl grid size. |
 
 #### init(Int32)
 
@@ -348,19 +348,19 @@ public init(value: Int32)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Int32 | Yes | - | The number of columns occupied or offset by the grid sub-component on devices of any grid size. |
+| value | Int32 | Yes | - | The number of columns occupied or offset by the grid column component on devices with any grid size. |
 
 ## Example Code
 
 ### Common Methods Example for GridCol
 
-This example demonstrates the use of common methods, constructors, and loop rendering for GridCol, showcasing the effects of span and offset.
+This example demonstrates the use of common methods, constructors, and loop rendering for GridCol, showing the effects of span and offset.
 
 <!-- run -->
 
@@ -384,10 +384,10 @@ class EntryView {
                     value: [400.vp, 600.vp, 800.vp],
                     reference: BreakpointsReference.WindowSize
                 ),
-                direction: GridRowDirection.GridRowRow
+                direction: GridRowDirection.Row
             ) {
-                // GridCol is a grid sub-component that must be used as a child of a grid container component (GridRow).
-                // Construct the 1st GridCol sub-component, occupying 2 columns (columns 1 and 2)
+                // GridCol grid column component must be used as a child component of the grid container component (GridRow).
+                // Construct the first GridCol child component, occupying 2 columns (columns 1 and 2)
                 GridCol() {
                     Row() {
                         Text("GridCol 1: span=2")
@@ -400,7 +400,7 @@ class EntryView {
                 .borderColor(Color.Blue)
                 .borderWidth(2.vp)
                 .span(2)
-                // Construct the 2nd GridCol sub-component, occupying 2 columns with an offset of 1 column from the previous grid, thus occupying columns 4 and 5
+                // Construct the second GridCol child component, occupying 2 columns, offset by 1 column from the previous grid, thus occupying columns 4 and 5
                 GridCol() {
                     Row() {
                         Text("GridCol 2: span=2, offset=1")
@@ -414,7 +414,7 @@ class EntryView {
                 .borderWidth(2.vp)
                 .span(2)
                 .gridColOffset(1)
-                // Construct the 3rd GridCol sub-component, occupying 1 column with an offset of 2 columns from the previous grid, thus occupying column 3 in the next row due to line break
+                // Construct the third GridCol child component, occupying 1 column, offset by 2 columns from the previous grid, thus occupying column 3 in the next row
                 GridCol() {
                     Row() {
                         Text("GridCol 3: span=1, offset=2")
@@ -429,7 +429,7 @@ class EntryView {
                 .span(1)
                 .gridColOffset(2)
 
-                // Loop rendering of grid sub-components
+                // Loop-rendered grid column components
                 ForEach(
                     bgColors,
                     itemGeneratorFunc: {
@@ -456,7 +456,7 @@ class EntryView {
 }
 ```
 
-![grid_col](./figures/grid_col.png)### Example of Combined Usage with Gridrow
+![grid_col](./figures/grid_col.png)### Example of Using with GridRow
 
 Please refer to the grid container example code ([GridRow](./cj-grid-layout-gridrow.md#example-code))
 

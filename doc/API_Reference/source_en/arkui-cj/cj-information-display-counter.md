@@ -2,9 +2,9 @@
 
 A counter component that provides corresponding increment or decrement operations.
 
-## Child Components
+## Subcomponents
 
-Can contain child components.
+Can contain subcomponents.
 
 ## Creating the Component
 
@@ -18,11 +18,11 @@ public init(content: () -> Unit)
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | content | ()->Unit | Yes | - | Defines the counter component and its content area. |
 
@@ -40,17 +40,17 @@ Common Events: All supported.
 public func enableDec(value: Bool): This
 ```
 
-**Function:** Sets the decrement button to be disabled or enabled.
+**Function:** Enables or disables the decrement button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Disables or enables the decrement button.<br>true means the button is enabled.<br>false means the button is disabled.<br>Initial value: true. |
+| value | Bool | Yes | - | Enables or disables the decrement button.<br>true: Button enabled.<br>false: Button disabled.<br>Initial value: true. |
 
 ### func enableInc(Bool)
 
@@ -58,17 +58,17 @@ public func enableDec(value: Bool): This
 public func enableInc(value: Bool): This
 ```
 
-**Function:** Sets the increment button to be disabled or enabled.
+**Function:** Enables or disables the increment button.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Disables or enables the increment button.<br>true means the + button is enabled.<br>false means the + button is disabled.<br>Component initial value: true. |
+| value | Bool | Yes | - | Enables or disables the increment button.<br>true: + button enabled.<br>false: + button disabled.<br>Component initial value: true. |
 
 ## Component Events
 
@@ -78,17 +78,17 @@ public func enableInc(value: Bool): This
 public func onDec(event: VoidCallback): This
 ```
 
-**Function:** Listens for the event triggered when the value is decremented.
+**Function:** Listens for the event triggered when the value decreases.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| event | [VoidCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function triggered when the Counter value is decremented. |
+| event | VoidCallback | Yes | - | Callback function triggered when the Counter value decreases. |
 
 ### func onInc(VoidCallback)
 
@@ -96,17 +96,17 @@ public func onDec(event: VoidCallback): This
 public func onInc(event: VoidCallback): This
 ```
 
-**Function:** Listens for the event triggered when the value is incremented.
+**Function:** Listens for the event triggered when the value increases.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| event | [VoidCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function triggered when the Counter value is incremented. |
+| event | VoidCallback | Yes | - | Callback function triggered when the Counter value increases. |
 
 ## Example Code
 

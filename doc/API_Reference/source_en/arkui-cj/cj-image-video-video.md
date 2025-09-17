@@ -44,7 +44,7 @@ public init(
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The data source of the video, supporting both local and network videos.<br/>String format can be used to load network and local videos, commonly used for loading network videos.<br/>- Supports network video URLs.<br/>- Supports strings with the file:// path prefix, i.e., application sandbox URI: file://<bundleName>/<sandboxPath>. Used to read resources within the application sandbox path. Ensure the files in the directory path have read permissions.<br/>Supported video formats: mp4, mkv, TS. |
-| currentProgressRate | [PlaybackSpeed](#enum-playbackspeed) | No | Speed_Forward_1_00_X | **Named parameter.** The playback speed of the video.<br/>Supported values: 0.75, 1.0, 1.25, 1.75, 2.0. |
+| currentProgressRate | [PlaybackSpeed](#enum-playbackspeed) | No | SpeedForward100X | **Named parameter.** The playback speed of the video.<br/>Supported values: 0.75, 1.0, 1.25, 1.75, 2.0. |
 | previewUri | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The path of the preview image displayed when the video is not playing. |
 | controller | [VideoController](#class-videocontroller) | No | VideoController() | **Named parameter.** Sets the video controller to manage the playback state of the video. |
 
@@ -62,7 +62,7 @@ Common Events: All supported.
 public func autoPlay(value: Bool): This
 ```
 
-**Function:** Sets whether to enable auto-play.
+**Function:** Sets whether to auto-play the video.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +72,7 @@ public func autoPlay(value: Bool): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether to enable auto-play.<br>Default: false. |
+| value | Bool | Yes | - | Whether to auto-play the video.<br>Initial value: false. |
 
 ### func controls(Bool)
 
@@ -90,7 +90,7 @@ public func controls(value: Bool): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether to display the video playback control bar.<br>Default: true. |
+| value | Bool | Yes | - | Whether to display the video playback control bar.<br>Initial value: true. |
 
 ### func loop(Bool)
 
@@ -98,7 +98,7 @@ public func controls(value: Bool): This
 public func loop(value: Bool): This
 ```
 
-**Function:** Sets whether to enable loop playback for a single video.
+**Function:** Sets whether to loop a single video.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +108,7 @@ public func loop(value: Bool): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether to enable loop playback for a single video.<br>Default: false. |
+| value | Bool | Yes | - | Whether to loop a single video.<br>Initial value: false. |
 
 ### func muted(Bool)
 
@@ -126,7 +126,7 @@ public func muted(value: Bool): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether to mute the video.<br>Default: false. |
+| value | Bool | Yes | - | Whether to mute the video.<br>Initial value: false. |
 
 ### func objectFit(ImageFit)
 
@@ -144,7 +144,7 @@ public func objectFit(value: ImageFit): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ImageFit](./cj-common-types.md#enum-imagefit) | Yes | - | The video display mode.<br>Default: Cover. |
+| value | [ImageFit](./cj-common-types.md#enum-imagefit) | Yes | - | The video display mode.<br>Initial value: Cover. |
 
 ## Component Events
 
@@ -182,7 +182,7 @@ public func onFinish(event: () -> Unit): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | () -> Unit | Yes | - | Callback function triggered when playback ends. |
+| event | ()->Unit | Yes | - | Callback function triggered when playback ends. |
 
 ### func onFullscreenChange(Callback\<FullscreenInfo,Unit>)
 
@@ -190,7 +190,7 @@ public func onFinish(event: () -> Unit): This
 public func onFullscreenChange(callback: Callback<FullscreenInfo, Unit>): This
 ```
 
-**Function:** Triggered when switching between full-screen and non-full-screen playback states.
+**Function:** Triggered when switching between full-screen and non-full-screen playback modes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,7 +200,7 @@ public func onFullscreenChange(callback: Callback<FullscreenInfo, Unit>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[FullscreenInfo](#class-fullscreeninfo),Unit> | Yes | - | Callback function triggered when switching between full-screen and non-full-screen playback states. |
+| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[FullscreenInfo](#class-fullscreeninfo),Unit> | Yes | - | Callback function triggered when switching between full-screen and non-full-screen playback modes. |
 
 ### func onPause(VoidCallback)
 
@@ -332,7 +332,7 @@ public class FullscreenInfo {
 public var fullscreen: Bool
 ```
 
-**Function:** Indicates whether the video is in full-screen playback mode.
+**Function:** Whether the video is in full-screen playback mode.
 
 **Type:** Bool
 
@@ -358,7 +358,7 @@ public class PlaybackInfo {
 public var time: Int32
 ```
 
-**Function:** The current playback progress of the video.
+**Function:** Current playback progress of the video.
 
 **Type:** Int32
 
@@ -384,7 +384,7 @@ public class PreparedInfo {
 public var duration: Int32
 ```
 
-**Function:** The duration of the current video.
+**Function:** Duration of the current video.
 
 **Type:** Int32
 
@@ -456,7 +456,7 @@ public func requestFullscreen(value: Bool): Unit
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether to enable full-screen (filling the application window) playback. |
+| value | Bool | Yes | - | Whether to play in full-screen mode (filling the application window). |
 
 #### func setCurrentTime(Int32, SeekMode)
 
@@ -474,8 +474,8 @@ public func setCurrentTime(value: Int32, seekMode: SeekMode): Unit
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Int32 | Yes | - | The playback position of the video.<br/>Unit: s. |
-| seekMode | [SeekMode](#enum-seekmode) | Yes | - | The seek mode. |
+| value | Int32 | Yes | - | Playback position of the video.<br/>Unit: s. |
+| seekMode | [SeekMode](#enum-seekmode) | Yes | - | Seek mode. |
 
 #### func start()
 
@@ -503,11 +503,11 @@ public func stop(): Unit
 
 ```cangjie
 public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
-    | Speed_Forward_0_75_X
-    | Speed_Forward_1_00_X
-    | Speed_Forward_1_25_X
-    | Speed_Forward_1_75_X
-    | Speed_Forward_2_00_X
+    | SpeedForward075X
+    | SpeedForward100X
+    | SpeedForward125X
+    | SpeedForward175X
+    | SpeedForward200X
     | ...
 }
 ```
@@ -522,61 +522,61 @@ public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
 
 - Equatable\<PlaybackSpeed>
 
-#### Speed_Forward_0_75_X
+#### SpeedForward075X
 
 ```cangjie
-Speed_Forward_0_75_X
+SpeedForward075X
 ```
 
-**Function:** Playback at 0.75x speed.
+**Function:** Plays at 0.75x speed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-#### Speed_Forward_1_00_X
+#### SpeedForward100X
 
 ```cangjie
-Speed_Forward_1_00_X
+SpeedForward100X
 ```
 
-**Function:** Playback at 1x speed.
+**Function:** Plays at 1x speed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-#### Speed_Forward_1_25_X
+#### SpeedForward125X
 
 ```cangjie
-Speed_Forward_1_25_X
+SpeedForward125X
 ```
 
-**Function:** Playback at 1.25x speed.
+**Function:** Plays at 1.25x speed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-#### Speed_Forward_1_75_X
+#### SpeedForward175X
 
 ```cangjie
-Speed_Forward_1_75_X
+SpeedForward175X
 ```
 
-**Function:** Playback at 1.75x speed.
+**Function:** Plays at 1.75x speed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-#### Speed_Forward_2_00_X
+#### SpeedForward200X
 
 ```cangjie
-Speed_Forward_2_00_X
+SpeedForward200X
 ```
 
-**Function:** Playback at 2x speed.
+**Function:** Plays at 2x speed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -592,15 +592,15 @@ public operator func !=(other: PlaybackSpeed): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[PlaybackSpeed](#enum-playbackspeed)|Yes|-|Another enum value.|
+| other | [PlaybackSpeed](#enum-playbackspeed) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 #### func ==(PlaybackSpeed)
 
@@ -612,15 +612,15 @@ public operator func ==(other: PlaybackSpeed): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[PlaybackSpeed](#enum-playbackspeed)|Yes|-|Another enum value.|
+| other | [PlaybackSpeed](#enum-playbackspeed) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### enum SeekMode
 
@@ -634,7 +634,7 @@ public enum SeekMode <: Equatable<SeekMode> {
 }
 ```
 
-**Function:** Seek mode.
+**Function:** Defines seek mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -650,7 +650,7 @@ public enum SeekMode <: Equatable<SeekMode> {
 Accurate
 ```
 
-**Function:** Accurate seeking, regardless of whether it's a keyframe.
+**Function:** Seeks precisely, regardless of whether it's a keyframe.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,7 +662,7 @@ Accurate
 ClosestKeyframe
 ```
 
-**Function:** Seek to the nearest keyframe.
+**Function:** Seeks to the nearest keyframe.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -674,7 +674,7 @@ ClosestKeyframe
 NextKeyframe
 ```
 
-**Function:** Seek to the next nearest keyframe.
+**Function:** Seeks to the next nearest keyframe.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -686,7 +686,7 @@ NextKeyframe
 PreviousKeyframe
 ```
 
-**Function:** Seek to the previous nearest keyframe.
+**Function:** Seeks to the previous nearest keyframe.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -702,15 +702,15 @@ public operator func !=(other: SeekMode): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[SeekMode](#enum-seekmode)|Yes|-|Another enum value.|
+| other | [SeekMode](#enum-seekmode) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
 
 #### func ==(SeekMode)
 
@@ -722,17 +722,17 @@ public operator func ==(other: SeekMode): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|other|[SeekMode](#enum-seekmode)|Yes|-|Another enum value.|
+| other | [SeekMode](#enum-seekmode) | Yes | - | Another enum value. |
 
 **Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
-## Sample Code
+## Example Code
 
 <!-- run -->
 
@@ -741,6 +741,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import kit.LocalizationKit.*
 import ohos.arkui.state_macro_manage.*
+import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -748,7 +749,7 @@ class EntryView {
     var videoSrc: AppResource = @rawfile("video.mp4")
     var previewUri: AppResource = @r(app.media.preview)
     var controller: VideoController = VideoController()
-    @State var curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
+    @State var curRate: PlaybackSpeed = PlaybackSpeed.SpeedForward100X
     @State var isAutoPlay: Bool = false
     @State var showControls: Bool = true
 
@@ -767,19 +768,19 @@ class EntryView {
 
             Row() {
                 Button("start")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.start() // Start playback
                     })
                     .margin(5)
                     .id("start")
                 Button("pause")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.pause() // Pause playback
                     })
                     .margin(5)
                     .id("pause")
                 Button("stop")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.stop() // Stop playback
                            this.controller.exitFullscreen()
                         }
@@ -789,19 +790,19 @@ class EntryView {
             }
             Row() {
                 Button("Fullscreen")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.requestFullscreen(true)
                     })
                     .margin(5)
                     .id("Fullscreen")
                 Button("at 10s")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.setCurrentTime(10, SeekMode.ClosestKeyframe)
                     })
                     .margin(5)
                     .id("at 10s")
                 Button("exitFull")
-                    .onClick({
+                    .onClick({ evt
                         => this.controller.exitFullscreen()
                     })
                     .margin(5)
@@ -809,20 +810,20 @@ class EntryView {
             }
             Row() {
                 Button("rate 0.75")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_0_75_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward075X
                     })
                     .margin(5)
                     .id("rate 0.75")
                 Button("rate 1")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_1_00_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward100X
                     })
                     .margin(5)
                     .id("rate 1")
                 Button("rate 2")
-                    .onClick({
-                        => this.curRate = PlaybackSpeed.Speed_Forward_2_00_X
+                    .onClick({ evt
+                        => this.curRate = PlaybackSpeed.SpeedForward200X
                     })
                     .margin(5)
                     .id("rate 2")

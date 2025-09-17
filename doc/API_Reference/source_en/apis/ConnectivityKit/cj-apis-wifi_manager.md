@@ -1,8 +1,8 @@
 # ohos.wifi_manager (WLAN)
 
-This module primarily provides WLAN basic functions, P2P (peer-to-peer) capabilities, and WLAN message notification services, enabling applications to interconnect with other devices via WLAN.
+This module primarily provides WLAN basic functions, P2P (peer-to-peer) capabilities, and WLAN notification services, enabling applications to interconnect with other devices via WLAN.
 
-## Importing the Module
+## Import Module
 
 ```cangjie
 import kit.ConnectivityKit.*
@@ -18,10 +18,10 @@ ohos.permission.SET_WIFI_INFO
 
 API sample code usage instructions:
 
-- If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it must be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the aforementioned sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md).
+For details about the sample project and configuration template, refer to [Cangjie Sample Code Description](../../cj-development-intro.md).
 
 ## func getScanInfoList()
 
@@ -29,7 +29,7 @@ For details about the aforementioned sample project and configuration template, 
 public func getScanInfoList(): Array<WifiScanInfo>
 ```
 
-**Description:** Obtains the scan results.
+**Description:** Obtains scan results.
 
 **Required Permission:** ohos.permission.GET_WIFI_INFO
 
@@ -41,7 +41,7 @@ public func getScanInfoList(): Array<WifiScanInfo>
 
 | Type | Description |
 | :---- | :---- |
-| Array\<[WifiScanInfo](#class-wifiscaninfo)> | Returns the list of scanned hotspots. If the application has requested the ohos.permission.GET_WIFI_PEERS_MAC permission (only system applications can request this), the bssid in the returned results will be the real device address; otherwise, it will be a random device address. |
+| Array\<[WifiScanInfo](#class-wifiscaninfo)> | Returns the list of scanned hotspots. If the application has requested the ohos.permission.GET_WIFI_PEERS_MAC permission (only system applications can request), the bssid in the returned results will be the real device address; otherwise, it will be a randomized device address. |
 
 **Exceptions:**
 
@@ -86,7 +86,7 @@ public func isWifiActive(): Bool
 public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None): Unit
 ```
 
-**Description:** Unregisters the WLAN state change event.
+**Description:** Unregisters WLAN state change events.
 
 **Required Permission:** ohos.GET_WIFI_INFO
 
@@ -96,10 +96,10 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | eventType | [WifiCallbackType](#enum-wificallbacktype) | Yes | - | Callback event. |
-| callback | ?[CallbackObject](../BasicServicesKit/cj-apis-base.md#class-callbackobject) | No | None | **Named parameter.** State change callback function. If no callback parameter is passed, all callback functions associated with the event will be unregistered. |
+| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** State change callback function. If no callback parameter is provided, all callback functions associated with the event will be unregistered. |
 
 **Exceptions:**
 
@@ -117,7 +117,7 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
 public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>): Unit
 ```
 
-**Description:** Registers the WLAN state change event.
+**Description:** Registers WLAN state change events.
 
 **Required Permission:** ohos.GET_WIFI_INFO
 
@@ -127,10 +127,10 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | eventType | [WifiCallbackType](#enum-wificallbacktype) | Yes | - | Callback event. |
-| callback | [Callback1Argument](../BasicServicesKit/cj-apis-base.md#class-callback1argument)\<Int32> | Yes | - | State change callback function. |
+| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32> | Yes | - | State change callback function. |
 
 **Exceptions:**
 
@@ -148,7 +148,7 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
 public func p2pCancelConnect(): Unit
 ```
 
-**Description:** Cancels a P2P connection during the connection process.
+**Description:** Cancels P2P connection during the connection process.
 
 **Required Permission:** ohos.permission.GET_WIFI_INFO
 
@@ -173,7 +173,7 @@ public func p2pCancelConnect(): Unit
 public func p2pConnect(config: WifiP2PConfig): Unit
 ```
 
-**Description:** Initiates a P2P connection.
+**Description:** Executes P2P connection.
 
 **Required Permission:** ohos.permission.GET_WIFI_INFO
 
@@ -183,9 +183,9 @@ public func p2pConnect(config: WifiP2PConfig): Unit
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| config | [WifiP2PConfig](#class-wifip2pconfig) | Yes | - | Connection configuration information. If DeviceAddressType is not specified, it defaults to the random device address type. |
+| config | [WifiP2PConfig](#class-wifip2pconfig) | Yes | - | Connection configuration information. If DeviceAddressType is not specified, it defaults to random device address type. |
 
 **Exceptions:**
 
@@ -273,7 +273,7 @@ public let content: Array<UInt8>
 
 **Type:** Array\<UInt8>
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.STA
 
@@ -289,7 +289,7 @@ public let eid: UInt32
 
 **Type:** UInt32
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.STA
 
@@ -332,7 +332,7 @@ public let deviceAddress: String
 
 **Type:** String
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -348,7 +348,7 @@ public let deviceAddressType: DeviceAddressType
 
 **Type:** [DeviceAddressType](#enum-deviceaddresstype)
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -364,7 +364,7 @@ public let goBand: GroupOwnerBand
 
 **Type:** [GroupOwnerBand](#enum-groupownerband)
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -380,7 +380,7 @@ public let groupName: String
 
 **Type:** String
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -392,11 +392,11 @@ public let groupName: String
 public let netId: Int32
 ```
 
-**Description:** Network ID. When creating a group, -1 indicates creating a temporary group, and -2 indicates creating a permanent group.
+**Description:** Network ID. When creating a group, -1 indicates creating a temporary group, and -2 indicates creating a persistent group.
 
 **Type:** Int32
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -412,7 +412,7 @@ public let passphrase: String
 
 **Type:** String
 
-**Read/Write Attribute:** Read-only
+**Read/Write Permission:** Read-only
 
 **System Capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -439,14 +439,14 @@ public init(
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | deviceAddress | String | Yes | - | Device address. |
-| netId | Int32 | Yes | - | Network ID. When creating a group, -1 indicates creating a temporary group, and -2 indicates creating a permanent group. |
+| netId | Int32 | Yes | - | Network ID. When creating a group, -1 indicates creating a temporary group, and -2 indicates creating a persistent group. |
 | passphrase | String | Yes | - | Group passphrase. |
 | groupName | String | Yes | - | Group name. |
 | goBand | [GroupOwnerBand](#enum-groupownerband) | Yes | - | Group bandwidth. |
-| deviceAddressType | [DeviceAddressType](#enum-deviceaddresstype) | No | RandomDeviceAddress | **Named parameter.** Device address type. > |## class WifiScanInfo
+| deviceAddressType | [DeviceAddressType](#enum-deviceaddresstype) | No | RandomDeviceAddress | **Named parameter.** Device address type. |## class WifiScanInfo
 
 ```cangjie
 public class WifiScanInfo {
@@ -480,7 +480,7 @@ public class WifiScanInfo {
 public let band: Int32
 ```
 
-**Description:** Frequency band of the WLAN access point, where 1:2.4GHz; 2:5GHz.
+**Description:** Frequency band of the WLAN access point, where 1: 2.4GHz; 2: 5GHz.
 
 **Type:** Int32
 
@@ -576,7 +576,7 @@ public let centerFrequency1: Int32
 public let channelWidth: Int32
 ```
 
-**Description:** Bandwidth of the WLAN access point. For specific definitions, see [WifiChannelWidth](#enum-wifichannelwidth).
+**Description:** Bandwidth of the WLAN access point.
 
 **Type:** Int32
 
@@ -640,7 +640,7 @@ public let isHiLinkNetwork: Bool
 public let rssi: Int32
 ```
 
-**Description:** Signal strength (dBm) of the hotspot.
+**Description:** Signal strength of the hotspot (dBm).
 
 **Type:** Int32
 
@@ -672,7 +672,7 @@ public let securityType: WifiSecurityType
 public let ssid: String
 ```
 
-**Description:** SSID of the hotspot, with a maximum length of 32 bytes, encoded in UTF-8 format.
+**Description:** SSID of the hotspot, with a maximum length of 32 bytes, encoded in UTF-8.
 
 **Type:** String
 
@@ -688,7 +688,7 @@ public let ssid: String
 public let supportedWifiCategory: WifiCategory
 ```
 
-**Description:** Highest supported WiFi category of the hotspot.
+**Description:** Highest WiFi category supported by the hotspot.
 
 **Type:** [WifiCategory](#enum-wificategory)
 
@@ -931,7 +931,9 @@ public func toString(): String
 
 |Type|Description|
 |:----|:----|
-|String|Description of the enum.|## enum WifiCallbackType
+|String|Description of the enum.|
+
+```## enum WifiCallbackType
 
 ```cangjie
 public enum WifiCallbackType <: Equatable<WifiCallbackType> & Hashable & ToString {
@@ -940,7 +942,7 @@ public enum WifiCallbackType <: Equatable<WifiCallbackType> & Hashable & ToStrin
 }
 ```
 
-**Description:** Event types that trigger WLAN callbacks.
+**Description:** WLAN callback trigger event types.
 
 **System Capability:** SystemCapability.Communication.WiFi.STA
 
@@ -960,6 +962,10 @@ WifiScanStateChange
 
 **Description:** Registers the WLAN state change event type.
 
+**System Capability:** SystemCapability.Communication.WiFi.STA
+
+**Since:** 21
+
 ### func !=(WifiCallbackType)
 
 ```cangjie
@@ -970,15 +976,15 @@ public operator func !=(other: WifiCallbackType): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [WifiCallbackType](#enum-wificallbacktype) | Yes | - | Another enum value. |
+|other|[WifiCallbackType](#enum-wificallbacktype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
 
 ### func ==(WifiCallbackType)
 
@@ -990,15 +996,15 @@ public operator func ==(other: WifiCallbackType): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [WifiCallbackType](#enum-wificallbacktype) | Yes | - | Another enum value. |
+|other|[WifiCallbackType](#enum-wificallbacktype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ### func hashCode()
 
@@ -1006,13 +1012,13 @@ public operator func ==(other: WifiCallbackType): Bool
 public func hashCode(): Int64
 ```
 
-**Description:** Retrieves the hash value of the input data.
+**Description:** Obtains the hash value of the input data.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Int64 | The hash value of the data. |
+|Int64|The hash value of the data.|
 
 ### func toString()
 
@@ -1020,13 +1026,13 @@ public func hashCode(): Int64
 public func toString(): String
 ```
 
-**Description:** Retrieves the value of the enum.
+**Description:** Obtains the value of the enum.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | The description of the enum. |
+|String|The description of the enum.|
 
 ## enum WifiCategory
 
@@ -1039,7 +1045,7 @@ public enum WifiCategory <: Equatable<WifiCategory> & ToString {
 }
 ```
 
-**Description:** Represents the highest WiFi category supported by a hotspot.
+**Description:** Indicates the highest WiFi category supported by the hotspot.
 
 **System Capability:** SystemCapability.Communication.WiFi.STA
 
@@ -1100,15 +1106,15 @@ public operator func !=(other: WifiCategory): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [WifiCategory](#enum-wificategory) | Yes | - | Another enum value. |
+|other|[WifiCategory](#enum-wificategory)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
 
 ### func ==(WifiCategory)
 
@@ -1120,15 +1126,15 @@ public operator func ==(other: WifiCategory): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [WifiCategory](#enum-wificategory) | Yes | - | Another enum value. |
+|other|[WifiCategory](#enum-wificategory)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
 
 ### func toString()
 
@@ -1136,13 +1142,13 @@ public operator func ==(other: WifiCategory): Bool
 public func toString(): String
 ```
 
-**Description:** Retrieves the value of the enum.
+**Description:** Obtains the value of the enum.
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| String | The description of the enum. |
+|String|The description of the enum.|
 
 ## enum WifiSecurityType
 
@@ -1162,7 +1168,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
 }
 ```
 
-**Description:** Represents encryption types.
+**Description:** Indicates encryption types.
 
 **System Capability:** SystemCapability.Communication.WiFi.Core
 
@@ -1307,15 +1313,15 @@ public operator func !=(other: WifiSecurityType): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [WifiSecurityType](#enum-wifisecuritytype) | Yes | - | Another enum value. |
+|other|[WifiSecurityType](#enum-wifisecuritytype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are unequal, otherwise returns false. |
+|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
 
 ### func ==(WifiSecurityType)
 
@@ -1327,15 +1333,29 @@ public operator func ==(other: WifiSecurityType): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+|Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
-| other | [WifiSecurityType](#enum-wifisecuritytype) | Yes | - | Another enum value. |
+|other|[WifiSecurityType](#enum-wifisecuritytype)|Yes|-|Another enum value.|
 
 **Return Value:**
 
-| Type | Description |
+|Type|Description|
 |:----|:----|
-| Bool | Returns true if the two enum values are equal, otherwise returns false. |### func toString()
+|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Description:** Obtains the value of the enum.
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|String|The description of the enum.|### func toString()
 
 ```cangjie
 public func toString(): String

@@ -1,11 +1,11 @@
 # ohos.router (Page Routing)
 
-This module provides the capability to access different pages through different URLs, including navigating to a specified page within the application, replacing the current page with another page in the same application, returning to the previous page or a specified page, etc.
+This module provides the capability to access different pages through different URLs, including navigating to a specified page within the application, replacing the current page with another page within the same application, returning to the previous page or a specified page, etc.
 
 > **Note:**
 >
 > - Page routing methods can only be called after the page rendering is complete. During the `onInit` and `onReady` lifecycle phases, the page is still in the rendering stage, and calling page routing methods is prohibited.
-> - `ohos.router` only supports pure Cangjie scenarios and cannot be used in mixed ArkTS and Cangjie development scenarios.
+> - `ohos.router` only supports pure Cangjie scenarios and is not suitable for mixed development scenarios involving ArkTS and Cangjie.
 > - This feature is only available in pure Cangjie mode.
 
 ## Import Module
@@ -26,10 +26,10 @@ public class Router {}
 
 **Since:** 21
 
-### static func back(String, String)
+### func back(String, String)
 
 ```cangjie
-public static func back(url!: String, params!: String = "")
+public func back(url!: String, params!: String = "")
 ```
 
 **Description:** Returns to the previous page or a specified page, deleting all pages between the current page and the specified page.
@@ -45,22 +45,10 @@ public static func back(url!: String, params!: String = "")
 | url       | String | Yes      | -       | **Named parameter.** The URL of the target page. |
 | params    | String | No       | ""      | **Named parameter.** Parameters to be carried when returning to the page. |
 
-### static func back()
+### func back(Int32, String)
 
 ```cangjie
-public static func back()
-```
-
-**Description:** Returns to the previous page or a specified page, deleting all pages between the current page and the specified page.
-
-**System Capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Since:** 21
-
-### static func back(Int32, String)
-
-```cangjie
-public static func back(index!: Int32, params!: String = "")
+public func back(index!: Int32, params!: String = "")
 ```
 
 **Description:** Returns to the previous page or a specified page, deleting all pages between the current page and the specified page.
@@ -76,13 +64,13 @@ public static func back(index!: Int32, params!: String = "")
 | index     | Int32  | Yes      | -       | **Named parameter.** The index value of the target page. From the bottom to the top of the stack, the index starts from 1 and increments. |
 | params    | String | No       | ""      | **Named parameter.** Parameters to be carried when returning to the page. |
 
-### static func getParams()
+### func getParams()
 
 ```cangjie
-public static func getParams(): Option<String>
+public func getParams(): Option<String>
 ```
 
-**Description:** Retrieves the parameters passed to the current page by the initiating page.
+**Description:** Retrieves the parameters passed from the initiating page to the current page.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,14 +78,14 @@ public static func getParams(): Option<String>
 
 **Return Value:**
 
-| Type            | Description |
-|:----------------|:------------|
-| Option\<String> | Parameters passed to the current page by the initiating page. |
+| Type           | Description |
+|:---------------|:------------|
+| Option\<String> | Parameters passed from the initiating page to the current page. |
 
-### static func push(String, String)
+### func push(String, String)
 
 ```cangjie
-public static func push(url!: String, params!: String = "")
+public func push(url!: String, params!: String = "")
 ```
 
 **Description:** Navigates to a specified page within the application.
@@ -111,7 +99,7 @@ public static func push(url!: String, params!: String = "")
 | Parameter | Type   | Required | Default | Description |
 |:----------|:-------|:---------|:--------|:------------|
 | url       | String | Yes      | -       | **Named parameter.** The URL of the target page. |
-| params    | String | No       | ""      | **Named parameter.** Data to be passed to the target page during routing. The data becomes invalid when switching to another page. After navigating to the target page, use `router.getParams()` to retrieve the passed parameters. Additionally, in the web-like paradigm, parameters can be directly used in the page, such as `this.keyValue` (where `keyValue` is the key in the `params` parameter during navigation). If the target page already has this field, its value will be overwritten by the passed field value.<br>**Note:**<br>The `params` parameter cannot pass methods or objects returned by system interfaces (e.g., `PixelMap` objects defined and returned by media interfaces). Developers are advised to extract the basic type properties from the system interface-returned objects that need to be passed and construct a `String`-type JSON object for passing. |
+| params    | String | No       | ""      | **Named parameter.** Data to be passed to the target page during routing. The data becomes invalid when switching to another page. After navigating to the target page, use `router.getParams()` to retrieve the passed parameters. Additionally, in the web-like paradigm, parameters can be directly used in the page, such as `this.keyValue` (where `keyValue` is the key in the `params` parameter during navigation). If the target page already has this field, its value will be overwritten by the passed value.<br>**Note:**<br>The `params` parameter cannot pass methods or objects returned by system interfaces (e.g., media interface definitions and returned `PixelMap` objects). Developers are advised to extract the basic type properties from the system interface's returned objects that need to be passed and construct a `String`-type JSON object for passing. |
 
 ## class RouterState
 
@@ -142,11 +130,11 @@ public class RouterState {
 public var index: Int32
 ```
 
-**Description:** Represents the index of the current page in the page stack. From the bottom to the top of the stack, the index starts from 1 and increments.
+**Description:** The index of the current page in the page stack. From the bottom to the top of the stack, the index starts from 1 and increments.
 
 **Type:** Int32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,11 +146,11 @@ public var index: Int32
 public var name: String
 ```
 
-**Description:** Represents the name of the current page, corresponding to the file name.
+**Description:** The name of the current page, corresponding to the filename.
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,11 +162,11 @@ public var name: String
 public var params: String
 ```
 
-**Description:** Represents the parameters carried by the current page.
+**Description:** Parameters carried by the current page.
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,11 +178,11 @@ public var params: String
 public var path: String
 ```
 
-**Description:** Represents the path of the current page.
+**Description:** The path of the current page.
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,9 +210,9 @@ public init(
 | Parameter | Type   | Required | Default | Description |
 |:----------|:-------|:---------|:--------|:------------|
 | index     | Int32  | Yes      | -       | **Named parameter.** The index of the current page in the page stack. From the bottom to the top of the stack, the index starts from 1 and increments. |
-| name      | String | Yes      | -       | **Named parameter.** The name of the current page, corresponding to the file name. |
+| name      | String | Yes      | -       | **Named parameter.** The name of the current page, corresponding to the filename. |
 | path      | String | Yes      | -       | **Named parameter.** The path of the current page. |
-| params    | String | Yes      | -       | **Named parameter.** The parameters carried by the current page. |
+| params    | String | Yes      | -       | **Named parameter.** Parameters carried by the current page. |
 
 ## enum RouterMode
 
@@ -236,7 +224,7 @@ public enum RouterMode <: Equatable<RouterMode> {
 }
 ```
 
-**Description:** Page routing mode.
+**Description:** Routing navigation modes.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,7 +240,7 @@ public enum RouterMode <: Equatable<RouterMode> {
 Single
 ```
 
-**Description:** Single-instance mode. If the target page's URL already exists in the page stack, the page with that URL is moved to the top of the stack. If the target page's URL does not exist in the stack, navigation follows the default multi-instance mode.
+**Description:** Single-instance mode. If the target page's URL already exists in the page stack, the corresponding page is moved to the top of the stack. If the target page's URL does not exist in the stack, navigation follows the default multi-instance mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,7 +252,7 @@ Single
 Standard
 ```
 
-**Description:** Multi-instance mode, which is the default navigation mode. The target page is added to the top of the page stack, regardless of whether a page with the same URL exists in the stack.
+**Description:** Multi-instance mode, which is the default navigation mode. The target page is added to the top of the stack, regardless of whether a page with the same URL exists in the stack.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,7 +264,7 @@ Standard
 public operator func !=(other: RouterMode): Bool
 ```
 
-**Description:** Checks for inequality of authorization states.
+**Description:** Checks for inequality between authorization states.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,8 +272,8 @@ public operator func !=(other: RouterMode): Bool
 
 **Parameters:**
 
-| Parameter | Type                     | Required | Default | Description |
-|:----------|:-------------------------|:---------|:--------|:------------|
+| Parameter | Type                | Required | Default | Description |
+|:----------|:--------------------|:---------|:--------|:------------|
 | other     | [RouterMode](#enum-routermode) | Yes      | -       | Authorization state. |
 
 **Return Value:**
@@ -300,7 +288,7 @@ public operator func !=(other: RouterMode): Bool
 public operator func ==(other: RouterMode): Bool
 ```
 
-**Description:** Checks for equality of authorization states.
+**Description:** Checks for equality between authorization states.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -308,8 +296,8 @@ public operator func ==(other: RouterMode): Bool
 
 **Parameters:**
 
-| Parameter | Type                     | Required | Default | Description |
-|:----------|:-------------------------|:---------|:--------|:------------|
+| Parameter | Type                | Required | Default | Description |
+|:----------|:--------------------|:---------|:--------|:------------|
 | other     | [RouterMode](#enum-routermode) | Yes      | -       | Authorization state. |
 
 **Return Value:**
@@ -365,7 +353,7 @@ class Page1 {
         Column() {
             Text("This is Page1")
             Button("back()").onClick({
-                evt => Router.back()
+                evt => getUIContext().getRouter().back()
             })
         }
     }

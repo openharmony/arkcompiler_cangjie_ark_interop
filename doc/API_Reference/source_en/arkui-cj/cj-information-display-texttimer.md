@@ -2,7 +2,7 @@
 
 A component that displays timing information through text and controls its timer state.
 
-Time changes will stop when the component is invisible. The component's visibility state is based on [onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit) handling, where a visibility threshold ratio greater than 0 is considered visible.
+Time changes will stop when the component is invisible. The visibility state of the component is based on [onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit) processing. A visibility threshold ratio greater than 0 is considered as the visible state.
 
 ## Import Module
 
@@ -10,7 +10,7 @@ Time changes will stop when the component is invisible. The component's visibili
 import kit.ArkUI.*
 ```
 
-## Child Components
+## Subcomponents
 
 None
 
@@ -33,11 +33,11 @@ public init(isCountDown!: Bool = false, count!: Int64 = 60000,
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| isCountDown | Bool | No | false | **Named parameter.** Whether to count down. When true, the timer counts down (e.g., from 30 seconds to 0). When false, the timer counts up (e.g., from 0 seconds to 30). |
-| count | Int64 | No | 60000 | **Named parameter.** Timer duration (effective when isCountDown is true), in milliseconds. Maximum duration is 86400000 ms (24 hours). If 0 < count < 86400000, the count value is used as the timer's initial value. Otherwise, the default value is used. |
+| isCountDown | Bool | No | false | **Named parameter.** Whether it is a countdown. When set to true, the timer starts counting down, e.g., from 30 seconds to 0 seconds. When set to false, the timer starts counting up, e.g., from 0 seconds to 30 seconds. |
+| count | Int64 | No | 60000 | **Named parameter.** Timer duration (effective when isCountDown is true), in milliseconds. The maximum duration should not exceed 86400000 milliseconds (24 hours). When 0 < count < 86400000, the count value is used as the initial timer value. Otherwise, the default value is used as the initial timer value. |
 | controller | [TextTimerController](#class-texttimercontroller) | No | TextTimerController() | **Named parameter.** TextTimer controller. |
 
-## Common Attributes/Events
+## Common Attributes/Common Events
 
 Common Attributes: All supported.
 
@@ -61,7 +61,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes | - | Font color. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
 
 ### func fontFamily(ResourceStr)
 
@@ -79,7 +79,7 @@ public func fontFamily(value: ResourceStr): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | Font list.<br/>Initial font: 'HarmonyOS Sans'.<br/>Currently supports 'HarmonyOS Sans' font and [registered custom fonts](./cj-text-input-text.md#register-custom-fonts). |
+| value | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | Font list.<br/>Initial font: 'HarmonyOS Sans'.<br/>Currently supports 'HarmonyOS Sans' font and [registering custom fonts](./cj-text-input-text.md#registering-custom-fonts). |
 
 ### func fontSize(Length)
 
@@ -97,7 +97,7 @@ public func fontSize(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When fontSize is Int64 or Float64, fp units are used. Initial font size is 16.fp. Percentage values are not supported. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When fontSize is of type Int64 or Float64, the fp unit is used. The initial font size is 16.fp. Percentage settings are not supported. |
 
 ### func fontStyle(FontStyle)
 
@@ -123,7 +123,7 @@ public func fontStyle(value: FontStyle): This
 public func fontWeight(value: FontWeight): This
 ```
 
-**Function:** Sets the font weight of the text. Setting too large a value may result in truncation with different fonts.
+**Function:** Sets the font weight of the text. Setting it too large may result in truncation with different fonts.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,7 +159,7 @@ public func format(value: String): This
 public func textShadow(value: Array<ShadowOptions>): This
 ```
 
-**Function:** Sets text shadow effects. This interface supports array parameters to achieve multiple text shadows. Does not support the fill field or intelligent color picking mode.
+**Function:** Sets the text shadow effect. This interface supports array-type parameters to achieve multiple text shadows. The fill field is not supported, and the intelligent color picking mode is not supported.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,7 +169,7 @@ public func textShadow(value: Array<ShadowOptions>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[ShadowOptions](./cj-common-types.md#interface-shadowoptions)> | Yes | - | Text shadow effects. |
+| value | Array\<[ShadowOptions](./cj-common-types.md#interface-shadowoptions)> | Yes | - | Text shadow effect. |
 
 ### func textShadow(ShadowOptions)
 
@@ -177,7 +177,7 @@ public func textShadow(value: Array<ShadowOptions>): This
 public func textShadow(value: ShadowOptions): This
 ```
 
-**Function:** Sets text shadow effects.
+**Function:** Sets the text shadow effect.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,7 +187,7 @@ public func textShadow(value: ShadowOptions): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ShadowOptions](./cj-common-types.md#interface-shadowoptions) | Yes | - | Text shadow effects. |
+| value | [ShadowOptions](./cj-common-types.md#interface-shadowoptions) | Yes | - | Text shadow effect. |
 
 ## Component Events
 
@@ -197,7 +197,7 @@ public func textShadow(value: ShadowOptions): This
 public func onTimer(event: (Int64, Int64) -> Unit): This
 ```
 
-**Function:** Triggered when the time text changes. This event will not be triggered in locked screen or background states. When using high-precision formats (SSS, SS), callback intervals may fluctuate.
+**Function:** Triggered when the time text changes. This event will not be triggered in locked screen or background states. When setting a high-precision format (SSS, SS), the callback interval may fluctuate.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,7 +207,7 @@ public func onTimer(event: (Int64, Int64) -> Unit): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | (Int64,Int64)->Unit | Yes | - | The first Int64 parameter is the Linux timestamp, i.e., time elapsed since January 1, 1970, in the smallest unit of the set format.<br/>The second Int64 parameter is the elapsed time of the timer, in the smallest unit of the set format. |
+| event | (Int64,Int64)->Unit | Yes | - | The first Int64 parameter is the Linux timestamp, i.e., the time elapsed since January 1, 1970, in the smallest unit of the set format.<br/>The second Int64 parameter is the elapsed time of the timer, in the smallest unit of the set format. |
 
 ## Basic Type Definitions
 
@@ -219,7 +219,7 @@ public class TextTimerController {
 }
 ```
 
-**Function:** Controller for the TextTimer component, used to control the text timer. A TextTimer component can only be bound to one controller, and related commands can only be called after the component is created.
+**Function:** The controller for the TextTimer component, used to control the text timer. A TextTimer component can only be bound to one controller. Related commands can only be called after the component is created.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,15 +277,16 @@ public func start(): Unit
 
 ### Example 1 (Text Timer with Manual Start/Stop)
 
-This example demonstrates the basic usage of the TextTimer component, setting the timer's text display format via the format attribute.
+This example demonstrates the basic usage of the TextTimer component, setting the text display format of the timer via the format attribute.
 
-Users can start, pause, and reset the timer by clicking the "start," "pause," and "reset" buttons.
+Users can start, pause, and reset the timer by clicking the "start", "pause", and "reset" buttons.
 
 <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -303,19 +304,20 @@ class EntryView {
                     Hilog.info(0, "AppLogCj", "time has been changed")
                 })
             Row() {
-                Button("start").onClick({=>
+                Button("start").onClick{ evt =>
                   this.textTimerController.start()
-                })
-                Button("pause").onClick({=>
+                }
+                Button("pause").onClick{ evt =>
                   this.textTimerController.pause()
-                })
-                Button("reset").onClick({=>
+                }
+                Button("reset").onClick{ evt =>
                     this.textTimerController.reset()
-                })
+                }
             }
         }
     }
 }
+
 ```
 
 ![texttimer](figures/texttimer.gif)
@@ -350,7 +352,7 @@ class EntryView {
         ),
         ShadowOptions(
             radius: 10.0,
-            color: Color.BROWN,
+            color: Color.Gray,
             offsetX: 30.0,
             offsetY: 0.0
         ),
@@ -362,12 +364,12 @@ class EntryView {
         ),
         ShadowOptions(
         radius: 10.0,
-        color: Color.YELLOW,
+        color: Color.Blue,
         offsetX: 100.0,
         offsetY: 0.0
         )]
     func build() {
-        Column(8) {
+        Column(space: 8) {
             TextTimer().fontSize(50).textShadow(this.textShadows)
         }
     }
@@ -386,6 +388,7 @@ This example demonstrates how the TextTimer starts timing immediately after crea
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.Hilog
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -395,9 +398,11 @@ class EntryView {
     @State var format: String = 'mm:ss.SS'
 
     func build() {
-        Column(8) {
+        Column(space: 8) {
             Scroll().height(20.percent)
-            Button("openTextTimer").onClick({```typescript
+            Button("openTextTimer").onClick({
+                evt =>
+
             })
             TextTimer( isCountDown: true, count: 30000, controller: this.textTimerController )
                 .format(this.format)
@@ -416,3 +421,4 @@ class EntryView {
 ```
 
 ![texttimer](figures/texttimer3.gif)
+```

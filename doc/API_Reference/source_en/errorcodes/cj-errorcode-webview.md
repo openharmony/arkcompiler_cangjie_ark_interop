@@ -2,7 +2,7 @@
 
 > **Note:**
 >
-> The following describes only the module-specific error codes. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
+> This document only introduces error codes specific to this module. For general error codes, please refer to the [Universal Error Code Documentation](cj-errorcode-universal.md).
 
 ## 17100001 WebviewController Not Associated with a Web Component
 
@@ -12,11 +12,11 @@ Init error. The WebviewController must be associated with a Web component.
 
 **Error Description**
 
-The WebviewController has not been associated with a specific Web component, making it impossible to perform corresponding operations.
+The WebviewController is not yet associated with a specific Web component, and corresponding operations cannot be performed.
 
 **Resolution Steps**
 
-Verify whether the WebviewController object has been associated with a Web component.
+Please verify whether the WebviewController object has been associated with a Web component.
 
 ## 17100002 Invalid URL Format
 
@@ -30,7 +30,7 @@ The URL format is incorrect.
 
 **Resolution Steps**
 
-Check if the entered URL is correct.
+Please check if the entered URL is correct.
 
 ## 17100003 Invalid Resource Path
 
@@ -48,7 +48,7 @@ The file does not exist or is inaccessible at the specified resource path.
 
 **Resolution Steps**
 
-Verify if the entered resource path is correct.
+Please verify if the entered resource path is correct.
 
 ## 17100004 Feature Not Enabled
 
@@ -62,7 +62,7 @@ The feature switch is not turned on.
 
 **Resolution Steps**
 
-Check if the relevant feature switch has been configured to be enabled, such as whether the corresponding XXXAccess is set to true.
+Please check if the relevant feature switch has been configured to be enabled, such as whether the corresponding XXXAccess is set to true.
 
 ## 17100005 Invalid Cookie Value Format
 
@@ -80,7 +80,7 @@ Unsupported cookie value type.
 
 **Resolution Steps**
 
-Check if the entered value is correct.
+Please verify if the entered value is correct.
 
 ## 17100006 Failed to Register Message Port Callback
 
@@ -90,17 +90,17 @@ Can not register message event using this port.
 
 **Error Description**
 
-Failed to register a message port callback.
+Failed to register the message port callback.
 
 **Possible Causes**
 
-The port may already be closed.
+The port may have been closed.
 
 **Resolution Steps**
 
-Check if the port is closed.
+Please check if the port is closed.
 
-## 17100007 Invalid Back or Forward Operation
+## 17100007 Invalid Back/Forward Operation
 
 **Error Message**
 
@@ -108,19 +108,19 @@ Invalid back or forward operation.
 
 **Error Description**
 
-The back or forward operation is invalid.
+Invalid back or forward operation.
 
 **Possible Causes**
 
-1. The browsing history has been cleared.
+1. Browsing history has been cleared.
 2. There is no corresponding browsing operation for forward or backward navigation.
 
 **Resolution Steps**
 
-1. Check if `clearHistory` was called.
-2. Verify if there are corresponding webpage navigations in the actual operation.
+1. Check if clearHistory was called.
+2. Verify if there are corresponding webpage jumps in the actual browsing operations.
 
-## 17100008 Deleting a Non-existent JavaScriptProxy
+## 17100008 Deleting Non-existent JavaScriptProxy
 
 **Error Message**
 
@@ -128,15 +128,15 @@ Cannot delete JavaScriptProxy.
 
 **Error Description**
 
-Attempted to delete a non-existent JavaScriptProxy.
+Attempting to delete a non-existent JavaScriptProxy.
 
 **Possible Causes**
 
-The passed JavaScriptProxy was not previously registered.
+The provided JavaScriptProxy was not previously registered.
 
 **Resolution Steps**
 
-Verify if the passed JavaScriptProxy was successfully registered.
+Check if the provided JavaScriptProxy was successfully registered.
 
 ## 17100009 Previous Zoom In/Out Operation Failed
 
@@ -156,7 +156,7 @@ The maximum or minimum zoom scale has already been reached.
 
 Check if the current page scale has reached the maximum or minimum zoom size.
 
-## 17100010 Unable to Send Messages Using the Port
+## 17100010 Unable to Send Messages Using This Port
 
 **Error Message**
 
@@ -164,7 +164,7 @@ Cannot post message using this port.
 
 **Error Description**
 
-Unable to send messages using the specified port.
+Unable to send messages using this port.
 
 **Possible Causes**
 
@@ -172,8 +172,8 @@ The port is closed, or the peer port is closed.
 
 **Resolution Steps**
 
-1. Confirm if the local port has called the `close` interface.
-2. Verify if the local port has set the `onMessageEvent` callback.
+1. Verify if the local port has called the close interface.
+2. Confirm if the local port has set the onMessageEvent callback.
 
 ## 17100011 Invalid Origin Parameter
 
@@ -183,18 +183,18 @@ Invalid origin.
 
 **Error Description**
 
-The input parameter `origin` is invalid.
+The input origin parameter is invalid.
 
 **Possible Causes**
 
-1. The `origin` parameter is empty.
-2. The `origin` parameter is invalid.
+1. The origin parameter is empty.
+2. The origin parameter is invalid.
 
 **Resolution Steps**
 
 Check the input parameters.
 
-## 17100012 No Available WebStorage Origin
+## 17100012 No Available Web Storage Origin
 
 **Error Message**
 
@@ -206,12 +206,12 @@ No available web storage origin.
 
 **Possible Causes**
 
-The relevant JS database API has not been used.
+No relevant JS database API has been used.
 
 **Resolution Steps**
 
-1. Check if the JS database API has been used.
-2. If already in use, investigate the cause of the failure, such as whether the `databaseAccess` switch is enabled.
+1. Check if any JS database API has been used.
+2. If already in use, investigate the cause of the failure, such as whether the databaseAccess switch is enabled.
 
 ## 17100013 Invalid Socket Count During Preconnect
 
@@ -221,15 +221,15 @@ The number of preconnect sockets is invalid.
 
 **Error Description**
 
-The number of sockets entered during preconnect is invalid.
+The number of sockets provided during preconnect is invalid.
 
 **Possible Causes**
 
-The number of sockets entered is less than or equal to 0 or greater than 6.
+The number of sockets provided is less than or equal to 0, or greater than 6.
 
 **Resolution Steps**
 
-Ensure the socket count is greater than 0 and less than or equal to 6.
+Ensure the number of sockets is greater than 0 and less than or equal to 6.
 
 ## 17100014 Type and Value Mismatch
 
@@ -239,7 +239,7 @@ The type does not match with the value of the message.
 
 **Error Description**
 
-The message type and value do not match.
+The message type does not match its value.
 
 **Possible Causes**
 
@@ -247,7 +247,7 @@ The retrieved value does not match the message type.
 
 **Resolution Steps**
 
-Call the corresponding interface based on the message type to retrieve the value. For example, if the type is `BOOLEAN`, use the `GetBoolean` interface to retrieve the boolean value.
+Call the appropriate interface based on the message type to retrieve the value. For example, if the type is BOOLEAN, use GetBoolean to retrieve the boolean value.
 
 ## 17100015 Memory Allocation Failure
 
@@ -261,7 +261,7 @@ Allocation failed due to insufficient memory.
 
 **Possible Causes**
 
-The data to be sent is too large, causing memory allocation to fail.
+The data to be sent is too large, causing memory allocation failure.
 
 **Resolution Steps**
 
@@ -279,7 +279,7 @@ The download task is not in a paused state.
 
 **Possible Causes**
 
-`WebDownloadItem.resume` was called while the download was not paused.
+WebDownloadItem.resume was called while the download was not paused.
 
 **Resolution Steps**
 
@@ -315,11 +315,11 @@ No delegate class has been set to receive download status.
 
 **Possible Causes**
 
-`WebDownloadManager.resumeDownload` was called without setting a delegate class.
+WebDownloadManager.resumeDownload was called without setting a delegate class.
 
 **Resolution Steps**
 
-First, set a delegate class via `WebDownloadManager.setDownloadDelegate`.
+First, set a delegate class via WebDownloadManager.setDownloadDelegate.
 
 ## 17100019 Download Not Started
 
@@ -329,15 +329,15 @@ The download has not been started yet.
 
 **Error Description**
 
-The download task has not started.
+The download task has not yet started.
 
 **Possible Causes**
 
-The download task has not started, making calls to `pause` or `resume` ineffective.
+The download task has not started, making pause/resume calls ineffective.
 
 **Resolution Steps**
 
-Call `start('xxx')` in `WebDownloadDelegate.onBeforeDownload` and specify the download path.
+Call start('xxx') in WebDownloadDelegate.onBeforeDownload and specify the download path.
 
 ## 17100020 Failed to Register Custom Scheme
 
@@ -355,7 +355,7 @@ Custom schemes were set after the ArkWeb engine was initialized.
 
 **Resolution Steps**
 
-Custom schemes must be set before the ArkWeb engine is initialized.
+Register custom schemes before initializing the ArkWeb engine.
 
 ## 17100021 WebResourceHandler Invalid
 
@@ -369,13 +369,13 @@ The WebResourceHandler is no longer valid.
 
 **Possible Causes**
 
-1. The corresponding request was not intercepted in `WebSchemeHandler`.
-2. The request ended before the response body was constructed.
-3. The WebResourceHandler has already called `didFinish` or `didFail`.
+1. The corresponding request was not intercepted in WebSchemeHandler;
+2. The request ended before constructing the response body due to certain reasons;
+3. The WebResourceHandler has already called didFinish or didFail.
 
 **Resolution Steps**
 
-Do not call WebResourceHandler interfaces under the above conditions.
+Do not call WebResourceHandler interfaces under the above-mentioned conditions.
 
 ## 17100022 WebHttpBodyStream Initialization Failed
 
@@ -385,10 +385,10 @@ Failed to initialize the HTTP body stream.
 
 **Error Description**
 
-Failed to initialize the WebHttpBodyStream data.
+Failed to initialize WebHttpBodyStream data.
 
 **Possible Causes**
 
-The data in a POST request is invalid. For example, if the data stream contains file-type data but the file path does not exist, the data stream initialization will fail.
+The data in POST or similar requests is invalid. For example, if the data stream contains file-type data but the file path does not exist, the data stream initialization will fail.
 
 **Resolution Steps**Verify whether the data carried in POST and other types of requests is valid.

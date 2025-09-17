@@ -1,6 +1,6 @@
 # StepperItem
 
-Used as a child component of the [Stepper](cj-navigation-switching-stepper.md) component.
+Used as a child component for pages within the [Stepper](cj-navigation-switching-stepper.md) component.
 
 ## Import Module
 
@@ -20,17 +20,17 @@ Supports a single child component.
 public init(child: () -> Unit)
 ```
 
-**Function:** Creates a child component for the [Stepper](cj-navigation-switching-stepper.md) component's page.
+**Function:** Creates a page child component for the [Stepper](cj-navigation-switching-stepper.md) component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| child | ()->Unit | Yes | - | The child component of StepperItem. |
+| child | () -> Unit | Yes | - | The child component of StepperItem. |
 
 ## Common Attributes/Common Events
 
@@ -46,17 +46,17 @@ Common Events: All supported.
 public func nextLabel(value: String): This
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Sets the content of the right-side text button. The default value is "Start" for the last page and "Next" for other pages.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | String | Yes | - | <font color="red" face="bold">please add description</font> |
+| value | String | Yes | - | The content of the right-side text button. If the string is too long, it will first shrink, then wrap (2 lines), and finally truncate. |
 
 ### func prevLabel(String)
 
@@ -64,17 +64,17 @@ public func nextLabel(value: String): This
 public func prevLabel(value: String): This
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Sets the content of the left-side text button. The first page does not have a left-side text button. When the stepper has more than one page, the default value for all pages except the first is "Back".
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | String | Yes | - | <font color="red" face="bold">please add description</font> |
+| value | String | Yes | - | The content of the left-side text button. If the string is too long, it will first shrink, then wrap (2 lines), and finally truncate. |
 
 ### func status(ItemState)
 
@@ -82,22 +82,22 @@ public func prevLabel(value: String): This
 public func status(status!: ItemState = ItemState.Normal): This
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Sets the display state of the stepper's `nextLabel`.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| status | [ItemState](<font color="red" face="bold">please add link</font>) | No | ItemState.Normal | <font color="red" face="bold">please add description</font> |
+| status | ItemState | No | ItemState.Normal | The display state of the stepper's `nextLabel`. |
 
 ## enum ItemState
 
 ```cangjie
-public enum ItemState <: Equatable<ItemState> {
+public enum ItemState  <: Equatable<ItemState> {
     | Normal
     | Disabled
     | Waiting
@@ -110,7 +110,7 @@ public enum ItemState <: Equatable<ItemState> {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parent Type:**
 
@@ -122,11 +122,11 @@ public enum ItemState <: Equatable<ItemState> {
 Disabled
 ```
 
-**Function:** Disabled state. The right text button appears grayed out and cannot be clicked to proceed to the next StepperItem.
+**Function:** Disabled state. The right-side text button is displayed in gray and cannot be clicked to proceed to the next StepperItem.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### Normal
 
@@ -134,11 +134,11 @@ Disabled
 Normal
 ```
 
-**Function:** Normal state. The right text button appears normally and can be clicked to proceed to the next StepperItem.
+**Function:** Normal state. The right-side text button is displayed normally and can be clicked to proceed to the next StepperItem.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### Skip
 
@@ -146,11 +146,11 @@ Normal
 Skip
 ```
 
-**Function:** Skip state. The right text button defaults to displaying "Skip". Custom logic can be defined in the Stepper's onSkip callback.
+**Function:** Skip state. The right-side text button defaults to "Skip". Custom logic can be defined in the `onSkip` callback of the Stepper.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### Waiting
 
@@ -158,11 +158,11 @@ Skip
 Waiting
 ```
 
-**Function:** Waiting state. The right text button is not displayed, showing a progress bar instead. Cannot be clicked to proceed to the next StepperItem.
+**Function:** Waiting state. The right-side text button is not displayed, and a progress bar is shown instead. The button cannot be clicked to proceed to the next StepperItem.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ### func !=(ItemState)
 
@@ -174,7 +174,7 @@ public operator func !=(other: ItemState): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [ItemState](#enum-itemstate) | Yes | - | Another enum value. |
 
@@ -182,7 +182,7 @@ public operator func !=(other: ItemState): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are not equal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are not equal, otherwise returns `false`. |
 
 ### func ==(ItemState)
 
@@ -194,7 +194,7 @@ public operator func ==(other: ItemState): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [ItemState](#enum-itemstate) | Yes | - | Another enum value. |
 
@@ -202,4 +202,4 @@ public operator func ==(other: ItemState): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise returns false. |
+| Bool | Returns `true` if the two enum values are equal, otherwise returns `false`. |
