@@ -22,6 +22,6 @@ public func visibility(value: Visibility): This
 
 **Parameters:**
 
-| Name | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Visibility](#) | Yes | - | Visibility value. |
+| value | [Visibility](./cj-common-types.md#enum-visibility) | Yes | - | Visibility value. |

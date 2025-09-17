@@ -20,7 +20,7 @@ None
 public init(width!: Length = 0.vp, height!: Length = 0.vp)
 ```
 
-**Function:** Draws a rectangle with specified width and height. Invalid values will be handled as initial values.
+**Function:** Draws a rectangle with specified width and height. Invalid values will be treated as initial values.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,10 +30,10 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The width of the rectangle, value range ≥0. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The height of the rectangle, value range ≥0. |
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width of the rectangle, value range ≥0. |
+| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height of the rectangle, value range ≥0. |
 
-## Common Attributes/Common Events
+## Common Attributes/Events
 
 Common Attributes: Supports all common attributes.
 
@@ -59,7 +59,7 @@ public override func initial()
 public func radius(value: Length): This
 ```
 
-**Function:** Sets the corner radius size, value range ≥0. Invalid values will be handled as initial values.
+**Function:** Sets the corner radius size, value range ≥0. Invalid values will be treated as initial values.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,7 +69,7 @@ public func radius(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The corner radius size.<br>Initial value: 0.<br>Default unit: vp. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Corner radius size.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radius(Array\<Length>)
 
@@ -77,7 +77,7 @@ public func radius(value: Length): This
 public func radius(value: Array<Length>): This
 ```
 
-**Function:** Sets the corner radius size, value range ≥0. Invalid values will be handled as initial values.
+**Function:** Sets the corner radius sizes, value range ≥0. Invalid values will be treated as initial values.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,7 +87,7 @@ public func radius(value: Array<Length>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | The top-left, top-right, bottom-right, and bottom-left corner radius sizes.<br>Initial value: 0.<br>Default unit: vp. |
+| value | Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Top-left, top-right, bottom-right, and bottom-left corner radius sizes.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radius(Array\<(Length,Length)>)
 
@@ -95,7 +95,7 @@ public func radius(value: Array<Length>): This
 public func radius(radiusArray: Array<(Length, Length)>): This
 ```
 
-**Function:** Sets the corner radius size, value range ≥0. Invalid values will be handled as initial values.
+**Function:** Sets the corner radius sizes, value range ≥0. Invalid values will be treated as initial values.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,7 +105,7 @@ public func radius(radiusArray: Array<(Length, Length)>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| radiusArray | Array\<([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))> | Yes | - | The width and height of the top-left, top-right, bottom-right, and bottom-left corners.<br>Initial value: 0.<br>Default unit: vp. |
+| radiusArray | Array\<([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))> | Yes | - | Width and height of top-left, top-right, bottom-right, and bottom-left corners.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radiusHeight(Length)
 
@@ -113,7 +113,7 @@ public func radius(radiusArray: Array<(Length, Length)>): This
 public func radiusHeight(value: Length): This
 ```
 
-**Function:** Sets the height of the corner radius. When only height is set, width and height will be equal. Invalid values will be handled as initial values.
+**Function:** Sets the height of the corner radius. If only height is set, width and height will be equal. Invalid values will be treated as initial values.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,7 +123,7 @@ public func radiusHeight(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radiusWidth(Length)
 
@@ -131,7 +131,7 @@ public func radiusHeight(value: Length): This
 public func radiusWidth(value: Length): This
 ```
 
-**Function:** Sets the width of the corner radius. When only width is set, width and height will be equal. Invalid values will be handled as initial values.
+**Function:** Sets the width of the corner radius. If only width is set, width and height will be equal. Invalid values will be treated as initial values.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,7 +141,7 @@ public func radiusWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
 
 ## Example Code
 
@@ -149,17 +149,19 @@ public func radiusWidth(value: Length): This
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("normal").fontSize(11).fontColor(0xCCCCCC).width(90.percent)
             // Draw a 90% * 50 rectangle
-            Column(5) {
+            Column(space: 5) {
                 Text("normal").fontSize(9).fontColor(0xCCCCCC).width(90.percent)
                 // Draw a 90% * 50 rectangle
                 Rect().width(90.percent).height(50).fill(Color.Green)
@@ -167,19 +169,19 @@ class EntryView {
                 Rect()
                 .width(90.percent)
                 .height(50)
-                .fillOpacity(0)
+                .fillOpacity(0.0)
                 .stroke(Color.Red)
                 .strokeWidth(3)
 
                 Text("with rounded corners").fontSize(11).fontColor(0xCCCCCC).width(90.percent)
-                // Draw a 90% * 80 rectangle with corner width and height of 40 and 20 respectively
+                // Draw a 90% * 80 rectangle with corner width 40 and height 20
                 Rect()
                 .width(90.percent)
                 .height(50)
                 .radiusHeight(20)
                 .radiusWidth(40)
                 .fill(Color.Green)
-                // Draw a 90% * 80 rectangle with corner radius of 20
+                // Draw a 90% * 80 rectangle with corner radius 20
                 Rect()
                 .width(90.percent)
                 .height(80)

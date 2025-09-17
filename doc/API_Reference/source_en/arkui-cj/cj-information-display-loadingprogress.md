@@ -2,7 +2,7 @@
 
 A component for displaying loading animations.
 
-The loading animation stops when the component is not visible. The visibility state of the component is determined by [onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearea-area-ratios-ratios---unit), where a visibility threshold ratio greater than 0 is considered visible.
+The loading animation stops when the component is not visible. The visibility state of the component is determined by the [onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearea-area-raitos-raitos---unit) handler, where a visibility threshold ratio greater than 0 is considered as the visible state.
 
 ## Import Module
 
@@ -26,17 +26,17 @@ public init()
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 ## Common Attributes/Common Events
 
-Common Attributes: All attributes except text styles are supported.
+Common Attributes: All supported except text styles.
 
 > **Note:**
 >
-> The component should have reasonable width and height settings. If the width and height are set too large, the loading animation may not display as expected.
+> The component should have reasonable width and height settings. When the component's dimensions are set too large, the loading animation may not display as expected.
 
-Common Events: All events are supported.
+Common Events: All supported.
 
 ## Component Attributes
 
@@ -46,11 +46,11 @@ Common Events: All events are supported.
 public func color(value: ResourceColor): This
 ```
 
-**Function:** Sets the foreground color of the current loading progress bar using ResourceColor.
+**Function:** Sets the foreground color of the current loading progress bar using the ResourceColor type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -73,7 +73,7 @@ import ohos.arkui.state_macro_manage.*
 @Component
 class EntryView {
     func build() {
-        Column(5) {
+        Column(space: 5) {
             Text("Orbital LoadingProgress")
                 .fontSize(9)
                 .fontColor(0xCCCCCC)

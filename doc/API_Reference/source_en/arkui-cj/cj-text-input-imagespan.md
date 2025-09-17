@@ -17,7 +17,7 @@ None
 ### init(ResourceStr)
 
 ```cangjie
-public init(src: ResourceStr)
+public init(value: ResourceStr)
 ```
 
 **Function:** Creates an ImageSpan component.
@@ -28,14 +28,14 @@ public init(src: ResourceStr)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](<font color="red" face="bold">please add link</font>) | Yes | - | Image data source, supporting local and network images. <br/>Supported image formats include png, jpg, bmp, svg, gif, and heif. |
+| value | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | The data source of the image, supporting local and network images. <br/>Supported image formats include png, jpg, bmp, svg, gif, and heif. |
 
 ### init(PixelMap)
 
 ```cangjie
-public init(src: PixelMap)
+public init(value: PixelMap)
 ```
 
 **Function:** Creates an ImageSpan component.
@@ -46,9 +46,9 @@ public init(src: PixelMap)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | Image data source, supporting local and network images. <br>PixelMap format is a pixel map, commonly used in image editing scenarios. <br>Supports Base64 strings. Format: data:image[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where [base64 data] is the Base64 string data. |
+| value | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | The data source of the image, supporting local and network images. <br>PixelMap format is a pixel map, commonly used in image editing scenarios. <br>Supports Base64 strings. Format: data:image[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where [base64 data] is the Base64 string data. |
 
 ## Universal Attributes/Events
 
@@ -72,9 +72,9 @@ public func colorFilter(filter: ColorFilter): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| filter | [ColorFilter](cj-image-video-image#class-colorfilter) | Yes | - | Color filter effect. <br> The first row of the matrix represents the vector value for R (Red), the second row for G (Green), the third row for B (Blue), and the fourth row for A (Alpha), with each row representing different RGBA vector values. <br>When the diagonal values of the matrix are 1 and other values are 0, the original image colors are preserved. SVG-type image sources must have a stroke attribute. <br>Calculation rule: <br>If the input filter matrix is: <br>![iamgespan](figures/spanimageExample1.PNG)<br>Pixel point is [R, G, B, A]<br>Then the filtered color is [R’, G’, B’, A’]<br>![iamgespan](figures/imagespanExample2.jpg) |
+| filter | [ColorFilter](cj-image-video-image#class-colorfilter) | Yes | - | The color filter effect. <br> The first row of the matrix represents the vector values for R (Red), the second row for G (Green), the third row for B (Blue), and the fourth row for A (Alpha). The four rows represent different vector values for RGBA. <br>When the diagonal values of the matrix are 1 and the rest are 0, the original colors of the image are preserved. SVG-type image sources must have a stroke attribute. <br>Calculation rule: <br>If the input filter matrix is: <br>![iamgespan](figures/spanimageExample1.PNG)<br>Pixel point is [R, G, B, A]<br>Then the filtered color is [R’, G’, B’, A’]<br>![iamgespan](figures/imagespanExample2.jpg) |
 
 ### func objectFit(ImageFit)
 
@@ -90,9 +90,9 @@ public func objectFit(value: ImageFit): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ImageFit](./cj-common-types.md#enum-imagefit) | Yes | - | Scaling type of the image. <br>Initial value: ImageFit.Cover. |
+| value | [ImageFit](./cj-common-types.md#enum-imagefit) | Yes | - | The scaling type of the image. <br>Initial value: ImageFit.Cover. |
 
 ### func verticalAlign(ImageSpanAlignment)
 
@@ -100,7 +100,7 @@ public func objectFit(value: ImageFit): This
 public func verticalAlign(value: ImageSpanAlignment): This
 ```
 
-**Function:** Sets the alignment of the image relative to the line height.
+**Function:** Sets the alignment of the image based on the line height.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,9 +108,9 @@ public func verticalAlign(value: ImageSpanAlignment): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment) | Yes | - | Alignment of the image relative to the text. <br>Initial value: ImageSpanAlignment.BOTTOM. |
+| value | [ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment) | Yes | - | The alignment of the image based on the text. <br>Initial value: ImageSpanAlignment.Bottom. |
 
 ## Component Events
 
@@ -120,7 +120,7 @@ public func verticalAlign(value: ImageSpanAlignment): This
 public func onComplete(callback: ImageCompleteCallback): This
 ```
 
-**Function:** Triggered when image data is successfully loaded and decoded.
+**Function:** Triggered when the image data is successfully loaded and decoded.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,9 +128,9 @@ public func onComplete(callback: ImageCompleteCallback): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [ImageCompleteCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function, triggered when image data is successfully loaded and decoded. Parameter: Dimensions of the successfully loaded image. |
+| callback | ImageCompleteCallback | Yes | - | Callback function, triggered when the image data is successfully loaded and decoded. Parameter: The dimensions of the successfully loaded image. |
 
 ### func onError(ImageErrorCallback)
 
@@ -138,7 +138,7 @@ public func onComplete(callback: ImageCompleteCallback): This
 public func onError(callback: ImageErrorCallback): This
 ```
 
-**Function:** Triggered when image loading fails.
+**Function:** Triggered when an error occurs during image loading.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,9 +146,9 @@ public func onError(callback: ImageErrorCallback): This
 
 **Parameters:**
 
-| Parameter | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [ImageErrorCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function, triggered when image loading encounters an error. Parameter: Error information during image loading. |
+| callback | ImageErrorCallback | Yes | - | Callback function, triggered when an error occurs during image loading. Parameter: The error information during image loading. |
 
 ## Basic Type Definitions
 
@@ -168,7 +168,7 @@ public class ImageLoadResult {
 }
 ```
 
-**Function:** Type for successful image loading.
+**Function:** The type for successful image loading.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,7 +184,7 @@ public var componentHeight: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,7 +200,7 @@ public var componentWidth: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -216,7 +216,7 @@ public var contentHeight: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,7 +232,7 @@ public var contentOffsetX: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,7 +248,7 @@ public var contentOffsetY: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,7 +264,7 @@ public var contentWidth: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,7 +280,7 @@ public var height: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -292,7 +292,7 @@ public var height: Float64
 public var loadingStatus: Int64
 ```
 
-**Function:** Represents the status value of successful image loading.
+**Function:** Represents the status value for successful image loading.
 
 > **Note:**
 >
@@ -300,7 +300,7 @@ public var loadingStatus: Int64
 
 **Type:** Int64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,7 +316,7 @@ public var width: Float64
 
 **Type:** Float64
 
-**Read-Write Capability:** Read-Write
+**Read/Write Capability:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,7 +326,7 @@ public var width: Float64
 
 ### Example 1
 
-This example demonstrates the alignment and scaling effects of ImageSpan through the verticalAlign and objectFit attributes.
+This example demonstrates the alignment and scaling effects of ImageSpan through the verticalAlign and objectFit properties.
 
 <!-- run -->
 
@@ -342,14 +342,14 @@ import kit.LocalizationKit.*
 class EntryView {
     func build() {
         Column {
-            Flex(FlexParams(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center)) {
+            Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center) {
                 Text() {
-                    // Load image resource with specified size and layout
+                    // Load image resources with specified size and layout
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(250.px)
                         .objectFit(ImageFit.Contain)
-                        .verticalAlign(ImageSpanAlignment.CENTER)
+                        .verticalAlign(ImageSpanAlignment.Center)
                     // Apply text decoration to the image
                     Span("This is the Span and ImageSpan component")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
@@ -357,21 +357,21 @@ class EntryView {
                        .width(150.px)
                        .height(50.px)
                         .objectFit(ImageFit.Contain)
-                       .verticalAlign(ImageSpanAlignment.TOP)
+                       .verticalAlign(ImageSpanAlignment.Top)
                     Span("I am Underline-span2")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(250.px)
                         .objectFit(ImageFit.Fill)
-                        .verticalAlign(ImageSpanAlignment.BASELINE)
+                        .verticalAlign(ImageSpanAlignment.Baseline)
                     Span("I am Underline-span3")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                     ImageSpan(@r(app.media.startIcon))
                         .width(150.px)
                         .height(50.px)
                         .objectFit(ImageFit.Auto)
-                        .verticalAlign(ImageSpanAlignment.BOTTOM)
+                        .verticalAlign(ImageSpanAlignment.Bottom)
                     Span("I am Underline-span4")
                         .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red).fontSize(25)
                 }.textAlign(TextAlign.Center)
@@ -386,36 +386,60 @@ class EntryView {
 
 ![imageSpan](figures/imageSpan.png)
 
-### Example 2
+### Example 2 (Setting Color Filter Effect for Image)
 
-This example demonstrates the effect of setting background styles for text through the textBackgroundStyle attribute.
+This example demonstrates setting a color filter effect for an image through colorFilter.
 
 <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.*
-``````markdown
+import kit.LocalizationKit.AppResource
+
 @Entry
 @Component
 class EntryView {
+    let blueColor = ColorFilter([0.38, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.81, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.43, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 1.0, 0.0])
+    let colorFilter = ColorFilter([1.0, 0.0, 1.0, 0.0, 1.0,
+                                   0.0, 0.0, 0.0, 1.0, 0.0,
+                                   1.0, 0.0, 1.0, 0.0, 0.0,
+                                   0.0, 1.0, 0.0, 1.0, 0.0])
+
+    @State var DrawingColorFilterFirst: ColorFilter = blueColor
+    @State var DrawingColorFilterSecond: ColorFilter = colorFilter
+
     func build() {
-        Column() {
-            Text() {
-                ImageSpan(@r(app.media.startIcon)) // Recommended to use custom local images
-                .width(200.vp)
-                .height(200.vp)
-                // Align the center of the image with the center of the line
-                .verticalAlign(ImageSpanAlignment.CENTER)
-                // Set image background color and corner radius
-                .textBackgroundStyle(color: Color.Red, radius: BorderRadiuses(topLeft: 0.vp, topRight: 12.vp, bottomLeft: 24.vp, bottomRight: 48.vp))
+        Column(space: 5){
+            Text {
+                ImageSpan(@r(app.media.startIcon))
+                .width(100)
+                .height(100)
+                .colorFilter(this.DrawingColorFilterFirst)
+                .onClick{
+                        evt =>
+                        this.DrawingColorFilterFirst = colorFilter
+                }
             }
-        }.width(100.percent).alignItems(HorizontalAlign.Center).justifyContent(FlexAlign.Center)
+            Text {
+                ImageSpan(@r(app.media.startIcon))
+                .width(110)
+                .height(110)
+                .margin(15)
+                .colorFilter(this.DrawingColorFilterSecond)
+                .onClick{
+                        evt =>
+                        this.DrawingColorFilterSecond = blueColor
+                }
+            }
+        }
     }
 }
 ```
 
-![imageSpan2](figures/imageSpan2.png)
+![image3](figures/imageSpan2.gif)
+```

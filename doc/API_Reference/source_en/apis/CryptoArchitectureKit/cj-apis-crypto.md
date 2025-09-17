@@ -1,21 +1,21 @@
 # ohos.security.crypto_framework (Cryptographic Algorithm Library Framework)
 
-Provides unified cryptographic algorithm library interfaces for encryption and decryption operations, shielding underlying hardware and algorithm libraries.
+Provides a unified cryptographic algorithm library interface to shield underlying hardware and algorithm libraries.
 
-## Importing the Module
+## Import Module
 
 ```cangjie
 import kit.CryptoArchitectureKit.*
 ```
 
-## Usage Instructions
+## Usage Guidelines
 
-API sample code usage instructions:
+API sample code usage guidelines:
 
-- If the sample code has a "// index.cj" comment on the first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
-- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
+- If the sample code has a "// index.cj" comment on the first line, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
+- If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
+For details about the above sample project and configuration template, see [Cangjie Sample Code Description](../../cj-development-intro.md#Cangjie-Sample-Code-Description).
 
 ## func createCipher(String)
 
@@ -23,36 +23,36 @@ For details about the sample project and configuration template mentioned above,
 public func createCipher(transformation: String): Cipher
 ```
 
-**Function:** Obtains the corresponding [Cipher](#class-cipher) instance by specifying the algorithm name.
+**Description:** Obtains the corresponding [Cipher](#class-cipher) instance by specifying the algorithm name.
 
-<!-- Supported specifications can be found in [Symmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#symmetric-key-encryptiondecryption-algorithm-specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#asymmetric-key-encryptiondecryption-algorithm-specifications). -->
-Supported specifications can be found in [Symmetric Key Encryption/Decryption Algorithm Specifications](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#symmetric-key-encryptiondecryption-algorithm-specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#asymmetric-key-encryptiondecryption-algorithm-specifications).
+<!-- For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications). -->
+For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter Name | Type   | Mandatory | Default Value | Description |
-|:--------------|:-------|:----------|:--------------|:------------|
-| transformation | String | Yes       | -             | Combination of the algorithm name (including key length), encryption mode, and padding method for the Cipher to be generated. |
+| Name          | Type   | Mandatory | Default | Description                                                                 |
+| :------------ | :----- | :-------- | :------ | :-------------------------------------------------------------------------- |
+| transformation | String | Yes       | -       | Combination of the algorithm name (including key length), encryption mode, and padding method for the Cipher to be generated. |
 
 **Return Value:**
 
-| Type          | Description |
-|:-------------|:------------|
-| [Cipher](#class-cipher) | Returns the encryption/decryption generator object. |
+| Type             | Description                          |
+| :--------------- | :----------------------------------- |
+| [Cipher](#class-cipher) | Returns the cipher generator object. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
 
-  | Error Code ID | Error Message |
-  |:------------|:-------------|
-  | 401         | invalid parameters. |
-  | 801         | this operation is not supported. |
-  | 17620001    | memory error. |
+  | Error Code ID | Error Message               |
+  | :----------- | :-------------------------- |
+  | 401          | invalid parameters.         |
+  | 801          | this operation is not supported. |
+  | 17620001     | memory error.               |
 
 **Example:**
 
@@ -73,32 +73,32 @@ let cipher = createCipher(cipherAlgName)
 public func createMac(algName: String): Mac
 ```
 
-**Function:** Generates a Mac instance for message authentication code calculation and operations.
+**Description:** Generates a Mac instance for message authentication code calculation and operations.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Mac
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter Name | Type   | Mandatory | Default Value | Description |
-|:--------------|:-------|:----------|:--------------|:------------|
-| algName       | String | Yes       | -             | Specifies the digest algorithm. |
+| Name    | Type   | Mandatory | Default | Description                |
+| :------ | :----- | :-------- | :------ | :------------------------- |
+| algName | String | Yes       | -       | Specifies the digest algorithm. |
 
 **Return Value:**
 
-| Type          | Description |
-|:-------------|:------------|
+| Type       | Description                                      |
+| :--------- | :----------------------------------------------- |
 | [Mac](#class-mac) | Returns the Mac object generated by the specified input algorithm. |
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: For details about the error codes, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
 
-  | Error Code ID | Error Message |
-  |:------------|:-------------|
-  | 401         | invalid parameters. |
-  | 17620001    | memory error. |
+  | Error Code ID | Error Message       |
+  | :----------- | :------------------ |
+  | 401          | invalid parameters. |
+  | 17620001     | memory error.       |
 
 **Example:**
 
@@ -117,32 +117,32 @@ var mac = createMac("SHA256")
 public func createMd(algName: String): Md
 ```
 
-**Function:** Generates an Md instance for message digest calculation and operations.
+**Description:** Generates an Md instance for message digest calculation and operations.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.MessageDigest
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter Name | Type   | Mandatory | Default Value | Description |
-|:--------------|:-------|:----------|:--------------|:------------|
-| algName       | String | Yes       | -             | Specifies the digest algorithm. |
+| Name    | Type   | Mandatory | Default | Description                |
+| :------ | :----- | :-------- | :------ | :------------------------- |
+| algName | String | Yes       | -       | Specifies the digest algorithm. |
 
 **Return Value:**
 
-| Type          | Description |
-|:-------------|:------------|
+| Type     | Description                                      |
+| :------- | :----------------------------------------------- |
 | [Md](#class-md) | Returns the [Md](#class-md) object generated by the specified input algorithm. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
 
-  | Error Code ID | Error Message |
-  |:------------|:-------------|
-  | 401         | invalid parameters. |
-  | 17620001    | memory error. |
+  | Error Code ID | Error Message               |
+  | :----------- | :-------------------------- |
+  | 401          | invalid parameters.         |
+  | 17620001     | memory error.               |
 
 **Example:**
 
@@ -161,25 +161,25 @@ let md = createMd("SHA256")
 public func createRandom(): Random
 ```
 
-**Function:** Generates a Random instance for random number calculation and seed setting.
+**Description:** Generates a Random instance for random number calculation and seed setting.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Rand
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
-| Type          | Description |
-|:-------------|:------------|
+| Type           | Description                                      |
+| :------------- | :----------------------------------------------- |
 | [Random](#class-random) | Returns the [Random](#class-random) object generated by the specified input algorithm. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
-  |:------------|:-------------|
-  | 17620001    | memory error. |
+  | :----------- | :------------ |
+  | 17620001     | memory error. |
 
 **Example:**
 
@@ -198,34 +198,34 @@ let rand = createRandom()
 public func createSymKeyGenerator(algName: String): SymKeyGenerator
 ```
 
-**Function:** Obtains the corresponding symmetric key generator instance by specifying the algorithm name string.
+**Description:** Obtains the corresponding symmetric key generator instance by specifying the algorithm name string.
 
-Supported specifications can be found in [Symmetric Key Generation and Conversion Specifications](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md).
+For supported specifications, see [Symmetric Key Generation and Conversion Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter Name | Type   | Mandatory | Default Value | Description |
-|:--------------|:-------|:----------|:--------------|:------------|
-| algName       | String | Yes       | -             | Algorithm name of the symmetric key generator to be generated. For specific values, refer to the "String Parameters" section in [Symmetric Key Generation and Conversion Specifications](../../../../Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md). |
+| Name    | Type   | Mandatory | Default | Description                                                                 |
+| :------ | :----- | :-------- | :------ | :-------------------------------------------------------------------------- |
+| algName | String | Yes       | -       | Algorithm name of the symmetric key generator to be generated. For details about the value, see the "String Parameters" section in [Symmetric Key Generation and Conversion Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md). |
 
 **Return Value:**
 
-| Type          | Description |
-|:-------------|:------------|
+| Type                     | Description                          |
+| :----------------------- | :----------------------------------- |
 | [SymKeyGenerator](#class-symkeygenerator) | Returns the symmetric key generator object. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
 
-  | Error Code ID | Error Message |
-  |:------------|:-------------|
-  | 401         | invalid parameters. |
-  | 801         | this operation is not supported. |
+  | Error Code ID | Error Message               |
+  | :----------- | :-------------------------- |
+  | 401          | invalid parameters.         |
+  | 801          | this operation is not supported. |
 
 **Example:**
 
@@ -249,13 +249,13 @@ public interface Key {
 }
 ```
 
-**Function:** Key (interface). Its subclass objects need to be generated in advance when running cryptographic algorithms (such as encryption/decryption) and passed into the [init()](#func-initkey-paramsspec-asynccallbackcipher) method of the [Cipher](#class-cipher) instance.
+**Description:** Key (interface). Its subclass objects need to be generated in advance and passed into the [createCipher(String)](#func-createcipherstring) method of the [Cipher](#class-cipher) instance when running cryptographic algorithms (such as encryption and decryption).
 
-Keys can be generated through key generators.
+Keys can be generated by key generators.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key
 
-**Initial Version:** 21
+**Since:** 21
 
 ### prop algName
 
@@ -263,15 +263,15 @@ Keys can be generated through key generators.
 prop algName: String
 ```
 
-**Function:** Algorithm name (including length) corresponding to the key.
+**Description:** Algorithm name (including length) corresponding to the key.
 
 **Type:** String
 
-**Read/Write Attribute:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key
 
-**Initial Version:** 21
+**Since:** 21
 
 ### prop format
 
@@ -279,15 +279,15 @@ prop algName: String
 prop format: String
 ```
 
-**Function:** Format of the key.
+**Description:** Format of the key.
 
 **Type:** String
 
-**Read/Write Attribute:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func getEncoded()
 
@@ -295,7 +295,7 @@ prop format: String
 func getEncoded(): DataBlob
 ```
 
-**Function:** Synchronous method to obtain the byte stream of key data. The key can be a symmetric key, public key, or private key. The public key format complies with ASN.1 syntax, X.509 specification, and DER encoding format. The private key format complies with ASN.1 syntax, PKCS#8 specification, and DER encoding method.
+**Description:** Synchronous method to obtain the byte stream of key data. The key can be a symmetric key, public key, or private key. The public key format complies with ASN.1 syntax, X.509 specifications, and DER encoding format. The private key format complies with ASN.1 syntax, PKCS#8 specifications, and DER encoding mode.
 
 > **Note:**
 >
@@ -303,12 +303,12 @@ func getEncoded(): DataBlob
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key
 
-**Initial Version:** 21
+**Since:** 21
 
 **Return Value:**
 
-| Type          | Description |
-|:-------------|:------------|
+| Type             | Description                          |
+| :--------------- | :----------------------------------- |
 | [DataBlob](#struct-datablob) | Used to view the specific content of the key. |
 
 **Example:**
@@ -325,58 +325,42 @@ let key = generator.generateSymKey()
 let encodedKey = key.getEncoded()
 ```
 
-## interface ParamsSpec
+## class ParamsSpec
 
 ```cangjie
-public interface ParamsSpec {
+public class ParamsSpec {
     mut prop algName: String
     mut prop iv: DataBlob
 }
 ```
 
-**Function:** Encryption/decryption parameters. Its subclass objects need to be constructed during symmetric encryption/decryption and passed into the [init()](#func-initkey-paramsspec-asynccallbackcipher) method.
+**Description:** Encryption and decryption parameters. Its subclass objects need to be constructed and passed into the [createCipher(String)](#func-createcipherstring) method during symmetric encryption and decryption.
 
-Applies to symmetric encryption/decryption modes that require parameters such as iv (for modes without parameters like ECB, no construction is needed; pass None in [init()](#func-initkey-paramsspec-asynccallbackcipher)).
+Applies to symmetric encryption and decryption modes that require parameters such as iv (for modes without parameters such as iv, such as ECB mode, no construction is required, and None can be passed in [createCipher(String)](#func-createcipherstring)).
 
 > **Note:**
 >
-> Since the params parameter of [init()](#func-initkey-paramsspec-asynccallbackcipher) is of type ParamsSpec (parent class), but the actual input requires specific subclass objects (such as IvParamsSpec), the algName parameter of the parent class ParamsSpec should be set when constructing subclass objects, so that the algorithm library knows which subclass object is being passed during init().
+> Since the params parameter of [createCipher(String)](#func-createcipherstring) is of the ParamsSpec type (parent class), but the actual input is a specific subclass object (such as IvParamsSpec), the algName parameter of the parent class ParamsSpec should be set when constructing the subclass object, so that the algorithm library knows which subclass object is passed in during init().
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
-**Initial Version:** 21
+**Since:** 21
 
-### prop algName
+### var algName
 
 ```cangjie
-mut prop algName: String
+mut var algName: String
 ```
 
-**Function:** Indicates the algorithm mode of symmetric encryption/decryption parameters. Optional values are as follows:<br/> - IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode.
+**Description:** Specifies the algorithm mode of symmetric encryption and decryption parameters. The options are as follows:<br/> - IvParamsSpec: Applies to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applies to GCM mode.<br/> - CcmParamsSpec: Applies to CCM mode.
 
 **Type:** String
 
-**Read/Write Attribute:** Read/Write
+**Access:** Read-write
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
-**Initial Version:** 21
-
-### prop iv
-
-```cangjie
-mut prop iv: DataBlob
-```
-
-**Function:** Indicates the encryption/decryption parameter iv. Common values are as follows:<br/>- AES CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 16 bytes<br/>- 3DES CBCMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 8 bytes<br/>- SM4 CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 16 bytes.
-
-**Type:** [DataBlob](#struct-datablob)
-
-**Read/Write Attribute:** Read/Write
-
-**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
-
-**Initial Version:** 21
+**Since:** 21
 
 ## class Cipher
 
@@ -384,16 +368,16 @@ mut prop iv: DataBlob
 public class Cipher {}
 ```
 
-**Function:** Provides encryption/decryption algorithm operations. Sequential calls to [init()](#func-initkey-paramsspec-asynccallbackcipher), [update()](#func-updatedatablob), and [doFinal()](#func-dofinaldatablob) methods in this class can achieve symmetric encryption/symmetric decryption/asymmetric encryption/asymmetric decryption.
+**Description:** Provides encryption and decryption algorithm operations. By calling the [createCipher(String)](#func-createcipherstring), [update()](#func-updatedatablob), and [doFinal()](#func-dofinaldatablob) methods in sequence, symmetric encryption/symmetric decryption/asymmetric encryption/asymmetric decryption can be implemented.
 
-A complete encryption/decryption process differs slightly between symmetric and asymmetric encryption:
+A complete encryption/decryption process differs slightly between symmetric encryption and asymmetric encryption:
 
-- Symmetric encryption/decryption: init is mandatory, update is optional (and allows multiple updates for large data encryption/decryption), doFinal is mandatory; after doFinal completes, a new encryption/decryption process can be started by re-initializing init.
-- RSA, SM2 asymmetric encryption/decryption: init is mandatory, update operations are not supported, doFinal is mandatory (allowing multiple consecutive doFinal operations for large data encryption/decryption); RSA does not support repeated init, and a new Cipher object needs to be created when switching encryption/decryption modes or padding methods.
+- Symmetric encryption and decryption: init is mandatory, update is optional (and allows multiple updates for large data encryption/decryption), and doFinal is mandatory. After doFinal is complete, a new encryption/decryption process can be started by re-initializing init.
+- RSA and SM2 asymmetric encryption and decryption: init is mandatory, update is not supported, and doFinal is mandatory (allowing multiple doFinal calls for large data encryption/decryption). RSA does not support repeated init. To switch encryption/decryption modes or padding methods, a new Cipher object needs to be created.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
-**Initial Version:** 21
+**Since:** 21
 
 ### prop algName
 
@@ -401,15 +385,15 @@ A complete encryption/decryption process differs slightly between symmetric and 
 public prop algName: String
 ```
 
-**Function:** Algorithm name specified by the encryption/decryption generator.
+**Description:** Algorithm name specified by the cipher generator.
 
 **Type:** String
 
-**Read/Write Attribute:** Read-only
+**Access:** Read-only
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
-**Initial Version:** 21
+**Since:** 21
 
 ### func initialize(CryptoMode, Key, ?ParamsSpec)
 
@@ -417,32 +401,32 @@ public prop algName: String
 public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 ```
 
-**Function:** Initializes the encryption/decryption [cipher](#class-cipher) object and obtains the result through a registered callback function.
+**Description:** Initializes the [cipher](#class-cipher) object for encryption and decryption, and obtains the result by registering a callback function.
 
-This function can only be used after creating a [Cipher](#class-cipher) instance with [createCipher](#func-createcipherstring).
+This function can be used only after creating a [Cipher](#class-cipher) instance using [createCipher](#func-createcipherstring).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
-| Parameter Name | Type   | Mandatory | Default Value | Description |
-|:--------------|:-------|:----------|:--------------|:------------|
-| opMode        | [CryptoMode](#enum-cryptomode) | Yes | - | Encryption or decryption mode. |
-| key           | [Key](#interface-key) | Yes | - | Specifies the key for encryption or decryption. |
-| params        | ?[ParamsSpec](#interface-paramsspec) | Yes | - | Specifies the parameters for encryption or decryption. For algorithm modes like ECB that do not require parameters, None can be passed. |
+| Name    | Type                 | Mandatory | Default | Description                                                                 |
+| :------ | :------------------- | :-------- | :------ | :-------------------------------------------------------------------------- |
+| opMode  | [CryptoMode](#enum-cryptomode) | Yes       | -       | Encryption or decryption mode.                                              |
+| key     | [Key](#interface-key)          | Yes       | -       | Specifies the key for encryption or decryption.                             |
+| params  | ?[ParamsSpec](#class-paramsspec) | Yes       | -       | Specifies the parameters for encryption or decryption. For algorithm modes without parameters such as ECB, None can be passed in. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
 
-  | Error Code ID | Error Message |
-  |:------------|:-------------|
-  | 401         | invalid parameters. |
-  | 17620001    | memory error. |
-  | 17620002    | runtime error. |
-  | 17630001    | crypto operation error. |
+  | Error Code ID | Error Message               |
+  | :----------- | :-------------------------- |
+  | 401          | invalid parameters.         |
+  | 17620001     | memory error.               |
+  | 17620002     | runtime error.              |
+  | 17630001     | crypto operation error.     |
 
 **Example:**
 
@@ -453,11 +437,17 @@ This function can only be used after creating a [Cipher](#class-cipher) instance
 
 import kit.CryptoArchitectureKit.*
 
-let cipherAlgName = "RSA|PKCS1_OAEP|SHA256|MGF1_SHA1"
-let cipher = createCipher(cipherAlgName)
-let syg = createSymKeyGenerator("AES128")
-let sk = syg.generateSymKey()
-cipher.initialize(CryptoMode.EncryptMode, sk, None)
+let skg = createSymKeyGenerator("AES128")
+let sk = skg.convertKey(DataBlob([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]))
+let encoder = createCipher("AES128|CBC|PKCS7")
+let ivBlob = DataBlob([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+var ivParamsSpec = IvParamsSpec("IvParamsSpec", ivBlob)
+ivParamsSpec.algName = "IvParamsSpec"
+ivParamsSpec.iv = ivBlob
+encoder.initialize(CryptoMode.EncryptMode, sk, ivParamsSpec)
+let message = "This is a test"
+let blob = DataBlob(message.toArray())
+let encryptText = encoder.doFinal(blob)
 ```
 
 ### func doFinal(?DataBlob)
@@ -466,22 +456,22 @@ cipher.initialize(CryptoMode.EncryptMode, sk, None)
 public func doFinal(data: ?DataBlob): DataBlob
 ```
 
-**Function:** (1) In symmetric encryption/decryption, doFinal encrypts/decrypts the remaining data (generated by block mode) and the data passed this time, finally completing the encryption or decryption operation and obtaining the encrypted or decrypted data.
+**Description:** (1) In symmetric encryption and decryption, doFinal encrypts/decrypts the remaining data (generated by the block mode) and the data passed in this time, and finally completes the encryption or decryption data operation to obtain the encrypted or decrypted data.
 
-If the data volume is small, data can be passed in one time in doFinal without using update; if data has been passed via update in the current encryption/decryption process, None can be passed in the data parameter of doFinal.
+If the data volume is small, the data can be passed in doFinal at one time without using update. If data has been passed in using update in this encryption/decryption process, None can be passed in the data parameter of doFinal.
 
 Depending on the symmetric encryption/decryption mode, the output of doFinal differs as follows:
 
-- For symmetric encryption in GCM and CCM modes: In one encryption process, concatenating the results of each update and doFinal yields "ciphertext + authTag", where the last 16 bytes (GCM mode) or 12 bytes (CCM mode) are authTag, and the rest is ciphertext. (That is, if None is passed in the data parameter of doFinal, the result of doFinal is authTag.) authTag needs to be filled into [GcmParamsSpec](#struct-gcmparamsspec) or [CcmParamsSpec](#struct-ccmparamsspec) during decryption; the ciphertext is then used as the input data during decryption.
-- For other symmetric encryption/decryption modes and symmetric decryption in GCM and CCM modes: In one encryption/decryption process, concatenating the results of each update and doFinal yields the complete plaintext/ciphertext.
+- For symmetric encryption in GCM and CCM modes: In one encryption process, if the results of each update and doFinal are concatenated, "ciphertext + authTag" is obtained. That is, the last 16 bytes (GCM mode) or 12 bytes (CCM mode) are authTag, and the rest are ciphertext. (In other words, if None is passed in the data parameter of doFinal, the result of doFinal is authTag.) authTag needs to be filled in the [GcmParamsSpec](#struct-gcmparamsspec) or [CcmParamsSpec](#struct-ccmparamsspec) during decryption. The ciphertext is used as the input data during decryption.
+- For other modes of symmetric encryption/decryption and symmetric decryption in GCM and CCM modes: In one encryption/decryption process, the results of each update and doFinal are concatenated to obtain the complete plaintext/ciphertext.
 
-(2) In RSA and SM2 asymmetric## class Mac
+## class Mac
 
 ```cangjie
 public class Mac {}
 ```
 
-**Function:** The Mac class provides methods for MAC (Message Authentication Code) encryption computation. Before calling, a Mac instance must be constructed via [createMac](#func-createmacstring).
+**Function:** The Mac class, which can be used to perform MAC (Message Authentication Code) encryption calculations by invoking Mac methods. Before invocation, a Mac instance must be constructed via [createMac](#func-createmacstring).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Mac
 
@@ -509,7 +499,7 @@ public prop algName: String
 public func initialize(key: SymKey): Unit
 ```
 
-**Function:** Initializes [Mac](#class-mac) computation using a symmetric key, with results obtained through registered callback functions.
+**Function:** Initializes [Mac](#class-mac) calculation using a symmetric key, with results obtained via registered callback functions.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Mac
 
@@ -542,7 +532,7 @@ mac.initialize(sk)
 public func doFinal(): DataBlob
 ```
 
-**Function:** Returns the computation result of Mac.
+**Function:** Returns the calculation result of the Mac.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Mac
 
@@ -552,7 +542,7 @@ public func doFinal(): DataBlob
 
 | Type | Description |
 |:----|:----|
-| [DataBlob](#struct-datablob) | Returns the computed result as a DataBlob. |
+| [DataBlob](#struct-datablob) | Returns the calculated result as a DataBlob. |
 
 **Example:**
 
@@ -589,7 +579,7 @@ public func getMacLength(): UInt32
 
 | Type | Description |
 |:----|:----|
-| UInt32 | Returns the byte length of the MAC computation result. |
+| UInt32 | Returns the byte length of the MAC calculation result. |
 
 **Example:**
 
@@ -616,7 +606,7 @@ var macLen = mac.getMacLength()
 public func update(input: DataBlob): Unit
 ```
 
-**Function:** Updates the MAC computation with input message data.
+**Function:** Updates the Mac calculation with the input message.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Mac
 
@@ -626,7 +616,7 @@ public func update(input: DataBlob): Unit
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| input | [DataBlob](#struct-datablob) | Yes | - | Input message data. |
+| input | [DataBlob](#struct-datablob) | Yes | - | Input message. |
 
 **Example:**
 
@@ -651,7 +641,7 @@ mac.update(blob)
 public class Md {}
 ```
 
-**Function:** The Md class provides methods for MD (Message Digest) computation. Before calling, an Md instance must be constructed via [createMd](#func-createmdstring).
+**Function:** The Md class, which can be used to perform MD (Message Digest) calculations by invoking Md methods. Before invocation, an Md instance must be constructed via [createMd](#func-createmdstring).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.MessageDigest
 
@@ -679,7 +669,7 @@ public prop algName: String
 public func digest(): DataBlob
 ```
 
-**Function:** Returns the computation result of Md.
+**Function:** Returns the calculation result of the Md.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.MessageDigest
 
@@ -689,7 +679,7 @@ public func digest(): DataBlob
 
 | Type | Description |
 |:----|:----|
-| [DataBlob](#struct-datablob) | Returns the computed result as a DataBlob. |
+| [DataBlob](#struct-datablob) | Returns the calculated result as a DataBlob. |
 
 **Exceptions:**
 
@@ -721,7 +711,7 @@ let res = md.digest()
 public func getMdLength(): UInt32
 ```
 
-**Function:** Gets the length (in bytes) of the MD message digest.
+**Function:** Gets the length (in bytes) of the Md message digest.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.MessageDigest
 
@@ -731,7 +721,7 @@ public func getMdLength(): UInt32
 
 | Type | Description |
 |:----|:----|
-| UInt32 | Returns the byte length of the MD computation result. |
+| UInt32 | Returns the byte length of the Md calculation result. |
 
 **Exceptions:**
 
@@ -760,7 +750,7 @@ let mdLen = md.getMdLength()
 public func update(input: DataBlob): Unit
 ```
 
-**Function:** Updates the MD computation with input message data.
+**Function:** Updates the Md calculation with the input message.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.MessageDigest
 
@@ -770,7 +760,7 @@ public func update(input: DataBlob): Unit
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| input | [DataBlob](#struct-datablob) | Yes | - | Input message data. |
+| input | [DataBlob](#struct-datablob) | Yes | - | Input message. |
 
 **Exceptions:**
 
@@ -801,7 +791,7 @@ md.update(blob)
 public class Random {}
 ```
 
-**Function:** The Random class provides methods for random number generation. Before calling, a Random instance must be constructed via [createRandom](#func-createrandom).
+**Function:** The Random class, which can be used to generate random numbers by invoking Random methods. Before invocation, a Random instance must be constructed via [createRandom](#func-createrandom).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Rand
 
@@ -813,7 +803,7 @@ public class Random {}
 public prop algName: String
 ```
 
-**Function:** Represents the currently used random number generation algorithm (currently only "CTR_DRBG" is supported).
+**Function:** Represents the currently used random number generation algorithm, currently only supporting "CTR_DRBG".
 
 **Type:** String
 
@@ -829,7 +819,7 @@ public prop algName: String
 public func generateRandom(len: Int32): DataBlob
 ```
 
-**Function:** Generates and returns a random number of specified length.
+**Function:** Generates a random number of the specified length and returns it.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Rand
 
@@ -839,7 +829,7 @@ public func generateRandom(len: Int32): DataBlob
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| len | Int32 | Yes | - | Length of the random number to generate, in bytes (range: [1, INT32_MAX]). |
+| len | Int32 | Yes | - | Specifies the length of the random number to generate, in bytes, ranging from [1, INT32_MAX]. |
 
 **Return Value:**
 
@@ -886,7 +876,7 @@ public func setSeed(seed: DataBlob): Unit
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| seed | [DataBlob](#struct-datablob) | Yes | - | Seed to be set. |
+| seed | [DataBlob](#struct-datablob) | Yes | - | The seed to set. |
 
 **Exceptions:**
 
@@ -913,7 +903,7 @@ rand.setSeed(DataBlob("test".toArray()))
 public class SymKey <: Key {}
 ```
 
-**Function:** Symmetric key, a subclass of [Key](#interface-key), which needs to be passed into the [init()](#func-initkey-paramsspec-asynccallbackcipher) method of a [Cipher](#class-cipher) instance for symmetric encryption and decryption.
+**Function:** Symmetric key, a subclass of [Key](#interface-key), which needs to be passed into the [createCipher(String)](#func-createcipherstring) method of a [Cipher](#class-cipher) instance during symmetric encryption/decryption.
 
 Symmetric keys can be generated using the symmetric key generator [SymKeyGenerator](#class-symkeygenerator).
 
@@ -935,7 +925,7 @@ public prop algName: String
 
 **Type:** String
 
-**Read/Write:** Read-only
+**Read-Write Capability:** Read-only
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -951,7 +941,7 @@ public prop format: String
 
 **Type:** String
 
-**Read/Write:** Read-only
+**Read-Write Capability:** Read-only
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -1023,7 +1013,7 @@ public class SymKeyGenerator {}
 
 **Function:** Symmetric key generator.
 
-Before using the methods of this class, you need to first use the [createSymKeyGenerator](#func-createsymkeygeneratorstring) method to construct a SymKeyGenerator instance.
+Before using the methods of this class, you need to construct a symKeyGenerator instance using the [createSymKeyGenerator](#func-createsymkeygeneratorstring) method.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -1039,7 +1029,7 @@ public prop algName: String
 
 **Type:** String
 
-**Read/Write:** Read-only
+**Read-Write Capability:** Read-only
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -1057,8 +1047,8 @@ This function can only be used after creating a symmetric key generator using [c
 
 > **Note:**
 >
-> For symmetric keys of the HMAC algorithm, if a specific hash algorithm (e.g., "HMAC|SHA256") was specified when creating the symmetric key generator, binary key data consistent with the hash length must be passed in (e.g., 256-bit key data for SHA256).
-> If no specific hash algorithm was specified when creating the symmetric key generator (e.g., only "HMAC" was specified), any binary key data with a length in the range [1,4096] (in bytes) is supported.
+> For symmetric keys of the HMAC algorithm, if a specific hash algorithm has been specified when creating the symmetric key generator (e.g., "HMAC|SHA256"), binary key data matching the hash length must be passed in (e.g., 256-bit key data for SHA256).
+> If no specific hash algorithm is specified when creating the symmetric key generator (e.g., only "HMAC" is specified), any binary key data with a length in the range [1,4096] (in bytes) can be passed in.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -1066,7 +1056,7 @@ This function can only be used after creating a symmetric key generator using [c
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | key | [DataBlob](#struct-datablob) | Yes | - | Specified key material data. |
 
@@ -1111,7 +1101,7 @@ public func generateSymKey(): SymKey
 
 This function can only be used after creating a symmetric key generator using [createSymKeyGenerator](#func-createsymkeygeneratorstring).
 
-Currently, OpenSSL's RAND_priv_bytes() is supported as the underlying capability to generate random keys.
+Currently, OpenSSL's RAND_priv_bytes() is used as the underlying capability to generate random keys.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -1153,13 +1143,13 @@ public struct CcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**Function:** A subclass of encryption/decryption parameters [ParamsSpec](#interface-paramsspec), used as a parameter for the [init()](#func-initkey-paramsspec-asynccallbackcipher) method during symmetric encryption and decryption.
+**Function:** A subclass of encryption/decryption parameters [ParamsSpec](#class-paramsspec), used as a parameter for the [createCipher(String)](#func-createcipherstring) method during symmetric encryption/decryption.
 
 Applicable to CCM mode.
 
 > **Note:**
 >
-> The algName property (inherited from the parent class [ParamsSpec](#interface-paramsspec)) must be specified before passing it into the [init()](#func-initkey-paramsspec-asynccallbackcipher) method.
+> The algName attribute (inherited from the parent class [ParamsSpec](#class-paramsspec)) must be specified before passing it into the [createCipher(String)](#func-createcipherstring) method.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1167,7 +1157,7 @@ Applicable to CCM mode.
 
 **Parent Type:**
 
-- [ParamsSpec](#interface-paramsspec)
+- [ParamsSpec](#class-paramsspec)
 
 ### prop aad
 
@@ -1179,23 +1169,7 @@ public mut prop aad: DataBlob
 
 **Type:** [DataBlob](#struct-datablob)
 
-**Read/Write:** Read/Write
-
-**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
-
-**Since:** 21
-
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**Function:** Specifies the algorithm mode for symmetric encryption/decryption parameters. Optional values are:<br/> - IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode.
-
-**Type:** String
-
-**Read/Write:** Read/Write
+**Read-Write Capability:** Read-write
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1207,11 +1181,11 @@ public mut prop algName: String
 public mut prop authTag: DataBlob
 ```
 
-**Function:** Specifies the encryption/decryption parameter authTag, with a length of 12 bytes.<br/>When encrypting in CCM mode, the [DataBlob](#struct-datablob) output by [doFinal()](#func-dofinaldatablob) needs to be obtained, and the last 12 bytes should be taken as the authTag in the [CcmParamsSpec](#struct-ccmparamsspec) parameter for the [init()](#func-initkey-paramsspec-asynccallbackcipher) method during decryption.
+**Function:** Specifies the encryption/decryption parameter authTag, with a length of 12 bytes.<br/>When using CCM mode for encryption, the [DataBlob](#struct-datablob) output by [doFinal()](#func-dofinaldatablob) needs to be obtained, and the last 12 bytes should be taken as the authTag in the [CcmParamsSpec](#struct-ccmparamsspec) parameter for the [createCipher(String)](#func-createcipherstring) method during decryption.
 
 **Type:** [DataBlob](#struct-datablob)
 
-**Read/Write:** Read/Write
+**Read-Write Capability:** Read-write
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1227,7 +1201,7 @@ public mut prop iv: DataBlob
 
 **Type:** [DataBlob](#struct-datablob)
 
-**Read/Write:** Read/Write
+**Read-Write Capability:** Read-write
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1247,12 +1221,12 @@ public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| algName | String | Yes | - | Specifies the algorithm mode for symmetric encryption/decryption parameters. Optional values are:<br/> - IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode. |
+| algName | String | Yes | - | Specifies the algorithm mode for symmetric encryption/decryption parameters. Possible values:<br/> - IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode. |
 | iv | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter iv, with a length of 7 bytes. |
 | aad | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter aad, with a length of 8 bytes. |
-| authTag | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter authTag, with a length of 12 bytes. When encrypting in CCM mode, the DataBlob output by doFinal() or doFinalSync() needs to be obtained, and the last 12 bytes should be taken as the authTag in the CcmParamsSpec parameter for the init() or initSync() method during decryption. |
+| authTag | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter authTag, with a length of 12 bytes. When using CCM mode for encryption, the DataBlob output by doFinal() or doFinalSync() needs to be obtained, and the last 12 bytes should be taken as the authTag in the CcmParamsSpec parameter for the init() or initSync() method during decryption. |
 
 **Example:**
 
@@ -1292,21 +1266,19 @@ public let data: Array<UInt8>
 
 **Type:** Array\<UInt8>
 
-**Read/Write:** Read-only
+**Read-Write Capability:** Read-only
 
 **System Capability:** SystemCapability.Security.CryptoFramework
 
 **Since:** 21
 
-### DataBlob(Array\<UInt8>)
+### init(Array\<UInt8>)
 
 ```cangjie
-public DataBlob(
-    public let data: Array<UInt8>
-)
+public init(data: Array<UInt8>)
 ```
 
-**Function:** Creates a DataBlob instance.
+**Function:** Creates a DataBlob object.
 
 **System Capability:** SystemCapability.Security.CryptoFramework
 
@@ -1314,21 +1286,11 @@ public DataBlob(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| data | Array\<UInt8> | Yes | - | Data. |
+| data | Array\<UInt8> | Yes | - | The array to store. |
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.CryptoArchitectureKit.*
-
-let blob = DataBlob("test".toArray())
-```## struct GcmParamsSpec
+## struct GcmParamsSpec
 
 ```cangjie
 public struct GcmParamsSpec <: ParamsSpec {
@@ -1336,13 +1298,13 @@ public struct GcmParamsSpec <: ParamsSpec {
 }
 ```
 
-**Function:** A subclass of cryptographic parameters [ParamsSpec](#interface-paramsspec), used as a parameter for the [init()](#func-initkey-paramsspec-asynccallbackcipher) method during symmetric encryption/decryption.
+**Function:** A subclass of encryption/decryption parameters [ParamsSpec](#class-paramsspec), used as a parameter for the [createCipher(String)](#func-createcipherstring) method during symmetric encryption/decryption.
 
 Applicable to GCM mode.
 
 > **Note:**
 >
-> The algName property (inherited from parent class [ParamsSpec](#interface-paramsspec)) must be specified before passing to the [init()](#func-initkey-paramsspec-asynccallbackcipher) method.
+> The algName attribute (inherited from the parent class [ParamsSpec](#class-paramsspec)) must be specified before passing it into the [createCipher(String)](#func-createcipherstring) method.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1350,7 +1312,7 @@ Applicable to GCM mode.
 
 **Parent Type:**
 
-- [ParamsSpec](#interface-paramsspec)
+- [ParamsSpec](#class-paramsspec)
 
 ### prop aad
 
@@ -1358,27 +1320,11 @@ Applicable to GCM mode.
 public mut prop aad: DataBlob
 ```
 
-**Function:** Specifies the Additional Authenticated Data (AAD) parameter for encryption/decryption, with a length of 8 bytes.
+**Function:** Specifies the encryption/decryption parameter aad, with a length of 8 bytes.
 
 **Type:** [DataBlob](#struct-datablob)
 
-**Read/Write Permission:** Readable and Writable
-
-**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
-
-**Since:** 21
-
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**Function:** Specifies the algorithm mode for symmetric encryption/decryption parameters. Possible values:<br/>- IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode.
-
-**Type:** String
-
-**Read/Write Permission:** Readable and Writable
+**Read-Write Capability:** Read-write
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1390,11 +1336,11 @@ public mut prop algName: String
 public mut prop authTag: DataBlob
 ```
 
-**Function:** Specifies the authentication tag parameter for encryption/decryption, with a length of 16 bytes.<br/>When using GCM mode encryption, you need to obtain the [DataBlob](#struct-datablob) output from [doFinal()](#func-dofinaldatablob), extract its last 16 bytes as the authTag parameter in [GcmParamsSpec](#struct-gcmparamsspec) for the [init()](#func-initkey-paramsspec-asynccallbackcipher) method during decryption.
+**Function:** Specifies the encryption/decryption parameter authTag, with a length of 16 bytes.<br/>When using GCM mode for encryption, the [DataBlob](#struct-datablob) output by [doFinal()](#func-dofinaldatablob) needs to be obtained, and the last 16 bytes should be taken as the authTag in the [GcmParamsSpec](#struct-gcmparamsspec) parameter for the [createCipher(String)](#func-createcipherstring) method during decryption.
 
 **Type:** [DataBlob](#struct-datablob)
 
-**Read/Write Permission:** Readable and Writable
+**Read-Write Capability:** Read-write
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1406,11 +1352,11 @@ public mut prop authTag: DataBlob
 public mut prop iv: DataBlob
 ```
 
-**Function:** Specifies the initialization vector (IV) parameter for encryption/decryption, with a length of 12 bytes.
+**Function:** Specifies the encryption/decryption parameter iv, with a length of 12 bytes.
 
 **Type:** [DataBlob](#struct-datablob)
 
-**Read/Write Permission:** Readable and Writable
+**Read-Write Capability:** Read-write
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1430,12 +1376,12 @@ public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
+| Parameter | Type | Required | Default Value | Description |
+| :--- | :--- | :--- | :--- | :--- |
 | algName | String | Yes | - | Specifies the algorithm mode for symmetric encryption/decryption parameters. Possible values:<br/>- IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode. |
-| iv | [DataBlob](#struct-datablob) | Yes | - | Specifies the IV parameter for encryption/decryption, with a length of 12 bytes. |
-| aad | [DataBlob](#struct-datablob) | Yes | - | Specifies the AAD parameter for encryption/decryption, with a length of 8 bytes. |
-| authTag | [DataBlob](#struct-datablob) | Yes | - | Specifies the authentication tag parameter for encryption/decryption, with a length of 16 bytes.<br/>When using GCM mode encryption, extract the last 16 bytes from [doFinal()](#func-dofinaldatablob) output as the authTag parameter in [GcmParamsSpec](#struct-gcmparamsspec) for the [init()](#func-initcryptomode-key-paramsspec) method during decryption. |
+| iv | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter iv, with a length of 12 bytes. |
+| aad | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter aad, with a length of 8 bytes. |
+| authTag | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter authTag, with a length of 16 bytes.<br/>When using GCM mode for encryption, the DataBlob output by doFinal() needs to be obtained, and the last 16 bytes should be taken as the authTag in the GcmParamsSpec parameter for the createCipher(String) method during decryption. |
 
 **Example:**
 
@@ -1447,9 +1393,7 @@ public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 import kit.CryptoArchitectureKit.*
 
 let gcm = GcmParamsSpec("GcmParamsSpec", DataBlob(Array<UInt8>(12, repeat: 1)), DataBlob(Array<UInt8>(8, repeat: 1)), DataBlob(Array<UInt8>(16, repeat: 1)))
-```
-
-## struct IvParamsSpec
+```## struct IvParamsSpec
 
 ```cangjie
 public struct IvParamsSpec <: ParamsSpec {
@@ -1457,13 +1401,13 @@ public struct IvParamsSpec <: ParamsSpec {
 }
 ```
 
-**Function:** A subclass of cryptographic parameters [ParamsSpec](#interface-paramsspec), used as a parameter for the [init()](#func-initkey-paramsspec-asynccallbackcipher) method during symmetric encryption/decryption.
+**Function:** A subclass of encryption/decryption parameters [ParamsSpec](#class-paramsspec), used as a parameter for the [createCipher(String)](#func-createcipherstring) method during symmetric encryption/decryption.
 
-Applicable to CBC, CTR, OFB, and CFB modes that only use IV as a parameter.
+Applicable to encryption/decryption modes that only use iv as a parameter, such as CBC, CTR, OFB, and CFB.
 
 > **Note:**
 >
-> The algName property (inherited from parent class [ParamsSpec](#interface-paramsspec)) must be specified before passing to the [init()](#func-initkey-paramsspec-asynccallbackcipher) method.
+> The algName property (inherited from the parent class [ParamsSpec](#class-paramsspec)) must be specified before passing it to the [createCipher(String)](#func-createcipherstring) method.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1471,23 +1415,7 @@ Applicable to CBC, CTR, OFB, and CFB modes that only use IV as a parameter.
 
 **Parent Type:**
 
-- [ParamsSpec](#interface-paramsspec)
-
-### prop algName
-
-```cangjie
-public mut prop algName: String
-```
-
-**Function:** Specifies the algorithm mode for symmetric encryption/decryption parameters. Possible values:<br/> - IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode.
-
-**Type:** String
-
-**Read/Write Permission:** Readable and Writable
-
-**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
-
-**Since:** 21
+- [ParamsSpec](#class-paramsspec)
 
 ### prop iv
 
@@ -1495,7 +1423,7 @@ public mut prop algName: String
 public mut prop iv: DataBlob
 ```
 
-**Function:** Specifies the IV parameter for encryption/decryption. Common values:<br/>- AES CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: IV length is 16 bytes<br/>- 3DES CBCMagIc_StrINgOFBMagIc_StrINgCFB modes: IV length is 8 bytes<br/>- SM4 CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: IV length is 16 bytes.
+**Function:** Specifies the encryption/decryption parameter iv. Common values are as follows:<br/>- AES CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 16 bytes<br/>- 3DES CBCMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 8 bytes<br/>- SM4 CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 16 bytes.
 
 **Type:** [DataBlob](#struct-datablob)
 
@@ -1519,10 +1447,10 @@ public init(algName: String, iv: DataBlob)
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| algName | String | Yes | - | Specifies the algorithm mode for symmetric encryption/decryption parameters. Possible values:<br/> - IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode. |
-| iv | [DataBlob](#struct-datablob) | Yes | - | Specifies the IV parameter for encryption/decryption. Common values:<br/>- AES CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: IV length is 16 bytes<br/>- 3DES CBCMagIc_StrINgOFBMagIc_StrINgCFB modes: IV length is 8 bytes<br/>- SM4 CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: IV length is 16 bytes. |
+| algName | String | Yes | - | Specifies the algorithm mode for symmetric encryption/decryption parameters. Options include:<br/> - IvParamsSpec: Applicable to CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes.<br/> - GcmParamsSpec: Applicable to GCM mode.<br/> - CcmParamsSpec: Applicable to CCM mode. |
+| iv | [DataBlob](#struct-datablob) | Yes | - | Specifies the encryption/decryption parameter iv. Common values are as follows:<br/>- AES CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 16 bytes<br/>- 3DES CBCMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 8 bytes<br/>- SM4 CBCMagIc_StrINgCTRMagIc_StrINgOFBMagIc_StrINgCFB modes: iv length is 16 bytes. |
 
 **Example:**
 
@@ -1546,7 +1474,7 @@ public enum CryptoMode <: Equatable<CryptoMode> & ToString {
 }
 ```
 
-**Function:** Represents cryptographic operations.
+**Function:** Represents encryption/decryption operations.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1563,7 +1491,7 @@ public enum CryptoMode <: Equatable<CryptoMode> & ToString {
 DecryptMode
 ```
 
-**Function:** Represents decryption operation.
+**Function:** Represents a decryption operation.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1575,7 +1503,7 @@ DecryptMode
 EncryptMode
 ```
 
-**Function:** Represents encryption operation.
+**Function:** Represents an encryption operation.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1587,7 +1515,7 @@ EncryptMode
 public operator func !=(other: CryptoMode): Bool
 ```
 
-**Function:** Determines if two enum values are not equal.
+**Function:** Determines whether two enum values are not equal.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1595,7 +1523,7 @@ public operator func !=(other: CryptoMode): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [CryptoMode](#enum-cryptomode) | Yes | - | Another enum value. |
 
@@ -1603,7 +1531,7 @@ public operator func !=(other: CryptoMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are not equal, otherwise false. |
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 ### func ==(CryptoMode)
 
@@ -1611,7 +1539,7 @@ public operator func !=(other: CryptoMode): Bool
 public operator func ==(other: CryptoMode): Bool
 ```
 
-**Function:** Determines if two enum values are equal.
+**Function:** Determines whether two enum values are equal.
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -1619,7 +1547,7 @@ public operator func ==(other: CryptoMode): Bool
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | other | [CryptoMode](#enum-cryptomode) | Yes | - | Another enum value. |
 
@@ -1627,7 +1555,7 @@ public operator func ==(other: CryptoMode): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise false. |
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### func toString()
 
@@ -1645,7 +1573,145 @@ public func toString(): String
 
 | Type | Description |
 |:----|:----|
-| String | Description of the enum. |
+| String | The description of the enum. |
+
+## enum CipherSpecItem
+
+```cangjie
+public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
+    | OaepMdNameStr
+    | OaepMgfNameStr
+    | OaepMgf1MdStr
+    | OaepMgf1PsrcUint8Arr
+    | ...
+}
+```
+
+**Function:** Represents an enum for encryption/decryption parameters. Currently only supports RSA and SM2 algorithms.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+**Parent Types:**
+
+- Equatable\<CipherSpecItem>
+- ToString
+
+### OaepMdNameStr
+
+```cangjie
+OaepMdNameStr
+```
+
+**Function:** Represents the algorithm name for the message digest function when using PKCS1_OAEP mode in RSA algorithm.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+### OaepMgfNameStr
+
+```cangjie
+OaepMgfNameStr
+```
+
+**Function:** Represents the mask generation algorithm (currently only supports MGF1) when using PKCS1_OAEP mode in RSA algorithm.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+### OaepMgf1MdStr
+
+```cangjie
+OaepMgf1MdStr
+```
+
+**Function:** Represents the message digest algorithm for MGF1 mask generation when using PKCS1_OAEP mode in RSA algorithm.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+### OaepMgf1PsrcUint8Arr
+
+```cangjie
+OaepMgf1PsrcUint8Arr
+```
+
+**Function:** Represents the byte stream of pSource when using PKCS1_OAEP mode in RSA algorithm.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+### func !=(CipherSpecItem)
+
+```cangjie
+public operator func !=(other: CipherSpecItem): Bool
+```
+
+**Function:** Determines whether two enum values are not equal.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| other | [CipherSpecItem](#enum-cipherspecitem) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
+
+### func ==(CipherSpecItem)
+
+```cangjie
+public operator func ==(other: CipherSpecItem): Bool
+```
+
+**Function:** Determines whether two enum values are equal.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| other | [CipherSpecItem](#enum-cipherspecitem) | Yes | - | Another enum value. |
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+
+### func toString()
+
+```cangjie
+public func toString(): String
+```
+
+**Function:** Gets the value of the enum.
+
+**System Capability:** SystemCapability.Security.CryptoFramework.Cipher
+
+**Since:** 21
+
+**Return Value:**
+
+| Type | Description |
+|:----|:----|
+| String | The description of the enum. |
+
 
 ## enum Result
 
@@ -1676,7 +1742,7 @@ public enum Result <: ToString {
 ErrCryptoOperation
 ```
 
-**Function:** Error when calling third-party cryptographic library APIs.
+**Function:** Error occurred when calling a third-party algorithm library API.
 
 **System Capability:** SystemCapability.Security.CryptoFramework
 
@@ -1712,7 +1778,7 @@ ErrRuntimeError
 InvalidParams
 ```
 
-**Function:** Invalid parameters.
+**Function:** Illegal input parameters.
 
 **System Capability:** SystemCapability.Security.CryptoFramework
 

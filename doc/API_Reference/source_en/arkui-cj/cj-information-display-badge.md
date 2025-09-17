@@ -1,6 +1,6 @@
 # Badge
 
-An information marker component that can be attached to individual components as a container for notification alerts.
+An information marker component that can be attached to a single component as a container for notification alerts.
 
 ## Import Module
 
@@ -8,13 +8,13 @@ An information marker component that can be attached to individual components as
 import kit.ArkUI.*
 ```
 
-## Child Components
+## Subcomponents
 
-Supports a single child component.
+Supports a single subcomponent.
 
 > **Note:**
 >
-> Child component types: System components and custom components, supporting rendering control types ([if/else](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
+> Subcomponent types: System components and custom components, including rendering control types ([if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
 
 ## Creating Components
 
@@ -29,17 +29,17 @@ public init(count!: Int32, style!: BadgeStyle, position!: BadgePosition = BadgeP
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| count | Int32 | Yes | - | **Named parameter.** Sets the number of notification messages. Does not display the badge if the value is ≤ 0. |
+| count | Int32 | Yes | - | **Named parameter.** Sets the notification count. The badge is hidden when the value is ≤ 0. |
 | style | [BadgeStyle](#class-badgestyle) | Yes | - | **Named parameter.** Configurable styles for the Badge component, including text color, size, dot color, and size. |
 | position | [BadgePosition](#enum-badgeposition) | No | BadgePosition.RightTop | **Named parameter.** Position of the notification dot. |
-| maxCount | Int32 | No | 99 | **Named parameter.** Maximum message count. Displays as maxCount+ when exceeded. |
-| child | ()->Unit | Yes | - | Child component of the container. |
+| maxCount | Int32 | No | 99 | **Named parameter.** Maximum notification count. Exceeding this value displays as "maxCount+". |
+| child | () -> Unit | Yes | - | The child component of the container. |
 
 ### init(String, BadgeStyle, BadgePosition, () -> Unit)
 
@@ -51,16 +51,16 @@ public init(value!: String, style!: BadgeStyle, position!: BadgePosition = Badge
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | String | Yes | - | Parameter for the string badge component. |
+| value | String | Yes | - | Parameter for the numeric badge component. |
 | style | [BadgeStyle](#class-badgestyle) | Yes | - | **Named parameter.** Configurable styles for the Badge component, including text color, size, dot color, and size. |
 | position | [BadgePosition](#enum-badgeposition) | No | BadgePosition.RightTop | **Named parameter.** Position of the notification dot. |
-| child | ()->Unit | Yes | - | Child component of the container. |
+| child | () -> Unit | Yes | - | The child component of the container. |
 
 ## Common Attributes/Events
 
@@ -91,7 +91,7 @@ public class BadgeStyle {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### var badgeColor
 
@@ -107,7 +107,7 @@ public var badgeColor: ResourceColor
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### var badgeSize
 
@@ -123,7 +123,7 @@ public var badgeSize: Length
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### var borderColor
 
@@ -139,7 +139,7 @@ public var borderColor: ResourceColor
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### var borderWidth
 
@@ -147,7 +147,7 @@ public var borderColor: ResourceColor
 public var borderWidth: Length
 ```
 
-**Function:** Border width of the base plate.
+**Function:** Border thickness of the base plate.
 
 **Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
@@ -155,7 +155,7 @@ public var borderWidth: Length
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### var color
 
@@ -171,7 +171,7 @@ public var color: ResourceColor
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### var fontSize
 
@@ -187,7 +187,7 @@ public var fontSize: Length
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### var fontWeight
 
@@ -203,7 +203,7 @@ public var fontWeight: FontWeight
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### init(ResourceColor, Length, Length, ResourceColor, FontWeight, ResourceColor, Length)
 
@@ -217,7 +217,7 @@ public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badg
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
@@ -229,7 +229,7 @@ public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badg
 | badgeColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Red | **Named parameter.** Color of the badge. |
 | fontWeight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Font weight of the text. |
 | borderColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Red | **Named parameter.** Border color of the base plate. |
-| borderWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 1.vp | **Named parameter.** Border width of the base plate.<br>Unit: vp. |
+| borderWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 1.vp | **Named parameter.** Border thickness of the base plate.<br>Unit: vp. |
 
 ### enum BadgePosition
 
@@ -245,7 +245,7 @@ public enum BadgePosition {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### Left
 
@@ -253,11 +253,11 @@ public enum BadgePosition {
 Left
 ```
 
-**Function:** Displays the dot on the left side, vertically centered.
+**Function:** The dot is displayed on the left side, vertically centered.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### Right
 
@@ -265,11 +265,11 @@ Left
 Right
 ```
 
-**Function:** Displays the dot on the right side, vertically centered.
+**Function:** The dot is displayed on the right side, vertically centered.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 #### RightTop
 
@@ -277,31 +277,11 @@ Right
 RightTop
 ```
 
-**Function:** Displays the dot at the top-right corner.
+**Function:** The dot is displayed in the top-right corner.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
-
-#### func !=(BadgePosition)
-
-```cangjie
-public operator func !=(other: BadgePosition): Bool
-```
-
-**Function:** Checks if two enum values are not equal.
-
-**Parameters:**
-
-| Parameter | Type | Required | Default | Description |
-|:---|:---|:---|:---|:---|
-| other | [BadgePosition](<font color="red" face="bold">please add link</font>) | Yes | - | Another enum value. |
-
-**Return Value:**
-
-| Type | Description |
-|:----|:----|
-| Bool | Returns true if the enum values are not equal, otherwise false. |
+**Initial Version:** 21
 
 #### func ==(BadgePosition)
 
@@ -309,25 +289,25 @@ public operator func !=(other: BadgePosition): Bool
 public operator func ==(other: BadgePosition): Bool
 ```
 
-**Function:** Checks if two BadgePosition values are equal.
+**Function:** Determines if two BadgePosition values are equal.
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| other | [BadgePosition](<font color="red" face="bold">please add link</font>) | Yes | - | Another enum value. |
+| other | BadgePosition | Yes | - | Another enum value. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns true if the enum values are equal, otherwise false. |
+| Bool | Returns `true` if the enum values are equal, otherwise `false`. |
 
 ## Example Code
 
 ### Example 1 (Setting Badge Content)
 
-This example demonstrates different badge effects when passing empty values, strings, or numbers using the `value` and `count` properties.
+This example demonstrates different badge effects when passing empty values, strings, or numbers via the `value` and `count` properties.
 
 <!-- run -->
 
@@ -342,50 +322,42 @@ class EntryView {
     func build() {
         Column() {
             Text("numberBadge").width(80.percent)
-            Row(10) {
-                // Numeric superscript, maxCount defaults to 99, displays as 99+ when exceeded
+            Row(space: 10) {
+                // Numeric superscript, maxCount defaults to 99. Values exceeding 99 display as "99+".
                 Badge(
-                    BadgeParams(
-                        count: 1,
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                            fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
-                        position: BadgePosition.RightTop,
-                        maxCount: 99
-                    )
+                    count: 1,
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
+                        fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
+                    position: BadgePosition.RightTop,
+                    maxCount: 99
                 ) {
                     Button("message").width(100).height(50).backgroundColor(0x317aff)
                 }.width(100).height(50)
                 Badge(
-                    BadgeParams(
-                        count: 1,
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                            fontWeight: FontWeight.Bolder, borderColor: Color.Green, borderWidth: 2.vp),
-                        position: BadgePosition.Left,
-                        maxCount: 99
-                    )
+                    count: 1,
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
+                        fontWeight: FontWeight.Bolder, borderColor: Color.Green, borderWidth: 2.vp),
+                    position: BadgePosition.Left,
+                    maxCount: 99
                 ) {
                     Button("message").width(100).height(50).backgroundColor(0x317aff)
                 }.width(100).height(50)
                 // Numeric superscript
                 Badge(
-                    BadgeParams(
-                        count: 1,
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
-                            fontWeight: FontWeight.Regular, borderColor: Color.Gray, borderWidth: 4.vp),
-                        position: BadgePosition.Right,
-                        maxCount: 99
-                    )
+                    count: 1,
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,
+                        fontWeight: FontWeight.Regular, borderColor: Color.Gray, borderWidth: 4.vp),
+                    position: BadgePosition.Right,
+                    maxCount: 99
                 ) {
                     Button("message").width(100).height(50).backgroundColor(0x317aff)
                 }.width(100).height(50)
             }.margin(10)
             Text("stringBadge").width(80.percent)
-            Row(30) {
+            Row(space: 30) {
                 Badge(
-                    BadgeParams(
-                        value: "new",
-                        style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 9, badgeSize: 20, badgeColor: Color.Blue)
-                    )
+                    value: "new",
+                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 9, badgeSize: 20, badgeColor: Color.Blue)
                 ) {
                     Text("message")
                         .width(80)
@@ -396,13 +368,11 @@ class EntryView {
                         .textAlign(TextAlign.Center)
                         .backgroundColor(0xF3F4ED)
                 }.width(80).height(50)
-                // Empty value, displays as a dot
+                // Empty value: Displays a dot marker
                 Badge(
-                    BadgeParams(
-                        value: "",
-                        style: BadgeStyle(badgeSize: 6, badgeColor: Color.Blue),
-                        position: BadgePosition.Right
-                    )
+                    value: "",
+                    style: BadgeStyle(badgeSize: 6, badgeColor: Color.Blue),
+                    position: BadgePosition.Right
                 ) {
                     Text("message")
                         .width(90)
@@ -419,9 +389,11 @@ class EntryView {
 }
 ```
 
-![badge](./figures/badge.png)### Example 2 (Controlling Badge Visibility with Numeric Values)
+![badge](./figures/badge.png)
 
-This example demonstrates how to toggle the visibility of a badge component by setting its `count` property to 0 or 1.
+### Example 2 (Controlling Badge Visibility via Numeric Values)
+
+This example demonstrates hiding and showing the badge by setting the `count` property to 0 and 1.
 
 <!-- run -->
 
@@ -437,11 +409,9 @@ class EntryView {
     func build() {
         Column() {
             Badge(
-                BadgeParams(
-                    count: this.badgeCount,
-                    style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red,fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
-                    position: BadgePosition.RightTop,
-                )
+                count: this.badgeCount,
+                style: BadgeStyle(color: Color(0xFFFFFF), fontSize: 16, badgeSize: 20, badgeColor: Color.Red, fontWeight: FontWeight.Bolder, borderColor: Color.Black, borderWidth: 2.vp),
+                position: BadgePosition.RightTop,
             ){
                 Text("message")
                     .width(100)
@@ -451,9 +421,9 @@ class EntryView {
                 .width(100)
                 .height(50)
             Button("count 0")
-                .onClick({=>  this.badgeCount =0;})
+                .onClick{ evt => this.badgeCount = 0; }
             Button("count 1")
-                .onClick({=>  this.badgeCount =1;})
+                .onClick{ evt => this.badgeCount = 1; }
         }.margin(10)
     }
 }

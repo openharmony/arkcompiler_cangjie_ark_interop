@@ -34,6 +34,8 @@ public prop height: Float64
 
 **Description:** The pixel height of the ImageBitmap. The default unit is vp.
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
 **Type:** Float64
 
 **Access:** Read-only
@@ -48,6 +50,8 @@ public prop width: Float64
 
 **Description:** The pixel width of the ImageBitmap. The default unit is vp.
 
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
 **Type:** Float64
 
 **Access:** Read-only
@@ -60,7 +64,7 @@ public prop width: Float64
 public init(src: String)
 ```
 
-**Description:** Constructs an object of the ImageBitmap type.
+**Description:** Constructs an ImageBitmap object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +74,7 @@ public init(src: String)
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | String | Yes | - | The data source of the image supports local images.<br>1. The string format is used to load local images, such as ImageBitmap("common/images/example.jpg"). For Modules of type "entry" and "feature", the starting point of the image loading path is the current Module's ets folder. For Modules of type "har" and "shared", the starting point is the ets folder of the current built "entry" or "feature" type Module. For Modules of type "har" and "shared", it is recommended to use the ImageSource image decoding method to decode resource images into a unified PixelMap for loading.<br>2. Supported local image types: bmp, jpg, png, svg, and webp. |
+| src | String | Yes | - | The image data source supports local images.<br>1. The string format is used to load local images, such as ImageBitmap("common/images/example.jpg"). For Modules of type "entry" and "feature", the starting point of the image loading path is the current Module's ets folder. For Modules of type "har" and "shared", the starting point is the ets folder of the currently built "entry" or "feature" type Module. For Modules of type "har" and "shared", it is recommended to use the ImageSource image decoding method to decode resource images into a unified PixelMap for loading.<br>2. Supported local image types: bmp, jpg, png, svg, and webp. |
 
 ## Example Code
 

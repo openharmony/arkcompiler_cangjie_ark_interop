@@ -31,15 +31,15 @@ public init(placeholder!: ResourceStr = "", text!: ResourceStr = "",
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| placeholder | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Hint text when no input is present.<br/>The hint text disappears when content is entered. When only the placeholder property is set, the handle still follows drag movements, and the cursor stays at the beginning of the text when released. |
-| text | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Current text content of the input field.<br/>It is recommended to bind state variables with text in real-time through the onChange event to avoid abnormal text content in TextArea during component refresh. |
+| placeholder | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Hint text when no input is present.<br/>The hint text disappears when content is entered. When only the placeholder property is set, the handle still follows drag movements, and the cursor stays at the beginning of the text when the handle is released. |
+| text | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Current text content of the input box.<br/>It is recommended to bind state variables with text in real-time through the onChange event to avoid abnormal text content in TextArea during component refresh. |
 | controller | [TextAreaController](#class-textareacontroller) | No | TextAreaController() | **Named parameter.** TextArea controller. |
 
 ## Common Attributes/Common Events
 
-Common Attributes: All supported.
+Common attributes: All supported.
 
-Common Events: All supported.
+Common events: All supported.
 
 ## Component Attributes
 
@@ -49,7 +49,7 @@ Common Events: All supported.
 public func caretColor(value: ResourceColor): This
 ```
 
-**Function:** Sets the cursor color of the input field.
+**Function:** Sets the cursor color of the input box.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +59,7 @@ public func caretColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Cursor color of the input field.<br>Default: 0xFF0A59F7. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Cursor color of the input box.<br>Default: 0xFF0A59F7. |
 
 ### func enterKeyType(EnterKeyType)
 
@@ -113,7 +113,7 @@ public func fontFamily(value: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font family list. Default font: 'HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' and [registered custom fonts](../apis/BasicServicesKit/cj-apis-base.md#func-registerfont). |
+| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font family list. Default font is 'HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' and [registered custom fonts](../apis/BasicServicesKit/cj-apis-base.md#func-registerfont). |
 
 ### func fontSize(Length)
 
@@ -179,7 +179,7 @@ public func inputFilter(value!: ResourceStr, error!: ?(String) -> Unit = None): 
 
 > **Note:**
 >
-> Input matching the expression is allowed; non-matching input is filtered. Only supports single-character matching, not string matching.
+> Input matching the expression is allowed to display; non-matching input is filtered. Only supports single-character matching, not string matching.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -198,11 +198,11 @@ public func inputFilter(value!: ResourceStr, error!: ?(String) -> Unit = None): 
 public func maxLength(value: UInt32): This
 ```
 
-**Function:** Sets the maximum number of input characters.
+**Function:** Sets the maximum number of input characters for the text.
 
 > **Note:**
 >
-> By default, there is no limit on the maximum number of input characters. When the limit is reached, no more characters can be entered, and the border turns red.
+> By default, there is no limit on the maximum number of input characters. When the maximum character limit is reached, no more characters can be entered, and the border turns red.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,7 +212,7 @@ public func maxLength(value: UInt32): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | UInt32 | Yes | - | Maximum number of input characters. |
+| value | UInt32 | Yes | - | Maximum number of input characters for the text. |
 
 ### func placeholderColor(ResourceColor)
 
@@ -220,7 +220,7 @@ public func maxLength(value: UInt32): This
 public func placeholderColor(value: ResourceColor): This
 ```
 
-**Function:** Sets the placeholder text color.
+**Function:** Sets the text color of the placeholder.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,7 +230,7 @@ public func placeholderColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Placeholder text color.<br>Default: Follows theme. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of the placeholder.<br>Default: Follows theme. |
 
 ### func placeholderFont(Length, FontWeight, String, FontStyle)
 
@@ -239,7 +239,7 @@ public func placeholderFont(size!: Length, weight!: FontWeight = FontWeight.W400
     style!: FontStyle = FontStyle.Normal): This
 ```
 
-**Function:** Sets the placeholder text style, including font size, weight, family, and style. Currently supports 'HarmonyOS Sans' and [registered custom fonts](./cj-text-input-text.md#register-custom-font).
+**Function:** Sets the placeholder text style, including font size, font weight, font family, and font style. Currently supports 'HarmonyOS Sans' and [registered custom fonts](./cj-text-input-text.md#register-custom-font).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,13 +260,13 @@ public func placeholderFont(size!: Length, weight!: FontWeight = FontWeight.W400
 public func textAlign(value: TextAlign): This
 ```
 
-**Function:** Sets the horizontal alignment of text within the input field.
+**Function:** Sets the horizontal alignment of text within the input box.
 
 > **Note:**
 >
 > - Supports TextAlign.Start, TextAlign.Center, and TextAlign.End.
-> - The [align](./cj-universal-attribute-location.md#func-alignalignment) attribute can control the vertical position of text paragraphs. In this component, the align attribute cannot control the horizontal position of text paragraphs. That is, Alignment.TopStart, Alignment.Top, and Alignment.TopEnd have the same effect (top alignment), Alignment.Start, Alignment.Center, and Alignment.End have the same effect (vertical center), and Alignment.BottomStart, Alignment.Bottom, and Alignment.BottomEnd have the same effect (bottom alignment).
-> - When textAlign is set to TextAlign.JUSTIFY, the last line of text does not participate in justification and aligns to the start horizontally.
+> - The vertical position of text paragraphs can be controlled via the [align](./cj-universal-attribute-location.md#func-alignalignment) attribute. In this component, the align attribute cannot control the horizontal position of text paragraphs. That is, Alignment.TopStart, Alignment.Top, and Alignment.TopEnd have the same effect (top alignment), Alignment.Start, Alignment.Center, and Alignment.End have the same effect (vertical center), and Alignment.BottomStart, Alignment.Bottom, and Alignment.BottomEnd have the same effect (bottom alignment).
+> - When textAlign is set to TextAlign.JUSTIFY, the last line of text does not participate in justification and defaults to left alignment.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,7 +276,7 @@ public func textAlign(value: TextAlign): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [TextAlign](./cj-common-types.md#enum-textalign) | Yes | - | Horizontal alignment of text within the input field. Only supports TextAlign.Start, TextAlign.Center, and TextAlign.End.<br>Default: TextAlign.Start. |
+| value | [TextAlign](./cj-common-types.md#enum-textalign) | Yes | - | Horizontal alignment of text within the input box. Only supports TextAlign.Start, TextAlign.Center, and TextAlign.End.<br>Default: TextAlign.Start. |
 
 ## Component Events
 
@@ -286,14 +286,14 @@ public func textAlign(value: TextAlign): This
 public func onChange(callback: (String) -> Unit): This
 ```
 
-**Function:** Triggered when input content changes.
+**Function:** Triggered when the input content changes.
 
 > **Note:**
 >
-> In this callback, if cursor operations are performed, developers need to adjust cursor logic based on the previewText parameter in pre-edit scenarios to accommodate pre-edit behavior. Trigger conditions:
+> In this callback, if cursor operations are performed, developers need to adjust cursor logic based on the previewText parameter in pre-edit scenarios to accommodate pre-edit behavior. Conditions for triggering this event:
 >
 > - Keyboard input.
-> - Paste, cut.
+> - Paste or cut operations.
 > - Keyboard shortcut Ctrl+v.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -304,7 +304,7 @@ public func onChange(callback: (String) -> Unit): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | (String)->Unit | Yes | - | Callback function triggered when current input text changes. |
+| callback | (String)->Unit | Yes | - | Callback function triggered when current input text content changes. |
 
 ### func onCopy((String) -> Unit)
 
@@ -348,7 +348,7 @@ public func onCut(callback: (String) -> Unit): This
 public func onEditChange(callback: (Bool) -> Unit): This
 ```
 
-**Function:** Triggered when input state changes. Editing state is active when the cursor is present; inactive otherwise.
+**Function:** Triggered when the input state changes. The presence of a cursor indicates edit mode; absence indicates non-edit mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,7 +358,7 @@ public func onEditChange(callback: (Bool) -> Unit): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | (Bool)->Unit | Yes | - | Callback function triggered when editing state changes. Parameter: Current editing state. true indicates active input. |
+| callback | (Bool)->Unit | Yes | - | Callback function triggered when edit state changes. Parameter: Current edit state. true indicates active input. |
 
 ### func onPaste((String) -> Unit)
 
@@ -384,7 +384,7 @@ public func onPaste(callback: (String) -> Unit): This
 public func onSubmit(callback: (EnterKeyType) -> Unit): This
 ```
 
-**Function:** Triggered when the input method enter key is pressed.
+**Function:** Triggered when the enter key of the input method is pressed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -394,7 +394,7 @@ public func onSubmit(callback: (EnterKeyType) -> Unit): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | ([EnterKeyType](./cj-text-input-textinput.md#enum-enterkeytype))->Unit | Yes | - | Callback function triggered when enter key or soft keyboard enter key is pressed. Parameter: Current soft keyboard enter key type. Does not trigger onSubmit when type is EnterKeyType.NEW_LINE. |
+| callback | ([EnterKeyType](./cj-text-input-textinput.md#enum-enterkeytype))->Unit | Yes | - | Callback function triggered when the enter key or soft keyboard enter key is pressed. Parameter: Current soft keyboard enter key type. Does not trigger onSubmit when type is EnterKeyType.NEW_LINE. |
 
 ## Basic Type Definitions
 
@@ -456,7 +456,7 @@ public enum TextAreaType {
 }
 ```
 
-**Function:** Represents the input field type.
+**Function:** Represents the input box type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -468,7 +468,7 @@ public enum TextAreaType {
 EMAIL
 ```
 
-**Function:** Represents email address input mode. Supports numbers, letters, underscores, periods, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, {, |, }, ~, and @ (only one @ allowed).
+**Function:** Indicates email address input mode. Supports numbers, letters, underscores, periods, !, #, $, %, &, ', *, +, -, /, =, ?, ^, `, {, |, }, ~, and @ (only one @ character allowed).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -480,7 +480,7 @@ EMAIL
 NORMAL
 ```
 
-**Function:** Represents basic input mode. Supports numbers, letters, underscores, spaces, and special characters.
+**Function:** Indicates basic input mode. Supports numbers, letters, underscores, spaces, and special characters.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -492,7 +492,7 @@ NORMAL
 NUMBER
 ```
 
-**Function:** Represents numeric-only input mode.
+**Function:** Indicates numeric-only input mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -504,7 +504,7 @@ NUMBER
 NUMBER_DECIMAL
 ```
 
-**Function:** Represents numeric input mode with decimal points. Supports numbers and periods (only one period allowed).
+**Function:** Indicates numeric input mode with decimal points. Supports numbers and decimal points (only one decimal point allowed).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -516,7 +516,7 @@ NUMBER_DECIMAL
 PHONE_NUMBER
 ```
 
-**Function:** Represents phone number input mode. Supports numbers, spaces, +, -, *, #, (, ), with no length limit.
+**Function:** Indicates phone number input mode. Supports numbers, spaces, +, -, *, #, (, ), with no length limit.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -528,11 +528,11 @@ PHONE_NUMBER
 URL
 ```
 
-**Function:** Represents URL input mode.
+**Function:** Indicates URL input mode.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21## Example Code
+**Since:** 21## Sample Code
 
 <!--run-->
 
@@ -540,6 +540,7 @@ URL
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
+import kit.PerformanceAnalysisKit.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -551,7 +552,7 @@ class EntryView {
     var scroller: Scroller = Scroller()
     func build() {
         Scroll(this.scroller) {
-            Column(10.px){
+            Column(space: 10.px){
                 Button("caretposition  3").onClick({
                     evt => controller.caretPosition(3)
                 })
@@ -591,26 +592,23 @@ class EntryView {
                 .caretColor(Color.Red)
 
                 TextArea(placeholder: "inputfilter only a")
-                .inputFilter(value: "a" , error: { val => nativeLog( "TextArea OnError:" + val) })
+                .inputFilter(value: "a" , error: { val => Hilog.info(0, "cangjie",  "TextArea OnError:" + val) })
 
                 TextArea(placeholder: "TextArea callback")
                 .onChange ({ val =>
-                nativeLog("TextArea onChange:" + val)
+                Hilog.info(0, "cangjie", "TextArea onChange:" + val)
                 })
                 .onPaste ({ val =>
-                    nativeLog("TextArea onPaste:" + val)
+                    Hilog.info(0, "cangjie", "TextArea onPaste:" + val)
                 })
                 .onCut ({ val =>
-                    nativeLog("TextArea onCut:" + val)
+                    Hilog.info(0, "cangjie", "TextArea onCut:" + val)
                 })
                 .onCopy ({ val =>
-                    nativeLog("TextArea onCopy:" + val)
-                })
-                .onEditChanged ({ val =>
-                    nativeLog("TextArea onEditChanged:" + val.toString())
+                    Hilog.info(0, "cangjie", "TextArea onCopy:" + val)
                 })
                 .onSubmit ({ val =>
-                    nativeLog("TextArea onSubmit")
+                    Hilog.info(0, "cangjie", "TextArea onSubmit")
                 })
             }
             .height(100.percent)

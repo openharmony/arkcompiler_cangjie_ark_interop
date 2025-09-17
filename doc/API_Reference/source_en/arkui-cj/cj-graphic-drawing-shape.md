@@ -2,7 +2,7 @@
 
 The parent component for drawing components, which describes the common properties supported by all drawing components.
 
-1. Drawing components use Shape as their parent component to achieve SVG-like effects.
+1. Drawing components use Shape as the parent component to achieve SVG-like effects.
 
 2. Drawing components can be used independently to draw specified graphics on the page.
 
@@ -16,7 +16,7 @@ import kit.ArkUI.*
 
 Includes [Rect](./cj-graphic-drawing-rect.md), [Circle](./cj-graphic-drawing-circle.md), [Ellipse](./cj-graphic-drawing-ellipse.md), [Image](./cj-image-video-image.md), [Text](./cj-text-input-text.md), [Column](./cj-row-column-stack-column.md), [Row](./cj-row-column-stack-row.md), and Shape child components.
 
-## Creating Components
+## Create Component
 
 ### init(() -> Unit)
 
@@ -52,15 +52,15 @@ public init(value!: PixelMap)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | **Named parameter.** The drawing target. The graphics can be drawn on the specified PixelMap object. If not set, the drawing will be performed on the current drawing target. |
+| value | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | **Named parameter.** The drawing target. Graphics can be drawn on the specified PixelMap object. If not set, drawing occurs in the current target. |
 
-## Common Properties/Common Events
+## Common Attributes/Common Events
 
-Common Properties: Supports common properties.
+Common Attributes: Supports common attributes.
 
 Common Events: Fully supported.
 
-## Component Properties
+## Component Attributes
 
 ### func mesh(Array\<Float64>, UInt32, UInt32)
 
@@ -68,7 +68,7 @@ Common Events: Fully supported.
 public func mesh(array: Array<Float64>, column: UInt32, row: UInt32): This
 ```
 
-**Function:** Sets mesh deformation data, defines a grid based on the given number of columns and rows, and uses a coordinate array to perform grid distortion/sampling transformation on the content.
+**Function:** Sets mesh deformation data, defining a grid by the given number of columns and rows, and using a coordinate array to perform mesh distortion/sampling transformation on the content.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +78,7 @@ public func mesh(array: Array<Float64>, column: UInt32, row: UInt32): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| array | Array\<Float64> | Yes | - | An array of length (column + 1) * (row + 1) * 2, which records the vertex positions of the distorted bitmap. The sequence of grid control point coordinates (arranged as [x0, y0, x1, y1, …]). |
+| array | Array\<Float64> | Yes | - | An array of length (column + 1) * (row + 1) * 2, recording the vertex positions of the distorted bitmap. The sequence of grid control point coordinates (arranged as [x0, y0, x1, y1, …]). |
 | column | UInt32 | Yes | - | Number of grid columns. |
 | row | UInt32 | Yes | - | Number of grid rows. |
 
@@ -122,7 +122,7 @@ public abstract class ShapeComponent <: ContainerBase {}
 
 **Since:** 21
 
-**Parent Type:**
+**Parent Types:**
 
 - [ContainerBase](./cj-ui-framework.md#containerbase)
 
@@ -142,7 +142,7 @@ public func antiAlias(value: Bool): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Bool | Yes | - | Whether to enable anti-aliasing (`true` to enable, `false` to disable). |
+| value | Bool | Yes | - | Whether to enable anti-aliasing (`true` enables, `false` disables). |
 
 #### func fill(ResourceColor)
 
@@ -150,7 +150,7 @@ public func antiAlias(value: Bool): This
 public func fill(value: ResourceColor): This
 ```
 
-**Function:** Sets the fill color of the area (invalid values are handled as defaults).
+**Function:** Sets the fill color (invalid values are handled as defaults).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,7 +196,7 @@ public func fillOpacity(value: AppResource): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Opacity resource. |
+| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Opacity resource. |
 
 #### func stroke(ResourceColor)
 
@@ -222,7 +222,7 @@ public func stroke(value: ResourceColor): This
 public func strokeDashArray(value: Array<Length>): This
 ```
 
-**Function:** Sets the dashed line style for the stroke (sequence of line segment and gap lengths).
+**Function:** Sets the stroke dash pattern (sequence of line and gap lengths).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,7 +232,7 @@ public func strokeDashArray(value: Array<Length>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Array of lengths for the dashed pattern, where each element represents the length of a line segment or gap, supporting length units. |
+| value | Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Dash pattern length array, where each element represents the length of a line or gap, supporting length units. |
 
 #### func strokeDashOffset(Length)
 
@@ -240,7 +240,7 @@ public func strokeDashArray(value: Array<Length>): This
 public func strokeDashOffset(value: Length): This
 ```
 
-**Function:** Sets the drawing offset for the starting position of the dashed line.
+**Function:** Sets the drawing offset for the starting position of the dash pattern.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -258,7 +258,7 @@ public func strokeDashOffset(value: Length): This
 public func strokeLineCap(value: LineCapStyle): This
 ```
 
-**Function:** Sets the drawing style for the stroke endpoints.
+**Function:** Sets the drawing style for stroke endpoints.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,7 +294,7 @@ public func strokeLineJoin(value: LineJoinStyle): This
 public func strokeMiterLimit(miterLimit: Float64): This
 ```
 
-**Function:** Sets the miter limit (maximum ratio of the length of the miter to the line width), effective only for miter corner styles.
+**Function:** Sets the miter limit (maximum ratio of miter length to line width), effective only for miter corner styles.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -330,7 +330,7 @@ public func strokeOpacity(value: Float64): This
 public func strokeOpacity(value: AppResource): This
 ```
 
-**Function:** Sets the opacity of the stroke from a resource.
+**Function:** Sets the stroke opacity from a resource.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -340,7 +340,7 @@ public func strokeOpacity(value: AppResource): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](<font color="red" face="bold">please add link</font>) | Yes | - | Opacity resource. |
+| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Opacity resource. |
 
 #### func strokeWidth(Length)
 
@@ -358,22 +358,126 @@ public func strokeWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Stroke width (e.g., vp/px, etc.). |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Stroke width (e.g., vp/px). |
 
-## Example Code
+### class BaseShape
+
+```cangjie
+public abstract class BaseShape {}
+```
+
+**Function:** The parent component for drawing components, describing the common properties supported by all drawing components.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### func fill(ResourceColor)
+
+```cangjie
+public func fill(color: ResourceColor): This
+```
+
+**Function:** Sets the fill color (invalid values are handled as initial values). If set together with the common attribute [foregroundColor](./cj-universal-attribute-foregroundcolor.md#func-foregroundcolorcoloringstrategy), the latter takes effect.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color. Initial value: Color.BLACK. |
+
+#### func height(Length)
+
+```cangjie
+public func height(height: Length): This
+```
+
+**Function:** Sets the component height.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component height.<br>Unit: vp. |
+
+#### func offset(Length, Length)
+
+```cangjie
+public func offset(x!: Length, y!: Length): This
+```
+
+**Function:** Sets the relative offset, shifting the component from its original layout position.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis offset.<br>Unit: vp. |
+| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis offset.<br>Unit: vp. |
+
+#### func size(Length, Length)
+
+```cangjie
+public func size(width!: Length, height!: Length): This
+```
+
+**Function:** Sets the component width and height.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component width.<br>Unit: vp. |
+| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component height.<br>Unit: vp. |
+
+#### func width(Length)
+
+```cangjie
+public func width(width: Length): This
+```
+
+**Function:** Sets the component width.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component width.<br>Unit: vp. |## Sample Code
 
 <!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
-import kit.ArkUI.*
+import ohos.base.*
+import ohos.arkui.component.*
+import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
 @Component
 class EntryView {
     func build() {
-        Column(10) {
+        Column(space: 10) {
             Text("basic")
                 .fontSize(11)
                 .fontColor(0xCCCCCC)
@@ -398,12 +502,12 @@ class EntryView {
             .fill(0x317AF7)
             .stroke(Color.Black)
             .strokeWidth(4)
-            .strokeDashArray([20])```markdown
+            .strokeDashArray([20])
             .strokeDashOffset(10)
             .strokeLineCap(LineCapStyle.Round)
             .strokeLineJoin(LineJoinStyle.Round)
             .antiAlias(true)
-            // Draw a 300*50 rectangle with border at points (0,0) and (-5,-5) of Shape. The reason for setting negative viewport coordinates is that the default drawing start point is at the midpoint of the stroke width, so viewport needs to offset by half stroke width to fully display the border
+            // Draw a 300*50 rectangle with border at points (0, 0) and (-5, -5) in Shape. The reason for setting negative viewport starting coordinates is that the default drawing starting point is at the midpoint of the line width. To fully display the border, the viewport needs to be offset by half the line width.
             Shape() {
                 Rect()
                     .width(300)
@@ -432,7 +536,7 @@ class EntryView {
                 .fontSize(11)
                 .fontColor(0xCCCCCC)
                 .width(320)
-            // Draw a straight path at point (0,-5) of Shape with color 0xEE8443, stroke width 10, and dash gap 20
+            // Draw a straight path at point (0, -5) in Shape, color 0xEE8443, line width 10, dash gap 20
             Shape() {
                 Path()
                     .width(300)
@@ -445,7 +549,7 @@ class EntryView {
             .stroke(0xEE8443)
             .strokeWidth(10)
             .strokeDashArray([20])
-            // Draw a straight path at point (0,-5) of Shape with color 0xEE8443, stroke width 10, dash gap 20, and left offset 10
+            // Draw a straight path at point (0, -5) in Shape, color 0xEE8443, line width 10, dash gap 20, offset left by 10
             Shape() {
                 Path()
                     .width(300)
@@ -459,7 +563,7 @@ class EntryView {
             .strokeWidth(10)
             .strokeDashArray([20])
             .strokeDashOffset(10)
-            // Draw a straight path at point (0,-5) of Shape with color 0xEE8443, stroke width 10, and opacity 0.5
+            // Draw a straight path at point (0, -5) in Shape, color 0xEE8443, line width 10, opacity 0.5
             Shape() {
                 Path()
                     .width(300)
@@ -472,7 +576,7 @@ class EntryView {
             .stroke(0xEE8443)
             .strokeWidth(10)
             .strokeOpacity(0.5)
-            // Draw a straight path at point (0,-5) of Shape with color 0xEE8443, stroke width 10, dash gap 20, and rounded line ends
+            // Draw a straight path at point (0, -5) in Shape, color 0xEE8443, line width 10, dash gap 20, line ends styled as semicircles
             Shape() {
                 Path()
                     .width(300)
@@ -486,7 +590,7 @@ class EntryView {
             .strokeWidth(10)
             .strokeDashArray([20])
             .strokeLineCap(LineCapStyle.Round)
-            // Draw a closed path at point (-20,-5) of Shape with fill color 0x317AF7, stroke width 10, border color 0xEE8443, and sharp corners (default)
+            // Draw a closed path at point (-20, -5) in Shape, color 0x317AF7, line width 10, border color 0xEE8443, corner style sharp (default)
             Shape() {
                 Path()
                     .width(200)
@@ -500,11 +604,10 @@ class EntryView {
             .stroke(0xEE8443)
             .strokeWidth(10)
             .strokeLineJoin(LineJoinStyle.Miter)
-            .strokeMiterLimit(5)
+            .strokeMiterLimit(5.0)
         }.width(100.percent).margin(top: 15)
     }
 }
 ```
 
 ![shape2](./figures/shape2.png)
-```

@@ -1,6 +1,6 @@
 # Explicit Animation (animateTo)
 
-Provides a global `animateTo` explicit animation interface to specify transition effects for state changes caused by closure code. Similar to [property animation](./cj-animation-animation.md), layout animations that change width/height will directly transition to the final state. This applies to content such as text and [Canvas](./cj-canvas-drawing-canvas.md) elements. To make content follow width/height changes, use the [renderFit](./cj-universal-attribute-renderfit.md) attribute configuration.
+Provides a global `animateTo` explicit animation interface to specify transition effects for state changes caused by closure code. Similar to [property animation](./cj-animation-animation.md), layout-based animations that change width/height will directly display the final state for content (e.g., text, [Canvas](./cj-canvas-drawing-canvas.md) content). To make content follow width/height changes, use the [renderFit](./cj-universal-attribute-renderfit.md) attribute configuration.
 
 ## Import Module
 
@@ -25,7 +25,7 @@ public func animateTo(value: AnimateParam, event: VoidCallback): Unit
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | animation | [AnimateParam](./cj-common-types.md#class-animateparam) | Yes | - | Parameters for setting animation effects. |
-| callback | [VoidCallback](<font color="red" face="bold">please add link</font>) | Yes | - | The closure function specifying the animation. State changes within this closure will automatically trigger transition animations. |
+| callback | VoidCallback | Yes | - | The closure function specifying the animation. State changes within this closure will automatically trigger transition animations. |
 
 ## class ExpectedFrameRateRange
 
@@ -58,7 +58,7 @@ public var expected: Int32
 
 **Type:** Int32
 
-**Read/Write:** Read-Write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +74,7 @@ public var max: Int32
 
 **Type:** Int32
 
-**Read/Write:** Read-Write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +90,7 @@ public var min: Int32
 
 **Type:** Int32
 
-**Read/Write:** Read-Write
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,7 +131,9 @@ This example demonstrates creating an animation effect when a component appears 
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
+import kit.PerformanceAnalysisKit.Hilog
 
 @Entry
 @Component
@@ -149,15 +151,15 @@ class EntryView {
                 .margin(30)
                 .onClick(
                     {
-                        =>
+                       evt =>
                         if (this.isShow) {
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 2000,
                                     curve: Curve.EaseOut,
                                     iterations: 3,
                                     playMode: PlayMode.Normal,
-                                    onFinish: {=> AppLog.info("play end")}
+                                    onFinish: {=> Hilog.info(0, "cangjie", "play end")}
                                 ),
                                 {
                                     =>
@@ -166,7 +168,7 @@ class EntryView {
                                 }
                             )
                         } else {
-                            animateTo(
+                            getUIContext().animateTo(
                                 AnimateParam(),
                                 {
                                     =>
@@ -183,14 +185,14 @@ class EntryView {
                 .rotate(x: 0.0, y: 0.0, z: 1.0, angle: this.rotateAngle)
                 .onClick(
                     {
-                        => animateTo(
+                       evt => getUIContext().animateTo(
                             AnimateParam(
                                 duration: 1200,
                                 curve: Curve.Friction,
                                 delay: 500,
                                 iterations: -1, // -1 means infinite loop
                                 playMode: PlayMode.Alternate,
-                                onFinish: {=> AppLog.info("play end")},
+                                onFinish: {=> Hilog.info(0, "cangjie", "play end")},
                                 expectedFrameRateRange: ExpectedFrameRateRange(
                                     min: 10,
                                     max: 120,
@@ -218,6 +220,7 @@ This example demonstrates how to make a component disappear after the animation 
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
+import ohos.arkui.ui_context.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -235,10 +238,10 @@ class EntryView {
                     .margin(50)
                     .width(200)
                     .height(this.heightSize)
-                    .backgroundColor(Color.BLUE)
+                    .backgroundColor(Color.Blue)
                     .onClick(
                         {
-                            evt => animateTo(
+                            evt => getUIContext().animateTo(
                                 AnimateParam(
                                     duration: 2000,
                                     curve: Curve.EaseOut,

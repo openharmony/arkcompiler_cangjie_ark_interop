@@ -1,6 +1,6 @@
 # Refresh
 
-A container component that enables pull-down operations and displays refresh animation effects.
+A container component that enables pull-to-refresh operations and displays refresh animations.
 
 ## Import Module
 
@@ -30,7 +30,7 @@ public init(value: RefreshOptions, child: () -> Unit)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [RefreshOptions](#class-refreshoptions) | Yes | - | Sets parameters for component refresh. |
+| value | [RefreshOptions](#class-refreshoptions) | Yes | - | Sets parameters for component refresh behavior. |
 | child | ()->Unit | Yes | - | Declares the container's child component. |
 
 ## Common Attributes/Common Events
@@ -75,7 +75,7 @@ public func onStateChange(callback: (RefreshStatus) -> Unit): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | ([RefreshStatus](./cj-common-types.md#enum-refreshstatus))->Unit | Yes | - | Refresh status. |
+| callback | ([RefreshStatus](./cj-common-types.md#enum-refreshstatus))->Unit | Yes | - | Refresh state. |
 
 ## Basic Type Definitions
 
@@ -90,7 +90,7 @@ public class RefreshOptions {
 }
 ```
 
-**Function:** Used to set Refresh component parameters.
+**Function:** Used to configure Refresh component parameters.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +106,7 @@ public var changeEvent:(Bool) -> Unit
 
 **Type:** (Bool)->Unit
 
-**Read-Write Capability:** Readable and Writable
+**Read-Write Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,11 +118,11 @@ public var changeEvent:(Bool) -> Unit
 public var refreshing: Bool
 ```
 
-**Function:** Indicates whether the current component is refreshing.
+**Function:** Indicates whether the component is currently refreshing.
 
 **Type:** Bool
 
-**Read-Write Capability:** Readable and Writable
+**Read-Write Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,7 +180,6 @@ import ohos.arkui.state_macro_manage.*
 import std.collection.*
 import std.time.*
 import std.sync.*
-import ohos.concurrency.*
 
 class MyDataSource <: IDataSource<Int64> {
     public MyDataSource(let data_: ArrayList<Int64>) {}
@@ -240,7 +239,7 @@ class EntryView {
                 .margin(top: 20.vp)
                 .id("OnRefreshText")
 
-            Refresh(RefreshParams(refreshing: @Binder(isRefreshing))) {
+            Refresh(RefreshOptions(refreshing: @Binder(isRefreshing))) {
                 Column {
                     LazyForEach(
                         myDataSource,
@@ -261,9 +260,6 @@ class EntryView {
                 .width(100.percent)
                 .height(100.percent)
                 .id("refresh")
-                .pullDownRatio(this.ratio)
-                .pullToRefresh(true)
-                .refreshOffset(16)
                 .onRefreshing(
                     {
                         =>
@@ -287,7 +283,6 @@ class EntryView {
                             case _ => ""
                         }
                 })
-                .onOffsetChange({offset: Float64 => this.ratio = 0.75})
                 .backgroundColor(0x89CFF0)
             }
 

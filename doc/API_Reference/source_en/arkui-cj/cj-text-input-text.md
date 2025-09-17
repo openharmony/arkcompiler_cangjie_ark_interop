@@ -10,7 +10,7 @@ import kit.ArkUI.*
 
 ## Child Components
 
-Can contain child components such as [Span](./cj-text-input-span.md#span), [ImageSpan](./cj-text-input-imagespan.md#imagespan), and [SymbolSpan](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-symbol.md#图标小符号(SymbolGlyph/SymbolSpan)).
+Can contain [Span](./cj-text-input-span.md#span) and [ImageSpan](./cj-text-input-imagespan.md#imagespan) child components.
 
 ## Creating the Component
 
@@ -24,53 +24,53 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content, referencing system or application resources. |
-| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** The controller for the Text component. |
+| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content, referencing system resources or application resources. |
+| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** Controller for the Text component. |
 
 ### init(ResourceStr, TextController, () -> Unit)
 
 ```cangjie
-public init(content: ResourceStr, controller!: TextController = TextController(), chid!: () -> Unit)
+public init(content: ResourceStr, controller!: TextController = TextController(), child!: () -> Unit)
 ```
 
 **Function:** Creates a Text component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content. If the Span child component is included and no attribute string is set, this does not take effect, and the Span content is displayed instead. In this case, the Text component's styles do not apply.<br/>Default: ''. |
-| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** The controller for the Text component. |
-| chid | () -> Unit | Yes | - | Child components of the Text component. |
+| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content. Does not take effect when containing Span child components without attribute strings, displaying Span content instead, and the Text component's styles will not apply.<br/>Initial value: ''. |
+| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** Controller for the Text component. |
+| child | () -> Unit | No | { => } | Child components of the Text component. |
 
 ### init(TextController, () -> Unit)
 
 ```cangjie
-public init(controller!: TextController = TextController(), chid!: () -> Unit)
+public init(controller!: TextController = TextController(), child!: () -> Unit)
 ```
 
 **Function:** Creates a Text component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** The controller for the Text component. |
-| chid | () -> Unit | Yes | - | Child components of the Text component. |
+| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** Controller for the Text component. |
+| child | () -> Unit | Yes | - | Child components of the Text component. |
 
 ### init(TextController)
 
@@ -82,19 +82,19 @@ public init(controller!: TextController = TextController())
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** The controller for the Text component. |
+| controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** Controller for the Text component. |
 
-## Common Attributes/Events
+## Universal Attributes/Events
 
-Common Attributes: All supported.
+Universal Attributes: All supported.
 
-Common Events: All supported.
+Universal Events: All supported.
 
 ## Component Attributes
 
@@ -108,39 +108,39 @@ public func baselineOffset(value: Length): This
 
 > **Note:**
 >
-> - Positive values shift content upward; negative values shift it downward.
-> - If set as a percentage, the default value is displayed.
+> - Positive values shift the content upward, negative values shift it downward.
+> - When set as a percentage, the default value is displayed.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The baseline offset for text. If set as a percentage, the default value is displayed.<br>Default: 0. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Baseline offset for text. When set as a percentage, the default value is displayed.<br>Initial value: 0. |
 
 ### func decoration(TextDecorationType, ResourceColor, TextDecorationStyle)
 
 ```cangjie
 public func decoration(decorationType!: TextDecorationType, color!: ResourceColor,
-    decorationStyle!: TextDecorationStyle = TextDecorationStyle.SOLID): This
+    decorationStyle!: TextDecorationStyle = TextDecorationStyle.Solid): This
 ```
 
-**Function:** Sets the text decoration style and color.
+**Function:** Sets the text decoration line style and its color.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | **Named parameter.** The text decoration style.<br>Default: TextDecorationType.None. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | **Named parameter.** The text decoration color.<br>Default: Color.Black. |
-| decorationStyle | [TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle) | No | TextDecorationStyle.SOLID | **Named parameter.** The text decoration style. |
+| decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | **Named parameter.** Text decoration line style.<br>Initial value: TextDecorationType.None. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | **Named parameter.** Text decoration line color.<br>Initial value: Color.Black. |
+| decorationStyle | [TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle) | No | TextDecorationStyle.Solid | **Named parameter.** Text decoration line style. |
 
 ### func fontColor(ResourceColor)
 
@@ -152,13 +152,13 @@ public func fontColor(value: ResourceColor): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the font color using resource references.<br>Default: 'e6182431'. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the font color using resource references.<br>Initial value: 'e6182431'. |
 
 ### func fontFamily(ResourceStr)
 
@@ -170,13 +170,13 @@ public func fontFamily(value: ResourceStr): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The font family list. Default font: 'HarmonyOS Sans'. |
+| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font family list. Default font: 'HarmonyOS Sans'. |
 
 ### func fontSize(Length)
 
@@ -188,13 +188,13 @@ public func fontSize(value: Length): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The font size. Percentage units are not supported.<br>Default: 16.fp. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. Percentage units are not supported.<br>Initial value: 16.fp. |
 
 ### func fontStyle(FontStyle)
 
@@ -206,13 +206,13 @@ public func fontStyle(value: FontStyle): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [FontStyle](./cj-common-types.md#enum-fontstyle) | Yes | - | The font style.<br>Default: FontStyle.Normal. |
+| value | [FontStyle](./cj-common-types.md#enum-fontstyle) | Yes | - | Font style.<br>Initial value: FontStyle.Normal. |
 
 ### func fontWeight(FontWeight)
 
@@ -220,17 +220,17 @@ public func fontStyle(value: FontStyle): This
 public func fontWeight(value: FontWeight): This
 ```
 
-**Function:** Sets the font weight of the text. Setting this too high may cause truncation in different fonts.
+**Function:** Sets the font weight of the text. Setting too large a value may cause truncation in different fonts.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [FontWeight](./cj-common-types.md#enum-fontweight) | Yes | - | The font weight of the text.<br>Default: FontWeight.Normal. |
+| value | [FontWeight](./cj-common-types.md#enum-fontweight) | Yes | - | Font weight of the text.<br>Initial value: FontWeight.Normal. |
 
 ### func lineHeight(Length)
 
@@ -242,13 +242,13 @@ public func lineHeight(value: Length): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The line height of the text. If set to 0 or less, the line height is not constrained and adapts to the font size. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Line height of the text. When set to a value ≤ 0, the line height is not restricted and adapts to the font size. |
 
 ### func lineSpacing(Length)
 
@@ -256,17 +256,17 @@ public func lineHeight(value: Length): This
 public func lineSpacing(value: Length): This
 ```
 
-**Function:** Sets the line spacing of the text. If set to 0 or less, the default value of 0 is used.
+**Function:** Sets the line spacing of the text. When set to a value ≤ 0, the default value of 0 is used.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The line spacing of the text.<br>Default: 0. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Line spacing of the text.<br>Initial value: 0. |
 
 ### func maxFontSize(Length)
 
@@ -278,19 +278,19 @@ public func maxFontSize(value: Length): This
 
 > **Note:**
 >
-> - Must be used in conjunction with [minFontSize](#func-minfontsizelength) and [maxLines](#func-maxlinesint32) or layout size constraints. Setting this alone has no effect and does not apply to child components or attribute strings.
-> - When adaptive font size is active, the fontSize setting does not apply.
-> - If maxFontSize is 0 or less, adaptive font size is disabled, and the value set in [fontSize](#func-fontsizelength) takes effect (or its default value if not set).
+> - Must be used in conjunction with [minFontSize](#func-minfontsizelength) and [maxLines](#func-maxfontsizelength) or layout size constraints. Does not take effect when used alone and does not apply to child components or attribute strings.
+> - When adaptive font size is active, the fontSize setting does not take effect.
+> - When maxFontSize is ≤ 0, adaptive font size is disabled, and the value set in [fontSize](#func-fontsizelength) takes effect. If not set, the default value applies.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The maximum display font size for the text. Unit: fp. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Maximum display font size for the text. Unit: fp. |
 
 ### func maxLines(Int32)
 
@@ -306,13 +306,13 @@ public func maxLines(value: Int32): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Int32 | Yes | - | The maximum number of lines for the text. |
+| value | Int32 | Yes | - | Maximum number of lines for the text. |
 
 ### func minFontSize(Length)
 
@@ -324,19 +324,19 @@ public func minFontSize(value: Length): This
 
 > **Note:**
 >
-> - Must be used in conjunction with [maxFontSize](#func-maxfontsizelength) and [maxLines](#func-maxlinesint32) or layout size constraints. Setting this alone has no effect and does not apply to child components or attribute strings.
-> - When adaptive font size is active, the fontSize setting does not apply.
-> - If minFontSize is 0 or less, adaptive font size is disabled, and the value set in [fontSize](#func-fontsizelength) takes effect (or its default value if not set).
+> - Must be used in conjunction with [maxFontSize](#func-maxfontsizelength) and [maxLines](#func-maxlinesint32) or layout size constraints. Does not take effect when used alone and does not apply to child components or attribute strings.
+> - When adaptive font size is active, the fontSize setting does not take effect.
+> - When minFontSize is ≤ 0, adaptive font size is disabled, and the value set in [fontSize](#func-fontsizelength) takes effect. If not set, the default value applies.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The minimum display font size for the text. Unit: fp. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Minimum display font size for the text. Unit: fp. |
 
 ### func textAlign(TextAlign)
 
@@ -349,7 +349,7 @@ public func textAlign(value: TextAlign): This
 > **Note:**
 >
 > - The text paragraph width fills the Text component width.
-> - The vertical position of the text paragraph can be controlled using the [align](./cj-universal-attribute-location.md#func-alignalignment) attribute. However, the horizontal position cannot be controlled via the align attribute in this component. The specific effects are as follows:
+> - The vertical position of the text paragraph can be controlled using the [align](./cj-universal-attribute-location.md#func-alignalignment) attribute. However, the horizontal position cannot be controlled via the align attribute in this component. Specific effects are as follows:
 Alignment.TopStart, Alignment.Top, Alignment.TopEnd: Content aligns to the top.
 Alignment.Start, Alignment.Center, Alignment.End: Content is vertically centered.
 Alignment.BottomStart, Alignment.Bottom, Alignment.BottomEnd: Content aligns to the bottom.
@@ -357,13 +357,13 @@ Alignment.BottomStart, Alignment.Bottom, Alignment.BottomEnd: Content aligns to 
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [TextAlign](./cj-common-types.md#enum-textalign) | Yes | - | The text alignment for multiline text.<br>Default: TextAlign.Start. |
+| value | [TextAlign](./cj-common-types.md#enum-textalign) | Yes | - | Text alignment for multiline text.<br>Initial value: TextAlign.Start. |
 
 ### func textCase(TextCase)
 
@@ -375,13 +375,13 @@ public func textCase(value: TextCase): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [TextCase](./cj-common-types.md#enum-textcase) | Yes | - | The text case.<br>Default: TextCase.Normal. |
+| value | [TextCase](./cj-common-types.md#enum-textcase) | Yes | - | Text case.<br>Initial value: TextCase.Normal. |
 
 ### func textOverflow(TextOverflow)
 
@@ -389,27 +389,22 @@ public func textCase(value: TextCase): This
 public func textOverflow(value: TextOverflow): This
 ```
 
-**Function:** Sets the display method for overflow text.
+**Function:** Sets the display mode for text overflow.
 
 > **Note:**
 >
-> - Text truncation is character-based. For example, English words are truncated as whole units. To truncate by letters, add zero-width spaces (\u200B) between letters. From API version 11, it is recommended to use the wordBreak attribute set to WordBreak.BREAK_ALL for letter-based truncation.
-> - When overflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflow.Ellipsis, it must be used with maxLines. Setting it alone has no effect. TextOverflow.None and TextOverflow.Clip have the same effect.
-> - When overflow is set to TextOverflow.MARQUEE:
-Text scrolls within a single line.
-The [maxLines](#func-maxlinesint32) and [copyOption](./cj-text-input-search.md#func-copyoptioncopyoptions) attributes do not apply.
-The Text component's [clip](./cj-universal-attribute-shapclip.md#func-clipbool) attribute defaults to true.
-The [textAlign](#func-textaligntextalign) attribute behaves as follows: When text cannot scroll, textAlign applies; when text can scroll, textAlign does not apply.
+> - Text truncation is character-based. For example, English words are truncated as whole units. To truncate by letters, add a zero-width space (\u200B) between letters. From API version 11, it is recommended to use the wordBreak attribute set to WordBreak.BREAK_ALL for letter-based truncation.
+> - When overflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflow.Ellipsis, it must be used with maxLines. Does not take effect when used alone. Setting TextOverflow.None has the same effect as TextOverflow.Clip.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Since:** 21
+**Initial Version:** 21
 
 **Parameters:**
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [TextOverflow](./cj-common-types.md#enum-textoverflow) | Yes | - | The display method for overflow text. Must be used with maxLines; setting it alone has no effect.<br>Default: TextOverflow.Clip. |## Basic Type Definitions
+| value | [TextOverflow](./cj-common-types.md#enum-textoverflow) | Yes | - | Display mode for text overflow. Must be used with maxLines. Does not take effect when used alone.<br>Initial value: TextOverflow.Clip. |## Basic Type Definitions
 
 ### class ShadowOptions
 
@@ -448,7 +443,7 @@ public var color: ResourceColor
 
 **Type:** [ResourceColor](cj-common-types.md#interface-resourcecolor)
 
-**Access:** Read-write
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,7 +459,7 @@ public var fill: Bool
 
 **Type:** Bool
 
-**Access:** Read-write
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -480,7 +475,7 @@ public var offsetX: Float64
 
 **Type:** Float64
 
-**Access:** Read-write
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -496,7 +491,7 @@ public var offsetY: Float64
 
 **Type:** Float64
 
-**Access:** Read-write
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -512,7 +507,7 @@ public var radius: Float64
 
 **Type:** Float64
 
-**Access:** Read-write
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -528,7 +523,7 @@ public var shadowType: ShadowType
 
 **Type:** [ShadowType](cj-common-types.md#enum-shadowtype)
 
-**Access:** Read-write
+**Readable/Writable:** Readable and writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -555,7 +550,7 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | radius | Float64 | Yes | - | Sets the blur radius of the shadow. |
 | shadowType | [ShadowType](cj-common-types.md#enum-shadowtype) | No | ShadowType.Color | Sets the shadow type. |
@@ -572,7 +567,7 @@ public class TextController {
 }
 ```
 
-**Function:** Controller for Text components.
+**Function:** Controller for the Text component.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -596,7 +591,7 @@ public init()
 public func closeSelectionMenu(): Unit
 ```
 
-**Function:** Closes the custom selection menu or system default selection menu.
+**Function:** Closes the custom selection menu or the system default selection menu.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -622,7 +617,7 @@ class EntryView {
     @State
     var message: String = "Hello"
     let controller: TextController = TextController()
-    @State var shadowOptionsArray: Array<ShadowOptions> = [ShadowOptions(radius: 10.0), ShadowOptions(radius: 10.0, shadowType: ShadowType.BLUR, color: Color.Red, offsetX: 1.0, offsetY: 1.0, fill: true)]
+    @State var shadowOptionsArray: Array<ShadowOptions> = [ShadowOptions(radius: 10.0), ShadowOptions(radius: 10.0, shadowType: ShadowType.Blur, color: Color.Red, offsetX: 1.0, offsetY: 1.0, fill: true)]
     @Builder func LongPressTextCustomMenu() {
         Column() {
             Button('LongPress')
@@ -639,37 +634,6 @@ class EntryView {
         Column() {
             Button('Select')
         }
-    }
-
-    func onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
-        let items : ArrayList<TextMenuItem>=ArrayList<TextMenuItem>()
-        for (item in menuItems) {
-            if (item.id.equals(TextMenuItemId.CUT) || item.id.equals(TextMenuItemId.COPY) || item
-                .id
-                .equals(TextMenuItemId.SELECT_ALL)) {
-                items.add(item)
-            }
-        }
-        let customItem1 = TextMenuItem(content: "custom1", icon: @r(app.media.startIcon),
-            id: TextMenuItemId.of("customItem1"))
-        let customItem2 = TextMenuItem(content: "custom2", icon: @r(app.media.startIcon),
-            id: TextMenuItemId.of("customItem2"))
-        items.add(customItem1)
-        items.add(customItem2)
-        return items.toArray()
-    }
-
-    func onMenuItemClick(menuItem: TextMenuItem, start: Int32, end: Int32): Bool {
-        if (menuItem.id.equals(TextMenuItemId.CUT)) {
-            return true
-        } else if (menuItem.id.equals(TextMenuItemId.COPY)) {
-            return false
-        } else if (menuItem.id.equals(TextMenuItemId.of("customItem1"))) {
-            return true
-        } else if (menuItem.id.equals(TextMenuItemId.of("customItem2"))) {
-            return true
-        }
-        return false
     }
 
     func build() {
@@ -707,7 +671,7 @@ class EntryView {
                     .maxLines(1).id("textComponent5")
                     .baselineOffset(@r(app.string.baselineOffset))
                     .fontColor(@r(app.color.blue_23C452))
-                //Set display method when text overflows
+                //Set display method when text is too long
                 Text(
                     "This is the text with the height adaptive policy set.This is the text with the height adaptive policy set"
                 )
@@ -727,45 +691,35 @@ class EntryView {
                     .fontSize(@r(app.string.font_size))
                     .textOverflow(TextOverflow.None)
                     .textCase(TextCase.LowerCase)
-                //Touch hot zone settings
+                //Set touch hot zone
                 Text("Hello")
                     .responseRegion(Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent))
-                    .responseRegionArray([Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
+                    .responseRegion([Rectangle(x: 0.vp, y: 100.percent, width: 100.percent, height: 100.percent),Rectangle(x: 100.percent, y: 0.vp, width: 50.percent, height: 100.percent)])
                 Text('This is the text content with given settings. This is the text content with given settings')
                     .baselineOffset(10)
-                    .copyOption(MyCopyOptions.InApp)
-                    .decoration(decorationType: TextDecorationType.Underline, color: Color.Red, decorationStyle: TextDecorationStyle.DOTTED)
-                    .draggable(false)
-                    .ellipsisMode(EllipsisMode.CENTER)
+                    .decoration(decorationType: TextDecorationType.Underline, color: Color.Red, decorationStyle: TextDecorationStyle.Dotted)
                     .fontColor(Color.Red)
                     .fontFamily("HarmonyOS Sans")
-                    .fontFeature('\"ss01\" on')
                     .fontSize(10.fp)
                     .fontStyle(FontStyle.Italic)
                     .fontWeight(FontWeight.Bolder)
-                    .halfLeading(true)
-                    .letterSpacing(3)
-                    .lineBreakStrategy(LineBreakStrategy.HIGH_QUALITY)
                     .lineHeight(40)
                     .lineSpacing(20)
                     .maxLines(1)
-                    .maxFontScale(5.0)
-                    .minFontScale(0.5)
-                    .selection(0, 1)
                     .textAlign(TextAlign.Center)
                     .textCase(TextCase.LowerCase)
-                    .textIndent(20)
                     .textOverflow(TextOverflow.None)
-                    .textSelectable(TextSelectable.SELECTABLE_FOCUSABLE)
-                    .textShadow(shadowOptionsArray)
                     .id("TextGivenSetting")
-                //Display text style effects with given settings
+                //Display text style effects
                 Text('This is the text content with given font settings.')
-                    .font(TextFont(size: 15, weight: FontWeight.Bolder, family: 'HarmonyOS Sans', style: FontStyle.Italic))
-                    .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red, decorationStyle: TextDecorationStyle.DASHED)
+                    .size(width:15, height: 15)
+                    .fontWeight(FontWeight.Bolder)
+                    .fontFamily('HarmonyOS Sans')
+                    .fontStyle(FontStyle.Italic)
+                    .decoration(decorationType: TextDecorationType.LineThrough, color: Color.Red, decorationStyle: TextDecorationStyle.Dashed)
                     .textCase(TextCase.UpperCase)
                     .id("TextGivenFont")
-                //Set text effects using resource references and display
+                //Set text effects using resource calls and display
                 Text(@r(app.string.module_desc))
                     .fontSize(@r(app.string.font_size))
                     .maxFontSize(@r(app.string.font_size))
@@ -774,93 +728,24 @@ class EntryView {
                     .lineHeight(@r(app.string.line_height))
                     .baselineOffset(@r(app.string.baselineOffset))
                     .fontColor(@r(app.color.blue_23C452))
-                    .textShadow(ShadowOptions(radius: 10.0, shadowType: ShadowType.COLOR, color: @r(app.color.red_color)))
                     .id("TextResource")
-                //Set support for card-sensitive privacy information
-                Text('PrivacySensitive').privacySensitive(true).id("PrivacySensitive")
-                //Set text recognition
-                Text('Phone number: +86 xxxxxxxxxxxx' + '\n' + 'Link: xxx.xxxxxx.xxx' + '\n' + 'Email: xxx@xxxxxx.xxx' + '\n' +'Address: xxxxxxxxxxxxx' + '\n' + 'Date: October 30, 2024')
-                    .enableDataDetector(true)
-                    .dataDetectorConfig([TextDataDetectorType.EMAIL], onDetectResultUpdate: {_: String => Hilog.info(0,'hilog','Text recognition success callback');}, color: Color.Red,
-                        decorationType: TextDecorationType.LineThrough, decorationColor: Color.Green, decorationStyle: TextDecorationStyle.SOLID)
-                    .id("TextDetectConfig1")
-                Text('Phone number: +86 xxxxxxxxxxxx' + '\n' + 'Link: xxx.xxxxxx.xxx' + '\n' + 'Email: xxx@xxxxxx.xxx' + '\n' +'Address: xxxxxxxxxxxxx' + '\n' + 'Date: October 30, 2024')
-                    .enableDataDetector(true)
-                    .dataDetectorConfig([])
-                    .copyOption(MyCopyOptions.InApp)
-                    .id("TextDetectConfig2")
-                Text('Phone number: +86 xxxxxxxxxxxx' + '\n' + 'Link: xxx.xxxxxx.xxx' + '\n' + 'Email: xxx@xxxxxx.xxx' + '\n' +'Address: xxxxxxxxxxxxx' + '\n' + 'Date: October 30, 2024')
-                    .enableDataDetector(true)
-                    .copyOption(MyCopyOptions.InApp)
-                    .textSelectable(TextSelectable.UNSELECTABLE)
-                    .id("TextDetectConfig3")
 
                 Text('Email: xxx@xxxxxx.com')
-                    .enableDataDetector(true)
-                    .textOverflow(TextOverflow.MARQUEE)
+                    .textOverflow(TextOverflow.None)
                     .id("TextDetectConfig4")
-                //Display font effects with default style
+                //Display default font style effects
                 Text('This is the text content with default settings.')
                     .id("TextDefault1")
-                //Set text copy
-                Text('This is onCopy text content')
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .selection(0, 10)
-                    .onCopy({value: String => Hilog.info(0,'hilog1',"Text onCopy value: ${value}")})
-                    .id("onCopy")
-                Text('This is onTextSelectionChange text content')
-                    .copyOption(MyCopyOptions.InApp)```markdown
-                    .onTextSelectionChange({start: Int32, end: Int32 => Hilog.info(0,'hilog2',"Text onTextSelectionChange start: ${start}, end: ${end}")})
-                    .id("onTextSelectionChange")
-                Text('This is closeSelectionMenu text content', controller: controller)
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(0, 10)
-                    .onTextSelectionChange({start: Int32, end: Int32 => controller.closeSelectionMenu()})
-                    .id("closeSelectionMenu")
-                Text('Text editMenuOptions')
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .editMenuOptions(onCreateMenu, onMenuItemClick)
-                    .id('TextEditMenuOptions')
-                Text('Text BindSelectionMenu')
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .bindSelectionMenu(TextSpanType.TEXT, bind(LongPressTextCustomMenu, this), TextResponseType.LONG_PRESS,
-                        onDisappear: {
-                             => Hilog.info(0,'hilog3','Custom selection menu close callback');
-                            },
-                        onAppear: {
-                            _: Int32, _: Int32 => Hilog.info(0,'hilog4','Custom selection menu popup callback');
-                            }
-                    )
-                    .bindSelectionMenu(TextSpanType.IMAGE, bind(RightClickTextCustomMenu, this), TextResponseType.RIGHT_CLICK)
-                    .bindSelectionMenu(TextSpanType.MIXED, bind(SelectTextCustomMenu, this), TextResponseType.SELECT)
-                    .id("TextBindSelectionMenu")
                 //Set text offset
                 Text('This is the text content with percent baselineOffset.')
                     .baselineOffset(10.percent)
-                    .decoration(decorationType: TextDecorationType.Overline, color: Color.Red, decorationStyle: TextDecorationStyle.DOUBLE)
+                    .decoration(decorationType: TextDecorationType.Overline, color: Color.Red, decorationStyle: TextDecorationStyle.Double)
                     .id("TextBoundaryValue1")
-                //Set text line breaking and wrapping
-                Text('This is the text content over one line line line line line line line line line line line line line line line line line line line line line line line line line with EllipsisMode.START.')
-                    .maxLines(2)
-                    .textOverflow(TextOverflow.Ellipsis)
-                    .ellipsisMode(EllipsisMode.START)
-                    .decoration(decorationType: TextDecorationType.Underline, color: Color.Red, decorationStyle: TextDecorationStyle.WAVY)
-                    .id("TextBoundaryValue2")
-                Text('This is the text content over one line line line line line line line line line line line line line line line line line line line line line line line line line with EllipsisMode.CENTER.')
-                    .maxLines(2)
-                    .textOverflow(TextOverflow.Ellipsis)
-                    .ellipsisMode(EllipsisMode.CENTER)
-                    .id("TextBoundaryValue3")
-                //Demonstrate text size set with percentage
+                //Display text size set in percentage
                 Text('This is the text content with percent fontSize.')
                     .fontSize(10.percent)
                     .id("TextBoundaryValue4")
-                //Demonstrate text compression effect with negative letter spacing
-                Text('This is the text content with -3 letterSpacing.')
-                    .letterSpacing(-3)
-                    .decoration(decorationType: TextDecorationType.None, color: Color.Red)
-                    .id("TextBoundaryValue5")
-                //Demonstrate effect with negative line height
+                //Display effect when text line height is negative
                 Text('This is the text content with -10 lineHeight.')
                     .lineHeight(-10)
                     .fontSize(20)
@@ -868,50 +753,11 @@ class EntryView {
                 Text('This is the text content with -10 lineSpacing.')
                     .lineSpacing(-10)
                     .id("TextBoundaryValue7")
-                Text('This is the text content with selection [3,2].')
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(3, 2)
-                    .id("TextBoundaryValue10")
-                //Set marquee display for overlength text
-                Text('This is the text content with TextOverflow.MARQUEE line line line line line.')
-                    .textOverflow(TextOverflow.MARQUEE)
-                    .maxLines(2)
-                    .copyOption(MyCopyOptions.LocalDevice)
-                    .textAlign(TextAlign.Start)
-                    .id("TextBoundaryValue11")
-                Text('TextOverflow.MARQUEE.')
-                    .textOverflow(TextOverflow.MARQUEE)
-                    .textAlign(TextAlign.End)
-                    .border(width:1).padding(10).width(100.percent)
-                    .id("TextBoundaryValue12")
-                //Set ellipsis for overlength text
+                //Set text to display ellipsis when too long
                 Text("textOverflow line line line line line line line line line line line line line line line line line.")
                     .textOverflow(TextOverflow.Ellipsis)
                     .maxLines(1)
-                    .ellipsisMode(EllipsisMode.CENTER)
                     .id("TextCombine1")
-                //Set text height adaptation policy to prioritize MaxLines
-                Text('This is the text with the height adaptive policy set. This is the text with the height adaptive policy set.')
-                    .minFontSize(10).maxFontSize(30).maxLines(2)
-                    .heightAdaptivePolicy(TextHeightAdaptivePolicy.MAX_LINES_FIRST)
-                    .id("TextCombine2")
-                //Set maximum and minimum display font sizes
-                Text('This is the text with the height adaptive policy set. This is the text with the height adaptive policy set.')
-                    .minFontSize(10)
-                    .maxFontSize(30)
-                    .maxLines(2)
-                    .heightAdaptivePolicy(TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST)
-                    .id("TextCombine3")
-                //Set text height adaptation to prioritize font size reduction
-                Text('This is the text with the height adaptive policy set. This is the text with the height adaptive policy set.')
-                    .minFontSize(10).maxFontSize(30).maxLines(1)
-                    .heightAdaptivePolicy(TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST)
-                    .id("TextCombine4")
-                //Set text to ensure equal line widths in a paragraph without word breaks when possible
-                Text('This is the text with BALANCEDLineBreakStrategyAndWordBreakAll.')
-                    .lineBreakStrategy(LineBreakStrategy.BALANCED)
-                    .wordBreak(WordBreak.BreakAll)
-                    .id("TextCombine5")
                 Text("This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. ")
                     .minFontSize(10)
                     .maxFontSize(30)
@@ -923,42 +769,8 @@ class EntryView {
                     .maxFontSize(30)
                     .maxLines(1)
                     .id("TextCombine7")
-                Text('This is the text content with selection and CopyOptions.None.')
-                    .copyOption(MyCopyOptions.None)
-                    .selection(0, 2)
-                    .id("TextCombine8")
-                Text('This is the text content with selection and TextOverflow.MARQUEE.')
-                    .textOverflow(TextOverflow.MARQUEE)
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(0, 2)
-                    .id("TextCombine9")
-                Text("wordBreak line line line line line line line line linelinelinelineline")
-                    .textOverflow(TextOverflow.Ellipsis).maxLines(1).wordBreak(WordBreak.Normal)
-                    .id("TextCombine10")
-                Text("wordBreaklinelinelinelinelinelinelinelinelinelinelinelineline")
-                    .textOverflow(TextOverflow.Ellipsis).maxLines(1).wordBreak(WordBreak.BreakWord)
-                    .id("TextCombine11")
-                Text("wordBreak line line line line line line line line linelinelinelineline")
-                    .textOverflow(TextOverflow.Ellipsis).maxLines(1).wordBreak(WordBreak.BreakAll)
-                    .id("TextCombine12")
-                Text('This is the text content with selection and textSelectable.UNSELECTABLE.')
-                    .textSelectable(TextSelectable.UNSELECTABLE)
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(0, 2)
-                    .id("TextCombine13")
-                Text('This is the text content with selection.')
-                    .copyOption(MyCopyOptions.InApp)
-                    .selection(-2, 1000)
-                    .id("TextCombine14")
-                Text('This is the text content with TextAlign JUSTIFY and WordBreak BreakWord')
-                    .textAlign(TextAlign.JUSTIFY)
-                    .wordBreak(WordBreak.BreakWord)
-                    .id("TextCombine15")
             }
         }.height(100.percent).width(100.percent)
     }
 }
-```
-
-![text](figures/text.gif)
 ```

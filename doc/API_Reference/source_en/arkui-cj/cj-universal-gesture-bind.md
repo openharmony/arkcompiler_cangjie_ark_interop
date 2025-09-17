@@ -1,6 +1,6 @@
 # Gesture Binding Methods
 
-Bind different types of gesture events to components and set up corresponding response methods.
+Bind different types of gesture events to components and configure event response methods.
 
 ## Import Module
 
@@ -14,11 +14,11 @@ import kit.ArkUI.*
 public operator func !=(other: GestureMask): Bool
 ```
 
-**Function:** Determines whether two enumeration values are not equal.
+**Function:** Determines whether two enumeration values are unequal.
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [GestureMask](#enum-gesturemask) | Yes | - | Another enumeration value to compare. |
 
@@ -26,7 +26,7 @@ public operator func !=(other: GestureMask): Bool
 
 | Type | Description |
 |:----|:----|
-| Bool | Returns `true` if the two enumeration values are not equal, otherwise returns `false`. |
+| Bool | Returns `true` if the two enumeration values are unequal, otherwise returns `false`. |
 
 ## func ==(GestureMask)
 
@@ -38,7 +38,7 @@ public operator func ==(other: GestureMask): Bool
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | other | [GestureMask](#enum-gesturemask) | Yes | - | Another enumeration value to compare. |
 
@@ -64,7 +64,7 @@ public enum GestureMask <: Equatable<GestureMask> {
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parent Type:**
 
@@ -76,11 +76,11 @@ public enum GestureMask <: Equatable<GestureMask> {
 IgnoreInternal
 ```
 
-**Function:** Blocks gestures from child components, including system-built-in gestures on child components. For example, when a child component is a List component, its built-in swipe gesture will also be blocked. If the parent and child components have overlapping areas, only the overlapping part will be blocked.
+**Function:** Blocks gestures from child components, including system-built-in gestures on child components. For example, when a child component is a List component, its built-in swipe gesture will also be blocked. If there is partial overlap between parent and child components, only the overlapping area will be blocked.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 #### Normal
 
@@ -92,4 +92,4 @@ Normal
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21

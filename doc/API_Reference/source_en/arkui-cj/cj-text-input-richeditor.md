@@ -8,7 +8,7 @@ A component that supports mixed text-image layout and interactive text editing.
 import kit.ArkUI.*
 ```
 
-## Child Components
+## Subcomponents
 
 None
 
@@ -32,7 +32,7 @@ public init(controller: RichEditorController)
 |:---|:---|:---|:---|:---|
 | controller | [RichEditorController](#class-richeditorcontroller) | Yes | - | Rich text controller. |
 
-## Common Attributes/Common Events
+## Common Attributes/Events
 
 Common Attributes: All supported.
 
@@ -61,7 +61,7 @@ public func aboutToDelete(callback: Callback<RichEditorDeleteValue, Bool>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorDeleteValue](#class-richeditordeletevalue),Bool> | Yes | - | Callback function triggered before the input method deletes content.<br>[RichEditorDeleteValue](#class-richeditordeletevalue): Text Span information where the content to be deleted resides.<br>true: The component performs the delete operation.<br>false: The component does not perform the delete operation. |
+| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorDeleteValue](#class-richeditordeletevalue),Bool> | Yes | - | Callback function triggered before the input method deletes content.<br>[RichEditorDeleteValue](#class-richeditordeletevalue): Text span information where the content to be deleted resides.<br>true: The component performs the delete operation.<br>false: The component does not perform the delete operation. |
 
 ### func aboutToIMEInput(Callback\<RichEditorInsertValue,Bool>)
 
@@ -85,7 +85,7 @@ public func aboutToIMEInput(callback: Callback<RichEditorInsertValue, Bool>): Th
 
 ```cangjie
 public func bindSelectionMenu(
-    spantype!: RichEditorSpanType = RichEditorSpanType.TEXT,
+    spantype!: RichEditorSpanType = RichEditorSpanType.Text,
     content!: CustomBuilder,
     responseType!: ResponseType = ResponseType.LongPress,
     options!: SelectionMenuOptions
@@ -102,10 +102,10 @@ public func bindSelectionMenu(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| spantype | [RichEditorSpanType](#enum-richeditorspantype) | No | RichEditorSpanType.TEXT | **Named parameter.** Specifies the type of the selection menu. |
-| content | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Specifies the content of the selection menu. Use with [@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md) and bind methods. |
-| responseType | [ResponseType](#enum-responsetype) | No | ResponseType.LongPress | **Named parameter.** Specifies the response type of the selection menu. |
-| options | [SelectionMenuOptions](#func-bindselectionmenutextspantype----unit-textresponsetype-int32int32---unit----unit) | Yes | - | **Named parameter.** Specifies the options of the selection menu. |
+| spantype | [RichEditorSpanType](#enum-richeditorspantype) | No | RichEditorSpanType.Text | **Named parameter.** Specifies the type of the selection menu. |
+| content | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Specifies the content of the selection menu. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
+| responseType | [ResponseType](./cj-common-types.md#enum-responsetype) | No | ResponseType.LongPress | **Named parameter.** Specifies the response type of the selection menu. |
+| options | [SelectionMenuOptions](#class-selectionmenuoptions) | Yes | - | **Named parameter.** Specifies the options of the selection menu. |
 
 ### func copyOptions(CopyOptions)
 
@@ -141,7 +141,7 @@ public func customKeyboard(value!: CustomBuilder): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Custom keyboard for the rich text editor. Use with [@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md) and bind methods. |
+| value | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Custom keyboard for the rich text editor. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
 
 ## Component Events
 
@@ -197,13 +197,13 @@ public func onIMEInputComplete(callback: Callback<RichEditorTextSpanResult, Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorTextSpanResult](#class-richeditortextspanresult),Unit> | Yes | - | Callback function triggered after the input method completes input.<br>RichEditorTextSpanResult: Text Span information after the input method completes input. |
+| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorTextSpanResult](#class-richeditortextspanresult),Unit> | Yes | - | Callback function triggered after the input method completes input.<br>RichEditorTextSpanResult: Text span information after the input method completes input. |
 
 **Return Value:**
 
 | Type | Description |
 |:----|:----|
-| [RichEditor](#class-richeditor) | RichEditor instance. |
+| [RichEditor](#richeditor) | RichEditor instance. |
 
 ### func onPaste(PasteEventCallback)
 
@@ -221,7 +221,7 @@ public func onPaste(callback: PasteEventCallback): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [PasteEventCallback](<font color="red" face="bold">please add link</font>) | Yes | - | Callback function triggered before completing paste.<br>PasteEvent: Defines the user paste event. |
+| callback | PasteEventCallback | Yes | - | Callback function triggered before completing paste.<br>PasteEvent: Defines the user paste event. |
 
 ### func onReady(VoidCallback)
 
@@ -257,7 +257,7 @@ public func onSelect(callback: Callback<RichEditorSelection, Unit>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[RichEditorSelection](#class-richeditorselection),Unit> | Yes | - | Callback function triggered after selecting with the left mouse button and releasing it.<br>Triggered after releasing the finger when selecting with a finger.<br>RichEditorSelection: Information about all selected Spans. |
+| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[RichEditorSelection](#class-richeditorselection),Unit> | Yes | - | Callback function triggered when the left mouse button is pressed for selection and released.<br>Triggered when selection is made with a finger and released.<br>RichEditorSelection: Information about all selected spans. |
 
 ## Basic Type Definitions
 
@@ -275,7 +275,7 @@ public class DecorationStyleResult {
 }
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Text decoration line style information returned by the backend.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -291,7 +291,7 @@ public var color: ResourceColor
 
 **Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -303,11 +303,11 @@ public var color: ResourceColor
 public var decorationType: TextDecorationType
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Decoration line type.
 
 **Type:** [TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -322,7 +322,7 @@ public init(
 )
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Function:** Creates a text decoration line style object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,8 +332,8 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | <font color="red" face="bold">please add description</font> |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the entity color after successful text recognition.<br>Default value: '#ff0a59f7'<br>Meta Service API: Supported in meta services starting from API version 12. |
+| decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | Decoration line type. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the entity color after text recognition succeeds.<br>Default: '#ff0a59f7'<br>Meta Service API: Supported in meta services from API version 12. |
 
 ### class PasteEvent
 
@@ -393,7 +393,7 @@ public var direction: RichEditorDeleteDirection
 
 **Type:** [RichEditorDeleteDirection](#enum-richeditordeletedirection)
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -409,7 +409,7 @@ public var length: Int32
 
 **Type:** Int32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -425,7 +425,7 @@ public var offset: Int32
 
 **Type:** Int32
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -437,11 +437,11 @@ public var offset: Int32
 public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
 ```
 
-**Function:** Indicates the specific information of the text or image Spans to be deleted.
+**Function:** Indicates the specific information of the text or image spans to be deleted.
 
-**Type:** ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)>
+**Type:** ArrayList\<RichEditorSpanResult>
 
-**Read/Write Capability:** Readable and Writable
+**Read/Write:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -471,7 +471,7 @@ public init(
 | offset | Int32 | Yes | - | Offset position of the content to be deleted. |
 | direction | [RichEditorDeleteDirection](#enum-richeditordeletedirection) | Yes | - | Direction of the delete operation. |
 | length | Int32 | Yes | - | Length of the content to be deleted. |
-| richEditorDeleteSpans | ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)> | Yes | - | Specific information of the text or image Spans to be deleted. |### class RichEditorImageSpanResult
+| richEditorDeleteSpans | ArrayList\<RichEditorSpanResult> | Yes | - | Specific information of the text or image spans to be deleted. |### class RichEditorImageSpanResult
 
 ```cangjie
 public class RichEditorImageSpanResult <: RichEditorSpanResult {
@@ -480,7 +480,6 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
     public var valueResourceStr: String = ""
     public var imageStyle: RichEditorImageSpanStyleResult = RichEditorImageSpanStyleResult()
     public var offsetInSpan:(Int32, Int32) =(0, 0)
-
 
     public init(
         spanPosition: RichEditorSpanPosition,
@@ -500,7 +499,7 @@ public class RichEditorImageSpanResult <: RichEditorSpanResult {
 
 **Parent Type:**
 
-- [RichEditorSpanResult](<font color="red" face="bold">please add link</font>)
+- RichEditorSpanResult
 
 #### var imageStyle
 
@@ -512,7 +511,7 @@ public var imageStyle: RichEditorImageSpanStyleResult = RichEditorImageSpanStyle
 
 **Type:** [RichEditorImageSpanStyleResult](#class-richeditorimagespanstyleresult)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -528,7 +527,7 @@ public var offsetInSpan:(Int32, Int32) =(0, 0)
 
 **Type:** (Int32,Int32)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -544,7 +543,7 @@ public var spanPosition: RichEditorSpanPosition = RichEditorSpanPosition(0,(0, 0
 
 **Type:** [RichEditorSpanPosition](#class-richeditorspanposition)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -560,7 +559,7 @@ public var valuePixelMap: Option<PixelMap>= None
 
 **Type:** Option\<[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)>
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -576,7 +575,7 @@ public var valueResourceStr: String = ""
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -616,13 +615,13 @@ public init(
 ```cangjie
 public class RichEditorImageSpanStyleResult {
     public var size:(Float64, Float64) =(0.0, 0.0)
-    public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.CENTER
+    public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.Center
     public var objectFit: ImageFit = ImageFit.Auto
     public var layoutStyle: RichEditorLayoutStyle = RichEditorLayoutStyle()
 }
 ```
 
-**Function:** Represents the image style information returned by the backend.
+**Function:** Image style information returned by the backend.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -636,9 +635,9 @@ public var layoutStyle: RichEditorLayoutStyle = RichEditorLayoutStyle()
 
 **Function:** Represents the image layout style.
 
-**Type:** [RichEditorLayoutStyle](#var-layoutStyle)
+**Type:** [RichEditorLayoutStyle](#class-richeditorlayoutstyle)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -654,7 +653,7 @@ public var objectFit: ImageFit = ImageFit.Auto
 
 **Type:** [ImageFit](./cj-common-types.md#enum-imagefit)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -670,7 +669,7 @@ public var size:(Float64, Float64) =(0.0, 0.0)
 
 **Type:** (Float64,Float64)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -679,14 +678,14 @@ public var size:(Float64, Float64) =(0.0, 0.0)
 #### var verticalAlign
 
 ```cangjie
-public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.CENTER
+public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.Center
 ```
 
 **Function:** Represents the vertical alignment of the image.
 
 **Type:** [ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -699,7 +698,6 @@ public class RichEditorInsertValue {
     public var insertOffset: Int32
     public var insertValue: String
 
-
     public init(
         insertOffset: Int32,
         insertValue: String
@@ -707,7 +705,7 @@ public class RichEditorInsertValue {
 }
 ```
 
-**Function:** Represents the inserted text information.
+**Function:** Text insertion information.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -723,7 +721,7 @@ public var insertOffset: Int32
 
 **Type:** Int32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -739,7 +737,7 @@ public var insertValue: String
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -768,6 +766,16 @@ public init(
 | insertOffset | Int32 | Yes | - | Offset position of the inserted text. |
 | insertValue | String | Yes | - | Content of the inserted text. |
 
+### interface RichEditorSpanResult
+
+```cangjie
+public interface RichEditorSpanResult {}
+```
+
+**Function:** Supports mixed text and image layout and interactive text editing component results.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ### class RichEditorSelection
 
 ```cangjie
@@ -775,12 +783,11 @@ public class RichEditorSelection {
     public var selection:(Int32, Int32)
     public var spans: ArrayList<RichEditorSpanResult>
 
-
     public init(selection: (Int32, Int32), spans: ArrayList<RichEditorSpanResult>)
 }
 ```
 
-**Function:** Represents the selected content information.
+**Function:** Selected content information.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -796,7 +803,7 @@ public var selection:(Int32, Int32)
 
 **Type:** (Int32,Int32)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -808,11 +815,11 @@ public var selection:(Int32, Int32)
 public var spans: ArrayList<RichEditorSpanResult>
 ```
 
-**Function:** Represents the Span information.
+**Function:** Represents Span information.
 
-**Type:** ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)>
+**Type:** ArrayList\<RichEditorSpanResult>
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,7 +843,7 @@ public init(selection: (Int32, Int32), spans: ArrayList<RichEditorSpanResult>)
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | selection | (Int32,Int32) | Yes | - | Selection range. |
-| spans | ArrayList\<[RichEditorSpanResult](<font color="red" face="bold">please add link</font>)> | Yes | - | Span information. |
+| spans | ArrayList\<RichEditorSpanResult> | Yes | - | Span information. |
 
 ### class RichEditorSpanPosition
 
@@ -845,7 +852,6 @@ public class RichEditorSpanPosition {
     public var spanIndex: Int32
     public var spanRange:(Int32, Int32)
 
-
     public init(
         spanIndex: Int32,
         spanRange: (Int32, Int32)
@@ -853,7 +859,7 @@ public class RichEditorSpanPosition {
 }
 ```
 
-**Function:** Represents the Span position information.
+**Function:** Span position information.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -869,7 +875,7 @@ public var spanIndex: Int32
 
 **Type:** Int32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -885,7 +891,7 @@ public var spanRange:(Int32, Int32)
 
 **Type:** (Int32,Int32)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write Permission:** Readable and Writable
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -921,7 +927,6 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
     public var textStyle: RichEditorTextStyleResult
     public var offsetInSpan:(Int32, Int32)
 
-
     public init(
         spanPosition: RichEditorSpanPosition,
         value: String,
@@ -931,7 +936,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 }
 ```
 
-**Function:** Backend-returned text style information type.
+**Description:** The text style information type returned by the backend.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -939,7 +944,7 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 
 **Parent Type:**
 
-- [RichEditorSpanResult](<font color="red" face="bold">please add link</font>)
+- RichEditorSpanResult
 
 #### var offsetInSpan
 
@@ -947,11 +952,11 @@ public class RichEditorTextSpanResult <: RichEditorSpanResult {
 public var offsetInSpan:(Int32, Int32)
 ```
 
-**Function:** Indicates the start and end positions of valid content within the text span.
+**Description:** Represents the start and end positions of valid content within the text span.
 
 **Type:** (Int32,Int32)
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -963,11 +968,11 @@ public var offsetInSpan:(Int32, Int32)
 public var spanPosition: RichEditorSpanPosition
 ```
 
-**Function:** Indicates the span position.
+**Description:** Represents the span position.
 
 **Type:** [RichEditorSpanPosition](#class-richeditorspanposition)
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -979,11 +984,11 @@ public var spanPosition: RichEditorSpanPosition
 public var textStyle: RichEditorTextStyleResult
 ```
 
-**Function:** Indicates the text span style information.
+**Description:** Represents the text span style information.
 
 **Type:** [RichEditorTextStyleResult](#class-richeditortextstyleresult)
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -995,11 +1000,11 @@ public var textStyle: RichEditorTextStyleResult
 public var value: String
 ```
 
-**Function:** Indicates the text span content.
+**Description:** Represents the text span content.
 
 **Type:** String
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1017,7 +1022,7 @@ public init(
 )
 ```
 
-**Function:** Creates a RichEditorTextSpanResult.
+**Description:** Creates a RichEditorTextSpanResult.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1043,7 +1048,6 @@ public class RichEditorTextStyleResult {
     public var fontFamily: String
     public var decoration: DecorationStyleResult
 
-
     public init(
         fontColor: String,
         fontSize: Float64,
@@ -1055,7 +1059,7 @@ public class RichEditorTextStyleResult {
 }
 ```
 
-**Function:** Backend-returned text style information.
+**Description:** Text style information returned by the backend.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1067,11 +1071,11 @@ public class RichEditorTextStyleResult {
 public var decoration: DecorationStyleResult
 ```
 
-**Function:** Indicates the text decoration line style and its color.
+**Description:** Represents the text decoration line style and its color.
 
 **Type:** [DecorationStyleResult](#class-decorationstyleresult)
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1083,11 +1087,11 @@ public var decoration: DecorationStyleResult
 public var fontColor: String
 ```
 
-**Function:** Indicates the text color.
+**Description:** Represents the text color.
 
 **Type:** String
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1099,11 +1103,11 @@ public var fontColor: String
 public var fontFamily: String
 ```
 
-**Function:** Indicates the font list.
+**Description:** Represents the font list.
 
 **Type:** String
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1115,11 +1119,11 @@ public var fontFamily: String
 public var fontSize: Float64
 ```
 
-**Function:** Indicates the font size.
+**Description:** Represents the font size.
 
 **Type:** Float64
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1131,11 +1135,11 @@ public var fontSize: Float64
 public var fontStyle: FontStyle
 ```
 
-**Function:** Indicates the font style.
+**Description:** Represents the font style.
 
 **Type:** [FontStyle](./cj-common-types.md#enum-fontstyle)
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1147,11 +1151,11 @@ public var fontStyle: FontStyle
 public var fontWeight: Int32
 ```
 
-**Function:** Indicates the font weight.
+**Description:** Represents the font weight.
 
 **Type:** Int32
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1171,7 +1175,7 @@ public init(
 )
 ```
 
-**Function:** Creates a RichEditorTextStyleResult.
+**Description:** Creates a RichEditorTextStyleResult.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1194,7 +1198,7 @@ public init(
 public class ShadowOptionsResult {}
 ```
 
-**Function:** Text shadow effect.
+**Description:** Text shadow effect.
 
 #### let color
 
@@ -1202,7 +1206,7 @@ public class ShadowOptionsResult {}
 public let color: String
 ```
 
-**Function:** Indicates the shadow color.
+**Description:** Represents the shadow color.
 
 **Type:** String
 
@@ -1214,7 +1218,7 @@ public let color: String
 public let offsetX: Float64
 ```
 
-**Function:** Indicates the X-axis offset of the shadow.
+**Description:** Represents the X-axis offset of the shadow.
 
 **Type:** Float64
 
@@ -1226,7 +1230,7 @@ public let offsetX: Float64
 public let offsetY: Float64
 ```
 
-**Function:** Indicates the Y-axis offset of the shadow.
+**Description:** Represents the Y-axis offset of the shadow.
 
 **Type:** Float64
 
@@ -1238,7 +1242,7 @@ public let offsetY: Float64
 public let radius: Float64
 ```
 
-**Function:** Indicates the shadow blur radius.
+**Description:** Represents the shadow blur radius.
 
 **Type:** Float64
 
@@ -1251,12 +1255,11 @@ public class TextRange {
     public var start: Int32
     public var end: Int32
 
-
     public init(start: Int32, end: Int32)
 }
 ```
 
-**Function:** Text range.
+**Description:** Text range.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1268,11 +1271,11 @@ public class TextRange {
 public var end: Int32
 ```
 
-**Function:** Indicates the end index.
+**Description:** Represents the end index.
 
 **Type:** Int32
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1284,11 +1287,11 @@ public var end: Int32
 public var start: Int32
 ```
 
-**Function:** Indicates the start index.
+**Description:** Represents the start index.
 
 **Type:** Int32
 
-**Access:** Read-write
+**Access:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1301,7 +1304,7 @@ public var start: Int32
 public init(start: Int32, end: Int32)
 ```
 
-**Function:** <font color="red" face="bold">please add description</font>
+**Description:** Creates a text range object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1314,6 +1317,1126 @@ public init(start: Int32, end: Int32)
 |start|Int32|Yes|-|Start index.|
 |end|Int32|Yes|-|End index.|
 
+### class LeadingMarginPlaceholder
+
+```cangjie
+public class LeadingMarginPlaceholder {
+    public var pixelMap: PixelMap
+    public var size:(Length, Length)
+    public init(pixelMap!: PixelMap, size!: (Length, Length))
+}
+```
+
+**Description:** Leading margin placeholder, used to represent the distance between the left side of a text paragraph and the component edge.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var pixelMap
+
+```cangjie
+public var pixelMap: PixelMap
+```
+
+**Description:** Image content.
+
+**Type:** [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)
+
+**Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var size
+
+```cangjie
+public var size:(Length, Length)
+```
+
+**Description:** Image size (percentage values are not supported).
+
+**Type:** ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length), [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))
+
+**Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(PixelMap, (Length,Length))
+
+```cangjie
+public init(pixelMap!: PixelMap, size!: (Length, Length))
+```
+
+**Description:** Creates an object of type LeadingMarginPlaceholder.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Required|Default|Description|
+|:---|:---|:---|:---|:---|
+|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|Yes|-|Image content.|
+|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|Yes|-|Image size (percentage values are not supported).|### class RichEditorBaseController
+
+```cangjie
+public open class RichEditorBaseController {}
+```
+
+**Description:** Base controller class for RichEditor component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### func getCaretOffset()
+
+```cangjie
+public func getCaretOffset(): Int64
+```
+
+**Description:** Gets the current cursor position.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Int64|Current cursor position.|
+
+#### func setCaretOffset(Int64)
+
+```cangjie
+public func setCaretOffset(offset: Int64): Bool
+```
+
+**Description:** Sets the cursor position.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|offset|Int64|Yes|-|Cursor offset position. Fails if out of text range.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Bool|Whether cursor setting succeeded.|
+
+### class RichEditorController
+
+```cangjie
+public class RichEditorController <: RichEditorBaseController {
+    public init()
+}
+```
+
+**Description:** Controller for RichEditor component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parent Class:**
+
+- [RichEditorBaseController](#class-richeditorbasecontroller)
+
+#### init()
+
+```cangjie
+public init()
+```
+
+**Description:** Creates a RichEditorController object.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### func addImageSpan(String, RichEditorImageSpanOptions)
+
+```cangjie
+public func addImageSpan(value!: String, options!: RichEditorImageSpanOptions = RichEditorImageSpanOptions()): Int32
+```
+
+**Description:** Adds image content. If the component cursor is blinking, the cursor position will be updated to after the newly inserted image.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|value|String|Yes|-|Image content.|
+|options|[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|No|RichEditorImageSpanOptions()|Image options.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Int32|Position of the added ImageSpan.|
+
+#### func addImageSpan(AppResource, RichEditorImageSpanOptions)
+
+```cangjie
+public func addImageSpan(value!: AppResource, options!: RichEditorImageSpanOptions = RichEditorImageSpanOptions()): Int32
+```
+
+**Description:** Adds image content. If the component cursor is blinking, the cursor position will be updated to after the newly inserted image.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|Yes|-|Image content.|
+|options|[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|No|RichEditorImageSpanOptions()|Image options.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Int32|Position of the added ImageSpan.|
+
+#### func addTextSpan(ResourceStr, RichEditorTextSpanOptions)
+
+```cangjie
+public func addTextSpan(value!: ResourceStr, options!: RichEditorTextSpanOptions = RichEditorTextSpanOptions()): Int32
+```
+
+**Description:** Adds text content. If the component cursor is blinking, the cursor position will be updated to after the newly inserted text.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|Yes|-|Text content.|
+|options|[RichEditorTextSpanOptions](#class-richeditortextspanoptions)|No|RichEditorTextSpanOptions()|Text options.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|Int32|Position of the added TextSpan.|
+
+#### func closeSelectionMenu()
+
+```cangjie
+public func closeSelectionMenu(): Unit
+```
+
+**Description:** Closes custom selection menu or system default selection menu.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### func deleteSpans(Int32, Int32)
+
+```cangjie
+public func deleteSpans(start!: Int32 = 0, end!: Int32 = Int32.Max): Unit
+```
+
+**Description:** Deletes text and images within specified range.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|start|Int32|No|0|Start position. Defaults to 0 if omitted or negative.|
+|end|Int32|No|Int32.Max|End position. Defaults to end of text if omitted or out of range.|
+
+#### func getSpans(Int32, Int32)
+
+```cangjie
+public func getSpans(start!: Int32 = -1, end!: Int32 = -1): ArrayList<RichEditorSpanResult>
+```
+
+**Description:** Gets Span information.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|start|Int32|No|-1|Start position. Defaults to 0 if omitted or negative.|
+|end|Int32|No|-1|End position. Defaults to infinity if omitted or out of range.|
+
+**Return Value:**
+
+|Type|Description|
+|:----|:----|
+|ArrayList\<[RichEditorSpanResult](#interface-richeditorspanresult)>|Array storing span information.|
+
+#### func updateParagraphStyle(Int32, Int32, RichEditorParagraphStyle)
+
+```cangjie
+public func updateParagraphStyle(start!: Int32 = 0, end!: Int32 = -1, style!: RichEditorParagraphStyle): Unit
+```
+
+**Description:** Updates paragraph style.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|start|Int32|No|0|Start position of text to update style. Defaults to 0 if omitted or negative.|
+|end|Int32|No|-1|End position of text to update style. Defaults to infinity if omitted or out of range.|
+|style|[RichEditorParagraphStyle](#class-richeditorparagraphstyle)|Yes|-|Paragraph style.|
+
+#### func updateSpanStyle(Int32, Int32, RichEditorTextStyle)
+
+```cangjie
+public func updateSpanStyle(start!: Int32 = 0, end!: Int32 = Int32.Max, textStyle!: RichEditorTextStyle): Unit
+```
+
+**Description:** Type representing image offset position and image style information.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|start|Int32|No|0|Start position of text to update style. Defaults to 0 if omitted or negative.|
+|end|Int32|No|Int32.Max|End position of text to update style. Defaults to infinity if omitted or out of range.|
+|textStyle|[RichEditorTextStyle](#class-richeditortextstyle)|Yes|-|Text style.|
+
+#### func updateSpanStyle(Int32, Int32, RichEditorImageSpanStyle)
+
+```cangjie
+public func updateSpanStyle(start!: Int32 = 0, end!: Int32 = Int32.Max, imageStyle!: RichEditorImageSpanStyle): Unit
+```
+
+**Description:** Updates text, image or SymbolSpan style.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|start|Int32|No|0|Start position of text to update style. Defaults to 0 if omitted or negative.|
+|end|Int32|No|Int32.Max|End position of text to update style. Defaults to infinity if omitted or out of range.|
+|imageStyle|[RichEditorImageSpanStyle](#class-richeditorimagespanstyle)|Yes|-|Image style.|
+
+### class RichEditorImageSpanOptions
+
+```cangjie
+public class RichEditorImageSpanOptions {
+    public var offset: Int32
+    public var imageStyle: RichEditorImageSpanStyle
+    public init(
+        offset!: Int32 = Int32.Max,
+        imageStyle!: RichEditorImageSpanStyle = RichEditorImageSpanStyle()
+    )
+}
+```
+
+**Description:** Type representing image offset position and image style information.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var imageStyle
+
+```cangjie
+public var imageStyle: RichEditorImageSpanStyle
+```
+
+**Description:** Type representing image style information. Uses system default image info when omitted.
+
+**Type:** [RichEditorImageSpanStyle](#class-richeditorimagespanstyle)
+
+**Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var offset
+
+```cangjie
+public var offset: Int32
+```
+
+**Description:** Position to add image. Defaults to end of all text strings when omitted. Places at start when value < 0; places at end when value > string length.
+
+**Type:** Int32
+
+**Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(Int32, RichEditorImageSpanStyle)
+
+```cangjie
+public init(
+    offset!: Int32 = Int32.Max,
+    imageStyle!: RichEditorImageSpanStyle = RichEditorImageSpanStyle()
+)
+```
+
+**Description:** Creates a RichEditorImageSpanOptions object.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|offset|Int32|No|Int32.Max|Position to add image. Defaults to end of all text strings when omitted. Places at start when value < 0; places at end when value > string length.|
+|imageStyle|[RichEditorImageSpanStyle](#class-richeditorimagespanstyle)|No|RichEditorImageSpanStyle()|Image style information. Uses system default image info when omitted.|
+
+### class RichEditorImageSpanStyle
+
+```cangjie
+public class RichEditorImageSpanStyle {
+    public var size: Option <(Length, Length)>
+    public var verticalAlign: ImageSpanAlignment
+    public var objectFit: ImageFit
+    public init(
+        size!: (Length, Length),
+        verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
+        objectFit!: ImageFit = ImageFit.Cover
+    )
+    public init(
+        verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
+        objectFit!: ImageFit = ImageFit.Cover
+    )
+}
+```
+
+**Description:** Image style.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var objectFit
+
+```cangjie
+public var objectFit: ImageFit
+```
+
+**Description:** Image scaling type.
+
+**Type:** [ImageFit](./cj-common-types.md#enum-imagefit)
+
+**Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var size
+
+```cangjie
+public var size: Option <(Length, Length)>
+```
+
+**Description:** Image width and height.
+
+**Type:** Option\<([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))>
+
+**Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var verticalAlign
+
+```cangjie
+public var verticalAlign: ImageSpanAlignment
+```
+
+**Description:** Image vertical alignment.
+
+**Type:** [ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)
+
+**Access:** Read-Write
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init((Length,Length), ImageSpanAlignment, ImageFit)
+
+```cangjie
+public init(
+    size!: (Length, Length),
+    verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
+    objectFit!: ImageFit = ImageFit.Cover
+)
+```
+
+**Description:** Creates a RichEditorImageSpanStyle object.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|Yes|-|Image width and height.|
+|verticalAlign|[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|No|ImageSpanAlignment.Baseline|Image vertical alignment.|
+|objectFit|[ImageFit](./cj-common-types.md#enum-imagefit)|No|ImageFit.Cover|Image scaling type.|
+
+#### init(ImageSpanAlignment, ImageFit)
+
+```cangjie
+public init(
+    verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
+    objectFit!: ImageFit = ImageFit.Cover
+)
+```
+
+**Description:** Creates a RichEditorImageSpanStyle object.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+|Parameter|Type|Mandatory|Default|Description|
+|:---|:---|:---|:---|:---|
+|verticalAlign|[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|No|ImageSpanAlignment.Baseline|Image vertical alignment.|
+|objectFit|[ImageFit](./cj-common-types.md#enum-imagefit)|No|ImageFit.Cover|Image scaling type.|### class RichEditorLayoutStyle
+
+```cangjie
+public class RichEditorLayoutStyle {
+    public var margin: Margin
+    public var borderRadius: BorderRadiuses
+    public init(margin!: Margin = Margin(), borderRadius!: BorderRadiuses = BorderRadiuses())
+    public init(margin!: Length, borderRadius!: Length)
+}
+```
+
+**Function:** Image layout style.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var borderRadius
+
+```cangjie
+public var borderRadius: BorderRadiuses
+```
+
+**Function:** Border radius type, used to describe the border radius of components.
+
+**Type:** [BorderRadiuses](./cj-common-types.md#class-borderradiuses)
+
+**Read/Write:** Readable and Writable
+
+#### var margin
+
+```cangjie
+public var margin: Margin
+```
+
+**Function:** Margin type, used to describe margins in different directions of components.
+
+**Type:** [Margin](./cj-common-types.md#class-margin)
+
+**Read/Write:** Readable and Writable
+
+#### init(Margin, BorderRadiuses)
+
+```cangjie
+public init(margin!: Margin = Margin(), borderRadius!: BorderRadiuses = BorderRadiuses())
+```
+
+**Function:** Creates an object of RichEditorLayoutStyle type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| margin | [Margin](./cj-common-types.md#class-margin) | No | Margin() | Margin type. |
+| borderRadius | [BorderRadiuses](./cj-common-types.md#class-borderradiuses) | No | BorderRadiuses() | Border radius type. |
+
+#### init(Length, Length)
+
+```cangjie
+public init(margin!: Length, borderRadius!: Length)
+```
+
+**Function:** Creates an object of RichEditorLayoutStyle type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| margin | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Margin value. |
+| borderRadius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border radius value. |
+
+### class RichEditorParagraphStyle
+
+```cangjie
+public class RichEditorParagraphStyle {
+    public var textAlign: TextAlign
+    public var leadingMargin: LeadingMarginType
+    public init(textAlign!: TextAlign = TextAlign.Start)
+    public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length)
+    public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: LeadingMarginPlaceholder)
+}
+```
+
+**Function:** Paragraph style.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var leadingMargin
+
+```cangjie
+public var leadingMargin: LeadingMarginType
+```
+
+**Function:** Represents text paragraph indentation.
+
+**Type:** [LeadingMarginType](#enum-leadingmargintype)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var textAlign
+
+```cangjie
+public var textAlign: TextAlign
+```
+
+**Function:** Represents the horizontal alignment of text paragraphs.
+
+**Type:** [TextAlign](./cj-common-types.md#enum-textalign)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(TextAlign)
+
+```cangjie
+public init(textAlign!: TextAlign = TextAlign.Start)
+```
+
+**Function:** Creates an object of RichEditorParagraphStyle type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| textAlign | [TextAlign](./cj-common-types.md#enum-textalign) | No | TextAlign.Start | Horizontal alignment of text paragraphs. |
+
+#### init(TextAlign, Length)
+
+```cangjie
+public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length)
+```
+
+**Function:** Creates an object of RichEditorParagraphStyle type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| textAlign | [TextAlign](./cj-common-types.md#enum-textalign) | No | TextAlign.Start | Horizontal alignment of text paragraphs. |
+| leadingMargin | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Text paragraph indentation. Percentage values are not supported. |
+
+#### init(TextAlign, LeadingMarginPlaceholder)
+
+```cangjie
+public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: LeadingMarginPlaceholder)
+```
+
+**Function:** Creates an object of RichEditorParagraphStyle type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| textAlign | [TextAlign](./cj-common-types.md#enum-textalign) | No | TextAlign.Start | Horizontal alignment of text paragraphs. |
+| leadingMargin | [LeadingMarginPlaceholder](#class-leadingmarginplaceholder) | Yes | - | Text paragraph indentation. Percentage values are not supported. |
+
+### class RichEditorTextSpanOptions
+
+```cangjie
+public class RichEditorTextSpanOptions {
+    public var offset: Int32
+    public var style: RichEditorTextStyle
+    public init(offset!: Int32 = Int32.Max, style!: RichEditorTextStyle = RichEditorTextStyle())
+}
+```
+
+**Function:** Specifies the offset position and text style information for adding text.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var offset
+
+```cangjie
+public var offset: Int32
+```
+
+**Function:** Specifies the position for adding text. If omitted, text is appended to the end of all text strings. If the value is less than 0, the text is placed at the beginning of the string; if the value exceeds the string length, the text is placed at the end.
+
+**Type:** Int32
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var style
+
+```cangjie
+public var style: RichEditorTextStyle
+```
+
+**Function:** Specifies the text style information type. If omitted, the system default text style is used.
+
+**Type:** [RichEditorTextStyle](#class-richeditortextstyle)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(Int32, RichEditorTextStyle)
+
+```cangjie
+public init(offset!: Int32 = Int32.Max, style!: RichEditorTextStyle = RichEditorTextStyle())
+```
+
+**Function:** Creates an object of RichEditorTextSpanOptions type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| offset | Int32 | No | Int32.Max | Position for adding text. If omitted, text is appended to the end of all text strings. If the value is less than 0, the text is placed at the beginning; if the value exceeds the string length, the text is placed at the end. |
+| style | [RichEditorTextStyle](#class-richeditortextstyle) | No | RichEditorTextStyle() | Text style information. If omitted, the system default text style is used. |
+
+### class RichEditorTextStyle
+
+```cangjie
+public class RichEditorTextStyle {
+    public var fontColor: ResourceColor
+    public var fontSize: Length
+    public var fontStyle: FontStyle
+    public var fontWeight: FontWeight
+    public var fontFamily: ResourceStr
+    public var decoration: TextDecorationOptions
+    public init(
+        fontColor!: ResourceColor = Color.Black,
+        fontSize!: Length = 16.vp,
+        fontStyle!: FontStyle = FontStyle.Normal,
+        fontWeight!: FontWeight = FontWeight.Normal,
+        fontFamily!: ResourceStr = DEFAULT_FONT,
+        decoration!: TextDecorationOptions = TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)
+    )
+}
+```
+
+**Function:** Text style information.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var decoration
+
+```cangjie
+public var decoration: TextDecorationOptions
+```
+
+**Function:** Text decoration line style and its color.
+
+**Type:** [TextDecorationOptions](#class-textdecorationoptions)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var fontColor
+
+```cangjie
+public var fontColor: ResourceColor
+```
+
+**Function:** Text color.
+
+**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var fontFamily
+
+```cangjie
+public var fontFamily: ResourceStr
+```
+
+**Function:** Font list.
+
+**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var fontSize
+
+```cangjie
+public var fontSize: Length
+```
+
+**Function:** Font size. When Length is Int64 or Float64, the unit is fp. Percentage values are not supported.
+
+**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var fontStyle
+
+```cangjie
+public var fontStyle: FontStyle
+```
+
+**Function:** Font style.
+
+**Type:** [FontStyle](./cj-common-types.md#enum-fontstyle)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var fontWeight
+
+```cangjie
+public var fontWeight: FontWeight
+```
+
+**Function:** Font weight.
+
+**Type:** [FontWeight](./cj-common-types.md#enum-fontweight)
+
+**Read/Write:** Readable and Writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(ResourceColor, Length, FontStyle, FontWeight, ResourceStr, TextDecorationOptions)
+
+```cangjie
+public init(
+    fontColor!: ResourceColor = Color.Black,
+    fontSize!: Length = 16.vp,
+    fontStyle!: FontStyle = FontStyle.Normal,
+    fontWeight!: FontWeight = FontWeight.Normal,
+    fontFamily!: ResourceStr = DEFAULT_FONT,
+    decoration!: TextDecorationOptions = TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)
+)
+```
+
+**Function:** Creates an object of RichEditorTextStyle type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| fontColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Text color. |
+| fontSize | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | Font size. When Length is Int64 or Float64, the unit is fp. Percentage values are not supported. |
+| fontStyle | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | Font style. |
+| fontWeight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | Font weight. |
+| fontFamily | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | DEFAULT_FONT | Font list. |
+| decoration | [TextDecorationOptions](#class-textdecorationoptions) | No | TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black) | Text decoration line style and its color. |### class SelectionMenuOptions
+
+```cangjie
+public class SelectionMenuOptions {
+    public var onAppear: VoidCallback
+    public var onDisappear: VoidCallback
+    public init(onAppear!: () -> Unit = {=>}, onDisappear!: () -> Unit = {=>})
+}
+```
+
+**Function:** Menu option type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var onAppear
+
+```cangjie
+public var onAppear: VoidCallback
+```
+
+**Function:** Callback function triggered when a custom selection menu appears.
+
+**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
+
+**Readable/Writable:** Readable and writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var onDisappear
+
+```cangjie
+public var onDisappear: VoidCallback
+```
+
+**Function:** Callback function triggered when a custom selection menu closes.
+
+**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
+
+**Readable/Writable:** Readable and writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(() -> Unit, () -> Unit)
+
+```cangjie
+public init(onAppear!: () -> Unit = {=>}, onDisappear!: () -> Unit = {=>})
+```
+
+**Function:** Creates an object of type SelectionMenuOptions.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| onAppear | () -> Unit | No | { => } | Callback function triggered when a custom selection menu appears. |
+| onDisappear | () -> Unit | No | { => } | Callback function triggered when a custom selection menu closes. |
+
+### class TextDecorationOptions
+
+```cangjie
+public class TextDecorationOptions {
+    public var decorationType: TextDecorationType
+    public var color: ResourceColor
+    public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black)
+}
+```
+
+**Function:** Configuration options for text decoration lines.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var color
+
+```cangjie
+public var color: ResourceColor
+```
+
+**Function:** Sets the color of the text decoration line.
+
+**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+
+**Readable/Writable:** Readable and writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### var decorationType
+
+```cangjie
+public var decorationType: TextDecorationType
+```
+
+**Function:** Sets the type of the text decoration line.
+
+**Type:** [TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
+
+**Readable/Writable:** Readable and writable
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### init(TextDecorationType, ResourceColor)
+
+```cangjie
+public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black)
+```
+
+**Function:** Creates a text decoration line object.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter Name | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | Type of the decoration line. |
+| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Color of the decoration line. |
+
+### enum LeadingMarginType
+
+```cangjie
+public enum LeadingMarginType {
+    | LengthType(Length)
+    | PlaceholderType(LeadingMarginPlaceholder)
+    | None
+    | ...
+}
+```
+
+**Function:** Text paragraph indentation type.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### LengthType(Length)
+
+```cangjie
+LengthType(Length)
+```
+
+**Function:** Text paragraph indentation distance.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### None
+
+```cangjie
+None
+```
+
+**Function:** No indentation for text paragraphs.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+#### PlaceholderType(LeadingMarginPlaceholder)
+
+```cangjie
+PlaceholderType(LeadingMarginPlaceholder)
+```
+
+**Function:** Leading margin placeholder, used to represent the distance between the left side of a text paragraph and the edge of the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
 ### enum RichEditorDeleteDirection
 
 ```cangjie
@@ -1324,7 +2447,7 @@ public enum RichEditorDeleteDirection <: Equatable<RichEditorDeleteDirection> {
 }
 ```
 
-**Function:** Indicates the direction of delete operations.
+**Function:** Represents the direction of a delete operation.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1340,7 +2463,7 @@ public enum RichEditorDeleteDirection <: Equatable<RichEditorDeleteDirection> {
 BACKWARD
 ```
 
-**Function:** Indicates backward deletion.
+**Function:** Represents backward deletion.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1352,7 +2475,7 @@ BACKWARD
 FORWARD
 ```
 
-**Function:** Indicates forward deletion.
+**Function:** Represents forward deletion.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1364,19 +2487,19 @@ FORWARD
 public operator func !=(other: RichEditorDeleteDirection): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[RichEditorDeleteDirection](#enum-richeditordeletedirection)|Yes|-|Another enum value.|
+| other | [RichEditorDeleteDirection](#enum-richeditordeletedirection) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 #### func ==(RichEditorDeleteDirection)
 
@@ -1388,15 +2511,15 @@ public operator func ==(other: RichEditorDeleteDirection): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[RichEditorDeleteDirection](#enum-richeditordeletedirection)|Yes|-|Another enum value.|
+| other | [RichEditorDeleteDirection](#enum-richeditordeletedirection) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 ### enum RichEditorSpanType
 
@@ -1409,7 +2532,7 @@ public enum RichEditorSpanType <: Equatable<RichEditorSpanType> {
 }
 ```
 
-**Function:** Indicates span type information.
+**Function:** Represents Span type information.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1425,7 +2548,7 @@ public enum RichEditorSpanType <: Equatable<RichEditorSpanType> {
 IMAGE
 ```
 
-**Function:** Indicates the span is of image type.
+**Function:** Represents a Span of image type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1437,7 +2560,7 @@ IMAGE
 MIXED
 ```
 
-**Function:** Indicates the span is of mixed text-image type.
+**Function:** Represents a Span of mixed text and image type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1449,7 +2572,7 @@ MIXED
 TEXT
 ```
 
-**Function:** Indicates the span is of text type.
+**Function:** Represents a Span of text type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1461,19 +2584,19 @@ TEXT
 public operator func !=(other: RichEditorSpanType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[RichEditorSpanType](#enum-richeditorspantype)|Yes|-|Another enum value.|
+| other | [RichEditorSpanType](#enum-richeditorspantype) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 #### func ==(RichEditorSpanType)
 
@@ -1485,15 +2608,15 @@ public operator func ==(other: RichEditorSpanType): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[RichEditorSpanType](#enum-richeditorspantype)|Yes|-|Another enum value.|
+| other | [RichEditorSpanType](#enum-richeditorspantype) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
 
 #### func getValue()
 
@@ -1501,17 +2624,17 @@ public operator func ==(other: RichEditorSpanType): Bool
 public func getValue(): Int32
 ```
 
-**Function:** Gets the enum value.
+**Function:** Gets the value of the enum.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-**Returns:**
+**Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Int32|The enum value.|
+| Int32 | The value of the enum. |
 
 ### enum SpanType
 
@@ -1523,7 +2646,7 @@ public enum SpanType <: Equatable<SpanType> {
 }
 ```
 
-**Function:** Indicates the type of span type information.
+**Function:** Represents the type of Span information.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1539,7 +2662,7 @@ public enum SpanType <: Equatable<SpanType> {
 IMAGE
 ```
 
-**Function:** Indicates the span is of image type.
+**Function:** Represents a Span of image type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1551,7 +2674,7 @@ IMAGE
 TEXT
 ```
 
-**Function:** Indicates the span is of text type.
+**Function:** Represents a Span of text type.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1563,19 +2686,19 @@ TEXT
 public operator func !=(other: SpanType): Bool
 ```
 
-**Function:** Determines whether two enum values are unequal.
+**Function:** Determines whether two enum values are not equal.
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[SpanType](#enum-spantype)|Yes|-|Another enum value.|
+| other | [SpanType](#enum-spantype) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are unequal, otherwise returns false.|
+| Bool | Returns true if the two enum values are not equal, otherwise returns false. |
 
 #### func ==(SpanType)
 
@@ -1587,15 +2710,27 @@ public operator func ==(other: SpanType): Bool
 
 **Parameters:**
 
-|Parameter|Type|Required|Default|Description|
+| Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|other|[SpanType](#enum-spantype)|Yes|-|Another enum value.|
+| other | [SpanType](#enum-spantype) | Yes | - | Another enum value. |
 
-**Returns:**
+**Return Value:**
 
-|Type|Description|
+| Type | Description |
 |:----|:----|
-|Bool|Returns true if the two enum values are equal, otherwise returns false.|## Sample Code
+| Bool | Returns true if the two enum values are equal, otherwise returns false. |
+
+### type OnDidChangeCallback
+
+```cangjie
+public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) -> Unit
+```
+
+**Function:** Type alias for (rangeBefore: TextRange, rangeAfter: TextRange) -> Unit.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21## Sample Code
 
 <!-- run -->
 
@@ -1604,6 +2739,7 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
 import kit.LocalizationKit.*
+import kit.PerformanceAnalysisKit.*
 
 @Entry
 @Component
@@ -1631,7 +2767,7 @@ class EntryView {
     }
 
     func build() {
-        Column(30) {
+        Column(space: 30) {
             Row {
                 Button("getCaretOffset")
                 .onClick {
@@ -1664,8 +2800,8 @@ class EntryView {
                                 fontColor: Color(0XFF1298),
                                 fontSize: 20.fp,
                                 fontStyle: FontStyle.Italic,
-                                decoration: TextDecoration(
-                                    `type`: TextDecorationType.Overline,
+                                decoration: TextDecorationOptions(
+                                    decorationType: TextDecorationType.Overline,
                                     color: Color(0X12FF98)
                                 ),
                             )
@@ -1688,25 +2824,6 @@ class EntryView {
             }
 
             Row {
-                Button("getSpans")
-                .onClick {
-                     evt =>
-                    let array = controller.getSpans(start: 0, end: 10)
-                    for(i in 0..array.size) {
-                        match(array[i].spanType) {
-                            case TEXT =>
-                                let textResult = array[i].textResult.getOrThrow()
-                                Hilog.info(0, "AppLogCj", "RichEditor textResult. value: ${textResult.value}")
-                            case IMAGE =>
-                                let imageResult = array[i].imageResult.getOrThrow()
-                                Hilog.info(0, "AppLogCj", "RichEditor ImageResult. size: ${imageResult.size[0].toString()} - ${imageResult.size[1].toString()}")
-                            case _ => return
-                        }
-                    }
-                }.width(400.px).height(150.px)
-            }
-
-            Row {
                 Button("updateParagraphStyle")
                 .onClick {
                     evt =>
@@ -1722,9 +2839,9 @@ class EntryView {
             }
 
             RichEditor(controller)
-            .customKeyboard(builder: bind(builder, this))
+            .customKeyboard(value: bind(builder, this))
             .bindSelectionMenu(
-                spantype: RichEditorSpanType.TEXT,
+                spantype: RichEditorSpanType.Text,
                 content: bind(builder, this),
                 responseType: ResponseType.LongPress,
                 options: SelectionMenuOptions(onAppear: { => Hilog.info(0, "AppLogCj", "SelectionMenuOptions onAppear")}, onDisappear: { => Hilog.info(0, "AppLogCj", "SelectionMenuOptions onDisappear")})

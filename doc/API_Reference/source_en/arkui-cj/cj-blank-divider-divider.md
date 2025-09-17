@@ -24,13 +24,13 @@ public init()
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
-## Common Attributes/Common Events
+## Universal Attributes/Events
 
-Common Attributes: All supported.
+Universal attributes: All supported.
 
-Common Events: All supported.
+Universal events: All supported.
 
 ## Component Attributes
 
@@ -44,13 +44,13 @@ public func color(value: ResourceColor): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Name   | Type                                       | Required | Default | Description     |
 |:----- |:---------------------------------------- |:--- |:--- |:------ |
-| value | [ResourceColor](./cj-common-types.md#interface-resourcecolor) | Yes   | -   | Color of the divider line. |
+| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes   | -   | The color of the divider line. |
 
 ### func lineCap(LineCapStyle)
 
@@ -58,17 +58,17 @@ public func color(value: ResourceColor): This
 public func lineCap(value: LineCapStyle): This
 ```
 
-**Function:** Sets the endpoint style of the divider line in the current container.
+**Function:** Sets the end cap style of the divider line in the current container.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Name   | Type                                                                   | Required | Default | Description         |
 |:----- |:-------------------------------------------------------------------- |:--- |:--- |:---------- |
-| value | [LineCapStyle](./cj-common-types.md#enum-linecapstyle) | Yes   | -   | Endpoint style of the divider line. |
+| value | [LineCapStyle](./cj-common-types.md#enum-linecapstyle) | Yes   | -   | The end cap style of the divider line. |
 
 ### func strokeWidth(Length)
 
@@ -80,13 +80,13 @@ public func strokeWidth(value: Length): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Name   | Type       | Required | Default | Description                                                                                                                                       |
 |:----- |:-------- |:--- |:--- |:---------------------------------------------------------------------------------------------------------------------------------------- |
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes   | -   | Width of the divider line. When pixel units are not specified, the default unit is vp. Percentage settings are not supported. The width of the divider line does not support percentage settings. Priority is lower than the common attribute [height](./cj-universal-attribute-size.md#func-heightlength). When exceeding the size set by the common attribute, it will be clipped according to the common attribute. Some device hardware may have issues with 1-pixel rounding causing the divider line to not display. It is recommended to use 2 pixels. |
+| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes   | -   | The width of the divider line. When pixel units are not specified, the default unit is vp. Percentage settings are not supported. The width of the divider line does not support percentage settings. Priority is lower than the universal attribute [height](./cj-universal-attribute-size.md#func-heightlength). When exceeding the size set by universal attributes, it will be clipped according to the universal attributes. On some devices, there may be issues where the divider line does not display after rounding to 1 pixel. It is recommended to use 2 pixels. |
 
 ### func vertical(Bool)
 
@@ -98,13 +98,13 @@ public func vertical(value: Bool): This
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Initial Version:** 21
+**Since:** 21
 
 **Parameters:**
 
 | Name   | Type   | Required | Default | Description        |
 |:----- |:---- |:--- |:--- |:--------- |
-| value | Bool | Yes   | -   | Direction of the divider line. |
+| value | Bool | Yes   | -   | Sets the direction of the divider line. |
 
 ## Example Code
 

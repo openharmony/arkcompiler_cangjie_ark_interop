@@ -1,6 +1,6 @@
 # Mouse Events
 
-When a single action triggers multiple events, the order of events is fixed, and mouse events are passed through by default.
+When a single action triggers multiple events, the order of events is fixed, and mouse events are transmitted by default.
 
 > Note:
 >
@@ -15,6 +15,42 @@ import kit.ArkUI.*
 ## Permission List
 
 None
+
+## func onHover((Bool) -> Unit)
+
+```cangjie
+public func onHover(event: (Bool) -> Unit): This
+```
+
+**Function:** Triggered when the mouse hovers over the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| event | (Bool)->Unit | Yes | - | Callback function triggered when the mouse hover state changes. |
+
+## func onMouse((MouseEvent) -> Unit)
+
+```cangjie
+public func onMouse(event: (MouseEvent) -> Unit): This
+```
+
+**Function:** Triggered when the component is clicked by a mouse button or when the mouse moves over the component.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21
+
+**Parameters:**
+
+| Parameter | Type | Required | Default | Description |
+|:---|:---|:---|:---|:---|
+| event | ([MouseEvent](#class-mouseevent))->Unit | Yes | - | Callback triggered when the component is clicked by a mouse button or when the mouse moves over the component. The MouseEvent parameter includes the timestamp when the event was triggered, the mouse button, the action, the coordinates of the click point relative to the entire screen, and the coordinates of the click point relative to the current component. |
 
 ## class MouseEvent
 
@@ -76,7 +112,7 @@ public var button: MouseButton
 public var screenX: Float64
 ```
 
-**Function:** X-axis coordinate of the touch point relative to the top-left corner of the screen.
+**Function:** X-coordinate of the click point relative to the top-left corner of the screen.
 
 **Type:** Float64
 
@@ -92,7 +128,7 @@ public var screenX: Float64
 public var screenY: Float64
 ```
 
-**Function:** Y-axis coordinate of the touch point relative to the top-left corner of the screen.
+**Function:** Y-coordinate of the click point relative to the top-left corner of the screen.
 
 **Type:** Float64
 
@@ -108,7 +144,7 @@ public var screenY: Float64
 public var timestamp: Int64
 ```
 
-**Function:** Timestamp when the event is triggered.
+**Function:** Timestamp when the event was triggered.
 
 **Type:** Int64
 
@@ -124,7 +160,7 @@ public var timestamp: Int64
 public var x: Float64
 ```
 
-**Function:** X-axis coordinate of the touch point relative to the top-left corner of the current component.
+**Function:** X-coordinate of the click point relative to the top-left corner of the current component.
 
 **Type:** Float64
 
@@ -140,7 +176,7 @@ public var x: Float64
 public var y: Float64
 ```
 
-**Function:** Y-axis coordinate of the touch point relative to the top-left corner of the current component.
+**Function:** Y-coordinate of the click point relative to the top-left corner of the current component.
 
 **Type:** Float64
 
@@ -165,12 +201,12 @@ public init(timestamp: Int64, screenX: Float64, screenY: Float64, x: Float64, y:
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| timestamp | Int64 | Yes | - | Timestamp when the event is triggered. |
-| screenX | Float64 | Yes | - | X-axis coordinate of the touch point relative to the top-left corner of the screen. |
-| screenY | Float64 | Yes | - | Y-axis coordinate of the touch point relative to the top-left corner of the screen. |
-| x | Float64 | Yes | - | X-axis coordinate of the touch point relative to the top-left corner of the current component. |
-| y | Float64 | Yes | - | Y-axis coordinate of the touch point relative to the top-left corner of the current component. |
+| timestamp | Int64 | Yes | - | Timestamp when the event was triggered. |
+| screenX | Float64 | Yes | - | X-coordinate of the click point relative to the top-left corner of the screen. |
+| screenY | Float64 | Yes | - | Y-coordinate of the click point relative to the top-left corner of the screen. |
+| x | Float64 | Yes | - | X-coordinate of the click point relative to the top-left corner of the current component. |
+| y | Float64 | Yes | - | Y-coordinate of the click point relative to the top-left corner of the current component. |
 | button | [MouseButton](./cj-common-types.md#enum-mousebutton) | Yes | - | Mouse button. |
 | action | [MouseAction](./cj-common-types.md#enum-mouseaction) | Yes | - | Event action. |

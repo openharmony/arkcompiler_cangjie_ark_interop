@@ -1,6 +1,6 @@
 # Key Event
 
-Key events refer to events triggered when components interact with input devices such as keyboards and remote controls. These events apply to all focusable components, such as Button. For components like Text and Image that are not focusable by default, key events are currently not supported. In the future, they may become available by setting the `focusable` property to true.
+Key events refer to events triggered when components interact with input devices such as keyboards and remote controls. These events apply to all focusable components, such as Button. For components like Text and Image that are not focusable by default, key events are currently not supported. However, they can be enabled in the future by setting the `focusable` property to true.
 
 ## Import Module
 
@@ -8,21 +8,27 @@ Key events refer to events triggered when components interact with input devices
 import kit.ArkUI.*
 ```
 
-## func stopPropagation()
+## Permission List
+
+None
+
+## func onKeyEvent((KeyEvent) -> Unit)
 
 ```cangjie
-public func stopPropagation(): Unit
+public func onKeyEvent(event: (KeyEvent) -> Unit): This
 ```
 
-**Function:** Stops event propagation.
+**Function:** Binds a callback that triggers when a key action occurs while the component has focus.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Since:** 21
 
-## Permission List
+**Parameters:**
 
-None
+| Parameter | Type | Required | Default Value | Description |
+|:---|:---|:---|:---|:---|
+| event | ([KeyEvent](#class-keyevent))->Unit | Yes | - | Callback triggered when a key action occurs while the component has focus. |
 
 ## Basic Type Definitions
 
@@ -58,7 +64,7 @@ public var deviceId: Int64
 
 **Type:** Int64
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,11 +76,11 @@ public var deviceId: Int64
 public var keyCode: Int32
 ```
 
-**Function:** The key value of the pressed key.
+**Function:** The key code of the pressed key.
 
 **Type:** Int32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +96,7 @@ public var keySource: KeySource
 
 **Type:** [KeySource](./cj-common-types.md#enum-keysource)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +112,7 @@ public var keyText: String
 
 **Type:** String
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,11 +124,11 @@ public var keyText: String
 public var keyType: KeyType
 ```
 
-**Function:** The type of the pressed key.
+**Function:** The type of the key event.
 
 **Type:** [KeyType](./cj-common-types.md#enum-keytype)
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,11 +140,11 @@ public var keyType: KeyType
 public var metaKey: Int32
 ```
 
-**Function:** The state of the meta key when the key event occurred. `1` indicates pressed state, and `0` indicates unpressed state.
+**Function:** The state of the meta key when the key event occurred. 1 indicates pressed state, and 0 indicates unpressed state.
 
 **Type:** Int32
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,7 +160,7 @@ public var timestamp: Int64
 
 **Type:** Int64
 
-**Read-Write Capability:** Readable and Writable
+**Read/Write:** Read-Write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,7 +173,7 @@ public init(keyText: String, keyType: KeyType, keyCode: Int32, keySource: KeySou
     deviceId: Int64, timestamp: Int64)
 ```
 
-**Function:** Constructs an object of the key event type.
+**Function:** Constructs a key event object.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,12 +181,24 @@ public init(keyText: String, keyType: KeyType, keyCode: Int32, keySource: KeySou
 
 **Parameters:**
 
-| Parameter Name | Type | Required | Default Value | Description |
+| Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | keyText | String | Yes | - | The key value of the pressed key. |
-| keyType | [KeyType](./cj-common-types.md#enum-keytype) | Yes | - | The type of the pressed key. |
-| keyCode | Int32 | Yes | - | The key value of the pressed key. |
+| keyType | [KeyType](./cj-common-types.md#enum-keytype) | Yes | - | The type of the key event. |
+| keyCode | Int32 | Yes | - | The key code of the pressed key. |
 | keySource | [KeySource](./cj-common-types.md#enum-keysource) | Yes | - | The type of input device that triggered the current key event. |
-| metaKey | Int32 | Yes | - | The state of the meta key when the key event occurred. `1` indicates pressed state, and `0` indicates unpressed state. |
+| metaKey | Int32 | Yes | - | The state of the meta key when the key event occurred. 1 indicates pressed state, and 0 indicates unpressed state. |
 | deviceId | Int64 | Yes | - | The ID of the input device that triggered the current key event. |
 | timestamp | Int64 | Yes | - | The timestamp when the key event occurred. |
+
+#### func stopPropagation()
+
+```cangjie
+public func stopPropagation(): Unit
+```
+
+**Function:** Stops the event from further propagation.
+
+**System Capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Since:** 21

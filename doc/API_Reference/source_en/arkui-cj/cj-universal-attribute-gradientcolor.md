@@ -5,7 +5,7 @@ Set the color gradient effect for components.
 > **Note:**
 >
 > - Color gradient is part of the component content and is drawn above the background.
-> - Color gradient does not support explicit width/height animations. During width/height animations, the gradient will directly transition to the end state.
+> - Color gradient does not support explicit width/height animations. When performing width/height animations, the color gradient will directly transition to the endpoint.
 
 ## Import Module
 
@@ -30,8 +30,8 @@ public func linearGradient(angle!: ?Float64 = None, direction!: GradientDirectio
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| angle | ?Float64 | No | None | **Named parameter.** The starting angle of the linear gradient. Positive angles rotate clockwise from the 0-degree direction. |
-| direction | [GradientDirection](#) | No | GradientDirection.Bottom | **Named parameter.** The direction of the linear gradient. This parameter becomes invalid when angle is set. |
+| angle | ?Float64 | No | None | **Named parameter.** The starting angle of the linear gradient. Positive angles are measured clockwise from the 0-degree direction. |
+| direction | [GradientDirection](./cj-common-types.md#enum-gradientdirection) | No | GradientDirection.Bottom | **Named parameter.** The direction of the linear gradient. This parameter becomes invalid when angle is set. |
 | colors | Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)> | No | [(Color.Transparent, 0.0)] | **Named parameter.** An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
 | repeating | Bool | No | false | **Named parameter.** Repeats the gradient colors. |
 
@@ -52,8 +52,8 @@ public func radialGradient(center: (Length, Length), radius: Length, colors: Arr
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| center | ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)) | Yes | - | The center point of the radial gradient, which is the coordinate relative to the top-left corner of the current component. |
-| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(#) | Yes | - | The radius of the radial gradient.<br>Valid range: \[0.0,+∞).<br> **Note:** <br> Values less than 0 will be treated as 0. Default value: 0.0. |
+| center | ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)) | Yes | - | The center point of the radial gradient, i.e., the coordinates relative to the top-left corner of the current component. |
+| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The radius of the radial gradient.<br>Valid range: \[0.0,+∞).<br> **Note:** <br> Values less than 0 will be treated as 0. Default value: 0.0. |
 | colors | Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)> | Yes | - | An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
 | repeating | Bool | No | false | **Named parameter.** Repeats the gradient colors. |
 
@@ -75,13 +75,13 @@ public func sweepGradient(center: (Length, Length), start!: Float64 = 0.0, end!:
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| center | ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)(./cj-common-types.md#interface-length)) | Yes | - | The center point of the angular gradient, which is the coordinate relative to the top-left corner of the current component. |
+| center | ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)) | Yes | - | The center point of the angular gradient, i.e., the coordinates relative to the top-left corner of the current component. |
 | start | Float64 | No | 0.0 | **Named parameter.** The starting point of the angular gradient. |
 | end | Float64 | No | 0.0 | **Named parameter.** The ending point of the angular gradient. |
 | rotation | Float64 | No | 0.0 | **Named parameter.** The rotation angle of the angular gradient. |
-| colors | Array\<([Color](./cj-common-types.md#class-color),Float64)> | No | [(Color.Transparent, 0.0)] | **Named parameter.** An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
+| colors | Array\<([ResourceColor](./cj-common-types.md),Float64)> | No | [(Color.Transparent, 0.0)] | **Named parameter.** An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
 | repeating | Bool | No | false | **Named parameter.** Repeats the gradient colors. |
 
 > **Note:**
 >
-> When start, end, or rotation is set to a value less than 0, it will be treated as 0. When set to a value greater than 360, it will be treated as 360.
+> When start, end, or rotation is set to a value less than 0, it will be treated as 0; when set to a value greater than 360, it will be treated as 360.

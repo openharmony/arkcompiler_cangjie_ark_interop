@@ -1,6 +1,6 @@
 # Motion Path Animation (motionPath)
 
-Sets the motion path for component displacement animations.
+Sets the motion path for component displacement animation.
 
 ## Import Module
 
@@ -41,7 +41,7 @@ public var from: Float64 = 0.0
 
 **Type:** Float64
 
-**Readable/Writable:** Yes
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,7 +57,7 @@ public var path: String
 
 **Type:** String
 
-**Readable/Writable:** Yes
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +73,7 @@ public var rotatable: Bool = false
 
 **Type:** Bool
 
-**Readable/Writable:** Yes
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +89,7 @@ public var to: Float64 = 1.0
 
 **Type:** Float64
 
-**Readable/Writable:** Yes
+**Access:** Read-write
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,7 +114,7 @@ public init(
 
 **Parameters:**
 
-| Parameter | Type | Required | Default | Description |
+| Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | path | String | Yes | - | Sets the animation path. |
 | from | Float64 | No | 0.0 | Sets the starting position of the animation path. |

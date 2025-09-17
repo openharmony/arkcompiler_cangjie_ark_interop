@@ -356,7 +356,8 @@ PIN inputer already registered and cannot be re-registered before unregistration
 
 **Resolution Steps**
 
-Credential inputer already exists. No duplicate operation needed.```markdown
+Credential inputer already exists. No duplicate operation needed.
+
 ## 12300104 Credential Inputter Not Found
 
 **Error Message**
