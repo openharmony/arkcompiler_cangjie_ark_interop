@@ -151,7 +151,6 @@ public func off(sensorType: SensorId, callback!: ?CallbackObject = None): Unit
 import kit.SensorServiceKit.*
 import ohos.base.*
 
-// 此处代码可添加在依赖项定义中
 class SensorCallback <: Callback1Argument<OrientationResponse> {
     init() {}
     public func invoke(arg: OrientationResponse): Unit {
@@ -196,6 +195,34 @@ public func on<T>(sensorType: SensorId, callback: Callback1Argument<T>, option!:
 |callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数。|
 |option|?[Options](#class-options)|否|None|可选参数列表，用于设置传感器上报频率，默认值为200000000ns。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class AccelerometerCallback <: Callback1Argument<AccelerometerResponse> {
+    init() {}
+    public func invoke(arg: AccelerometerResponse): Unit {
+        AppLog.info(
+            "Succeeded in getting AccelerometerCallback arg: timestamp: ${arg.timestamp}, x: ${arg.x},  y: ${arg.y},  z: ${arg.z}"
+        )
+    }
+}
+
+let callback = AccelerometerCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    on(SensorId.ACCELEROMETER, callback, option: options)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ## func once\<T>(SensorId, Callback1Argument\<T>) where T \<: Response
 
 ```cangjie
@@ -214,6 +241,33 @@ public func once<T>(sensorType: SensorId, callback: Callback1Argument<T>): Unit 
 |:---|:---|:---|:---|:---|
 |sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
 |callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class GyroscopeCallback <: Callback1Argument<GyroscopeResponse> {
+    init() {}
+    public func invoke(arg: GyroscopeResponse): Unit {
+        AppLog.info(
+            "Succeeded in getting GyroscopeCallback arg: timestamp: ${arg.timestamp}, x: ${arg.x},  y: ${arg.y},  z: ${arg.z}"
+        )
+    }
+}
+
+let callback = GyroscopeCallback()
+try {
+    once(SensorId.GYROSCOPE, callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ## class AccelerometerResponse
 
@@ -2139,6 +2193,41 @@ Accelerometer
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class AccelerometerCallback <: Callback1Argument<AccelerometerResponse> {
+    init() {}
+    public func invoke(arg: AccelerometerResponse): Unit {
+        AppLog.info(
+            "Accelerometer data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
+        )
+    }
+}
+
+let callback = AccelerometerCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.ACCELEROMETER, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.ACCELEROMETER, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.ACCELEROMETER, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### AccelerometerUncalibrated
 
 ```cangjie
@@ -2150,6 +2239,41 @@ AccelerometerUncalibrated
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class AccelerometerUncalibratedCallback <: Callback1Argument<AccelerometerUncalibratedResponse> {
+    init() {}
+    public func invoke(arg: AccelerometerUncalibratedResponse): Unit {
+        AppLog.info(
+            "AccelerometerUncalibrated data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, biasX: ${arg.biasX}, biasY: ${arg.biasY}, biasZ: ${arg.biasZ}"
+        )
+    }
+}
+
+let callback = AccelerometerUncalibratedCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.ACCELEROMETERUNCALIBRATED, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.ACCELEROMETERUNCALIBRATED, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.ACCELEROMETERUNCALIBRATED, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### AmbientLight
 
@@ -2163,6 +2287,41 @@ AmbientLight
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class LightCallback <: Callback1Argument<LightResponse> {
+    init() {}
+    public func invoke(arg: LightResponse): Unit {
+        AppLog.info(
+            "Light data: timestamp: ${arg.timestamp}, intensity: ${arg.intensity}"
+        )
+    }
+}
+
+let callback = LightCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.AMBIENTLIGHT, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.AMBIENTLIGHT, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.AMBIENTLIGHT, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### AmbientTemperature
 
 ```cangjie
@@ -2175,17 +2334,73 @@ AmbientTemperature
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class AmbientTemperatureCallback <: Callback1Argument<AmbientTemperatureResponse> {
+    init() {}
+    public func invoke(arg: AmbientTemperatureResponse): Unit {
+        AppLog.info(
+            "AmbientTemperature data: timestamp: ${arg.timestamp}, temperature: ${arg.temperature}"
+        )
+    }
+}
+
+let callback = AmbientTemperatureCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.AMBIENTTEMPERATURE, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.AMBIENTTEMPERATURE, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.AMBIENTTEMPERATURE, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### Barometer
 
 ```cangjie
-Barometer
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class BarometerCallback <: Callback1Argument<BarometerResponse> {
+    init() {}
+    public func invoke(arg: BarometerResponse): Unit {
+        AppLog.info(
+            "Barometer data: timestamp: ${arg.timestamp}, pressure: ${arg.pressure}"
+        )
+    }
+}
+
+let callback = BarometerCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.BAROMETER, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.BAROMETER, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.BAROMETER, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
 ```
-
-**功能：** 气压计传感器。
-
-**系统能力：** SystemCapability.Sensors.Sensor
-
-**起始版本：** 21
 
 ### Gravity
 
@@ -2199,6 +2414,41 @@ Gravity
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class GravityCallback <: Callback1Argument<GravityResponse> {
+    init() {}
+    public func invoke(arg: GravityResponse): Unit {
+        AppLog.info(
+            "Gravity data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
+        )
+    }
+}
+
+let callback = GravityCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.GRAVITY, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.GRAVITY, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.GRAVITY, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### Gyroscope
 
 ```cangjie
@@ -2210,6 +2460,41 @@ Gyroscope
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class GyroscopeCallback <: Callback1Argument<GyroscopeResponse> {
+    init() {}
+    public func invoke(arg: GyroscopeResponse): Unit {
+        AppLog.info(
+            "Gyroscope data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
+        )
+    }
+}
+
+let callback = GyroscopeCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.GYROSCOPE, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.GYROSCOPE, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.GYROSCOPE, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### GyroscopeUncalibrated
 
@@ -2223,6 +2508,41 @@ GyroscopeUncalibrated
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class GyroscopeUncalibratedCallback <: Callback1Argument<GyroscopeUncalibratedResponse> {
+    init() {}
+    public func invoke(arg: GyroscopeUncalibratedResponse): Unit {
+        AppLog.info(
+            "GyroscopeUncalibrated data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, biasX: ${arg.biasX}, biasY: ${arg.biasY}, biasZ: ${arg.biasZ}"
+        )
+    }
+}
+
+let callback = GyroscopeUncalibratedCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.GYROSCOPEUNCALIBRATED, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.GYROSCOPEUNCALIBRATED, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.GYROSCOPEUNCALIBRATED, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### Hall
 
 ```cangjie
@@ -2234,6 +2554,41 @@ Hall
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class HallCallback <: Callback1Argument<HallResponse> {
+    init() {}
+    public func invoke(arg: HallResponse): Unit {
+        AppLog.info(
+            "Hall data: timestamp: ${arg.timestamp}, status: ${arg.status}"
+        )
+    }
+}
+
+let callback = HallCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.HALL, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.HALL, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.HALL, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### HeartRate
 
@@ -2247,6 +2602,41 @@ HeartRate
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class HeartRateCallback <: Callback1Argument<HeartRateResponse> {
+    init() {}
+    public func invoke(arg: HeartRateResponse): Unit {
+        AppLog.info(
+            "HeartRate data: timestamp: ${arg.timestamp}, heartRate: ${arg.heartRate}"
+        )
+    }
+}
+
+let callback = HeartRateCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.HEARTRATE, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.HEARTRATE, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.HEARTRATE, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### Humidity
 
 ```cangjie
@@ -2258,6 +2648,41 @@ Humidity
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class HumidityCallback <: Callback1Argument<HumidityResponse> {
+    init() {}
+    public func invoke(arg: HumidityResponse): Unit {
+        AppLog.info(
+            "Humidity data: timestamp: ${arg.timestamp}, humidity: ${arg.humidity}"
+        )
+    }
+}
+
+let callback = HumidityCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.HUMIDITY, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.HUMIDITY, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.HUMIDITY, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### LinearAccelerometer
 
@@ -2271,6 +2696,47 @@ LinearAccelerometer
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class LinearAccelerometerCallback <: Callback1Argument<LinearAccelerometerResponse> {
+    init() {}
+    public func invoke(arg: LinearAccelerometerResponse): Unit {
+        AppLog.info(
+            "LinearAccelerometer data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
+        )
+    }
+}
+
+let callback = LinearAccelerometerCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.LINEARACCELEROMETER, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.LINEARACCELEROMETER, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.LINEARACCELEROMETER, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
+### Orientation
+
+``cangjie
+Orientation
+```
+
 ### MagneticField
 
 ```cangjie
@@ -2282,6 +2748,41 @@ MagneticField
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class MagneticFieldCallback <: Callback1Argument<MagneticFieldResponse> {
+    init() {}
+    public func invoke(arg: MagneticFieldResponse): Unit {
+        AppLog.info(
+            "MagneticField data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
+        )
+    }
+}
+
+let callback = MagneticFieldCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.MAGNETICFIELD, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.MAGNETICFIELD, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.MAGNETICFIELD, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### MagneticFieldUncalibrated
 
@@ -2295,6 +2796,41 @@ MagneticFieldUncalibrated
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class MagneticFieldUncalibratedCallback <: Callback1Argument<MagneticFieldUncalibratedResponse> {
+    init() {}
+    public func invoke(arg: MagneticFieldUncalibratedResponse): Unit {
+        AppLog.info(
+            "MagneticFieldUncalibrated data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, biasX: ${arg.biasX}, biasY: ${arg.biasY}, biasZ: ${arg.biasZ}"
+        )
+    }
+}
+
+let callback = MagneticFieldUncalibratedCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.MAGNETICFIELDUNCALIBRATED, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.MAGNETICFIELDUNCALIBRATED, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.MAGNETICFIELDUNCALIBRATED, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### Orientation
 
 ```cangjie
@@ -2306,6 +2842,41 @@ Orientation
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class OrientationCallback <: Callback1Argument<OrientationResponse> {
+    init() {}
+    public func invoke(arg: OrientationResponse): Unit {
+        AppLog.info(
+            "Orientation data: timestamp: ${arg.timestamp}, alpha: ${arg.alpha}, beta: ${arg.beta}, gamma: ${arg.gamma}"
+        )
+    }
+}
+
+let callback = OrientationCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.ORIENTATION, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.ORIENTATION, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.ORIENTATION, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### Pedometer
 
@@ -2319,6 +2890,41 @@ Pedometer
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class PedometerCallback <: Callback1Argument<PedometerResponse> {
+    init() {}
+    public func invoke(arg: PedometerResponse): Unit {
+        AppLog.info(
+            "Pedometer data: timestamp: ${arg.timestamp}, steps: ${arg.steps}"
+        )
+    }
+}
+
+let callback = PedometerCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.PEDOMETER, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.PEDOMETER, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.PEDOMETER, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### PedometerDetection
 
 ```cangjie
@@ -2330,6 +2936,41 @@ PedometerDetection
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class PedometerDetectionCallback <: Callback1Argument<PedometerDetectionResponse> {
+    init() {}
+    public func invoke(arg: PedometerDetectionResponse): Unit {
+        AppLog.info(
+            "PedometerDetection data: timestamp: ${arg.timestamp}, scalar: ${arg.scalar}"
+        )
+    }
+}
+
+let callback = PedometerDetectionCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.PEDOMETERDETECTION, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.PEDOMETERDETECTION, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.PEDOMETERDETECTION, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### Proximity
 
@@ -2343,6 +2984,41 @@ Proximity
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class ProximityCallback <: Callback1Argument<ProximityResponse> {
+    init() {}
+    public func invoke(arg: ProximityResponse): Unit {
+        AppLog.info(
+            "Proximity data: timestamp: ${arg.timestamp}, distance: ${arg.distance}"
+        )
+    }
+}
+
+let callback = ProximityCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.PROXIMITY, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.PROXIMITY, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.PROXIMITY, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### RotationVector
 
 ```cangjie
@@ -2354,6 +3030,41 @@ RotationVector
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class RotationVectorCallback <: Callback1Argument<RotationVectorResponse> {
+    init() {}
+    public func invoke(arg: RotationVectorResponse): Unit {
+        AppLog.info(
+            "RotationVector data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, w: ${arg.w}"
+        )
+    }
+}
+
+let callback = RotationVectorCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.ROTATIONVECTOR, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.ROTATIONVECTOR, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.ROTATIONVECTOR, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### SignificantMotion
 
@@ -2367,6 +3078,41 @@ SignificantMotion
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class SignificantMotionCallback <: Callback1Argument<SignificantMotionResponse> {
+    init() {}
+    public func invoke(arg: SignificantMotionResponse): Unit {
+        AppLog.info(
+            "SignificantMotion data: timestamp: ${arg.timestamp}, scalar: ${arg.scalar}"
+        )
+    }
+}
+
+let callback = SignificantMotionCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
+try {
+    // 订阅传感器数据
+    on(SensorId.SIGNIFICANTMOTION, callback, option: options)
+    
+    // 获取一次传感器数据
+    once(SensorId.SIGNIFICANTMOTION, callback)
+    
+    // 取消订阅传感器数据
+    off(SensorId.SIGNIFICANTMOTION, callback: callback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
 ### WearDetection
 
 ```cangjie
@@ -2378,6 +3124,40 @@ WearDetection
 **系统能力：** SystemCapability.Sensors.Sensor
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.SensorServiceKit.*
+import ohos.base.*
+
+class SensorCallback <: Callback1Argument<OrientationResponse> {
+    init() {}
+    public func invoke(arg: OrientationResponse): Unit {
+        AppLog.info(
+            "Succeeded in getting SensorCallback1 arg: steps: ${arg.timestamp}, alpha: ${arg.alpha},  beta: ${arg.beta},  gamma: ${arg.gamma}"
+        )
+    }
+}
+
+let callback1 = SensorCallback()
+let callback2 = SensorCallback()
+try {
+    on(SensorId.ORIENTATION, callback1)
+    on(SensorId.ORIENTATION, callback2)
+    // 仅取消callback1的注册
+    off(SensorId
+        .ORIENTATION, callback: callback1)
+    // 取消注册SensorId.ORIENTATION的所有回调
+    off(SensorId.ORIENTATION)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
 
 ### func !=(SensorId)
 
@@ -2411,6 +3191,10 @@ public operator func ==(other: SensorId): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
+```
+
+```
+
 |other|[SensorId](#enum-sensorid)|是|-|传入的[SensorId](#enum-sensorid)。|
 
 **返回值：**

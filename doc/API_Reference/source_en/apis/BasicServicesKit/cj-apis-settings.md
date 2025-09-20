@@ -49,6 +49,50 @@ public func getValue<T>(context: UIAbilityContext, name: T, defValue: String): S
   | :---- | :--- | :--- |
   | The context is invalid. | Context initialization failed | Restart the application |
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+// Define context variable in Global class
+public class Global {
+    public static var _abilityContext: Option<UIAbilityContext> = None
+    public static prop abilityContext: UIAbilityContext {
+        get() {
+            match (this._abilityContext) {
+                case Some(context) => context
+                case None => throw Exception("Global.abilityContext is not set")
+            }
+        }
+    }
+}
+
+// Set context in UIAbility's onWindowStageCreate method
+class MainAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        Global._abilityContext = Some(this.context)
+        // ... other code ...
+    }
+    
+    // Example usage
+    func exampleGetValue(): Unit {
+        try {
+            let context = Global.abilityContext
+            let value = getValue(context, Date.DateFormat, "MM/dd/yyyy")
+            Hilog.info(0, "cangjie_ohos_test", "Succeeded in getting date format: ${value}")
+        } catch (e: Exception) {
+            Hilog.info(0, "cangjie_ohos_test", "Failed to get date format: ${e.toString()}")
+        }
+    }
+}
+```
+
 ## func getValue\<T, P>(UIAbilityContext, T, String, P) where T \<: ToStringP \<: ToString
 
 ```cangjie
@@ -85,6 +129,28 @@ public func getValue<T, P>(context: UIAbilityContext, name: T, defValue: String,
   | :---- | :--- | :--- |
   | The context is invalid. | Context initialization failed | Restart the application |
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleGetValueWithDomain(): Unit {
+    try {
+        let context = Global.abilityContext
+        let value = getValue(context, Display.ScreenBrightnessStatus, "100", DomainName.DeviceShared)
+        Hilog.info(0, "cangjie_ohos_test", "Succeeded in getting screen brightness: ${value}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get screen brightness: ${e.toString()}")
+    }
+}
+```
+
 ## enum Date
 
 ```cangjie
@@ -119,6 +185,28 @@ AutoGainTime
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleAutoGainTime(): Unit {
+    try {
+        let context = Global.abilityContext
+        let autoGainTime = getValue(context, Date.AutoGainTime, "false")
+        Hilog.info(0, "cangjie_ohos_test", "Auto gain time setting: ${autoGainTime}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get auto gain time setting: ${e.toString()}")
+    }
+}
+```
+
 ### AutoGainTimeZone
 
 ```cangjie
@@ -130,6 +218,28 @@ AutoGainTimeZone
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Initial Version:** 21
+
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleAutoGainTimeZone(): Unit {
+    try {
+        let context = Global.abilityContext
+        let autoGainTimeZone = getValue(context, Date.AutoGainTimeZone, "false")
+        Hilog.info(0, "cangjie_ohos_test", "Auto gain time zone setting: ${autoGainTimeZone}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get auto gain time zone setting: ${e.toString()}")
+    }
+}
+```
 
 ### DateFormat
 
@@ -143,6 +253,28 @@ DateFormat
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleDateFormat(): Unit {
+    try {
+        let context = Global.abilityContext
+        let dateFormat = getValue(context, Date.DateFormat, "MM/dd/yyyy")
+        Hilog.info(0, "cangjie_ohos_test", "Date format setting: ${dateFormat}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get date format setting: ${e.toString()}")
+    }
+}
+```
+
 ### TimeFormat
 
 ```cangjie
@@ -154,6 +286,28 @@ TimeFormat
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Initial Version:** 21
+
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTimeFormat(): Unit {
+    try {
+        let context = Global.abilityContext
+        let timeFormat = getValue(context, Date.TimeFormat, "24")
+        Hilog.info(0, "cangjie_ohos_test", "Time format setting: ${timeFormat}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get time format setting: ${e.toString()}")
+    }
+}
+```
 
 ### func toString()
 
@@ -212,6 +366,28 @@ AnimatorDurationScale
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleAnimatorDuration(): Unit {
+    try {
+        let context = Global.abilityContext
+        let durationScale = getValue(context, Display.AnimatorDurationScale, "1.0")
+        Hilog.info(0, "cangjie_ohos_test", "Animator duration scale: ${durationScale}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get animator duration scale: ${e.toString()}")
+    }
+}
+```
+
 ### AutoScreenBrightness
 
 ```cangjie
@@ -223,6 +399,28 @@ AutoScreenBrightness
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Initial Version:** 21
+
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleAutoScreenBrightness(): Unit {
+    try {
+        let context = Global.abilityContext
+        let autoBrightness = getValue(context, Display.AutoScreenBrightness, "0")
+        Hilog.info(0, "cangjie_ohos_test", "Auto screen brightness setting: ${autoBrightness}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get auto screen brightness setting: ${e.toString()}")
+    }
+}
+```
 
 ### DefaultScreenRotation
 
@@ -236,6 +434,28 @@ DefaultScreenRotation
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleDefaultScreenRotation(): Unit {
+    try {
+        let context = Global.abilityContext
+        let rotation = getValue(context, Display.DefaultScreenRotation, "0")
+        Hilog.info(0, "cangjie_ohos_test", "Default screen rotation setting: ${rotation}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get default screen rotation setting: ${e.toString()}")
+    }
+}
+```
+
 ### DisplayInversionStatus
 
 ```cangjie
@@ -247,6 +467,28 @@ DisplayInversionStatus
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Initial Version:** 21
+
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleDisplayInversion(): Unit {
+    try {
+        let context = Global.abilityContext
+        let inversion = getValue(context, Display.DisplayInversionStatus, "0")
+        Hilog.info(0, "cangjie_ohos_test", "Display inversion status: ${inversion}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get display inversion status: ${e.toString()}")
+    }
+}
+```
 
 ### FontScale
 
@@ -260,6 +502,28 @@ FontScale
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleFontScale(): Unit {
+    try {
+        let context = Global.abilityContext
+        let fontScale = getValue(context, Display.FontScale, "1.0")
+        Hilog.info(0, "cangjie_ohos_test", "Font scale setting: ${fontScale}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get font scale setting: ${e.toString()}")
+    }
+}
+```
+
 ### ScreenBrightnessStatus
 
 ```cangjie
@@ -271,6 +535,28 @@ ScreenBrightnessStatus
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Initial Version:** 21
+
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleScreenBrightness(): Unit {
+    try {
+        let context = Global.abilityContext
+        let brightness = getValue(context, Display.ScreenBrightnessStatus, "128")
+        Hilog.info(0, "cangjie_ohos_test", "Screen brightness setting: ${brightness}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get screen brightness setting: ${e.toString()}")
+    }
+}
+```
 
 ### ScreenOffTimeout
 
@@ -284,6 +570,28 @@ ScreenOffTimeout
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleScreenOffTimeout(): Unit {
+    try {
+        let context = Global.abilityContext
+        let timeout = getValue(context, Display.ScreenOffTimeout, "30000")
+        Hilog.info(0, "cangjie_ohos_test", "Screen off timeout setting: ${timeout} ms")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get screen off timeout setting: ${e.toString()}")
+    }
+}
+```
+
 ### TransitionAnimationScale
 
 ```cangjie
@@ -296,6 +604,28 @@ TransitionAnimationScale
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTransitionAnimation(): Unit {
+    try {
+        let context = Global.abilityContext
+        let transitionScale = getValue(context, Display.TransitionAnimationScale, "1.0")
+        Hilog.info(0, "cangjie_ohos_test", "Transition animation scale: ${transitionScale}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get transition animation scale: ${e.toString()}")
+    }
+}
+```
+
 ### WindowAnimationScale
 
 ```cangjie
@@ -307,6 +637,28 @@ WindowAnimationScale
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Initial Version:** 21
+
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleWindowAnimation(): Unit {
+    try {
+        let context = Global.abilityContext
+        let windowScale = getValue(context, Display.WindowAnimationScale, "1.0")
+        Hilog.info(0, "cangjie_ohos_test", "Window animation scale: ${windowScale}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get window animation scale: ${e.toString()}")
+    }
+}
+```
 
 ### func toString()
 
@@ -358,6 +710,28 @@ DeviceShared
 
 **Initial Version:** 21
 
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleDeviceShared(): Unit {
+    try {
+        let context = Global.abilityContext
+        let value = getValue(context, Display.ScreenBrightnessStatus, "100", DomainName.DeviceShared)
+        Hilog.info(0, "cangjie_ohos_test", "Device shared screen brightness: ${value}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get device shared screen brightness: ${e.toString()}")
+    }
+}
+```
+
 ### UserProperty
 
 ```cangjie
@@ -369,6 +743,28 @@ UserProperty
 **System Capability:** SystemCapability.Applications.Settings.Core
 
 **Initial Version:** 21
+
+**Example:**
+
+<!-- compile -->
+
+``cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleUserProperty(): Unit {
+    try {
+        let context = Global.abilityContext
+        let value = getValue(context, Display.ScreenBrightnessStatus, "100", DomainName.UserProperty)
+        Hilog.info(0, "cangjie_ohos_test", "User property screen brightness: ${value}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "Failed to get user property screen brightness: ${e.toString()}")
+    }
+}
+```
 
 ### func toString()
 

@@ -16,8 +16,8 @@ ohos.permission.INTERNET
 
 API示例代码使用说明：
 
-- 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
-- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
+- 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
+- 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
 上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
 
@@ -68,6 +68,32 @@ public func create(context: UIAbilityContext, config: Config): Task
   | :---- | :--- | :--- |
   | The context is invalid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleCreate(): Unit {
+    try {
+        let context = Global.abilityContext
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/file.txt"
+        )
+        let task = create(context, config)
+        Hilog.info(0, "cangjie_ohos_test", "成功创建任务，任务ID: ${task.tid}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "创建任务失败: ${e.toString()}")
+    }
+}
+```
+
 ## func getTask(UIAbilityContext, String, ?String)
 
 ```cangjie
@@ -105,6 +131,29 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
   | 13400003 | Task service ability error.|
   | 21900006 | Task removed or not found.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleGetTask(): Unit {
+    try {
+        let context = Global.abilityContext
+        let taskId = "example_task_id"
+        let task = getTask(context, taskId)
+        Hilog.info(0, "cangjie_ohos_test", "成功获取任务，任务ID: ${task.tid}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "获取任务失败: ${e.toString()}")
+    }
+}
+```
+
 - IllegalArgumentException：
 
   | 错误信息 | 可能原因 | 处理步骤 |
@@ -140,6 +189,28 @@ public func remove(id: String): Unit
   | 13400003 | Task service ability error.|
   | 21900006 | Task removed or not found.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleRemove(): Unit {
+    try {
+        let taskId = "example_task_id"
+        remove(taskId)
+        Hilog.info(0, "cangjie_ohos_test", "成功移除任务，任务ID: ${taskId}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "移除任务失败: ${e.toString()}")
+    }
+}
+```
+
 ## func search(Filter)
 
 ```cangjie
@@ -173,6 +244,31 @@ public func search(filter!: Filter = Filter()): Array<String>
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type.|
   | 13400003 | Task service ability error.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleSearch(): Unit {
+    try {
+        let filter = Filter()
+        let taskIds = search(filter)
+        Hilog.info(0, "cangjie_ohos_test", "搜索到任务数量: ${taskIds.length}")
+        for (id in taskIds) {
+            Hilog.info(0, "cangjie_ohos_test", "任务ID: ${id}")
+        }
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "搜索任务失败: ${e.toString()}")
+    }
+}
+```
 
 ## func show(String)
 
@@ -209,6 +305,28 @@ public func show(id: String): TaskInfo
   | 13400003 | Task service ability error.|
   | 21900006 | Task removed or not found.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleShow(): Unit {
+    try {
+        let taskId = "example_task_id"
+        let taskInfo = show(taskId)
+        Hilog.info(0, "cangjie_ohos_test", "任务信息: ${taskInfo.toString()}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "查询任务信息失败: ${e.toString()}")
+    }
+}
+```
+
 ## func touch(String, String)
 
 ```cangjie
@@ -244,6 +362,29 @@ public func touch(id: String, token: String): TaskInfo
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type.|
   | 13400003 | Task service ability error.|
   | 21900006 | Task removed or not found.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTouch(): Unit {
+    try {
+        let taskId = "example_task_id"
+        let token = "example_token"
+        let taskInfo = touch(taskId, token)
+        Hilog.info(0, "cangjie_ohos_test", "任务信息: ${taskInfo.toString()}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "查询任务信息失败: ${e.toString()}")
+    }
+}
+```
 
 ## class Config
 
@@ -708,6 +849,42 @@ public init(action: Action, url: String, title!: ?String = None, description!: S
 |priority|UInt32|否|0| **命名参数。** 任务的优先级。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。|
 |extras|HashMap\<String,String>|否|HashMap\<String, String>()| **命名参数。** 配置的附加功能，默认为空。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleConfigInit(): Unit {
+    try {
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/file.txt",
+            title = "示例下载任务",
+            description = "这是一个示例下载任务",
+            mode = Mode.Background,
+            overwrite = true,
+            network = Network.Wifi,
+            metered = false,
+            roaming = true,
+            retry = true,
+            redirect = true,
+            gauge = false,
+            precise = false,
+            priority = 0
+        )
+        Hilog.info(0, "cangjie_ohos_test", "成功创建配置对象")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "创建配置对象失败: ${e.toString()}")
+    }
+}
+```
+
 ## class FileSpec
 
 ```cangjie
@@ -823,6 +1000,31 @@ public init(
 |mimeType|?String|否|None| **命名参数。** 文件的mimetype通过文件名获取。|
 |filename|?String|否|None| **命名参数。** 文件名，默认值通过路径获取。|
 |extras|HashMap\<String,String>|否|HashMap<String,String>()| **命名参数。** 文件信息的附加内容。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleFileSpecInit(): Unit {
+    try {
+        let fileSpec = FileSpec(
+            path = "./example.txt",
+            mimeType = "text/plain",
+            filename = "example.txt"
+        )
+        Hilog.info(0, "cangjie_ohos_test", "成功创建文件规范对象")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "创建文件规范对象失败: ${e.toString()}")
+    }
+}
+```
 
 ## class Filter
 
@@ -951,6 +1153,33 @@ public init(before!: ?Int64 = None, after!: ?Int64 = None, state!: ?State = None
 |action|?[Action](#enum-action)|否|None| **命名参数。** 任务操作选项。<br>-UPLOAD表示上传任务。<br>-DOWNLOAD表示下载任务。|
 |mode|?[Mode](#enum-mode)|否|None| **命名参数。** 任务模式。<br>-FOREGROUND表示前端任务。<br>-BACKGROUND表示后台任务。<br>-如果未填写，则查询所有任务。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleFilterInit(): Unit {
+    try {
+        let filter = Filter(
+            before = None,
+            after = None,
+            state = State.Running,
+            action = Action.Download,
+            mode = Mode.Background
+        )
+        Hilog.info(0, "cangjie_ohos_test", "成功创建过滤器对象")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "创建过滤器对象失败: ${e.toString()}")
+    }
+}
+```
+
 ## class FormItem
 
 ```cangjie
@@ -1019,6 +1248,30 @@ public init(name: String, value: FormItemValue)
 |:---|:---|:---|:---|:---|
 |name|String|是|-| **命名参数。** 表单参数名。|
 |value|[FormItemValue](#enum-formitemvalue)|是|-| **命名参数。** 表单参数值。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleFormItemInit(): Unit {
+    try {
+        let formItem = FormItem(
+            name = "exampleField",
+            value = FormItemValue.StringItem("exampleValue")
+        )
+        Hilog.info(0, "cangjie_ohos_test", "成功创建表单项对象")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "创建表单项对象失败: ${e.toString()}")
+    }
+}
+```
 
 ## class HttpResponse
 
@@ -1268,6 +1521,33 @@ public init(tid: String, config: Config)
 |tid|String|是|-|任务id，在系统上是唯一的，由系统自动生成。|
 |config|[Config](#class-config)|是|-|任务的配置信息。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTaskInit(): Unit {
+    try {
+        let context = Global.abilityContext
+        let taskId = "example_task_id"
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/file.txt"
+        )
+        let task = Task(taskId, config)
+        Hilog.info(0, "cangjie_ohos_test", "成功初始化任务，任务ID: ${task.tid}")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "初始化任务失败: ${e.toString()}")
+    }
+}
+```
+
 ### func off(EventCallbackType, ?CallbackObject)
 
 ```cangjie
@@ -1277,6 +1557,170 @@ public func off(event: EventCallbackType, callback!: ?CallbackObject = None): Un
 
 **功能：** 取消订阅任务事件。
 
+### func on(EventCallbackType, Callback1Argument<HttpResponse>)
+
+```cangjie
+
+public func on(event: EventCallbackType, callback: Callback1Argument<HttpResponse>): Unit
+```
+
+**功能：** 订阅任务事件。
+
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+**起始版本：** 21
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|[EventCallbackType](#enum-eventcallbacktype)|是|-|事件类型。|
+|callback|[Callback1Argument<HttpResponse>](#callback1argument-httpresponse)|是|-|事件回调函数。|
+
+**返回值：**
+
+|状态码|说明|
+|:---|:---|
+| 200 | Success.|
+| 401 | Parameter verification failed.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTaskOnProgress(): Unit {
+    try {
+        let context = Global.abilityContext
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/largefile.zip"
+        )
+        let task = create(context, config)
+        
+        task.on(EventCallbackType.Progress, (progress) => {
+            Hilog.info(0, "cangjie_ohos_test", "下载进度: ${progress.processed} / ${progress.sizes[0]} bytes")
+        })
+        
+        task.start()
+        Hilog.info(0, "cangjie_ohos_test", "成功订阅进度事件并启动任务")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "订阅进度事件失败: ${e.toString()}")
+    }
+}
+```
+
+### func pause()
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+**起始版本：** 21
+
+**返回值：**
+
+|返回值|说明|
+|:---|:---|
+| 0 | Success.|
+| 401 | Parameter verification failed.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTaskPause(): Unit {
+    try {
+        let context = Global.abilityContext
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/largefile.zip"
+        )
+        let task = create(context, config)
+        
+        task.start()
+        task.pause()
+        Hilog.info(0, "cangjie_ohos_test", "成功暂停任务")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "暂停任务失败: ${e.toString()}")
+    }
+}
+```
+
+### func resume()
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+**起始版本：** 21
+
+**返回值：**
+
+|返回值|说明|
+|:---|:---|
+| 0 | Success.|
+| 401 | Parameter verification failed.|
+| 21900007 | Operation with wrong task state.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTaskStop(): Unit {
+    try {
+        let context = Global.abilityContext
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/largefile.zip"
+        )
+        let task = create(context, config)
+        
+        task.start()
+        task.stop()
+        Hilog.info(0, "cangjie_ohos_test", "成功停止任务")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "停止任务失败: ${e.toString()}")
+    }
+}
+```
+
+## class TaskInfo
+        )
+        let task = create(context, config)
+        
+        task.on(EventCallbackType.Progress, (progress) => {
+            Hilog.info(0, "cangjie_ohos_test", "下载进度: ${progress.processed} / ${progress.sizes[0]} bytes")
+        })
+        
+        task.start()
+        Hilog.info(0, "cangjie_ohos_test", "成功订阅进度事件并启动任务")
+        
+        task.pause()
+        Hilog.info(0, "cangjie_ohos_test", "成功暂停任务")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "暂停任务失败: ${e.toString()}")
+    }
+}
+```
+
+### func on(EventCallbackType, Callback1Argument<Progress>)
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
 **起始版本：** 21
@@ -1288,7 +1732,42 @@ public func off(event: EventCallbackType, callback!: ?CallbackObject = None): Un
 |event|[EventCallbackType](#enum-eventcallbacktype)|是|-|订阅的事件类型。<br>- 取值为'progress'，表示任务进度。<br>- 取值为'completed'，表示任务完成。<br>- 取值为'failed'，表示任务失败。<br>- 取值为'pause'，表示任务暂停。<br>- 取值为'resume'，表示任务恢复。<br>- 取值为'remove'，表示任务删除。<br>- 取值为'response'，表示任务响应。|
 |callback|?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|否|None| **命名参数。** 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。|
 
-### func on(EventCallbackType, Callback1Argument\<HttpResponse>)
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTaskOff(): Unit {
+    try {
+        let context = Global.abilityContext
+        let taskId = "example_task_id"
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/file.txt"
+        )
+        let task = Task(taskId, config)
+        
+        // 先订阅事件
+        task.on(EventCallbackType.Progress, (progress) => {
+            Hilog.info(0, "cangjie_ohos_test", "下载进度: ${progress.progress}%")
+        })
+        
+        // 取消订阅事件
+        task.off(EventCallbackType.Progress)
+        Hilog.info(0, "cangjie_ohos_test", "成功取消订阅进度事件")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "取消订阅事件失败: ${e.toString()}")
+    }
+}
+```
+
+### func on(EventCallbackType, Callback1Argument<HttpResponse>)
 
 ```cangjie
 
@@ -1418,6 +1897,34 @@ public func start(): Unit
   | 13400003 | Task service ability error.|
   | 21900007 | Operation with wrong task state.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTaskStart(): Unit {
+    try {
+        let context = Global.abilityContext
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/file.txt"
+        )
+        let task = create(context, config)
+        
+        task.start()
+        Hilog.info(0, "cangjie_ohos_test", "成功启动任务")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "启动任务失败: ${e.toString()}")
+    }
+}
+```
+
 ### func stop()
 
 ```cangjie
@@ -1439,6 +1946,35 @@ public func stop(): Unit
   | :---- | :--- |
   | 13400003 | Task service ability error.|
   | 21900007 | Operation with wrong task state.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// main_ability.cj
+
+import kit.BasicServicesKit.*
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.Hilog
+
+func exampleTaskStop(): Unit {
+    try {
+        let context = Global.abilityContext
+        let config = Config(
+            action = Action.Download,
+            url = "https://example.com/largefile.zip"
+        )
+        let task = create(context, config)
+        
+        task.start()
+        task.stop()
+        Hilog.info(0, "cangjie_ohos_test", "成功停止任务")
+    } catch (e: Exception) {
+        Hilog.info(0, "cangjie_ohos_test", "停止任务失败: ${e.toString()}")
+    }
+}
+```
 
 ## class TaskInfo
 
@@ -2378,19 +2914,15 @@ public operator func ==(other: Mode): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
+**功能：** 文件的URL地址。
 
-```cangjie
-public func toString(): String
-```
+**类型：** String
 
-**功能：** 获取当前枚举的字符串表示。
+**读写能力：** 只读
 
-**返回值：**
+**系统能力：** SystemCapability.Request.FileTransferAgent
 
-|类型|说明|
-|:----|:----|
-|String|获取当前枚举的字符串表示。|
+**起始版本：** 21
 
 ## enum Network
 
@@ -2490,19 +3022,15 @@ public operator func ==(other: Network): Bool
 |:----|:----|
 |Bool|两个枚举值相等返回true，否则返回false。|
 
-### func toString()
+**功能：** 文件的URL地址。
 
-```cangjie
-public func toString(): String
-```
+**类型：** String
 
-**功能：** 获取当前枚举的字符串表示。
+**读写能力：** 只读
 
-**返回值：**
+**系统能力：** SystemCapability.Request.FileTransferAgent
 
-|类型|说明|
-|:----|:----|
-|String|获取当前枚举的字符串表示。|
+**起始版本：** 21
 
 ## enum State
 
