@@ -4,6 +4,8 @@
 
 The Cangjie ArkTS Interop Library API is used to provide cross-language interoperability between Cangjie and ArkTS, includes the common interfaces, interop macro interfaces, and JSON and CFFI interfaces provided by the Cangjie Interop Library, hoping to provide developers with cross-language interop solutions that take into account both development efficiency and operational efficiency, provide a simple interop development paradigm, and reduce cross-language interop overhead.
 
+The security cangjie interface currently under development only supports standard devices.
+
 Framework architecture:
 ![cangjie interop API](./figures/cangjie-interop_eng.png)
 
@@ -30,23 +32,41 @@ The library also provides the following key data structures:
 
 Finally, this interop library completes the interoperability function by calling the interface provided by the ArkTS virtual machine through CFFI.
 
+## Public ability
+
+This repository also provides interfaces for public capabilities, such as: JSON serialisation and deserialisation interfaces, C language interoperability interfaces, general exception interfaces, callback interfaces, and API level interfaces.
+
+- JSON serialisation and deserialisation interfaces:Used for processing JSON data, achieving mutual conversion between String, JsonValue, and DataModel.
+- C language interoperability interfaces:Provides a utility class for managing C interoperability objects.
+- general exception interfaces:A general exception class BusinessException.
+- callback interfaces:A utility class for function callback parameters.
+- API level interfaces:Provides an API Level interface for obtaining the current API Level.
+
 ## Directory
 
 ```text
 arkcompiler/cangjie_ark_interop
-├── ohos                 # Public repository code for Cangjie Interop API
-├── doc                  # Cangjie documentation including API reference, development guide and user manual
-    ├── API_Reference    # Cangjie api reference
-    └── Dev_Guide        # Cangjie developer guide
-    └── release-notes    # Cangjie release notes
-    └── User_Manual      # Cangjie user manual
-├── figures              # Images used in the README
-├── test                 # Cangjie interop testcases
+├── ohos                    # Cangjie interoperability API and public repository code
+|    ├── ark_interop        # Cangjie Interop API
+|    ├── ark_interop_helper # Cangjie Interop library utility class
+|    ├── ark_interop_macro  # Cangjie Interop macro
+|    ├── business_exception # Cangjie public exception
+|    ├── callback_invoke    # Cagnejie public callback invoke
+|    ├── encoding           # Cangjie public json encoding
+|    ├── ffi                # Cangjie public C FFI Library
+|    ├── labels             # Cangjie public Interop Labels
+|    ├── utf16string        # Cangjie UTF16 String
+├── doc                    # Cangjie documentation including API reference, development guide and user manual
+|    ├── API_Reference      # Cangjie api reference
+|    ├── Dev_Guide          # Cangjie developer guide
+|    ├── release-notes      # Cangjie release notes
+|    ├── User_Manual        # Cangjie user manual
+├── figures                # Images used in the README
+├── test                   # Cangjie interop testcases
 ```
 
 ## Constraints
 
-- The security cangjie interface currently under development only supports standard devices.
 
 ## Usage Scenarios
 
@@ -59,9 +79,16 @@ For the demands of scenario one, an interoperability library can be used to impl
 In OpenHarmony application development, there is a demand for hybrid development of Cangjie and ArkTS, such as the following scenarios:
 
 - Scenario one: When using ArkTS for development, the code modules developed by Cangjie are called through cross-language interop to give full play to Cangjie's high performance and high concurrency advantages and improve the application performance experience.
+
+For more detailed examples, please refer to[Loading Cangjie Modules in ArkTS](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/arkts_import_cangjie.md)
+
 - Scenario two: When using Cangjie for development, call the ArkTS library through cross-language interoperability to reuse the rich library ecosystem of ArkTS.
 
+For more detailed examples, please refer to[Using ArkTS Modules in Cangjie Applications](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
+
 At the same time, in response to the development complexity brought about by interop, Cangjie provides a declarative interoperability macro ark_interop_macro, which allows developers to use the macro "@Interop[ArkTS]" to mark the functions or types that need to be exported to ArkTS in the Cangjie code, and automatically generate the interoperability "glue layer" code and ArkTS interface declarations during the compilation stage, reducing the complexity of the developer's handwritten interoperability code.
+
+For more detailed examples, please refer to[Cangjie-ArkTS Declarative Interop Macros](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md)
 
 ![Cangjie interoperability flow chart](./figures/api_eng.png)
 
@@ -83,3 +110,5 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 ## Related Repositories
 
 [arkui_napi](https://gitee.com/openharmony/arkui_napi)
+
+[ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)

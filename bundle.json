@@ -24,9 +24,6 @@
         "deps": {
             "components": [
                 "ability_runtime",
-                "hilog",
-                "hitrace",	
-                "libuv",	
                 "napi"
             ]
         },
