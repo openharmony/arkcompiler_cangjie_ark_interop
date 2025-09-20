@@ -161,3 +161,29 @@ public init(
 |:---|:---|:---|:---|:---|
 |onUnhandledException|(String)->Unit|是|-|应用产生未捕获的异常时的回调。|
 |onException|Option\<([ErrorObject](#class-errorobject))->Unit>|否|None|应用产生异常，上报js层时的回调。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+import kit.PerformanceAnalysisKit.*
+
+let observer = ErrorObserver(
+    {
+        errorMsg =>
+            Hilog.info(0, "test_errorManager", "onUnhandledException, errorMsg:  =${errorMsg}")
+    },
+    onException: Some({ errorObj =>
+        Hilog.info(0, "test_errorManager", "onException, name:   =${errorObj.name}")
+        Hilog.info(0, "test_errorManager", "onException, message:   =${errorObj.message}")
+        if (let Some(v) <-errorObj.stack) {
+            Hilog.info(0, "test_errorManager", "onException, stack:    =${v}")
+        }
+    })
+)
+ErrorManager.on(ErrorManagerEvent.Error, observer)
+```

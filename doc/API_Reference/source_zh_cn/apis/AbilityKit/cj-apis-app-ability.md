@@ -54,3 +54,15 @@ public let stageMode: Bool
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+          let isStageMode = this.context.stageMode
+    }
+}

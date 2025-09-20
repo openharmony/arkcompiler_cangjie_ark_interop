@@ -91,3 +91,11 @@ public init(resultCode: Int32, want!: Want = Want())
 |:---|:---|:---|:---|:---|
 |resultCode|Int32|是|-|表示结果码。|
 |want|[Want](cj-apis-app-ability-want.md#class-want)|否|Want()|表示Want类型信息，如ability名称，包名等。|
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let abilityResult = AbilityResult(0)
