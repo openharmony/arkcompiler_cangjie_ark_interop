@@ -33,7 +33,7 @@ public class CommonEventData {
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bundleName
 
@@ -49,7 +49,7 @@ public var bundleName: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var code
 
@@ -65,7 +65,7 @@ public var code: Int32
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var data
 
@@ -81,7 +81,7 @@ public var data: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var event
 
@@ -97,7 +97,7 @@ public var event: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var parameters
 
@@ -113,4 +113,4 @@ public var parameters: HashMap<String, ValueType>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22

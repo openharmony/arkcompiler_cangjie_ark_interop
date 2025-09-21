@@ -35,7 +35,7 @@ public class Configuration {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var colorMode
 
@@ -51,7 +51,7 @@ public var colorMode: ColorMode
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceType
 
@@ -67,7 +67,7 @@ public var deviceType: DeviceType
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var direction
 
@@ -83,7 +83,7 @@ public var direction: Direction
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var locale
 
@@ -99,7 +99,7 @@ public var locale: String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mcc
 
@@ -115,7 +115,7 @@ public var mcc: UInt32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mnc
 
@@ -131,7 +131,7 @@ public var mnc: UInt32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var screenDensity
 
@@ -147,7 +147,7 @@ public var screenDensity: ScreenDensity
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class DeviceCapability
 
@@ -162,7 +162,7 @@ public class DeviceCapability {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let deviceType
 
@@ -178,7 +178,7 @@ public let deviceType: DeviceType
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let screenDensity
 
@@ -194,7 +194,7 @@ public let screenDensity: ScreenDensity
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ResourceManager
 
@@ -206,7 +206,7 @@ public class ResourceManager {}
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func addResource(String)
 
@@ -219,7 +219,7 @@ public func addResource(path: String): Unit
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -241,6 +241,22 @@ public func addResource(path: String): Unit
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let path = "/data/storage/el2/base/haps/entry/files/library-default-unsigned.hsp"
+resourceManager.addResource(path)
+```
+
 ### func closeRawFd(String)
 
 ```cangjie
@@ -252,7 +268,7 @@ public func closeRawFd(path: String): Unit
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -275,6 +291,21 @@ public func closeRawFd(path: String): Unit
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let rawfd = resourceManager.closeRawFd("test.txt")
+```
+
 ### func getBoolean(UInt32)
 
 ```cangjie
@@ -286,7 +317,7 @@ public func getBoolean(resId: UInt32): Bool
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -317,6 +348,22 @@ public func getBoolean(resId: UInt32): Bool
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.boolean.test)
+resourceManager.getBoolean(Int32(res.id))
+```
+
 ### func getBoolean(AppResource)
 
 ```cangjie
@@ -328,7 +375,7 @@ public func getBoolean(resource: AppResource): Bool
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -359,6 +406,23 @@ public func getBoolean(resource: AppResource): Bool
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.boolean.test)
+let resource = AppResource("com.example.myapplication", "entry", Int32(res.id))
+resourceManager.getBoolean(resource)
+```
+
 ### func getBooleanByName(String)
 
 ```cangjie
@@ -370,7 +434,7 @@ public func getBooleanByName(resName: String): Bool
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -401,6 +465,21 @@ public func getBooleanByName(resName: String): Bool
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getBooleanByName("test")
+```
+
 ### func getColor(AppResource)
 
 ```cangjie
@@ -412,7 +491,7 @@ public func getColor(resource: AppResource): UInt32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -443,6 +522,23 @@ public func getColor(resource: AppResource): UInt32
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.color.test)
+let resource = AppResource("com.example.myapplication", "entry", Int32(res.id))
+resourceManager.getColor(resource)
+```
+
 ### func getColor(UInt32)
 
 ```cangjie
@@ -454,7 +550,7 @@ public func getColor(resId: UInt32): UInt32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -485,6 +581,22 @@ public func getColor(resId: UInt32): UInt32
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.color.test)
+resourceManager.getColor(Int32(res.id))
+```
+
 ### func getColorByName(String)
 
 ```cangjie
@@ -496,7 +608,7 @@ public func getColorByName(resName: String): UInt32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -527,6 +639,21 @@ public func getColorByName(resName: String): UInt32
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getColorByName("test")
+```
+
 ### func getConfiguration()
 
 ```cangjie
@@ -538,7 +665,7 @@ public func getConfiguration(): Configuration
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -552,7 +679,24 @@ public func getConfiguration(): Configuration
 
   | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid. @returns { Configuration } the device configuration.| todo | todo |
+  | If the instance id invallid. | todo | todo |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let configuration = resourceManager.getConfiguration()
+AppLog.info(configuration.locale)
+AppLog.info(configuration.direction.getValue().toString())
+```
 
 ### func getDeviceCapability()
 
@@ -565,7 +709,7 @@ public func getDeviceCapability(): DeviceCapability
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -579,7 +723,24 @@ public func getDeviceCapability(): DeviceCapability
 
   | 错误信息 | 可能原因 | 处理步骤 |
   | :---- | :--- | :--- |
-  | If the instance id invallid. @returns { DeviceCapability } the device capability.| todo | todo |
+  | If the instance id invallid. | todo | todo |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let deviceCapability = resourceManager.getDeviceCapability()
+AppLog.info(deviceCapability.screenDensity.getValue().toString())
+AppLog.info(deviceCapability.deviceType.getValue().toString())
+```
 
 ### func getLocales(Bool)
 
@@ -592,7 +753,7 @@ public func getLocales(includeSystem!: Bool = false): Array<String>
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -620,6 +781,21 @@ public func getLocales(includeSystem!: Bool = false): Array<String>
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getLocales()
+```
+
 ### func getMediaBase64ByName(String, ?ScreenDensity)
 
 ```cangjie
@@ -631,7 +807,7 @@ public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = Non
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -668,6 +844,21 @@ public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = Non
   | :---- | :--- | :--- |
   | Out of memory.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getMediaBase64ByName("test")
+```
+
 ### func getMediaByName(String, ?ScreenDensity)
 
 ```cangjie
@@ -679,7 +870,7 @@ public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Ar
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -710,6 +901,21 @@ public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Ar
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getMediaByName("test", ScreenMdpi)
+```
+
 ### func getMediaContent(UInt32, ?ScreenDensity)
 
 ```cangjie
@@ -721,7 +927,7 @@ public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Arr
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -752,6 +958,22 @@ public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Arr
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.media.test)
+resourceManager.getMediaContent(Int32(res.id), ScreenSdpi)
+```
+
 ### func getMediaContent(AppResource, ?ScreenDensity)
 
 ```cangjie
@@ -763,7 +985,7 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -794,6 +1016,23 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.media.test)
+let resource = AppResource("com.example.myapplication", "entry", Int32(res.id))
+resourceManager.getMediaContent(resource, ScreenSdpi)
+```
+
 ### func getMediaContentBase64(UInt32, ?ScreenDensity)
 
 ```cangjie
@@ -805,7 +1044,7 @@ public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -842,6 +1081,22 @@ public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None
   | :---- | :--- | :--- |
   | Out of memory.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.media.test)
+resourceManager.getMediaContentBase64(res.id)
+```
+
 ### func getMediaContentBase64(AppResource, ?ScreenDensity)
 
 ```cangjie
@@ -853,7 +1108,7 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -890,6 +1145,23 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
   | :---- | :--- | :--- |
   | Out of memory.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.media.test)
+let resource = AppResource("com.example.myapplication", "entry", Int32(res.id))
+resourceManager.getMediaContentBase64(resource)
+```
+
 ### func getNumber(UInt32)
 
 ```cangjie
@@ -901,7 +1173,7 @@ public func getNumber(resId: UInt32): NumberValueType
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -932,6 +1204,27 @@ public func getNumber(resId: UInt32): NumberValueType
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.integer.test)
+let number = resourceManager.getNumber(res.id)
+match (number) {
+    case INT(v) => AppLog.info(v.toString())
+    case FLOAT(v) => AppLog.info(v.toString())
+    case _ => throw IllegalArgumentException("The type is not supported.")
+}
+```
+
 ### func getNumber(AppResource)
 
 ```cangjie
@@ -943,7 +1236,7 @@ public func getNumber(resource: AppResource): NumberValueType
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -974,6 +1267,28 @@ public func getNumber(resource: AppResource): NumberValueType
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.integer.test)
+let resource = AppResource("com.example.myapplication", "entry", Int32(res.id))
+let number = resourceManager.getNumber(resource)
+match (number) {
+    case INT(v) => AppLog.info(v.toString())
+    case FLOAT(v) => AppLog.info(v.toString())
+    case _ => throw IllegalArgumentException("The type is not supported.")
+}
+```
+
 ### func getNumberByName(String)
 
 ```cangjie
@@ -985,7 +1300,7 @@ public func getNumberByName(resName: String): NumberValueType
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1016,6 +1331,26 @@ public func getNumberByName(resName: String): NumberValueType
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let number = resourceManager.getNumberByName("test")
+match (number) {
+    case INT(v) => AppLog.info(v.toString())
+    case FLOAT(v) => AppLog.info(v.toString())
+    case _ => throw IllegalArgumentException("The type is not supported.")
+}
+```
+
 ### func getPluralStringByName(String, Int64)
 
 ```cangjie
@@ -1027,7 +1362,7 @@ public func getPluralStringByName(resName: String, num: Int64): String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1065,6 +1400,21 @@ public func getPluralStringByName(resName: String, num: Int64): String
   | :---- | :--- | :--- |
   | Out of memory.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getPluralStringByName("test", 1)
+```
+
 ### func getPluralStringValue(UInt32, Int64)
 
 ```cangjie
@@ -1076,7 +1426,7 @@ public func getPluralStringValue(resId: UInt32, num: Int64): String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1114,6 +1464,22 @@ public func getPluralStringValue(resId: UInt32, num: Int64): String
   | :---- | :--- | :--- |
   | Out of memory.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.plural.test)
+resourceManager.getPluralStringValue(res.id, 1)
+```
+
 ### func getPluralStringValue(AppResource, Int64)
 
 ```cangjie
@@ -1125,7 +1491,7 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1163,6 +1529,23 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
   | :---- | :--- | :--- |
   | Out of memory.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.plural.test)
+let resource = AppResource("com.example.myapplication", "entry", Int32(res.id))
+resourceManager.getPluralStringValue(resource, 1)
+```
+
 ### func getRawFd(String)
 
 ```cangjie
@@ -1174,7 +1557,7 @@ public func getRawFd(path: String): RawFileDescriptor
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1203,6 +1586,23 @@ public func getRawFd(path: String): RawFileDescriptor
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+import ohos.base.AppLog
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let rawfd = resourceManager.getRawFd("test.txt")
+AppLog.info("${rawfd.fd} ${rawfd.offset} ${rawfd.length}")
+```
+
 ### func getRawFileContent(String)
 
 ```cangjie
@@ -1214,7 +1614,7 @@ public func getRawFileContent(path: String): Array<UInt8>
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1243,6 +1643,21 @@ public func getRawFileContent(path: String): Array<UInt8>
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getRawFileContent("test.txt")
+```
+
 ### func getRawFileList(String)
 
 ```cangjie
@@ -1254,7 +1669,7 @@ public func getRawFileList(path: String): Array<String>
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1283,6 +1698,21 @@ public func getRawFileList(path: String): Array<String>
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getRawFileList("")
+```
+
 ### func getString(UInt32, Array\<ArgsValueType>)
 
 ```cangjie
@@ -1294,7 +1724,7 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1327,6 +1757,22 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let resource = @r(app.string.test)
+resourceManager.getString(Int32(resource.id))
+```
+
 ### func getString(AppResource, Array\<ArgsValueType>)
 
 ```cangjie
@@ -1338,7 +1784,7 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1371,6 +1817,22 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let resource = @r(app.string.test)
+resourceManager.getString(Int32(resource.id), FormatArgs.STRING("format string"), FormatArgs.INT(10), FormatArgs.FLOAT(98.78))
+```
+
 ### func getStringArrayByName(String)
 
 ```cangjie
@@ -1381,7 +1843,7 @@ public func getStringArrayByName(resName: String): Array<String>
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1438,7 +1900,7 @@ public func getStringArrayValue(resId: UInt32): Array<String>
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1469,6 +1931,22 @@ public func getStringArrayValue(resId: UInt32): Array<String>
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let re = @r(app.strarray.test)
+resourceManager.getStringArrayValue(res.id)
+```
+
 ### func getStringArrayValue(AppResource)
 
 ```cangjie
@@ -1480,7 +1958,7 @@ public func getStringArrayValue(resource: AppResource): Array<String>
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1511,6 +1989,23 @@ public func getStringArrayValue(resource: AppResource): Array<String>
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let res = @r(app.strarray.test)
+let resource = AppResource("com.example.myapplication", "entry", Int32(res.id))
+resourceManager.getStringArrayValue(resource)
+```
+
 ### func getStringByName(String, Array\<ArgsValueType>)
 
 ```cangjie
@@ -1522,7 +2017,7 @@ public func getStringByName(resName: String, args: Array<ArgsValueType>): String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1555,6 +2050,21 @@ public func getStringByName(resName: String, args: Array<ArgsValueType>): String
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+resourceManager.getStringByName("test", FormatArgs.STRING("format string"), FormatArgs.INT(10), FormatArgs.FLOAT(98.78))
+```
+
 ### func removeResource(String)
 
 ```cangjie
@@ -1566,7 +2076,7 @@ public func removeResource(path: String): Unit
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1588,6 +2098,22 @@ public func removeResource(path: String): Unit
   | :---- | :--- | :--- |
   | If the instance id invallid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.LocalizationKit.*
+import kit.AbilityKit.*
+
+let stageContext = getStageContext(MainAbility.abilityContext.getOrThrow())
+let resourceManager = ResourceManager.getResourceManager(stageContext)
+let path = "/data/storage/el2/base/haps/entry/files/library-default-unsigned.hsp"
+resourceManager.removeResource(path)
+```
+
 ## enum ArgsValueType
 
 ```cangjie
@@ -1603,7 +2129,7 @@ public enum ArgsValueType {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Float32Value(Float32)
 
@@ -1615,7 +2141,7 @@ Float32Value(Float32)
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Int32Value(Int32)
 
@@ -1627,7 +2153,7 @@ Int32Value(Int32)
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -1639,7 +2165,7 @@ StringValue(String)
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ColorMode
 
@@ -1655,7 +2181,7 @@ public enum ColorMode {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Dark
 
@@ -1667,7 +2193,7 @@ Dark
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Light
 
@@ -1679,7 +2205,7 @@ Light
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum DeviceType
 
@@ -1700,7 +2226,7 @@ public enum DeviceType {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeviceType2In1
 
@@ -1712,7 +2238,7 @@ DeviceType2In1
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeviceTypeCar
 
@@ -1724,7 +2250,7 @@ DeviceTypeCar
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeviceTypePc
 
@@ -1736,7 +2262,7 @@ DeviceTypePc
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeviceTypePhone
 
@@ -1748,7 +2274,7 @@ DeviceTypePhone
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeviceTypeTv
 
@@ -1760,7 +2286,7 @@ DeviceTypeTv
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeviceTypeTablet
 
@@ -1772,7 +2298,7 @@ DeviceTypeTablet
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeviceTypeWearable
 
@@ -1784,7 +2310,7 @@ DeviceTypeWearable
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum Direction
 
@@ -1800,7 +2326,7 @@ public enum Direction {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DirectionHorizontal
 
@@ -1812,7 +2338,7 @@ DirectionHorizontal
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DirectionVertical
 
@@ -1824,7 +2350,7 @@ DirectionVertical
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum NumberValueType
 
@@ -1840,7 +2366,7 @@ public enum NumberValueType {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Float32Value(Float32)
 
@@ -1852,7 +2378,7 @@ Float32Value(Float32)
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Int32Value(Int32)
 
@@ -1864,7 +2390,7 @@ Int32Value(Int32)
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ScreenDensity
 
@@ -1884,7 +2410,7 @@ public enum ScreenDensity {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenLdpi
 
@@ -1896,7 +2422,7 @@ ScreenLdpi
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenMdpi
 
@@ -1908,7 +2434,7 @@ ScreenMdpi
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenSdpi
 
@@ -1920,7 +2446,7 @@ ScreenSdpi
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenXldpi
 
@@ -1932,7 +2458,7 @@ ScreenXldpi
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenXxldpi
 
@@ -1944,7 +2470,7 @@ ScreenXxldpi
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenXxxldpi
 
@@ -1956,4 +2482,4 @@ ScreenXxxldpi
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22

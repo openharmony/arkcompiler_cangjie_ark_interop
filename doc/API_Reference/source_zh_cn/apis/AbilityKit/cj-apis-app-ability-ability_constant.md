@@ -38,7 +38,7 @@ public class LaunchParam {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var lastExitReason
 
@@ -54,7 +54,7 @@ public var lastExitReason: LastExitReason
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var launchReason
 
@@ -70,7 +70,7 @@ public var launchReason: LaunchReason
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum LastExitReason
 
@@ -88,7 +88,7 @@ public enum LastExitReason {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AppFreeze
 
@@ -100,7 +100,7 @@ AppFreeze
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CppCrash
 
@@ -112,7 +112,7 @@ CppCrash
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Normal
 
@@ -124,7 +124,7 @@ Normal
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unknown
 
@@ -136,7 +136,7 @@ Unknown
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum LaunchReason
 
@@ -155,7 +155,7 @@ public enum LaunchReason {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AppRecovery
 
@@ -167,7 +167,7 @@ AppRecovery
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Call
 
@@ -179,7 +179,7 @@ Call
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Continuation
 
@@ -191,7 +191,7 @@ Continuation
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StartAbility
 
@@ -203,7 +203,7 @@ StartAbility
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unknown
 
@@ -215,7 +215,7 @@ Unknown
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum MemoryLevel
 
@@ -232,7 +232,7 @@ public enum MemoryLevel <: Equatable<MemoryLevel> & ToString {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -249,7 +249,7 @@ MemoryLevelCritical
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MemoryLevelLow
 
@@ -261,7 +261,7 @@ MemoryLevelLow
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MemoryLevelModerate
 
@@ -273,7 +273,7 @@ MemoryLevelModerate
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(MemoryLevel)
 
@@ -344,7 +344,7 @@ public enum OnContinueResult {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Agree
 
@@ -356,7 +356,7 @@ Agree
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Mismatch
 
@@ -368,7 +368,7 @@ Mismatch
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Reject
 
@@ -380,7 +380,7 @@ Reject
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum WindowMode
 
@@ -397,7 +397,7 @@ public enum WindowMode {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WindowModeFullscreen
 
@@ -409,7 +409,7 @@ WindowModeFullscreen
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WindowModeSplitPrimary
 
@@ -421,7 +421,7 @@ WindowModeSplitPrimary
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WindowModeSplitSecondary
 
@@ -433,4 +433,4 @@ WindowModeSplitSecondary
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22

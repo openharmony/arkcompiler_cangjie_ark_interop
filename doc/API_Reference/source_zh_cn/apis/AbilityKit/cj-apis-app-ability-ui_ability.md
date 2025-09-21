@@ -35,7 +35,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -60,7 +60,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -85,7 +85,7 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -110,7 +110,7 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -137,7 +137,7 @@ public interface SystemObjectInteropTypeToJS {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toJSValue(JSContext)
 
@@ -149,7 +149,7 @@ func toJSValue(context: JSContext): JSValue
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -173,7 +173,7 @@ abstract sealed class Ability {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func registerCreator(String, () -> Ability)
 
@@ -185,7 +185,7 @@ public static func registerCreator(name: String, creator: () -> Ability): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -206,7 +206,7 @@ public class AbilityStageContext <: Context {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -226,7 +226,7 @@ public var currentHapModuleInfo: HapModuleInfo
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ApplicationContext
 
@@ -238,7 +238,7 @@ public class ApplicationContext <: Context {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -254,7 +254,7 @@ public open class Context <: BaseContext {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -274,7 +274,7 @@ public prop applicationInfo: ApplicationInfo
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop area
 
@@ -290,7 +290,7 @@ public mut prop area: AreaMode
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop filesDir
 
@@ -306,7 +306,7 @@ public prop filesDir: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop resourceManager
 
@@ -322,7 +322,7 @@ public prop resourceManager: ResourceManager
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class UIAbility
 
@@ -338,7 +338,7 @@ public open class UIAbility <: Ability {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -358,7 +358,7 @@ public mut prop context: UIAbilityContext
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop lastRequestWant
 
@@ -374,7 +374,7 @@ public mut prop lastRequestWant: Want
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop launchWant
 
@@ -390,7 +390,7 @@ public mut prop launchWant: Want
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func onBackground()
 
@@ -402,7 +402,7 @@ public open func onBackground(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func onCreate(Want, LaunchParam)
 
@@ -414,7 +414,7 @@ public open func onCreate(want: Want, launchParam: LaunchParam): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -433,7 +433,7 @@ public open func onDestroy(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func onForeground()
 
@@ -445,7 +445,7 @@ public open func onForeground(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func onNewWant(Want, LaunchParam)
 
@@ -457,7 +457,7 @@ public open func onNewWant(want: Want, launchParam: LaunchParam): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -476,7 +476,7 @@ public open func onWindowStageCreate(windowStage: WindowStage): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -494,7 +494,7 @@ public open func onWindowStageDestroy(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class UIAbilityContext
 
@@ -506,7 +506,7 @@ public open class UIAbilityContext <: Context {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -522,7 +522,7 @@ public func isTerminating(): Bool
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -548,7 +548,7 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -591,7 +591,7 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -648,7 +648,7 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -701,7 +701,7 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -753,7 +753,7 @@ public func terminateSelf(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -775,7 +775,7 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

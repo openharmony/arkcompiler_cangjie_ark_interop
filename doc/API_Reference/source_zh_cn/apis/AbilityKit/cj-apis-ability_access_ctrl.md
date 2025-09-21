@@ -27,7 +27,7 @@ public class AbilityAccessCtrl {}
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func createAtManager()
 
@@ -39,7 +39,7 @@ public static func createAtManager(): AtManager
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -69,7 +69,7 @@ public class AtManager {}
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func checkAccessToken(UInt32, Permissions)
 
@@ -81,7 +81,7 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -132,7 +132,7 @@ public func requestPermissionsFromUser(context: UIAbilityContext, permissionList
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -203,7 +203,7 @@ public enum GrantStatus <: Equatable<GrantStatus> & ToString {
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -220,7 +220,7 @@ PermissionDenied
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PermissionGranted
 
@@ -232,7 +232,7 @@ PermissionGranted
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(GrantStatus)
 
@@ -244,7 +244,7 @@ public operator func !=(other: GrantStatus): Bool
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -268,7 +268,7 @@ public operator func ==(other: GrantStatus): Bool
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -292,7 +292,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

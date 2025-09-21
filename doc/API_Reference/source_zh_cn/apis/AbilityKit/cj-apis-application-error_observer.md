@@ -39,7 +39,7 @@ public class ErrorObject {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let message
 
@@ -55,7 +55,7 @@ public let message: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let name
 
@@ -71,7 +71,7 @@ public let name: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let stack
 
@@ -87,7 +87,7 @@ public let stack: Option<String>
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ErrorObserver
 
@@ -106,7 +106,7 @@ public class ErrorObserver {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onException
 
@@ -122,7 +122,7 @@ public var onException: Option <(ErrorObject) -> Unit>
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onUnhandledException
 
@@ -138,7 +138,7 @@ public var onUnhandledException:(String) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init((String) -> Unit, Option\<(ErrorObject) -> Unit>)
 
@@ -153,7 +153,7 @@ public init(
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

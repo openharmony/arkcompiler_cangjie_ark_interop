@@ -51,7 +51,7 @@ public class CurrentLocationRequest {
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var maxAccuracy
 
@@ -75,7 +75,7 @@ public var maxAccuracy: Float32
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var priority
 
@@ -91,7 +91,7 @@ public var priority: LocationRequestPriority
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var scenario
 
@@ -107,7 +107,7 @@ public var scenario: LocationRequestScenario
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var timeoutMs
 
@@ -123,7 +123,7 @@ public var timeoutMs: Int32
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(LocationRequestPriority, LocationRequestScenario, Float32, Int32)
 
@@ -137,7 +137,7 @@ public init(priority!: LocationRequestPriority = LocationRequestPriority.FirstFi
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -158,7 +158,7 @@ public class GeoLocationManager {}
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func getCurrentLocation()
 
@@ -172,7 +172,7 @@ public static func getCurrentLocation(): Location
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -204,7 +204,7 @@ public static func getCurrentLocation(request: CurrentLocationRequest): Location
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -242,7 +242,7 @@ public static func getCurrentLocation(request: SingleLocationRequest): Location
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -278,7 +278,7 @@ public static func isLocationEnabled(): Bool
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -325,7 +325,7 @@ public class Location {
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var accuracy
 
@@ -341,7 +341,7 @@ public var accuracy: Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var additionSize
 
@@ -357,7 +357,7 @@ public var additionSize: ?Int64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var additions
 
@@ -373,7 +373,7 @@ public var additions: ?Array<String>
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var additionsMap
 
@@ -389,7 +389,7 @@ public var additionsMap: ?Map<String, String>
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var altitude
 
@@ -405,7 +405,7 @@ public var altitude: Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var altitudeAccuracy
 
@@ -421,7 +421,7 @@ public var altitudeAccuracy: ?Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var direction
 
@@ -437,7 +437,7 @@ public var direction: Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var directionAccuracy
 
@@ -453,7 +453,7 @@ public var directionAccuracy: ?Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var latitude
 
@@ -469,7 +469,7 @@ public var latitude: Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var longitude
 
@@ -485,7 +485,7 @@ public var longitude: Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sourceType
 
@@ -501,7 +501,7 @@ public var sourceType: ?LocationSourceType
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var speed
 
@@ -517,7 +517,7 @@ public var speed: ?Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var speedAccuracy
 
@@ -533,7 +533,7 @@ public var speedAccuracy: Float64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var timeSinceBoot
 
@@ -549,7 +549,7 @@ public var timeSinceBoot: Int64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var timeStamp
 
@@ -565,7 +565,7 @@ public var timeStamp: Int64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var uncertaintyOfTimeSinceBoot
 
@@ -581,7 +581,7 @@ public var uncertaintyOfTimeSinceBoot: ?Int64
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class SingleLocationRequest
 
@@ -597,7 +597,7 @@ public class SingleLocationRequest {
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var locatingPriority
 
@@ -613,7 +613,7 @@ public var locatingPriority: LocatingPriority
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var locatingTimeoutMs
 
@@ -629,7 +629,7 @@ public var locatingTimeoutMs: Int32
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(LocatingPriority, Int32)
 
@@ -641,7 +641,7 @@ public init(locatingPriority: LocatingPriority, locatingTimeoutMs: Int32)
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -664,7 +664,7 @@ public enum LocatingPriority {
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PriorityAccuracy
 
@@ -679,7 +679,7 @@ PriorityAccuracy
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PriorityLocatingSpeed
 
@@ -693,7 +693,7 @@ PriorityLocatingSpeed
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum LocationRequestPriority
 
@@ -711,7 +711,7 @@ public enum LocationRequestPriority {
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Accuracy
 
@@ -725,7 +725,7 @@ Accuracy
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FirstFix
 
@@ -739,7 +739,7 @@ FirstFix
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LowPower
 
@@ -753,7 +753,7 @@ LowPower
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unset
 
@@ -765,7 +765,7 @@ Unset
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum LocationRequestScenario
 
@@ -789,7 +789,7 @@ public enum LocationRequestScenario {
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CarHailing
 
@@ -805,7 +805,7 @@ CarHailing
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DailyLifeService
 
@@ -821,7 +821,7 @@ DailyLifeService
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Navigation
 
@@ -837,7 +837,7 @@ Navigation
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NoPower
 
@@ -849,7 +849,7 @@ NoPower
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### TrajectoryTracking
 
@@ -865,7 +865,7 @@ TrajectoryTracking
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unset
 
@@ -879,7 +879,7 @@ Unset
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum LocationSourceType
 
@@ -897,7 +897,7 @@ public enum LocationSourceType {
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Gnss
 
@@ -909,7 +909,7 @@ Gnss
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Indoor
 
@@ -921,7 +921,7 @@ Indoor
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Network
 
@@ -933,7 +933,7 @@ Network
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rtk
 
@@ -945,4 +945,4 @@ Rtk
 
 **系统能力：** SystemCapability.Location.Location.Core
 
-**起始版本：** 21
+**起始版本：** 22

@@ -31,7 +31,7 @@ public class PermissionRequestResult {
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var authResults
 
@@ -47,7 +47,7 @@ public var authResults: Array<Int32>
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dialogShownResults
 
@@ -63,7 +63,7 @@ public var dialogShownResults = Array<Bool>()
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var permissions
 
@@ -79,4 +79,4 @@ public var permissions: Array<String>
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**起始版本：** 21
+**起始版本：** 22

@@ -36,7 +36,7 @@ public func createAVImageGenerator(): AVImageGenerator
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -89,7 +89,7 @@ public class AVFileDescriptor {
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var fd
 
@@ -105,7 +105,7 @@ public var fd: Int32
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var length
 
@@ -121,7 +121,7 @@ public var length: Int64
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -137,7 +137,7 @@ public var offset: Int64
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int64, Int64)
 
@@ -153,7 +153,7 @@ public init(
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -173,7 +173,7 @@ public class AVImageGenerator {}
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop fdSrc
 
@@ -193,7 +193,7 @@ public mut prop fdSrc: AVFileDescriptor
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func fetchFrameByTime(Int64, AVImageQueryOptions, PixelMapParams)
 
@@ -205,7 +205,7 @@ public func fetchFrameByTime(timeUs: Int64, options: AVImageQueryOptions, param:
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -260,7 +260,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -310,7 +310,7 @@ public class PixelMapParams {
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var height
 
@@ -326,7 +326,7 @@ public var height: Int32
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var width
 
@@ -342,7 +342,7 @@ public var width: Int32
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int32)
 
@@ -354,7 +354,7 @@ public init(width!: Int32 = -1, height!: Int32 = -1)
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -379,7 +379,7 @@ public enum AVImageQueryOptions <: Equatable<AVImageQueryOptions> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -396,7 +396,7 @@ AvImageQueryClosest
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AvImageQueryClosestSync
 
@@ -408,7 +408,7 @@ AvImageQueryClosestSync
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AvImageQueryNextSync
 
@@ -420,7 +420,7 @@ AvImageQueryNextSync
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AvImageQueryPreviousSync
 
@@ -432,7 +432,7 @@ AvImageQueryPreviousSync
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AVImageQueryOptions)
 
@@ -444,7 +444,7 @@ public operator func !=(other: AVImageQueryOptions): Bool
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -468,7 +468,7 @@ public operator func ==(other: AVImageQueryOptions): Bool
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -492,7 +492,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

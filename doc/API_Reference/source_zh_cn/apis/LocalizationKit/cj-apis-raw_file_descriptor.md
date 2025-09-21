@@ -40,7 +40,7 @@ public class RawFileDescriptor {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let fd
 
@@ -56,7 +56,7 @@ public let fd: Int32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let length
 
@@ -72,7 +72,7 @@ public let length: Int64
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let offset
 
@@ -88,4 +88,4 @@ public let offset: Int64
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22

@@ -34,7 +34,7 @@ public func create(context: UIAbilityContext, config: Config): Task
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -79,7 +79,7 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -122,7 +122,7 @@ public func remove(id: String): Unit
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -151,7 +151,7 @@ public func search(filter!: Filter = Filter()): Array<String>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -185,7 +185,7 @@ public func show(id: String): TaskInfo
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -220,7 +220,7 @@ public func touch(id: String, token: String): TaskInfo
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -287,7 +287,7 @@ public class Config {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var action
 
@@ -303,7 +303,7 @@ public var action: Action
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var begins
 
@@ -319,7 +319,7 @@ public var begins: Int64
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var data
 
@@ -335,7 +335,7 @@ public var data:?ConfigData
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var description
 
@@ -351,7 +351,7 @@ public var description: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var ends
 
@@ -367,7 +367,7 @@ public var ends: Int64
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var extras
 
@@ -383,7 +383,7 @@ public var extras: HashMap<String, String>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var gauge
 
@@ -399,7 +399,7 @@ public var gauge: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var headers
 
@@ -415,7 +415,7 @@ public var headers: HashMap<String, String>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var index
 
@@ -431,7 +431,7 @@ public var index: UInt32
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var metered
 
@@ -447,7 +447,7 @@ public var metered: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var method
 
@@ -463,7 +463,7 @@ public var method:?String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mode
 
@@ -479,7 +479,7 @@ public var mode: Mode
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var network
 
@@ -495,7 +495,7 @@ public var network: Network
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var overwrite
 
@@ -511,7 +511,7 @@ public var overwrite: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var precise
 
@@ -527,7 +527,7 @@ public var precise: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var priority
 
@@ -543,7 +543,7 @@ public var priority: UInt32
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var redirect
 
@@ -559,7 +559,7 @@ public var redirect: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var retry
 
@@ -575,7 +575,7 @@ public var retry: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var roaming
 
@@ -591,7 +591,7 @@ public var roaming: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var saveas
 
@@ -611,7 +611,7 @@ public var saveas:String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var title
 
@@ -627,7 +627,7 @@ public var title:?String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var token
 
@@ -643,7 +643,7 @@ public var token: ?String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var url
 
@@ -659,7 +659,7 @@ public var url: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Action, String, ?String, String, Mode, Bool, ?String, HashMap\<String,String>, ?ConfigData, String, Network, Bool, Bool, Bool, Bool, UInt32, Int64, Int64, Bool, Bool, ?String, UInt32, HashMap\<String,String>)
 
@@ -678,7 +678,7 @@ public init(action: Action, url: String, title!: ?String = None, description!: S
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -730,7 +730,7 @@ public class FileSpec {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var extras
 
@@ -746,7 +746,7 @@ public var extras: HashMap<String, String>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var filename
 
@@ -762,7 +762,7 @@ public var filename:?String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mimeType
 
@@ -778,7 +778,7 @@ public var mimeType:?String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var path
 
@@ -795,7 +795,7 @@ public var path: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, ?String, ?String, HashMap\<String,String>)
 
@@ -813,7 +813,7 @@ public init(
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -844,7 +844,7 @@ public class Filter {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var action
 
@@ -860,7 +860,7 @@ public var action:?Action
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var after
 
@@ -876,7 +876,7 @@ public var after:?Int64
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var before
 
@@ -892,7 +892,7 @@ public var before:?Int64
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mode
 
@@ -908,7 +908,7 @@ public var mode:?Mode
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var state
 
@@ -924,7 +924,7 @@ public var state:?State
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(?Int64, ?Int64, ?State, ?Action, ?Mode)
 
@@ -939,7 +939,7 @@ public init(before!: ?Int64 = None, after!: ?Int64 = None, state!: ?State = None
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -966,7 +966,7 @@ public class FormItem {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -982,7 +982,7 @@ public var name: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -998,7 +998,7 @@ public var value: FormItemValue
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, FormItemValue)
 
@@ -1011,7 +1011,7 @@ public init(name: String, value: FormItemValue)
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1035,7 +1035,7 @@ public class HttpResponse {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let headers
 
@@ -1051,7 +1051,7 @@ public let headers: HashMap<String, Array<String>>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let reason
 
@@ -1067,7 +1067,7 @@ public let reason: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let statusCode
 
@@ -1083,7 +1083,7 @@ public let statusCode: Int32
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let version
 
@@ -1099,7 +1099,7 @@ public let version: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Progress
 
@@ -1117,7 +1117,7 @@ public class Progress {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let extras
 
@@ -1133,7 +1133,7 @@ public let extras: HashMap<String, String>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let index
 
@@ -1149,7 +1149,7 @@ public let index: UInt32
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let processed
 
@@ -1165,7 +1165,7 @@ public let processed: Int64
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let sizes
 
@@ -1181,7 +1181,7 @@ public let sizes: Array<Int64>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let state
 
@@ -1197,7 +1197,7 @@ public let state: State
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Task
 
@@ -1214,7 +1214,7 @@ public class Task {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var config
 
@@ -1230,7 +1230,7 @@ public var config: Config
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let tid
 
@@ -1246,7 +1246,7 @@ public let tid: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Config)
 
@@ -1259,7 +1259,7 @@ public init(tid: String, config: Config)
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1279,7 +1279,7 @@ public func off(event: EventCallbackType, callback!: ?CallbackObject = None): Un
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1299,7 +1299,7 @@ public func on(event: EventCallbackType, callback: Callback1Argument<HttpRespons
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1327,7 +1327,7 @@ public func on(event: EventCallbackType, callback: Callback1Argument<Progress>):
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1355,7 +1355,7 @@ public func pause(): Unit
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1380,7 +1380,7 @@ public func resume(): Unit
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1406,7 +1406,7 @@ public func start(): Unit
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1429,7 +1429,7 @@ public func stop(): Unit
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1470,7 +1470,7 @@ public class TaskInfo {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let action
 
@@ -1486,7 +1486,7 @@ public let action: Action
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let ctime
 
@@ -1502,7 +1502,7 @@ public let ctime: UInt64
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let data
 
@@ -1518,7 +1518,7 @@ public let data: ConfigData
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let description
 
@@ -1534,7 +1534,7 @@ public let description: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let extras
 
@@ -1550,7 +1550,7 @@ public let extras: HashMap<String, String>
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let faults
 
@@ -1566,7 +1566,7 @@ public let faults: Faults
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let gauge
 
@@ -1582,7 +1582,7 @@ public let gauge: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let mimeType
 
@@ -1598,7 +1598,7 @@ public let mimeType: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let mode
 
@@ -1614,7 +1614,7 @@ public let mode: Mode
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let mtime
 
@@ -1630,7 +1630,7 @@ public let mtime: UInt64
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let priority
 
@@ -1646,7 +1646,7 @@ public let priority: UInt32
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let progress
 
@@ -1662,7 +1662,7 @@ public let progress: Progress
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let reason
 
@@ -1678,7 +1678,7 @@ public let reason: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let retry
 
@@ -1694,7 +1694,7 @@ public let retry: Bool
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let saveas
 
@@ -1710,7 +1710,7 @@ public let saveas: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let tid
 
@@ -1726,7 +1726,7 @@ public let tid: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let title
 
@@ -1742,7 +1742,7 @@ public let title: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let tries
 
@@ -1758,7 +1758,7 @@ public let tries: UInt32
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let url
 
@@ -1774,7 +1774,7 @@ public let url: String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum Action
 
@@ -1790,7 +1790,7 @@ public enum Action <: Equatable<Action> & ToString {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1807,7 +1807,7 @@ Download
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Upload
 
@@ -1819,7 +1819,7 @@ Upload
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(Action)
 
@@ -1888,7 +1888,7 @@ public enum BroadcastEvent <: ToString {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1904,7 +1904,7 @@ Complete
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toString()
 
@@ -1917,7 +1917,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1939,7 +1939,7 @@ public enum ConfigData {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FormItems(Array\<FormItem>)
 
@@ -1951,7 +1951,7 @@ FormItems(Array<FormItem>)
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -1963,7 +1963,7 @@ StringValue(String)
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum EventCallbackType
 
@@ -1984,7 +1984,7 @@ public enum EventCallbackType <: Equatable<EventCallbackType> & Hashable & ToStr
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2002,7 +2002,7 @@ Completed
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Failed
 
@@ -2014,7 +2014,7 @@ Failed
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Pause
 
@@ -2026,7 +2026,7 @@ Pause
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Progress
 
@@ -2038,7 +2038,7 @@ Progress
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Remove
 
@@ -2050,7 +2050,7 @@ Remove
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Response
 
@@ -2062,7 +2062,7 @@ Response
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Resume
 
@@ -2074,7 +2074,7 @@ Resume
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(EventCallbackType)
 
@@ -2161,7 +2161,7 @@ public enum Faults <: ToString {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2177,7 +2177,7 @@ Disconnected
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Fsio
 
@@ -2189,7 +2189,7 @@ Fsio
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Others
 
@@ -2201,7 +2201,7 @@ Others
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Protocol
 
@@ -2213,7 +2213,7 @@ Protocol
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Timeout
 
@@ -2225,7 +2225,7 @@ Timeout
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toString()
 
@@ -2256,7 +2256,7 @@ public enum FormItemValue {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FileItem(FileSpec)
 
@@ -2268,7 +2268,7 @@ FileItem(FileSpec)
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FileItemArray(Array\<FileSpec>)
 
@@ -2280,7 +2280,7 @@ FileItemArray(Array<FileSpec>)
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringItem(String)
 
@@ -2292,7 +2292,7 @@ StringItem(String)
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum Mode
 
@@ -2308,7 +2308,7 @@ public enum Mode <: Equatable<Mode> & ToString{
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2325,7 +2325,7 @@ Background
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Foreground
 
@@ -2337,7 +2337,7 @@ Foreground
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(Mode)
 
@@ -2407,7 +2407,7 @@ public enum Network <: Equatable<Network> & ToString {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2424,7 +2424,7 @@ AnyType
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Cellular
 
@@ -2436,7 +2436,7 @@ Cellular
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Wifi
 
@@ -2448,7 +2448,7 @@ Wifi
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(Network)
 
@@ -2525,7 +2525,7 @@ public enum State <: ToString {
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2541,7 +2541,7 @@ Completed
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Failed
 
@@ -2553,7 +2553,7 @@ Failed
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Initialized
 
@@ -2565,7 +2565,7 @@ Initialized
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Paused
 
@@ -2577,7 +2577,7 @@ Paused
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Removed
 
@@ -2589,7 +2589,7 @@ Removed
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Retrying
 
@@ -2601,7 +2601,7 @@ Retrying
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Running
 
@@ -2613,7 +2613,7 @@ Running
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Stopped
 
@@ -2625,7 +2625,7 @@ Stopped
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Waiting
 
@@ -2637,7 +2637,7 @@ Waiting
 
 **系统能力：** SystemCapability.Request.FileTransferAgent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toString()
 

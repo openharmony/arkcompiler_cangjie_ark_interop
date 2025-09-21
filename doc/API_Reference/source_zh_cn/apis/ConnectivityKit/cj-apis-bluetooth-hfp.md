@@ -31,7 +31,7 @@ public func createHfpAgProfile(): HandsFreeAudioGatewayProfile
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -68,7 +68,7 @@ public class HandsFreeAudioGatewayProfile <: BaseProfile {}
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -86,7 +86,7 @@ public func getConnectedDevices(): Array<String>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -143,7 +143,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -209,7 +209,7 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -276,7 +276,7 @@ public func off(eventType: ProfileCallbackType): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -342,7 +342,7 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

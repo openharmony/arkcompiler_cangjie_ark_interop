@@ -33,7 +33,7 @@ public func getCameraManager(context: UIAbilityContext): CameraManager
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -86,7 +86,7 @@ public interface AutoExposure <: AutoExposureQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -102,7 +102,7 @@ func getExposureMode(): ExposureMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -147,7 +147,7 @@ func getExposureValue(): Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -190,7 +190,7 @@ func getMeteringPoint(): Point
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -232,7 +232,7 @@ func setExposureBias(exposureBias: Float64): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -277,7 +277,7 @@ func setExposureMode(aeMode: ExposureMode): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -322,7 +322,7 @@ func setMeteringPoint(point: Point): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -370,7 +370,7 @@ public interface AutoExposureQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getExposureBiasRange()
 
@@ -382,7 +382,7 @@ func getExposureBiasRange(): Array<Float64>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -425,7 +425,7 @@ func isExposureModeSupported(aeMode: ExposureMode): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -478,7 +478,7 @@ public interface CameraOutput {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func release()
 
@@ -490,7 +490,7 @@ func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -537,7 +537,7 @@ public interface ColorManagement <: ColorManagementQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -553,7 +553,7 @@ func getActiveColorSpace(): ColorSpace
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -618,7 +618,7 @@ func setColorSpace(colorSpace: ColorSpace): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -667,7 +667,7 @@ public interface ColorManagementQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getSupportedColorSpaces()
 
@@ -679,7 +679,7 @@ func getSupportedColorSpaces(): Array<ColorSpace>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -725,7 +725,7 @@ public interface Flash <: FlashQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -741,7 +741,7 @@ func getFlashMode(): FlashMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -789,7 +789,7 @@ func setFlashMode(flashMode: FlashMode): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -836,7 +836,7 @@ public interface FlashQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func hasFlash()
 
@@ -848,7 +848,7 @@ func hasFlash(): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -892,7 +892,7 @@ func isFlashModeSupported(flashMode: FlashMode): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -947,7 +947,7 @@ public interface Focus <: FocusQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -963,7 +963,7 @@ func getFocalLength(): Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1007,7 +1007,7 @@ func getFocusMode(): FocusMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1051,7 +1051,7 @@ func getFocusPoint(): Point
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1096,7 +1096,7 @@ func setFocusMode(afMode: FocusMode): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1142,7 +1142,7 @@ func setFocusPoint(point: Point): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1188,7 +1188,7 @@ public interface FocusQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func isFocusModeSupported(FocusMode)
 
@@ -1200,7 +1200,7 @@ func isFocusModeSupported(afMode: FocusMode): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1263,7 +1263,7 @@ public interface Session {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func addInput(CameraInput)
 
@@ -1275,7 +1275,7 @@ func addInput(cameraInput: CameraInput): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1320,7 +1320,7 @@ func addOutput(cameraOutput: CameraOutput): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1367,7 +1367,7 @@ func beginConfig(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1405,7 +1405,7 @@ func canAddInput(cameraInput: CameraInput): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1449,7 +1449,7 @@ func canAddOutput(cameraOutput: CameraOutput): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1493,7 +1493,7 @@ func commitConfig(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1529,7 +1529,7 @@ func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1566,7 +1566,7 @@ func removeInput(cameraInput: CameraInput): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1611,7 +1611,7 @@ func removeOutput(cameraOutput: CameraOutput): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1664,7 +1664,7 @@ func start(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1701,7 +1701,7 @@ func stop(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1739,7 +1739,7 @@ public interface Stabilization <: StabilizationQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1755,7 +1755,7 @@ func getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1799,7 +1799,7 @@ func setVideoStabilizationMode(mode: VideoStabilizationMode): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1845,7 +1845,7 @@ public interface StabilizationQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func isVideoStabilizationModeSupported(VideoStabilizationMode)
 
@@ -1857,7 +1857,7 @@ func isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1912,7 +1912,7 @@ public interface Zoom <: ZoomQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1928,7 +1928,7 @@ func getZoomRatio(): Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1973,7 +1973,7 @@ func setSmoothZoom(targetRatio: Float64, mode: SmoothZoomMode): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2010,7 +2010,7 @@ func setSmoothZoom(targetRatio: Float64): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2046,7 +2046,7 @@ func setZoomRatio(zoomRatio: Float64): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2092,7 +2092,7 @@ public interface ZoomQuery {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getZoomRatioRange()
 
@@ -2104,7 +2104,7 @@ func getZoomRatioRange(): Array<Float64>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2155,7 +2155,7 @@ public class CameraDevice {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let cameraId
 
@@ -2171,7 +2171,7 @@ public let cameraId: String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let cameraOrientation
 
@@ -2187,7 +2187,7 @@ public let cameraOrientation: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let cameraPosition
 
@@ -2203,7 +2203,7 @@ public let cameraPosition: CameraPosition
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let cameraType
 
@@ -2219,7 +2219,7 @@ public let cameraType: CameraType
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let connectionType
 
@@ -2235,7 +2235,7 @@ public let connectionType: ConnectionType
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class CameraInput
 
@@ -2247,7 +2247,7 @@ public class CameraInput {}
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -2259,7 +2259,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -2295,7 +2295,7 @@ public func off(eventType: CameraEvents, camera: CameraDevice, callback: Callbac
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2340,7 +2340,7 @@ public func off(eventType: CameraEvents, camera: CameraDevice): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2388,7 +2388,7 @@ public func on(eventType: CameraEvents, camera: CameraDevice, callback: Callback
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2450,7 +2450,7 @@ public func open(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -2489,7 +2489,7 @@ public func open(isSecureEnabled: Bool): UInt64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2540,7 +2540,7 @@ public class CameraManager {}
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func createCameraInput(CameraDevice)
 
@@ -2554,7 +2554,7 @@ public func createCameraInput(camera: CameraDevice): CameraInput
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2608,7 +2608,7 @@ public func createCameraInput(position: CameraPosition, cameraType: CameraType):
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2661,7 +2661,7 @@ public func createPhotoOutput(?Profile = None): PhotoOutput
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2713,7 +2713,7 @@ public func createPreviewOutput(profile: Profile, surfaceId: String): PreviewOut
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2767,7 +2767,7 @@ public func createPreviewOutput(surfaceId: String): PreviewOutput
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2820,7 +2820,7 @@ public func createSession(mode: SceneMode): Session
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2870,7 +2870,7 @@ public func createVideoOutput(profile: VideoProfile, surfaceId: String): VideoOu
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2924,7 +2924,7 @@ public func createVideoOutput(surfaceId: String): VideoOutput
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2977,7 +2977,7 @@ public func getSupportedCameras(): Array<CameraDevice>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3009,7 +3009,7 @@ public func getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode):
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3051,7 +3051,7 @@ public func getSupportedSceneModes(camera: CameraDevice): Array<SceneMode>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3091,7 +3091,7 @@ public func getTorchMode(): TorchMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3123,7 +3123,7 @@ public func isCameraMuted(): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3156,7 +3156,7 @@ public func isTorchModeSupported(mode: TorchMode): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3196,7 +3196,7 @@ public func isTorchSupported(): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3229,7 +3229,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CameraStatu
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3271,7 +3271,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FoldStatusI
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3313,7 +3313,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<TorchStatus
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3355,7 +3355,7 @@ public func off(eventType: CameraEvents): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3400,7 +3400,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CameraStatus
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3463,7 +3463,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FoldStatusIn
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3526,7 +3526,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<TorchStatusI
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3585,7 +3585,7 @@ public func setTorchMode(mode: TorchMode): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3632,7 +3632,7 @@ public class CameraOutputCapability {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let photoProfiles
 
@@ -3648,7 +3648,7 @@ public let photoProfiles: Array<Profile>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let previewProfiles
 
@@ -3664,7 +3664,7 @@ public let previewProfiles: Array<Profile>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let supportedMetadataObjectTypes
 
@@ -3680,7 +3680,7 @@ public let supportedMetadataObjectTypes: Array<MetadataObjectType>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let videoProfiles
 
@@ -3696,7 +3696,7 @@ public let videoProfiles: Array<VideoProfile>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class CameraStatusInfo
 
@@ -3711,7 +3711,7 @@ public class CameraStatusInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var camera
 
@@ -3727,7 +3727,7 @@ public var camera: CameraDevice
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var status
 
@@ -3743,7 +3743,7 @@ public var status: CameraStatus
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class CaptureEndInfo
 
@@ -3758,7 +3758,7 @@ public class CaptureEndInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var captureId
 
@@ -3774,7 +3774,7 @@ public var captureId: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var frameCount
 
@@ -3790,7 +3790,7 @@ public var frameCount: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class CaptureStartInfo
 
@@ -3805,7 +3805,7 @@ public class CaptureStartInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var captureId
 
@@ -3821,7 +3821,7 @@ public var captureId: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var time
 
@@ -3837,7 +3837,7 @@ public var time: Int64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class FoldStatusInfo
 
@@ -3852,7 +3852,7 @@ public class FoldStatusInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let foldStatus
 
@@ -3868,7 +3868,7 @@ public let foldStatus: FoldStatus
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let supportedCameras
 
@@ -3884,7 +3884,7 @@ public let supportedCameras: Array<CameraDevice>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class FrameRateRange
 
@@ -3899,7 +3899,7 @@ public class FrameRateRange {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let max
 
@@ -3915,7 +3915,7 @@ public let max: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let min
 
@@ -3931,7 +3931,7 @@ public let min: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class FrameShutterEndInfo
 
@@ -3945,7 +3945,7 @@ public class FrameShutterEndInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var captureId
 
@@ -3961,7 +3961,7 @@ public var captureId: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class FrameShutterInfo
 
@@ -3976,7 +3976,7 @@ public class FrameShutterInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var captureId
 
@@ -3992,7 +3992,7 @@ public var captureId: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var timestamp
 
@@ -4008,7 +4008,7 @@ public var timestamp: Int64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Location
 
@@ -4025,7 +4025,7 @@ public class Location {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var altitude
 
@@ -4041,7 +4041,7 @@ public var altitude: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var latitude
 
@@ -4057,7 +4057,7 @@ public var latitude: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var longitude
 
@@ -4073,7 +4073,7 @@ public var longitude: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Float64, Float64, Float64)
 
@@ -4085,7 +4085,7 @@ public init(latitude: Float64, longitude: Float64, altitude: Float64)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4116,7 +4116,7 @@ public class PhotoCaptureSetting {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var location
 
@@ -4132,7 +4132,7 @@ public var location:?Location
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mirror
 
@@ -4148,7 +4148,7 @@ public var mirror: Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var quality
 
@@ -4164,7 +4164,7 @@ public var quality: QualityLevel
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var rotation
 
@@ -4180,7 +4180,7 @@ public var rotation: ImageRotation
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(QualityLevel, ImageRotation, ?Location, Bool)
 
@@ -4197,7 +4197,7 @@ public init(
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4218,7 +4218,7 @@ public class PhotoOutput CameraOutput {}
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -4234,7 +4234,7 @@ public func capture(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -4273,7 +4273,7 @@ public func capture(setting: PhotoCaptureSetting): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4319,7 +4319,7 @@ public func enableMirror(enabled: Bool): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4366,7 +4366,7 @@ public func enableMovingPhoto(enabled: Bool): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4413,7 +4413,7 @@ public func getActiveProfile(): Profile
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -4461,7 +4461,7 @@ public func getPhotoRotation(deviceDegree: Int32): ImageRotation
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4513,7 +4513,7 @@ public func getSupportedMovingPhotoVideoCodecTypes(): Array<VideoCodecType>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -4549,7 +4549,7 @@ public func isMirrorSupported(): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -4594,7 +4594,7 @@ public func isMovingPhotoSupported(): Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -4639,7 +4639,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureStar
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4685,7 +4685,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4731,7 +4731,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureEndI
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4777,7 +4777,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4823,7 +4823,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4869,7 +4869,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<Float64>): 
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4915,7 +4915,7 @@ public func off(eventType: CameraEvents): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4964,7 +4964,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureStart
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5031,7 +5031,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5098,7 +5098,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureEndIn
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5165,7 +5165,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5232,7 +5232,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5299,7 +5299,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<Float64>): U
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5362,7 +5362,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -5400,7 +5400,7 @@ public func setMovingPhotoVideoCodecType(codecType: VideoCodecType): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5444,7 +5444,7 @@ public class PhotoSession  Session & Flash & AutoExposure & Focus & Zoom & Color
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5465,7 +5465,7 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5515,7 +5515,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5550,7 +5550,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5585,7 +5585,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomI
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5620,7 +5620,7 @@ public func off(eventType: CameraEvents): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5666,7 +5666,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5720,7 +5720,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FocusState>)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5774,7 +5774,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomIn
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5827,7 +5827,7 @@ public func preconfig(
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5874,7 +5874,7 @@ public class Point {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var x
 
@@ -5890,7 +5890,7 @@ public var x: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -5906,7 +5906,7 @@ public var y: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Float64, Float64)
 
@@ -5918,7 +5918,7 @@ public init(x: Float64, y: Float64)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5937,7 +5937,7 @@ public class PreviewOutput  CameraOutput {}
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5953,7 +5953,7 @@ public func getActiveFrameRate(): FrameRateRange
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -6003,7 +6003,7 @@ public func getActiveProfile(): Profile
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -6057,7 +6057,7 @@ public func getPreviewRotation(displayRotation: Int32): ImageRotation
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -6114,7 +6114,7 @@ public func getSupportedFrameRates(): Array<FrameRateRange>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -6164,7 +6164,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -6216,7 +6216,7 @@ public func off(eventType: CameraEvents): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -6271,7 +6271,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -6340,7 +6340,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -6388,7 +6388,7 @@ public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -6440,7 +6440,7 @@ public func setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked!:
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -6495,7 +6495,7 @@ public open class Profile {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let format
 
@@ -6511,7 +6511,7 @@ public let format: CameraFormat
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let size
 
@@ -6527,7 +6527,7 @@ public let size: Size
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Rect
 
@@ -6544,7 +6544,7 @@ public class Rect {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var height
 
@@ -6560,7 +6560,7 @@ public var height: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var topLeftX
 
@@ -6576,7 +6576,7 @@ public var topLeftX: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var topLeftY
 
@@ -6592,7 +6592,7 @@ public var topLeftY: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var width
 
@@ -6608,7 +6608,7 @@ public var width: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Size
 
@@ -6623,7 +6623,7 @@ public class Size {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var height
 
@@ -6639,7 +6639,7 @@ public var height: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var width
 
@@ -6655,7 +6655,7 @@ public var width: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class SmoothZoomInfo
 
@@ -6669,7 +6669,7 @@ public class SmoothZoomInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var duration
 
@@ -6685,7 +6685,7 @@ public var duration: Int32
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class TorchStatusInfo
 
@@ -6701,7 +6701,7 @@ public class TorchStatusInfo {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let isTorchActive
 
@@ -6717,7 +6717,7 @@ public let isTorchActive: Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let isTorchAvailable
 
@@ -6733,7 +6733,7 @@ public let isTorchAvailable: Bool
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let torchLevel
 
@@ -6749,7 +6749,7 @@ public let torchLevel: Float64
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class VideoOutput
 
@@ -6761,7 +6761,7 @@ public class VideoOutput  <:  CameraOutput {}
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -6777,7 +6777,7 @@ public func getActiveFrameRate(): FrameRateRange
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -6827,7 +6827,7 @@ public func getActiveProfile(): VideoProfile
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -6877,7 +6877,7 @@ public func getSupportedFrameRates(): Array<FrameRateRange>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -6931,7 +6931,7 @@ public func getVideoRotation(deviceDegree: Int32): ImageRotation
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -6988,7 +6988,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7040,7 +7040,7 @@ public func off(eventType: CameraEvents): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7095,7 +7095,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7164,7 +7164,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -7212,7 +7212,7 @@ public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7264,7 +7264,7 @@ public func start(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -7309,7 +7309,7 @@ public func stop(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -7355,7 +7355,7 @@ public class VideoProfile <: Profile {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -7375,7 +7375,7 @@ public let frameRateRange: FrameRateRange
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class VideoSession
 
@@ -7391,7 +7391,7 @@ public class VideoSession  Session & Flash & AutoExposure & Focus & Zoom & Stabi
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -7413,7 +7413,7 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7462,7 +7462,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7506,7 +7506,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7550,7 +7550,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomI
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7594,7 +7594,7 @@ public func off(eventType: CameraEvents): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7641,7 +7641,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7704,7 +7704,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FocusState>)
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7767,7 +7767,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomIn
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7829,7 +7829,7 @@ public func preconfig(
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -7889,7 +7889,7 @@ public enum CameraEvents {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -7905,7 +7905,7 @@ CameraError
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraStatus
 
@@ -7917,7 +7917,7 @@ CameraStatus
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CaptureEnd
 
@@ -7929,7 +7929,7 @@ CaptureEnd
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CaptureReady
 
@@ -7941,7 +7941,7 @@ CaptureReady
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CaptureStartWithInfo
 
@@ -7953,7 +7953,7 @@ CaptureStartWithInfo
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### EstimatedCaptureDuration
 
@@ -7965,7 +7965,7 @@ EstimatedCaptureDuration
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocusStateChange
 
@@ -7977,7 +7977,7 @@ FocusStateChange
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FoldStatusChange
 
@@ -7989,7 +7989,7 @@ FoldStatusChange
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FrameEnd
 
@@ -8001,7 +8001,7 @@ FrameEnd
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FrameShutter
 
@@ -8013,7 +8013,7 @@ FrameShutter
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FrameShutterEnd
 
@@ -8025,7 +8025,7 @@ FrameShutterEnd
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FrameStart
 
@@ -8037,7 +8037,7 @@ FrameStart
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MetadataObjectsAvailable
 
@@ -8049,7 +8049,7 @@ MetadataObjectsAvailable
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SmoothZoomInfoAvailable
 
@@ -8061,7 +8061,7 @@ SmoothZoomInfoAvailable
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### TorchStatusChange
 
@@ -8073,7 +8073,7 @@ TorchStatusChange
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CameraEvents)
 
@@ -8133,7 +8133,7 @@ public enum CameraFormat {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -8150,7 +8150,7 @@ CameraFormatHeic
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraFormatJpeg
 
@@ -8162,7 +8162,7 @@ CameraFormatJpeg
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraFormatRgba8888
 
@@ -8174,7 +8174,7 @@ CameraFormatRgba8888
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraFormatYcbcrP010
 
@@ -8186,7 +8186,7 @@ CameraFormatYcbcrP010
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraFormatYcrcbP010
 
@@ -8198,7 +8198,7 @@ CameraFormatYcrcbP010
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraFormatYuv420Sp
 
@@ -8210,7 +8210,7 @@ CameraFormatYuv420Sp
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CameraFormat)
 
@@ -8262,7 +8262,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -8285,7 +8285,7 @@ public enum CameraPosition {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -8302,7 +8302,7 @@ CameraPositionBack
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraPositionFront
 
@@ -8314,7 +8314,7 @@ CameraPositionFront
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraPositionUnspecified
 
@@ -8326,7 +8326,7 @@ CameraPositionUnspecified
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CameraPosition)
 
@@ -8378,7 +8378,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -8402,7 +8402,7 @@ public enum CameraStatus {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -8419,7 +8419,7 @@ CameraStatusAppear
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraStatusAvailable
 
@@ -8431,7 +8431,7 @@ CameraStatusAvailable
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraStatusDisappear
 
@@ -8443,7 +8443,7 @@ CameraStatusDisappear
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraStatusUnavailable
 
@@ -8455,7 +8455,7 @@ CameraStatusUnavailable
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CameraStatus)
 
@@ -8507,7 +8507,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -8532,7 +8532,7 @@ public enum CameraType {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -8549,7 +8549,7 @@ CameraTypeDefault
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraTypeTelephoto
 
@@ -8561,7 +8561,7 @@ CameraTypeTelephoto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraTypeTrueDepth
 
@@ -8573,7 +8573,7 @@ CameraTypeTrueDepth
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraTypeUltraWide
 
@@ -8585,7 +8585,7 @@ CameraTypeUltraWide
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraTypeWideAngle
 
@@ -8597,7 +8597,7 @@ CameraTypeWideAngle
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CameraType)
 
@@ -8649,7 +8649,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -8672,7 +8672,7 @@ public enum ConnectionType {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -8689,7 +8689,7 @@ CameraConnectionBuiltIn
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraConnectionRemote
 
@@ -8701,7 +8701,7 @@ CameraConnectionRemote
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CameraConnectionUsbPlugin
 
@@ -8713,7 +8713,7 @@ CameraConnectionUsbPlugin
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ConnectionType)
 
@@ -8765,7 +8765,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -8788,7 +8788,7 @@ public enum ExposureMode {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -8805,7 +8805,7 @@ ExposureModeAuto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ExposureModeContinuousAuto
 
@@ -8817,7 +8817,7 @@ ExposureModeContinuousAuto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ExposureModeLocked
 
@@ -8829,7 +8829,7 @@ ExposureModeLocked
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ExposureMode)
 
@@ -8901,7 +8901,7 @@ public enum FlashMode {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -8918,7 +8918,7 @@ FlashModeAlwaysOpen
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FlashModeAuto
 
@@ -8930,7 +8930,7 @@ FlashModeAuto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FlashModeClose
 
@@ -8942,7 +8942,7 @@ FlashModeClose
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FlashModeOpen
 
@@ -8954,7 +8954,7 @@ FlashModeOpen
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(FlashMode)
 
@@ -9026,7 +9026,7 @@ public enum FocusMode {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9043,7 +9043,7 @@ FocusModeAuto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocusModeContinuousAuto
 
@@ -9055,7 +9055,7 @@ FocusModeContinuousAuto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocusModeLocked
 
@@ -9067,7 +9067,7 @@ FocusModeLocked
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocusModeManual
 
@@ -9079,7 +9079,7 @@ FocusModeManual
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(FocusMode)
 
@@ -9150,7 +9150,7 @@ public enum FocusState {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9167,7 +9167,7 @@ FocusStateFocused
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocusStateScan
 
@@ -9179,7 +9179,7 @@ FocusStateScan
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocusStateUnfocused
 
@@ -9191,7 +9191,7 @@ FocusStateUnfocused
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(FocusState)
 
@@ -9262,7 +9262,7 @@ public enum FoldStatus {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9279,7 +9279,7 @@ Expanded
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Folded
 
@@ -9291,7 +9291,7 @@ Folded
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NonFoldable
 
@@ -9303,7 +9303,7 @@ NonFoldable
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(FoldStatus)
 
@@ -9355,7 +9355,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -9379,7 +9379,7 @@ public enum ImageRotation {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9396,7 +9396,7 @@ Rotation0
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rotation180
 
@@ -9408,7 +9408,7 @@ Rotation180
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rotation270
 
@@ -9420,7 +9420,7 @@ Rotation270
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rotation90
 
@@ -9432,7 +9432,7 @@ Rotation90
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ImageRotation)
 
@@ -9484,7 +9484,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -9505,7 +9505,7 @@ public enum MetadataObjectType {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9522,7 +9522,7 @@ FaceDetection
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(MetadataObjectType)
 
@@ -9574,7 +9574,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -9597,7 +9597,7 @@ public enum PreconfigRatio {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9614,7 +9614,7 @@ PreconfigRatio_16_9
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PreconfigRatio_1_1
 
@@ -9626,7 +9626,7 @@ PreconfigRatio_1_1
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PreconfigRatio_4_3
 
@@ -9638,7 +9638,7 @@ PreconfigRatio_4_3
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PreconfigRatio)
 
@@ -9690,7 +9690,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -9714,7 +9714,7 @@ public enum PreconfigType {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9731,7 +9731,7 @@ Preconfig1080p
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Preconfig4k
 
@@ -9743,7 +9743,7 @@ Preconfig4k
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Preconfig720p
 
@@ -9755,7 +9755,7 @@ Preconfig720p
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PreconfigHighQuality
 
@@ -9767,7 +9767,7 @@ PreconfigHighQuality
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PreconfigType)
 
@@ -9819,7 +9819,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -9842,7 +9842,7 @@ public enum QualityLevel {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9859,7 +9859,7 @@ QualityLevelHigh
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### QualityLevelLow
 
@@ -9871,7 +9871,7 @@ QualityLevelLow
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### QualityLevelMedium
 
@@ -9883,7 +9883,7 @@ QualityLevelMedium
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(QualityLevel)
 
@@ -9935,7 +9935,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -9958,7 +9958,7 @@ public enum SceneMode {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -9975,7 +9975,7 @@ NormalPhoto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NormalVideo
 
@@ -9987,7 +9987,7 @@ NormalVideo
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SecurePhoto
 
@@ -9999,7 +9999,7 @@ SecurePhoto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(SceneMode)
 
@@ -10051,7 +10051,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -10072,7 +10072,7 @@ public enum SmoothZoomMode {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -10089,7 +10089,7 @@ Normal
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(SmoothZoomMode)
 
@@ -10160,7 +10160,7 @@ public enum TorchMode {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -10177,7 +10177,7 @@ Auto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Off
 
@@ -10189,7 +10189,7 @@ Off
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### On
 
@@ -10201,7 +10201,7 @@ On
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(TorchMode)
 
@@ -10253,7 +10253,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -10275,7 +10275,7 @@ public enum VideoCodecType {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -10292,7 +10292,7 @@ Avc
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Hevc
 
@@ -10304,7 +10304,7 @@ Hevc
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(VideoCodecType)
 
@@ -10356,7 +10356,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -10381,7 +10381,7 @@ public enum VideoStabilizationMode {
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -10398,7 +10398,7 @@ Auto
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### High
 
@@ -10410,7 +10410,7 @@ High
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Low
 
@@ -10422,7 +10422,7 @@ Low
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Middle
 
@@ -10434,7 +10434,7 @@ Middle
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Off
 
@@ -10446,7 +10446,7 @@ Off
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(VideoStabilizationMode)
 

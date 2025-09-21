@@ -33,7 +33,7 @@ public func getPhotoAccessHelper(context: UIAbilityContext): PhotoAccessHelper
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -78,7 +78,7 @@ public open class AbsAlbum {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop albumName
 
@@ -94,7 +94,7 @@ public mut prop albumName: String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop albumSubtype
 
@@ -110,7 +110,7 @@ public prop albumSubtype: AlbumSubtype
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop albumType
 
@@ -126,7 +126,7 @@ public prop albumType: AlbumType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop albumUri
 
@@ -142,7 +142,7 @@ public prop albumUri: String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop count
 
@@ -158,7 +158,7 @@ public prop count: Int32
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop coverUri
 
@@ -174,7 +174,7 @@ public prop coverUri: String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getAssets(FetchOptions)
 
@@ -188,7 +188,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -223,7 +223,7 @@ public protected init(id: Int64)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -241,7 +241,7 @@ public class Album <: AbsAlbum {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -261,7 +261,7 @@ public prop imageCount: Int32
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop videoCount
 
@@ -277,7 +277,7 @@ public prop videoCount: Int32
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func commitModify()
 
@@ -291,7 +291,7 @@ public func commitModify(): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -336,7 +336,7 @@ public class AlbumResult <: FetchResult {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -352,7 +352,7 @@ public func getAllObjects(): Array<Album>
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -379,7 +379,7 @@ public func getFirstObject(): Album
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -406,7 +406,7 @@ public func getLastObject(): Album
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -433,7 +433,7 @@ public func getNextObject(): Album
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -460,7 +460,7 @@ public func getObjectByPosition(index: Int32): Album
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -493,7 +493,7 @@ public open class FetchResult {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -505,7 +505,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -544,7 +544,7 @@ public func getCount(): Int32
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -590,7 +590,7 @@ public func isAfterLast(): Bool
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -635,7 +635,7 @@ public protected init(id: Int64)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -653,7 +653,7 @@ public class PhotoAsset {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop displayName
 
@@ -669,7 +669,7 @@ public prop displayName: String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop photoType
 
@@ -685,7 +685,7 @@ public prop photoType: PhotoType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop uri
 
@@ -701,7 +701,7 @@ public prop uri: String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func commitModify()
 
@@ -715,7 +715,7 @@ public func commitModify(): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -768,7 +768,7 @@ public func get(member: String): MemberType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -830,7 +830,7 @@ public func getThumbnail(size!: ?Size = Size(256, 256)): PixelMap
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -889,7 +889,7 @@ public func set(member: String, value: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -946,7 +946,7 @@ public class PhotoAssetResult <: FetchResult {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -962,7 +962,7 @@ public func getAllObjects(): Array<PhotoAsset>
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -989,7 +989,7 @@ public func getFirstObject(): PhotoAsset
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1016,7 +1016,7 @@ public func getLastObject(): PhotoAsset
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1043,7 +1043,7 @@ public func getNextObject(): PhotoAsset
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1070,7 +1070,7 @@ public func getObjectByPosition(index: Int32): PhotoAsset
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1108,7 +1108,7 @@ public enum MemberType {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Int64Value
 
@@ -1120,7 +1120,7 @@ Int64Value(Int64)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue
 
@@ -1132,7 +1132,7 @@ StringValue(String)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BoolValue
 
@@ -1144,7 +1144,7 @@ BoolValue(Bool)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum PhotoType
 
@@ -1160,7 +1160,7 @@ public enum PhotoType <: Equatable<PhotoType> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1177,7 +1177,7 @@ Image
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Video
 
@@ -1189,7 +1189,7 @@ Video
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PhotoType)
 

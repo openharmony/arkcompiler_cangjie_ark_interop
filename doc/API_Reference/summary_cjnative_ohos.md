@@ -340,7 +340,6 @@
     - [Media Kit（媒体服务）]()
         - [仓颉API]()
             - [ohos.multimedia.media（媒体服务）](source_zh_cn/apis/MediaKit/cj-apis-multimedia_media.md)
-            - [ohos.multimedia.image](source_zh_cn/apis/MediaKit/cj-apis-multimedia-image.md)
         - [错误码]()
             - [Media错误码](source_zh_cn/errorcodes/cj-errorcode-multimedia-media.md)
     - [Media Library Kit（媒体文件管理服务）]()

@@ -38,7 +38,7 @@ public class RequestResult {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var result
 
@@ -54,7 +54,7 @@ public var result: ResultCode
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var want
 
@@ -70,7 +70,7 @@ public var want: Want
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ResultCode
 
@@ -86,7 +86,7 @@ public enum ResultCode {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ResultCancel
 
@@ -98,7 +98,7 @@ ResultCancel
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ResultOk
 
@@ -110,4 +110,4 @@ ResultOk
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22

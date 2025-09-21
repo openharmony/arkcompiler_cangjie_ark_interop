@@ -26,7 +26,7 @@ public func getCalendar(locale: String, calendarType!: ?CalendarType = None): Ca
 **功能：** 获取指定区域和日历类型对应的日历对象。
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -63,7 +63,7 @@ public class Calendar {}
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func add(String, Int32)
 
@@ -75,7 +75,7 @@ public func add(field: String, amount: Int32): Unit
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -109,7 +109,7 @@ public func get(field: String): Int32
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -152,7 +152,7 @@ public func getDisplayName(locale: String): String
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -190,7 +190,7 @@ public func getFirstDayOfWeek(): Int32
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -221,7 +221,7 @@ public func getMinimalDaysInFirstWeek(): Int32
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -252,7 +252,7 @@ public func getTimeInMillis(): Float64
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -284,7 +284,7 @@ public func getTimeZone(): String
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -317,7 +317,7 @@ public func set(year: Int32, month: Int32, date: Int32, hour!: ?Int32 = None, mi
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -353,7 +353,7 @@ public func setFirstDayOfWeek(value: Int32): Unit
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -385,7 +385,7 @@ public func setMinimalDaysInFirstWeek(value: Int32): Unit
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -417,7 +417,7 @@ public func setTime(time: Float64): Unit
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -448,7 +448,7 @@ public func setTimeZone(timeZone: String): Unit
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -479,7 +479,7 @@ public class System {}
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func getAppPreferredLanguage()
 
@@ -491,7 +491,7 @@ public static func getAppPreferredLanguage(): String
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -535,7 +535,7 @@ public enum CalendarType {
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Buddhist
 
@@ -547,7 +547,7 @@ Buddhist
 
 **系统能力：**  SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Chinese
 
@@ -559,7 +559,7 @@ Chinese
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Coptic
 
@@ -571,7 +571,7 @@ Coptic
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Ethiopic
 
@@ -583,7 +583,7 @@ Ethiopic
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Hebrew
 
@@ -595,7 +595,7 @@ Hebrew
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Gregory
 
@@ -607,7 +607,7 @@ Gregory
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Indian
 
@@ -619,7 +619,7 @@ Indian
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IslamicCivil
 
@@ -631,7 +631,7 @@ IslamicCivil
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IslamicTbla
 
@@ -643,7 +643,7 @@ IslamicTbla
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IslamicUmalqura
 
@@ -655,7 +655,7 @@ IslamicUmalqura
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Japanese
 
@@ -667,7 +667,7 @@ Japanese
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Persian
 
@@ -679,4 +679,4 @@ Persian
 
 **系统能力：** SystemCapability.Global.I18n
 
-**起始版本：** 21
+**起始版本：** 22
