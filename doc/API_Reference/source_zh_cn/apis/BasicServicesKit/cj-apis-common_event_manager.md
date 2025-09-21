@@ -27,7 +27,7 @@ public class CommonEventManager {}
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func createSubscriber(CommonEventSubscribeInfo)
 
@@ -39,7 +39,7 @@ public static func createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Co
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -87,7 +87,7 @@ public static func publish(event: String, options!: CommonEventPublishData =  Co
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -141,7 +141,7 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -161,6 +161,33 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
   | 1500008 | If Common Event Service does not complete initialization. |
   | 1500010 | The count of subscriber exceed system specification. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.BasicServicesKit.*
+import ohos.base.*
+import ohos.business_exception.*
+import kit.PerformanceAnalysisKit.Hilog
+
+// 订阅事件：亮屏
+let events = [Support.COMMON_EVENT_SCREEN_ON]
+// 订阅者信息
+let info = CommonEventSubscribeInfo(events)
+// 订阅者
+let sub = CommonEventManager.createSubscriber(info)
+// 取消订阅
+try {
+    CommonEventManager.unsubscribe(sub)
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "errorCode = ${e.code}, errorMsg = ${e.message}")
+}
+```
+
 ### static func unsubscribe(CommonEventSubscriber)
 
 ```cangjie
@@ -171,7 +198,7 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -392,7 +419,7 @@ public class Support {
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_ABILITY_ADDED
 
@@ -406,7 +433,7 @@ public static const COMMON_EVENT_ABILITY_ADDED: String = "common.event.ABILITY_A
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_ABILITY_REMOVED
 
@@ -420,7 +447,7 @@ public static const COMMON_EVENT_ABILITY_REMOVED: String = "common.event.ABILITY
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_ABILITY_UPDATED
 
@@ -434,7 +461,7 @@ public static const COMMON_EVENT_ABILITY_UPDATED: String = "common.event.ABILITY
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_ACCOUNT_DELETED
 
@@ -448,7 +475,7 @@ public static const COMMON_EVENT_ACCOUNT_DELETED: String = "usual.event.data.ACC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_AIRPLANE_MODE_CHANGED
 
@@ -462,7 +489,7 @@ public static const COMMON_EVENT_AIRPLANE_MODE_CHANGED: String = "usual.event.AI
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BATTERY_CHANGED
 
@@ -476,7 +503,7 @@ public static const COMMON_EVENT_BATTERY_CHANGED: String = "usual.event.BATTERY_
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BATTERY_LOW
 
@@ -490,7 +517,7 @@ public static const COMMON_EVENT_BATTERY_LOW: String = "usual.event.BATTERY_LOW"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BATTERY_OKAY
 
@@ -504,7 +531,7 @@ public static const COMMON_EVENT_BATTERY_OKAY: String = "usual.event.BATTERY_OKA
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE
 
@@ -518,7 +545,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE: String =
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE
 
@@ -532,7 +559,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE
 
@@ -546,7 +573,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE
 
@@ -560,7 +587,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE
 
@@ -574,7 +601,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE
 
@@ -588,7 +615,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE: Stri
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE
 
@@ -602,7 +629,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE: Str
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE
 
@@ -616,7 +643,7 @@ public static const COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE: Stri
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE
 
@@ -630,7 +657,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE: S
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT
 
@@ -644,7 +671,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE
 
@@ -658,7 +685,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE: Str
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE
 
@@ -672,7 +699,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE: S
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE
 
@@ -686,7 +713,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE: Stri
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE
 
@@ -700,7 +727,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE: St
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE
 
@@ -714,7 +741,7 @@ public static const COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE: S
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED
 
@@ -728,7 +755,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED: String = "us
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED
 
@@ -742,7 +769,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED: String = "usu
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE
 
@@ -756,7 +783,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE: String = "usual.eve
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE
 
@@ -770,7 +797,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE: String = "usual.eve
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE
 
@@ -784,7 +811,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE: String = "usua
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE
 
@@ -798,7 +825,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE: String = "usual.even
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE
 
@@ -812,7 +839,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE: String = "usua
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE
 
@@ -826,7 +853,7 @@ public static const COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE: String = "usual.ev
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED
 
@@ -840,7 +867,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED: String = 
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED
 
@@ -854,7 +881,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE
 
@@ -868,7 +895,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE: St
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE
 
@@ -882,7 +909,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE: Stri
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL
 
@@ -896,7 +923,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL: String =
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY
 
@@ -910,7 +937,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY: String = 
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ
 
@@ -924,7 +951,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ: String = "u
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED
 
@@ -938,7 +965,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED: String = "us
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE
 
@@ -952,7 +979,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE: String = "u
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL
 
@@ -966,7 +993,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL: String =
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ
 
@@ -980,7 +1007,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ: String = "u
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE
 
@@ -994,7 +1021,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE: String = "us
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT
 
@@ -1008,7 +1035,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT: String = "us
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE
 
@@ -1022,7 +1049,7 @@ public static const COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE: String = "us
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BOOT_COMPLETED
 
@@ -1036,7 +1063,7 @@ public static const COMMON_EVENT_BOOT_COMPLETED: String = "usual.event.BOOT_COMP
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_BUNDLE_REMOVED
 
@@ -1050,7 +1077,7 @@ public static const COMMON_EVENT_BUNDLE_REMOVED: String = "usual.event.BUNDLE_RE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_CALL_STATE_CHANGED
 
@@ -1064,7 +1091,7 @@ public static const COMMON_EVENT_CALL_STATE_CHANGED: String = "usual.event.CALL_
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED
 
@@ -1078,7 +1105,7 @@ public static const COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED: String = "usual.event
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_CHARGING
 
@@ -1092,7 +1119,7 @@ public static const COMMON_EVENT_CHARGING: String = "usual.event.CHARGING"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_CLOSE_SYSTEM_DIALOGS
 
@@ -1106,7 +1133,7 @@ public static const COMMON_EVENT_CLOSE_SYSTEM_DIALOGS: String = "usual.event.CLO
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_CONFIGURATION_CHANGED
 
@@ -1120,7 +1147,7 @@ public static const COMMON_EVENT_CONFIGURATION_CHANGED: String = "usual.event.CO
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_CONNECTIVITY_CHANGE
 
@@ -1134,7 +1161,7 @@ public static const COMMON_EVENT_CONNECTIVITY_CHANGE: String = "usual.event.CONN
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DATE_CHANGED
 
@@ -1148,7 +1175,7 @@ public static const COMMON_EVENT_DATE_CHANGED: String = "usual.event.DATE_CHANGE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED
 
@@ -1162,7 +1189,7 @@ public static const COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED: String = "usual.event
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISCHARGING
 
@@ -1176,7 +1203,7 @@ public static const COMMON_EVENT_DISCHARGING: String = "usual.event.DISCHARGING"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISK_BAD_REMOVAL
 
@@ -1190,7 +1217,7 @@ public static const COMMON_EVENT_DISK_BAD_REMOVAL: String = "usual.event.data.DI
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISK_EJECT
 
@@ -1204,7 +1231,7 @@ public static const COMMON_EVENT_DISK_EJECT: String = "usual.event.data.DISK_EJE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISK_MOUNTED
 
@@ -1218,7 +1245,7 @@ public static const COMMON_EVENT_DISK_MOUNTED: String = "usual.event.data.DISK_M
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISK_REMOVED
 
@@ -1232,7 +1259,7 @@ public static const COMMON_EVENT_DISK_REMOVED: String = "usual.event.data.DISK_R
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISK_UNMOUNTABLE
 
@@ -1246,7 +1273,7 @@ public static const COMMON_EVENT_DISK_UNMOUNTABLE: String = "usual.event.data.DI
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISK_UNMOUNTED
 
@@ -1260,7 +1287,7 @@ public static const COMMON_EVENT_DISK_UNMOUNTED: String = "usual.event.data.DISK
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN
 
@@ -1274,7 +1301,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN: String = "common.eve
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF
 
@@ -1288,7 +1315,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF: String = "common.ev
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT
 
@@ -1302,7 +1329,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT: String = "common.ev
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID
 
@@ -1316,7 +1343,7 @@ public static const COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID: String = "co
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_DRIVE_MODE
 
@@ -1330,7 +1357,7 @@ public static const COMMON_EVENT_DRIVE_MODE: String = "common.event.DRIVE_MODE"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE
 
@@ -1344,7 +1371,7 @@ public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE: String = "usua
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE
 
@@ -1358,7 +1385,7 @@ public static const COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE: String = "us
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_FOUNDATION_READY
 
@@ -1372,7 +1399,7 @@ public static const COMMON_EVENT_FOUNDATION_READY: String = "common.event.FOUNDA
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_HOME_MODE
 
@@ -1386,7 +1413,7 @@ public static const COMMON_EVENT_HOME_MODE: String = "common.event.HOME_MODE"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_HTTP_PROXY_CHANGE
 
@@ -1400,7 +1427,7 @@ public static const COMMON_EVENT_HTTP_PROXY_CHANGE: String = "usual.event.HTTP_P
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_ACTIVE
 
@@ -1414,7 +1441,7 @@ public static const COMMON_EVENT_IVI_ACTIVE: String = "common.event.IVI_ACTIVE"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_EXTREME_TEMPERATURE
 
@@ -1428,7 +1455,7 @@ public static const COMMON_EVENT_IVI_EXTREME_TEMPERATURE: String = "common.event
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_HIGH_TEMPERATURE
 
@@ -1442,7 +1469,7 @@ public static const COMMON_EVENT_IVI_HIGH_TEMPERATURE: String = "common.event.IV
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_LASTMODE_SAVE
 
@@ -1456,7 +1483,7 @@ public static const COMMON_EVENT_IVI_LASTMODE_SAVE: String = "common.event.IVI_L
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_PAUSE
 
@@ -1470,7 +1497,7 @@ public static const COMMON_EVENT_IVI_PAUSE: String = "common.event.IVI_PAUSE"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_SLEEP
 
@@ -1484,7 +1511,7 @@ public static const COMMON_EVENT_IVI_SLEEP: String = "common.event.IVI_SLEEP"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_STANDBY
 
@@ -1498,7 +1525,7 @@ public static const COMMON_EVENT_IVI_STANDBY: String = "common.event.IVI_STANDBY
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
 
@@ -1512,7 +1539,7 @@ public static const COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL: String = "common.even
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_TEMPERATURE_RECOVERY
 
@@ -1526,7 +1553,7 @@ public static const COMMON_EVENT_IVI_TEMPERATURE_RECOVERY: String = "common.even
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_VOLTAGE_ABNORMAL
 
@@ -1540,7 +1567,7 @@ public static const COMMON_EVENT_IVI_VOLTAGE_ABNORMAL: String = "common.event.IV
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_IVI_VOLTAGE_RECOVERY
 
@@ -1554,7 +1581,7 @@ public static const COMMON_EVENT_IVI_VOLTAGE_RECOVERY: String = "common.event.IV
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_LOCALE_CHANGED
 
@@ -1568,7 +1595,7 @@ public static const COMMON_EVENT_LOCALE_CHANGED: String = "usual.event.LOCALE_CH
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
 
@@ -1582,7 +1609,7 @@ public static const COMMON_EVENT_LOCATION_MODE_STATE_CHANGED: String = "usual.ev
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_LOCKED_BOOT_COMPLETED
 
@@ -1596,7 +1623,7 @@ public static const COMMON_EVENT_LOCKED_BOOT_COMPLETED: String = "usual.event.LO
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_MANAGE_PACKAGE_STORAGE
 
@@ -1610,7 +1637,7 @@ public static const COMMON_EVENT_MANAGE_PACKAGE_STORAGE: String = "usual.event.M
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_MY_PACKAGE_REPLACED
 
@@ -1624,7 +1651,7 @@ public static const COMMON_EVENT_MY_PACKAGE_REPLACED: String = "usual.event.MY_P
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_MY_PACKAGE_SUSPENDED
 
@@ -1638,7 +1665,7 @@ public static const COMMON_EVENT_MY_PACKAGE_SUSPENDED: String = "usual.event.MY_
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
 
@@ -1652,7 +1679,7 @@ public static const COMMON_EVENT_MY_PACKAGE_UNSUSPENDED: String = "usual.event.M
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_NETWORK_STATE_CHANGED
 
@@ -1666,7 +1693,7 @@ public static const COMMON_EVENT_NETWORK_STATE_CHANGED: String = "usual.event.NE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
 
@@ -1680,7 +1707,7 @@ public static const COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED: String = "usu
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED
 
@@ -1694,7 +1721,7 @@ public static const COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED: String = "usu
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED
 
@@ -1708,7 +1735,7 @@ public static const COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED: String = "usua
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_OFFICE_MODE
 
@@ -1722,7 +1749,7 @@ public static const COMMON_EVENT_OFFICE_MODE: String = "common.event.OFFICE_MODE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGES_SUSPENDED
 
@@ -1736,7 +1763,7 @@ public static const COMMON_EVENT_PACKAGES_SUSPENDED: String = "usual.event.PACKA
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGES_UNSUSPENDED
 
@@ -1750,7 +1777,7 @@ public static const COMMON_EVENT_PACKAGES_UNSUSPENDED: String = "usual.event.PAC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_ADDED
 
@@ -1764,7 +1791,7 @@ public static const COMMON_EVENT_PACKAGE_ADDED: String = "usual.event.PACKAGE_AD
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_CACHE_CLEARED
 
@@ -1778,7 +1805,7 @@ public static const COMMON_EVENT_PACKAGE_CACHE_CLEARED: String = "usual.event.PA
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_CHANGED
 
@@ -1792,7 +1819,7 @@ public static const COMMON_EVENT_PACKAGE_CHANGED: String = "usual.event.PACKAGE_
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_DATA_CLEARED
 
@@ -1806,7 +1833,7 @@ public static const COMMON_EVENT_PACKAGE_DATA_CLEARED: String = "usual.event.PAC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_FIRST_LAUNCH
 
@@ -1820,7 +1847,7 @@ public static const COMMON_EVENT_PACKAGE_FIRST_LAUNCH: String = "usual.event.PAC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_FULLY_REMOVED
 
@@ -1834,7 +1861,7 @@ public static const COMMON_EVENT_PACKAGE_FULLY_REMOVED: String = "usual.event.PA
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION
 
@@ -1848,7 +1875,7 @@ public static const COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION: String = "usual.eve
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_REMOVED
 
@@ -1862,7 +1889,7 @@ public static const COMMON_EVENT_PACKAGE_REMOVED: String = "usual.event.PACKAGE_
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_REPLACED
 
@@ -1876,7 +1903,7 @@ public static const COMMON_EVENT_PACKAGE_REPLACED: String = "usual.event.PACKAGE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_RESTARTED
 
@@ -1890,7 +1917,7 @@ public static const COMMON_EVENT_PACKAGE_RESTARTED: String = "usual.event.PACKAG
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_PACKAGE_VERIFIED
 
@@ -1904,7 +1931,7 @@ public static const COMMON_EVENT_PACKAGE_VERIFIED: String = "usual.event.PACKAGE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_POWER_CONNECTED
 
@@ -1918,7 +1945,7 @@ public static const COMMON_EVENT_POWER_CONNECTED: String = "usual.event.POWER_CO
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_POWER_DISCONNECTED
 
@@ -1932,7 +1959,7 @@ public static const COMMON_EVENT_POWER_DISCONNECTED: String = "usual.event.POWER
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_POWER_SAVE_MODE_CHANGED
 
@@ -1946,7 +1973,7 @@ public static const COMMON_EVENT_POWER_SAVE_MODE_CHANGED: String = "usual.event.
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_QUICK_FIX_APPLY_RESULT
 
@@ -1960,7 +1987,7 @@ public static const COMMON_EVENT_QUICK_FIX_APPLY_RESULT: String = "usual.event.Q
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT
 
@@ -1974,7 +2001,7 @@ public static const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT: String = "usual.event.
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SCREEN_LOCKED
 
@@ -1988,7 +2015,7 @@ public static const COMMON_EVENT_SCREEN_LOCKED: String = "usual.event.SCREEN_LOC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SCREEN_OFF
 
@@ -2002,7 +2029,7 @@ public static const COMMON_EVENT_SCREEN_OFF: String = "usual.event.SCREEN_OFF"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SCREEN_ON
 
@@ -2016,7 +2043,7 @@ public static const COMMON_EVENT_SCREEN_ON: String = "usual.event.SCREEN_ON"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SCREEN_UNLOCKED
 
@@ -2030,7 +2057,7 @@ public static const COMMON_EVENT_SCREEN_UNLOCKED: String = "usual.event.SCREEN_U
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SHUTDOWN
 
@@ -2044,7 +2071,7 @@ public static const COMMON_EVENT_SHUTDOWN: String = "usual.event.SHUTDOWN"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SIGNAL_INFO_CHANGED
 
@@ -2058,7 +2085,7 @@ public static const COMMON_EVENT_SIGNAL_INFO_CHANGED: String = "usual.event.SIGN
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SIM_STATE_CHANGED
 
@@ -2072,7 +2099,7 @@ public static const COMMON_EVENT_SIM_STATE_CHANGED: String = "usual.event.SIM_ST
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SLOT_CHANGE
 
@@ -2086,7 +2113,7 @@ public static const COMMON_EVENT_SLOT_CHANGE: String = "usual.event.SLOT_CHANGE"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SPLIT_SCREEN
 
@@ -2100,7 +2127,7 @@ public static const COMMON_EVENT_SPLIT_SCREEN: String = "common.event.SPLIT_SCRE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_SPN_INFO_CHANGED
 
@@ -2114,7 +2141,7 @@ public static const COMMON_EVENT_SPN_INFO_CHANGED: String = "usual.event.SPN_INF
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_THERMAL_LEVEL_CHANGED
 
@@ -2128,7 +2155,7 @@ public static const COMMON_EVENT_THERMAL_LEVEL_CHANGED: String = "usual.event.TH
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_TIMEZONE_CHANGED
 
@@ -2142,7 +2169,7 @@ public static const COMMON_EVENT_TIMEZONE_CHANGED: String = "usual.event.TIMEZON
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_TIME_CHANGED
 
@@ -2156,7 +2183,7 @@ public static const COMMON_EVENT_TIME_CHANGED: String = "usual.event.TIME_CHANGE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_TIME_TICK
 
@@ -2170,7 +2197,7 @@ public static const COMMON_EVENT_TIME_TICK: String = "usual.event.TIME_TICK"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_UID_REMOVED
 
@@ -2184,7 +2211,7 @@ public static const COMMON_EVENT_UID_REMOVED: String = "usual.event.UID_REMOVED"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
@@ -2198,7 +2225,7 @@ public static const COMMON_EVENT_USB_ACCESSORY_ATTACHED: String = "usual.event.h
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USB_ACCESSORY_DETACHED
 
@@ -2212,7 +2239,7 @@ public static const COMMON_EVENT_USB_ACCESSORY_DETACHED: String = "usual.event.h
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USB_DEVICE_ATTACHED
 
@@ -2226,7 +2253,7 @@ public static const COMMON_EVENT_USB_DEVICE_ATTACHED: String = "usual.event.hard
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USB_DEVICE_DETACHED
 
@@ -2240,7 +2267,7 @@ public static const COMMON_EVENT_USB_DEVICE_DETACHED: String = "usual.event.hard
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USB_PORT_CHANGED
 
@@ -2254,7 +2281,7 @@ public static const COMMON_EVENT_USB_PORT_CHANGED: String = "usual.event.hardwar
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USB_STATE
 
@@ -2268,7 +2295,7 @@ public static const COMMON_EVENT_USB_STATE: String = "usual.event.hardware.usb.a
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_ADDED
 
@@ -2282,7 +2309,7 @@ public static const COMMON_EVENT_USER_ADDED: String = "usual.event.USER_ADDED"
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_BACKGROUND
 
@@ -2296,7 +2323,7 @@ public static const COMMON_EVENT_USER_BACKGROUND: String = "usual.event.USER_BAC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_FOREGROUND
 
@@ -2310,7 +2337,7 @@ public static const COMMON_EVENT_USER_FOREGROUND: String = "usual.event.USER_FOR
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_INFO_UPDATED
 
@@ -2324,7 +2351,7 @@ public static const COMMON_EVENT_USER_INFO_UPDATED: String = "usual.event.USER_I
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_REMOVED
 
@@ -2338,7 +2365,7 @@ public static const COMMON_EVENT_USER_REMOVED: String = "usual.event.USER_REMOVE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_STARTED
 
@@ -2352,7 +2379,7 @@ public static const COMMON_EVENT_USER_STARTED: String = "usual.event.USER_STARTE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_STARTING
 
@@ -2366,7 +2393,7 @@ public static const COMMON_EVENT_USER_STARTING: String = "usual.event.USER_START
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_STOPPED
 
@@ -2380,7 +2407,7 @@ public static const COMMON_EVENT_USER_STOPPED: String = "usual.event.USER_STOPPE
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_STOPPING
 
@@ -2394,7 +2421,7 @@ public static const COMMON_EVENT_USER_STOPPING: String = "usual.event.USER_STOPP
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_SWITCHED
 
@@ -2408,7 +2435,7 @@ public static const COMMON_EVENT_USER_SWITCHED: String = "usual.event.USER_SWITC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_USER_UNLOCKED
 
@@ -2422,7 +2449,7 @@ public static const COMMON_EVENT_USER_UNLOCKED: String = "usual.event.USER_UNLOC
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED
 
@@ -2436,7 +2463,7 @@ public static const COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED: String = "usual.event
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_VOLUME_BAD_REMOVAL
 
@@ -2450,7 +2477,7 @@ public static const COMMON_EVENT_VOLUME_BAD_REMOVAL: String = "usual.event.data.
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_VOLUME_EJECT
 
@@ -2464,7 +2491,7 @@ public static const COMMON_EVENT_VOLUME_EJECT: String = "usual.event.data.VOLUME
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_VOLUME_MOUNTED
 
@@ -2478,7 +2505,7 @@ public static const COMMON_EVENT_VOLUME_MOUNTED: String = "usual.event.data.VOLU
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_VOLUME_REMOVED
 
@@ -2492,7 +2519,7 @@ public static const COMMON_EVENT_VOLUME_REMOVED: String = "usual.event.data.VOLU
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_VOLUME_UNMOUNTED
 
@@ -2506,7 +2533,7 @@ public static const COMMON_EVENT_VOLUME_UNMOUNTED: String = "usual.event.data.VO
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_AP_STA_JOIN
 
@@ -2520,7 +2547,7 @@ public static const COMMON_EVENT_WIFI_AP_STA_JOIN: String = "usual.event.wifi.WI
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_AP_STA_LEAVE
 
@@ -2534,7 +2561,7 @@ public static const COMMON_EVENT_WIFI_AP_STA_LEAVE: String = "usual.event.wifi.W
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_CONN_STATE
 
@@ -2548,7 +2575,7 @@ public static const COMMON_EVENT_WIFI_CONN_STATE: String = "usual.event.wifi.CON
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_HOTSPOT_STATE
 
@@ -2562,7 +2589,7 @@ public static const COMMON_EVENT_WIFI_HOTSPOT_STATE: String = "usual.event.wifi.
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE
 
@@ -2576,7 +2603,7 @@ public static const COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE: String = "usual.event
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_P2P_CONN_STATE
 
@@ -2590,7 +2617,7 @@ public static const COMMON_EVENT_WIFI_P2P_CONN_STATE: String = "usual.event.wifi
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED
 
@@ -2604,7 +2631,7 @@ public static const COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED: String =
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED
 
@@ -2618,7 +2645,7 @@ public static const COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED: String = "usual.e
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED
 
@@ -2632,7 +2659,7 @@ public static const COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED: String 
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED
 
@@ -2646,7 +2673,7 @@ public static const COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED: String = "usual.e
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_P2P_STATE_CHANGED
 
@@ -2660,7 +2687,7 @@ public static const COMMON_EVENT_WIFI_P2P_STATE_CHANGED: String = "usual.event.w
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_POWER_STATE
 
@@ -2674,7 +2701,7 @@ public static const COMMON_EVENT_WIFI_POWER_STATE: String = "usual.event.wifi.PO
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_RSSI_VALUE
 
@@ -2688,7 +2715,7 @@ public static const COMMON_EVENT_WIFI_RSSI_VALUE: String = "usual.event.wifi.RSS
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const COMMON_EVENT_WIFI_SCAN_FINISHED
 
@@ -2702,4 +2729,4 @@ public static const COMMON_EVENT_WIFI_SCAN_FINISHED: String = "usual.event.wifi.
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22

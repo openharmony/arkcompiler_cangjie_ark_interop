@@ -42,7 +42,7 @@ public open class StartOptions {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var displayId
 
@@ -58,7 +58,7 @@ public var displayId: Int32
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var windowMode
 
@@ -74,7 +74,7 @@ public var windowMode:?WindowMode
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(?WindowMode, Int32)
 
@@ -89,7 +89,7 @@ public init(
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

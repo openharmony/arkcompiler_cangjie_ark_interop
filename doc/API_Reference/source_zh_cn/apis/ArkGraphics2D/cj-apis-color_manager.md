@@ -27,7 +27,7 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -50,6 +50,19 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
   | 401 | Parameter error. Possible cause: 1.Incorrect parameter type.2.Parameter verification failed. |
   | 18600001 | The parameter value is abnormal. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkGraphics2D.*
+
+let colorSpaceManager = create(ColorSpace.SRGB)
+```
+
 ## func create(ColorSpacePrimaries, Float32)
 
 ```cangjie
@@ -60,7 +73,7 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -84,6 +97,30 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
   | 401 | Parameter error. Possible cause: 1.Incorrect parameter type.2.Parameter verification failed. |
   | 18600001 | The parameter value is abnormal. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ArkGraphics2D.*
+
+let primaries = ColorSpacePrimaries(
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+)
+let gamma = 2.2f32
+let colorSpaceManager = create(primaries, gamma)
+```
+
 ## class ColorSpaceManager
 
 ```cangjie
@@ -98,7 +135,7 @@ public class ColorSpaceManager {}
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getColorSpaceName()
 
@@ -110,7 +147,7 @@ public func getColorSpaceName(): ColorSpace
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -150,7 +187,7 @@ public func getGamma(): Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -190,7 +227,7 @@ public func getWhitePoint(): Array<Float32>
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -240,7 +277,7 @@ public class ColorSpacePrimaries {
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var blueX
 
@@ -256,7 +293,7 @@ public var blueX: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var blueY
 
@@ -272,7 +309,7 @@ public var blueY: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var greenX
 
@@ -288,7 +325,7 @@ public var greenX: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var greenY
 
@@ -304,7 +341,7 @@ public var greenY: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var redX
 
@@ -320,7 +357,7 @@ public var redX: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var redY
 
@@ -336,7 +373,7 @@ public var redY: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var whitePointX
 
@@ -352,7 +389,7 @@ public var whitePointX: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var whitePointY
 
@@ -368,7 +405,7 @@ public var whitePointY: Float32
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32)
 
@@ -380,7 +417,7 @@ public init(redX: Float32, redY: Float32, greenX: Float32, greenY: Float32, blue
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -438,7 +475,7 @@ public enum ColorSpace <: Equatable<ColorSpace> & ToString {
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -455,7 +492,7 @@ AdobeRgb1998
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AdobeRgb1998Limit
 
@@ -467,7 +504,7 @@ AdobeRgb1998Limit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt2020Hlg
 
@@ -479,7 +516,7 @@ Bt2020Hlg
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt2020HlgLimit
 
@@ -491,7 +528,7 @@ Bt2020HlgLimit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt2020Pq
 
@@ -503,7 +540,7 @@ Bt2020Pq
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt2020PqLimit
 
@@ -515,7 +552,7 @@ Bt2020PqLimit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt601Ebu
 
@@ -527,7 +564,7 @@ Bt601Ebu
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt601EbuLimit
 
@@ -539,7 +576,7 @@ Bt601EbuLimit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt601SmpteC
 
@@ -551,7 +588,7 @@ Bt601SmpteC
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt601SmpteCLimit
 
@@ -563,7 +600,7 @@ Bt601SmpteCLimit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt709
 
@@ -575,7 +612,7 @@ Bt709
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bt709Limit
 
@@ -587,7 +624,7 @@ Bt709Limit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Custom
 
@@ -599,7 +636,7 @@ Custom
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DciP3
 
@@ -611,7 +648,7 @@ DciP3
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplayP3
 
@@ -623,7 +660,7 @@ DisplayP3
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplayP3Hlg
 
@@ -635,7 +672,7 @@ DisplayP3Hlg
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplayP3Limit
 
@@ -647,7 +684,7 @@ DisplayP3Limit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplayP3Pq
 
@@ -659,7 +696,7 @@ DisplayP3Pq
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplayP3Srgb
 
@@ -671,7 +708,7 @@ DisplayP3Srgb
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplaySrgb
 
@@ -683,7 +720,7 @@ DisplaySrgb
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LinearBt2020
 
@@ -695,7 +732,7 @@ LinearBt2020
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LinearBt709
 
@@ -707,7 +744,7 @@ LinearBt709
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LinearP3
 
@@ -719,7 +756,7 @@ LinearP3
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LinearSrgb
 
@@ -731,7 +768,7 @@ LinearSrgb
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### P3Hlg
 
@@ -743,7 +780,7 @@ P3Hlg
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### P3HlgLimit
 
@@ -755,7 +792,7 @@ P3HlgLimit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### P3Pq
 
@@ -767,7 +804,7 @@ P3Pq
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### P3PqLimit
 
@@ -779,7 +816,7 @@ P3PqLimit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Srgb
 
@@ -791,7 +828,7 @@ Srgb
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SrgbLimit
 
@@ -803,7 +840,7 @@ SrgbLimit
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unknown
 
@@ -815,7 +852,7 @@ Unknown
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ColorSpace)
 

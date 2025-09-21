@@ -40,7 +40,7 @@ public enum ValueType {
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayBool(Array\<Bool>)
 
@@ -52,7 +52,7 @@ ArrayBool(Array<Bool>)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayFd(Array\<Int32>)
 
@@ -64,7 +64,7 @@ ArrayFd(Array<Int32>)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayFloat64(Array\<Float64>)
 
@@ -76,7 +76,7 @@ ArrayFloat64(Array<Float64>)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayInt32(Array\<Int32>)
 
@@ -88,7 +88,7 @@ ArrayInt32(Array<Int32>)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayInt64(Array\<Int64>)
 
@@ -100,7 +100,7 @@ ArrayInt64(Array<Int64>)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayString(Array\<String>)
 
@@ -112,7 +112,7 @@ ArrayString(Array<String>)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BoolValue(Bool)
 
@@ -124,7 +124,7 @@ BoolValue(Bool)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Fd(Int32)
 
@@ -136,7 +136,7 @@ Fd(Int32)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Float64Value(Float64)
 
@@ -148,7 +148,7 @@ Float64Value(Float64)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Int32Value(Int32)
 
@@ -160,7 +160,7 @@ Int32Value(Int32)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -172,4 +172,4 @@ StringValue(String)
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22

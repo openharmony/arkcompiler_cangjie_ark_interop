@@ -41,7 +41,7 @@ public class Skill {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let actions
 
@@ -57,7 +57,7 @@ public let actions: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let domainVerify
 
@@ -73,7 +73,7 @@ public let domainVerify: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let entities
 
@@ -89,7 +89,7 @@ public let entities: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let uris
 
@@ -105,7 +105,7 @@ public let uris: Array<SkillUri>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class SkillUri
 
@@ -128,7 +128,7 @@ public class SkillUri {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let host
 
@@ -144,7 +144,7 @@ public let host: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let linkFeature
 
@@ -160,7 +160,7 @@ public let linkFeature: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let maxFileSupported
 
@@ -176,7 +176,7 @@ public let maxFileSupported: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let path
 
@@ -192,7 +192,7 @@ public let path: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let pathRegex
 
@@ -208,7 +208,7 @@ public let pathRegex: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let pathStartWith
 
@@ -224,7 +224,7 @@ public let pathStartWith: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let port
 
@@ -240,7 +240,7 @@ public let port: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let scheme
 
@@ -256,7 +256,7 @@ public let scheme: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let uriType
 
@@ -272,7 +272,7 @@ public let uriType: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let utd
 
@@ -288,4 +288,4 @@ public let utd: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22

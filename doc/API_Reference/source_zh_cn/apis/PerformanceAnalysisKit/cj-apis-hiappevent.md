@@ -32,7 +32,7 @@ public class AppEventFilter {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var domain
 
@@ -48,7 +48,7 @@ public var domain: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var eventTypes
 
@@ -64,7 +64,7 @@ public var eventTypes: Array<EventType>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var names
 
@@ -80,7 +80,7 @@ public var names: Array<String>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Array\<EventType>, Array\<String>)
 
@@ -92,7 +92,7 @@ public init(domain: String, eventTypes!: Array<EventType> = [], names!: Array<St
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -115,7 +115,7 @@ public class AppEventGroup {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var appEventInfos
 
@@ -131,7 +131,7 @@ public var appEventInfos: Array<AppEventInfo>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -147,7 +147,7 @@ public var name: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class AppEventInfo
 
@@ -165,7 +165,7 @@ public class AppEventInfo {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var domain
 
@@ -181,7 +181,7 @@ public var domain: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var eventType
 
@@ -197,7 +197,7 @@ public var eventType: EventType
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -213,7 +213,7 @@ public var name: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var params
 
@@ -235,7 +235,7 @@ public var params: HashMap<String, EventValueType>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, EventType, HashMap\<String,EventValueType>)
 
@@ -247,7 +247,7 @@ public init(domain: String, name: String, event: EventType, params: HashMap<Stri
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -273,7 +273,7 @@ public class AppEventPackage {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var data
 
@@ -289,7 +289,7 @@ public var data: Array<String>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var packageId
 
@@ -305,7 +305,7 @@ public var packageId: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var row
 
@@ -321,7 +321,7 @@ public var row: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var size
 
@@ -337,7 +337,7 @@ public var size: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class AppEventPackageHolder
 
@@ -351,7 +351,7 @@ public class AppEventPackageHolder {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String)
 
@@ -363,7 +363,7 @@ public init(watcherName: String)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -381,7 +381,7 @@ public func setSize(size: Int32): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -433,7 +433,7 @@ public func takeNext(): Option<AppEventPackage>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -476,7 +476,7 @@ public class AppEventReportConfig {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var domain
 
@@ -492,7 +492,7 @@ public var domain: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isRealTime
 
@@ -508,7 +508,7 @@ public var isRealTime: Bool
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -524,7 +524,7 @@ public var name: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, Bool)
 
@@ -536,7 +536,7 @@ public init(domain!: String = "", name!: String = "", isRealTime!: Bool = false)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -560,7 +560,7 @@ public class ConfigOption {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var disable
 
@@ -576,7 +576,7 @@ public var disable: Bool
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var maxStorage
 
@@ -599,7 +599,7 @@ public var maxStorage: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Bool, String)
 
@@ -611,7 +611,7 @@ public init(disable!: Bool = false, maxStorage!: String = "10M")
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -632,7 +632,7 @@ public class Domain {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const OS
 
@@ -646,7 +646,7 @@ public static const OS = "OS"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Event
 
@@ -664,7 +664,7 @@ public class Event {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const APP_CRASH
 
@@ -680,7 +680,7 @@ public static const APP_CRASH = "APP_CRASH"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const APP_FREEZE
 
@@ -696,7 +696,7 @@ public static const APP_FREEZE = "APP_FREEZE"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const DISTRIBUTED_SERVICE_START
 
@@ -712,7 +712,7 @@ public static const DISTRIBUTED_SERVICE_START = "hiappevent.distributed_service_
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const USER_LOGIN
 
@@ -728,7 +728,7 @@ public static const USER_LOGIN = "hiappevent.user_login"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const USER_LOGOUT
 
@@ -744,7 +744,7 @@ public static const USER_LOGOUT = "hiappevent.user_logout"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HiAppEvent
 
@@ -756,7 +756,7 @@ public class HiAppEvent {}
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func addProcessor(Processor)
 
@@ -770,7 +770,7 @@ Processor的配置信息需要由数据处理者提供，目前设备内暂未�
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -810,7 +810,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -929,7 +929,7 @@ public static func clearData(): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -961,7 +961,7 @@ public static func configure(config: ConfigOption): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -994,7 +994,7 @@ public static func getUserId(name: String): String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1033,7 +1033,7 @@ public static func getUserProperty(name: String): String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1072,7 +1072,7 @@ public static func removeProcessor(id: Int64): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1106,7 +1106,7 @@ public static func removeWatcher(watcher: Watcher): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1151,7 +1151,7 @@ public static func setUserId(name: String, value: String): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1170,7 +1170,7 @@ public static func setUserProperty(name: String, value: String): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1189,7 +1189,7 @@ public static func write(info: AppEventInfo): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1211,7 +1211,7 @@ public class Param {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const DISTRIBUTED_SERVICE_INSTANCE_ID
 
@@ -1227,7 +1227,7 @@ public static const DISTRIBUTED_SERVICE_INSTANCE_ID = "ds_instance_id"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const DISTRIBUTED_SERVICE_NAME
 
@@ -1243,7 +1243,7 @@ public static const DISTRIBUTED_SERVICE_NAME = "ds_name"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const USER_ID
 
@@ -1259,7 +1259,7 @@ public static const USER_ID = "user_id"
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Processor
 
@@ -1287,7 +1287,7 @@ public class Processor {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var appId
 
@@ -1303,7 +1303,7 @@ public var appId: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var batchReport
 
@@ -1319,7 +1319,7 @@ public var batchReport: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var debugMode
 
@@ -1335,7 +1335,7 @@ public var debugMode: Bool
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var eventConfigs
 
@@ -1351,7 +1351,7 @@ public var eventConfigs: Array<AppEventReportConfig>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -1367,7 +1367,7 @@ public var name: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onBackgroundReport
 
@@ -1383,7 +1383,7 @@ public var onBackgroundReport: Bool
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onStartReport
 
@@ -1399,7 +1399,7 @@ public var onStartReport: Bool
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var periodReport
 
@@ -1415,7 +1415,7 @@ public var periodReport: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var routeInfo
 
@@ -1431,7 +1431,7 @@ public var routeInfo: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var userIds
 
@@ -1447,7 +1447,7 @@ public var userIds: Array<String>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var userProperties
 
@@ -1463,7 +1463,7 @@ public var userProperties: Array<String>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Bool, String, String, Bool, Bool, Int32, Int32, Array\<String>, Array\<String>, Array\<AppEventReportConfig>)
 
@@ -1478,7 +1478,7 @@ public init(name: String, debugMode!: Bool = false, routeInfo!: String = "", app
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1511,7 +1511,7 @@ public class TriggerCondition {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var row
 
@@ -1527,7 +1527,7 @@ public var row: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var size
 
@@ -1543,7 +1543,7 @@ public var size: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var timeOut
 
@@ -1559,7 +1559,7 @@ public var timeOut: Int32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int32, Int32)
 
@@ -1571,7 +1571,7 @@ public init(row!: Int32 = 0, size!: Int32 = 0, timeOut!: Int32 = 0)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1601,7 +1601,7 @@ public class Watcher {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var appEventFilters
 
@@ -1617,7 +1617,7 @@ public var appEventFilters: Array<AppEventFilter>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -1633,7 +1633,7 @@ public var name: String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onReceive
 
@@ -1649,7 +1649,7 @@ public var onReceive: Option <(String, Array<AppEventGroup>) -> Unit>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onTrigger
 
@@ -1665,7 +1665,7 @@ public var onTrigger: Option <(Int32, Int32, AppEventPackageHolder) -> Unit>
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var triggerCondition
 
@@ -1681,7 +1681,7 @@ public var triggerCondition: TriggerCondition
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, TriggerCondition, Array\<AppEventFilter>, Option\<(Int32,Int32,AppEventPackageHolder) -> Unit>, Option\<(String,Array\<AppEventGroup>) -> Unit>)
 
@@ -1696,7 +1696,7 @@ public init(name: String, triggerCondition!: TriggerCondition = TriggerCondition
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1724,7 +1724,7 @@ public enum EventType {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Behavior
 
@@ -1736,7 +1736,7 @@ Behavior
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Fault
 
@@ -1748,7 +1748,7 @@ Fault
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Security
 
@@ -1760,7 +1760,7 @@ Security
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Statistic
 
@@ -1772,7 +1772,7 @@ Statistic
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getValue()
 
@@ -1784,7 +1784,7 @@ public func getValue(): UInt32
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1814,7 +1814,7 @@ public enum EventValueType <: ToString {
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1830,7 +1830,7 @@ ArrBool(Array<Bool>)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrF64(Array\<Float64>)
 
@@ -1842,7 +1842,7 @@ ArrF64(Array<Float64>)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrI32(Array\<Int32>)
 
@@ -1854,7 +1854,7 @@ ArrI32(Array<Int32>)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrInt64(Array\<Int64>)
 
@@ -1866,7 +1866,7 @@ ArrInt64(Array<Int64>)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrString(Array\<String>)
 
@@ -1878,7 +1878,7 @@ ArrString(Array<String>)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BoolValue(Bool)
 
@@ -1890,7 +1890,7 @@ BoolValue(Bool)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FloatValue(Float64)
 
@@ -1902,7 +1902,7 @@ FloatValue(Float64)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Int64Value(Int64)
 
@@ -1914,7 +1914,7 @@ Int64Value(Int64)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IntValue(Int32)
 
@@ -1926,7 +1926,7 @@ IntValue(Int32)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -1938,7 +1938,7 @@ StringValue(String)
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toString()
 
@@ -1950,7 +1950,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

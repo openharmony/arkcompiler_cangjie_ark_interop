@@ -25,7 +25,7 @@ public func getValue<T>(context: UIAbilityContext, name: T, defValue: String): S
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -60,7 +60,7 @@ public func getValue<T, P>(context: UIAbilityContext, name: T, defValue: String,
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -101,7 +101,7 @@ public enum Date <: ToString {
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -117,7 +117,7 @@ AutoGainTime
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoGainTimeZone
 
@@ -129,7 +129,7 @@ AutoGainTimeZone
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateFormat
 
@@ -141,7 +141,7 @@ DateFormat
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### TimeFormat
 
@@ -153,7 +153,7 @@ TimeFormat
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toString()
 
@@ -165,7 +165,7 @@ public override func toString(): String
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -194,7 +194,7 @@ public enum Display <: ToString {
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -210,7 +210,7 @@ AnimatorDurationScale
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoScreenBrightness
 
@@ -222,7 +222,7 @@ AutoScreenBrightness
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DefaultScreenRotation
 
@@ -234,7 +234,7 @@ DefaultScreenRotation
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplayInversionStatus
 
@@ -246,7 +246,7 @@ DisplayInversionStatus
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FontScale
 
@@ -258,7 +258,7 @@ FontScale
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenBrightnessStatus
 
@@ -270,7 +270,7 @@ ScreenBrightnessStatus
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScreenOffTimeout
 
@@ -282,7 +282,7 @@ ScreenOffTimeout
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### TransitionAnimationScale
 
@@ -294,7 +294,7 @@ TransitionAnimationScale
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WindowAnimationScale
 
@@ -306,7 +306,7 @@ WindowAnimationScale
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toString()
 
@@ -318,7 +318,7 @@ public override func toString(): String
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -340,7 +340,7 @@ public enum DomainName <: ToString {
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -356,7 +356,7 @@ DeviceShared
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UserProperty
 
@@ -368,7 +368,7 @@ UserProperty
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toString()
 
@@ -380,7 +380,7 @@ public override func toString(): String
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

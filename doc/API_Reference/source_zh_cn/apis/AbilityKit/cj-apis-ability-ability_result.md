@@ -39,7 +39,7 @@ public class AbilityResult {
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var resultCode
 
@@ -55,7 +55,7 @@ public var resultCode: Int32
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var want
 
@@ -71,7 +71,7 @@ public var want: Want
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Want)
 
@@ -83,7 +83,7 @@ public init(resultCode: Int32, want!: Want = Want())
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

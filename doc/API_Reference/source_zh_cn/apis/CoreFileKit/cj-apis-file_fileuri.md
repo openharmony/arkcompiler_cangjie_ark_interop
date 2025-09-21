@@ -20,7 +20,6 @@ API示例代码使用说明：
 ## static func getUriFromPath(String)
 
 ```cangjie
-
 public static func getUriFromPath(path: String): String
 ```
 
@@ -28,7 +27,7 @@ public static func getUriFromPath(path: String): String
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -50,11 +49,22 @@ public static func getUriFromPath(path: String): String
   | :---- | :--- |
   | 401 | The input parameter is invalid.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let uri = getUriFromPath("test.txt")
+```
+
 ## class FileUri
 
 ```cangjie
 public class FileUri <: Uri {
-
     public init(uriOrPath: String)
 }
 ```
@@ -63,7 +73,7 @@ public class FileUri <: Uri {
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -83,7 +93,7 @@ public prop name: String
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop path
 
@@ -99,7 +109,7 @@ public override prop path: String
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String)
 
@@ -112,7 +122,7 @@ public init(uriOrPath: String)
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -143,7 +153,7 @@ public override func toString(): String
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -162,7 +172,7 @@ public open class Uri <: ToString {
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -182,7 +192,7 @@ public override prop path: String
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -202,7 +212,7 @@ public open func toString(): String
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

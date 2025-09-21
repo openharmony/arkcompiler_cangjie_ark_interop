@@ -32,7 +32,7 @@ public const MAX_KEY_LENGTH: UInt32 = 1024
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## const MAX_VALUE_LENGTH
 
@@ -46,7 +46,7 @@ public const MAX_VALUE_LENGTH: UInt32 = 16 * 1024 * 1024
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Options
 
@@ -64,7 +64,7 @@ public class Options {
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dataGroupId
 
@@ -80,7 +80,7 @@ public var dataGroupId: String
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -96,7 +96,7 @@ public var name: String
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var storageType
 
@@ -112,7 +112,7 @@ public var storageType: StorageType
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, StorageType)
 
@@ -125,7 +125,7 @@ public init(name: String, dataGroupId!: String = String.empty,
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -145,7 +145,7 @@ public class Preferences {}
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func deletePreferences(UIAbilityContext, String)
 
@@ -159,7 +159,7 @@ public static func deletePreferences(context: UIAbilityContext, name: String): U
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -210,7 +210,7 @@ public static func deletePreferences(context: UIAbilityContext, options: Options
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -271,7 +271,7 @@ public static func getPreferences(context: UIAbilityContext, name: String): Pref
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -336,7 +336,7 @@ public static func getPreferences(context: UIAbilityContext, options: Options): 
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -401,7 +401,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, name: S
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -454,7 +454,7 @@ public static func removePreferencesFromCache(context: UIAbilityContext, options
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -512,7 +512,7 @@ public func clear(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -550,7 +550,7 @@ public func delete(key: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -591,7 +591,7 @@ public func flush(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -629,7 +629,7 @@ public func get(key: String, defValue: ValueType): ValueType
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -686,7 +686,7 @@ public func getAll(): HashMap<String, ValueType>
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -739,7 +739,7 @@ public func has(key: String): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -795,7 +795,7 @@ public func off(event :PreferencesEvent, callback!: ?Callback1Argument<String> =
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -855,7 +855,7 @@ public func on(event :PreferencesEvent, callback: Callback1Argument<String>): Un
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -904,7 +904,7 @@ public func put(key: String, value: ValueType): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -951,7 +951,7 @@ public enum PreferencesEvent {
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PreferencesChange
 
@@ -963,7 +963,7 @@ PreferencesChange
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PreferencesMultiProcessChange
 
@@ -975,7 +975,7 @@ PreferencesMultiProcessChange
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum StorageType
 
@@ -990,7 +990,7 @@ public enum StorageType {
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Gskv
 
@@ -1004,7 +1004,7 @@ Gskv
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Xml
 
@@ -1018,7 +1018,7 @@ Xml
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ValueType
 
@@ -1038,7 +1038,7 @@ public enum ValueType {
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BoolArray(Array\<Bool>)
 
@@ -1050,7 +1050,7 @@ BoolArray(Array<Bool>)
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BoolData(Bool)
 
@@ -1062,7 +1062,7 @@ BoolData(Bool)
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Double(Float64)
 
@@ -1074,7 +1074,7 @@ Double(Float64)
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DoubleArray(Array\<Float64>)
 
@@ -1086,7 +1086,7 @@ DoubleArray(Array<Float64>)
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Integer(Int64)
 
@@ -1098,7 +1098,7 @@ Integer(Int64)
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringArray(Array\<String>)
 
@@ -1110,7 +1110,7 @@ StringArray(Array<String>)
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringData(String)
 
@@ -1122,4 +1122,4 @@ StringData(String)
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-**起始版本：** 21
+**起始版本：** 22

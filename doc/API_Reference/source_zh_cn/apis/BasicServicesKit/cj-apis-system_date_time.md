@@ -27,7 +27,7 @@ public class SystemDateTime {}
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func getTime(Bool)
 
@@ -39,7 +39,7 @@ public static func getTime(isNanoseconds!: Bool = false): Int64
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -81,7 +81,7 @@ public static func getTimezone(): String
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -117,7 +117,7 @@ public static func getUptime(timeType: TimeType, isNanoseconds!: Bool = false): 
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -164,7 +164,7 @@ public enum TimeType {
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Active
 
@@ -176,7 +176,7 @@ Active
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Startup
 
@@ -188,4 +188,4 @@ Startup
 
 **系统能力：** SystemCapability.MiscServices.Time
 
-**起始版本：** 21
+**起始版本：** 22

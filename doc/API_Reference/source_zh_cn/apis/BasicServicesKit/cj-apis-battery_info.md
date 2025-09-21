@@ -27,7 +27,7 @@ public class BatteryInfo {}
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop batteryCapacityLevel
 
@@ -43,7 +43,7 @@ public static prop batteryCapacityLevel: BatteryCapacityLevel
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop batterySOC
 
@@ -59,7 +59,7 @@ public static prop batterySOC: Int32
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop batteryTemperature
 
@@ -75,7 +75,7 @@ public static prop batteryTemperature: Int32
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop chargingStatus
 
@@ -91,7 +91,7 @@ public static prop chargingStatus: BatteryChargeState
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop healthStatus
 
@@ -107,7 +107,7 @@ public static prop healthStatus: BatteryHealthState
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop isBatteryPresent
 
@@ -123,7 +123,7 @@ public static prop isBatteryPresent: Bool
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop nowCurrent
 
@@ -139,7 +139,7 @@ public static prop nowCurrent: Int32
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop pluggedType
 
@@ -155,7 +155,7 @@ public static prop pluggedType: BatteryPluggedType
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop technology
 
@@ -171,7 +171,7 @@ public static prop technology: String
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop voltage
 
@@ -187,7 +187,7 @@ public static prop voltage: Int32
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum BatteryCapacityLevel
 
@@ -208,7 +208,7 @@ public enum BatteryCapacityLevel <: Equatable<BatteryCapacityLevel> & ToString {
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -225,7 +225,7 @@ LevelCritical
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LevelFull
 
@@ -237,7 +237,7 @@ LevelFull
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LevelHigh
 
@@ -249,7 +249,7 @@ LevelHigh
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LevelLow
 
@@ -261,7 +261,7 @@ LevelLow
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LevelNormal
 
@@ -273,7 +273,7 @@ LevelNormal
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LevelShutdown
 
@@ -285,7 +285,7 @@ LevelShutdown
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LevelWarning
 
@@ -297,7 +297,7 @@ LevelWarning
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(BatteryCapacityLevel)
 
@@ -369,7 +369,7 @@ public enum BatteryChargeState <: Equatable<BatteryChargeState> & ToString {
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -386,7 +386,7 @@ Disabled
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Enabled
 
@@ -398,7 +398,7 @@ Enabled
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Full
 
@@ -410,7 +410,7 @@ Full
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UnknownChargeState
 
@@ -422,7 +422,7 @@ UnknownChargeState
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(BatteryChargeState)
 
@@ -496,7 +496,7 @@ public enum BatteryHealthState <: Equatable<BatteryHealthState> & ToString {
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -513,7 +513,7 @@ Cold
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Dead
 
@@ -525,7 +525,7 @@ Dead
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Good
 
@@ -537,7 +537,7 @@ Good
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Overheat
 
@@ -549,7 +549,7 @@ Overheat
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Overvoltage
 
@@ -561,7 +561,7 @@ Overvoltage
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UnknownHealthState
 
@@ -573,7 +573,7 @@ UnknownHealthState
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(BatteryHealthState)
 
@@ -645,7 +645,7 @@ public enum BatteryPluggedType <: Equatable<BatteryPluggedType> & ToString {
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -662,7 +662,7 @@ Ac
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UnknownType
 
@@ -674,7 +674,7 @@ UnknownType
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Usb
 
@@ -686,7 +686,7 @@ Usb
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Wireless
 
@@ -698,7 +698,7 @@ Wireless
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(BatteryPluggedType)
 

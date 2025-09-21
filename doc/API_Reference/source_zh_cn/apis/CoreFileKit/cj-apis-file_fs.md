@@ -31,7 +31,7 @@ public class ConflictFiles {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var destFile
 
@@ -47,7 +47,7 @@ public var destFile: String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var srcFile
 
@@ -63,7 +63,7 @@ public var srcFile: String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class File
 
@@ -75,7 +75,7 @@ public class File {}
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop fd
 
@@ -91,7 +91,7 @@ public prop fd: Int32
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop name
 
@@ -107,7 +107,7 @@ public prop name: String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop path
 
@@ -123,7 +123,7 @@ public prop path: String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getParent()
 
@@ -135,7 +135,7 @@ public func getParent(): String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -181,7 +181,7 @@ public func tryLock(exclusive!: Bool = false): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -229,7 +229,7 @@ public func unlock(): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -244,6 +244,23 @@ public func unlock(): Unit
   | 13900042 | Unknown error |
   | 13900043 | No record locks available |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
+file.tryLock(exclusive: true)
+file.unLock()
+FileFs.close(file)
+```
+
 ## class FileIo
 
 ```cangjie
@@ -254,7 +271,7 @@ public class FileIo {}
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func access(String, AccessModeType, AccessFlagType)
 
@@ -267,7 +284,7 @@ public static func access(path: String, mode!: AccessModeType = AccessModeType.E
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -302,6 +319,31 @@ public static func access(path: String, mode!: AccessModeType = AccessModeType.E
   | 13900033 | Too many symbolic links encountered |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+import kit.UIKit.BusinessException
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+try {
+    let res = FileFs.access(filePath, AccessModeType.WRITE, AccessFlagType.Local)
+    if (res) {
+        Applog.info("file exists")
+    } else {
+        Applog.info("file not exists")
+    }
+} catch (e: BusinessException) {
+    AppLog.error("access failed with error message: ${e.message}, error code: ${e.code}")
+}
+```
+
 ### static func close(Int32)
 
 ```cangjie
@@ -312,7 +354,7 @@ public static func close(file: Int32): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -333,6 +375,21 @@ public static func close(file: Int32): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath)
+FileFs.close(file.fd)
+```
+
 ### static func close(File)
 
 ```cangjie
@@ -343,7 +400,7 @@ public static func close(file: File): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -364,6 +421,21 @@ public static func close(file: File): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath)
+FileFs.close(file)
+```
+
 ### static func copyDir(String, String, Int32)
 
 ```cangjie
@@ -374,7 +446,7 @@ public static func copyDir(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -410,6 +482,21 @@ public static func copyDir(src: String, dest: String, mode!: Int32 = 0): Unit
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let srcPath = pathDir + "/srcDir/"
+let destPath = pathDir + "/destDir/"
+FileFs.copyDir(srcPath, destPath, mode: 0)
+```
+
 ### static func copyFile(String, String, Int32)
 
 ```cangjie
@@ -420,7 +507,7 @@ public static func copyFile(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -454,6 +541,21 @@ public static func copyFile(src: String, dest: String, mode!: Int32 = 0): Unit
   | 13900038 | Value too large for defined data type |
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let srcPath = pathDir + "/srcDir/test.txt"
+let dstPath = pathDir + "/dstDir/test.txt"
+FileFs.copyFile(srcPath, dstPath, mode: 0)
+```
 
 ### static func copyFile(String, Int32, Int32)
 
@@ -465,7 +567,7 @@ public static func copyFile(src: String, dest: Int32, mode!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -500,6 +602,22 @@ public static func copyFile(src: String, dest: Int32, mode!: Int32 = 0): Unit
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let srcPath = pathDir + "/srcDir/test.txt"
+let dstPath = pathDir + "/dstDir/test.txt"
+let dstFile = FileFs.open(dstPath)
+FileFs.copyFile(srcPath, dstFile.fd, mode: 0)
+```
+
 ### static func copyFile(Int32, String, Int32)
 
 ```cangjie
@@ -510,7 +628,7 @@ public static func copyFile(src: Int32, dest: String, mode!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -545,6 +663,22 @@ public static func copyFile(src: Int32, dest: String, mode!: Int32 = 0): Unit
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let srcPath = pathDir + "/srcDir/test.txt"
+let dstPath = pathDir + "/dstDir/test.txt"
+let srcFile = FileFs.open(srcPath)
+FileFs.copyFile(srcFile.fd, dstPath, mode: 0)
+```
+
 ### static func copyFile(Int32, Int32, Int32)
 
 ```cangjie
@@ -555,7 +689,7 @@ public static func copyFile(src: Int32, dest: Int32, mode!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -589,6 +723,23 @@ public static func copyFile(src: Int32, dest: Int32, mode!: Int32 = 0): Unit
   | 13900038 | Value too large for defined data type |
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let srcPath = pathDir + "/srcDir/test.txt"
+let dstPath = pathDir + "/dstDir/test.txt"
+let srcFile = FileFs.open(srcPath)
+let dstFile = FileFs.open(dstPath)
+FileFs.copyFile(srcFile.fd, dstFile.fd, mode: 0)
+```
 
 ### static func createRandomAccessFile(String, Int64, RandomAccessFileOptions)
 
@@ -601,7 +752,7 @@ public static func createRandomAccessFile(file: String, mode!: Int64 = OpenMode.
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -651,6 +802,24 @@ public static func createRandomAccessFile(file: String, mode!: Int64 = OpenMode.
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | READ_WRITE.mode))
+FileFs.write(file.fd, "hello world")
+FileFs.fdatasync(file.fd)
+let randomAccessFile = FileFs.createRandomAccessFile(filePath)
+randomAccessFile.close()
+```
+
 ### static func createRandomAccessFile(File, Int64, RandomAccessFileOptions)
 
 ```cangjie
@@ -662,7 +831,7 @@ public static func createRandomAccessFile(file: File, mode!: Int64 = OpenMode.RE
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -712,6 +881,24 @@ public static func createRandomAccessFile(file: File, mode!: Int64 = OpenMode.RE
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | READ_WRITE.mode))
+FileFs.write(file.fd, "hello world")
+FileFs.fdatasync(file.fd)
+let randomAccessFile = FileFs.createRandomAccessFile(file)
+randomAccessFile.close()
+```
+
 ### static func createStream(String, String)
 
 ```cangjie
@@ -722,7 +909,7 @@ public static func createStream(path: String, mode: String): Stream
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -770,6 +957,23 @@ public static func createStream(path: String, mode: String): Stream
   | 13900041 | Quota exceeded |
   | 13900042 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let stream = FileFs.createStream(filePath, "r+")
+Applog.info("createStream succeed")
+stream.close()
+```
+
 ### static func dup(Int32)
 
 ```cangjie
@@ -780,7 +984,7 @@ public static func dup(fd: Int32): File
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -808,6 +1012,26 @@ public static func dup(fd: Int32): File
   | 13900022 | Too many open files |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file1 = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
+let fd = file1.fd
+let file2 = FileFs.dup(fd)
+Applog.info("The name of the file2 is " + file2.name)
+FileFs.close(file1)
+FileFs.close(file2)
+```
+
 ### static func fdatasync(Int32)
 
 ```cangjie
@@ -818,7 +1042,7 @@ public static func fdatasync(fd: Int32): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -840,6 +1064,22 @@ public static func fdatasync(fd: Int32): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath)
+FileFs.fdatasync(file.fd)
+FileFs.close(file)
+```
+
 ### static func fdopenStream(Int32, String)
 
 ```cangjie
@@ -850,7 +1090,7 @@ public static func fdopenStream(fd: Int32, mode: String): Stream
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -899,6 +1139,23 @@ public static func fdopenStream(fd: Int32, mode: String): Stream
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (READ_ONLY.mode | CREATE.mode))
+let stream = FileFs.fdopenStream(file.fd, "r+")
+FileFs.close(file)
+stream.close()
+```
+
 ### static func fsync(Int32)
 
 ```cangjie
@@ -909,7 +1166,7 @@ public static func fsync(fd: Int32): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -931,6 +1188,22 @@ public static func fsync(fd: Int32): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath)
+FileFs.fsync(file.fd)
+FileFs.close(file)
+```
+
 ### static func listFile(String, ListFileOptions)
 
 ```cangjie
@@ -941,7 +1214,7 @@ public static func listFile(path: String, options!: ListFileOptions = ListFileOp
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -968,6 +1241,25 @@ public static func listFile(path: String, options!: ListFileOptions = ListFileOp
   | 13900018 | Not a directory |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+
+let pathDir = "path/to/file"
+let filter = Filter(suffix: [".png", ".jpg", ".jpeg"], displayName: ["*abc", "efg*"])
+let listFileOptions = ListFileOptions(recursion: false, listNum: 0, filter: filter)
+let filenames = FileFs.listFile(pathDir, options: listFileOptions)
+for (name in filenames) {
+  Applog.info(name)
+}
+```
+
 ### static func lseek(Int32, Int64, WhenceType)
 
 ```cangjie
@@ -978,7 +1270,7 @@ public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SeekSet
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1006,6 +1298,24 @@ public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SeekSet
   | 13900038 | Value too large for defined data type |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: CREATE.mode)
+let offset = FileFs.lseek(file.fd, 5, whence: WhenceType.SEEK_SET)
+Applog.info("The current offset is at " + offset.toString())
+FileFs.close(file)
+```
+
 ### static func lstat(String)
 
 ```cangjie
@@ -1016,7 +1326,7 @@ public static func lstat(path: String): Stat
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1047,6 +1357,20 @@ public static func lstat(path: String): Stat
   | 13900038 | Value too large for defined data type |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/linkToFile"
+let fileStat = FileFs.lstat(filePath)
+```
+
 ### static func mkdir(String)
 
 ```cangjie
@@ -1057,7 +1381,7 @@ public static func mkdir(path: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1087,6 +1411,20 @@ public static func mkdir(path: String): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let dirPath = pathDir + "/testDir1/testDir2/testDir3"
+FileFs.mkdir(dirPath)
+```
+
 ### static func mkdir(String, Bool)
 
 ```cangjie
@@ -1097,7 +1435,7 @@ public static func mkdir(path: String, recursion: Bool): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1128,6 +1466,20 @@ public static func mkdir(path: String, recursion: Bool): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let dirPath = pathDir + "/testDir1/testDir2/testDir3"
+FileFs.mkdir(dirPath, true)
+```
+
 ### static func mkdtemp(String)
 
 ```cangjie
@@ -1138,7 +1490,7 @@ public static func mkdtemp(prefix: String): String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1174,6 +1526,19 @@ public static func mkdtemp(prefix: String): String
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let res = FileFs.mkdtemp(pathDir + "/XXXXXX")
+```
+
 ### static func moveDir(String, String, Int32)
 
 ```cangjie
@@ -1184,7 +1549,7 @@ public static func moveDir(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1219,6 +1584,22 @@ public static func moveDir(src: String, dest: String, mode!: Int32 = 0): Unit
   | 13900033 | Too many symbolic links encountered |
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+// move directory from srcPath to destPath
+let srcPath = pathDir + "/srcDir/"
+let destPath = pathDir + "/destDir/"
+FileFs.moveDir(srcPath, destPath, mode: 1)
+```
 
 ### static func moveFile(String, String, Int32)
 
@@ -1230,7 +1611,7 @@ public static func moveFile(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1266,6 +1647,23 @@ public static func moveFile(src: String, dest: String, mode!: Int32 = 0): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+
+let pathDir = "path/to/file"
+let srcPath = pathDir + "/srcDir/"
+let destPath = pathDir + "/destDir/"
+FileFs.moveFile(srcPath, destPath, mode: 0)
+Applog.info("move file succeed")
+```
+
 ### static func open(String, Int64)
 
 ```cangjie
@@ -1276,7 +1674,7 @@ public static func open(path: String, mode!: Int64 = OpenMode.READ_ONLY): File
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1325,6 +1723,23 @@ public static func open(path: String, mode!: Int64 = OpenMode.READ_ONLY): File
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
+Applog.info("open file success, file fd: " + file.fd.toString())
+FileFs.close(file)
+```
+
 ### static func read(Int32, Array\<Byte>, ReadOptions)
 
 ```cangjie
@@ -1335,7 +1750,7 @@ public static func read(fd: Int32, buffer: Array<Byte>, options!: ReadOptions = 
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1368,6 +1783,23 @@ public static func read(fd: Int32, buffer: Array<Byte>, options!: ReadOptions = 
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (READ_WRITE.mode | CREATE.mode))
+let buf = Array<Byte>(4096, repeat: 0)
+FileFs.read(file.fd, buf)
+FileFs.close(file)
+```
+
 ### static func readLines(String, Options)
 
 ```cangjie
@@ -1378,7 +1810,7 @@ public static func readLines(filePath: String, options!: Options = Options()): R
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1413,6 +1845,27 @@ public static func readLines(filePath: String, options!: Options = Options()): R
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import kit.PerformanceAnalysisKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let options: Options = Options(encoding: "utf-8")
+let readerIterator = FileFs.readLines(filePath, options: options)
+var result = readerIterator.next()
+while (!result.done) {
+  Applog.info("content: " + result.value)
+  result = readerIterator.next()
+}
+```
+
 ### static func readText(String, ReadTextOptions)
 
 ```cangjie
@@ -1423,7 +1876,7 @@ public static func readText(filePath: String, options!: ReadTextOptions = ReadTe
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1459,6 +1912,20 @@ public static func readText(filePath: String, options!: ReadTextOptions = ReadTe
   | 13900042 | Unknown error |
   | 13900044 | Network is unreachable |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let str = FileFs.readText(filePath)
+```
+
 ### static func rename(String, String)
 
 ```cangjie
@@ -1469,7 +1936,7 @@ public static func rename(oldPath: String, newPath: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1504,6 +1971,21 @@ public static func rename(oldPath: String, newPath: String): Unit
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let srcFile = pathDir + "/test.txt"
+let dstFile = pathDir + "/new.txt"
+FileFs.rename(srcFile, dstFile)
+```
+
 ### static func rmdir(String)
 
 ```cangjie
@@ -1514,7 +1996,7 @@ public static func rmdir(path: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1541,6 +2023,20 @@ public static func rmdir(path: String): Unit
   | 13900032 | Directory not empty |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let dirPath = pathDir + "/testDir"
+FileFs.rmdir(dirPath)
+```
+
 ### static func stat(Int32)
 
 ```cangjie
@@ -1551,7 +2047,7 @@ public static func stat(file: Int32): Stat
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1585,6 +2081,21 @@ public static func stat(file: Int32): Stat
   | 13900038 | Value too large for defined data type |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let dirPath = pathDir + "/testDir"
+let file = FileFs.open(dirPath)
+FileFs.stat(file.fd)
+```
+
 ### static func stat(String)
 
 ```cangjie
@@ -1595,7 +2106,7 @@ public static func stat(file: String): Stat
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1629,6 +2140,20 @@ public static func stat(file: String): Stat
   | 13900038 | Value too large for defined data type |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let dirPath = pathDir + "/testDir"
+FileFs.stat(dirPath)
+```
+
 ### static func truncate(String, Int64)
 
 ```cangjie
@@ -1639,7 +2164,7 @@ public static func truncate(file: String, len!: Int64 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1671,6 +2196,21 @@ public static func truncate(file: String, len!: Int64 = 0): Unit
   | 13900033 | Too many symbolic links encountered |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let len: Int64 = 5
+FileFs.truncate(filePath, len: len)
+```
+
 ### static func truncate(Int32, Int64)
 
 ```cangjie
@@ -1681,7 +2221,7 @@ public static func truncate(file: Int32, len!: Int64 = 0): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1713,6 +2253,22 @@ public static func truncate(file: Int32, len!: Int64 = 0): Unit
   | 13900033 | Too many symbolic links encountered |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let len: Int64 = 5
+let file  = FileFs.open(filePath, mode: READ_WRITE.mode)
+FileFs.truncate(file.fd, len: len)
+```
+
 ### static func unlink(String)
 
 ```cangjie
@@ -1723,7 +2279,7 @@ public static func unlink(path: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1753,6 +2309,20 @@ public static func unlink(path: String): Unit
   | 13900033 | Too many symbolic links encountered |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+FileFs.unlink(filePath)
+```
+
 ### static func utimes(String, Float64)
 
 ```cangjie
@@ -1763,7 +2333,7 @@ public static func utimes(path: String, mtime: Float64): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1785,6 +2355,24 @@ public static func utimes(path: String, mtime: Float64): Unit
   | 13900027 | Read-only file system |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+import std.time.DateTime
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (CREATE.mode | READ_WRITE.mode))
+FileFs.write(file.fd, "test data")
+FileFs.close(file)
+FileFs.utimes(filePath, Float64(DateTime.UnixEpoch.second))
+```
+
 ### static func write(Int32, Array\<Byte>, WriteOptions)
 
 ```cangjie
@@ -1795,7 +2383,7 @@ public static func write(fd: Int32, buffer: Array<Byte>, options!: WriteOptions 
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1830,6 +2418,23 @@ public static func write(fd: Int32, buffer: Array<Byte>, options!: WriteOptions 
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (CREATE.mode | READ_WRITE.mode))
+let str = "hello, world"
+let writeLen = FileFs.write(file.fd, str.toArray())
+FileFs.close(file)
+```
+
 ### static func write(Int32, String, WriteOptions)
 
 ```cangjie
@@ -1840,7 +2445,7 @@ public static func write(fd: Int32, buffer: String, options!: WriteOptions = Wri
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1875,6 +2480,23 @@ public static func write(fd: Int32, buffer: String, options!: WriteOptions = Wri
   | 13900041 | Quota exceeded |
   | 13900042 | Unknown error |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CoreFileKit.*
+
+let pathDir = "path/to/file"
+let filePath = pathDir + "/test.txt"
+let file = FileFs.open(filePath, mode: (CREATE.mode | READ_WRITE.mode))
+let str = "hello, world"
+let writeLen = FileFs.write(file.fd, str)
+FileFs.close(file)
+```
+
 ## class Filter
 
 ```cangjie
@@ -1900,7 +2522,7 @@ public class Filter {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var displayName
 
@@ -1916,7 +2538,7 @@ public var displayName: Array<String>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var excludeMedia
 
@@ -1932,7 +2554,7 @@ public var excludeMedia: Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var fileSizeOver
 
@@ -1948,7 +2570,7 @@ public var fileSizeOver:?Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var lastModifiedAfter
 
@@ -1964,7 +2586,7 @@ public var lastModifiedAfter:?Float64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mimeType
 
@@ -1980,7 +2602,7 @@ public var mimeType: Array<String>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var suffix
 
@@ -1996,7 +2618,7 @@ public var suffix: Array<String>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<String>, Array\<String>, Array\<String>, ?Int64, ?Float64, Bool)
 
@@ -2015,7 +2637,7 @@ public init(
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2055,7 +2677,7 @@ public class ListFileOptions {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var filter
 
@@ -2071,7 +2693,7 @@ public var filter: Filter
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var listNum
 
@@ -2087,7 +2709,7 @@ public var listNum: Int32
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var recursion
 
@@ -2103,7 +2725,7 @@ public var recursion: Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Bool, Int32, Filter)
 
@@ -2119,7 +2741,7 @@ public init(
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2150,7 +2772,7 @@ public class OpenMode {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const APPEND
 
@@ -2164,7 +2786,7 @@ public static const APPEND: Int64 = 0o2000
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const CREATE
 
@@ -2178,7 +2800,7 @@ public static const CREATE: Int64 = 0o100
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const DIR
 
@@ -2192,7 +2814,7 @@ public static const DIR: Int64 = 0o200000
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const NOFOLLOW
 
@@ -2206,7 +2828,7 @@ public static const NOFOLLOW: Int64 = 0o400000
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const NONBLOCK
 
@@ -2220,7 +2842,7 @@ public static const NONBLOCK: Int64 = 0o4000
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const READ_ONLY
 
@@ -2234,7 +2856,7 @@ public static const READ_ONLY: Int64 = 0o0
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const READ_WRITE
 
@@ -2248,7 +2870,7 @@ public static const READ_WRITE: Int64 = 0o2
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const SYNC
 
@@ -2262,7 +2884,7 @@ public static const SYNC: Int64 = 0o4010000
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const TRUNC
 
@@ -2276,7 +2898,7 @@ public static const TRUNC: Int64 = 0o1000
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const WRITE_ONLY
 
@@ -2290,7 +2912,7 @@ public static const WRITE_ONLY: Int64 = 0o1
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Options
 
@@ -2307,7 +2929,7 @@ public open class Options {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var encoding
 
@@ -2323,7 +2945,7 @@ public var encoding: String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String)
 
@@ -2337,7 +2959,7 @@ public init(
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2355,7 +2977,7 @@ public class RandomAccessFile {}
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop fd
 
@@ -2371,7 +2993,7 @@ public prop fd: Int32
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop filePointer
 
@@ -2387,7 +3009,7 @@ public prop filePointer: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -2399,7 +3021,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2427,7 +3049,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2490,7 +3112,7 @@ public func setFilePointer(filePointer: Int64): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2525,7 +3147,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2587,7 +3209,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2657,7 +3279,7 @@ public class RandomAccessFileOptions {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var end
 
@@ -2673,7 +3295,7 @@ public var end: Option<Int64>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var start
 
@@ -2689,7 +3311,7 @@ public var start: Option<Int64>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Option\<Int64>, Option\<Int64>)
 
@@ -2704,7 +3326,7 @@ public init(
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2723,7 +3345,7 @@ public class ReaderIterator {}
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func next()
 
@@ -2735,7 +3357,7 @@ public func next(): ReaderIteratorResult
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2766,7 +3388,7 @@ public class ReaderIteratorResult {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var done
 
@@ -2782,7 +3404,7 @@ public var done: Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -2798,7 +3420,7 @@ public var value: String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ReadOptions
 
@@ -2817,7 +3439,7 @@ public open class ReadOptions {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var length
 
@@ -2833,7 +3455,7 @@ public var length: Option<UIntNative>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -2849,7 +3471,7 @@ public var offset: Option<Int64>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Option\<Int64>, Option\<UIntNative>)
 
@@ -2864,7 +3486,7 @@ public init(
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2890,7 +3512,7 @@ public class ReadTextOptions <: ReadOptions {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2910,7 +3532,7 @@ public var encoding: String
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Option\<Int64>, Option\<UIntNative>, String)
 
@@ -2926,7 +3548,7 @@ public init(
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2946,7 +3568,7 @@ public class Stat {}
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop atime
 
@@ -2962,7 +3584,7 @@ public prop atime: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop ctime
 
@@ -2978,7 +3600,7 @@ public prop ctime: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop gid
 
@@ -2994,7 +3616,7 @@ public prop gid: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop ino
 
@@ -3010,7 +3632,7 @@ public prop ino: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop mode
 
@@ -3030,7 +3652,7 @@ public prop mode: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop mtime
 
@@ -3046,7 +3668,7 @@ public prop mtime: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop size
 
@@ -3062,7 +3684,7 @@ public prop size: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop uid
 
@@ -3078,7 +3700,7 @@ public prop uid: Int64
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func isBlockDevice()
 
@@ -3090,7 +3712,7 @@ public func isBlockDevice(): Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3123,7 +3745,7 @@ public func isCharacterDevice(): Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3156,7 +3778,7 @@ public func isDirectory(): Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3189,7 +3811,7 @@ public func isFIFO(): Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3222,7 +3844,7 @@ public func isFile(): Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3255,7 +3877,7 @@ public func isSocket(): Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3288,7 +3910,7 @@ public func isSymbolicLink(): Bool
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3321,7 +3943,7 @@ public class Stream {}
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -3333,7 +3955,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3374,7 +3996,7 @@ public func flush(): Unit
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3422,7 +4044,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3482,7 +4104,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3544,7 +4166,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3614,7 +4236,7 @@ public class WriteOptions <: Options {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3634,7 +4256,7 @@ public var length: Option<UIntNative>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -3650,7 +4272,7 @@ public var offset: Option<Int64>
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Option\<UIntNative>, Option\<Int64>, String)
 
@@ -3666,7 +4288,7 @@ public init(
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3689,7 +4311,7 @@ public enum AccessFlagType {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Local
 
@@ -3701,7 +4323,7 @@ Local
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum AccessModeType
 
@@ -3719,7 +4341,7 @@ public enum AccessModeType {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Exist
 
@@ -3731,7 +4353,7 @@ Exist
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Read
 
@@ -3743,7 +4365,7 @@ Read
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ReadWrite
 
@@ -3755,7 +4377,7 @@ ReadWrite
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Write
 
@@ -3767,7 +4389,7 @@ Write
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum WhenceType
 
@@ -3784,7 +4406,7 @@ public enum WhenceType {
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SeekCur
 
@@ -3796,7 +4418,7 @@ SeekCur
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SeekEnd
 
@@ -3808,7 +4430,7 @@ SeekEnd
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SeekSet
 
@@ -3820,4 +4442,4 @@ SeekSet
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
-**起始版本：** 21
+**起始版本：** 22

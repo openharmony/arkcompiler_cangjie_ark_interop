@@ -35,7 +35,7 @@ public open class AbilityStage {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop context
 
@@ -51,7 +51,7 @@ public mut prop context: AbilityStageContext
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func registerCreator(String, () -> AbilityStage)
 
@@ -63,7 +63,7 @@ public static func registerCreator(moduleName: String, creator: () -> AbilitySta
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -82,4 +82,4 @@ public open func onCreate(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22

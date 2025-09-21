@@ -31,7 +31,7 @@ public func createA2dpSrcProfile(): A2dpSourceProfile
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -68,7 +68,7 @@ public class A2dpSourceProfile <: BaseProfile {}
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -86,7 +86,7 @@ public func getConnectedDevices(): Array<String>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -139,7 +139,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -199,7 +199,7 @@ public func getPlayingState(deviceId: String): PlayingState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -259,7 +259,7 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -321,7 +321,7 @@ public func off(eventType: ProfileCallbackType): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -382,7 +382,7 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -447,7 +447,7 @@ public class CodecInfo {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var codecBitsPerSample
 
@@ -463,7 +463,7 @@ public var codecBitsPerSample: CodecBitsPerSample
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var codecChannelMode
 
@@ -479,7 +479,7 @@ public var codecChannelMode: CodecChannelMode
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var codecSampleRate
 
@@ -495,7 +495,7 @@ public var codecSampleRate: CodecSampleRate
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var codecType
 
@@ -511,7 +511,7 @@ public var codecType: CodecType
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum CodecBitsPerSample
 
@@ -529,7 +529,7 @@ public enum CodecBitsPerSample <: Equatable<CodecBitsPerSample> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -546,7 +546,7 @@ CodecBitsPerSample16
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecBitsPerSample24
 
@@ -558,7 +558,7 @@ CodecBitsPerSample24
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecBitsPerSample32
 
@@ -570,7 +570,7 @@ CodecBitsPerSample32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecBitsPerSampleNone
 
@@ -582,7 +582,7 @@ CodecBitsPerSampleNone
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CodecBitsPerSample)
 
@@ -653,7 +653,7 @@ public enum CodecChannelMode <: Equatable<CodecChannelMode> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -670,7 +670,7 @@ CodecChannelModeMono
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecChannelModeNone
 
@@ -682,7 +682,7 @@ CodecChannelModeNone
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecChannelModeStereo
 
@@ -694,7 +694,7 @@ CodecChannelModeStereo
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CodecChannelMode)
 
@@ -769,7 +769,7 @@ public enum CodecSampleRate <: Equatable<CodecSampleRate> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -786,7 +786,7 @@ CodecSampleRate176400
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecSampleRate192000
 
@@ -798,7 +798,7 @@ CodecSampleRate192000
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecSampleRate44100
 
@@ -810,7 +810,7 @@ CodecSampleRate44100
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecSampleRate48000
 
@@ -822,7 +822,7 @@ CodecSampleRate48000
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecSampleRate88200
 
@@ -834,7 +834,7 @@ CodecSampleRate88200
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecSampleRate96000
 
@@ -846,7 +846,7 @@ CodecSampleRate96000
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecSampleRateNone
 
@@ -858,7 +858,7 @@ CodecSampleRateNone
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CodecSampleRate)
 
@@ -930,7 +930,7 @@ public enum CodecType <: Equatable<CodecType> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -947,7 +947,7 @@ CodecTypeAac
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecTypeInvalid
 
@@ -959,7 +959,7 @@ CodecTypeInvalid
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecTypeL2hc
 
@@ -971,7 +971,7 @@ CodecTypeL2hc
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CodecTypeSbc
 
@@ -983,7 +983,7 @@ CodecTypeSbc
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CodecType)
 
@@ -1053,7 +1053,7 @@ public enum PlayingState <: Equatable<PlayingState> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1070,7 +1070,7 @@ StateNotPlaying
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StatePlaying
 
@@ -1082,7 +1082,7 @@ StatePlaying
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PlayingState)
 

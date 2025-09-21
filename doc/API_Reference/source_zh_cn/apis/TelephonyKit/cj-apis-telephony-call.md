@@ -27,7 +27,7 @@ public class Call {}
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func formatPhoneNumber(String, NumberFormatOptions)
 
@@ -44,7 +44,7 @@ public static func formatPhoneNumber(
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -71,6 +71,19 @@ public static func formatPhoneNumber(
   | 8300003 | System internal error. |
   | 8300999 | Unknown error code. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+
+let result = TelephonyCall.formatPhoneNumber("138xxxxxxxx", options: NumberFormatOptions("CN"))
+```
+
 ### static func formatPhoneNumberToE164(String, String)
 
 ```cangjie
@@ -83,7 +96,7 @@ public static func formatPhoneNumberToE164(phoneNumber: String, countryCode: Str
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -110,6 +123,19 @@ public static func formatPhoneNumberToE164(phoneNumber: String, countryCode: Str
   | 8300003 | System internal error. |
   | 8300999 | Unknown error code. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+
+let result = TelephonyCall.formatPhoneNumberToE164("138xxxxxxxx", "CN")
+```
+
 ### static func getCallState()
 
 ```cangjie
@@ -120,13 +146,26 @@ public static func getCallState(): CallState
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[CallState](#enum-callstate)|返回获取到的通话状态。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+
+let result: CallState = TelephonyCall.getCallState()
+```
 
 ### static func hasCall()
 
@@ -138,13 +177,26 @@ public static func hasCall(): Bool
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|返回判断是否存在通话。返回true表示当前存在通话，false表示当前不存在通话。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+
+let result: Bool = TelephonyCall.hasCall()
+```
 
 ### static func hasVoiceCapability()
 
@@ -156,13 +208,26 @@ public static func hasVoiceCapability(): Bool
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|返回判断是否具备语音通话能力。返回true表示设备具备语音通话能力，返回false表示设备不具备语音通话能力。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+
+let result: Bool = TelephonyCall.hasVoiceCapability()
+```
 
 ### static func isEmergencyPhoneNumber(String, EmergencyNumberOptions)
 
@@ -174,7 +239,7 @@ public static func isEmergencyPhoneNumber(phoneNumber: String, options!: Emergen
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -201,6 +266,19 @@ public static func isEmergencyPhoneNumber(phoneNumber: String, options!: Emergen
   | 8300003 | System internal error. |
   | 8300999 | Unknown error code. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+
+let result = TelephonyCall.isEmergencyPhoneNumber("138xxxxxxxx", EmergencyNumberOptions.SLOT_ID_ONE)
+```
+
 ### static func makeCall(String)
 
 ```cangjie
@@ -211,7 +289,7 @@ public static func makeCall(phoneNumber: String): Unit
 
 **系统能力：** SystemCapability.Applications.Contacts
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -231,6 +309,20 @@ public static func makeCall(phoneNumber: String): Unit
   | 8300003 | System internal error. |
   | 8300999 | Unknown error code. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+import ohos.ability.UIAbilityContext
+
+TelephonyCall.makeCall("138xxxxxxxx")
+```
+
 ### static func makeCall(UIAbilityContext, String)
 
 ```cangjie
@@ -241,7 +333,7 @@ public static func makeCall(context: UIAbilityContext, phoneNumber: String): Uni
 
 **系统能力：** SystemCapability.Applications.Contacts
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -262,6 +354,22 @@ public static func makeCall(context: UIAbilityContext, phoneNumber: String): Uni
   | 8300003 | System internal error. |
   | 8300999 | Unknown error code. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TelephonyKit.*
+import ohos.ability.UIAbilityContext
+
+var ctx = Option<UIAbilityContext>.None
+
+TelephonyCall.makeCall(ctx.getOrThrow(), "138xxxxxxxx")
+```
+
 ## class EmergencyNumberOptions
 
 ```cangjie
@@ -275,7 +383,7 @@ public class EmergencyNumberOptions {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var slotId
 
@@ -291,7 +399,7 @@ public var slotId: Int32
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32)
 
@@ -303,7 +411,7 @@ public init(slotId!: Int32 = 0)
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -324,7 +432,7 @@ public class NumberFormatOptions {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var countryCode
 
@@ -340,7 +448,7 @@ public var countryCode: String
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String)
 
@@ -352,7 +460,7 @@ public init(countryCode!: String = "CN")
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -390,7 +498,7 @@ public enum CallState <: Equatable<CallState> & ToString {
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -407,7 +515,7 @@ CallStateAnswered
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CallStateIdle
 
@@ -419,7 +527,7 @@ CallStateIdle
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CallStateOffhook
 
@@ -431,7 +539,7 @@ CallStateOffhook
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CallStateRinging
 
@@ -443,7 +551,7 @@ CallStateRinging
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CallStateUnknown
 
@@ -455,7 +563,7 @@ CallStateUnknown
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CallState)
 
@@ -467,7 +575,7 @@ public operator func !=(other: CallState): Bool
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -491,7 +599,7 @@ public operator func ==(other: CallState): Bool
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -515,7 +623,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

@@ -27,7 +27,7 @@ public class Hilog {}
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func debug(UInt32, String, String, Array\<String>)
 
@@ -41,7 +41,7 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -75,7 +75,7 @@ public static func error(domain: UInt32, tag: String, format: String, args: Arra
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -109,7 +109,7 @@ public static func fatal(domain: UInt32, tag: String, format: String, args: Arra
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -143,7 +143,7 @@ public static func info(domain: UInt32, tag: String, format: String, args: Array
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -177,7 +177,7 @@ public static func isLoggable(domain: UInt32, tag: String, level: LogLevel): Boo
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -216,7 +216,7 @@ public static func warn(domain: UInt32, tag: String, format: String, args: Array
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -257,7 +257,7 @@ public enum LogLevel {
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Debug
 
@@ -269,7 +269,7 @@ Debug
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Error
 
@@ -281,7 +281,7 @@ Error
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Fatal
 
@@ -293,7 +293,7 @@ Fatal
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Info
 
@@ -309,7 +309,7 @@ Info
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Warning
 
@@ -321,4 +321,4 @@ Warning
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
-**起始版本：** 21
+**起始版本：** 22

@@ -35,7 +35,7 @@ public func getScanInfoList(): Array<WifiScanInfo>
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -53,6 +53,19 @@ public func getScanInfoList(): Array<WifiScanInfo>
   | 801 | Capability not supported. |
   | 2501000 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+
+let scanInfoList = getScanInfoList()
+```
+
 ## func isWifiActive()
 
 ```cangjie
@@ -63,7 +76,7 @@ public func isWifiActive(): Bool
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -80,6 +93,19 @@ public func isWifiActive(): Bool
   | 801 | Capability not supported. |
   | 2501000 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+
+let isWifiActive = isWifiActive()
+```
+
 ## func off(WifiCallbackType, ?CallbackObject)
 
 ```cangjie
@@ -92,7 +118,7 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -111,6 +137,25 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
   | 801 | Capability not supported. |
   | 2801000 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+
+let callback = WifiCallback1<Int32>() {
+    i => AppLog.info("callback invoked")
+}
+// Register event
+on(WifiScanStateChange, callback)
+// Unregister event
+off(WifiScanStateChange, callback: callback)
+```
+
 ## func on(WifiCallbackType, Callback1Argument\<Int32>)
 
 ```cangjie
@@ -123,7 +168,7 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -142,6 +187,25 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
   | 801 | Capability not supported. |
   | 2801000 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+
+let callback = WifiCallback1<Int32>() {
+    i => AppLog.info("callback invoked")
+}
+// Register event
+on(WifiScanStateChange, callback)
+// Unregister event
+off(WifiScanStateChange, callback: callback)
+```
+
 ## func p2pCancelConnect()
 
 ```cangjie
@@ -154,7 +218,7 @@ public func p2pCancelConnect(): Unit
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -166,6 +230,19 @@ public func p2pCancelConnect(): Unit
   | 801 | Capability not supported. |
   | 2801000 | Operation failed. |
   | 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+
+p2pCancelConnect()
+```
 
 ## func p2pConnect(WifiP2PConfig)
 
@@ -179,7 +256,7 @@ public func p2pConnect(config: WifiP2PConfig): Unit
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -198,6 +275,60 @@ public func p2pConnect(config: WifiP2PConfig): Unit
   | 2801000 | Operation failed. |
   | 2801001 | Wi-Fi STA disabled. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import std.sync.Timer
+import ohos.base.*
+import kit.ConnectivityKit.*
+
+let recvP2pConnectionChangeFunc = WifiCallback1<WifiP2pLinkedInfo>({ result =>
+    AppLog.info("p2p connection change receive event: ${result}")
+    let info = getP2pLinkedInfo()
+    AppLog.info(info.toString())
+})
+
+onP2pConnectionChange(recvP2pConnectionChangeFunc)
+
+let recvP2pDeviceChangeFunc = WifiCallback1<WifiP2pDevice>({ result =>
+    AppLog.info("p2p device change receive event: ${result}")
+})
+onP2pDeviceChange(recvP2pDeviceChangeFunc)
+
+let recvP2pPeerDeviceChangeFunc = WifiCallback1<Array<WifiP2pDevice>>({ result =>
+    AppLog.info("p2p peer device change receive event: ${result}")
+    let devices = getP2pPeerDevices()
+    AppLog.info("get peer devices: ${devices}")
+    for(device in devices) {
+        if (device.deviceName == "my_test_device") {
+            AppLog.info("p2p connect to test device: ${device.deviceAddress}")
+            let config = WifiP2PConfig(device.deviceAddress, -2, "", "", GroupOwnerBand.GO_BAND_AUTO)
+            p2pConnect(config)
+        }
+    }
+})
+onP2pPeerDeviceChange(recvP2pPeerDeviceChangeFunc)
+
+let recvP2pPersistentGroupChangeFunc = WifiCallback0({ =>
+    AppLog.info("p2p persistent group change receive event")
+    let group = getCurrentGroup()
+    AppLog.info("get current group: ${group}")
+})
+onP2pPersistentGroupChange(recvP2pPersistentGroupChangeFunc)
+
+Timer.once(Duration.second * 125, { => offP2pConnectionChange(callback: recvP2pConnectionChangeFunc) })
+Timer.once(Duration.second * 125, { => offP2pDeviceChange(callback: recvP2pDeviceChangeFunc) })
+Timer.once(Duration.second * 125, { => offP2pPeerDeviceChange(callback: recvP2pPeerDeviceChangeFunc) })
+Timer.once(Duration.second * 125, { => offP2pPersistentGroupChange(callback: recvP2pPersistentGroupChangeFunc) })
+
+AppLog.info("start discover devices")
+startDiscoverDevices()
+```
+
 ## func startDiscoverDevices()
 
 ```cangjie
@@ -210,7 +341,7 @@ public func startDiscoverDevices(): Unit
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -222,6 +353,20 @@ public func startDiscoverDevices(): Unit
   | 801 | Capability not supported. |
   | 2801000 | Operation failed. |
   | 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+import std.sync.Timer
+
+startDiscoverDevices()
+```
 
 ## func stopDiscoverDevices()
 
@@ -235,7 +380,7 @@ public func stopDiscoverDevices(): Unit
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -247,6 +392,20 @@ public func stopDiscoverDevices(): Unit
   | 801 | Capability not supported. |
   | 2801000 | Operation failed. |
   | 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+import std.sync.Timer
+
+stopDiscoverDevices()
+```
 
 ## class WifiInfoElem
 
@@ -261,7 +420,7 @@ public class WifiInfoElem {
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let content
 
@@ -277,7 +436,7 @@ public let content: Array<UInt8>
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let eid
 
@@ -293,7 +452,7 @@ public let eid: UInt32
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class WifiP2PConfig
 
@@ -320,7 +479,7 @@ public class WifiP2PConfig {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let deviceAddress
 
@@ -336,7 +495,7 @@ public let deviceAddress: String
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let deviceAddressType
 
@@ -352,7 +511,7 @@ public let deviceAddressType: DeviceAddressType
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let goBand
 
@@ -368,7 +527,7 @@ public let goBand: GroupOwnerBand
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let groupName
 
@@ -384,7 +543,7 @@ public let groupName: String
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let netId
 
@@ -400,7 +559,7 @@ public let netId: Int32
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let passphrase
 
@@ -416,7 +575,7 @@ public let passphrase: String
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Int32, String, String, GroupOwnerBand, DeviceAddressType)
 
@@ -435,7 +594,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -474,7 +633,7 @@ public class WifiScanInfo {
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let band
 
@@ -490,7 +649,7 @@ public let band: Int32
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bssid
 
@@ -506,7 +665,7 @@ public let bssid: String
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bssidType
 
@@ -522,7 +681,7 @@ public let bssidType: DeviceAddressType
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let capabilities
 
@@ -538,7 +697,7 @@ public let capabilities: String
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let centerFrequency0
 
@@ -554,7 +713,7 @@ public let centerFrequency0: Int32
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let centerFrequency1
 
@@ -570,7 +729,7 @@ public let centerFrequency1: Int32
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let channelWidth
 
@@ -586,7 +745,7 @@ public let channelWidth: Int32
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let frequency
 
@@ -602,7 +761,7 @@ public let frequency: Int32
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let infoElems
 
@@ -618,7 +777,7 @@ public let infoElems: Array<WifiInfoElem>
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let isHiLinkNetwork
 
@@ -634,7 +793,7 @@ public let isHiLinkNetwork: Bool
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let rssi
 
@@ -650,7 +809,7 @@ public let rssi: Int32
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let securityType
 
@@ -666,7 +825,7 @@ public let securityType: WifiSecurityType
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let ssid
 
@@ -682,7 +841,7 @@ public let ssid: String
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let supportedWifiCategory
 
@@ -698,7 +857,7 @@ public let supportedWifiCategory: WifiCategory
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let timestamp
 
@@ -714,7 +873,7 @@ public let timestamp: Int64
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum DeviceAddressType
 
@@ -730,7 +889,7 @@ public enum DeviceAddressType <: Equatable<DeviceAddressType> & ToString {
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -747,7 +906,7 @@ RandomDeviceAddress
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### RealDeviceAddress
 
@@ -759,7 +918,7 @@ RealDeviceAddress
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(DeviceAddressType)
 
@@ -771,7 +930,7 @@ public operator func !=(other: DeviceAddressType): Bool
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -834,7 +993,7 @@ public enum GroupOwnerBand <: Equatable<GroupOwnerBand> & ToString {
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -851,7 +1010,7 @@ GoBand2GHz
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GoBand5GHz
 
@@ -863,7 +1022,7 @@ GoBand5GHz
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GoBandAuto
 
@@ -875,7 +1034,7 @@ GoBandAuto
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(GroupOwnerBand)
 
@@ -887,7 +1046,7 @@ public operator func !=(other: GroupOwnerBand): Bool
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -948,7 +1107,7 @@ public enum WifiCallbackType <: Equatable<WifiCallbackType> & Hashable & ToStrin
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -966,7 +1125,7 @@ WifiScanStateChange
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(WifiCallbackType)
 
@@ -1051,7 +1210,7 @@ public enum WifiCategory <: Equatable<WifiCategory> & ToString {
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1068,7 +1227,7 @@ Default
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Wifi6
 
@@ -1080,7 +1239,7 @@ Wifi6
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Wifi6Plus
 
@@ -1092,7 +1251,7 @@ Wifi6Plus
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(WifiCategory)
 
@@ -1104,7 +1263,7 @@ public operator func !=(other: WifiCategory): Bool
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1174,7 +1333,7 @@ public enum WifiSecurityType <: Equatable<WifiSecurityType> & ToString {
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1191,7 +1350,7 @@ WifiSecTypeEap
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeEapSuiteB
 
@@ -1203,7 +1362,7 @@ WifiSecTypeEapSuiteB
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeInvalid
 
@@ -1215,7 +1374,7 @@ WifiSecTypeInvalid
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeOpen
 
@@ -1227,7 +1386,7 @@ WifiSecTypeOpen
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeOwe
 
@@ -1239,7 +1398,7 @@ WifiSecTypeOwe
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypePsk
 
@@ -1251,7 +1410,7 @@ WifiSecTypePsk
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeSae
 
@@ -1263,7 +1422,7 @@ WifiSecTypeSae
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeWapiCert
 
@@ -1275,7 +1434,7 @@ WifiSecTypeWapiCert
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeWapiPsk
 
@@ -1287,7 +1446,7 @@ WifiSecTypeWapiPsk
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WifiSecTypeWep
 
@@ -1299,7 +1458,7 @@ WifiSecTypeWep
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(WifiSecurityType)
 
@@ -1311,7 +1470,7 @@ public operator func !=(other: WifiSecurityType): Bool
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
