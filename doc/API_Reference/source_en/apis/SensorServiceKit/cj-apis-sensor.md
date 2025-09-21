@@ -2132,41 +2132,6 @@ Accelerometer
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class AccelerometerCallback <: Callback1Argument<AccelerometerResponse> {
-    init() {}
-    public func invoke(arg: AccelerometerResponse): Unit {
-        AppLog.info(
-            "Accelerometer data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
-        )
-    }
-}
-
-let callback = AccelerometerCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.ACCELEROMETER, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.ACCELEROMETER, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.ACCELEROMETER, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### AccelerometerUncalibrated
 
 ```cangjie
@@ -2178,41 +2143,6 @@ AccelerometerUncalibrated
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class AccelerometerUncalibratedCallback <: Callback1Argument<AccelerometerUncalibratedResponse> {
-    init() {}
-    public func invoke(arg: AccelerometerUncalibratedResponse): Unit {
-        AppLog.info(
-            "AccelerometerUncalibrated data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, biasX: ${arg.biasX}, biasY: ${arg.biasY}, biasZ: ${arg.biasZ}"
-        )
-    }
-}
-
-let callback = AccelerometerUncalibratedCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.ACCELEROMETERUNCALIBRATED, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.ACCELEROMETERUNCALIBRATED, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.ACCELEROMETERUNCALIBRATED, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### AmbientLight
 
@@ -2226,41 +2156,6 @@ AmbientLight
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class AmbientLightCallback <: Callback1Argument<LightResponse> {
-    init() {}
-    public func invoke(arg: LightResponse): Unit {
-        AppLog.info(
-            "AmbientLight data: timestamp: ${arg.timestamp}, intensity: ${arg.intensity}"
-        )
-    }
-}
-
-let callback = AmbientLightCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.AMBIENTLIGHT, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.AMBIENTLIGHT, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.AMBIENTLIGHT, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### AmbientTemperature
 
 ```cangjie
@@ -2272,41 +2167,6 @@ AmbientTemperature
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class AmbientTemperatureCallback <: Callback1Argument<AmbientTemperatureResponse> {
-    init() {}
-    public func invoke(arg: AmbientTemperatureResponse): Unit {
-        AppLog.info(
-            "AmbientTemperature data: timestamp: ${arg.timestamp}, temperature: ${arg.temperature}"
-        )
-    }
-}
-
-let callback = AmbientTemperatureCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.AMBIENTTEMPERATURE, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.AMBIENTTEMPERATURE, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.AMBIENTTEMPERATURE, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### Barometer
 
@@ -2320,41 +2180,6 @@ Barometer
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class BarometerCallback <: Callback1Argument<BarometerResponse> {
-    init() {}
-    public func invoke(arg: BarometerResponse): Unit {
-        AppLog.info(
-            "Barometer data: timestamp: ${arg.timestamp}, pressure: ${arg.pressure}"
-        )
-    }
-}
-
-let callback = BarometerCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.BAROMETER, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.BAROMETER, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.BAROMETER, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### Gravity
 
 ```cangjie
@@ -2366,41 +2191,6 @@ Gravity
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class GravityCallback <: Callback1Argument<GravityResponse> {
-    init() {}
-    public func invoke(arg: GravityResponse): Unit {
-        AppLog.info(
-            "Gravity data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
-        )
-    }
-}
-
-let callback = GravityCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.GRAVITY, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.GRAVITY, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.GRAVITY, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### Gyroscope
 
@@ -2414,41 +2204,6 @@ Gyroscope
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class GyroscopeCallback <: Callback1Argument<GyroscopeResponse> {
-    init() {}
-    public func invoke(arg: GyroscopeResponse): Unit {
-        AppLog.info(
-            "Gyroscope data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
-        )
-    }
-}
-
-let callback = GyroscopeCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.GYROSCOPE, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.GYROSCOPE, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.GYROSCOPE, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### GyroscopeUncalibrated
 
 ```cangjie
@@ -2460,41 +2215,6 @@ GyroscopeUncalibrated
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class GyroscopeUncalibratedCallback <: Callback1Argument<GyroscopeUncalibratedResponse> {
-    init() {}
-    public func invoke(arg: GyroscopeUncalibratedResponse): Unit {
-        AppLog.info(
-            "GyroscopeUncalibrated data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, biasX: ${arg.biasX}, biasY: ${arg.biasY}, biasZ: ${arg.biasZ}"
-        )
-    }
-}
-
-let callback = GyroscopeUncalibratedCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.GYROSCOPEUNCALIBRATED, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.GYROSCOPEUNCALIBRATED, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.GYROSCOPEUNCALIBRATED, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### Hall
 
@@ -2508,41 +2228,6 @@ Hall
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class HallCallback <: Callback1Argument<HallResponse> {
-    init() {}
-    public func invoke(arg: HallResponse): Unit {
-        AppLog.info(
-            "Hall data: timestamp: ${arg.timestamp}, status: ${arg.status}"
-        )
-    }
-}
-
-let callback = HallCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.HALL, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.HALL, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.HALL, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### HeartRate
 
 ```cangjie
@@ -2554,41 +2239,6 @@ HeartRate
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class HeartRateCallback <: Callback1Argument<HeartRateResponse> {
-    init() {}
-    public func invoke(arg: HeartRateResponse): Unit {
-        AppLog.info(
-            "HeartRate data: timestamp: ${arg.timestamp}, heartRate: ${arg.heartRate}"
-        )
-    }
-}
-
-let callback = HeartRateCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.HEARTRATE, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.HEARTRATE, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.HEARTRATE, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### Humidity
 
@@ -2602,41 +2252,6 @@ Humidity
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class HumidityCallback <: Callback1Argument<HumidityResponse> {
-    init() {}
-    public func invoke(arg: HumidityResponse): Unit {
-        AppLog.info(
-            "Humidity data: timestamp: ${arg.timestamp}, humidity: ${arg.humidity}"
-        )
-    }
-}
-
-let callback = HumidityCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.HUMIDITY, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.HUMIDITY, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.HUMIDITY, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### LinearAccelerometer
 
 ```cangjie
@@ -2648,41 +2263,6 @@ LinearAccelerometer
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class LinearAccelerometerCallback <: Callback1Argument<LinearAccelerometerResponse> {
-    init() {}
-    public func invoke(arg: LinearAccelerometerResponse): Unit {
-        AppLog.info(
-            "LinearAccelerometer data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
-        )
-    }
-}
-
-let callback = LinearAccelerometerCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.LINEARACCELEROMETER, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.LINEARACCELEROMETER, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.LINEARACCELEROMETER, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### MagneticField
 
@@ -2696,41 +2276,6 @@ MagneticField
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class MagneticFieldCallback <: Callback1Argument<MagneticFieldResponse> {
-    init() {}
-    public func invoke(arg: MagneticFieldResponse): Unit {
-        AppLog.info(
-            "MagneticField data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}"
-        )
-    }
-}
-
-let callback = MagneticFieldCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.MAGNETICFIELD, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.MAGNETICFIELD, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.MAGNETICFIELD, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### MagneticFieldUncalibrated
 
 ```cangjie
@@ -2742,41 +2287,6 @@ MagneticFieldUncalibrated
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class MagneticFieldUncalibratedCallback <: Callback1Argument<MagneticFieldUncalibratedResponse> {
-    init() {}
-    public func invoke(arg: MagneticFieldUncalibratedResponse): Unit {
-        AppLog.info(
-            "MagneticFieldUncalibrated data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, biasX: ${arg.biasX}, biasY: ${arg.biasY}, biasZ: ${arg.biasZ}"
-        )
-    }
-}
-
-let callback = MagneticFieldUncalibratedCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.MAGNETICFIELDUNCALIBRATED, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.MAGNETICFIELDUNCALIBRATED, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.MAGNETICFIELDUNCALIBRATED, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### Orientation
 
@@ -2790,41 +2300,6 @@ Orientation
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class OrientationCallback <: Callback1Argument<OrientationResponse> {
-    init() {}
-    public func invoke(arg: OrientationResponse): Unit {
-        AppLog.info(
-            "Orientation data: timestamp: ${arg.timestamp}, alpha: ${arg.alpha}, beta: ${arg.beta}, gamma: ${arg.gamma}"
-        )
-    }
-}
-
-let callback = OrientationCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.ORIENTATION, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.ORIENTATION, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.ORIENTATION, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### Pedometer
 
 ```cangjie
@@ -2836,41 +2311,6 @@ Pedometer
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class PedometerCallback <: Callback1Argument<PedometerResponse> {
-    init() {}
-    public func invoke(arg: PedometerResponse): Unit {
-        AppLog.info(
-            "Pedometer data: timestamp: ${arg.timestamp}, steps: ${arg.steps}"
-        )
-    }
-}
-
-let callback = PedometerCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.PEDOMETER, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.PEDOMETER, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.PEDOMETER, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### PedometerDetection
 
@@ -2884,41 +2324,6 @@ PedometerDetection
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class PedometerDetectionCallback <: Callback1Argument<PedometerDetectionResponse> {
-    init() {}
-    public func invoke(arg: PedometerDetectionResponse): Unit {
-        AppLog.info(
-            "PedometerDetection data: timestamp: ${arg.timestamp}, scalar: ${arg.scalar}"
-        )
-    }
-}
-
-let callback = PedometerDetectionCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.PEDOMETERDETECTION, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.PEDOMETERDETECTION, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.PEDOMETERDETECTION, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### Proximity
 
 ```cangjie
@@ -2930,41 +2335,6 @@ Proximity
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class ProximityCallback <: Callback1Argument<ProximityResponse> {
-    init() {}
-    public func invoke(arg: ProximityResponse): Unit {
-        AppLog.info(
-            "Proximity data: timestamp: ${arg.timestamp}, distance: ${arg.distance}"
-        )
-    }
-}
-
-let callback = ProximityCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.PROXIMITY, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.PROXIMITY, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.PROXIMITY, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### RotationVector
 
@@ -2978,41 +2348,6 @@ RotationVector
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class RotationVectorCallback <: Callback1Argument<RotationVectorResponse> {
-    init() {}
-    public func invoke(arg: RotationVectorResponse): Unit {
-        AppLog.info(
-            "RotationVector data: timestamp: ${arg.timestamp}, x: ${arg.x}, y: ${arg.y}, z: ${arg.z}, w: ${arg.w}"
-        )
-    }
-}
-
-let callback = RotationVectorCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.ROTATIONVECTOR, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.ROTATIONVECTOR, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.ROTATIONVECTOR, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### SignificantMotion
 
 ```cangjie
@@ -3025,41 +2360,6 @@ SignificantMotion
 
 **Since:** 21
 
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class SignificantMotionCallback <: Callback1Argument<SignificantMotionResponse> {
-    init() {}
-    public func invoke(arg: SignificantMotionResponse): Unit {
-        AppLog.info(
-            "SignificantMotion data: timestamp: ${arg.timestamp}, scalar: ${arg.scalar}"
-        )
-    }
-}
-
-let callback = SignificantMotionCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.SIGNIFICANTMOTION, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.SIGNIFICANTMOTION, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.SIGNIFICANTMOTION, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
-
 ### WearDetection
 
 ```cangjie
@@ -3071,41 +2371,6 @@ WearDetection
 **System Capability:** SystemCapability.Sensors.Sensor
 
 **Since:** 21
-
-**Example:**
-
-<!-- compile -->
-
-```cangjie
-// index.cj
-
-import kit.SensorServiceKit.*
-import ohos.base.*
-
-class WearDetectionCallback <: Callback1Argument<WearDetectionResponse> {
-    init() {}
-    public func invoke(arg: WearDetectionResponse): Unit {
-        AppLog.info(
-            "WearDetection data: timestamp: ${arg.timestamp}, value: ${arg.value}"
-        )
-    }
-}
-
-let callback = WearDetectionCallback()
-let options = Options(interval = IntervalOption.SensorNumber(100000000))
-try {
-    // Subscribe to sensor data
-    on(SensorId.WEARDETECTION, callback, option: options)
-    
-    // Get sensor data once
-    once(SensorId.WEARDETECTION, callback)
-    
-    // Unsubscribe from sensor data
-    off(SensorId.WEARDETECTION, callback: callback)
-} catch (e: BusinessException) {
-    AppLog.error(e.toString())
-}
-```
 
 ### func !=(SensorId)
 
