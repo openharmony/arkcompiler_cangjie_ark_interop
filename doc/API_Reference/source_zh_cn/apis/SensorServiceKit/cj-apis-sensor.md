@@ -39,16 +39,16 @@ public func getSensorList(): Array<Sensor>
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Array\<[Sensor](#class-sensor)>|返回传感器属性列表。|
+| 类型                              | 说明         |
+|:------------------------------- |:---------- |
+| Array\<[Sensor](#class-sensor)> | 返回传感器属性列表。 |
 
 **异常：**
 
 - BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
+  
+  | 错误码ID    | 错误信息                                                                                                                                   |
+  |:-------- |:-------------------------------------------------------------------------------------------------------------------------------------- |
   | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例：**
@@ -85,24 +85,24 @@ public func getSingleSensor(sensorType: SensorId): Sensor
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
+| 参数名        | 类型                         | 必填  | 默认值 | 说明     |
+|:---------- |:-------------------------- |:--- |:--- |:------ |
+| sensorType | [SensorId](#enum-sensorid) | 是   | -   | 传感器类型。 |
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|[Sensor](#class-sensor)|返回传感器信息。|
+| 类型                      | 说明       |
+|:----------------------- |:-------- |
+| [Sensor](#class-sensor) | 返回传感器信息。 |
 
 **异常：**
 
 - BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
+  
+  | 错误码ID    | 错误信息                                                                                                                                   |
+  |:-------- |:-------------------------------------------------------------------------------------------------------------------------------------- |
   | 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception;3. Sensor data channel exception. |
-  | 14500102 | The sensor is not supported by the device. |
+  | 14500102 | The sensor is not supported by the device.                                                                                             |
 
 **示例：**
 
@@ -136,10 +136,10 @@ public func off(sensorType: SensorId, callback!: ?CallbackObject = None): Unit
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
-|callback|?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|否|None|**命名参数。** 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
+| 参数名        | 类型                                                                                 | 必填  | 默认值  | 说明                                          |
+|:---------- |:---------------------------------------------------------------------------------- |:--- |:---- |:------------------------------------------- |
+| sensorType | [SensorId](#enum-sensorid)                                                         | 是   | -    | 传感器类型。                                      |
+| callback   | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | 否   | None | **命名参数。** 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。 |
 
 **示例：**
 
@@ -189,11 +189,11 @@ public func on<T>(sensorType: SensorId, callback: Callback1Argument<T>, option!:
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数。|
-|option|?[Options](#class-options)|否|None|可选参数列表，用于设置传感器上报频率，默认值为200000000ns。|
+| 参数名        | 类型                                                                                          | 必填  | 默认值  | 说明                                  |
+|:---------- |:------------------------------------------------------------------------------------------- |:--- |:---- |:----------------------------------- |
+| sensorType | [SensorId](#enum-sensorid)                                                                  | 是   | -    | 传感器类型。                              |
+| callback   | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | 是   | -    | 回调函数。                               |
+| option     | ?[Options](#class-options)                                                                  | 否   | None | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
 
 **示例：**
 
@@ -237,10 +237,10 @@ public func once<T>(sensorType: SensorId, callback: Callback1Argument<T>): Unit 
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|sensorType|[SensorId](#enum-sensorid)|是|-|传感器类型。|
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T>|是|-|回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。|
+| 参数名        | 类型                                                                                          | 必填  | 默认值 | 说明                                |
+|:---------- |:------------------------------------------------------------------------------------------- |:--- |:--- |:--------------------------------- |
+| sensorType | [SensorId](#enum-sensorid)                                                                  | 是   | -   | 传感器类型。                            |
+| callback   | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | 是   | -   | 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。 |
 
 **示例：**
 
@@ -1266,10 +1266,10 @@ public init(interval!: IntervalOption = NormalMode, sensorInfoParam!: ?SensorInf
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|interval|[IntervalOption](#enum-intervaloption)|否|NormalMode|传感器上报频率。|
-|sensorInfoParam|?[SensorInfoParam](#class-sensorinfoparam)|否|None|传感器信息参数。|
+| 参数名             | 类型                                         | 必填  | 默认值        | 说明       |
+|:--------------- |:------------------------------------------ |:--- |:---------- |:-------- |
+| interval        | [IntervalOption](#enum-intervaloption)     | 否   | NormalMode | 传感器上报频率。 |
+| sensorInfoParam | ?[SensorInfoParam](#class-sensorinfoparam) | 否   | None       | 传感器信息参数。 |
 
 ## class OrientationResponse
 
@@ -1818,10 +1818,10 @@ public init(deviceId!: Int32 = -1, sensorIndex!: Int32 = 0)
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|deviceId|Int32|否|- 1|设备ID。|
-|sensorIndex|Int32|否|0|传感器索引。|
+| 参数名         | 类型    | 必填  | 默认值 | 说明     |
+|:----------- |:----- |:--- |:--- |:------ |
+| deviceId    | Int32 | 否   | - 1 | 设备ID。  |
+| sensorIndex | Int32 | 否   | 0   | 传感器索引。 |
 
 ## class SignificantMotionResponse
 
@@ -1972,15 +1972,15 @@ public operator func !=(other: IntervalOption): Bool
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[IntervalOption](#enum-intervaloption)|是|-|传入的[IntervalOption](#enum-intervaloption)。|
+| 参数名   | 类型                                     | 必填  | 默认值 | 说明                                         |
+|:----- |:-------------------------------------- |:--- |:--- |:------------------------------------------ |
+| other | [IntervalOption](#enum-intervaloption) | 是   | -   | 传入的[IntervalOption](#enum-intervaloption)。 |
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Bool|如果不相等，则返回true；否则，返回false。|
+| 类型   | 说明                        |
+|:---- |:------------------------- |
+| Bool | 如果不相等，则返回true；否则，返回false。 |
 
 ### func ==(IntervalOption)
 
@@ -1992,15 +1992,15 @@ public operator func ==(other: IntervalOption): Bool
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[IntervalOption](#enum-intervaloption)|是|-|传入的[IntervalOption](#enum-intervaloption)。|
+| 参数名   | 类型                                     | 必填  | 默认值 | 说明                                         |
+|:----- |:-------------------------------------- |:--- |:--- |:------------------------------------------ |
+| other | [IntervalOption](#enum-intervaloption) | 是   | -   | 传入的[IntervalOption](#enum-intervaloption)。 |
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Bool|如果相等，则返回true；否则，返回false。|
+| 类型   | 说明                       |
+|:---- |:------------------------ |
+| Bool | 如果相等，则返回true；否则，返回false。 |
 
 ### func toString()
 
@@ -2012,9 +2012,9 @@ public func toString(): String
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|String|转换后的字符串。|
+| 类型     | 说明       |
+|:------ |:-------- |
+| String | 转换后的字符串。 |
 
 ## enum SensorAccuracy
 
@@ -2097,15 +2097,15 @@ public operator func !=(other: SensorAccuracy): Bool
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SensorAccuracy](#enum-sensoraccuracy)|是|-|传入的[SensorAccuracy](#enum-sensoraccuracy)。|
+| 参数名   | 类型                                     | 必填  | 默认值 | 说明                                         |
+|:----- |:-------------------------------------- |:--- |:--- |:------------------------------------------ |
+| other | [SensorAccuracy](#enum-sensoraccuracy) | 是   | -   | 传入的[SensorAccuracy](#enum-sensoraccuracy)。 |
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Bool|如果不相等，则返回true；否则，返回false。|
+| 类型   | 说明                        |
+|:---- |:------------------------- |
+| Bool | 如果不相等，则返回true；否则，返回false。 |
 
 ### func ==(SensorAccuracy)
 
@@ -2117,15 +2117,15 @@ public operator func ==(other: SensorAccuracy): Bool
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SensorAccuracy](#enum-sensoraccuracy)|是|-|传入的[SensorAccuracy](#enum-sensoraccuracy)。|
+| 参数名   | 类型                                     | 必填  | 默认值 | 说明                                         |
+|:----- |:-------------------------------------- |:--- |:--- |:------------------------------------------ |
+| other | [SensorAccuracy](#enum-sensoraccuracy) | 是   | -   | 传入的[SensorAccuracy](#enum-sensoraccuracy)。 |
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Bool|如果相等，则返回true；否则，返回false。|
+| 类型   | 说明                       |
+|:---- |:------------------------ |
+| Bool | 如果相等，则返回true；否则，返回false。 |
 
 ### func toString()
 
@@ -2137,9 +2137,9 @@ public func toString(): String
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|String|转换后的字符串。|
+| 类型     | 说明       |
+|:------ |:-------- |
+| String | 转换后的字符串。 |
 
 ## enum SensorId
 
@@ -2217,10 +2217,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.ACCELEROMETER, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.ACCELEROMETER, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.ACCELEROMETER, callback: callback)
 } catch (e: BusinessException) {
@@ -2264,10 +2264,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.ACCELEROMETERUNCALIBRATED, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.ACCELEROMETERUNCALIBRATED, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.ACCELEROMETERUNCALIBRATED, callback: callback)
 } catch (e: BusinessException) {
@@ -2311,10 +2311,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.AMBIENTLIGHT, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.AMBIENTLIGHT, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.AMBIENTLIGHT, callback: callback)
 } catch (e: BusinessException) {
@@ -2358,10 +2358,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.AMBIENTTEMPERATURE, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.AMBIENTTEMPERATURE, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.AMBIENTTEMPERATURE, callback: callback)
 } catch (e: BusinessException) {
@@ -2370,6 +2370,20 @@ try {
 ```
 
 ### Barometer
+
+```cangjie
+Barometer  
+```
+
+**功能：** 气压计传感器。
+
+**系统能力：** SystemCapability.Sensors.Sensor
+
+**起始版本：** 21
+
+示例：
+
+<!-- compile -->
 
 ```cangjie
 // index.cj
@@ -2391,10 +2405,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.BAROMETER, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.BAROMETER, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.BAROMETER, callback: callback)
 } catch (e: BusinessException) {
@@ -2438,10 +2452,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.GRAVITY, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.GRAVITY, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.GRAVITY, callback: callback)
 } catch (e: BusinessException) {
@@ -2485,10 +2499,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.GYROSCOPE, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.GYROSCOPE, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.GYROSCOPE, callback: callback)
 } catch (e: BusinessException) {
@@ -2532,10 +2546,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.GYROSCOPEUNCALIBRATED, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.GYROSCOPEUNCALIBRATED, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.GYROSCOPEUNCALIBRATED, callback: callback)
 } catch (e: BusinessException) {
@@ -2579,10 +2593,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.HALL, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.HALL, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.HALL, callback: callback)
 } catch (e: BusinessException) {
@@ -2626,10 +2640,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.HEARTRATE, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.HEARTRATE, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.HEARTRATE, callback: callback)
 } catch (e: BusinessException) {
@@ -2673,10 +2687,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.HUMIDITY, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.HUMIDITY, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.HUMIDITY, callback: callback)
 } catch (e: BusinessException) {
@@ -2720,21 +2734,15 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.LINEARACCELEROMETER, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.LINEARACCELEROMETER, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.LINEARACCELEROMETER, callback: callback)
 } catch (e: BusinessException) {
     AppLog.error(e.toString())
 }
-```
-
-### Orientation
-
-``cangjie
-Orientation
 ```
 
 ### MagneticField
@@ -2773,10 +2781,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.MAGNETICFIELD, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.MAGNETICFIELD, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.MAGNETICFIELD, callback: callback)
 } catch (e: BusinessException) {
@@ -2820,10 +2828,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.MAGNETICFIELDUNCALIBRATED, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.MAGNETICFIELDUNCALIBRATED, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.MAGNETICFIELDUNCALIBRATED, callback: callback)
 } catch (e: BusinessException) {
@@ -2867,10 +2875,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.ORIENTATION, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.ORIENTATION, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.ORIENTATION, callback: callback)
 } catch (e: BusinessException) {
@@ -2914,10 +2922,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.PEDOMETER, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.PEDOMETER, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.PEDOMETER, callback: callback)
 } catch (e: BusinessException) {
@@ -2961,10 +2969,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.PEDOMETERDETECTION, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.PEDOMETERDETECTION, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.PEDOMETERDETECTION, callback: callback)
 } catch (e: BusinessException) {
@@ -3008,10 +3016,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.PROXIMITY, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.PROXIMITY, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.PROXIMITY, callback: callback)
 } catch (e: BusinessException) {
@@ -3055,10 +3063,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.ROTATIONVECTOR, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.ROTATIONVECTOR, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.ROTATIONVECTOR, callback: callback)
 } catch (e: BusinessException) {
@@ -3102,10 +3110,10 @@ let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
     // 订阅传感器数据
     on(SensorId.SIGNIFICANTMOTION, callback, option: options)
-    
+
     // 获取一次传感器数据
     once(SensorId.SIGNIFICANTMOTION, callback)
-    
+
     // 取消订阅传感器数据
     off(SensorId.SIGNIFICANTMOTION, callback: callback)
 } catch (e: BusinessException) {
@@ -3135,25 +3143,26 @@ WearDetection
 import kit.SensorServiceKit.*
 import ohos.base.*
 
-class SensorCallback <: Callback1Argument<OrientationResponse> {
+class WearDetectionCallback <: Callback1Argument<WearDetectionResponse> {
     init() {}
-    public func invoke(arg: OrientationResponse): Unit {
+    public func invoke(arg: WearDetectionResponse): Unit {
         AppLog.info(
-            "Succeeded in getting SensorCallback1 arg: steps: ${arg.timestamp}, alpha: ${arg.alpha},  beta: ${arg.beta},  gamma: ${arg.gamma}"
+            "WearDetection data: timestamp: ${arg.timestamp}, value: ${arg.value}"
         )
     }
 }
 
-let callback1 = SensorCallback()
-let callback2 = SensorCallback()
+let callback = WearDetectionCallback()
+let options = Options(interval = IntervalOption.SensorNumber(100000000))
 try {
-    on(SensorId.ORIENTATION, callback1)
-    on(SensorId.ORIENTATION, callback2)
-    // 仅取消callback1的注册
-    off(SensorId
-        .ORIENTATION, callback: callback1)
-    // 取消注册SensorId.ORIENTATION的所有回调
-    off(SensorId.ORIENTATION)
+    // 订阅传感器数据
+    on(SensorId.WEARDETECTION, callback, option: options)
+
+    // 获取一次传感器数据
+    once(SensorId.WEARDETECTION, callback)
+
+    // 取消订阅传感器数据
+    off(SensorId.WEARDETECTION, callback: callback)
 } catch (e: BusinessException) {
     AppLog.error(e.toString())
 }
@@ -3169,15 +3178,15 @@ public operator func !=(other: SensorId): Bool
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SensorId](#enum-sensorid)|是|-|传入的[SensorId](#enum-sensorid)。|
+| 参数名   | 类型                         | 必填  | 默认值 | 说明                             |
+|:----- |:-------------------------- |:--- |:--- |:------------------------------ |
+| other | [SensorId](#enum-sensorid) | 是   | -   | 传入的[SensorId](#enum-sensorid)。 |
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Bool|如果不相等，则返回true；否则，返回false。|
+| 类型   | 说明                        |
+|:---- |:------------------------- |
+| Bool | 如果不相等，则返回true；否则，返回false。 |
 
 ### func ==(SensorId)
 
@@ -3189,19 +3198,15 @@ public operator func ==(other: SensorId): Bool
 
 **参数：**
 
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-```
-
-```
-
-|other|[SensorId](#enum-sensorid)|是|-|传入的[SensorId](#enum-sensorid)。|
+| 参数名   | 类型                         | 必填  | 默认值 | 说明                             |
+|:----- |:-------------------------- |:--- |:--- |:------------------------------ |
+| other | [SensorId](#enum-sensorid) | 是   | -   | 传入的[SensorId](#enum-sensorid)。 |
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Bool|如果相等，则返回true；否则，返回false。|
+| 类型   | 说明                       |
+|:---- |:------------------------ |
+| Bool | 如果相等，则返回true；否则，返回false。 |
 
 ### func getValue()
 
@@ -3217,9 +3222,9 @@ public func getValue(): Int32
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|Int32|枚举值。|
+| 类型    | 说明   |
+|:----- |:---- |
+| Int32 | 枚举值。 |
 
 ### func toString()
 
@@ -3231,6 +3236,6 @@ public func toString(): String
 
 **返回值：**
 
-|类型|说明|
-|:----|:----|
-|String|转换后的字符串。|
+| 类型     | 说明       |
+|:------ |:-------- |
+| String | 转换后的字符串。 |
