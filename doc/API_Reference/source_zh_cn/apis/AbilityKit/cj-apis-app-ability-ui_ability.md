@@ -31,7 +31,7 @@ API示例代码使用说明：
 public func createAbilityStageContextFromJSValue(context: JSContext, input: JSValue): AbilityStageContext
 ```
 
-**功能：** 从JSValue转换为AbilityStageContext类型。
+**功能：** 从JSValue转换为AbilityStageContext类型。该转换仅可在函数传递中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,13 +50,30 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 |:----|:----|
 |[AbilityStageContext](#class-abilitystagecontext)|返回AbilityStageContext类型实例。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import ohos.ark_interop.*
+import ohos.ark_interop_helper.*
+import kit.AbilityKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let jsContext = JSRuntime.getCurrentContext()
+        let input = this.context.toJSValue(jsContext)
+        let ctx = createAbilityStageContextFromJSValue(JjsContext, input)
+    }
+}
+```
+
 ## func createApplicationContextFromJSValue(JSContext, JSValue)
 
 ```cangjie
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[ApplicationContext](#class-applicationcontext)类型。
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[ApplicationContext](#class-applicationcontext)类型。该转换仅可在函数传递中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -75,13 +92,31 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 |:----|:----|
 |[ApplicationContext](#class-applicationcontext)|返回 ApplicationContext 类型实例。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import ohos.ark_interop.*
+import ohos.ark_interop_helper.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let jsContext = JSRuntime.getCurrentContext()
+        let input = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext().toJSValue(jsContext)
+        let ctx = createApplicationContextFromJSValue(JjsContext, input)
+    }
+}
+```
+
 ## func createContextFromJSValue(JSContext, JSValue)
 
 ```cangjie
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[Context](./cj-apis-app-ability-ui_ability.md#class-context)类型。
+**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[Context](./cj-apis-app-ability-ui_ability.md#class-context)类型。该转换仅可在函数传递中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -99,6 +134,23 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 |类型|说明|
 |:----|:----|
 |[Context](./cj-apis-app-ability-ui_ability.md#class-context)|返回Context类型实例。|
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import ohos.ark_interop.*
+import ohos.ark_interop_helper.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let jsContext = JSRuntime.getCurrentContext()
+        let input = this.context.toJSValue(jsContext)
+        let ctx = createContextFromJSValue(JjsContext, input)
+    }
+}
 
 ## func createUIAbilityContextFromJSValue(JSContext, JSValue)
 
@@ -124,6 +176,23 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 |类型|说明|
 |:----|:----|
 |[UIAbilityContext](#class-uiabilitycontext)|返回AbilityContext类型实例。|
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import ohos.ark_interop.*
+import ohos.ark_interop_helper.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let jsContext = JSRuntime.getCurrentContext()
+        let input = this.context.toJSValue(jsContext)
+        let ctx = createContextFromJSValue(JjsContext, input)
+    }
+}
 
 ## interface SystemObjectInteropTypeToJS
 
@@ -194,6 +263,19 @@ public static func registerCreator(name: String, creator: () -> Ability): Unit
 |name|String|是|-|注册 UIAbility 的名称。|
 |creator|()->[Ability](#class-ability)|是|-|注册BaseAbility的对应的creator。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let ENTRY_ABILITY_REGISTER_RESULT = Ability.registerCreator("entry", () -> MyUIAbility)
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+    }
+}
+
 ## class AbilityStageContext
 
 ```cangjie
@@ -227,6 +309,18 @@ public var currentHapModuleInfo: HapModuleInfo
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let info = this.context.currentHapModuleInfo
+    }
+}
 
 ## class ApplicationContext
 
@@ -276,6 +370,18 @@ public prop applicationInfo: ApplicationInfo
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let info = this.context.applicationInfo
+    }
+}
+
 ### prop area
 
 ```cangjie
@@ -291,6 +397,18 @@ public mut prop area: AreaMode
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let area = this.context.area
+    }
+}
 
 ### prop filesDir
 
@@ -308,6 +426,18 @@ public prop filesDir: String
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let filesDir = this.context.filesDir
+    }
+}
+
 ### prop resourceManager
 
 ```cangjie
@@ -323,6 +453,18 @@ public prop resourceManager: ResourceManager
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let resourceManager = this.context.resourceManager
+    }
+}
 
 ## class UIAbility
 
@@ -360,6 +502,18 @@ public mut prop context: UIAbilityContext
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let context = this.context
+    }
+}
+
 ### prop lastRequestWant
 
 ```cangjie
@@ -375,6 +529,18 @@ public mut prop lastRequestWant: Want
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let lastRequestWant = this.lastRequestWant
+    }
+}
 
 ### prop launchWant
 
@@ -392,6 +558,18 @@ public mut prop launchWant: Want
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let launchWant = this.launchWant
+    }
+}
+
 ### func onBackground()
 
 ```cangjie
@@ -403,6 +581,18 @@ public open func onBackground(): Unit
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override onBackground() {
+        let launchWant = this.launchWant
+    }
+}
 
 ### func onCreate(Want, LaunchParam)
 
@@ -423,6 +613,18 @@ public open func onCreate(want: Want, launchParam: LaunchParam): Unit
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|当前UIAbility的Want类型信息，包括UIAbility名称、Bundle名称等。|
 |launchParam|[LaunchParam](./cj-apis-app-ability-ability_constant.md#class-launchparam)|是|-|创建 ability、上次异常退出的原因信息。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
+        let launchWant = this.launchWant
+    }
+}
+
 ### func onDestroy()
 
 ```cangjie
@@ -435,6 +637,17 @@ public open func onDestroy(): Unit
 
 **起始版本：** 21
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onDestroy(): Unit {
+    }
+}
+
 ### func onForeground()
 
 ```cangjie
@@ -446,6 +659,17 @@ public open func onForeground(): Unit
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onForeground(): Unit {
+    }
+}
 
 ### func onNewWant(Want, LaunchParam)
 
@@ -466,6 +690,17 @@ public open func onNewWant(want: Want, launchParam: LaunchParam): Unit
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|当前UIAbility的Want类型信息，包括ability名称、bundle名称等。|
 |launchParam|[LaunchParam](./cj-apis-app-ability-ability_constant.md#class-launchparam)|是|-|Ability启动的原因、上次异常退出的原因信息。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onNewWant(want: Want, launchParam: LaunchParam): Unit {
+    }
+}
+
 ### func onWindowStageCreate(WindowStage)
 
 ```cangjie
@@ -484,6 +719,17 @@ public open func onWindowStageCreate(windowStage: WindowStage): Unit
 |:---|:---|:---|:---|:---|
 |windowStage|WindowStage|是|-|WindowStage相关信息。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+    }
+}
+
 ### func onWindowStageDestroy()
 
 ```cangjie
@@ -495,6 +741,17 @@ public open func onWindowStageDestroy(): Unit
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageDestroy(): Unit {
+    }
+}
 
 ## class UIAbilityContext
 
@@ -538,6 +795,18 @@ public func isTerminating(): Bool
   | :---- | :--- |
   | 16000011 | The context does not exist. |
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        let isTerminating = this.context.isTerminating()
+    }
+}
+
 ### func requestDialogService(Want, AsyncCallback\<RequestResult>)
 
 ```cangjie
@@ -580,6 +849,18 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
   | 16000053 | The ability is not on the top of the UI. |
   | 16000055 | Installation-free timed out. |
   | 16200001 | The caller has been released. |
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+        this.context.requestDialogService(Want(), (err: ?BusinessException, data: ?RequestResult) => {})
+    }
+}
 
 ### func startAbility(Want, ?StartOptions)
 
@@ -638,6 +919,18 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
   | 16200001 | The caller has been released. |
   | 16300003 | The target application is not the current application. |
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+          this.context.startAbility(Want(bundleName: "com.example.cangjieinsight", abilityName: "testAbility"))
+    }
+}
+
 ### func startAbilityForResult(Want, AsyncCallback\<AbilityResult>)
 
 ```cangjie
@@ -691,6 +984,20 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
   | 16000080 | Creating a new instance is not supported. |
   | 16200001 | The caller has been released. |
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+          this.context.startAbilityForResult(
+              Want(bundleName: "com.example.cangjieinsight", abilityName: "testAbility"),
+              (err: ?BusinessException, data: ?AbilityResult) => {})
+    }
+}
+
 ### func startAbilityForResult(Want, StartOptions, AsyncCallback\<AbilityResult>)
 
 ```cangjie
@@ -743,6 +1050,20 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
   | 16000080 | Creating a new instance is not supported. |
   | 16200001 | The caller has been released. |
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+          this.context.startAbilityForResult(
+              Want(bundleName: "com.example.cangjieinsight", abilityName: "testAbility"), StartOptions(),
+              (err: ?BusinessException, data: ?AbilityResult) => {})
+    }
+}
+
 ### func terminateSelf()
 
 ```cangjie
@@ -764,6 +1085,18 @@ public func terminateSelf(): Unit
   | 16000009 | An ability cannot be started or stopped in Wukong mode. |
   | 16000011 | The context does not exist. |
   | 16000050 | Internal error. |
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+          this.context.terminateSelf()
+    }
+}
 
 ### func terminateSelfWithResult(AbilityResult)
 
@@ -793,3 +1126,15 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
   | 16000009 | An ability cannot be started or stopped in Wukong mode. |
   | 16000011 | The context does not exist. |
   | 16000050 | Internal error. |
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+class MyUIAbility <: UIAbility {
+    public override func onWindowStageCreate(windowStage: WindowStage): Unit {
+          this.context.terminateSelfWithResult(AbilityResult(0))
+    }
+}
