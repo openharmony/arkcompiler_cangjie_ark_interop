@@ -43,6 +43,22 @@ public interface JSInteropType<T> {
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+@Interop[ArkTS]
+class MyCustomClass {
+    public let name: String   // String实现了JSInteropType<String>，所以可以在这里使用。
+    public let age: Int64     // Int64实现了JSInteropType<Int64>，所以可以在这里使用。
+    
+    public init(name: String, age: Int64) {
+        this.name = name
+        this.age = age
+    }
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -160,6 +176,18 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func int8Translate(context: JSContext): Unit {
+    let source: Int8 = 123
+    let value = source.toJSValue(context)
+    let result = Int8.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -226,6 +254,18 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为内置类型 Int16 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func int16Translate(context: JSContext): Unit {
+    let source: Int16 = 123
+    let value = source.toJSValue(context)
+    let result = Int16.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -294,6 +334,18 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func int32Translate(context: JSContext): Unit {
+    let source: Int32 = 123
+    let value = source.toJSValue(context)
+    let result = Int32.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -360,6 +412,18 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为内置类型 Int64 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func int64Translate(context: JSContext): Unit {
+    let source: Int64 = 123
+    let value = source.toJSValue(context)
+    let result = Int64.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -428,6 +492,18 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func uint8Translate(context: JSContext): Unit {
+    let source: UInt8 = 123
+    let value = source.toJSValue(context)
+    let result = UInt8.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -494,6 +570,18 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为内置类型 UInt16 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func uint16Translate(context: JSContext): Unit {
+    let source: UInt16 = 123
+    let value = source.toJSValue(context)
+    let result = UInt16.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -562,6 +650,18 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func uint32Translate(context: JSContext): Unit {
+    let source: UInt32 = 123
+    let value = source.toJSValue(context)
+    let result = UInt32.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -628,6 +728,19 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为内置类型 UInt64 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func uint64Translate(context: JSContext): Unit {
+    let source: UInt64 = 123
+    let value = source.toJSValue(context)
+    let result = UInt64.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -696,6 +809,18 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func float16Translate(context: JSContext): Unit {
+    let source: Float16 = 123.0
+    let value = source.toJSValue(context)
+    let result = Float16.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -762,6 +887,18 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为内置类型 Float32 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func float32Translate(context: JSContext): Unit {
+    let source: Float32 = 123.0
+    let value = source.toJSValue(context)
+    let result = Float32.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -830,6 +967,18 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func float64Translate(context: JSContext): Unit {
+    let source: Float64 = 123.0
+    let value = source.toJSValue(context)
+    let result = Float64.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -896,6 +1045,18 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为内置类型 Bool 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func boolTranslate(context: JSContext): Unit {
+    let source: Bool = true
+    let value = source.toJSValue(context)
+    let result = Bool.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -964,6 +1125,18 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func stringTranslate(context: JSContext): Unit {
+    let source: String = "123.0"
+    let value = source.toJSValue(context)
+    let result = String.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -1009,6 +1182,18 @@ static func toArkTsType(): String
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func stringTranslate(context: JSContext): Unit {
+    let source: String = "123.0"
+    let value = source.toJSValue(context)
+    let result = String.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
+
 ### func toJSValue(JSContext)
 
 ```cangjie
@@ -1036,6 +1221,17 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为内置类型 Unit 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func unitTranslate(context: JSContext): Unit {
+    let source: Unit = ()
+    let value = source.toJSValue(context)
+    let result = Unit.fromJSValue(context, value)
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1104,6 +1300,20 @@ func toJSValue(context: JSContext): JSValue
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func optionTranslate(context: JSContext): Unit {
+    let sources: Array<?String> = ["abc", None, "123"]
+    for (v in sources) {
+        let value = v.toJSValue(context)
+        let result = Option<String>.fromJSValue(context, value)
+        Hilog.info(0, "test", "result: ${result}")
+    }
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -1170,6 +1380,18 @@ func toJSValue(context: JSContext): JSValue
 **功能：** 该接口可用为类型 Array<T> 实现扩展方法。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func arrayTranslate(context: JSContext): Unit {
+    let sources: Array<Byte> = [1, 4, 5]
+    let value = sources.toJSValue(context)
+    let result = Array<Byte>.fromJSValue(context, value)
+    Hilog.info(0, "test", "result: ${result}")
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -1379,6 +1601,18 @@ public prop byteLength: Int32
 
 **读写能力：** 只读
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getBufferLength(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let length = arrayBuffer.byteLength
+    Hilog.info(0, "test", "ArrayBuffer length: ${length}")
+    return context.number(Float64(length)).toJSValue()
+}
+```
+
 ### func readBytes()
 
 ```cangjie
@@ -1395,6 +1629,18 @@ public func readBytes(): Array<Byte>
 |:----|:----|
 |Array\<Byte>|仓颉数组。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func readBufferBytes(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let bytes = arrayBuffer.readBytes()
+    Hilog.info(0, "test","Read ${bytes.size} bytes from ArrayBuffer")
+    return context.number(Float64(bytes.size)).toJSValue()
+}
+```
+
 ### func toArrayBufferJSValue()
 
 ```cangjie
@@ -1410,6 +1656,18 @@ public func toArrayBufferJSValue(): JSValue
 |类型|说明|
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func getArrayBufferJSValue(context: JSContext): JSValue {
+    let data: Array<Byte> = [1, 2, 3, 4]
+    let arrayBuffer = context.arrayBuffer(data)
+    let jsValue = arrayBuffer.toArrayBufferJSValue()
+    return jsValue
+}
+```
 
 ### func toFloat32Array()
 
@@ -1443,6 +1701,18 @@ public func toFloat32ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToFloat32Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let float32Array = arrayBuffer.toFloat32Array()
+    Hilog.info(0, "test","Converted to Float32Array with ${float32Array.size} elements")
+    return context.number(Float64(float32Array.size)).toJSValue()
+}
+```
+
 ### func toFloat64Array()
 
 ```cangjie
@@ -1458,6 +1728,18 @@ public func toFloat64Array(): Array<Float64>
 |类型|说明|
 |:----|:----|
 |Array\<Float64>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToFloat64Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let float64Array = arrayBuffer.toFloat64Array()
+    Hilog.info(0, "test","Converted to Float64Array with ${float64Array.size} elements")
+    return context.number(Float64(float64Array.size)).toJSValue()
+}
+```
 
 ### func toFloat64ArrayJSValue()
 
@@ -1475,6 +1757,17 @@ public func toFloat64ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getFloat64ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let float64ArrayJSValue = arrayBuffer.toFloat64ArrayJSValue()
+    return float64ArrayJSValue
+}
+```
+
 ### func toInt16Array()
 
 ```cangjie
@@ -1490,6 +1783,18 @@ public func toInt16Array(): Array<Int16>
 |类型|说明|
 |:----|:----|
 |Array\<Int16>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToInt16Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int16Array = arrayBuffer.toInt16Array()
+    Hilog.info(0, "test","Converted to Int16Array with ${int16Array.size} elements")
+    return context.number(Float64(int16Array.size)).toJSValue()
+}
+```
 
 ### func toInt16ArrayJSValue()
 
@@ -1507,6 +1812,17 @@ public func toInt16ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getInt16ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int16ArrayJSValue = arrayBuffer.toInt16ArrayJSValue()
+    return int16ArrayJSValue
+}
+```
+
 ### func toInt32Array()
 
 ```cangjie
@@ -1522,6 +1838,18 @@ public func toInt32Array(): Array<Int32>
 |类型|说明|
 |:----|:----|
 |Array\<Int32>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToInt32Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int32Array = arrayBuffer.toInt32Array()
+    Hilog.info(0, "test", "Converted to Int32Array with ${int32Array.size} elements")
+    return context.number(Float64(int32Array.size)).toJSValue()
+}
+```
 
 ### func toInt32ArrayJSValue()
 
@@ -1539,6 +1867,17 @@ public func toInt32ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getInt32ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int32ArrayJSValue = arrayBuffer.toInt32ArrayJSValue()
+    return int32ArrayJSValue
+}
+```
+
 ### func toInt64Array()
 
 ```cangjie
@@ -1554,6 +1893,18 @@ public func toInt64Array(): Array<Int64>
 |类型|说明|
 |:----|:----|
 |Array\<Int64>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToInt64Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int64Array = arrayBuffer.toInt64Array()
+    Hilog.info(0, "test", "Converted to Int64Array with ${int64Array.size} elements")
+    return context.number(Float64(int64Array.size)).toJSValue()
+}
+```
 
 ### func toInt64ArrayJSValue()
 
@@ -1571,6 +1922,17 @@ public func toInt64ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getInt64ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int64ArrayJSValue = arrayBuffer.toInt64ArrayJSValue()
+    return int64ArrayJSValue
+}
+```
+
 ### func toInt8Array()
 
 ```cangjie
@@ -1586,6 +1948,18 @@ public func toInt8Array(): Array<Int8>
 |类型|说明|
 |:----|:----|
 |Array\<Int8>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToInt8Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int8Array = arrayBuffer.toInt8Array()
+    Hilog.info(0, "test", "Converted to Int8Array with ${int8Array.size} elements")
+    return context.number(Float64(int8Array.size)).toJSValue()
+}
+```
 
 ### func toInt8ArrayJSValue()
 
@@ -1603,6 +1977,17 @@ public func toInt8ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getInt8ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let int8ArrayJSValue = arrayBuffer.toInt8ArrayJSValue()
+    return int8ArrayJSValue
+}
+```
+
 ### func toUInt16Array()
 
 ```cangjie
@@ -1618,6 +2003,18 @@ public func toUInt16Array(): Array<UInt16>
 |类型|说明|
 |:----|:----|
 |Array\<UInt16>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToUInt16Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint16Array = arrayBuffer.toUInt16Array()
+    Hilog.info(0, "test","Converted to UInt16Array with ${uint16Array.size} elements")
+    return context.number(Float64(uint16Array.size)).toJSValue()
+}
+```
 
 ### func toUInt16ArrayJSValue()
 
@@ -1635,6 +2032,17 @@ public func toUInt16ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getUInt16ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint16ArrayJSValue = arrayBuffer.toUInt16ArrayJSValue()
+    return uint16ArrayJSValue
+}
+```
+
 ### func toUInt32Array()
 
 ```cangjie
@@ -1650,6 +2058,18 @@ public func toUInt32Array(): Array<UInt32>
 |类型|说明|
 |:----|:----|
 |Array\<UInt32>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToUInt32Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint32Array = arrayBuffer.toUInt32Array()
+    Hilog.info(0, "test", "Converted to UInt32Array with ${uint32Array.size} elements")
+    return context.number(Float64(uint32Array.size)).toJSValue()
+}
+```
 
 ### func toUInt32ArrayJSValue()
 
@@ -1667,6 +2087,17 @@ public func toUInt32ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getUInt32ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint32ArrayJSValue = arrayBuffer.toUInt32ArrayJSValue()
+    return uint32ArrayJSValue
+}
+```
+
 ### func toUInt64Array()
 
 ```cangjie
@@ -1682,6 +2113,18 @@ public func toUInt64Array(): Array<UInt64>
 |类型|说明|
 |:----|:----|
 |Array\<UInt64>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToUInt64Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint64Array = arrayBuffer.toUInt64Array()
+    Hilog.info(0, "test", "Converted to UInt64Array with ${uint64Array.size} elements")
+    return context.number(Float64(uint64Array.size)).toJSValue()
+}
+```
 
 ### func toUInt64ArrayJSValue()
 
@@ -1699,6 +2142,17 @@ public func toUInt64ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getUInt64ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint64ArrayJSValue = arrayBuffer.toUInt64ArrayJSValue()
+    return uint64ArrayJSValue
+}
+```
+
 ### func toUInt8Array()
 
 ```cangjie
@@ -1714,6 +2168,18 @@ public func toUInt8Array(): Array<UInt8>
 |类型|说明|
 |:----|:----|
 |Array\<UInt8>|仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToUInt8Array(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint8Array = arrayBuffer.toUInt8Array()
+    Hilog.info(0, "test", "Converted to UInt8Array with ${uint8Array.size} elements")
+    return context.number(Float64(uint8Array.size)).toJSValue()
+}
+```
 
 ### func toUInt8ArrayJSValue()
 
@@ -1731,6 +2197,17 @@ public func toUInt8ArrayJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getUInt8ArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint8ArrayJSValue = arrayBuffer.toUInt8ArrayJSValue()
+    return uint8ArrayJSValue
+}
+```
+
 ### func toUInt8ClampedArrayJSValue()
 
 ```cangjie
@@ -1746,6 +2223,17 @@ public func toUInt8ClampedArrayJSValue(): JSValue
 |类型|说明|
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS统一类型。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func getUInt8ClampedArrayJSValue(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let arrayBuffer = callInfo[0].asArrayBuffer()
+    let uint8ClampedArrayJSValue = arrayBuffer.toUInt8ClampedArrayJSValue()
+    return uint8ClampedArrayJSValue
+}
+```
 
 ## class JSArrayEx
 
@@ -1848,6 +2336,22 @@ public func clone(): JSArrayEx<T>
 |:----|:----|
 |[JSArrayEx](#class-jsarrayex)\<T>|克隆得到的新 JSArrayEx。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func cloneArrayEx(context: JSContext): JSValue {
+    let originalArray: Array<Int64> = [1, 2, 3, 4, 5]
+    let jsArrayEx = JSArrayEx<Int64>(originalArray)
+    let clonedArrayEx = jsArrayEx.clone()
+
+    Hilog.info(0, "test", "Original size: ${jsArrayEx.size}")
+    Hilog.info(0, "test", "Cloned size: ${clonedArrayEx.size}")
+
+    return clonedArrayEx.toJSValue(context)
+}
+```
+
 ### func concat(JSArrayEx\<T>)
 
 ```cangjie
@@ -1869,6 +2373,24 @@ public func concat(other: JSArrayEx<T>): JSArrayEx<T>
 |类型|说明|
 |:----|:----|
 |[JSArrayEx](#class-jsarrayex)\<T>|串联得到的新 JSArrayEx。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func concatArrayEx(context: JSContext): JSValue {
+    let array1: Array<Int64> = [1, 2, 3]
+    let array2: Array<Int64> = [4, 5, 6]
+
+    let jsArrayEx1 = JSArrayEx<Int64>(array1)
+    let jsArrayEx2 = JSArrayEx<Int64>(array2)
+
+    let concatenated = jsArrayEx1.concat(jsArrayEx2)
+    Hilog.info(0, "test", "Concatenated array size: ${concatenated.size}")
+
+    return concatenated.toJSValue(context)
+}
+```
 
 ### func get(Int64)
 
@@ -1892,6 +2414,23 @@ public func get(index: Int64): Option<T>
 |:----|:----|
 |Option\<T>|当前数组中下标 index 对应的值。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getElementFromArrayEx(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let array: Array<String> = ["apple", "banana", "cherry"]
+    let jsArrayEx = JSArrayEx<String>(array)
+
+    let element = jsArrayEx.get(1)  // 获取索引为1的元素
+    if (element != None) {
+        Hilog.info(0, "test", "Element at index 1: ${element!}")
+    }
+
+    return jsArrayEx.toJSValue(context)
+}
+```
+
 ### func isEmpty()
 
 ```cangjie
@@ -1907,6 +2446,24 @@ public func isEmpty(): Bool
 |类型|说明|
 |:----|:----|
 |Bool|如果数组为空，返回 true，否则，返回 false。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func checkArrayExEmpty(context: JSContext): JSValue {
+    let emptyArray: Array<Int64> = []
+    let nonEmptyArray: Array<Int64> = [1, 2, 3]
+
+    let emptyJSArrayEx = JSArrayEx<Int64>(emptyArray)
+    let nonEmptyJSArrayEx = JSArrayEx<Int64>(nonEmptyArray)
+
+    Hilog.info(0, "test", "Is empty array empty: ${emptyJSArrayEx.isEmpty()}")
+    Hilog.info(0, "test", "Is non-empty array empty: ${nonEmptyJSArrayEx.isEmpty()}")
+
+    return context.boolean(emptyJSArrayEx.isEmpty()).toJSValue()
+}
+```
 
 ### func set(Int64, T)
 
@@ -1925,6 +2482,22 @@ public func set(index: Int64, element: T): Unit
 |index|Int64|是|-|需要修改的值的下标，取值范围为 [0..this.size]。|
 |element|T|是|-|修改的目标值。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func setElementInArrayEx(context: JSContext): JSValue {
+    let array: Array<Int64> = [1, 2, 3, 4, 5]
+    let jsArrayEx = JSArrayEx<Int64>(array)
+
+    // 修改索引为2的元素
+    jsArrayEx.set(2, 10)
+    Hilog.info(0, "test", "Modified element at index 2 to 10")
+
+    return jsArrayEx.toJSValue(context)
+}
+```
+
 ### func toArray()
 
 ```cangjie
@@ -1940,6 +2513,21 @@ public func toArray(): Array<T>
 |类型|说明|
 |:----|:----|
 |Array\<T>|转换后的仓颉数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertArrayExToArray(context: JSContext): JSValue {
+    let array: Array<String> = ["hello", "world", "cangjie"]
+    let jsArrayEx = JSArrayEx<String>(array)
+
+    let convertedArray = jsArrayEx.toArray()
+    Hilog.info(0, "test", "Converted array size: ${convertedArray.size}")
+
+    return jsArrayEx.toJSValue(context)
+}
+```
 
 ### func toJSValue(JSContext)
 
@@ -1985,6 +2573,21 @@ public operator func[](index: Int64): T
 |:----|:----|
 |T|当前数组中下标 index 对应的值。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getIndexOperator(context: JSContext): JSValue {
+    let array: Array<Int64> = [10, 20, 30, 40]
+    let jsArrayEx = JSArrayEx<Int64>(array)
+
+    let value = jsArrayEx[2]  // 获取索引为2的元素
+    Hilog.info(0, "test", "Value at index 2: ${value}")
+
+    return context.number(Float64(value)).toJSValue()
+}
+```
+
 ### func \[](Int64, T)
 
 ```cangjie
@@ -2001,6 +2604,22 @@ public operator func[](index: Int64, value!: T)
 |:---|:---|:---|:---|:---|
 |index|Int64|是|-|需要修改的值的下标，取值范围为 [0..this.size]。|
 |value|T|是|-| **命名参数。** 修改的目标值。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func setIndexOperator(context: JSContext): JSValue {
+    let array: Array<Int64> = [1, 2, 3, 4]
+    let jsArrayEx = JSArrayEx<Int64>(array)
+
+    // 设置索引为1的元素为100
+    jsArrayEx[1] = 100
+    Hilog.info(0, "test", "Set value at index 1 to 100")
+
+    return jsArrayEx.toJSValue(context)
+}
+```
 
 ## class JSBigInt
 
@@ -2032,6 +2651,20 @@ public func toBigInt(): BigInt
 |:----|:----|
 |BigInt|仓颉 BigInt。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToBigInt(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let jsBigInt = callInfo[0].asBigInt()
+    let bigIntValue = jsBigInt.toBigInt()
+
+    Hilog.info(0, "test", "Converted BigInt value: ${bigIntValue}")
+
+    return context.string(bigIntValue.toString()).toJSValue()
+}
+```
+
 ## class JSClass
 
 ```cangjie
@@ -2059,6 +2692,23 @@ public prop prototype: JSObject
 **类型：** [JSObject](#class-jsobject)
 
 **读写能力：** 只读
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func accessClassPrototype(context: JSContext): JSValue {
+    let ctor: JSLambda = { _, callInfo =>
+        return callInfo.thisArg
+    }
+    let clazz = context.clazz(ctor)
+
+    let prototype = clazz.prototype
+    Hilog.info(0, "test", "Class prototype accessed")
+
+    return prototype.toJSValue()
+}
+```
 
 ### func addAccessor(JSKeyable, ?JSFunction, ?JSFunction)
 
@@ -2385,6 +3035,18 @@ public prop env: JSEnv
 
 **读写能力：** 只读
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func accessContextEnv(context: JSContext): JSValue {
+    let env = context.env
+    Hilog.info(0, "test", "Context env accessed")
+
+    return context.undefined().toJSValue()
+}
+```
+
 ### prop global
 
 ```cangjie
@@ -2398,6 +3060,20 @@ public prop global: JSObject
 **类型：** [JSObject](#class-jsobject)
 
 **读写能力：** 只读
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func accessGlobalObject(context: JSContext): JSValue {
+    let globalObj = context.global
+    let globalKeys = globalObj.keys()
+
+    Hilog.info(0, "test", "Global object has ${globalKeys.size} keys")
+
+    return globalObj.toJSValue()
+}
+```
 
 ### func array(Array\<JSValue>)
 
@@ -2518,6 +3194,20 @@ public func arrayBuffer(data: Array<Int8>): JSArrayBuffer
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromInt8(context: JSContext): JSValue {
+    let int8Array: Array<Int8> = [1, 2, 3]
+    let arrayBuffer = context.arrayBuffer(int8Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from Int8 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
+
 ### func arrayBuffer(Array\<Int16>)
 
 ```cangjie
@@ -2539,6 +3229,20 @@ public func arrayBuffer(data: Array<Int16>): JSArrayBuffer
 |类型|说明|
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromInt16(context: JSContext): JSValue {
+    let int16Array: Array<Int16> = [1, 2, 3]
+    let arrayBuffer = context.arrayBuffer(int16Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from Int16 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
 
 ### func arrayBuffer(Array\<UInt16>)
 
@@ -2562,6 +3266,20 @@ public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromUInt16(context: JSContext): JSValue {
+    let uint16Array: Array<UInt16> = [1, 2, 3]
+    let arrayBuffer = context.arrayBuffer(uint16Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from UInt16 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
+
 ### func arrayBuffer(Array\<UInt32>)
 
 ```cangjie
@@ -2583,6 +3301,20 @@ public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer
 |类型|说明|
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromUInt32(context: JSContext): JSValue {
+    let uint32Array: Array<UInt32> = [1, 2, 3]
+    let arrayBuffer = context.arrayBuffer(uint32Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from UInt32 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
 
 ### func arrayBuffer(Array\<Int32>)
 
@@ -2606,6 +3338,20 @@ public func arrayBuffer(data: Array<Int32>): JSArrayBuffer
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromInt32(context: JSContext): JSValue {
+    let int32Array: Array<Int32> = [1, 2, 3]
+    let arrayBuffer = context.arrayBuffer(int32Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from Int32 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
+
 ### func arrayBuffer(Array\<Float32>)
 
 ```cangjie
@@ -2627,6 +3373,20 @@ public func arrayBuffer(data: Array<Float32>): JSArrayBuffer
 |类型|说明|
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromFloat32(context: JSContext): JSValue {
+    let float32Array: Array<Float32> = [1.0, 2.0, 3.0]
+    let arrayBuffer = context.arrayBuffer(float32Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from Float32 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
 
 ### func arrayBuffer(Array\<Int64>)
 
@@ -2650,6 +3410,20 @@ public func arrayBuffer(data: Array<Int64>): JSArrayBuffer
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromInt64(context: JSContext): JSValue {
+    let int64Array: Array<Int64> = [1, 2, 3]
+    let arrayBuffer = context.arrayBuffer(int64Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from Int64 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
+
 ### func arrayBuffer(Array\<UInt64>)
 
 ```cangjie
@@ -2672,6 +3446,20 @@ public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromUInt64(context: JSContext): JSValue {
+    let uint64Array: Array<UInt64> = [1.u64, 2.u64, 3.u64]
+    let arrayBuffer = context.arrayBuffer(uint64Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from UInt64 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
+
 ### func arrayBuffer(Array\<Float64>)
 
 ```cangjie
@@ -2693,6 +3481,20 @@ public func arrayBuffer(data: Array<Float64>): JSArrayBuffer
 |类型|说明|
 |:----|:----|
 |[JSArrayBuffer](#class-jsarraybuffer)|ArkTS ArrayBuffer 对象的引用。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func createArrayBufferFromFloat64(context: JSContext): JSValue {
+    let float64Array: Array<Float64> = [1.0, 2.0, 3.0]
+    let arrayBuffer = context.arrayBuffer(float64Array)
+
+    Hilog.info(0, "test", "Created ArrayBuffer from Float64 array")
+
+    return arrayBuffer.toJSValue()
+}
+```
 
 ### func arrayBuffer(CPointer\<Byte>, Int32, JSBufferFinalizer)
 
@@ -2954,6 +3756,18 @@ public func getNapiEnv(): napi_env
 |类型|说明|
 |:----|:----|
 |[napi_env](#type-napi_env)|全局环境的指针。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func getNapiEnvironment(context: JSContext): JSValue {
+    let napiEnv = context.getNapiEnv()
+    Hilog.info(0, "test", "Got napi environment")
+
+    return context.undefined().toJSValue()
+}
+```
 
 ### func isInBindThread()
 
@@ -3551,6 +4365,22 @@ public init(map: HashMap<K, V>)
 |:---|:---|:---|:---|:---|
 |map|HashMap\<K, V>|是|-|根据该 HashMap 实例创建。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createHashMapExFromHashMap(context: JSContext): JSValue {
+    let hashMap = HashMap<String, Int64>()
+    hashMap["key1"] = 1
+    hashMap["key2"] = 2
+
+    let jsHashMapEx = JSHashMapEx<String, Int64>(hashMap)
+    Hilog.info(0, "test", "Created JSHashMapEx from HashMap with ${jsHashMapEx.size} elements")
+
+    return jsHashMapEx.toJSValue(context)
+}
+```
+
 ### init()
 
 ```cangjie
@@ -3560,6 +4390,18 @@ public init()
 **功能：** 构造空的 JSHashMapEx\<K, V> 实例。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func createEmptyHashMapEx(context: JSContext): JSValue {
+    let jsHashMapEx = JSHashMapEx<String, Int64>()
+    Hilog.info(0, "test", "Created empty JSHashMapEx")
+
+    return jsHashMapEx.toJSValue(context)
+}
+```
 
 ### static func fromJSValue(JSContext, JSValue)
 
@@ -3764,6 +4606,22 @@ public func isEmpty(): Bool
 |:----|:----|
 |Bool|JSHashMapEx 是否为空。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func checkHashMapExEmpty(context: JSContext): JSValue {
+    let emptyMap = JSHashMapEx<String, Int64>()
+    let nonEmptyMap = JSHashMapEx<String, Int64>()
+    nonEmptyMap.set("key", 1)
+
+    Hilog.info(0, "test", "Is empty map empty: ${emptyMap.isEmpty()}")
+    Hilog.info(0, "test", "Is non-empty map empty: ${nonEmptyMap.isEmpty()}")
+
+    return context.boolean(emptyMap.isEmpty()).toJSValue()
+}
+```
+
 ### func keys()
 
 ```cangjie
@@ -3779,6 +4637,23 @@ public func keys(): EquatableCollection<K>
 |类型|说明|
 |:----|:----|
 |EquatableCollection\<K>|保存所有返回的 key。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func getHashMapExKeys(context: JSContext): JSValue {
+    let jsHashMapEx = JSHashMapEx<String, Int64>()
+    jsHashMapEx.set("key1", 1)
+    jsHashMapEx.set("key2", 2)
+    jsHashMapEx.set("key3", 3)
+
+    let keys = jsHashMapEx.keys()
+    Hilog.info(0, "test", "HashMapEx has ${keys.size} keys")
+
+    return context.number(Float64(keys.size)).toJSValue()
+}
+```
 
 ### func set(K, V)
 
@@ -3797,6 +4672,20 @@ public func set(key: K, value: V): Unit
 |key|K|是|-|要放置的键。|
 |value|V|是|-|要分配的值。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func setHashMapExValue(context: JSContext): JSValue {
+    let jsHashMapEx = JSHashMapEx<String, Int64>()
+    jsHashMapEx.set("myKey", 42)
+
+    Hilog.info(0, "test", "Set value in HashMapEx")
+
+    return jsHashMapEx.toJSValue(context)
+}
+```
+
 ### func setAll(Collection\<(K,V)>)
 
 ```cangjie
@@ -3812,6 +4701,21 @@ public func setAll(elements: Collection<(K, V)>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |elements|Collection\<(K, V)>|是|-|需要添加进 JSHashMapEx 的键值对集合。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func setAllHashMapExValues(context: JSContext): JSValue {
+    let jsHashMapEx = JSHashMapEx<String, Int64>()
+    let elements: Array<(String, Int64)> = [("key1", 1), ("key2", 2), ("key3", 3)]
+
+    jsHashMapEx.setAll(elements)
+    Hilog.info(0, "test", "Set all values in HashMapEx")
+
+    return jsHashMapEx.toJSValue(context)
+}
+```
 
 ### func setIfAbsent(K, V)
 
@@ -3912,6 +4816,21 @@ public operator func [](key: K): V
 |:----|:----|
 |V|键对应的值。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getIndexOperatorHashMapEx(context: JSContext): JSValue {
+    let jsHashMapEx = JSHashMapEx<String, Int64>()
+    jsHashMapEx.set("myKey", 100)
+
+    let value = jsHashMapEx["myKey"]
+    Hilog.info(0, "test", "Value for 'myKey': ${value}")
+
+    return context.number(Float64(value)).toJSValue()
+}
+```
+
 ### func \[](K, V)
 
 ```cangjie
@@ -3928,6 +4847,20 @@ public operator func [](key: K, value!: V): Unit
 |:---|:---|:---|:---|:---|
 |key|K|是|-|要放置的键。|
 |value|V|是|-| **命名参数。** 要分配的值。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func setIndexOperatorHashMapEx(context: JSContext): JSValue {
+    let jsHashMapEx = JSHashMapEx<String, Int64>()
+    jsHashMapEx["newKey"] = context.number(200).toJSValue()
+
+    Hilog.info(0, "test", "Set value using index operator")
+
+    return jsHashMapEx.toJSValue(context)
+}
+```
 
 ## class JSHeapObject
 
@@ -3956,6 +4889,16 @@ public func toJSValue(): JSValue
 |类型|说明|
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS 统一类型。|
+
+**示例：**
+
+```cangjie
+func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let external = context.external(123)
+    let jsValue = external.toJSValue()
+    return jsValue
+}
+```
 
 ## class JSModule
 
@@ -5590,6 +6533,17 @@ public func toJSValue(): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS 统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
+    let undefined = context.undefined()
+    let jsValue = undefined.toJSValue()
+    return jsValue
+}
+```
+
 ## struct JSValue
 
 ```cangjie
@@ -6788,6 +7742,26 @@ public prop accessible: Bool
 
 **读写能力：** 只读
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func checkStringAccessibility(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Test String")
+    
+    if (utf16Str.accessible) {
+        Hilog.info(0, "test", "String content is accessible")
+        // 安全地使用字符串内容
+        let length = utf16Str.size
+        Hilog.info(0, "test", "String length: ${length}")
+    } else {
+        Hilog.info(0, "test", "String content is not accessible")
+    }
+    
+    return context.boolean(utf16Str.accessible).toJSValue()
+}
+```
+
 ### prop size
 
 ```cangjie
@@ -6802,6 +7776,20 @@ public prop size: Int64
 
 **读写能力：** 只读
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getStringSize(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello 世界")  // 包含中英文混合字符串
+    let size = utf16Str.size  // UTF-16编码单元的总长度
+    
+    Hilog.info(0, "test", "UTF-16 string size: ${size}")
+    
+    return context.number(Float64(size)).toJSValue()
+}
+```
+
 ### prop totalChars
 
 ```cangjie
@@ -6815,6 +7803,20 @@ public prop totalChars: Int64
 **类型：** Int64
 
 **读写能力：** 只读
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func getStringTotalChars(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello 世界")  // 包含中英文混合字符串
+    let totalChars = utf16Str.totalChars  // 字符总数
+    
+    Hilog.info(0, "test", "Total characters: ${totalChars}")
+    
+    return context.number(Float64(totalChars)).toJSValue()
+}
+```
 
 ### static let empty
 
@@ -6846,6 +7848,24 @@ public init(src: String)
 |:---|:---|:---|:---|:---|
 |src|String|是|-|目标字符串。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createUtf16String(context: JSContext): JSValue {
+    // 从字符串创建 Utf16String
+    let utf16Str = Utf16String("Hello World")
+    Hilog.info(0, "test", "Created Utf16String with content: ${utf16Str.toString()}")
+    
+    // 从 JSValue 创建 Utf16String
+    let jsString = context.string("Test String")
+    let utf16Str2 = Utf16String(jsString.toJSValue())
+    Hilog.info(0, "test", "Created Utf16String from JSValue: ${utf16Str2.toString()}")
+    
+    return context.string(utf16Str.toString()).toJSValue()
+}
+```
+
 ### static func fromJSValue(JSContext, JSValue)
 
 ```cangjie
@@ -6868,6 +7888,24 @@ public static func fromJSValue(_: JSContext, value: JSValue): Utf16String
 |类型|说明|
 |:----|:----|
 |[Utf16String](#class-utf16string)|Utf16String 对象。|
+
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func createFromJSValue(context: JSContext): JSValue {
+    let jsString = context.string("Hello from JS")
+    let jsValue = jsString.toJSValue()
+    
+    // 从 JSValue 创建 Utf16String
+    let utf16Str = Utf16String.fromJSValue(context, jsValue)
+    
+    Hilog.info(0, "test", "Created from JSValue: ${utf16Str.toString()}")
+    
+    return context.string(utf16Str.toString()).toJSValue()
+}
+```
 
 ### static func toArkTsType()
 
@@ -6951,6 +7989,22 @@ public func count(src: Utf16String): Int64
 |:----|:----|
 |Int64|包含目标字符串的次数。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func countSubstring(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World Hello Hello")
+    let target = Utf16String("Hello")
+    
+    let count = utf16Str.count(target)
+    
+    Hilog.info(0, "test", "Count of 'Hello': ${count}")
+    
+    return context.number(Float64(count)).toJSValue()
+}
+```
+
 ### func dispose()
 
 ```cangjie
@@ -6960,6 +8014,27 @@ public func dispose(): Unit
 **功能：** 释放保存字符串内容的内存。在首次 dispose 之后继续访问该字符串的内容将导致异常。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func disposeString(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Test String")
+    
+    // 使用字符串内容
+    let content = utf16Str.toString()
+    Hilog.info(0, "test", "String content before dispose: ${content}")
+    
+    // 手动释放字符串内容内存
+    utf16Str.dispose()
+    
+    // dispose 后继续访问会抛出异常
+    // let contentAfterDispose = utf16Str.toString() // 这行会抛出异常
+    
+    return context.string("String disposed").toJSValue()
+}
+```
 
 ### func endsWith(Utf16String)
 
@@ -6983,6 +8058,22 @@ public func endsWith(target: Utf16String): Bool
 |:----|:----|
 |Bool|是否以目标字符串结束。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func checkEndsWith(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World")
+    let target = Utf16String("World")
+    
+    let endsWithResult = utf16Str.endsWith(target)
+    
+    Hilog.info(0, "test", "String ends with 'World': ${endsWithResult}")
+    
+    return context.boolean(endsWithResult).toJSValue()
+}
+```
+
 ### func hashCode()
 
 ```cangjie
@@ -6998,6 +8089,20 @@ public func hashCode(): Int64
 |类型|说明|
 |:----|:----|
 |Int64|字符串 hash 值。<br>**注意：** 不保证该 hash 值与相同内容的 String 的 hash 一致。 不保证该 hash 值与相同内容的 ArkTS string 的 hash 一致。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func getStringHashCode(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World")
+    let hashCode = utf16Str.hashCode()
+    
+    Hilog.info(0, "test", "String hash code: ${hashCode}")
+    
+    return context.number(Float64(hashCode)).toJSValue()
+}
+```
 
 ### func indexOf(Utf16String)
 
@@ -7020,6 +8125,26 @@ public func indexOf(target: Utf16String): ?Int64
 |类型|说明|
 |:----|:----|
 |?Int64|首次找到目标字符串时返回位置索引，未找到时返回 None。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func findSubstring(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World Hello")
+    let target = Utf16String("World")
+    
+    let index = utf16Str.indexOf(target)
+    
+    if (index != None) {
+        Hilog.info(0, "test", "Found 'World' at index: ${index!}")
+    } else {
+        Hilog.info(0, "test", "Substring not found")
+    }
+    
+    return context.number(Float64(index.getOrElse(-1))).toJSValue()
+}
+```
 
 ### func indexOf(Utf16String, Int64)
 
@@ -7060,6 +8185,24 @@ public func isEmpty(): Bool
 |:----|:----|
 |Bool|是否为空字符串。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func checkIsEmpty(context: JSContext): JSValue {
+    let emptyStr = Utf16String("")
+    let nonEmptyStr = Utf16String("Hello")
+    
+    let isEmpty1 = emptyStr.isEmpty()
+    let isEmpty2 = nonEmptyStr.isEmpty()
+    
+    Hilog.info(0, "test", "Empty string is empty: ${isEmpty1}")
+    Hilog.info(0, "test", "Non-empty string is empty: ${isEmpty2}")
+    
+    return context.boolean(isEmpty1).toJSValue()
+}
+```
+
 ### func isCompressed()
 
 ```cangjie
@@ -7075,6 +8218,21 @@ public func isCompressed(): Bool
 |类型|说明|
 |:----|:----|
 |Bool| 是否被压缩 |
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func checkIsCompressed(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World")
+    
+    let isCompressed = utf16Str.isCompressed()
+    
+    Hilog.info(0, "test", "String is compressed: ${isCompressed}")
+    
+    return context.boolean(isCompressed).toJSValue()
+}
+```
 
 ### func lastIndexOf(Utf16String)
 
@@ -7097,6 +8255,26 @@ public func lastIndexOf(target: Utf16String): ?Int64
 |类型|说明|
 |:----|:----|
 |?Int64|首次找到目标字符串时返回位置索引，未找到时返回 None。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func findLastSubstring(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World Hello")
+    let target = Utf16String("Hello")
+    
+    let index = utf16Str.lastIndexOf(target)
+    
+    if (index != None) {
+        Hilog.info(0, "test", "Last 'Hello' found at index: ${index!}")
+    } else {
+        Hilog.info(0, "test", "Substring not found")
+    }
+    
+    return context.number(Float64(index.getOrElse(-1))).toJSValue()
+}
+```
 
 ### func lastIndexOf(Utf16String, Int64)
 
@@ -7121,6 +8299,27 @@ public func lastIndexOf(target: Utf16String, fromIndex: Int64): ?Int64
 |:----|:----|
 |?Int64|首次找到目标字符串时返回位置索引，未找到时返回 None。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func findLastSubstringFromIndex(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World Hello")
+    let target = Utf16String("Hello")
+    
+    // 从索引10开始向前查找
+    let index = utf16Str.lastIndexOf(target, 10)
+    
+    if (index != None) {
+        Hilog.info(0, "test", "Last 'Hello' found at index: ${index!}")
+    } else {
+        Hilog.info(0, "test", "Substring not found")
+    }
+    
+    return context.number(Float64(index.getOrElse(-1))).toJSValue()
+}
+```
+
 ### func lazySplit(Utf16String, Bool)
 
 ```cangjie
@@ -7143,6 +8342,27 @@ public func lazySplit(separator: Utf16String, remoteEmpty!: Bool = false): Itera
 |类型|说明|
 |:----|:----|
 |Iterator\<[Utf16String](#class-utf16string)>|分割后的元素迭代器。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func lazySplitString(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello,World,Test,Example")
+    let separator = Utf16String(",")
+    
+    // 懒分割字符串，移除空元素
+    let splitIterator = utf16Str.lazySplit(separator, true)
+    
+    let count = 0
+    for (part in splitIterator) {
+        Hilog.info(0, "test", "Lazy split part ${count}: ${part.toString()}")
+        count = count + 1
+    }
+    
+    return context.number(Float64(count)).toJSValue()
+}
+```
 
 ### func lazySplit(Utf16String, Int64, Bool)
 
@@ -7184,6 +8404,26 @@ public func lines(): Iterator<Utf16String>
 |:----|:----|
 |Iterator\<[Utf16String](#class-utf16string)>|行迭代器。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getLines(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Line 1\nLine 2\nLine 3")
+    
+    // 获取行迭代器
+    let lineIterator = utf16Str.lines()
+    
+    let count = 0
+    for (line in lineIterator) {
+        Hilog.info(0, "test", "Line ${count}: ${line.toString()}")
+        count = count + 1
+    }
+    
+    return context.number(Float64(count)).toJSValue()
+}
+```
+
 ### func replace(Utf16String, Utf16String, Int64)
 
 ```cangjie
@@ -7207,6 +8447,25 @@ public func replace(old: Utf16String, new: Utf16String, count!: Int64 = Int64.Ma
 |类型|说明|
 |:----|:----|
 |[Utf16String](#class-utf16string)| 替换完的字符串 |
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func replaceString(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World Hello")
+    let target = Utf16String("Hello")
+    let replacement = Utf16String("Hi")
+    
+    // 替换最多1次
+    let replacedStr = utf16Str.replace(target, replacement, 1)
+    
+    Hilog.info(0, "test", "Original string: ${utf16Str.toString()}")
+    Hilog.info(0, "test", "Replaced string: ${replacedStr.toString()}")
+    
+    return context.string(replacedStr.toString()).toJSValue()
+}
+```
 
 ### func runes()
 
@@ -7246,6 +8505,27 @@ public func split(seperator: Utf16String, remoteEmpty!: Bool = false): Array<Utf
 |类型|说明|
 |:----|:----|
 |Array\<[Utf16String](#class-utf16string)>|分割后的元素数组。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func splitString(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello,World,Test")
+    let separator = Utf16String(",")
+    
+    // 分割字符串，最多分割成3个部分，不移除空元素
+    let splitResult = utf16Str.split(separator, 3, false)
+    
+    Hilog.info(0, "test", "Split result size: ${splitResult.size}")
+    
+    for (i in 0..splitResult.size) {
+        Hilog.info(0, "test", "Part ${i}: ${splitResult[i].toString()}")
+    }
+    
+    return context.number(Float64(splitResult.size)).toJSValue()
+}
+```
 
 ### func split(Utf16String, Int64, Bool)
 
@@ -7293,6 +8573,22 @@ public func startsWith(target: Utf16String): Bool
 |:----|:----|
 |Bool|是否以目标字符串开头。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func checkStartsWith(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello World")
+    let target = Utf16String("Hello")
+    
+    let startsWithResult = utf16Str.startsWith(target)
+    
+    Hilog.info(0, "test", "String starts with 'Hello': ${startsWithResult}")
+    
+    return context.boolean(startsWithResult).toJSValue()
+}
+```
+
 ### func toJSValue(JSContext)
 
 ```cangjie
@@ -7315,6 +8611,22 @@ public func toJSValue(context: JSContext): JSValue
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS 统一类型。|
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToJSValue(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello from Utf16String")
+    
+    // 转换为 JSValue
+    let jsValue = utf16Str.toJSValue(context)
+    
+    Hilog.info(0, "test", "Converted to JSValue")
+    
+    return jsValue
+}
+```
+
 ### func toString()
 
 ```cangjie
@@ -7330,6 +8642,20 @@ public func toString(): String
 |类型|说明|
 |:----|:----|
 |String|转换后的 String 对象。|
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func convertToString(context: JSContext): JSValue {
+    let utf16Str = Utf16String("Hello Utf16String")
+    let stringResult = utf16Str.toString()
+    
+    Hilog.info(0, "test", "Converted to string: ${stringResult}")
+    
+    return context.string(stringResult).toJSValue()
+}
+```
 
 ### func !=(Utf16String)
 
