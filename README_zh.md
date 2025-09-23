@@ -50,15 +50,15 @@
 
 ```text
 arkcompiler/cangjie_ark_interop
-├── ohos                   # 仓颉互操作API及公共仓代码
+├── ohos                   # 仓颉互操作API及公共能力代码
 |   ├── ark_interop        # 仓颉互操作库
 |   ├── ark_interop_helper # 仓颉互操作库工具类
 |   ├── ark_interop_macro  # 仓颉互操作库宏
-|   ├── business_exception # 仓颉公共仓异常类
-|   ├── callback_invoke    # 仓颉公共仓回调工具类
-|   ├── encoding           # 仓颉公共仓json库
-|   ├── ffi                # 仓颉公共仓C语言互操作库
-|   ├── labels             # 仓颉公共仓api level标签
+|   ├── business_exception # 仓颉公共能力，提供异常类
+|   ├── callback_invoke    # 仓颉公共能力， 提供回调工具类
+|   ├── encoding           # 仓颉公共能，提供JSON库
+|   ├── ffi                # 仓颉公共能力，提供C语言互操作库
+|   ├── labels             # 仓颉公共能力，提供api level标签
 |   ├── utf16string        # 仓颉互操作库提供的utf16字符串处理类
 ├── doc                    # 仓颉文档，包括API参考、应用开发指南、仓颉编程语言用户手册
 |   ├── API_Reference      # 仓颉API参考
