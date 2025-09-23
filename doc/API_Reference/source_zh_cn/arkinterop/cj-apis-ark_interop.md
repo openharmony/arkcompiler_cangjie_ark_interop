@@ -19,7 +19,6 @@ sealed interface JSInteropByte {}
 如下类型扩展了此接口：
 
 - Byte
--
 
 **起始版本：** 21
 
@@ -135,6 +134,28 @@ sealed interface JSKeyable <: ToString & ToJSValue {
 
 - ToString
 - ToJSValue
+  
+**示例：**
+
+<!--compile-->
+```cangjie
+func keyableUsage(context: JSContext): Unit {
+    // 创建可作为 JSObject 键的数组
+    let keys: Array<JSKeyable> = [
+        1,                   // Int64
+        "2",                 // String
+        context.string("a"), // JSString
+        context.symbol()     // JSSymbol
+    ]
+    let object = context.object()
+    let value = context.boolean(true).toJSValue()
+    for (key in keys) {
+        object[key] = value
+    }
+    let isBool = object[keys[0]].isBoolean()
+    Hilog.info(0, "test", "isBool: ${isBool}")
+}
+```
 
 ## interface ToJSValue
 
@@ -5046,6 +5067,29 @@ public class JSObject <: JSObjectBase {}
 
 - [JSObjectBase](#class-jsobjectbase)
 
+**示例：**
+
+```cangjie
+func setObjectProperties(context: JSContext): JSValue {
+    let jsObject = context.object()
+    
+    // 设置不同类型的属性
+    jsObject.setProperty("name", context.string("John").toJSValue())
+    jsObject.setProperty("age", context.number(30).toJSValue())
+    jsObject.setProperty("isActive", context.boolean(true).toJSValue())
+    
+    // 设置嵌套对象
+    let address = context.object()
+    address.setProperty("city", context.string("Beijing").toJSValue())
+    address.setProperty("country", context.string("China").toJSValue())
+    jsObject.setProperty("address", address.toJSValue())
+    
+    Hilog.info(0, "test", "Set object properties")
+    
+    return jsObject.toJSValue()
+}
+```
+
 ## class JSObjectBase
 
 ```cangjie
@@ -5713,6 +5757,22 @@ public class JSRuntime {
 >
 > 仓颉应用中只能在主线程上使用 JSRuntime() 创建 ArkTS 运行时。
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func getJSRuntimeInstance(): Unit {
+    // 创建 JSRuntime 实例
+    let runtime = JSRuntime()
+    // 获取 JSContext 实例
+    let context = runtime.mainContext
+    
+    Hilog.info(0, "test", "Got JSRuntime instance")
+    
+    let jsValue = context.string("JSRuntime instance obtained").toJSValue()
+}
+```
+
 ### prop mainContext
 
 ```cangjie
@@ -5852,6 +5912,21 @@ public class JSStringEx <: JSInteropType<JSStringEx> & Equatable<JSStringEx> & T
 - [JSInteropType\<JSStringEx>](#interface-jsinteroptype)
 - Equatable\<JSStringEx>
 - ToString
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func createJSStringEx(context: JSContext): JSValue {
+    // 创建一个 JSStringEx 对象
+    let sourceString: String = "Hello, World!"
+    let jsStringEx = JSStringEx(sourceString)
+    
+    Hilog.info(0, "test", "Created JSStringEx with content: ${jsStringEx.toString()}")
+    
+    return jsStringEx.toJSValue(context)
+}
+```
 
 ### init(String)
 
@@ -6005,6 +6080,25 @@ public class JSSymbol <: JSHeapObject & JSKeyable {}
 - [JSHeapObject](#class-jsheapobject)
 - [JSKeyable](#interface-jskeyable)
 
+**示例：**
+
+<!--compile-->
+```cangjie
+func createSymbol(context: JSContext): JSValue {
+    // 创建一个 JSSymbol 对象
+    let symbol = context.symbol(description: "mySymbol")
+    // 创建一个 JSObject 对象
+    let object = context.object()
+    // 使用symbol作为键保存一个隐藏属性
+    object[symbol] = context.string("123").toJSValue()
+    // 创建一个对外可见函数，在这个函数中，通过symbol访问对象属性
+    object["name"] = context.function {　context, callInfo =>
+        return object[symbol]
+    }.toJSValue()
+    return jsStringEx.toJSValue(context)
+}
+```
+
 ### prop description
 
 ```cangjie
@@ -6069,6 +6163,37 @@ public open class SharedObject {
 
 **起始版本：** 21
 
+**示例：**
+
+<!--compile-->
+```cangjie
+// 创建一个类继承 SharedObject
+class MyObject <: SharedObject {
+    let name: String = "MyObject"
+}
+
+func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
+    // 实例化一个 MyObject 对象
+    let data = MyObject()
+    // 从 data 创建一个 JSExternal 对象
+    let external = context.external(data)
+    // 创建一个 JSObject 对象
+    let object = context.object()
+    // 绑定 external 到 object
+    object.attachCJObject(external)
+    // 创建一个对外可见函数，在这个函数中，通过object访问对象属性
+    object["name"] = context.function { context, callInfo =>
+        // 获取 this 对象
+        let object = callInfo.thisArg.asObject()
+        // 从　object 中获取绑定的 MyObject 实例
+        let data = object.getAttachInfo<MyObject>().getOrThrow()
+        // 把 data.name 转换为 JSString
+        let name = context.string(data.name)
+        return name.toJSValue()
+    }.toJSValue()
+    return object.toJSValue()
+}
+```
 ### prop nativeId
 
 ```cangjie
@@ -6326,6 +6451,27 @@ public struct JSType {
 在 ArkTS 里，通过 typeof 操作符可枚举出某个数据的大致类型，JSType 罗列出这些类型并且加入 EXTERNAL 类型。
 
 **起始版本：** 21
+
+**示例：**
+
+<!--compile-->
+```cangjie
+func doSth(context: JSContext, callInfo: JSCallInfo): JSValue {
+    // 获取首个参数
+    let firstArg = callInfo[0]
+    // 获取参数类型
+    let typeInfo = firstArg.typeof()
+    // 判断参数类型
+    if (typeInfo == JSType.STRING) {
+        Hilog.info(0, "test", "input is string: ${firstArg.toString()}")
+    } else {
+        // 获取参数类型名称
+        let typeName = typeInfo.toString()
+        Hilog.info(0, "test", "input is unexpected type: ${typeName}")
+    }
+    return context.undefined().toJSValue()
+}
+```
 
 ### static let BIGINT
 
