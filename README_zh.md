@@ -2,36 +2,38 @@
 
 ## 简介
 
-仓颉ArkTS互操作库API，用于提供仓颉与ArkTS跨语言互操作能力，包含仓颉互操作库接口、互操作宏接口以及公共能力接口，期望给开发者提供兼顾开发效率和运行效率的跨语言互操作解决方案，提供简洁的互操作开发范式，降低跨语言互通开销。
-
-互操作框架如下图所示：
+仓颉ArkTS互操作库API，用于提供仓颉与ArkTS跨语言互操作能力，包含仓颉互操作库接口、互操作宏接口以及公共能力接口，期望给开发者提供兼顾开发效率和运行效率的跨语言互操作解决方案，提供简洁的互操作开发范式，降低跨语言互通开销。整体架构如下图所示：
 
 ![仓颉互操作API框架](./figures/cangjie-interop.png)
 
-针对互操作场景诉求，仓颉提供ark_interop互操作库来实现与ArkTS的互操作。本库主要提供以下类型映射：
+**架构图说明**
 
-| **仓颉类型**                                                 | **仓颉互操作库类型** | **ArkTS  类型** |
-| ------------------------------------------------------------ | -------------------- | --------------- |
-| Unit                                                         | JSUndefined          | undefined       |
-| 无                                                           | JSNull               | null            |
-| Bool                                                         | JSBoolean            | boolean         |
-| Int8、Int16、Int32、Int64、UInt8、UInt16、UInt32、UInt64、Float16、Float32、Float64 | JSNumber             | number          |
-| String                                                       | JSString             | string          |
-| class、interface                                             | JSObject             | object          |
-| Array                                                        | JSArray              | Array           |
-| BigInt                                                       | JSBigInt             | bigint          |
-| func                                                         | JSFunction           | function        |
-| 无                                                           | JSSymbol             | symbol          |
+针对互操作场景诉求，仓颉提供ark_interop互操作库来实现与ArkTS的互操作。
 
-本库还提供以下的关键数据结构：
+- 互操作库主要提供以下类型映射：
 
-- JSValue: 用于表示来自ArkTS中的对象（如数字、字符串、对象、函数），是仓颉与ArkTS类型转换的桥梁。
-- JSModule: JSModule的目标是提供符号导出能力（导出到ArkTS）。配合自定义静态初始化函数，在动态库被加载时把导出目标注册到全局表，并由ArkTS引擎来执行导出。
-- JSRuntime: 仓颉创建的 ArkTS 运行时。
-- JSContext: 用于表示与ArkTS互操作的上下文，提供模块加载、JSValue创建等能力。
-- JSCallInfo: 用于表示当发生来自于ArkTS互操作调用时 调用的参数集合。
+    | **仓颉类型**                                                 | **仓颉互操作库类型** | **ArkTS  类型** |
+    | ------------------------------------------------------------ | -------------------- | --------------- |
+    | Unit                                                         | JSUndefined          | undefined       |
+    | 无                                                           | JSNull               | null            |
+    | Bool                                                         | JSBoolean            | boolean         |
+    | Int8、Int16、Int32、Int64、UInt8、UInt16、UInt32、UInt64、Float16、Float32、Float64 | JSNumber             | number          |
+    | String                                                       | JSString             | string          |
+    | class、interface                                             | JSObject             | object          |
+    | Array                                                        | JSArray              | Array           |
+    | BigInt                                                       | JSBigInt             | bigint          |
+    | func                                                         | JSFunction           | function        |
+    | 无                                                           | JSSymbol             | symbol          |
 
-最后本互操作库通过C语言互操作调用ArkTS虚拟机提供的接口完成互操作功能。
+- 互操作库还提供以下的关键数据结构：
+
+    - JSValue: 用于表示来自ArkTS中的对象（如数字、字符串、对象、函数），是仓颉与ArkTS类型转换的桥梁。
+    - JSModule: JSModule的目标是提供符号导出能力（导出到ArkTS）。配合自定义静态初始化函数，在动态库被加载时把导出目标注册到全局表，并由ArkTS引擎来执行导出。
+    - JSRuntime: 仓颉创建的 ArkTS 运行时。
+    - JSContext: 用于表示与ArkTS互操作的上下文，提供模块加载、JSValue创建等能力。
+    - JSCallInfo: 用于表示当发生来自于ArkTS互操作调用时 调用的参数集合。
+
+- 互操作库通过C语言互操作调用ArkTS虚拟机和napi提供的接口完成互操作功能。
 
 说明：当前开放的仓颉互操作接口仅支持standard设备。
 
