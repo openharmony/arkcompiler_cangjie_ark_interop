@@ -15,6 +15,8 @@
 
 package ohos.ark_interop
 
+import ohos.business_exception.*
+
 @C
 struct JSEnginePrivate {}
 
@@ -58,10 +60,7 @@ protected func getGlobalContext(): JSContext {
 /**
  * The ArkTS runtime created by Cangjie. 
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSRuntime {
     static var globalRuntime_: ?JSRuntime = None
 
@@ -71,16 +70,16 @@ public class JSRuntime {
     /**
      * Init JSRuntime.
      *
-     * @throws { Exception } - ArkTS Engine is Null.
+     * @throws { BusinessException } 34300014 - Create ArkTS engine fail.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public init() {
         let engine = unsafe { CJ_MRT_ARKTS_CreateEngineStub() }
         if (engine.isNull()) {
-            throw Exception("failed to create JSRuntime")
+            throw BusinessException(34300014, "Create ArkTS engine fail")
         }
         engine_ = engine
         threadId_ = unsafe { ARKTS_GetPosixThreadId() }
@@ -117,10 +116,7 @@ public class JSRuntime {
     /**
      * ArkTS interop context.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public prop mainContext: JSContext {
         get() {
             let env = unsafe { ARKTS_GetContext(engine_) }
@@ -131,10 +127,7 @@ public class JSRuntime {
     /**
      * Get napi environment pointer.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public func getNapiEnv(): CPointer<Unit> {
         unsafe { ARKTS_GetNAPIEnv(engine_) }
     }

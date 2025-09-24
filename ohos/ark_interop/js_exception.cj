@@ -17,8 +17,30 @@ package ohos.ark_interop
 
 import ohos.business_exception.*
 
+internal func jsArrayRangeMisMatch(min: Int64, max: Int64, given: Int64, message!: String = "The accessing index is out of range"): BusinessException {
+    return BusinessException(34300001, "${message}, allowed: [${min}, ${max}), given: ${given}")
+}
+
+internal func jsCodeError(code: Int32, jsMessage: String, jsStack: Array<String>): BusinessException {
+    return outsideError("ArkTS exception, code: ${code}, " +
+        "message: ${jsMessage}, stack: ${String.join(jsStack, delimiter: "\n")}.")
+}
+
+internal func jsCodeError(jsMessage: String, jsStack: Array<String>): BusinessException {
+    return outsideError("ArkTS exception, " +
+        "message: ${jsMessage}, stack: ${String.join(jsStack, delimiter: "\n")}.")
+}
+
+internal func outsideError(message: String): BusinessException {
+    return BusinessException(34300002, "Outside error occurred, ${message}")
+}
+
+internal func jsObjUseAfterFree(kind: String): BusinessException {
+    return BusinessException(34300003, "Accessing reference [${kind}] is beyond reach.")
+}
+
 internal func jsThreadMismatch(bindTid: UInt64, curTid: UInt64): BusinessException {
-    BusinessException(34300004, "Accessing an ArkTS object on wrong thread, bound thread is ${bindTid}, current thread is ${curTid}.")
+    BusinessException(34300004, "Thread mismatch, bound thread is ${bindTid}, current thread is ${curTid}.")
 }
 
 internal func jsTypeMisMatch(acquireType: String, givenType: JSType): BusinessException {
@@ -29,23 +51,30 @@ internal func jsTypeMisMatch(acquireType: JSType, givenType: JSType): BusinessEx
     BusinessException(34300005, "The ArkTS data types do not match, expect: ${acquireType.toString()}, given: ${givenType.toString()}.")
 }
 
-internal func jsArrayRangeMisMatch(min: Int64, max: Int64, given: Int64, message!: String = "The accessing index is out of range"): BusinessException {
-    return BusinessException(34300001, "${message}, allowed: [${min}, ${max}), given: ${given}")
+internal func sizeError(size: Int64, tyName: String): BusinessException {
+    return outsideError("Binding memory's size is not uniformed(${tyName}'s size should be pow of ${size}).")
 }
 
-internal func jsObjUseAfterFree(kind: String): BusinessException {
-    return BusinessException(34300003, "Accessing reference [${kind}] is beyond reach.")
+internal func codecError(): BusinessException {
+    return outsideError("Codec error.")
 }
 
-internal func jsCodeError(code: Int32, jsMessage: String, jsStack: Array<String>): BusinessException {
-    return BusinessException(34300002, "An exception occurred during ArkTS code execution, code: ${code}, " +
-        "message: ${jsMessage}, stack: ${String.join(jsStack, delimiter: "\n")}.")
+internal func nativeIdInvalid(value: Int64): BusinessException {
+    return outsideError("Unknown native reference.")
 }
 
-internal func jsCodeError(jsMessage: String, jsStack: Array<String>): BusinessException {
-    return BusinessException(34300002, "An exception occurred during ArkTS code execution, " +
-        "message: ${jsMessage}, stack: ${String.join(jsStack, delimiter: "\n")}.")
+internal func propertyError(object: String, propertyName: String, expectType: String): BusinessException {
+    return outsideError("Property ${object}.${propertyName} is not ${expectType}")
 }
+
+internal func integerOverflow(): BusinessException {
+    return outsideError("Integer overflow.")
+}
+
+internal func indexInvalid(key: String): BusinessException {
+    return outsideError("Dict key not found.")
+}
+
 
 class JSInteropNativeError <: Exception {
     public init(message: String) {

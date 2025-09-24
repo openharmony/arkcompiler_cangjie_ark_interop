@@ -134,10 +134,7 @@ func throwNativeErrorToCJ(message: CString): Unit {
 /**
  * A static class that provides interface for exporting symbol registration.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSModule {
     private static var lastModule_ = JSModule()
     static let loadedModules_ = HashMap<String, JSModule>()
@@ -161,10 +158,7 @@ public class JSModule {
     /**
      * Register the interface to be exported to ArkTS.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public static func registerModule(register: ModuleRegister): Unit {
         lastModule_.addExporter(register)
     }
@@ -172,10 +166,7 @@ public class JSModule {
     /**
      * Register a class to be exported to ArkTS.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public static func registerClass(name: String, register: ClassRegister): Unit {
         lastModule_.addClass(name, register)
     }
@@ -183,10 +174,7 @@ public class JSModule {
     /**
      * Register a function to be exported to ArkTS.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public static func registerFunc(name: String, register: FuncRegister): Unit {
         lastModule_.addFunc(name, register)
     }
@@ -194,10 +182,7 @@ public class JSModule {
     /**
      * Register a function to be exported to ArkTS.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public static func registerFunc(name: String, lambda: JSLambda): Unit {
         lastModule_.addRawFunc(name, lambda)
     }

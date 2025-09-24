@@ -409,7 +409,7 @@ class IDLClass {
                 let obj = jsExt.cast<$(identifier_)>() ?? throw Exception("class: get clazz failed.")
                 return obj
             }
-            public static func toArkTsType(): String {
+            public static func toArktsType(): String {
                 "class"
             }
         )

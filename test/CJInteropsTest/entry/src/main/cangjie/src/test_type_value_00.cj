@@ -393,7 +393,7 @@ func test_types_13(jsContext: JSContext, jsCallInfo: JSCallInfo): JSValue {
     logger.info("test_types_13 start")
     var jsValue_a = jsCallInfo[0]
     try {
-    //        var context = arkTsValuetoNapiValue(jsContext.getNapiEnv(), jsValue_a)
+    //        var context = arktsValueToNapiValue(jsContext.getNapiEnv(), jsValue_a)
     //        isStageMode(jsContext.getNapiEnv(), context)
     //        getContextStageMode(jsContext.getNapiEnv(), context)
     //        isStageMode(jsContext.getNapiEnv(), context)
