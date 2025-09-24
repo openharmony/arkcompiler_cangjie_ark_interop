@@ -16,7 +16,7 @@ public func arktsValueToNapiValue(env: napi_env, ark_value: JSValue): napi_value
 
 **功能：** 将 JSValue 类型转化为 napi_value 类型。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -39,7 +39,7 @@ public func isStageMode(env: napi_env, context: napi_value): Bool
 
 **功能：** 判断是否处于应用模式。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -66,7 +66,7 @@ public func mapFromJSValue<T>(
 
 **功能：** 把 JSValue 格式的数据转换成 HashMap 。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -94,7 +94,7 @@ public func mapToJSValue<T>(
 
 **功能：** 把 HashMap 格式的数据转换成 JSValue 。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

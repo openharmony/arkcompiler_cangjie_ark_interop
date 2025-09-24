@@ -10,7 +10,7 @@ public abstract class Callback0Argument <: CallbackObject {}
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -26,7 +26,7 @@ public open func invoke(err: ?BusinessException): Unit
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -44,7 +44,7 @@ public abstract class Callback1Argument<A> <: CallbackObject {}
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -60,7 +60,7 @@ public open func invoke(err: ?BusinessException, arg: A): Unit
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -79,7 +79,7 @@ public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {}
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -95,7 +95,7 @@ public open func invoke(err: ?BusinessException, arg1: A): B
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -120,7 +120,7 @@ public abstract class Callback2Argument<A, B> <: CallbackObject {}
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -136,7 +136,7 @@ public open func invoke(err: ?BusinessException, arg1: A, arg2: B): Unit
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -156,7 +156,7 @@ public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject 
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -172,7 +172,7 @@ public open func invoke(err: ?BusinessException, arg1: A, arg2: B, arg3: C): D
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -199,7 +199,7 @@ public abstract class CallbackObject {}
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 ## class CallbackWithReturn
 
@@ -211,7 +211,7 @@ public abstract class CallbackWithReturn<A> <: CallbackObject {}
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -227,7 +227,7 @@ public open func invoke(err: ?BusinessException): A
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -251,4 +251,4 @@ public type Callback<T>=(T) -> Unit
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
