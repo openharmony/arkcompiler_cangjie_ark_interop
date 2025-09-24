@@ -2,29 +2,17 @@
 
 ## Introduction
 
-The Cangjie ArkTS Interop Library API is used to provide cross-language interoperability between Cangjie and ArkTS, includes the common interfaces, interop macro interfaces, and JSON and CFFI interfaces provided by the Cangjie Interop Library, hoping to provide developers with cross-language interop solutions that take into account both development efficiency and operational efficiency, provide a simple interop development paradigm, and reduce cross-language interop overhead.The overall structure is shown below.
+The Cangjie ArkTS Interop Library API is used to provide cross-language interoperability between Cangjie and ArkTS, includes the common interfaces, interop macro interfaces, hoping to provide developers with cross-language interop solutions that take into account both development efficiency and operational efficiency, provide a simple interop development paradigm, and reduce cross-language interop overhead.At the same time, this warehouse also provides public capability interfaces, including JSON serialisation and deserialisation interfaces, C language interoperability utility class interfaces, general exception interfaces, callback interfaces, API Level interfaces, and also offers public documentation, including a Cangjie API reference, application development guide, and Cangjie programming language user manual.Currently, the interfaces open in this warehouse only support standard devices.
 
-Framework architecture:
+The overall structure is shown below.
+
 ![cangjie interop API](./figures/cangjie-interop_eng.png)
 
 ** Architecture Description **
 
-For interop scenarios, Cangjie provides ark_interop libraries to achieve interop with ArkTS. 
-
-- The library mainly provides the following types of mappings.
-
-    | **Cangjie type**                                                 | **Cangjie Interop type** | **ArkTS  Typ** |
-    | ------------------------------------------------------------ | -------------------- | --------------- |
-    | Unit                                                         | JSUndefined          | undefined       |
-    | NA                                                           | JSNull               | null            |
-    | Bool                                                         | JSBoolean            | boolean         |
-    | Int8、Int16、Int32、Int64、UInt8、UInt16、UInt32、UInt64、Float16、Float32、Float64 | JSNumber             | number          |
-    | String                                                       | JSString             | string          |
-    | class、interface                                             | JSObject             | object          |
-    | Array                                                        | JSArray              | Array           |
-    | BigInt                                                       | JSBigInt             | bigint          |
-    | func                                                         | JSFunction           | function        |
-    | NA                                                           | JSSymbol             | symbol          |
+- Interface Description:
+    - Interoperability Library (ohos.ark_interop): Developers can use the APIs provided by interoperability to achieve cross-language parameter passing, function calls, and other capabilities.
+    - Interoperability Macro (ohos.ark_interop_macro): Developers use interoperability macros to annotate the Cangjie interfaces that need to be called by ArkTS code, automatically generating interoperability "glue" code and ArkTS interface declarations.
 
 - The library also provides the following key data structures:
 
@@ -34,13 +22,13 @@ For interop scenarios, Cangjie provides ark_interop libraries to achieve interop
     - JSContext: Used to represent context interoperable with ArkTS, providing module loading, JSValue creation, and more;
     - JSCallInfo: Used to represent a set of parameters that are called when an ArkTS interop call occurs;
 
-- The library completes the interoperability function by calling the interface provided by the ArkTS virtual machine and napi through CFFI.
+- The interoperability library mainly provides the following main types: JSUndefined, JSNull, JSBoolean, JSNumber, JSString, JSObject, JSArray, JSFunction, JSBigInt, etc.
 
-Note: The currently open Cangjie Interop interface only supports standard devices.
+- The library completes the interoperability function by calling the interface provided by the ArkTS virtual machine and napi through CFFI.
 
 ## Public ability
 
-This repository also provides interfaces for public capabilities, such as: JSON serialisation and deserialisation interfaces, C language interoperability interfaces, general exception interfaces, callback interfaces, and API level interfaces.
+This repository also provides interfaces for public capabilities, which are divided into two categories: the first category is for developers to call the public interfaces provided by the Cangjie API, including general exception interfaces and callback interfaces; the second category is for internal public interfaces used during the development of the Cangjie internal API, including JSON serialization and deserialization interfaces, C language interoperability utility class interfaces, and API Level interfaces.
 
 - JSON serialisation and deserialisation interfaces:Used for processing JSON data, achieving mutual conversion between String, JsonValue, and DataModel.
 - C language interoperability interfaces:Provides a utility class for managing C interoperability objects.
@@ -52,7 +40,7 @@ This repository also provides interfaces for public capabilities, such as: JSON 
 
 ```text
 arkcompiler/cangjie_ark_interop
-├── ohos                    # Cangjie interoperability API and public repository code
+├── ohos
 |    ├── ark_interop        # Cangjie Interop API
 |    ├── ark_interop_helper # Cangjie Interop library utility class
 |    ├── ark_interop_macro  # Cangjie Interop macro
@@ -70,9 +58,6 @@ arkcompiler/cangjie_ark_interop
 ├── figures                # Images used in the README
 ├── test                   # Cangjie interop testcases
 ```
-
-## Constraints
-
 
 ## Usage Scenarios
 
@@ -95,13 +80,6 @@ For more detailed examples, please refer to[Using ArkTS Modules in Cangjie Appli
 At the same time, in response to the development complexity brought about by interop, Cangjie provides a declarative interoperability macro ark_interop_macro, which allows developers to use the macro "@Interop[ArkTS]" to mark the functions or types that need to be exported to ArkTS in the Cangjie code, and automatically generate the interoperability "glue layer" code and ArkTS interface declarations during the compilation stage, reducing the complexity of the developer's handwritten interoperability code.
 
 For more detailed examples, please refer to[Cangjie-ArkTS Declarative Interop Macros](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md)
-
-![Cangjie interoperability flow chart](./figures/api_eng.png)
-
-Module Description:
-
-- Interop Libraries: Developers can call APIs provided by Interop to achieve cross-language parameter passing, function calling, and other capabilities.
-- Interop macros: Developers use interoperability macros to mark Cangjie interfaces that need to be called by ArkTS code, and can automatically generate interop "glue" code and ArkTS interface declarations.
 
 ## Developer Document
 
