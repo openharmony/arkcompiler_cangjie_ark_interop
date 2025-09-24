@@ -37,10 +37,7 @@ foreign func ARKTS_BigIntReadBytes(env: JSEnv, value: JSValue_, isNegative: CPoi
  * The JSBigInt object is used to represent a safe reference to the ArkTS bigint type.
  * It can be converted to Cangjie BigInt.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSBigInt <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
@@ -48,10 +45,12 @@ public class JSBigInt <: JSHeapObject {
 
     init(context: JSContext, value: Int64) {
         super(context, createWithInt64(context, value))
+        context.checkJSException() // in case of ArkTS OOM
     }
 
     init(context: JSContext, value: BigInt) {
         super(context, createWithBigInt(context, value))
+        context.checkJSException() // in case of ArkTS OOM
     }
 
     ~init() {
@@ -100,12 +99,16 @@ public class JSBigInt <: JSHeapObject {
 
     /**
      * Convert JSBigInt to Cangjie BigInt.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toBigInt(): BigInt {
-        readAsBigInt(context.env, innerValue)
+        let env = context.env // do lifecycle check and thread check here.
+        readAsBigInt(env, innerValue)
     }
 }

@@ -39,10 +39,7 @@ foreign func ARKTS_PromiseCatch(env: JSEnv, prom: JSValue_, callback: JSValue_):
  * enhancing its usability by combining the syntactic sugar of async and await. The lifecycle of JSPromise exceeds the 
  * referenced ArkTS object.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+    @!APILevel[22, stagemodelonly: true]
 public class JSPromise <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
@@ -54,9 +51,12 @@ public class JSPromise <: JSHeapObject {
 
     /**
      * Register result processing callback function.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func then(onFulfilled: JSFunction, onRejected!: ?JSFunction = None): Unit {
@@ -73,9 +73,12 @@ public class JSPromise <: JSHeapObject {
 
     /**
      * Register exception processing callback function.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func catchError(callback: JSFunction): Unit {
@@ -89,10 +92,7 @@ public class JSPromise <: JSHeapObject {
  * JSPromiseCapability is not a JSValue but a JSVM internal type,
  * the main purpose is to enhance performance.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSPromiseCapability {
     static func create(context: JSContext): JSPromiseCap {
         unsafe { ARKTS_CreatePromiseCapability(context.env) }
@@ -109,20 +109,23 @@ public class JSPromiseCapability {
     }
 
     /**
-     * Notify promise of noraml completion and commits the return value.
+     * Notify promise of normal completion and commits the return value.
      *
-     * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func resolve(value: JSValue): Unit {
         if (isComplete) {
             throw jsObjUseAfterFree("JSPromiseCapability")
         }
+        let env = context.env // do lifecycle check and thread check here.
+        let resolveValue = value.value // do lifecycle check here.
         unsafe {
-            ARKTS_PromiseCapabilityResolve(context.env, promise, value.value)
+            ARKTS_PromiseCapabilityResolve(env, promise, resolveValue)
         }
         isComplete = true
     }
@@ -130,18 +133,21 @@ public class JSPromiseCapability {
     /**
      * Submit an exception to promise.
      *
-     * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func reject(value: JSValue): Unit {
         if (isComplete) {
             throw jsObjUseAfterFree("JSPromiseCapability")
         }
+        let env = context.env // do lifecycle check and thread check here.
+        let rejectValue = value.value // do lifecycle check here.
         unsafe {
-            ARKTS_PromiseCapabilityReject(context.env, promise, value.value)
+            ARKTS_PromiseCapabilityReject(env, promise, rejectValue)
         }
         isComplete = true
     }
@@ -149,17 +155,19 @@ public class JSPromiseCapability {
     /**
      * Convert JSPromiseCapability to JSValue.
      * 
-     * @throws { BusinessException } 34300003 - JSPromiseCapability has been fulfilled or rejected.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
         if (isComplete) {
             throw jsObjUseAfterFree("JSPromiseCapability")
         }
-        let result = unsafe { ARKTS_GetPromiseFromCapability(context.env, promise) }
+        let env = context.env // do lifecycle check and thread check here.
+        let result = unsafe { ARKTS_GetPromiseFromCapability(env, promise) }
         JSValue(context, result)
     }
 }

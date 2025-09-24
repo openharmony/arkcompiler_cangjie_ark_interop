@@ -46,10 +46,7 @@ struct JSCallInfoPrivate {
  * arguments, and get argument by index. Each ArkTS function call saves the argument list and other related
  * information on the ArkTS stack. JSCallInfo is a pointer to this information.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public struct JSCallInfo {
     JSCallInfo(
         let context: JSContext,
@@ -58,26 +55,34 @@ public struct JSCallInfo {
 
     /**
      * Number of input arguments.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public prop count: Int64 {
         get() {
+            context.checkLifecycleAndThread()
             Int64(unsafe { ARKTS_GetArgCount(callInfo) })
         }
     }
 
     /**
      * `this` pointer.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public prop thisArg: JSValue {
         get() {
+            context.checkLifecycleAndThread()
             let result = unsafe { ARKTS_GetThisArg(callInfo) }
             JSValue(context, result)
         }
@@ -86,13 +91,17 @@ public struct JSCallInfo {
     /**
      * Get argument at index.
      * 
-     * @throws { BusinessException } 34300001 - Index is less than 0.
+     * @throws { BusinessException } 34300001 - The accessing index is out of range.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public operator func [](index: Int64): JSValue {
+        context.checkLifecycleAndThread()
+        // for compatibility of optional argument parsing.
         if (index >= count) {
             return context.void
         }
@@ -135,14 +144,13 @@ func cjLambdaDestructor(env: JSEnv, lambdaId: Int64): Unit {
 /**
  * A safe reference to the ArkTS function.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSFunction <: JSHeapObject {
     static func createFunction(context: JSContext, lambda: JSLambda): JSValue_ {
         let lambdaId = context.sharedLambda_.append(lambda)
-        unsafe { ARKTS_CreateFunc(context.env, lambdaId) }
+        let result = unsafe { ARKTS_CreateFunc(context.env, lambdaId) }
+        context.checkJSException() // in case of ArkTS OOM
+        return result
     }
 
     init(context: JSContext, value: JSValue_) {
@@ -157,92 +165,121 @@ public class JSFunction <: JSHeapObject {
         unsafe { ARKTS_DisposeGlobal(context.env_, globalValue_) }
     }
 
-    static func callWithNoneArg(context: JSContext, fun: JSValue_, thisArg: JSValue_): JSValue {
-        let result = unsafe {
+    static func callWithNoneArg(env: JSEnv, fun: JSValue_, thisArg: JSValue_): JSValue_ {
+        unsafe {
             ARKTS_Call(
-                context.env,
+                env,
                 fun,
                 thisArg,
                 0,
                 CPointer<JSValue_>()
             )
         }
-        JSValue(context, result)
     }
 
-    static func callWithOneArg(context: JSContext, fun: JSValue_, thisArg: JSValue_, arg: JSValue): JSValue {
-        var mutableArg = arg.value
-        let result = unsafe {
+    static func callWithOneArg(env: JSEnv, fun: JSValue_, thisArg: JSValue_, arg: JSValue_): JSValue_ {
+        var mutableArg = arg
+        unsafe {
             ARKTS_Call(
-                context.env,
+                env,
                 fun,
                 thisArg,
                 1,
                 inout mutableArg
             )
         }
-        JSValue(context, result)
     }
 
-    static func callWithManyArgs(context: JSContext, fun: JSValue_, thisArg: JSValue_, args: Array<JSValue>): JSValue {
-        let result = unsafe {
-            let jsArr = Array<JSValue_>(args.size) {
-                index => args[index].value
+    static func callWithManyArgs(env: JSEnv, fun: JSValue_, thisArg: JSValue_, args: Array<JSValue_>): JSValue_ {
+        unsafe {
+            let rawHandle = acquireArrayRawData(args)
+            let result = try {
+                // may raise Exception during call, so release rawHandle before throw.
+                ARKTS_Call(
+                    env,
+                    fun,
+                    thisArg,
+                    Int32(args.size),
+                    rawHandle.pointer
+                )
+            } catch (e: Exception) {
+                releaseArrayRawData(rawHandle)
+                throw e
             }
-            let rawHandle = acquireArrayRawData(jsArr)
-            let result = ARKTS_Call(
-                context.env,
-                fun,
-                thisArg,
-                Int32(args.size),
-                rawHandle.pointer
-            )
+
             releaseArrayRawData(rawHandle)
             result
         }
-        JSValue(context, result)
     }
 
-    static func callWithArr(context: JSContext, fun: JSValue_, thisArg: JSValue_, args: Array<JSValue>): JSValue {
+    static func callWithArr(env: JSEnv, fun: JSValue_, thisArg: JSValue_, args: Array<JSValue_>): JSValue_ {
         if (args.size == 0) {
-            callWithNoneArg(context, fun, thisArg)
+            callWithNoneArg(env, fun, thisArg)
         } else if (args.size == 1) {
-            callWithOneArg(context, fun, thisArg, args[0])
+            callWithOneArg(env, fun, thisArg, args[0])
         } else {
-            callWithManyArgs(context, fun, thisArg, args)
+            callWithManyArgs(env, fun, thisArg, args)
         }
     }
 
     /**
      * An ArkTS function call with None argument.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
-        callWithNoneArg(context, innerValue, thisArg.value)
+        let env = context.env // do lifecycle check and thread check here.
+        let thisArgValue = thisArg.value // do lifecycle check here.
+
+        let result = callWithNoneArg(env, innerValue, thisArgValue)
+        JSValue(context, result)
     }
 
     /**
      * An ArkTS function call with one argument.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
-        callWithOneArg(context, innerValue, thisArg.value, arg)
+        let env = context.env // do lifecycle check and thread check here.
+        let thisArgValue = thisArg.value // do lifecycle check here.
+        let argValue = arg.value // do lifecycle check here.
+
+        let result = callWithOneArg(env, innerValue, thisArgValue, argValue)
+        JSValue(context, result)
     }
 
     /**
      * An ArkTS function call with multiple arguments.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().toJSValue()): JSValue {
-        callWithArr(context, innerValue, thisArg.value, args)
+        let env = context.env // do lifecycle check and thread check here.
+        let thisArgValue = thisArg.value // do lifecycle check here.
+        let argValues = Array<JSValue_>(args.size) { idx =>
+            args[idx].value // do lifecycle check here.
+        }
+
+        let result = callWithArr(env, innerValue, thisArgValue, argValues)
+        JSValue(context, result)
     }
 }

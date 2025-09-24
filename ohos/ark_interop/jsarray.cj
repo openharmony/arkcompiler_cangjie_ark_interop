@@ -34,10 +34,7 @@ foreign func ARKTS_GetElement(env: JSEnv, arr: JSValue_, index: UInt32): JSValue
  * The JSArray object is used to represent a safe reference to the ArkTS array.
  * It supports getting length, reading and writing elements.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSArray <: JSHeapObject {
     init(context: JSContext, value: JSValue_) {
         super(context, value)
@@ -69,63 +66,76 @@ public class JSArray <: JSHeapObject {
 
     /**
      * Array length.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public prop size: Int64 {
         get() {
-            Int64(unsafe { ARKTS_GetArrayLength(context.env, innerValue) })
+            let env = context.env // do lifecycle check and thread check here.
+            Int64(unsafe { ARKTS_GetArrayLength(env, innerValue) })
         }
     }
 
     /**
      * Get the element at index.
      *
-     * @throws { BusinessException } 34300001 - The index is out of range.
+     * @throws { BusinessException } 34300001 - The accessing index is out of range.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public operator func [](index: Int64): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         if (index < 0 || index >= size) {
             throw jsArrayRangeMisMatch(0, size, index)
         }
-        let result = unsafe { ARKTS_GetElement(context.env, innerValue, UInt32(index)) }
+        let result = unsafe { ARKTS_GetElement(env, innerValue, UInt32(index)) }
         JSValue(context, result)
     }
 
     /**
      * Set the element at index.
      *
-     * @throws { BusinessException } 34300001 - The index is less than 0.
+     * @throws { BusinessException } 34300001 - The accessing index is out of range.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public operator func [](index: Int64, value!: JSValue): Unit {
+        let env = context.env // do lifecycle check and thread check here.
         if (index < 0) {
             throw jsArrayRangeMisMatch(0, size, index)
         }
-        unsafe { ARKTS_SetElement(context.env, innerValue, UInt32(index), value.value) }
+        unsafe { ARKTS_SetElement(env, innerValue, UInt32(index), value.value) }
     }
 
     /**
      * Set the element at index.
      *
-     * @throws { BusinessException } 34300001 - The index is less than 0.
+     * @throws { BusinessException } 34300001 - The accessing index is out of range.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public operator func [](index: Int64, value!: JSHeapObject): Unit {
+        let env = context.env // do lifecycle check and thread check here.
         if (index < 0) {
             throw jsArrayRangeMisMatch(0, size, index)
         }
-        unsafe { ARKTS_SetElement(context.env, innerValue, UInt32(index), value.innerValue) }
+        unsafe { ARKTS_SetElement(env, innerValue, UInt32(index), value.innerValue) }
     }
 }
