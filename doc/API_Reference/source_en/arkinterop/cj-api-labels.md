@@ -23,7 +23,7 @@ public interface PermissionValue {
 
 **Function:** Used to handle "AND/OR" relationships between permissions.
 
-**Since:** 21
+**Since:** 22
 
 ### func &(PermissionValue)
 
@@ -33,7 +33,7 @@ operator func &(rhs: PermissionValue): PermissionValue
 
 **Function:** Performs an "AND" operation with another permission set. Returns the permission set after the "AND" operation.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -55,7 +55,7 @@ operator func |(rhs: PermissionValue): PermissionValue
 
 **Function:** Performs an "OR" operation with another permission set. Returns the permission set after the "OR" operation.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -89,7 +89,7 @@ public class APILevel {
 
 **Function:** Definition of labels. Labels are used to annotate APIs. Labels include atomicservice (whether atomic service is supported), crossplatform (whether cross-platform is supported), deprecated (deprecated version), form (whether supported in forms), permission (required permissions), since (API level), stagemodelonly (whether only Stage model is supported), syscap (required system capabilities), etc.
 
-**Since:** 21
+**Since:** 22
 
 ### let atomicservice
 
@@ -103,7 +103,7 @@ public let atomicservice: Bool
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let crossplatform
 
@@ -117,7 +117,7 @@ public let crossplatform: Bool
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let deprecated
 
@@ -131,7 +131,7 @@ public let deprecated: UInt8
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let form
 
@@ -145,7 +145,7 @@ public let form: Bool
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let level
 
@@ -159,7 +159,7 @@ public let level: UInt8
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let permission
 
@@ -173,7 +173,7 @@ public let permission:?PermissionValue
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let stagemodelonly
 
@@ -187,7 +187,7 @@ public let stagemodelonly: Bool
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let syscap
 
@@ -201,7 +201,7 @@ public let syscap: String
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### init(UInt8, Bool, Bool, UInt8, Bool, ?PermissionValue, Bool, String)
 
@@ -211,7 +211,7 @@ public const init(level_val: UInt8, atomicservice!: Bool = false, crossplatform!
 ```
 **Function:** APILevel constructor.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -238,7 +238,7 @@ public class PermissionAnd <: PermissionValue {
 
 **Function:** Represents the "AND" operation of multiple permissions.
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -256,7 +256,7 @@ public let lhs: PermissionValue
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let rhs
 
@@ -270,7 +270,7 @@ public let rhs: PermissionValue
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### init(PermissionValue, PermissionValue)
 
@@ -280,7 +280,7 @@ public const init(lhs: PermissionValue, rhs: PermissionValue)
 
 **Function:** Constructs a PermissionAnd permission set, representing the "AND" operation of two permission sets.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -297,7 +297,7 @@ public const override operator func &(rhs: PermissionValue): PermissionValue
 
 **Function:** Performs an "AND" operation with another permission set. Returns the permission set after the "AND" operation.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -319,7 +319,7 @@ public const override operator func |(rhs: PermissionValue): PermissionValue
 
 **Function:** Performs an "OR" operation with another permission set. Returns the permission set after the "OR" operation.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -345,7 +345,7 @@ public class PermissionOr <: PermissionValue {
 
 **Function:** Represents the logical "OR" operation of multiple permissions.
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -363,7 +363,7 @@ public let lhs: PermissionValue
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### let rhs
 
@@ -377,7 +377,7 @@ public let rhs: PermissionValue
 
 **Read/Write:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### init(PermissionValue, PermissionValue)
 
@@ -387,7 +387,7 @@ public const init(lhs: PermissionValue, rhs: PermissionValue)
 
 **Function:** Constructs a PermissionOr permission set, representing the logical "OR" operation of two permission sets.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -404,7 +404,7 @@ public const override operator func &(rhs: PermissionValue): PermissionValue
 
 **Function:** Performs a logical "AND" operation with another permission set. Returns the result permission set after the "AND" operation.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -426,7 +426,7 @@ public const override operator func |(rhs: PermissionValue): PermissionValue
 
 **Function:** Performs a logical "OR" operation with another permission set. Returns the result permission set after the "OR" operation.
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -446,7 +446,7 @@ extend String <: PermissionValue {}
 
 **Functionality:** The following is an implementation that extends the PermissionValue interface, using strings to represent individual permissions.
 
-**Initial Version:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -460,7 +460,7 @@ public const operator func &(rhs: PermissionValue): PermissionValue
 
 **Functionality:** Performs a logical "AND" operation with another permission set. Returns the resulting permission set after the "AND" operation.
 
-**Initial Version:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -482,7 +482,7 @@ public const operator func |(rhs: PermissionValue): PermissionValue
 
 **Functionality:** Performs a logical "OR" operation with another permission set and returns the resulting permission set after the operation.
 
-**Initial Version:** 21
+**Since:** 22
 
 **Parameters:**
 

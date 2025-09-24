@@ -15,7 +15,7 @@ public open class BusinessException <: Exception {
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -33,7 +33,7 @@ public let code: Int32
 
 **Access:** Read-only
 
-**Since:** 21
+**Since:** 22
 
 ### init(Int32, String)
 
@@ -45,7 +45,7 @@ public init(code: Int32, msg: String)
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -64,7 +64,7 @@ public open func toString(): String
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Return Value:**
 
@@ -85,7 +85,7 @@ public class BusinessError<T> <: BusinessException  {
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parent Type:**
 
@@ -103,7 +103,7 @@ public var data: T
 
 **Access:** Read-write
 
-**Since:** 21
+**Since:** 22
 
 ### init(T, Int32, String)
 
@@ -115,7 +115,7 @@ public init(data: T, code: Int32, msg: String)
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Parameters:**
 
@@ -135,7 +135,7 @@ protected override func getClassName(): String
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
 
 **Return Value:**
 
@@ -153,4 +153,4 @@ public type AsyncCallback<T>=(Option<AsyncError>, Option<T>) -> Unit
 
 **System Capability:** SystemCapability.Base
 
-**Since:** 21
+**Since:** 22
