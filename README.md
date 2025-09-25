@@ -1,8 +1,17 @@
-# Cangjie Interop API Public Repository
+# Cangjie - ArkTS Interoperability
 
 ## Introduction
 
-The Cangjie ArkTS Interop Library API is used to provide cross-language interoperability between Cangjie and ArkTS, includes the common interfaces, interop macro interfaces, hoping to provide developers with cross-language interop solutions that take into account both development efficiency and operational efficiency, provide a simple interop development paradigm, and reduce cross-language interop overhead.At the same time, this warehouse also provides public capability interfaces, including JSON serialisation and deserialisation interfaces, C language interoperability utility class interfaces, general exception interfaces, callback interfaces, API Level interfaces, and also offers public documentation, including a Cangjie API reference, application development guide, and Cangjie programming language user manual.Currently, the interfaces open in this warehouse only support standard devices.
+The Cangjie ArkTS Interop Library is used to provide cross-language interoperability between Cangjie and ArkTS, includes the common interfaces, interop macro interfaces, hoping to provide developers with cross-language interop solutions that take into account both development efficiency and operational efficiency, provide a simple interop development paradigm, and reduce cross-language interop overhead.At the same time, this warehouse also provides public capability interfaces, including JSON serialisation and deserialisation interfaces, C language interoperability utility class interfaces, general exception interfaces, Cross-language callback interface, and also offers public documentation, including a Cangjie API reference, application development guide, and Cangjie programming language user manual.Currently, the interfaces open in this warehouse only support standard devices.
+
+The public capability interfaces provided by this repository are divided into two categories: the first category is for developers to call the public interfaces provided by the Cangjie API, including general exception interfaces and callback interfaces; the second category is for internal public interfaces used during the development of the Cangjie internal API, including JSON serialization and deserialization interfaces, and C language interoperability utility class interfaces.
+
+- JSON serialisation and deserialisation interfaces:Used for processing JSON data, achieving mutual conversion between String, JsonValue, and DataModel.
+- C language interoperability interfaces:Provides a utility class for managing C interoperability objects.
+- general exception interfaces:A general exception class BusinessException.
+- callback interfaces:A utility class for function callback parameters.
+
+## System architecture
 
 The overall structure is shown below.
 
@@ -25,16 +34,6 @@ The overall structure is shown below.
 - The interoperability library mainly provides the following main types: JSUndefined, JSNull, JSBoolean, JSNumber, JSString, JSObject, JSArray, JSFunction, JSBigInt, etc.
 
 - The library completes the interoperability function by calling the interface provided by the ArkTS virtual machine and napi through CFFI.
-
-## Public ability
-
-This repository also provides interfaces for public capabilities, which are divided into two categories: the first category is for developers to call the public interfaces provided by the Cangjie API, including general exception interfaces and callback interfaces; the second category is for internal public interfaces used during the development of the Cangjie internal API, including JSON serialization and deserialization interfaces, C language interoperability utility class interfaces, and API Level interfaces.
-
-- JSON serialisation and deserialisation interfaces:Used for processing JSON data, achieving mutual conversion between String, JsonValue, and DataModel.
-- C language interoperability interfaces:Provides a utility class for managing C interoperability objects.
-- general exception interfaces:A general exception class BusinessException.
-- callback interfaces:A utility class for function callback parameters.
-- API level interfaces:Provides an API Level interface for obtaining the current API Level.
 
 ## Directory
 
@@ -81,11 +80,7 @@ At the same time, in response to the development complexity brought about by int
 
 For more detailed examples, please refer to[Cangjie-ArkTS Declarative Interop Macros](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md)
 
-## Developer Document
-
-[API Document](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)
-
-[Develop Guide](hhttps://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/summary_cjnative_ohos.md)
+For interoperability related APIs, please refer to[API Document](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)
 
 ## Code Contribution
 
@@ -93,6 +88,8 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 
 ## Related Repositories
 
-[arkui_napi](https://gitee.com/openharmony/arkui_napi)
+[arkui_napi](https://gitcode.com/openharmony/arkui_napi)
 
-[ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)
+[ability_runtime](https://gitcode.com/openharmony/ability_ability_runtime)
+
+[ability_runtime](https://gitcode.com/openharmony/arkcompiler_ets_runtime)
