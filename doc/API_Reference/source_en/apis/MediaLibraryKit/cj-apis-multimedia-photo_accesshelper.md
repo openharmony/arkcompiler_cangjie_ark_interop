@@ -1295,7 +1295,7 @@ let ctx = Global.abilityContext // Obtain the Context application context as des
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
+let burstKey = YOUR_UUID //The UUID of the submitted photo.
 let fetchResult: PhotoAssetResult = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
 

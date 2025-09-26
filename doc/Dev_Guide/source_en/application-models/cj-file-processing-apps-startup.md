@@ -12,7 +12,33 @@ Figure 1 Visual Demonstration
 
 ## Implementation Steps
 
-### Caller Implementation Steps
+**Table 1** Description of [Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#class-want) Parameters in startAbility Requests
+
+| Parameter Name | Type   | Required | Description                                                                                                                                                                                   |
+|----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| uri            | String | Yes      | The URI path of the file to be opened, typically used in conjunction with `type`.<br/>URI format: `file://bundleName/path`<br/>- `file`: Identifier for file URIs.<br/>- `bundleName`: Owner of the file resource.<br/>- `path`: Path of the file resource within the application sandbox. |
+| type           | String | No       | The type of file to be opened. Currently compatible with [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com), e.g., `text/xml`, `image/*`, etc.<br/>**Note:** <br/>1. `type` is optional. If not provided, the system attempts to infer the file type from the URI suffix. If provided, ensure it matches the file type in the URI; otherwise, the system may fail to find a suitable application.<br/>2. `*/*` is not supported. |
+| parameters     | String | No       | Custom parameters defined by the system and assigned by developers as needed. For file-opening scenarios, see Table 2.                                                                       |
+| flags          | UInt32 | No       | Processing method. For file-opening scenarios, see Table 3.                                                                                                                                  |
+
+**Table 2** Description of [parameters](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#enum-params)  
+
+| Parameter Name                              | Type    | Description                                                                                                                                                                |
+|---------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ability.params.stream                       | String  | Indicates that the file URI should be authorized to the target party, used when the file to be opened has dependencies on other files (e.g., local HTML files relying on local resource files). The value must be a string array of file URIs. File URI format follows the `uri` parameter in Table 1. |
+| ohos.ability.params.showDefaultPicker       | Bool    | Whether to force-display a selection dialog for file-opening methods. Default is `false`.<br/>- `false`: The system decides whether to directly launch the file-opening app or display a dialog based on policies or default app settings.<br/>- `true`: Always display the dialog.                      |
+| showCaller                                  | Bool    | Whether the caller itself should participate in the matching process as a target application. Default is `false`.<br/>- `false`: Does not participate.<br/>- `true`: Participates.                                                      |
+
+**Table 3** Description of [flags](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md#enum-flags)  
+
+| Parameter Name                       | Value       | Description                       |
+|--------------------------------------|-------------|-----------------------------------|
+| FlagAuthReadUriPermission        | 0x00000001  | Grants read permission for the URI. |
+| FlagAuthWriteUriPermission       | 0x00000002  | Grants write permission for the URI. |
+
+## Integration Steps
+
+### Caller Integration Steps
 
 1. Import relevant modules.
 
@@ -68,7 +94,7 @@ Figure 1 Visual Demonstration
                 uri: uri,
                 `type`: 'general.plain-text', // Specifies the file type to be opened
                 // Configure read/write permissions for shared files, e.g., granting permissions to the file handler application
-                flags: Flags.FLAG_AUTH_WRITE_URI_PERMISSION.getValue() | Flags.FLAG_AUTH_READ_URI_PERMISSION.getValue()
+                flags: Flags.FlagAuthWriteUriPermission.getValue() | Flags.FlagAuthReadUriPermission.getValue()
             )
         }
         // ...
@@ -97,7 +123,7 @@ Figure 1 Visual Demonstration
                 uri: uri,
                 `type`: 'general.plain-text', // Specifies the file type to be opened
                 // Configure read/write permissions for shared files, e.g., granting permissions to the file handler application
-                flags: Flags.FLAG_AUTH_WRITE_URI_PERMISSION.getValue() | Flags.FLAG_AUTH_READ_URI_PERMISSION.getValue()
+                flags: Flags.FlagAuthWriteUriPermission.getValue() | Flags.FlagAuthReadUriPermission.getValue()
             )
             try {
                 this

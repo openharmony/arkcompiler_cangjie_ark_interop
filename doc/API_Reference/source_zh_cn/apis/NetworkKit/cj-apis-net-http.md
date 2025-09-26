@@ -2274,7 +2274,7 @@ let option = HttpRequestOptions(
         "/path/to/client.pem", // 默认不使用客户端证书
         "/path/to/client.key", // 若证书包含Key信息，传入空字符串
         certType: CertType.PEM, // 可选，默认使用PEM
-        keyPassword: "passwordToKey" // 可选，输入key文件的密码
+        keyPassword: "PASSWORD_TO_KEY" // 可选，输入key文件的密码
     ),
     multiFormDataList: [ // 可选，仅当Header中，'content-Type'为'multipart/form-data'时生效
         MultiFormData (
