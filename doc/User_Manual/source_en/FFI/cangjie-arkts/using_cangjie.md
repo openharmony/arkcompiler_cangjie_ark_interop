@@ -1,3 +1,3 @@
 # Using Cangjie in ArkTS Applications
 
-ArkTS applications support loading Cangjie modules. A Cangjie module corresponds to a Cangjie package, which may contain elements such as pages, components, and state management. Pages are a key component of modules, typically constituting an entire module. Below we describe how to add Cangjie pages and ordinary Cangjie modules in DevEco Studio.
+In ArkTS applications, by calling Cangjie code through cross language interoperability, Cangjie's high-performance and high concurrency advantages can be leveraged to enhance application performance. The ArkTS application supports loading Cangjie modules and Cangjie pages. The Cangjie module corresponds to a Cangjie package, which can contain elements such as pages, components, and state management. The following introduces how to add Cangjie pages and Cangjie modules in DevEco Studio.
