@@ -1,4 +1,4 @@
-# 仓颉使用 ArkTS 数据
+# 仓颉访问 ArkTS 数据
 
 此章节详细介绍通过 JSValue 类型使用 ArkTS 数据。
 
@@ -92,7 +92,7 @@
     ```typescript
     // 导入仓颉动态库，该动态库名称为仓颉包名的名称，该名称需要和互操作接口所在的包名一致
     import { addByObject } from "libohos_app_cangjie_entry.so";
-
+    
     // 调用仓颉接口
     let result = addByObject({a: 1, b: 2});
     console.log("result = " + result);
@@ -404,12 +404,12 @@ startTestWorker();
 
     ```cangjie
     package ohos_app_cangjie_entry
-
+    
     internal import ohos.ark_interop.JSModule
     internal import ohos.ark_interop.JSContext
     internal import ohos.ark_interop.JSCallInfo
     internal import ohos.ark_interop.JSValue
-
+    
     func addByCallback(context: JSContext, callInfo: JSCallInfo): JSValue {
         // 获取第1、2个参数，并转换为Float64
         let a = callInfo[0].toNumber()
@@ -423,7 +423,7 @@ startTestWorker();
         // 调用回调函数
         callback.call(retJSValue)
     }
-
+    
     let EXPORT_MODULE = JSModule.registerModule {
         runtime, exports =>
             exports["addByCallback"] = runtime.function(addByCallback).toJSValue()
