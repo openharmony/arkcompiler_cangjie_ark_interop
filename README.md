@@ -31,7 +31,12 @@ The overall structure is shown below.
     - JSContext: Used to represent context interoperable with ArkTS, providing module loading, JSValue creation, and more;
     - JSCallInfo: Used to represent a set of parameters that are called when an ArkTS interop call occurs;
 
-- The interoperability library mainly provides the following main types: JSUndefined, JSNull, JSBoolean, JSNumber, JSString, JSObject, JSArray, JSFunction, JSBigInt, etc.
+- Key capabilities:
+    - Module loading: provides the ability to load Cangjie modules on the ArkTS side. For detailed loading methods, please refer to [Loading Cangjie Modules in ArkTS](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/arkts_import_cangjie.md).
+    - Module - Runtime Management: Provides the ability to create ArkTS runtime.
+    - Cross-language function calls: In the Cangjie calling ArkTS scenario, ArkTS functions are invoked through the C language interoperability with the ArkTS runtime interface; in the ArkTS calling Cangjie scenario, Cangjie functions are registered to the ArkTS runtime via the interoperability interface, and then the ArkTS runtime calls the Cangjie functions through the C language interoperability.
+    - Cross-language - Cross-language type conversion: The interoperability library mainly provides the following main types: JSUndefined, JSNull, JSBoolean, JSNumber, JSString, JSObject, JSArray, JSFunction, JSBigInt, etc. It also provides interfaces for the mutual conversion of ArkTS types and Cangjie types; for the mapping of Cangjie types, please refer to [Type Mapping](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/interoperability_macro.md#%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84).
+    
 
 - The library completes the interoperability function by calling the interface provided by the ArkTS virtual machine and napi through CFFI.
 
