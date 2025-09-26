@@ -184,6 +184,10 @@
                 <!--RP1--><!--RP1End-->
                 - [主题设置]()
                     - [应用深浅色适配](source_zh_cn/arkui-cj/cj-ui-dark-light-color-adaptation.md)
+        - 窗口管理
+            - [管理应用窗口](source_zh_cn/windowmanager/application-window-stage.md)
+        - 屏幕管理
+            - [使用Display实现屏幕属性获取及状态监听](source_zh_cn/displaymanager/screenProperty-guideline.md)
         - [ArkWeb（方舟Web）]()
             - [ArkWeb简介](source_zh_cn/web/cj-web-component-overview.md)
             - [设置基本属性和事件]()
