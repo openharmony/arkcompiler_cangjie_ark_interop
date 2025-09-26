@@ -1,4 +1,4 @@
-# Using Interoperability Libraries in Cangjie Multithreading
+# Using Interoperability in Cangjie Multithreading
 
 ArkTS is a single-threaded virtual machine that does not provide any concurrency fault tolerance at runtime, whereas Cangjie syntactically supports memory-sharing multithreading.
 
@@ -65,7 +65,7 @@ The following example demonstrates the specific approach. This case involves an 
     ```typescript
     // Import Cangjie dynamic library, whose name should match the Cangjie package name and be consistent with the package containing interoperability interfaces
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
-
+    
     // Call Cangjie function
     addNumberAsync(1, 2, (result) => {
         console.log("1 + 2 = " + result);
@@ -124,12 +124,12 @@ ArkTS supports Promise, which encapsulates the callback mechanism. Combined with
     ```typescript
     // Import Cangjie dynamic library, whose name should match the Cangjie package name and be consistent with the package containing interoperability interfaces
     import { addNumberAsync } from "libohos_app_cangjie_entry.so";
-
+    
     async function call() {
         // Call Cangjie function
         let result = await addNumberAsync(1, 2);
         console.log("1 + 2 = " + result);
     }
-
+    
     call();
     ```
