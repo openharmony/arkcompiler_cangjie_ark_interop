@@ -1483,6 +1483,19 @@ public static func getBundleInfoForSelf(bundleFlags: Int32): BundleInfo
 |:----|:----|
 | [BundleInfo](#class-bundleinfo) | A BundleInfo object containing the BundleInfo of the current application. |
 
+**Example:**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.AbilityKit.*
+
+let bundleFlags = GET_BUNDLE_INFO_DEFAULT.getValue() | GET_BUNDLE_INFO_WITH_APPLICATION.getValue() | GET_BUNDLE_INFO_WITH_HAP_MODULE.getValue() | GET_BUNDLE_INFO_WITH_ABILITY.getValue()
+let res = BundleManager.getBundleInfoForSelf(bundleFlags)
+```
+
 ### static func getProfileByAbility(String, String, String)
 
 ```cangjie
