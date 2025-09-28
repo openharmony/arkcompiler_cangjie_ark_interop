@@ -110,3 +110,12 @@ public init(bundleName: String, abilityName: String, deviceId!: String = "", mod
 |abilityName|String|是|-|Ability名称。|
 |deviceId|String|否|""|设备ID。|
 |moduleName|String|否|""|Ability所属的HAP的模块名称。|
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let elementName = ElementName("com.ohos.example", "com.ohos.example.MainAbility");
+```

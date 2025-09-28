@@ -309,10 +309,11 @@ func callInterop(x: Float64, y: Float64): Float64 {
      - 如果已经打开了工程，可以在菜单栏选择**File > New > Create Project**来创建一个新工程。
   2. 根据工程创建向导，选择 **[Cangjie] Empty Ability** 模板。
      
-     ![image](./capability/cangjieTemplate.png)
+     ![image](./figures/capability/cangjieTemplate.png)
+
   3. 在工程配置页面，需要根据向导配置工程的基本信息。
      
-     ![image](./capability/cangjieConfig.png)
+     ![image](./figures/capability/cangjieConfig.png)
      
      - **Project name**：工程的名称，可以自定义，由大小写字母、数字和下划线组成。
      - **Bundle name**：标识应用的包名，用于标识应用的唯一性。
@@ -337,28 +338,28 @@ func callInterop(x: Float64, y: Float64): Float64 {
        4. 查找openharmony目录，按照设备类型{A}，查找{A}.json文件，该文件包含{A}设备全量syscap能力集合。
   4. 单击 **Finish**，工具会自动生成示例代码和相关资源，等待工程初始化，完成新工程创建。
      
-     ![image](./capability/finishCreateCangjie.png)
+     ![image](./figures/capability/finishCreateCangjie.png)
   
   **在已有ArkTS工程中引入仓颉**
   
   在工程界面，右键选择 **entry > New > Cangjie(Interop)** 使能仓颉与ArkTS混合模块。工程同步完成后，原有的ArkTS模块变为仓颉与ArkTS混合模块。
   
-  ![image](./capability/startEnableCangjie.png)
+  ![image](./figures/capability/startEnableCangjie.png)
 - 代码编辑：代码高亮、代码补全、语法诊断、悬浮提示、定义跳转、引用查找、格式化等编码辅助能力，包括元编程相关的编码辅助能力。
   
   例如，代码补全：
   
-  ![image](./capability/funcCom.png)
+  ![image](./figures/capability/funcCom.png)
 - 编译构建：支持编译仓颉的HAP/APP、支持编译仓颉的HAR/HSP、支持推送仓颉HAP包至OpenHarmony设备运行能力。
 - 代码调试：支持仓颉HAP在手机的调试能力，包括断点能力、单步调试、调试信息（线程、堆栈、变量等）可视化查看能力。
   
   例如，设置调试代码类型：单击**Run > Edit Configurations > Debugger**，选择相应模块，设置Debug type。
   
-  ![image](./capability/debugType.png)
+  ![image](./figures/capability/debugType.png)
   
   例如，检查变量：调试时，停在断点或由于其他原因导致程序中断，在堆栈列表展示当前线程状态，在Variable变量列表支持查看全局/静态变量、寄存器变量和局部变量。
   
-  ![image](./capability/debugInfo.png)
+  ![image](./figures/capability/debugInfo.png)
 
 ## 三、下一步演进
 

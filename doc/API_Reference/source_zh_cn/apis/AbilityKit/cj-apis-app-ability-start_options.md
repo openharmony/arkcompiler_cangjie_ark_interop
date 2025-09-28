@@ -97,3 +97,12 @@ public init(
 |:---|:---|:---|:---|:---|
 |windowMode|?[WindowMode](cj-apis-app-ability-ability_constant.md#enum-windowmode)|否|None|窗口模式。|
 |displayId|Int32|否|0|显示ID。|
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.AbilityKit.*
+
+let startOptions = StartOptions(WindowMode.FullScreen, 0)
+```

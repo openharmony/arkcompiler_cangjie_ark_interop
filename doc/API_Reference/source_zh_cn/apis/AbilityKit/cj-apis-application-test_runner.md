@@ -56,6 +56,19 @@ public static func registerCreator(name: String, creator: () -> TestRunner): Uni
 |name|String|是|-|构建函数标识。|
 |creator|()->[TestRunner](#class-testrunner)|是|-|构建[TestRunner](#class-testrunner)对象的函数。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.TestKit.*
+
+let TESTRUNNER_REGISTER_RESULT = TestRunner.registerCreator("test", () -> MyTestRunner)
+
+class MyTestRunner <: TestRunner {
+    public override func onPrepare(): Unit {
+    }
+}
+
 ### func onPrepare()
 
 ```cangjie
@@ -68,6 +81,19 @@ public open func onPrepare(): Unit
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.TestKit.*
+
+let TESTRUNNER_REGISTER_RESULT = TestRunner.registerCreator("test", () -> MyTestRunner)
+
+class MyTestRunner <: TestRunner {
+    public override func onPrepare(): Unit {
+    }
+}
+
 ### func onRun()
 
 ```cangjie
@@ -78,4 +104,17 @@ public open func onRun(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 22
+**起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import kit.TestKit.*
+
+let TESTRUNNER_REGISTER_RESULT = TestRunner.registerCreator("test", () -> MyTestRunner)
+
+class MyTestRunner <: TestRunner {
+    public override func onRun(): Unit {
+    }
+}
