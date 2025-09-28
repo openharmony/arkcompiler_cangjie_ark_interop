@@ -27,10 +27,7 @@ foreign func ARKTS_GetSymbolDesc(env: JSEnv, symbol: JSValue_): CString
 /**
  * The JSSymbol object is used to represent a safe reference to the ArkTS symbol type.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSSymbol <: JSHeapObject & JSKeyable {
     private var desc_: ?String = None
 
@@ -62,29 +59,37 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
 
     /**
      * Convert JSSymbol to JSValue.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(_: JSContext): JSValue {
+        context.checkLifecycleAndThread()
         JSValue(context, innerValue)
     }
 
     /**
      * The description of symbol.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public prop description: String {
         get() {
+            let env = context.env // do lifecycle check and thread check here.
             if (let Some(desc) <- desc_) {
                 desc
             } else {
                 let desc = unsafe {
-                    let cDesc = ARKTS_GetSymbolDesc(context.env, innerValue)
+                    let cDesc = ARKTS_GetSymbolDesc(env, innerValue)
                     let desc = cDesc.toString()
                     ARKTS_FreeCString(cDesc)
                     desc
@@ -97,9 +102,12 @@ public class JSSymbol <: JSHeapObject & JSKeyable {
 
     /**
      * Return a String that represents the JSSymbol.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toString(): String {

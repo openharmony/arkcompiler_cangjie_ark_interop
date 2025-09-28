@@ -53,10 +53,7 @@ func JSBufferFinalizerStub(buffer: CPointer<Byte>, hint: Int64): Unit {
 /**
  * ArrayBuffer relative operation class, interop ArrayBuffer, DataView and TypedArrays	
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSArrayBuffer <: JSHeapObject {
     static var bufferFinalizers_ = SlabMT<JSBufferFinalizer>()
 
@@ -70,6 +67,7 @@ public class JSArrayBuffer <: JSHeapObject {
 
     init(context: JSContext, length: Int32) {
         super(context, unsafe { ARKTS_CreateArrayBuffer(context.env, length) })
+        context.checkJSException() // in case of ArkTS OOM
         byteLength_ = length
     }
 
@@ -144,17 +142,21 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Binding memory's size in byte.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public prop byteLength: Int32 {
         get() {
+            let env = context.env // do lifecycle check and thread check here.
             if (let Some(length) <- byteLength_) {
                 length
             } else {
-                let length = unsafe { ARKTS_GetArrayBufferLength(context.env, innerValue) }
+                let length = unsafe { ARKTS_GetArrayBufferLength(env, innerValue) }
                 byteLength_ = length
                 length
             }
@@ -163,12 +165,16 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Read binding memory in bytes.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func readBytes(): Array<Byte> {
+        let env = context.env // do lifecycle check and thread check here.
         if (let Some(bytes) <- buffer_) {
             bytes
         } else {
@@ -176,7 +182,7 @@ public class JSArrayBuffer <: JSHeapObject {
             let bytes = Array<Byte>(size, repeat: 0)
             unsafe {
                 let rawHandle = acquireArrayRawData(bytes)
-                ARKTS_ArrayBufferReadBytes(context.env, innerValue, rawHandle.pointer, byteLength)
+                ARKTS_ArrayBufferReadBytes(env, innerValue, rawHandle.pointer, byteLength)
                 releaseArrayRawData(rawHandle)
             }
             buffer_ = bytes
@@ -186,17 +192,21 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Read binding memory to Array<bytes>.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt8Array(): Array<UInt8> {
+        let env = context.env // do lifecycle check and thread check here.
         let size = Int64(byteLength)
         let bytes = Array<Byte>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, rawHandle.pointer, byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, rawHandle.pointer, byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -204,17 +214,21 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Read binding memory to Array<Int8>.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt8Array(): Array<Int8> {
+        let env = context.env // do lifecycle check and thread check here.
         let size = Int64(byteLength)
         let bytes = Array<Int8>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -223,21 +237,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<UInt16>.
      *
-     * @throws { Exception } - Binding memory's size is not pow of 2.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt16Array(): Array<UInt16> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 2) != 0) {
-            throw Exception("buffer size is not pow of 2, can't be read to UInt16 array")
+            throw sizeError(2, "UInt16")
         }
         let size = Int64(byteLength) >> 1
         let bytes = Array<UInt16>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -246,21 +263,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<Int16>.
      *
-     * @throws { Exception} - Binding memory's size is not pow of 2.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt16Array(): Array<Int16> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 2) != 0) {
-            throw Exception("buffer size is not pow of 2, can't be read to Int16 array")
+            throw sizeError(2, "Int16")
         }
         let size = Int64(byteLength) >> 1
         let bytes = Array<Int16>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -269,21 +289,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<Int32>.
      *
-     * @throws { Exception} - Binding memory's size is not pow of 4.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt32Array(): Array<Int32> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 4) != 0) {
-            throw Exception("buffer size is not pow of 4, can't be read to Int32 array")
+            throw sizeError(4, "Int32")
         }
         let size = Int64(byteLength) >> 2
         let bytes = Array<Int32>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -292,21 +315,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<UInt32>.
      * 
-     * @throws { Exception } - Binding memory's size is not pow of 4.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt32Array(): Array<UInt32> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 4) != 0) {
-            throw Exception("buffer size is not pow of 4, can't be read to UInt32 array")
+            throw sizeError(4, "UInt32")
         }
         let size = Int64(byteLength) >> 2
         let bytes = Array<UInt32>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -315,21 +341,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<Float32>.
      *
-     * @throws { Exception } - Binding memory's size is not pow of 4.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toFloat32Array(): Array<Float32> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 4) != 0) {
-            throw Exception("buffer size is not pow of 4, can't be read to Float32 array")
+            throw sizeError(4, "Float32")
         }
         let size = Int64(byteLength) >> 2
         let bytes = Array<Float32>(size, repeat: 0.0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -338,21 +367,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<UInt64>.
      *
-     * @throws { Exception } - Binding memory's size is not pow of 8.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt64Array(): Array<UInt64> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 8) != 0) {
-            throw Exception("buffer size is not pow of 4, can't be read to UInt64 array")
+            throw sizeError(8, "UInt64")
         }
         let size = Int64(byteLength) >> 3
         let bytes = Array<UInt64>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -361,21 +393,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<Int64>.
      * 
-     * @throws { Exception } - Binding memory's size is not pow of 8.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt64Array(): Array<Int64> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 8) != 0) {
-            throw Exception("buffer size is not pow of 4, can't be read to Int64 array")
+            throw sizeError(8, "Int64")
         }
         let size = Int64(byteLength) >> 3
         let bytes = Array<Int64>(size, repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -384,21 +419,24 @@ public class JSArrayBuffer <: JSHeapObject {
     /**
      * Read binding memory to Array<Float64>.
      *
-     * @throws { Exception } - Binding memory's size is not pow of 8.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toFloat64Array(): Array<Float64> {
+        let env = context.env // do lifecycle check and thread check here.
         if ((byteLength % 8) != 0) {
-            throw Exception("buffer size is not pow of 4, can't be read to Float64 array")
+            throw sizeError(8, "Float64")
         }
         let size = Int64(byteLength) >> 3
         let bytes = Array<Float64>(size, repeat: 0.0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            ARKTS_ArrayBufferReadBytes(context.env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
+            ARKTS_ArrayBufferReadBytes(env, innerValue, CPointer<UInt8>(rawHandle.pointer), byteLength)
             releaseArrayRawData(rawHandle)
         }
         bytes
@@ -406,18 +444,22 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of arrayBuffer in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toArrayBufferJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let arrayBufferCls = context.constants.typedArray.arrayBuffer.data
-        let currentValue = JSValue(context, innerValue)
-        if (JSObject.instanceOfByValue(context.env, innerValue, arrayBufferCls.innerValue)) {
-            return currentValue
+        if (JSObject.instanceOfByValue(env, innerValue, arrayBufferCls.innerValue)) {
+            return JSValue(context, innerValue)
         }
-        let object = currentValue.asObject()
+        let object = JSValue(context, innerValue).asObject()
         let buffer = object["buffer"].asObject()
         let offset = object["byteOffset"]
         let length = object["byteLength"]
@@ -436,14 +478,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of uint8Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt8ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.uint8Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -451,14 +498,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of uint8ClampedArray in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt8ClampedArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.uint8Clamped.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -466,14 +518,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of int8Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt8ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.int8Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -481,14 +538,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of uint16Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt16ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.uint16Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -496,14 +558,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of int16Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt16ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.int16Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -511,14 +578,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of uint32Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt32ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.uint32Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -526,14 +598,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of int32Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt32ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.int32Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -541,14 +618,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of uint64Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUInt64ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.uint64Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -556,14 +638,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of int64Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toInt64ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.int64Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -571,14 +658,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of float32Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toFloat32ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.float32Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -586,14 +678,19 @@ public class JSArrayBuffer <: JSHeapObject {
 
     /**
      * Return the JSValue of float64Array in ArkTS.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toFloat64ArrayJSValue(): JSValue {
+        let env = context.env // do lifecycle check and thread check here.
         let clazz = context.constants.typedArray.float64Array.data
-        if (JSObject.instanceOfByValue(context.env, innerValue, clazz.innerValue)) {
+        if (JSObject.instanceOfByValue(env, innerValue, clazz.innerValue)) {
             return JSValue(context, innerValue)
         }
         clazz.new(toArrayJSValue())
@@ -603,6 +700,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size) * 8
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -615,6 +713,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size) * 8
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -631,6 +730,7 @@ public class JSArrayBuffer <: JSHeapObject {
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
             releaseArrayRawData(rawHandle)
+            context.checkJSException() // in case of ArkTS OOM
             result
         }
     }
@@ -639,6 +739,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size) * 4
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -651,6 +752,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size) * 4
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -663,6 +765,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size) * 4
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -675,6 +778,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size) * 2
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -687,6 +791,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size) * 2
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -699,6 +804,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size)
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -711,6 +817,7 @@ public class JSArrayBuffer <: JSHeapObject {
         let length = Int32(buffer.size)
         unsafe {
             let result = ARKTS_CreateArrayBuffer(context.env, length)
+            context.checkJSException() // in case of ArkTS OOM
             let dst = ARKTS_GetArrayBufferRawPtr(context.env, result)
             let rawHandle = acquireArrayRawData(buffer)
             memcpy_s(dst, UIntNative(length), CPointer<Unit>(rawHandle.pointer), UIntNative(length))
@@ -723,8 +830,10 @@ public class JSArrayBuffer <: JSHeapObject {
         finalizer: JSBufferFinalizer): JSValue_ {
         let finalizerId = bufferFinalizers_.append(finalizer)
 
-        unsafe {
+        let result = unsafe {
             ARKTS_CreateArrayBufferWithData(context.env, buffer, length, finalizerId)
         }
+        context.checkJSException() // in case of ArkTS OOM
+        result
     }
 }

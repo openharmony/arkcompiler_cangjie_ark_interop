@@ -28,7 +28,7 @@ The following types extend this interface:
 public interface JSInteropType<T> {
     static func fromJSValue(context: JSContext, input: JSValue): T
     func toJSValue(context: JSContext): JSValue
-    static func toArkTsType(): String
+    static func toArktsType(): String
 }
 ```
 
@@ -65,10 +65,10 @@ static func fromJSValue(context: JSContext, input: JSValue): T
 |:----|:----|
 | T | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie type.
@@ -182,10 +182,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Int8
 |:----|:----|
 | Int8 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int8 type.
@@ -249,10 +249,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Int16
 |:----|:----|
 | Int16 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int16 type.
@@ -316,10 +316,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Int32
 |:----|:----|
 | Int32 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int32 type.
@@ -383,10 +383,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Int64
 |:----|:----|
 | Int64 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Description:** Gets the ArkTS type name corresponding to the Cangjie Int64 type.
@@ -448,10 +448,10 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt8
 |:----|:----|
 | UInt8 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt8 type.
@@ -515,10 +515,10 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt16
 |:----|:----|
 | UInt16 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt16 type.
@@ -582,10 +582,10 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt32
 |:----|:----|
 | UInt32 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt32 type.
@@ -649,10 +649,10 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt64
 |:----|:----|
 | UInt64 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie UInt64 type.
@@ -716,10 +716,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Float16
 |:----|:----|
 | Float16 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float16 type.
@@ -783,10 +783,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Float32
 |:----|:----|
 | Float32 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float32 type.
@@ -850,10 +850,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Float64
 |:----|:----|
 | Float64 | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Float64 type.
@@ -917,10 +917,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Bool
 |:----|:----|
 | Bool | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Bool type.
@@ -984,10 +984,10 @@ static func fromJSValue(_: JSContext, input: JSValue): String
 |:----|:----|
 | String | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie String type.
@@ -1057,10 +1057,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Unit
 |:----|:----|
 | Unit | Cangjie type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Unit type.
@@ -1124,10 +1124,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Option<T>
 |:----|:----|
 | Option<T> | Cangjie Option type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Option<T> type.
@@ -1191,10 +1191,10 @@ static func fromJSValue(_: JSContext, input: JSValue): Array<T>
 |:----|:----|
 | Array<T> | Cangjie Option type. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-static func toArkTsType(): String
+static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie Array<T> type.
@@ -1810,10 +1810,10 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSArrayEx<T>
 |:----|:----|
 |[JSArrayEx](#class-jsarrayex)\<T>|Declarative interop macro type JSArrayEx.|
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-public static func toArkTsType(): String
+public static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. Used in declarative interop macro framework scenarios; developers do not need to use this API.
@@ -3574,10 +3574,10 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSHashMapEx<
 |:----|:----|
 |[JSHashMapEx](#class-jshashmapex)\<K, V>|Declarative interoperability macro type JSHashMapEx.|
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-public static func toArkTsType(): String
+public static func toArktsType(): String
 ```
 
 **Function:** Gets the ArkTS type name corresponding to the Cangjie type. For declarative interoperability macro framework scenarios; developers don't need to use this API.
@@ -4935,10 +4935,10 @@ public static func fromJSValue(context: JSContext, input: JSValue): JSStringEx
 |:----|:----|
 | [JSStringEx](#class-jsstringex) | Declarative interoperation macro type JSStringEx. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-public static func toArkTsType(): String
+public static func toArktsType(): String
 ```
 
 **Function:** Retrieves the ArkTS type name corresponding to the Cangjie type. Used in declarative interoperation macro frameworks; developers do not need to use this API.
@@ -6845,10 +6845,10 @@ public static func fromJSValue(_: JSContext, value: JSValue): Utf16String
 |:----|:----|
 | [Utf16String](#class-utf16string) | A Utf16String object. |
 
-### static func toArkTsType()
+### static func toArktsType()
 
 ```cangjie
-public static func toArkTsType(): String
+public static func toArktsType(): String
 ```
 
 **Function:** The corresponding ArkTS type name.

@@ -8,10 +8,10 @@ Provides some common utility functions.
 import ohos.ark_interop_helper.*
 ```
 
-## func arkTsValuetoNapiValue(napi_env, JSValue)
+## func arktsValueToNapiValue(napi_env, JSValue)
 
 ```cangjie
-public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value
+public func arktsValueToNapiValue(env: napi_env, ark_value: JSValue): napi_value
 ```
 
 **Description:** Converts a JSValue type to napi_value type.
