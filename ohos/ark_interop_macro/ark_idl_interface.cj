@@ -70,7 +70,7 @@ class IDLInterface {
             public interface $(identifier_) <: JSInteropType<$(identifier_)> {
                 $(newInterfaceBody)
                 $(fromJSValueFunc)
-                static func toArkTsType(): String {
+                static func toArktsType(): String {
                     "interface"
                 }
             }
@@ -113,7 +113,7 @@ class IDLInterface {
             public static func fromJSValue(context: JSContext, input: JSValue): $(newProxyIdentifier) {
                 return $(newProxyIdentifier)(context, input.asObject(context))
             }
-            public static func toArkTsType(): String {
+            public static func toArktsType(): String {
                 "interface"
             }
             $(newMembers)

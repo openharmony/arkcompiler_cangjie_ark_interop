@@ -68,10 +68,7 @@ protected struct JSValue_ {
 /**
  * ArkTs null.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public struct JSNull {
     let value: JSValue
 
@@ -81,12 +78,16 @@ public struct JSNull {
 
     /**
      * Convert JSNull to JSValue.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
+        value.context.checkLifecycleAndThread()
         value
     }
 }
@@ -94,10 +95,7 @@ public struct JSNull {
 /**
  * ArkTs undefined.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public struct JSUndefined {
     let value: JSValue
 
@@ -107,12 +105,16 @@ public struct JSUndefined {
 
     /**
      * Convert JSUndefined to JSValue.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
+        value.context.checkLifecycleAndThread()
         value
     }
 }
@@ -120,10 +122,7 @@ public struct JSUndefined {
 /**
  * ArkTs boolean.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public struct JSBoolean {
     let value: JSValue
 
@@ -133,20 +132,27 @@ public struct JSBoolean {
 
     /**
      * Convert JSBoolean to JSValue.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
+        value.context.checkLifecycleAndThread()
         value
     }
 
     /**
      * Convert JSBoolean to Cangjie Bool.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toBool(): Bool {
@@ -157,10 +163,7 @@ public struct JSBoolean {
 /**
  * ArkTs number.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public struct JSNumber {
     let value: JSValue
 
@@ -170,22 +173,27 @@ public struct JSNumber {
 
     /**
      * Convert JSNumber to JSValue.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(): JSValue {
+        value.context.checkLifecycleAndThread()
         value
     }
 
     /**
      * Convert JSNumber to Cangjie Float64.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toFloat64(): Float64 {
@@ -196,10 +204,7 @@ public struct JSNumber {
 /**
  * JSValue is unified type in the ArkTS runtime and alse the data type that directly interacts with the ArkTS runtime.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public struct JSValue {
     protected JSValue(
         let context: JSContext,
@@ -208,174 +213,226 @@ public struct JSValue {
 
     /**
      * Get the type of JSValue.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func typeof(): JSType {
-        unsafe { ARKTS_GetValueType(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_GetValueType(env, value) }
     }
 
     /**
      * Perform a strict equality check (type consistency and value equality) on two JSValues.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func strictEqual(target: JSValue): Bool {
-        unsafe { ARKTS_StrictEqual(context.env, value, target.value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_StrictEqual(env, value, target.value) }
     }
 
     /**
      * Check whether JSValue is null.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isNull(): Bool {
+        context.checkLifecycleAndThread()
         unsafe { ARKTS_IsNull(value) }
     }
 
     /**
      * Check whether JSValue is undefined.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isUndefined(): Bool {
+        context.checkLifecycleAndThread()
         unsafe { ARKTS_IsUndefined(value) }
     }
 
     /**
      * Check whether JSValue is boolean.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isBoolean(): Bool {
+        context.checkLifecycleAndThread()
         unsafe { ARKTS_IsBool(value) }
     }
 
     /**
-     * Check whether JSValue is number.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isNumber(): Bool {
+        context.checkLifecycleAndThread()
         unsafe { ARKTS_IsNumber(value) }
     }
 
     /**
      * Check whether JSValue is string.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isString(): Bool {
-        unsafe { ARKTS_IsString(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsString(env, value) }
     }
 
     /**
      * Check whether JSValue is function.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isFunction(): Bool {
-        unsafe { ARKTS_IsCallable(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsCallable(env, value) }
     }
 
     /**
      * Check whether JSValue is object.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isObject(): Bool {
-        unsafe { ARKTS_IsObject(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsObject(env, value) }
     }
 
     /**
      * Check whether JSValue is array.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isArray(): Bool {
-        unsafe { ARKTS_IsArray(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsArray(env, value) }
     }
 
     /**
      * Check whether JSValue is Promise.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isPromise(): Bool {
-        unsafe { ARKTS_IsPromise(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsPromise(env, value) }
     }
 
     /**
      * Check whether JSValue is ArkTS class.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isClass(): Bool {
-        unsafe { ARKTS_IsClass(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsClass(env, value) }
     }
 
     /**
      * Check whether JSValue is an external object (ArkTS reference of a Cangjie object).
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isExternal(): Bool {
-        unsafe { ARKTS_IsExternal(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsExternal(env, value) }
     }
 
     /**
      * Check whether JSValue is symbol.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isSymbol(): Bool {
-        unsafe { ARKTS_IsSymbol(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsSymbol(env, value) }
     }
 
     /**
      * Check whether JSValue is ArrayBuffer.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isArrayBuffer(): Bool {
-        unsafe { ARKTS_IsArrayBuffer(context.env, value) }
-    }
-
-    func isError(): Bool {
-        if (!isObject()) {
-            return false
-        }
-        JSObject.instanceOfByValue(context.env, value, context.constants.errorFuncs.clazz.innerValue)
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsArrayBuffer(env, value) }
     }
 
     func isMap(): Bool {
@@ -395,10 +452,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSNull. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNull.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asNull(): JSNull {
@@ -411,10 +470,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSUndefined. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSUndefined.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asUndefined(): JSUndefined {
@@ -427,10 +488,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSBoolean. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBoolean.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asBoolean(): JSBoolean {
@@ -443,10 +506,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSNumber. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSNumber.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asNumber(): JSNumber {
@@ -459,10 +524,12 @@ public struct JSValue {
     /**
      * Convert JSValue to Bool. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Bool.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toBoolean(): Bool {
@@ -475,10 +542,12 @@ public struct JSValue {
     /**
      * Convert JSValue to Float64. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to Float64.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toNumber(): Float64 {
@@ -491,10 +560,13 @@ public struct JSValue {
     /**
      * Convert JSValue to String. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to String.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toString(): String {
@@ -506,22 +578,31 @@ public struct JSValue {
 
     /**
      * Convert JSValue to Utf16String.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUtf16String(): Utf16String {
+        if (!isString()) {
+            throw jsTypeMisMatch(JSType.STRING, typeof())
+        }
         JSString.readUtf16String(context, value)
     }
 
     /**
      * Convert JSValue to JSString. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSString.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asString(): JSString {
@@ -534,10 +615,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSObject. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSObject.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asObject(): JSObject {
@@ -550,10 +633,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSFunction. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSFunction.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asFunction(): JSFunction {
@@ -566,10 +651,12 @@ public struct JSValue {
     /**
      * Conert JSValue to JSArray. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArray.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asArray(): JSArray {
@@ -582,10 +669,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSClass. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSClass.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asClass(): JSClass {
@@ -598,10 +687,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSExternal. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSExternal.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asExternal(): JSExternal {
@@ -614,10 +705,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSPromise. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSPromise.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asPromise(): JSPromise {
@@ -630,10 +723,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSSymbol. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSSymbol.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asSymbol(): JSSymbol {
@@ -646,10 +741,12 @@ public struct JSValue {
     /**
      * Convert JSValue to JSArrayBuffer. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSArrayBuffer.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asArrayBuffer(): JSArrayBuffer {
@@ -660,35 +757,29 @@ public struct JSValue {
     }
 
     /**
-     * Convert JSValue to JSError. If the failure occurs, Exception will be throwed.
-     *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSError.
-     */
-    func asError(): JSError {
-        if (!isError()) {
-            throw jsTypeMisMatch("Error", typeof())
-        }
-        JSError(context, value)
-    }
-
-    /**
      * Check whether JSValue is BigInt.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func isBigInt(): Bool {
-        unsafe { ARKTS_IsBigInt(context.env, value) }
+        let env = context.env // do lifecycle check and thread check here.
+        unsafe { ARKTS_IsBigInt(env, value) }
     }
 
     /**
      * Convert JSValue to JSBigInt. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to JSBigInt.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func asBigInt(): JSBigInt {
@@ -701,10 +792,12 @@ public struct JSValue {
     /**
      * Convert JSValue to BigInt. If the failure occurs, Exception will be throwed.
      *
-     * @throws { BusinessException } 34300005 - JSValue cannot be converted to BigInt.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toBigInt(): BigInt {
@@ -718,11 +811,13 @@ public struct JSValue {
     /**
      * Get the element at index.
      *
-     * @throws { BusinessException } 34300001 - The index is out of range.
-     * @throws { BusinessException } 34300005 - JSValue is not an array.
+     * @throws { BusinessException } 34300001 - The accessing index is out of range.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func getElement(index: Int64): JSValue {
@@ -740,11 +835,13 @@ public struct JSValue {
     /**
      * Set the element at index.
      *
-     * @throws { BusinessException } 34300001 - The index is less than 0.
-     * @throws { BusinessException } 34300005 - JSValue is not an array.
+     * @throws { BusinessException } 34300001 - The accessing index is out of range.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func setElement(index: Int64, value: JSValue): Unit {
@@ -761,10 +858,12 @@ public struct JSValue {
     /**
      * Get the property corresponding to the key.
      *
-     * @throws { BusinessException } 34300005 - JSValue is not JSObject.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func getProperty(key: JSKeyable): JSValue {
@@ -779,10 +878,13 @@ public struct JSValue {
     /**
      * Set the property corresponding to the key.
      *
-     * @throws { BusinessException } 34300005 - JSValue is not JSObject.
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func setProperty(key: JSKeyable, setValue: JSValue): Unit {
@@ -796,10 +898,12 @@ public struct JSValue {
     /**
      * Bind JSValue to an ArkTs external object.
      *
-     * @throws { BusinessException } 34300005 - JSValue is not JSObject or external is not JSExternal.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func bindObject(external: JSValue): Unit {
@@ -814,20 +918,30 @@ public struct JSValue {
 
     /**
      * Bind JSValue to an ArkTs external object.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func bindObject(data: SharedObject): Unit {
-        bindObject(JSValue(context, JSExternal.createExternal(context, data)))
+        let value = JSValue(context, JSExternal.createExternal(context, data))
+        bindObject(value)
     }
 
     /**
      * Get the Cangjie object bound to the ArkTs object.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
+     * @throws { BusinessException } 34300005 - The ArkTS data types do not match.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func getBindingObject(): ?SharedObject {
@@ -836,6 +950,8 @@ public struct JSValue {
             return None
         }
         let id = unsafe { ARKTS_GetExternalData(context.env, external.value) }
-        context.sharedObjects_.get(id)
+        context.sharedObjects_.get(id).getOrThrow {
+            nativeIdInvalid(id)
+        }
     }
 }

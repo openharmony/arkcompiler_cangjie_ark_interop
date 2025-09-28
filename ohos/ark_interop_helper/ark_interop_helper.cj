@@ -46,7 +46,7 @@ public func isStageMode(env: napi_env, context: napi_value): Bool {
     21,
     stagemodelonly: true
 ]
-public func arkTsValuetoNapiValue(env: napi_env, ark_value: JSValue): napi_value {
+public func arktsValueToNapiValue(env: napi_env, ark_value: JSValue): napi_value {
     unsafe {
         ArkTsValuetoNapiValue(env, ark_value.value)
     }

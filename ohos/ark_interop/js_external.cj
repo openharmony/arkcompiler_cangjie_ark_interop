@@ -36,10 +36,7 @@ func cjExternalDestructor(id: Int64, env: JSEnv): Unit {
  * Base class of objects shared with arkts. It has an unique id. When shared to arkts, the object would be kept to
  *  a global table. The id used to index the object.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public open class SharedObject {
     var nativeId_: Int64 = -1
     var shareCnt_: Int64 = 0
@@ -47,19 +44,13 @@ public open class SharedObject {
     /**
      * Init SharedObject.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public init() {}
 
     /**
      * Id of the SharedObject in global table.
      */
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     public prop nativeId: Int64 {
         get() {
             nativeId_
@@ -70,10 +61,7 @@ public open class SharedObject {
 /**
  * The js presentation of a cj object. It holds the id of cj object, and affects the lifecycle of the cj object.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSExternal <: JSHeapObject {
     static func createExternal(context: JSContext, data: SharedObject): JSValue_ {
         let id = if (data.nativeId_ < 0) {
@@ -84,7 +72,9 @@ public class JSExternal <: JSHeapObject {
             data.nativeId_
         }
         data.shareCnt_++
-        unsafe { ARKTS_CreateExternal(context.env, id) }
+        let result = unsafe { ARKTS_CreateExternal(context.env, id) }
+        context.checkJSException() // in case of ArkTS OOM
+        return result
     }
 
     private var id_: ?Int64
@@ -110,20 +100,31 @@ public class JSExternal <: JSHeapObject {
 
     /**
      * Get sharedObject by id.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func getData(): SharedObject {
-        context.sharedObjects_[id]
+        let id = this.id
+        context.sharedObjects_.get(id).getOrThrow {
+            nativeIdInvalid(id)
+        }
     }
 
     /**
      * Cast sharedObject to Option<T>.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func cast<T>(): Option<T> where T <: SharedObject {
@@ -132,10 +133,11 @@ public class JSExternal <: JSHeapObject {
 
     prop id: Int64 {
         get() {
+            let env = context.env
             match (id_) {
                 case Some(v) => v
                 case None =>
-                    let v = unsafe { ARKTS_GetExternalData(context.env, innerValue) }
+                    let v = unsafe { ARKTS_GetExternalData(env, innerValue) }
                     id_ = v
                     v
             }

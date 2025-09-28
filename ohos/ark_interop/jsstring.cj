@@ -46,40 +46,32 @@ foreign func ARKTS_CreateString(env: JSEnv, isCompressed: Bool, length: UInt32, 
 /**
  * An interface that implements extension method to convert value to JSValue.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public interface ToJSValue {
-    @!APILevel[
-        21,
-        stagemodelonly: true
-    ]
+    @!APILevel[22, stagemodelonly: true]
     func toJSValue(context: JSContext): JSValue
 }
 
 /**
  * An interface that can be used as a JSObejct key. It implements extension methods for String type.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 sealed interface JSKeyable <: ToString & ToJSValue {}
 
 /**
  * String class that extends the JSKeyable interface.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 extend String <: JSKeyable {
     /**
      * Convert String to JSValue.
+     *
+     * @throws { BusinessException } 34300002 - Outside error occurred.
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(context: JSContext): JSValue {
@@ -91,10 +83,7 @@ extend String <: JSKeyable {
  * The JSString object is used to represent a secure reference to the ArkTS string.
  * It can be converted to Cangjie String and Utf16String.
  */
-@!APILevel[
-    21,
-    stagemodelonly: true
-]
+@!APILevel[22, stagemodelonly: true]
 public class JSString <: JSHeapObject & ToString & JSKeyable {
     static func createString(context: JSContext, source: String): JSValue_ {
         unsafe {
@@ -107,17 +96,20 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
 
     static func createString(context: JSContext, source: Utf16String): JSValue_ {
         let header = source.getHeader()
-        unsafe {
+        let result = unsafe {
             ARKTS_CreateString(context.env, header.isLatin1, header.length, header.data)
         }
+        context.checkJSException()
+        result
     }
 
     static func readString(context: JSContext, value: JSValue_): String {
-        let size = unsafe { ARKTS_GetValueUtf8Size(context.env, value) - 1 }
+        let env = context.env_
+        let size = unsafe { ARKTS_GetValueUtf8Size(env, value) - 1 }
         let bytes = Array<UInt8>(Int64(size), repeat: 0)
         unsafe {
             let rawHandle = acquireArrayRawData(bytes)
-            let updatedSize = ARKTS_GetValueUtf8(context.env, value, size, rawHandle.pointer)
+            let updatedSize = ARKTS_GetValueUtf8(env, value, size, rawHandle.pointer)
             releaseArrayRawData(rawHandle)
 
             String.fromUtf8Unchecked(bytes.slice(0, Int64(updatedSize - 1)))
@@ -125,12 +117,13 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
     }
 
     static func readUtf16String(context: JSContext, value: JSValue_): Utf16String {
-        let info = unsafe { ARKTS_GetStringInfo(context.env, value) }
+        let env = context.env_
+        let info = unsafe { ARKTS_GetStringInfo(env, value) }
         let length = info.length
         let boxValue = Box(value)
         unsafe {
             Utf16String.create(info.isCompressed, Int64(length)) { ptr =>
-                ARKTS_StringCopy(context.env, boxValue.value, ptr, length)
+                ARKTS_StringCopy(env, boxValue.value, ptr, length)
             }
         }
     }
@@ -158,23 +151,31 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
 
     /**
      * Convert JSString to JSValue.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toJSValue(_: JSContext): JSValue {
+        context.checkLifecycleAndThread()
         JSValue(context, innerValue)
     }
 
     /**
      * Convert JSString to String.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toString(): String {
+        context.checkLifecycleAndThread()
         match (cjStrCache_) {
             case Some(text) => text
             case None => readUtf8AndCache()
@@ -183,12 +184,16 @@ public class JSString <: JSHeapObject & ToString & JSKeyable {
 
     /**
      * Convert JSString to Utf16String.
+     *
+     * @throws { BusinessException } 34300003 - Accessing reference is beyond reach.
+     * @throws { BusinessException } 34300004 - Thread mismatch.
      */
     @!APILevel[
-        21,
+        22,
         stagemodelonly: true
     ]
     public func toUtf16String(): Utf16String {
+        context.checkLifecycleAndThread()
         JSString.readUtf16String(context, innerValue)
     }
 
