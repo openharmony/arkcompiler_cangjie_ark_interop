@@ -23,7 +23,7 @@ public interface PermissionValue {
 
 **功能：** 用于处理权限之间的 “与 / 或” 关系。
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func &(PermissionValue)
 
@@ -33,7 +33,7 @@ operator func &(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集进行 “与” 运算。返回 “与” 运算后的权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -55,7 +55,7 @@ operator func |(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集进行 “或” 运算。返回 “或” 运算后的权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -89,7 +89,7 @@ public class APILevel {
 
 **功能：** 标签的定义。标签用于对 API 进行注解。标签包括 atomicservice（是否支持原子服务）、crossplatform（是否支持跨平台）、deprecated（已弃用版本）、form（是否在表单中支持）、permission（所需权限）、since（API 级别）、stagemodelonly（是否仅支持 Stage 模型）、syscap（所需系统能力）等。
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let atomicservice
 
@@ -103,7 +103,7 @@ public let atomicservice: Bool
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let crossplatform
 
@@ -117,7 +117,7 @@ public let crossplatform: Bool
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let deprecated
 
@@ -131,7 +131,7 @@ public let deprecated: UInt8
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let form
 
@@ -145,7 +145,7 @@ public let form: Bool
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let level
 
@@ -159,7 +159,7 @@ public let level: UInt8
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let permission
 
@@ -173,7 +173,7 @@ public let permission:?PermissionValue
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let stagemodelonly
 
@@ -187,7 +187,7 @@ public let stagemodelonly: Bool
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let syscap
 
@@ -201,7 +201,7 @@ public let syscap: String
 
 **读写：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(UInt8, Bool, Bool, UInt8, Bool, ?PermissionValue, Bool, String)
 
@@ -212,7 +212,7 @@ public const init(level_val: UInt8, atomicservice!: Bool = false, crossplatform!
 
 **功能：** APILevel 构造函数。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -239,7 +239,7 @@ public class PermissionAnd <: PermissionValue {
 
 **功能：** 表示多个权限的 “与” 运算。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -257,7 +257,7 @@ public let lhs: PermissionValue
 
 **读写能力：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let rhs
 
@@ -271,7 +271,7 @@ public let rhs: PermissionValue
 
 **读写能力：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(PermissionValue, PermissionValue)
 
@@ -281,7 +281,7 @@ public const init(lhs: PermissionValue, rhs: PermissionValue)
 
 **功能：** 构造一个 PermissionAnd 权限集，表示两个权限集的 “与” 运算。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -298,7 +298,7 @@ public const override operator func &(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集进行 “与” 运算。返回 “与” 运算后的权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -320,7 +320,7 @@ public const override operator func |(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集进行 “或” 运算。返回 “或” 运算后的权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -346,7 +346,7 @@ public class PermissionOr <: PermissionValue {
 
 **功能：** 表示多个权限的逻辑 “或” 运算。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -364,7 +364,7 @@ public let lhs: PermissionValue
 
 **读写能力：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let rhs
 
@@ -378,7 +378,7 @@ public let rhs: PermissionValue
 
 **读写能力：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(PermissionValue, PermissionValue)
 
@@ -388,7 +388,7 @@ public const init(lhs: PermissionValue, rhs: PermissionValue)
 
 **功能：** 构造一个 PermissionOr 权限集，表示两个权限集的逻辑 “或” 运算。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -405,7 +405,7 @@ public const override operator func &(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集执行逻辑 “与” 运算。返回 “与” 运算后的结果权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -427,7 +427,7 @@ public const override operator func |(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集执行逻辑 “或” 运算。返回 “或” 运算后的结果权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -449,7 +449,7 @@ extend String <: PermissionValue {}
 
 **功能：** 以下是一个扩展 PermissionValue 接口的实现，使用字符串表示单个权限。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -463,7 +463,7 @@ public const operator func &(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集执行逻辑 “与”（AND）运算。在 “与” 运算完成后，返回生成的权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -485,7 +485,7 @@ public const operator func |(rhs: PermissionValue): PermissionValue
 
 **功能：** 与另一个权限集执行逻辑 “或”（OR）运算，在 “或” 运算完成后返回生成的权限集。
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
