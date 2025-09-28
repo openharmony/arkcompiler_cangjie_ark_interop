@@ -217,6 +217,7 @@
                 - [User Files Overview](source_en/file-management/cj-user-file-overview.md)
         - [IPC Kit (Inter-Process Communication Service)]()
             - [IPC Kit Introduction](source_en/ipc/cj-ipc-rpc-overview.md)
+            - [IPC and RPC Communication Development Guide](source_zh_cn/ipc/cj-ipc-rpc-guidelines.md)
         - [Localization Kit]()
             - [Localization Kit Introduction](source_en/internationalization/cj-i18n-l10n.md)
             - [Application Internationalization]()
