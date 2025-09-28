@@ -10,8 +10,6 @@
 
 ![仓颉互操作API框架](./figures/cangjie-interop.png)
 
-如架构图所示：
-
 接口层：
 
 - 互操作库(ark_interop)：开发者通过调用互操作提供的API，实现跨语言参数传递、函数调用等能力。
