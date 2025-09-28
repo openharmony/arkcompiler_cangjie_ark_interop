@@ -221,6 +221,7 @@
                 - [用户文件概述](source_zh_cn/file-management/cj-user-file-overview.md)
         - [IPC Kit（进程间通信服务）]()
             - [IPC Kit简介](source_zh_cn/ipc/cj-ipc-rpc-overview.md)
+            - [IPC与RPC通信开发指导](source_zh_cn/ipc/cj-ipc-rpc-guidelines.md)
         - [Localization Kit（本地化开发服务）]()
             - [Localization Kit简介](source_zh_cn/internationalization/cj-i18n-l10n.md)
             - [应用国际化]()
