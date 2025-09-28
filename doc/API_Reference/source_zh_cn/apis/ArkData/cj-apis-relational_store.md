@@ -40,7 +40,7 @@ public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -65,6 +65,19 @@ public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
   | :---- | :--- | :--- |
   | The context is invalid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+deleteRdbStore(Global.getStageContext(), "RdbTest.db")
+```
+
 ## func deleteRdbStore(UIAbilityContext, StoreConfig)
 
 ```cangjie
@@ -76,7 +89,7 @@ public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -103,6 +116,19 @@ public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
   | :---- | :--- | :--- |
   | The context is invalid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+deleteRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1))
+```
+
 ## func getRdbStore(UIAbilityContext, StoreConfig)
 
 ```cangjie
@@ -114,7 +140,7 @@ public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStor
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -157,6 +183,18 @@ public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStor
   | :---- | :--- | :--- |
   | The context is invalid.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+```
+
 ## class Asset
 
 ```cangjie
@@ -178,7 +216,7 @@ public class Asset {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var createTime
 
@@ -194,7 +232,7 @@ public var createTime: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var modifyTime
 
@@ -210,7 +248,7 @@ public var modifyTime: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -226,7 +264,7 @@ public var name: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var path
 
@@ -242,7 +280,7 @@ public var path: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var size
 
@@ -258,7 +296,7 @@ public var size: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var status
 
@@ -274,7 +312,7 @@ public var status: AssetStatus
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var uri
 
@@ -290,7 +328,7 @@ public var uri: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, String, String, String, String, AssetStatus)
 
@@ -304,7 +342,7 @@ public init(name: String, uri: String, path: String, createTime: String, modifyT
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -340,7 +378,7 @@ public class CryptoParam {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var cryptoPageSize
 
@@ -356,7 +394,7 @@ public var cryptoPageSize: UInt32
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var encryptionAlgo
 
@@ -372,7 +410,7 @@ public var encryptionAlgo: EncryptionAlgo
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var encryptionKey
 
@@ -388,7 +426,7 @@ public var encryptionKey: Array<UInt8>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var hmacAlgo
 
@@ -404,7 +442,7 @@ public var hmacAlgo: HmacAlgo
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var iterationCount
 
@@ -420,7 +458,7 @@ public var iterationCount: Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var kdfAlgo
 
@@ -436,7 +474,7 @@ public var kdfAlgo:?KdfAlgo
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<UInt8>, Int32, EncryptionAlgo, HmacAlgo, ?KdfAlgo, UInt32)
 
@@ -452,7 +490,7 @@ public init(encryptionKey: Array<UInt8>, iterationCount!: Int32 = 10000,
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -477,7 +515,7 @@ public class RdbPredicates {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String)
 
@@ -490,7 +528,7 @@ public init(name: String)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -509,7 +547,7 @@ public func `in`(field: String, value: Array<ValueType>): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -532,6 +570,20 @@ public func `in`(field: String, value: Array<ValueType>): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 数据表的"NAME"列中在["Lisa", "Rose"]中的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.`in`("NAME", [ValueType.string("Lisa"), ValueType.string("Rose")])
+```
+
 ### func and()
 
 ```cangjie
@@ -543,13 +595,30 @@ public func and(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有和条件的Rdb谓词。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"NAME"列中的值为"Lisa"且"SALARY"列中的值为"200.5"的字段
+let predicates = RdbPredicates("EMPLOYEE")
+predicates
+    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
+    .and()
+    .equalTo("SALARY", RelationalStoreValueType.double(200.5))
+```
 
 ### func beginWrap()
 
@@ -562,13 +631,32 @@ public func beginWrap(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有左括号的Rdb谓词。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates
+    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
+    .beginWrap()
+    .equalTo("AGE", RelationalStoreValueType.integer(18))
+    .or()
+    .equalTo("SALARY", RelationalStoreValueType.double(200.5))
+    .endWrap()
+```
 
 ### func beginsWith(String, String)
 
@@ -581,7 +669,7 @@ public func beginsWith(field: String, value: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -604,6 +692,20 @@ public func beginsWith(field: String, value: String): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"NAME"列中以"Li"开头的字段，如"Lisa"
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.beginsWith("NAME", "Li")
+```
+
 ### func between(String, ValueType, ValueType)
 
 ```cangjie
@@ -615,7 +717,7 @@ public func between(field: String, low: ValueType, high: ValueType): RdbPredicat
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -639,6 +741,20 @@ public func between(field: String, low: ValueType, high: ValueType): RdbPredicat
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"AGE"列中大于等于10且小于等于50的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.between("AGE", RelationalStoreValueType.integer(10), RelationalStoreValueType.integer(50))
+```
+
 ### func contains(String, String)
 
 ```cangjie
@@ -650,7 +766,7 @@ public func contains(field: String, value: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -672,6 +788,20 @@ public func contains(field: String, value: String): RdbPredicates
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"NAME"列中包含"os"的字段，如"Rose"
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.contains("NAME", "os")
+```
 
 ### func distinct()
 
@@ -684,13 +814,28 @@ public func distinct(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回可用于过滤重复记录的谓词。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates
+    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
+    .distinct()
+```
 
 ### func endWrap()
 
@@ -703,13 +848,32 @@ public func endWrap(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有右括号的Rdb谓词。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates
+    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
+    .beginWrap()
+    .equalTo("AGE", RelationalStoreValueType.integer(18))
+    .or()
+    .equalTo("SALARY", RelationalStoreValueType.double(200.5))
+    .endWrap()
+```
 
 ### func endsWith(String, String)
 
@@ -722,7 +886,7 @@ public func endsWith(field: String, value: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -745,6 +909,20 @@ public func endsWith(field: String, value: String): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"NAME"列中以"se"结尾的字段，如"Rose"
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.endsWith("NAME", "se")
+```
+
 ### func equalTo(String, ValueType)
 
 ```cangjie
@@ -756,7 +934,7 @@ public func equalTo(field: String, value: ValueType): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -779,6 +957,20 @@ public func equalTo(field: String, value: ValueType): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"NAME"列中的值为"Lisa"的字段
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.equalTo("NAME", RelationalStoreValueType.string("Lisa"))
+```
+
 ### func glob(String, String)
 
 ```cangjie
@@ -790,7 +982,7 @@ public func glob(field: String, value: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -813,6 +1005,20 @@ public func glob(field: String, value: String): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"NAME"列中类型为string且值为"?h*g"的字段
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.glob("NAME", "?h*g")
+``
+
 ### func greaterThan(String, ValueType)
 
 ```cangjie
@@ -824,7 +1030,7 @@ public func greaterThan(field: String, value: ValueType): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -846,6 +1052,20 @@ public func greaterThan(field: String, value: ValueType): RdbPredicates
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"AGE"列中大于18的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.greaterThan("AGE", RelationalStoreValueType.integer(18))
+```
 
 ### func greaterThanOrEqualTo(String, ValueType)
 
@@ -858,7 +1078,7 @@ public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -881,6 +1101,20 @@ public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"AGE"列中大于18的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.greaterThanOrEqualTo("AGE", RelationalStoreValueType.integer(18))
+```
+
 ### func groupBy(Array\<String>)
 
 ```cangjie
@@ -892,7 +1126,7 @@ public func groupBy(fields: Array<String>): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -914,6 +1148,19 @@ public func groupBy(fields: Array<String>): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.groupBy(["AGE", "NAME"])
+```
+
 ### func inAllDevices()
 
 ```cangjie
@@ -925,13 +1172,26 @@ public func inAllDevices(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回与指定字段匹配的谓词。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.inAllDevices()
+```
 
 ### func isNotNull(String)
 
@@ -944,7 +1204,7 @@ public func isNotNull(field: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -966,6 +1226,19 @@ public func isNotNull(field: String): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.isNotNull("NAME")
+```
+
 ### func isNull(String)
 
 ```cangjie
@@ -977,7 +1250,7 @@ public func isNull(field: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -998,6 +1271,19 @@ public func isNull(field: String): RdbPredicates
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.isNull("NAME")
+```
 
 ### func lessThan(String, ValueType)
 
@@ -1010,7 +1296,7 @@ public func lessThan(field: String, value: ValueType): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1032,6 +1318,20 @@ public func lessThan(field: String, value: ValueType): RdbPredicates
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"AGE"列中小于20的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.lessThan("AGE", ValueType.integer(20))
+```
 
 ### func lessThanOrEqualTo(String, ValueType)
 
@@ -1044,7 +1344,7 @@ public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1067,6 +1367,20 @@ public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 匹配数据表的"AGE"列中小于等于20的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.lessThanOrEqualTo("AGE", ValueType.integer(20))
+```
+
 ### func like(String, String)
 
 ```cangjie
@@ -1078,7 +1392,7 @@ public func like(field: String, value: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1101,6 +1415,20 @@ public func like(field: String, value: String): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 数据表的"NAME"列中的值类似于"os"的字段，如"Rose"
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.like("NAME", "%os%")
+```
+
 ### func limitAs(Int32)
 
 ```cangjie
@@ -1112,7 +1440,7 @@ public func limitAs(value: Int32): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1134,6 +1462,21 @@ public func limitAs(value: Int32): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates
+    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
+    .limitAs(3)
+```
+
 ### func notBetween(String, ValueType, ValueType)
 
 ```cangjie
@@ -1145,7 +1488,7 @@ public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredi
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1169,6 +1512,20 @@ public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredi
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 数据表的"AGE"列中小于10或大于50的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.notBetween("AGE", RelationalStoreValueType.integer(10), RelationalStoreValueType.integer(50))
+```
+
 ### func notEqualTo(String, ValueType)
 
 ```cangjie
@@ -1180,7 +1537,7 @@ public func notEqualTo(field: String, value: ValueType): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1203,6 +1560,20 @@ public func notEqualTo(field: String, value: ValueType): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 数据表的"NAME"列中的值不为"Lisa"的字段
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.notEqualTo("NAME", RelationalStoreValueType.string("Lisa"))
+```
+
 ### func notIn(String, Array\<ValueType>)
 
 ```cangjie
@@ -1214,7 +1585,7 @@ public func notIn(field: String, value: Array<ValueType>): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1237,6 +1608,20 @@ public func notIn(field: String, value: Array<ValueType>): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 数据表的"NAME"列中不在["Lisa", "Rose"]中的值
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.notIn("NAME", [ValueType.string("Lisa"), ValueType.string("Rose")])
+```
+
 ### func offsetAs(Int32)
 
 ```cangjie
@@ -1248,7 +1633,7 @@ public func offsetAs(rowOffset: Int32): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1270,6 +1655,21 @@ public func offsetAs(rowOffset: Int32): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates
+    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
+    .offsetAs(3)
+```
+
 ### func or()
 
 ```cangjie
@@ -1281,13 +1681,30 @@ public func or(): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |[RdbPredicates](#class-rdbpredicates)|返回带有或条件的Rdb谓词。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+// 数据表的"NAME"列中的值为"Lisa"或"Rose"的字段
+let predicates = RdbPredicates("EMPLOYEE")
+predicates
+    .equalTo("NAME", RelationalStoreValueType.string("Lisa"))
+    .or()
+    .equalTo("NAME", RelationalStoreValueType.string("Rose"))
+```
 
 ### func orderByAsc(String)
 
@@ -1300,7 +1717,7 @@ public func orderByAsc(field: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1322,6 +1739,19 @@ public func orderByAsc(field: String): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.orderByAsc("NAME")
+```
+
 ### func orderByDesc(String)
 
 ```cangjie
@@ -1333,7 +1763,7 @@ public func orderByDesc(field: String): RdbPredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1355,6 +1785,19 @@ public func orderByDesc(field: String): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.orderByDesc("AGE")
+```
+
 ## class RdbStore
 
 ```cangjie
@@ -1365,7 +1808,7 @@ public class RdbStore {}
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func backup(String)
 
@@ -1378,7 +1821,7 @@ public func backup(destName: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1412,6 +1855,19 @@ public func backup(destName: String): Unit
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+rdbStore.backup("dbBackup.db")
+```
+
 ### func batchInsert(String, Array\<ValuesBucket>)
 
 ```cangjie
@@ -1423,7 +1879,7 @@ public func batchInsert(table: String, values: Array<ValuesBucket>): Int64
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1460,6 +1916,37 @@ public func batchInsert(table: String, values: Array<ValuesBucket>): Int64
   | 14800033 | SQLite: Data type mismatch.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.HashMap
+import ohos.relational_store.ValueType as RValueType
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+var values1 = HashMap<String, RelationalStoreValueType>()
+values1.add("ID", RelationalStoreValueType.integer(1))
+values1.add("NAME", RelationalStoreValueType.string("Lisa"))
+values1.add("AGE", RelationalStoreValueType.integer(18))
+values1.add("SALARY", RelationalStoreValueType.double(100.5))
+var values2 = HashMap<String, RelationalStoreValueType>()
+values2.add("ID", RelationalStoreValueType.integer(2))
+values2.add("NAME", RelationalStoreValueType.string("Jack"))
+values2.add("AGE", RelationalStoreValueType.integer(19))
+values2.add("SALARY", RelationalStoreValueType.double(101.5))
+var values3 = HashMap<String, RelationalStoreValueType>()
+values3.add("ID", RelationalStoreValueType.integer(3))
+values3.add("NAME", RelationalStoreValueType.string("Tom"))
+values3.add("AGE", RelationalStoreValueType.integer(20))
+values3.add("SALARY", RelationalStoreValueType.double(102.5))
+let valueBuckets: Array<Map<String, RValueType>>= [values1, values2, values3]
+rdbStore.batchInsert("EMPLOYEE", valueBuckets)
+```
+
 ### func beginTransaction()
 
 ```cangjie
@@ -1471,7 +1958,7 @@ public func beginTransaction(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1500,6 +1987,25 @@ public func beginTransaction(): Unit
   | 14800034 | SQLite: Library used incorrectly.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.HashMap
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+var values = HashMap<String, RelationalStoreValueType>()
+rdbStore.beginTransaction()
+values.add("ID", RelationalStoreValueType.integer(2))
+values.add("NAME", RelationalStoreValueType.string("Sun"))
+rdbStore.insert("THING", values)
+rdbStore.commit()
+```
+
 ### func commit()
 
 ```cangjie
@@ -1511,7 +2017,7 @@ public func commit(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1539,6 +2045,26 @@ public func commit(): Unit
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.HashMap
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+rdbStore.executeSql("CREATE TABLE THING(ID int NOT NULL, NAME varchar(255) NOT NULL, PRIMARY KEY (Id))")
+rdbStore.beginTransaction()
+var values = HashMap<String, RelationalStoreValueType>()
+values.add("ID", RelationalStoreValueType.integer(2))
+values.add("NAME", RelationalStoreValueType.string("Sun"))
+rdbStore.insert("THING", values)
+rdbStore.commit()
+```
+
 ### func delete(RdbPredicates)
 
 ```cangjie
@@ -1550,7 +2076,7 @@ public func delete(predicates: RdbPredicates): Int64
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1591,6 +2117,22 @@ public func delete(predicates: RdbPredicates): Int64
   | 14800034 | SQLite: Library used incorrectly.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.HashMap
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.equalTo("NAME", RelationalStoreValueType.string("Lisa"))
+rdbStore.delete(predicates)
+```
+
 ### func emit(String)
 
 ```cangjie
@@ -1602,7 +2144,7 @@ public func emit(event: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1622,6 +2164,30 @@ public func emit(event: String): Unit
   | 14800014 | The RdbStore or ResultSet is already closed.|
   | 14800050 | Failed to obtain the subscription service.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import ohos.base.*
+
+// 此处代码可添加在依赖项定义中
+class TestCallback <: Callback0Argument {
+    public init() {}
+    public open func invoke(): Unit {
+        AppLog.info("Call invoke.")
+    }
+}
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let testCallback = TestCallback()
+rdbStore.on("PRINT", false, testCallback)
+rdbStore.emit("PRINT")
+```
+
 ### func executeSql(String, Array\<ValueType>)
 
 ```cangjie
@@ -1633,7 +2199,7 @@ public func executeSql(sql: String, bindArgs!: Array<ValueType> = []): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1670,6 +2236,19 @@ public func executeSql(sql: String, bindArgs!: Array<ValueType> = []): Unit
   | 14800034 | SQLite: Library used incorrectly.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+rdbStore.executeSql("DELETE FROM EMPLOYEE WHERE ID = ?", [RelationalStoreValueType.integer(3)])
+```
+
 ### func insert(String, ValuesBucket, ConflictResolution)
 
 ```cangjie
@@ -1682,7 +2261,7 @@ public func insert(table: String, values: ValuesBucket,
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1725,6 +2304,30 @@ public func insert(table: String, values: ValuesBucket,
   | 14800034 | SQLite: Library used incorrectly.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.HashMap
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+rdbStore.executeSql(
+    "CREATE TABLE EMPLOYEE(ID int NOT NULL, NAME varchar(255) NOT NULL, AGE int, SALARY float NOT NULL, CODES Bit NOT NULL, PRIMARY KEY (Id))"
+)
+var values = HashMap<String, RelationalStoreValueType>()
+values.add("ID", RelationalStoreValueType.integer(1))
+values.add("NAME", RelationalStoreValueType.string("Lisa"))
+values.add("AGE", RelationalStoreValueType.integer(18))
+values.add("SALARY", RelationalStoreValueType.double(100.5))
+values.add("CODES", RelationalStoreValueType.boolean(true))
+rdbStore.insert("EMPLOYEE", values, ON_CONFLICT_REPLACE)
+```
+
 ### func off(String, Bool, ?Callback0Argument)
 
 ```cangjie
@@ -1736,7 +2339,7 @@ public func off(event: String, interProcess: Bool, observer!: ?Callback0Argument
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1758,6 +2361,30 @@ public func off(event: String, interProcess: Bool, observer!: ?Callback0Argument
   | 14800014 | The RdbStore or ResultSet is already closed.|
   | 14800050 | Failed to obtain the subscription service.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import ohos.base.*
+
+// 此处代码可添加在依赖项定义中
+class TestCallback <: Callback0Argument {
+    public init() {}
+    public open func invoke(): Unit {
+        AppLog.info("Call invoke.")
+    }
+}
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(), StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let testCallback = TestCallback()
+rdbStore.on("PRINT", false, testCallback)
+rdbStore.off("PRINT", false, testCallback)
+```
+
 ### func on(String, Bool, Callback0Argument)
 
 ```cangjie
@@ -1769,7 +2396,7 @@ public func on(event: String, interProcess: Bool, observer: Callback0Argument): 
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1791,6 +2418,30 @@ public func on(event: String, interProcess: Bool, observer: Callback0Argument): 
   | 14800014 | The RdbStore or ResultSet is already closed.|
   | 14800050 | Failed to obtain the subscription service.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import ohos.base.*
+
+// 此处代码可添加在依赖项定义中
+class TestCallback <: Callback0Argument {
+    public init() {}
+    public open func invoke(): Unit {
+        AppLog.info("Call invoke.")
+    }
+}
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let testCallback = TestCallback()
+rdbStore.on("PRINT", false, testCallback)
+```
+
 ### func query(RdbPredicates, Array\<String>)
 
 ```cangjie
@@ -1802,7 +2453,7 @@ public func query(predicates: RdbPredicates, columns!: Array<String> = []): Resu
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1828,6 +2479,28 @@ public func query(predicates: RdbPredicates, columns!: Array<String> = []): Resu
   | 14800014 | The RdbStore or ResultSet is already closed.|
   | 14800015 | The database does not respond.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.equalTo("NAME", RelationalStoreValueType.string("Rose"))
+let columns = ["ID", "NAME", "AGE", "SALARY", "CODES"]
+let resultSet = rdbStore.query(predicates, columns)
+resultSet.goToNextRow()
+let id = resultSet.getLong(resultSet.getColumnIndex("ID"))
+let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
+let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
+let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
+```
+
 ### func querySql(String, Array\<ValueType>)
 
 ```cangjie
@@ -1839,7 +2512,7 @@ public func querySql(sql: String, bindArgs!: Array<ValueType> = []): ResultSet
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1865,6 +2538,25 @@ public func querySql(sql: String, bindArgs!: Array<ValueType> = []): ResultSet
   | 14800014 | The RdbStore or ResultSet is already closed.|
   | 14800015 | The database does not respond.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.goToNextRow()
+let id = resultSet.getLong(resultSet.getColumnIndex("ID"))
+let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
+let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
+let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
+```
+
 ### func restore(String)
 
 ```cangjie
@@ -1876,7 +2568,7 @@ public func restore(srcName: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1910,6 +2602,20 @@ public func restore(srcName: String): Unit
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+rdbStore.restore("dbBackup.db")
+```
+
 ### func rollBack()
 
 ```cangjie
@@ -1921,7 +2627,7 @@ public func rollBack(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1949,6 +2655,34 @@ public func rollBack(): Unit
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.HashMap
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let predicates = RdbPredicates("THING")
+var values = HashMap<String, RelationalStoreValueType>()
+try {
+    rdbStore.beginTransaction()
+    values.add("ID", RelationalStoreValueType.integer(3))
+    values.add("NAME", RelationalStoreValueType.string("Tom"))
+    rdbStore.insert("THING", values)
+    values.add("ID", RelationalStoreValueType.integer(4))
+    values.add("NAME", RelationalStoreValueType.string("Wind"))
+    rdbStore.insert("THING", values)
+    rdbStore.commit()
+} catch (e: Exception) {
+    rdbStore.rollBack()
+}
+```
+
 ### func update(ValuesBucket, RdbPredicates, ConflictResolution)
 
 ```cangjie
@@ -1961,7 +2695,7 @@ public func update(values: ValuesBucket, predicates: RdbPredicates,
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2004,6 +2738,27 @@ public func update(values: ValuesBucket, predicates: RdbPredicates,
   | 14800034 | SQLite: Library used incorrectly.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.HashMap
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let predicates = RdbPredicates("EMPLOYEE")
+predicates.equalTo("NAME", RelationalStoreValueType.string("TOM"))
+var values = HashMap<String, RelationalStoreValueType>()
+values.add("NAME", RelationalStoreValueType.string("TOM"))
+values.add("AGE", RelationalStoreValueType.integer(88))
+values.add("SALARY", RelationalStoreValueType.double(9999.513))
+rdbStore.update(values, predicates, ON_CONFLICT_REPLACE)
+```
+
 ## class ResultSet
 
 ```cangjie
@@ -2014,7 +2769,7 @@ public class ResultSet {}
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop columnCount
 
@@ -2030,7 +2785,7 @@ public prop columnCount: Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop columnNames
 
@@ -2046,7 +2801,7 @@ public prop columnNames: Array<String>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop isAtFirstRow
 
@@ -2062,7 +2817,7 @@ public prop isAtFirstRow: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop isAtLastRow
 
@@ -2078,7 +2833,7 @@ public prop isAtLastRow: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop isClosed
 
@@ -2094,7 +2849,7 @@ public prop isClosed: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop isEnded
 
@@ -2110,7 +2865,7 @@ public prop isEnded: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop isStarted
 
@@ -2126,7 +2881,7 @@ public prop isStarted: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop rowCount
 
@@ -2142,7 +2897,7 @@ public prop rowCount: Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop rowIndex
 
@@ -2158,7 +2913,7 @@ public prop rowIndex: Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -2171,7 +2926,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -2181,6 +2936,21 @@ public func close(): Unit
   | :---- | :--- |
   | 14800000 | Inner error.|
   | 14800012 | ResultSet is empty or pointer index is out of bounds.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.close()
+```
 
 ### func getAsset(Int32)
 
@@ -2193,7 +2963,7 @@ public func getAsset(columnIndex: Int32): Asset
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2234,6 +3004,21 @@ public func getAsset(columnIndex: Int32): Asset
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"))
+```
+
 ### func getAssets(Int32)
 
 ```cangjie
@@ -2245,7 +3030,7 @@ public func getAssets(columnIndex: Int32): Assets
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2286,6 +3071,21 @@ public func getAssets(columnIndex: Int32): Assets
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let docs = resultSet.getAssets(resultSet.getColumnIndex("DOCS"))
+```
+
 ### func getBlob(Int32)
 
 ```cangjie
@@ -2297,7 +3097,7 @@ public func getBlob(columnIndex: Int32): Array<UInt8>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2338,6 +3138,21 @@ public func getBlob(columnIndex: Int32): Array<UInt8>
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+     StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"))
+```
+
 ### func getColumnIndex(String)
 
 ```cangjie
@@ -2349,7 +3164,7 @@ public func getColumnIndex(columnName: String): Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2390,6 +3205,24 @@ public func getColumnIndex(columnName: String): Int32
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let id = resultSet.getLong(resultSet.getColumnIndex("ID"))
+let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
+let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
+let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
+```
+
 ### func getColumnName(Int32)
 
 ```cangjie
@@ -2401,7 +3234,7 @@ public func getColumnName(columnIndex: Int32): String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2442,6 +3275,23 @@ public func getColumnName(columnIndex: Int32): String
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let id = resultSet.getColumnName(0)
+let name = resultSet.getColumnName(1)
+let age = resultSet.getColumnName(2)
+```
+
 ### func getDouble(Int32)
 
 ```cangjie
@@ -2453,7 +3303,7 @@ public func getDouble(columnIndex: Int32): Float64
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2494,6 +3344,21 @@ public func getDouble(columnIndex: Int32): Float64
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"))
+```
+
 ### func getLong(Int32)
 
 ```cangjie
@@ -2505,7 +3370,7 @@ public func getLong(columnIndex: Int32): Int64
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2546,6 +3411,21 @@ public func getLong(columnIndex: Int32): Int64
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let age = resultSet.getLong(resultSet.getColumnIndex("AGE"))
+```
+
 ### func getRow()
 
 ```cangjie
@@ -2557,7 +3437,7 @@ public func getRow(): ValuesBucket
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2591,6 +3471,21 @@ public func getRow(): ValuesBucket
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let value = resultSet.getRow()
+```
+
 ### func getString(Int32)
 
 ```cangjie
@@ -2602,7 +3497,7 @@ public func getString(columnIndex: Int32): String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2643,6 +3538,21 @@ public func getString(columnIndex: Int32): String
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let name = resultSet.getString(resultSet.getColumnIndex("NAME"))
+```
+
 ### func goTo(Int32)
 
 ```cangjie
@@ -2654,7 +3564,7 @@ public func goTo(offset: Int32): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2668,6 +3578,21 @@ public func goTo(offset: Int32): Bool
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.goTo(1)
+```
+
 ### func goToFirstRow()
 
 ```cangjie
@@ -2679,13 +3604,28 @@ public func goToFirstRow(): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.goToFirstRow()
+```
 
 ### func goToLastRow()
 
@@ -2698,7 +3638,7 @@ public func goToLastRow(): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2732,6 +3672,21 @@ public func goToLastRow(): Bool
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.goToLastRow()
+```
+
 ### func goToNextRow()
 
 ```cangjie
@@ -2743,13 +3698,28 @@ public func goToNextRow(): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.goToNextRow()
+```
 
 ### func goToPreviousRow()
 
@@ -2762,13 +3732,28 @@ public func goToPreviousRow(): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.goToPreviousRow()
+```
 
 ### func goToRow(Int32)
 
@@ -2781,7 +3766,7 @@ public func goToRow(position: Int32): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2795,6 +3780,21 @@ public func goToRow(position: Int32): Bool
 |:----|:----|
 |Bool|如果成功移动结果集，则为true；否则返回false。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+resultSet.goToRow(5)
+```
+
 ### func isColumnNull(Int32)
 
 ```cangjie
@@ -2806,7 +3806,7 @@ public func isColumnNull(columnIndex: Int32): Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2847,6 +3847,21 @@ public func isColumnNull(columnIndex: Int32): Bool
   | 14800033 | SQLite: Data type mismatch.|
   | 14800034 | SQLite: Library used incorrectly.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+var rdbStore: RdbStore = getRdbStore(Global.getStageContext(),
+    StoreConfig("RdbTest.db", RelationalStoreSecurityLevel.S1)) // 需获取Context应用上下文，详见本文使用说明
+let resultSet = rdbStore.querySql("SELECT * FROM EMPLOYEE WHERE NAME = 'Peter'")
+let isColumnNull = resultSet.isColumnNull(resultSet.getColumnIndex("CODES"))
+```
+
 ## class StoreConfig
 
 ```cangjie
@@ -2882,7 +3897,7 @@ public class StoreConfig {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var allowRebuild
 
@@ -2898,7 +3913,7 @@ public var allowRebuild: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var autoCleanDirtyData
 
@@ -2914,7 +3929,7 @@ public var autoCleanDirtyData: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var cryptoParam
 
@@ -2930,7 +3945,7 @@ public var cryptoParam: CryptoParam
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var customDir
 
@@ -2946,7 +3961,7 @@ public var customDir: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dataGroupId
 
@@ -2962,7 +3977,7 @@ public var dataGroupId: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var enableSemanticIndex
 
@@ -2978,7 +3993,7 @@ public var enableSemanticIndex: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var encrypt
 
@@ -2994,7 +4009,7 @@ public var encrypt: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isReadOnly
 
@@ -3010,7 +4025,7 @@ public var isReadOnly: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -3026,7 +4041,7 @@ public var name: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var persist
 
@@ -3042,7 +4057,7 @@ public var persist: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var pluginLibs
 
@@ -3058,7 +4073,7 @@ public var pluginLibs: Array<String>
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var rootDir
 
@@ -3074,7 +4089,7 @@ public var rootDir: String
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var securityLevel
 
@@ -3090,7 +4105,7 @@ public var securityLevel: SecurityLevel
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var tokenizer
 
@@ -3106,7 +4121,7 @@ public var tokenizer: Tokenizer
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var vector
 
@@ -3122,7 +4137,7 @@ public var vector: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(SecurityLevel, String, Bool, String, String, String, Bool, Bool, Bool, Array\<String>, CryptoParam, Bool, Tokenizer, Bool, Bool)
 
@@ -3142,7 +4157,7 @@ public init(securityLevel: SecurityLevel, name!: String = "",
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3182,7 +4197,7 @@ public enum AssetStatus {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetAbnormal
 
@@ -3194,7 +4209,7 @@ AssetAbnormal
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetDelete
 
@@ -3206,7 +4221,7 @@ AssetDelete
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetDownloading
 
@@ -3218,7 +4233,7 @@ AssetDownloading
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetInsert
 
@@ -3230,7 +4245,7 @@ AssetInsert
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetNormal
 
@@ -3242,7 +4257,7 @@ AssetNormal
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetUpdate
 
@@ -3254,7 +4269,7 @@ AssetUpdate
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ChangeType
 
@@ -3270,7 +4285,7 @@ public enum ChangeType {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetChange
 
@@ -3282,7 +4297,7 @@ AssetChange
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DataChange
 
@@ -3294,7 +4309,7 @@ DataChange
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ConflictResolution
 
@@ -3314,7 +4329,7 @@ public enum ConflictResolution {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OnConflictAbort
 
@@ -3325,7 +4340,7 @@ OnConflictAbort
 **功能：** 表示当冲突发生时，中止当前SQL语句，并撤销当前SQL语句所做的任何更改，但是由同一事务中先前的SQL语句引起的更改被保留并且事务保持活动状态。
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OnConflictFail
 
@@ -3337,7 +4352,7 @@ OnConflictFail
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OnConflictIgnore
 
@@ -3349,7 +4364,7 @@ OnConflictIgnore
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OnConflictNone
 
@@ -3361,7 +4376,7 @@ OnConflictNone
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OnConflictReplace
 
@@ -3373,7 +4388,7 @@ OnConflictReplace
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OnConflictRollback
 
@@ -3385,7 +4400,7 @@ OnConflictRollback
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum DistributedType
 
@@ -3401,7 +4416,7 @@ public enum DistributedType {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DistributedCloud
 
@@ -3413,7 +4428,7 @@ DistributedCloud
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DistributedDevice
 
@@ -3425,7 +4440,7 @@ DistributedDevice
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum EncryptionAlgo
 
@@ -3441,7 +4456,7 @@ public enum EncryptionAlgo {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Aes256Cbc
 
@@ -3453,7 +4468,7 @@ Aes256Cbc
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Aes256Gcm
 
@@ -3465,7 +4480,7 @@ Aes256Gcm
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum Field
 
@@ -3485,7 +4500,7 @@ public enum Field {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CursorField
 
@@ -3497,7 +4512,7 @@ CursorField
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DeletedFlagField
 
@@ -3509,7 +4524,7 @@ DeletedFlagField
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OriginField
 
@@ -3521,7 +4536,7 @@ OriginField
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OwnerField
 
@@ -3533,7 +4548,7 @@ OwnerField
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PrivilegeField
 
@@ -3545,7 +4560,7 @@ PrivilegeField
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SharingResourceField
 
@@ -3557,7 +4572,7 @@ SharingResourceField
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum HmacAlgo
 
@@ -3574,7 +4589,7 @@ public enum HmacAlgo {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Sha1
 
@@ -3586,7 +4601,7 @@ Sha1
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Sha256
 
@@ -3598,7 +4613,7 @@ Sha256
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Sha512
 
@@ -3610,7 +4625,7 @@ Sha512
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum KdfAlgo
 
@@ -3627,7 +4642,7 @@ public enum KdfAlgo {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### KdfSha1
 
@@ -3639,7 +4654,7 @@ KdfSha1
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### KdfSha256
 
@@ -3651,7 +4666,7 @@ KdfSha256
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### KdfSha512
 
@@ -3663,7 +4678,7 @@ KdfSha512
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum Origin
 
@@ -3680,7 +4695,7 @@ public enum Origin {
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Cloud
 
@@ -3692,7 +4707,7 @@ Cloud
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Local
 
@@ -3704,7 +4719,7 @@ Local
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Remote
 
@@ -3716,7 +4731,7 @@ Remote
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum Progress
 
@@ -3733,7 +4748,7 @@ public enum Progress {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncBegin
 
@@ -3745,7 +4760,7 @@ SyncBegin
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncFinish
 
@@ -3757,7 +4772,7 @@ SyncFinish
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncInProgress
 
@@ -3769,7 +4784,7 @@ SyncInProgress
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum SecurityLevel
 
@@ -3787,7 +4802,7 @@ public enum SecurityLevel {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S1
 
@@ -3799,7 +4814,7 @@ S1
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S2
 
@@ -3811,7 +4826,7 @@ S2
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S3
 
@@ -3823,7 +4838,7 @@ S3
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S4
 
@@ -3835,7 +4850,7 @@ S4
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum SubscribeType
 
@@ -3852,7 +4867,7 @@ public enum SubscribeType {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SubscribeTypeCloud
 
@@ -3864,7 +4879,7 @@ SubscribeTypeCloud
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SubscribeTypeCloudDetails
 
@@ -3876,7 +4891,7 @@ SubscribeTypeCloudDetails
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SubscribeTypeRemote
 
@@ -3888,7 +4903,7 @@ SubscribeTypeRemote
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum SyncMode
 
@@ -3907,7 +4922,7 @@ public enum SyncMode {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncModeCloudFirst
 
@@ -3919,7 +4934,7 @@ SyncModeCloudFirst
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncModeNativeFirst
 
@@ -3931,7 +4946,7 @@ SyncModeNativeFirst
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncModePull
 
@@ -3943,7 +4958,7 @@ SyncModePull
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncModePush
 
@@ -3955,7 +4970,7 @@ SyncModePush
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SyncModeTimeFirst
 
@@ -3967,7 +4982,7 @@ SyncModeTimeFirst
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum Tokenizer
 
@@ -3984,7 +4999,7 @@ public enum Tokenizer {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CustomTokenizer
 
@@ -3996,7 +5011,7 @@ CustomTokenizer
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IcuTokenizer
 
@@ -4008,7 +5023,7 @@ IcuTokenizer
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NoneTokenizer
 
@@ -4020,7 +5035,7 @@ NoneTokenizer
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ValueType
 
@@ -4042,7 +5057,7 @@ public enum ValueType {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetEnum(Asset)
 
@@ -4054,7 +5069,7 @@ AssetEnum(Asset)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AssetsEnum(Array\<Asset>)
 
@@ -4066,7 +5081,7 @@ AssetsEnum(Array<Asset>)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Boolean(Bool)
 
@@ -4078,7 +5093,7 @@ Boolean(Bool)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Double(Float64)
 
@@ -4090,7 +5105,7 @@ Double(Float64)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Integer(Int64)
 
@@ -4102,7 +5117,7 @@ Integer(Int64)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Null
 
@@ -4114,7 +5129,7 @@ Null
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -4126,7 +5141,7 @@ StringValue(String)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Uint8Array(Array\<UInt8>)
 
@@ -4138,7 +5153,7 @@ Uint8Array(Array<UInt8>)
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## type Assets
 

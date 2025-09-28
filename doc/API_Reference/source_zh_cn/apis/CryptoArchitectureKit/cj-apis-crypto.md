@@ -30,7 +30,7 @@ public func createCipher(transformation: String): Cipher
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -77,7 +77,7 @@ public func createMac(algName: String): Mac
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -121,7 +121,7 @@ public func createMd(algName: String): Md
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -165,7 +165,7 @@ public func createRandom(): Random
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -204,7 +204,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -255,7 +255,7 @@ public interface Key {
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop algName
 
@@ -271,7 +271,7 @@ prop algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop format
 
@@ -287,7 +287,7 @@ prop format: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getEncoded()
 
@@ -303,7 +303,7 @@ func getEncoded(): DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -344,7 +344,7 @@ public class ParamsSpec {
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var algName
 
@@ -360,7 +360,7 @@ mut var algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Cipher
 
@@ -377,7 +377,7 @@ public class Cipher {}
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop algName
 
@@ -393,7 +393,7 @@ public prop algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func initialize(CryptoMode, Key, ?ParamsSpec)
 
@@ -407,7 +407,7 @@ public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -476,7 +476,7 @@ public func doFinal(data: ?DataBlob): DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -546,7 +546,7 @@ public func update(data: DataBlob): DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -602,7 +602,7 @@ public class Mac {}
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop algName
 
@@ -618,7 +618,7 @@ public prop algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func initialize(SymKey)
 
@@ -630,7 +630,7 @@ public func initialize(key: SymKey): Unit
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -663,7 +663,7 @@ public func doFinal(): DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -700,7 +700,7 @@ public func getMacLength(): UInt32
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -737,7 +737,7 @@ public func update(input: DataBlob): Unit
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -772,7 +772,7 @@ public class Md {}
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop algName
 
@@ -788,7 +788,7 @@ public prop algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func digest()
 
@@ -800,7 +800,7 @@ public func digest(): DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -842,7 +842,7 @@ public func getMdLength(): UInt32
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -881,7 +881,7 @@ public func update(input: DataBlob): Unit
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -922,7 +922,7 @@ public class Random {}
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop algName
 
@@ -938,7 +938,7 @@ public prop algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func generateRandom(Int32)
 
@@ -950,7 +950,7 @@ public func generateRandom(len: Int32): DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -997,7 +997,7 @@ public func setSeed(seed: DataBlob): Unit
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1038,7 +1038,7 @@ public class SymKey <:  Key {}
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1058,7 +1058,7 @@ public prop algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop format
 
@@ -1074,7 +1074,7 @@ public prop format: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func clearMem()
 
@@ -1086,7 +1086,7 @@ public func clearMem(): Unit
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1116,7 +1116,7 @@ public func getEncoded(): DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1134,6 +1134,21 @@ public func getEncoded(): DataBlob
   | 17620001 | memory error. |
   | 17630001 | crypto operation error. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.CryptoArchitectureKit.*
+
+let generator = createSymKeyGenerator("3DES192")
+let key = generator.generateSymKey()
+var encodedKey = key.getEncoded()
+Hilog.info(0, "AppLogCj", "key blob: ${encodedKey.data}") // Display key content.
+```
+
 ## class SymKeyGenerator
 
 ```cangjie
@@ -1146,7 +1161,7 @@ public class SymKeyGenerator {}
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop algName
 
@@ -1162,7 +1177,7 @@ public prop algName: String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func convertKey(DataBlob)
 
@@ -1181,7 +1196,7 @@ public func convertKey(key: DataBlob): SymKey
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1234,7 +1249,7 @@ public func generateSymKey(): SymKey
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1282,7 +1297,7 @@ public struct CcmParamsSpec <: ParamsSpec {
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1302,7 +1317,7 @@ public mut prop aad: DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop authTag
 
@@ -1318,7 +1333,7 @@ public mut prop authTag: DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop iv
 
@@ -1334,7 +1349,7 @@ public mut prop iv: DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, DataBlob, DataBlob, DataBlob)
 
@@ -1346,7 +1361,7 @@ public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1383,7 +1398,7 @@ public struct DataBlob {
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let data
 
@@ -1399,7 +1414,7 @@ public let data: Array<UInt8>
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<UInt8>)
 
@@ -1411,7 +1426,7 @@ public init(data: Array<UInt8>)
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1437,7 +1452,7 @@ public struct GcmParamsSpec <: ParamsSpec {
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1457,7 +1472,7 @@ public mut prop aad: DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop authTag
 
@@ -1473,7 +1488,7 @@ public mut prop authTag: DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop iv
 
@@ -1489,7 +1504,7 @@ public mut prop iv: DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, DataBlob, DataBlob, DataBlob)
 
@@ -1501,7 +1516,7 @@ public init(algName: String, iv: DataBlob, aad: DataBlob, authTag: DataBlob)
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1542,7 +1557,7 @@ public struct IvParamsSpec <: ParamsSpec {
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1562,7 +1577,7 @@ public mut prop iv: DataBlob
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, DataBlob)
 
@@ -1574,7 +1589,7 @@ public init(algName: String, iv: DataBlob)
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1609,7 +1624,7 @@ public enum CryptoMode <: Equatable<CryptoMode> & ToString {
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1626,7 +1641,7 @@ DecryptMode
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### EncryptMode
 
@@ -1638,7 +1653,7 @@ EncryptMode
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CryptoMode)
 
@@ -1650,7 +1665,7 @@ public operator func !=(other: CryptoMode): Bool
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1674,7 +1689,7 @@ public operator func ==(other: CryptoMode): Bool
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1698,7 +1713,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1722,7 +1737,7 @@ public enum CipherSpecItem <: Equatable<CipherSpecItem> & ToString {
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1739,7 +1754,7 @@ OaepMdNameStr
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OaepMgfNameStr
 
@@ -1751,7 +1766,7 @@ OaepMgfNameStr
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OaepMgf1MdStr
 
@@ -1763,7 +1778,7 @@ OaepMgf1MdStr
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### OaepMgf1PsrcUint8Arr
 
@@ -1775,7 +1790,7 @@ OaepMgf1PsrcUint8Arr
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(CipherSpecItem)
 
@@ -1787,7 +1802,7 @@ public operator func !=(other: CipherSpecItem): Bool
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1811,7 +1826,7 @@ public operator func ==(other: CipherSpecItem): Bool
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1835,7 +1850,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1860,7 +1875,7 @@ public enum Result <: ToString {
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1876,7 +1891,7 @@ ErrCryptoOperation
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ErrOutOfMemory
 
@@ -1888,7 +1903,7 @@ ErrOutOfMemory
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ErrRuntimeError
 
@@ -1900,7 +1915,7 @@ ErrRuntimeError
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### InvalidParams
 
@@ -1912,7 +1927,7 @@ InvalidParams
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NotSupport
 
@@ -1924,7 +1939,7 @@ NotSupport
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getValue()
 
@@ -1936,7 +1951,7 @@ public func getValue(): Int32
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1954,7 +1969,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

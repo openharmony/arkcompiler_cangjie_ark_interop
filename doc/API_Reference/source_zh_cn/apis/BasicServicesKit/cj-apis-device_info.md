@@ -31,7 +31,7 @@ public class DeviceInfo {}
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop ODID
 
@@ -47,7 +47,7 @@ public static prop ODID: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop abiList
 
@@ -63,7 +63,7 @@ public static prop abiList: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop bootloaderVersion
 
@@ -79,7 +79,7 @@ public static prop bootloaderVersion: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop brand
 
@@ -95,7 +95,7 @@ public static prop brand: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop buildHost
 
@@ -111,7 +111,7 @@ public static prop buildHost: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop buildRootHash
 
@@ -127,7 +127,7 @@ public static prop buildRootHash: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop buildTime
 
@@ -143,7 +143,7 @@ public static prop buildTime: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop buildType
 
@@ -159,7 +159,7 @@ public static prop buildType: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop buildUser
 
@@ -175,7 +175,7 @@ public static prop buildUser: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop buildVersion
 
@@ -191,7 +191,7 @@ public static prop buildVersion: Int32
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop deviceType
 
@@ -207,7 +207,7 @@ public static prop deviceType: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop displayVersion
 
@@ -223,7 +223,7 @@ public static prop displayVersion: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop distributionOSApiName
 
@@ -239,7 +239,7 @@ public static prop distributionOSApiName: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop distributionOSApiVersion
 
@@ -255,7 +255,7 @@ public static prop distributionOSApiVersion: Int32
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop distributionOSName
 
@@ -271,7 +271,7 @@ public static prop distributionOSName: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop distributionOSReleaseType
 
@@ -287,7 +287,7 @@ public static prop distributionOSReleaseType: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop distributionOSVersion
 
@@ -303,7 +303,7 @@ public static prop distributionOSVersion: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop featureVersion
 
@@ -319,7 +319,7 @@ public static prop featureVersion: Int32
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop firstApiVersion
 
@@ -335,7 +335,7 @@ public static prop firstApiVersion: Int32
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop hardwareModel
 
@@ -351,7 +351,7 @@ public static prop hardwareModel: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop hardwareProfile
 
@@ -367,7 +367,7 @@ public static prop hardwareProfile: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop incrementalVersion
 
@@ -383,7 +383,7 @@ public static prop incrementalVersion: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop majorVersion
 
@@ -399,7 +399,7 @@ public static prop majorVersion: Int32
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop manufacture
 
@@ -415,7 +415,7 @@ public static prop manufacture: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop marketName
 
@@ -431,7 +431,7 @@ public static prop marketName: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop osFullName
 
@@ -447,7 +447,7 @@ public static prop osFullName: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop osReleaseType
 
@@ -463,7 +463,7 @@ public static prop osReleaseType: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop productModel
 
@@ -479,7 +479,7 @@ public static prop productModel: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop productSeries
 
@@ -495,7 +495,7 @@ public static prop productSeries: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop sdkApiVersion
 
@@ -511,7 +511,7 @@ public static prop sdkApiVersion: Int32
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop securityPatchTag
 
@@ -527,7 +527,7 @@ public static prop securityPatchTag: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop seniorVersion
 
@@ -543,7 +543,7 @@ public static prop seniorVersion: Int32
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop serial
 
@@ -561,7 +561,7 @@ public static prop serial: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop softwareModel
 
@@ -577,7 +577,7 @@ public static prop softwareModel: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop udid
 
@@ -595,7 +595,7 @@ public static prop udid: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static prop versionId
 
@@ -611,7 +611,7 @@ public static prop versionId: String
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 

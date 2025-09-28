@@ -51,7 +51,7 @@ public class Component {}
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func clearText()
 
@@ -63,7 +63,7 @@ public func clearText(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -83,7 +83,7 @@ public func click(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func doubleClick()
 
@@ -95,7 +95,7 @@ public func doubleClick(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func dragTo(Component)
 
@@ -107,7 +107,7 @@ public func dragTo(target: Component): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -134,7 +134,7 @@ public func getBounds(): Rect
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -160,7 +160,7 @@ public func getBoundsCenter(): Point
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -186,7 +186,7 @@ public func getDescription(): String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -212,7 +212,7 @@ public func getId(): String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -230,7 +230,7 @@ public func getText(): String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -248,7 +248,7 @@ public func getType(): String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -266,7 +266,7 @@ public func inputText(text: String): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -284,7 +284,7 @@ public func isCheckable(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -310,7 +310,7 @@ public func isChecked(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -336,7 +336,7 @@ public func isClickable(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -354,7 +354,7 @@ public func isEnabled(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -372,7 +372,7 @@ public func isFocused(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -390,7 +390,7 @@ public func isLongClickable(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -416,7 +416,7 @@ public func isScrollable(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -434,7 +434,7 @@ public func isSelected(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -452,7 +452,7 @@ public func longClick(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func pinchIn(Float32)
 
@@ -464,7 +464,7 @@ public func pinchIn(scale: Float32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -491,7 +491,7 @@ public func pinchOut(scale: Float32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -518,7 +518,7 @@ public func scrollSearch(on: On): ?Component
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -551,7 +551,7 @@ public func scrollToBottom(speed!: Int64 = 600): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -578,7 +578,7 @@ public func scrollToTop(speed!: Int64 = 600): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -605,7 +605,7 @@ public class Driver {}
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func create()
 
@@ -617,7 +617,7 @@ public static func create(): Driver
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -656,7 +656,7 @@ public func assertComponentExist(on: On): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -702,7 +702,7 @@ public func click(x: Int32, y: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -743,7 +743,7 @@ public func createUIEventObserver(): UIEventObserver
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -775,7 +775,7 @@ public func delayMs(duration: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -815,7 +815,7 @@ public func doubleClick(x: Int32, y: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -862,7 +862,7 @@ public func drag(
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -906,7 +906,7 @@ public func findComponent(on: On): ?Component
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -944,7 +944,7 @@ public func findComponents(on: On): ?Array<Component>
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -990,7 +990,7 @@ public func findWindow(filter: WindowFilter): ?UiWindow
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1036,7 +1036,7 @@ public func fling(from: Point, to: Point, stepLen: Int32, speed: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1079,7 +1079,7 @@ public func fling(direction: UiDirection, speed: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1120,7 +1120,7 @@ public func getDisplayDensity(): Point
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1152,7 +1152,7 @@ public func getDisplayRotation(): DisplayRotation
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1184,7 +1184,7 @@ public func getDisplaySize(): Point
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1216,7 +1216,7 @@ public func injectMultiPointerAction(pointers: PointerMatrix, speed!: Int32 = 60
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1271,7 +1271,7 @@ public func inputText(p: Point, text: String): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1319,7 +1319,7 @@ public func longClick(x: Int32, y: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1360,7 +1360,7 @@ public func mouseClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key2!: In
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1403,7 +1403,7 @@ public func mouseDoubleClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1446,7 +1446,7 @@ public func mouseDrag(from: Point, to: Point, speed!: Int32 = 600): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1488,7 +1488,7 @@ public func mouseLongClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key2!
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1531,7 +1531,7 @@ public func mouseMoveTo(p: Point): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1571,7 +1571,7 @@ public func mouseMoveWithTrack(from: Point, to: Point, speed!: Int32 = 600): Uni
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1613,7 +1613,7 @@ public func mouseScroll(p: Point, down: Bool, d: Int32, key1!: Int32 = 0, key2!:
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1658,7 +1658,7 @@ public func pressBack(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1684,7 +1684,7 @@ public func pressHome(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1709,7 +1709,7 @@ public func screenCap(savePath: String): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1755,7 +1755,7 @@ public func screenCapture(savePath: String, rect!: Rect = Rect(0,0,0,0)): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1802,7 +1802,7 @@ public func setDisplayRotation(rotation: DisplayRotation): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1842,7 +1842,7 @@ public func setDisplayRotationEnabled(enabled: Bool): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1888,7 +1888,7 @@ public func swipe(
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1932,7 +1932,7 @@ public func triggerCombineKeys(key0: Int32, key1: Int32, key2!: Int32 = 0): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1974,7 +1974,7 @@ public func triggerKey(keyCode: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2014,7 +2014,7 @@ public func waitForComponent(on: On, time: Int32): ?Component
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2061,7 +2061,7 @@ public func waitForIdle(idleTime: Int32, timeout: Int32): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2108,7 +2108,7 @@ public func wakeUpDisplay(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2144,7 +2144,7 @@ public class On {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init()
 
@@ -2156,7 +2156,7 @@ public init()
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func checkable(Bool)
 
@@ -2168,7 +2168,7 @@ public func checkable(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2222,7 +2222,7 @@ public func checked(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2276,7 +2276,7 @@ public func clickable(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2322,7 +2322,7 @@ public func description(val: String, pattern!: MatchPattern = MatchPattern.Equal
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2377,7 +2377,7 @@ public func enabled(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2431,7 +2431,7 @@ public func focused(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2485,7 +2485,7 @@ public func id(id: String): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2539,7 +2539,7 @@ public func inWindow(bundleName: String): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2593,7 +2593,7 @@ public func isAfter(on: On): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2648,7 +2648,7 @@ public func isBefore(on: On): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2703,7 +2703,7 @@ public func longClickable(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2757,7 +2757,7 @@ public func onType(tp: String): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2811,7 +2811,7 @@ public func scrollable(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2865,7 +2865,7 @@ public func selected(b!: Bool = true): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2919,7 +2919,7 @@ public func text(txt: String, pattern!: MatchPattern = MatchPattern.Equals): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2966,7 +2966,7 @@ public func within(on: On): On
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3026,7 +3026,7 @@ public class Point {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var displayId
 
@@ -3042,7 +3042,7 @@ public var displayId:?Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var x
 
@@ -3058,7 +3058,7 @@ public var x: Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -3074,7 +3074,7 @@ public var y: Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int32, ?Int32)
 
@@ -3086,7 +3086,7 @@ public init(x: Int32, y: Int32, displayId!: ?Int32 = None)
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3106,7 +3106,7 @@ public class PointerMatrix {}
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func create(Int32, Int32)
 
@@ -3118,7 +3118,7 @@ public static func create(fingers: Int32, steps: Int32): PointerMatrix
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3164,7 +3164,7 @@ public func setPoint(finger: Int32, step: Int32, point: Point): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3218,7 +3218,7 @@ public class Rect {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bottom
 
@@ -3234,7 +3234,7 @@ public var bottom: Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var displayId
 
@@ -3250,7 +3250,7 @@ public var displayId:?Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var left
 
@@ -3266,7 +3266,7 @@ public var left: Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var right
 
@@ -3282,7 +3282,7 @@ public var right: Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var top
 
@@ -3298,7 +3298,7 @@ public var top: Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int32, Int32, Int32, ?Int32)
 
@@ -3310,7 +3310,7 @@ public init(left: Int32, top: Int32, right: Int32, bottom: Int32, displayId!: ?I
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3336,7 +3336,7 @@ public class UIElementInfo {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bundleName
 
@@ -3352,7 +3352,7 @@ public let bundleName: String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let componentType
 
@@ -3368,7 +3368,7 @@ public let componentType: String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let text
 
@@ -3384,7 +3384,7 @@ public let text: String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class UIEventObserver
 
@@ -3396,7 +3396,7 @@ public class UIEventObserver {}
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func once(OnceType, Callback\<UIElementInfo>)
 
@@ -3408,7 +3408,7 @@ public func once(onceType: OnceType, callback: Callback<UIElementInfo>): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3435,7 +3435,7 @@ public class UiWindow {}
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -3447,7 +3447,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3486,7 +3486,7 @@ public func focus(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3521,7 +3521,7 @@ public func getBounds(): Rect
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3562,7 +3562,7 @@ public func getBundleName(): String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3603,7 +3603,7 @@ public func getTitle(): String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3644,7 +3644,7 @@ public func getWindowMode(): WindowMode
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3685,7 +3685,7 @@ public func isActive(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3726,7 +3726,7 @@ public func isFocused(): Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3769,7 +3769,7 @@ public func maximize(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3808,7 +3808,7 @@ public func minimize(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3847,7 +3847,7 @@ public func moveTo(x: Int32, y: Int32): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3891,7 +3891,7 @@ public func resize(wide: Int32, height: Int32, direction: ResizeDirection): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3939,7 +3939,7 @@ public func resume(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3978,7 +3978,7 @@ public func split(): Unit
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -4022,7 +4022,7 @@ public class WindowFilter {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var active
 
@@ -4038,7 +4038,7 @@ public var active:?Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bundleName
 
@@ -4054,7 +4054,7 @@ public var bundleName:?String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var displayId
 
@@ -4070,7 +4070,7 @@ public var displayId:?Int32
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var focused
 
@@ -4086,7 +4086,7 @@ public var focused:?Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var title
 
@@ -4102,7 +4102,7 @@ public var title:?String
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(?String, ?String, ?Bool, ?Bool, ?Int32)
 
@@ -4114,7 +4114,7 @@ public init(bundleName!: ?String = None, title!: ?String = None, focused!: ?Bool
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4142,7 +4142,7 @@ public enum DisplayRotation {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rotation0
 
@@ -4154,7 +4154,7 @@ Rotation0
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rotation180
 
@@ -4166,7 +4166,7 @@ Rotation180
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rotation270
 
@@ -4178,7 +4178,7 @@ Rotation270
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rotation90
 
@@ -4190,7 +4190,7 @@ Rotation90
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum MatchPattern
 
@@ -4208,7 +4208,7 @@ public enum MatchPattern {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Contains
 
@@ -4220,7 +4220,7 @@ Contains
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### EndsWith
 
@@ -4232,7 +4232,7 @@ EndsWith
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Equals
 
@@ -4244,7 +4244,7 @@ Equals
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StartsWith
 
@@ -4256,7 +4256,7 @@ StartsWith
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum MouseButton
 
@@ -4273,7 +4273,7 @@ public enum MouseButton {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MouseButtonLeft
 
@@ -4285,7 +4285,7 @@ MouseButtonLeft
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MouseButtonMiddle
 
@@ -4297,7 +4297,7 @@ MouseButtonMiddle
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MouseButtonRight
 
@@ -4309,7 +4309,7 @@ MouseButtonRight
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum OnceType
 
@@ -4325,7 +4325,7 @@ public enum OnceType <: Equatable<OnceType> & ToString {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -4342,7 +4342,7 @@ DialogShow
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ToastShow
 
@@ -4354,7 +4354,7 @@ ToastShow
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(OnceType)
 
@@ -4430,7 +4430,7 @@ public enum ResizeDirection {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Down
 
@@ -4442,7 +4442,7 @@ Down
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Left
 
@@ -4454,7 +4454,7 @@ Left
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LeftDown
 
@@ -4466,7 +4466,7 @@ LeftDown
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LeftUp
 
@@ -4478,7 +4478,7 @@ LeftUp
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Right
 
@@ -4490,7 +4490,7 @@ Right
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### RightDown
 
@@ -4502,7 +4502,7 @@ RightDown
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### RightUp
 
@@ -4514,7 +4514,7 @@ RightUp
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Up
 
@@ -4526,7 +4526,7 @@ Up
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum UiDirection
 
@@ -4544,7 +4544,7 @@ public enum UiDirection {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Down
 
@@ -4556,7 +4556,7 @@ Down
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Left
 
@@ -4568,7 +4568,7 @@ Left
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Right
 
@@ -4580,7 +4580,7 @@ Right
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Up
 
@@ -4592,7 +4592,7 @@ Up
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum WindowMode
 
@@ -4610,7 +4610,7 @@ public enum WindowMode {
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Floating
 
@@ -4622,7 +4622,7 @@ Floating
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Fullscreen
 
@@ -4634,7 +4634,7 @@ Fullscreen
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Primary
 
@@ -4646,7 +4646,7 @@ Primary
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Secondary
 
@@ -4658,4 +4658,4 @@ Secondary
 
 **系统能力：** SystemCapability.Test.UiTest
 
-**起始版本：** 21
+**起始版本：** 22

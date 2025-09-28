@@ -27,7 +27,7 @@ public class AbilityDelegator {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func addAbilityMonitor(AbilityMonitor)
 
@@ -39,7 +39,7 @@ public func addAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -85,7 +85,7 @@ public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -128,7 +128,7 @@ public func doAbilityBackground(ability: UIAbility): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -171,7 +171,7 @@ public func doAbilityForeground(ability: UIAbility): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -214,7 +214,7 @@ public func executeShellCommand(cmd: String, timeoutSecs!: Int64 = 0): ShellCmdR
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -255,7 +255,7 @@ public func finishTest(msg: String, code: Int64): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -290,7 +290,7 @@ public func getAbilityState(ability: UIAbility): AbilityLifecycleState
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -338,7 +338,7 @@ public func getAppContext(): Context
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -371,7 +371,7 @@ public func getCurrentTopAbility(): UIAbility
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -414,7 +414,7 @@ public func print(msg: String): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -456,7 +456,7 @@ public func removeAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -502,7 +502,7 @@ public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -545,7 +545,7 @@ public func startAbility(want: Want): Future<Unit>
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -580,7 +580,7 @@ doc/API_Reference/source_zh_cn/apis/AbilityKit/
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -634,7 +634,7 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -686,7 +686,7 @@ public class AbilityDelegatorArgs {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop bundleName
 
@@ -702,7 +702,7 @@ public mut prop bundleName: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop parameters
 
@@ -718,7 +718,7 @@ public mut prop parameters: HashMap<String,String>
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop testCaseNames
 
@@ -734,7 +734,7 @@ public mut prop testCaseNames: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop testRunnerClassName
 
@@ -750,7 +750,7 @@ public mut prop testRunnerClassName: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class AbilityDelegatorRegistry
 
@@ -762,7 +762,7 @@ public class AbilityDelegatorRegistry {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func getAbilityDelegator()
 
@@ -774,7 +774,7 @@ public static func getAbilityDelegator(): AbilityDelegator
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -792,7 +792,7 @@ public static func getArguments(): AbilityDelegatorArgs
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -848,7 +848,7 @@ public class AbilityMonitor {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var abilityName
 
@@ -864,7 +864,7 @@ public var abilityName: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var moduleName
 
@@ -880,7 +880,7 @@ public var moduleName: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onAbilityBackground
 
@@ -896,7 +896,7 @@ public var onAbilityBackground:?(UIAbility) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onAbilityCreate
 
@@ -912,7 +912,7 @@ public var onAbilityCreate:?(UIAbility) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onAbilityDestroy
 
@@ -928,7 +928,7 @@ public var onAbilityDestroy:?(UIAbility) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onAbilityForeground
 
@@ -944,7 +944,7 @@ public var onAbilityForeground:?(UIAbility) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onWindowStageCreate
 
@@ -960,7 +960,7 @@ public var onWindowStageCreate:?(UIAbility) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onWindowStageDestroy
 
@@ -976,7 +976,7 @@ public var onWindowStageDestroy:?(UIAbility) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var onWindowStageRestore
 
@@ -992,7 +992,7 @@ public var onWindowStageRestore:?(UIAbility) -> Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, ?(UIAbility) -> Unit, ?(UIAbility) -> Unit, ?(UIAbility) -> Unit, ?(UIAbility) -> Unit, ?(UIAbility) -> Unit, ?(UIAbility) -> Unit, ?(UIAbility) -> Unit)
 
@@ -1014,7 +1014,7 @@ public init(
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1063,7 +1063,7 @@ public class AbilityStageMonitor <: FFIData {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1083,7 +1083,7 @@ public var moduleName: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var srcEntrance
 
@@ -1099,7 +1099,7 @@ public var srcEntrance: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String)
 
@@ -1114,7 +1114,7 @@ public init(
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1149,7 +1149,7 @@ public class ShellCmdResult {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop exitCode
 
@@ -1165,7 +1165,7 @@ public mut prop exitCode: Int32
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop stdResult
 
@@ -1181,7 +1181,7 @@ public mut prop stdResult: String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum AbilityLifecycleState
 
@@ -1200,7 +1200,7 @@ public enum AbilityLifecycleState <: Equatable<AbilityLifecycleState> & ToString
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1217,7 +1217,7 @@ Background
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Create
 
@@ -1229,7 +1229,7 @@ Create
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Destroy
 
@@ -1241,7 +1241,7 @@ Destroy
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Foreground
 
@@ -1253,7 +1253,7 @@ Foreground
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Uninitialized
 
@@ -1265,7 +1265,7 @@ Uninitialized
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AbilityLifecycleState)
 

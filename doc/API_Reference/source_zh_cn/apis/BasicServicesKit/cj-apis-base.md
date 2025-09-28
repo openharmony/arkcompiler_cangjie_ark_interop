@@ -22,7 +22,7 @@ public let Main: MainThreadContext = MainThreadContext.instance_
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## func launch(() -> Unit)
 
@@ -34,7 +34,7 @@ public func launch(task: () -> Unit): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -56,7 +56,7 @@ public interface CollectionEx<T> {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop size
 
@@ -72,7 +72,7 @@ prop size: Int64
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func [](Int64, T)
 
@@ -84,7 +84,7 @@ operator func [](idx: Int64, value!: T): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -103,7 +103,7 @@ operator func [](idx: Int64): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -130,7 +130,7 @@ public interface Length {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop unitType
 
@@ -146,7 +146,7 @@ prop unitType: LengthType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop value
 
@@ -162,7 +162,7 @@ prop value: Float64
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## interface LengthProp
 
@@ -180,7 +180,7 @@ public interface LengthProp {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop fp
 
@@ -196,7 +196,7 @@ prop fp: Length
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop lpx
 
@@ -212,7 +212,7 @@ prop lpx: Length
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop percent
 
@@ -228,7 +228,7 @@ prop percent: Length
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop px
 
@@ -244,7 +244,7 @@ prop px: Length
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop vp
 
@@ -260,7 +260,7 @@ prop vp: Length
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## interface ResourceColor
 
@@ -274,7 +274,7 @@ public interface ResourceColor {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func toUInt32()
 
@@ -300,7 +300,7 @@ public interface ResourceStr {}
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Color
 
@@ -322,7 +322,7 @@ public class Color <: ResourceColor {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -342,7 +342,7 @@ public static let Black: Color = Color(0xff000000)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let Blue
 
@@ -358,7 +358,7 @@ public static let Blue: Color = Color(0xff0000ff)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let Gray
 
@@ -374,7 +374,7 @@ public static let Gray: Color = Color(0xff808080)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let Green
 
@@ -390,7 +390,7 @@ public static let Green: Color = Color(0xff008000)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let Red
 
@@ -406,7 +406,7 @@ public static let Red: Color = Color(0xffff0000)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let Transparent
 
@@ -422,7 +422,7 @@ public static let Transparent: Color = Color(0, 0, 0, alpha: 0.0)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let White
 
@@ -438,7 +438,7 @@ public static let White: Color = Color(0xffffffff)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(UInt8, UInt8, UInt8, Float32)
 
@@ -450,7 +450,7 @@ public init(red: UInt8, green: UInt8, blue: UInt8, alpha!: Float32 = 1.0)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -471,7 +471,7 @@ public init(value: UInt32)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -503,7 +503,7 @@ public class MainThreadContext {}
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func end()
 
@@ -515,7 +515,7 @@ public func end(): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func hasEnded()
 
@@ -527,7 +527,7 @@ public func hasEnded(): Bool
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -547,7 +547,7 @@ public class ReuseParams {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<(String,Any)>)
 
@@ -559,7 +559,7 @@ public init(arr: Array<(String, Any)>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -577,7 +577,7 @@ public func get<T>(key: String): ?T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -608,7 +608,7 @@ public enum LengthType <: Length & Equatable<LengthType> {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -625,7 +625,7 @@ fp(Float64)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### lpx(Float64)
 
@@ -637,7 +637,7 @@ lpx(Float64)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### percent(Float64)
 
@@ -649,7 +649,7 @@ percent(Float64)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### px(Float64)
 
@@ -661,7 +661,7 @@ px(Float64)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### vp(Float64)
 
@@ -673,7 +673,7 @@ vp(Float64)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop unitType
 
@@ -689,7 +689,7 @@ public prop unitType: LengthType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop value
 
@@ -705,7 +705,7 @@ public prop value: Float64
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func parse(Int32)
 
@@ -717,7 +717,7 @@ public static func parse(value: Int32): LengthType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -781,7 +781,7 @@ public func getValue(): Int32
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

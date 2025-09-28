@@ -35,7 +35,7 @@ public func createNetConnection(netSpecifier!: ?NetSpecifier = None, timeout!: U
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -80,7 +80,7 @@ public func getAddressesByName(host: String): Array<NetAddress>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -131,7 +131,7 @@ public func getAllNets(): Array<NetHandle>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -173,7 +173,7 @@ public func getAppNet(): NetHandle
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -216,7 +216,7 @@ public func getConnectionProperties(netHandle: NetHandle): ConnectionProperties
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -272,7 +272,7 @@ public func getDefaultHttpProxy(): HttpProxy
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -321,7 +321,7 @@ public func getDefaultNet(): NetHandle
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -365,7 +365,7 @@ public func getNetCapabilities(netHandle: NetHandle): NetCapabilities
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -423,7 +423,7 @@ public func hasDefaultNet(): Bool
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -467,7 +467,7 @@ public func isDefaultNetMetered(): Bool
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -511,7 +511,7 @@ public func reportNetConnected(netHandle: NetHandle): Unit
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -557,7 +557,7 @@ public func reportNetDisconnected(netHandle: NetHandle): Unit
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -603,7 +603,7 @@ public func setAppNet(netHandle: NetHandle): Unit
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -660,7 +660,7 @@ public class ConnectionProperties {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dnses
 
@@ -676,7 +676,7 @@ public var dnses: Array<NetAddress>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var domains
 
@@ -692,7 +692,7 @@ public var domains: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var interfaceName
 
@@ -708,7 +708,7 @@ public var interfaceName: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var linkAddresses
 
@@ -724,7 +724,7 @@ public var linkAddresses: Array<LinkAddress>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mtu
 
@@ -740,7 +740,7 @@ public var mtu: UInt32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var routes
 
@@ -756,7 +756,7 @@ public var routes: Array<RouteInfo>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HttpProxy
 
@@ -776,7 +776,7 @@ public class HttpProxy {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var exclusionList
 
@@ -810,7 +810,7 @@ public var exclusionList: Array<String>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var host
 
@@ -826,7 +826,7 @@ public var host: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var password
 
@@ -842,7 +842,7 @@ public var password: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var port
 
@@ -858,7 +858,7 @@ public var port: UInt32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var username
 
@@ -874,7 +874,7 @@ public var username: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, UInt32, Array\<String>, String, String)
 
@@ -887,7 +887,7 @@ public init(host: String,  port: UInt32, exclusionList: Array<String>,
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -912,7 +912,7 @@ public class LinkAddress {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var address
 
@@ -928,7 +928,7 @@ public var address: NetAddress
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var prefixLength
 
@@ -944,7 +944,7 @@ public var prefixLength: Int32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class NetAddress
 
@@ -961,7 +961,7 @@ public class NetAddress {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var address
 
@@ -977,7 +977,7 @@ public var address: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var family
 
@@ -993,7 +993,7 @@ public var family: UInt32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var port
 
@@ -1009,7 +1009,7 @@ public var port: UInt32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, UInt32, UInt32)
 
@@ -1021,7 +1021,7 @@ public init(address: String, family!: UInt32 = 1, port!: UInt32 = 0)
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1044,7 +1044,7 @@ public class NetBlockStatusInfo {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var blocked
 
@@ -1060,7 +1060,7 @@ public var blocked: Bool
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var netHandle
 
@@ -1076,7 +1076,7 @@ public var netHandle: NetHandle
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class NetCapabilities
 
@@ -1095,7 +1095,7 @@ public class NetCapabilities {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bearerTypes
 
@@ -1111,7 +1111,7 @@ public var bearerTypes: Array<NetBearType>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var linkDownBandwidthKbps
 
@@ -1127,7 +1127,7 @@ public var linkDownBandwidthKbps: UInt32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var linkUpBandwidthKbps
 
@@ -1143,7 +1143,7 @@ public var linkUpBandwidthKbps: UInt32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var networkCap
 
@@ -1159,7 +1159,7 @@ public var networkCap: Array<NetCap>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<NetBearType>, UInt32, UInt32, Array\<NetCap>)
 
@@ -1172,7 +1172,7 @@ public init(bearerTypes: Array<NetBearType>, linkUpBandwidthKbps!: UInt32 = 0, l
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1196,7 +1196,7 @@ public class NetCapabilityInfo {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var netCap
 
@@ -1212,7 +1212,7 @@ public var netCap: NetCapabilities
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var netHandle
 
@@ -1228,7 +1228,7 @@ public var netHandle: NetHandle
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class NetConnection
 
@@ -1240,7 +1240,7 @@ public class NetConnection {}
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func on(NetConnectionEvent, Callback1Argument\<NetHandle>)
 
@@ -1254,7 +1254,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetHandle>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1283,7 +1283,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetBlockSt
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1312,7 +1312,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetCapabil
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1341,7 +1341,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetConnect
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1370,7 +1370,7 @@ public func on(event: NetConnectionEvent, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1399,7 +1399,7 @@ public func register(): Unit
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1438,7 +1438,7 @@ public func unregister(): Unit
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1479,7 +1479,7 @@ public class NetConnectionPropertyInfo {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var connectionProperties
 
@@ -1495,7 +1495,7 @@ public var connectionProperties: ConnectionProperties
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var netHandle
 
@@ -1511,7 +1511,7 @@ public var netHandle: NetHandle
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class NetHandle
 
@@ -1525,7 +1525,7 @@ public class NetHandle {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var netId
 
@@ -1541,7 +1541,7 @@ public var netId: Int32
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getAddressByName(String)
 
@@ -1555,7 +1555,7 @@ public func getAddressByName(host: String): NetAddress
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1608,7 +1608,7 @@ public func getAddressesByName(host: String): Array<NetAddress>
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1663,7 +1663,7 @@ public class NetSpecifier {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bearerPrivateIdentifier
 
@@ -1679,7 +1679,7 @@ public var bearerPrivateIdentifier: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var netCapabilities
 
@@ -1695,7 +1695,7 @@ public var netCapabilities: NetCapabilities
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(NetCapabilities, String)
 
@@ -1707,7 +1707,7 @@ public init(netCapabilities: NetCapabilities, bearerPrivateIdentifier!: String =
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1732,7 +1732,7 @@ public class RouteInfo {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var destination
 
@@ -1748,7 +1748,7 @@ public var destination: LinkAddress
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var gateway
 
@@ -1764,7 +1764,7 @@ public var gateway: NetAddress
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var hasGateway
 
@@ -1780,7 +1780,7 @@ public var hasGateway: Bool
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var interfaceName
 
@@ -1796,7 +1796,7 @@ public var interfaceName: String
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isDefaultRoute
 
@@ -1812,7 +1812,7 @@ public var isDefaultRoute: Bool
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum NetBearType
 
@@ -1829,7 +1829,7 @@ public enum NetBearType {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BearerCellular
 
@@ -1841,7 +1841,7 @@ BearerCellular
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BearerEthernet
 
@@ -1853,7 +1853,7 @@ BearerEthernet
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BearerWifi
 
@@ -1865,7 +1865,7 @@ BearerWifi
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum NetCap
 
@@ -1884,7 +1884,7 @@ public enum NetCap {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetCapabilityInternet
 
@@ -1896,7 +1896,7 @@ NetCapabilityInternet
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetCapabilityMms
 
@@ -1908,7 +1908,7 @@ NetCapabilityMms
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetCapabilityNotMetered
 
@@ -1920,7 +1920,7 @@ NetCapabilityNotMetered
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetCapabilityNotVpn
 
@@ -1932,7 +1932,7 @@ NetCapabilityNotVpn
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetCapabilityValidated
 
@@ -1944,7 +1944,7 @@ NetCapabilityValidated
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum NetConnectionEvent
 
@@ -1964,7 +1964,7 @@ public enum NetConnectionEvent <: Equatable<NetConnectionEvent> {
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1980,7 +1980,7 @@ NetAvailable
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetBlockStatusChange
 
@@ -1992,7 +1992,7 @@ NetBlockStatusChange
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetCapabilitiesChange
 
@@ -2004,7 +2004,7 @@ NetCapabilitiesChange
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetConnectionPropertiesChange
 
@@ -2016,7 +2016,7 @@ NetConnectionPropertiesChange
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetLost
 
@@ -2028,7 +2028,7 @@ NetLost
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NetUnavailable
 
@@ -2040,7 +2040,7 @@ NetUnavailable
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(NetConnectionEvent)
 
@@ -2072,7 +2072,7 @@ public operator func ==(other: NetConnectionEvent): Bool
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

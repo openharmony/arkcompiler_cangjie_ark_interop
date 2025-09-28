@@ -40,7 +40,7 @@ public class AppResource <: Length & ResourceColor & ResourceStr {
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -62,7 +62,7 @@ public let bundleName: String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let id
 
@@ -78,7 +78,7 @@ public let id: UInt32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let moduleName
 
@@ -94,7 +94,7 @@ public let moduleName: String
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let params
 
@@ -110,7 +110,7 @@ public let params:?Array<Any>
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let resType
 
@@ -126,7 +126,7 @@ public let resType:?Int32
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, UInt32, ?Array\<Any>, ?Int32)
 
@@ -144,7 +144,7 @@ public init(
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

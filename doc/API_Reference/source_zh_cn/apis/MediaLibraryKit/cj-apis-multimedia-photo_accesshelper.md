@@ -33,7 +33,7 @@ public interface MediaChangeRequest {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ChangeData
 
@@ -49,7 +49,7 @@ public class ChangeData {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var extraUris
 
@@ -65,7 +65,7 @@ public var extraUris: Array<String>
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var notifyType
 
@@ -81,7 +81,7 @@ public var notifyType: NotifyType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var uris
 
@@ -97,7 +97,7 @@ public var uris: Array<String>
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class CreateOptions
 
@@ -119,7 +119,7 @@ title参数规格为：
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var subtype
 
@@ -135,7 +135,7 @@ public var subtype: PhotoSubtype
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var title
 
@@ -151,7 +151,7 @@ public var title: String = ""
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, PhotoSubtype)
 
@@ -163,7 +163,7 @@ public init(title!: String = "", subtype!: PhotoSubtype = Default)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -186,7 +186,7 @@ public class FetchOptions {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var fetchColumns
 
@@ -202,7 +202,7 @@ public var fetchColumns: Array<String>
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var predicates
 
@@ -218,7 +218,7 @@ public var predicates: DataSharePredicates
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<String>, DataSharePredicates)
 
@@ -230,7 +230,7 @@ public init(fetchColumns: Array<String>, predicates: DataSharePredicates)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -249,7 +249,7 @@ public class FetchResult<T> {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -261,7 +261,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -300,7 +300,7 @@ public func getCount(): Int32
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -346,7 +346,7 @@ public func isAfterLast(): Bool
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -401,7 +401,7 @@ public class MediaAlbumChangeRequest MediaChangeRequest {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -425,7 +425,7 @@ public init(album: Album)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -463,7 +463,7 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -513,7 +513,7 @@ public func getAlbum(): Album
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -561,7 +561,7 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -619,7 +619,7 @@ public func setAlbumName(name: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -670,7 +670,7 @@ public class MediaAssetChangeRequest MediaChangeRequest {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -686,7 +686,7 @@ public init(asset: PhotoAsset)
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -733,7 +733,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -788,7 +788,7 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -842,7 +842,7 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -896,7 +896,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -946,7 +946,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -995,7 +995,7 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1045,7 +1045,7 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1094,7 +1094,7 @@ public func discardCameraPhoto(): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1136,7 +1136,7 @@ public func getAsset(): PhotoAsset
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1185,7 +1185,7 @@ public func getWriteCacheHandler(): Int32
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1233,7 +1233,7 @@ public func saveCameraPhoto(): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1275,7 +1275,7 @@ public func setTitle(title: String): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1324,7 +1324,7 @@ public class PhotoAccessHelper {}
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func applyChanges(MediaChangeRequest)
 
@@ -1338,7 +1338,7 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1369,7 +1369,7 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1426,7 +1426,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1479,7 +1479,7 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetR
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1531,7 +1531,7 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1601,7 +1601,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1643,7 +1643,7 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1722,7 +1722,7 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1801,7 +1801,7 @@ public class PhotoCreationConfig {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var fileNameExtension
 
@@ -1817,7 +1817,7 @@ public var fileNameExtension: String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var photoType
 
@@ -1833,7 +1833,7 @@ public var photoType: PhotoType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var subtype
 
@@ -1849,7 +1849,7 @@ public var subtype: PhotoSubtype
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var title
 
@@ -1865,7 +1865,7 @@ public var title: String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, PhotoType, String, PhotoSubtype)
 
@@ -1877,7 +1877,7 @@ public init(fileNameExtension: String, photoType: PhotoType, title!: String = ""
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1900,7 +1900,7 @@ public class RequestOptions {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deliveryMode
 
@@ -1916,7 +1916,7 @@ public var deliveryMode: DeliveryMode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum AlbumKeys
 
@@ -1932,7 +1932,7 @@ public enum AlbumKeys <: ToString & Equatable<AlbumKeys> {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1949,7 +1949,7 @@ AlbumName
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Uri
 
@@ -1961,7 +1961,7 @@ Uri
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AlbumKeys)
 
@@ -2013,7 +2013,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2038,7 +2038,7 @@ public enum AlbumSubtype <: Equatable<AlbumSubtype> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2055,7 +2055,7 @@ AnyAlbum
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Favorite
 
@@ -2067,7 +2067,7 @@ Favorite
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Image
 
@@ -2079,7 +2079,7 @@ Image
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UserGeneric
 
@@ -2091,7 +2091,7 @@ UserGeneric
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Video
 
@@ -2103,7 +2103,7 @@ Video
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AlbumSubtype)
 
@@ -2173,7 +2173,7 @@ public enum AlbumType <: Equatable<AlbumType> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2190,7 +2190,7 @@ System
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### User
 
@@ -2202,7 +2202,7 @@ User
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AlbumType)
 
@@ -2272,7 +2272,7 @@ public enum DefaultChangeUri <: ToString & Equatable<DefaultChangeUri> {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2289,7 +2289,7 @@ DefaultAlbumUri
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DefaultPhotoUri
 
@@ -2301,7 +2301,7 @@ DefaultPhotoUri
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(DefaultChangeUri)
 
@@ -2353,7 +2353,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2376,7 +2376,7 @@ public enum DeliveryMode <: Equatable<DeliveryMode> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2393,7 +2393,7 @@ BalanceMode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FastMode
 
@@ -2405,7 +2405,7 @@ FastMode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### HighQualityMode
 
@@ -2417,7 +2417,7 @@ HighQualityMode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(DeliveryMode)
 
@@ -2487,7 +2487,7 @@ public enum DynamicRangeType <: Equatable<DynamicRangeType> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2504,7 +2504,7 @@ Hdr
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Sdr
 
@@ -2516,7 +2516,7 @@ Sdr
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(DynamicRangeType)
 
@@ -2589,7 +2589,7 @@ public enum NotifyType <: Equatable<NotifyType> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2606,7 +2606,7 @@ NotifyAdd
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NotifyAlbumAddAsset
 
@@ -2618,7 +2618,7 @@ NotifyAlbumAddAsset
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NotifyAlbumRemoveAsset
 
@@ -2630,7 +2630,7 @@ NotifyAlbumRemoveAsset
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NotifyRemove
 
@@ -2642,7 +2642,7 @@ NotifyRemove
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NotifyUpdate
 
@@ -2654,7 +2654,7 @@ NotifyUpdate
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(NotifyType)
 
@@ -2743,7 +2743,7 @@ public enum PhotoKeys <: ToString & Equatable<PhotoKeys> {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2760,7 +2760,7 @@ BurstKey
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CoverPosition
 
@@ -2772,7 +2772,7 @@ CoverPosition
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateAdded
 
@@ -2784,7 +2784,7 @@ DateAdded
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateAddedMs
 
@@ -2798,7 +2798,7 @@ DateAddedMs
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateModified
 
@@ -2810,7 +2810,7 @@ DateModified
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateModifiedMs
 
@@ -2824,7 +2824,7 @@ DateModifiedMs
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateTaken
 
@@ -2836,7 +2836,7 @@ DateTaken
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DisplayName
 
@@ -2848,7 +2848,7 @@ DisplayName
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Duration
 
@@ -2860,7 +2860,7 @@ Duration
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DynamicRangeType
 
@@ -2872,7 +2872,7 @@ DynamicRangeType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Favorite
 
@@ -2884,7 +2884,7 @@ Favorite
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Height
 
@@ -2896,7 +2896,7 @@ Height
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LcdSize
 
@@ -2908,7 +2908,7 @@ LcdSize
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Orientation
 
@@ -2920,7 +2920,7 @@ Orientation
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PhotoSubtype
 
@@ -2932,7 +2932,7 @@ PhotoSubtype
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PhotoType
 
@@ -2944,7 +2944,7 @@ PhotoType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Size
 
@@ -2956,7 +2956,7 @@ Size
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ThmSize
 
@@ -2968,7 +2968,7 @@ ThmSize
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Title
 
@@ -2980,7 +2980,7 @@ Title
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Uri
 
@@ -2994,7 +2994,7 @@ Uri
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Width
 
@@ -3006,7 +3006,7 @@ Width
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PhotoKeys)
 
@@ -3058,7 +3058,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3081,7 +3081,7 @@ public enum PhotoSubtype <: Equatable<PhotoSubtype> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3098,7 +3098,7 @@ Burst
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Default
 
@@ -3110,7 +3110,7 @@ Default
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MovingPhoto
 
@@ -3122,7 +3122,7 @@ MovingPhoto
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PhotoSubtype)
 
@@ -3194,7 +3194,7 @@ public enum PhotoViewMIMETypes <: Equatable<PhotoViewMIMETypes> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3211,7 +3211,7 @@ ImageType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ImageVideoType
 
@@ -3223,7 +3223,7 @@ ImageVideoType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MovingPhotoImageType
 
@@ -3235,7 +3235,7 @@ MovingPhotoImageType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### VideoType
 
@@ -3247,7 +3247,7 @@ VideoType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PhotoViewMIMETypes)
 
@@ -3325,7 +3325,7 @@ public enum RecommendationType <: Equatable<RecommendationType> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3342,7 +3342,7 @@ BankCard
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BarCode
 
@@ -3354,7 +3354,7 @@ BarCode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DriverLicense
 
@@ -3366,7 +3366,7 @@ DriverLicense
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DrivingLicense
 
@@ -3378,7 +3378,7 @@ DrivingLicense
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FeaturedSinglePortrait
 
@@ -3390,7 +3390,7 @@ FeaturedSinglePortrait
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IdCard
 
@@ -3402,7 +3402,7 @@ IdCard
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PassPort
 
@@ -3414,7 +3414,7 @@ PassPort
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ProfilePicture
 
@@ -3426,7 +3426,7 @@ ProfilePicture
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### QrCode
 
@@ -3438,7 +3438,7 @@ QrCode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### QrOrBarCode
 
@@ -3450,7 +3450,7 @@ QrOrBarCode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(RecommendationType)
 
@@ -3520,7 +3520,7 @@ public enum ResourceType <: Equatable<ResourceType> & ToString {
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3537,7 +3537,7 @@ ImageResource
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### VideoResource
 
@@ -3549,7 +3549,7 @@ VideoResource
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ResourceType)
 

@@ -40,7 +40,7 @@ public class CommonEventSubscribeInfo {
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var events
 
@@ -56,7 +56,7 @@ public var events: Array<String>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var priority
 
@@ -72,7 +72,7 @@ public var priority: Int32
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var publisherBundleName
 
@@ -88,7 +88,7 @@ public var publisherBundleName: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var publisherDeviceId
 
@@ -104,7 +104,7 @@ public var publisherDeviceId: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var publisherPermission
 
@@ -120,7 +120,7 @@ public var publisherPermission: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var userId
 
@@ -136,7 +136,7 @@ public var userId: Int32
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<String>, String, String, Int32, Int32, String)
 
@@ -155,7 +155,7 @@ public init(
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

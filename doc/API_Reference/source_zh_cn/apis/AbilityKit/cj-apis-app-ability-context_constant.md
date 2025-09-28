@@ -42,7 +42,7 @@ public enum AreaMode <: Equatable<AreaMode> & ToString {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -59,7 +59,7 @@ El1
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### El2
 
@@ -71,7 +71,7 @@ El2
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### El3
 
@@ -83,7 +83,7 @@ El3
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### El4
 
@@ -95,7 +95,7 @@ El4
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### El5
 
@@ -107,7 +107,7 @@ El5
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AreaMode)
 
@@ -119,7 +119,7 @@ public operator func !=(other: AreaMode): Bool
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -143,7 +143,7 @@ public operator func ==(other: AreaMode): Bool
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -167,7 +167,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

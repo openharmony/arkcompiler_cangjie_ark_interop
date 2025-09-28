@@ -32,7 +32,7 @@ public func createGattClientDevice(deviceId: String): GattClientDevice
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -85,7 +85,7 @@ public func createGattServer(): GattServer
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -119,7 +119,7 @@ public func off(eventType: BluetoothBleCallbackType, callback!: ?CallbackObject 
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -182,7 +182,7 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -242,7 +242,7 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -304,7 +304,7 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -327,6 +327,44 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
   | 2900003 | Bluetooth disabled. |
   | 2900099 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+import ohos.hilog.Hilog
+
+let advertisingSettings = AdvertiseSetting(32, 0, true)
+let manufactureDataUnit = ManufactureData(
+    4567u16,
+    [1, 2, 3, 4]
+)
+let serviceDataUnit = ServiceData(
+    "00001888-0000-1000-8000-00805f9b34fb",
+    [5, 6, 7, 8]
+)
+let advertisingData = AdvertiseData(
+    ["00001888-0000-1000-8000-00805f9b34fb"],
+    [manufactureDataUnit],
+    [serviceDataUnit],
+    includeDeviceName: true
+)
+let advertisingResponse = AdvertiseData(
+    ["00001888-0000-1000-8000-00805f9b34fb"],
+    [manufactureDataUnit],
+    [serviceDataUnit]
+)
+try {
+    startAdvertising(advertisingSettings, advertisingData, advResponse: advertisingResponse)
+} catch (e: BusinessException) {
+    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
+}
+```
+
 ## func startAdvertising(AdvertisingParams)
 
 ```cangjie
@@ -339,7 +377,7 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -366,6 +404,50 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32
   | 2900003 | Bluetooth disabled. |
   | 2900099 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+import ohos.hilog.Hilog
+
+let advertisingSettings = AdvertiseSetting(32, 0, true)
+let manufactureDataUnit = ManufactureData(
+    4567u16,
+    [1, 2, 3, 4]
+)
+let serviceDataUnit = ServiceData(
+    "00001888-0000-1000-8000-00805f9b34fb",
+    [5, 6, 7, 8]
+)
+let advertisingData = AdvertiseData(
+    ["00001888-0000-1000-8000-00805f9b34fb"],
+    [manufactureDataUnit],
+    [serviceDataUnit],
+    includeDeviceName: true
+)
+let advertisingResponse = AdvertiseData(
+    ["00001888-0000-1000-8000-00805f9b34fb"],
+    [manufactureDataUnit],
+    [serviceDataUnit]
+)
+let advertisingParams = AdvertisingParams(
+    advertisingSettings,
+    advertisingData,
+    advertisingResponse,
+    duration: 300
+)
+try {
+    let advHandle = startAdvertising(advertisingParams)
+} catch (e: BusinessException) {
+    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
+}
+```
+
 ## func startBLEScan(Array\<ScanFilter>, ?ScanOptions)
 
 ```cangjie
@@ -378,7 +460,7 @@ public func startBLEScan(filters: Array<ScanFilter>, options!: ?ScanOptions = No
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -447,7 +529,7 @@ public func stopAdvertising(): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -461,6 +543,24 @@ public func stopAdvertising(): Unit
   | 2900003 | Bluetooth disabled. |
   | 2900099 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+import ohos.hilog.Hilog
+
+try {
+    stopAdvertising()
+} catch (e: BusinessException) {
+    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
+}
+```
+
 ## func stopAdvertising(UInt32)
 
 ```cangjie
@@ -473,7 +573,7 @@ public func stopAdvertising(advertisingId: UInt32): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -494,6 +594,52 @@ public func stopAdvertising(advertisingId: UInt32): Unit
   | 2900003 | Bluetooth disabled. |
   | 2900099 | Operation failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.ConnectivityKit.*
+import ohos.hilog.Hilog
+
+let advertisingSettings = AdvertiseSetting(32, 0, true)
+let manufactureDataUnit = ManufactureData(
+    4567u16,
+    [1, 2, 3, 4]
+)
+let serviceDataUnit = ServiceData(
+    "00001888-0000-1000-8000-00805f9b34fb",
+    [5, 6, 7, 8]
+)
+let advertisingData = AdvertiseData(
+    ["00001888-0000-1000-8000-00805f9b34fb"],
+    [manufactureDataUnit],
+    [serviceDataUnit],
+    includeDeviceName: true
+)
+let advertisingResponse = AdvertiseData(
+    ["00001888-0000-1000-8000-00805f9b34fb"],
+    [manufactureDataUnit],
+    [serviceDataUnit]
+)
+let advertisingParams = AdvertisingParams(
+    advertisingSettings,
+    advertisingData,
+    advertisingResponse,
+    duration: 300
+)
+var advHandle: UInt32 = 0xFF
+try {
+    advHandle = startAdvertising(advertisingParams)
+    stopAdvertising(advHandle)
+} catch (e: BusinessException) {
+    Hilog.info(0, "Bluetooth", "errCode: ${e.code}, errMessage: ${e.message}")
+}
+```
+
 ## func stopBLEScan()
 
 ```cangjie
@@ -506,7 +652,7 @@ public func stopBLEScan(): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -561,7 +707,7 @@ public class AdvertiseData {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var includeDeviceName
 
@@ -577,7 +723,7 @@ public var includeDeviceName: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var manufactureData
 
@@ -593,7 +739,7 @@ public var manufactureData: Array<ManufactureData>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceData
 
@@ -609,7 +755,7 @@ public var serviceData: Array<ServiceData>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuids
 
@@ -625,7 +771,7 @@ public var serviceUuids: Array<String>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<String>, Array\<ManufactureData>, Array\<ServiceData>, Bool, Bool)
 
@@ -643,7 +789,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -670,7 +816,7 @@ public class AdvertiseSetting {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var connectable
 
@@ -686,7 +832,7 @@ public var connectable: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var interval
 
@@ -702,7 +848,7 @@ public var interval: UInt16
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var txPower
 
@@ -718,7 +864,7 @@ public var txPower: Int8
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(UInt16, Int8, Bool)
 
@@ -730,7 +876,7 @@ public init(interval!: UInt16 = BLE_ADV_DEFAULT_INTERVAL, txPower!: Int8 = BLE_A
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -761,7 +907,7 @@ public class AdvertisingParams {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var advertisingData
 
@@ -777,7 +923,7 @@ public var advertisingData: AdvertiseData
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var advertisingResponse
 
@@ -793,7 +939,7 @@ public var advertisingResponse: AdvertiseData
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var advertisingSettings
 
@@ -809,7 +955,7 @@ public var advertisingSettings: AdvertiseSetting
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var duration
 
@@ -825,7 +971,7 @@ public var duration: UInt16
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(AdvertiseSetting, AdvertiseData, AdvertiseData, UInt16)
 
@@ -842,7 +988,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -866,7 +1012,7 @@ public class AdvertisingStateChangeInfo {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var advertisingId
 
@@ -882,7 +1028,7 @@ public var advertisingId: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var state
 
@@ -898,7 +1044,7 @@ public var state: AdvertisingState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class BLECharacteristic
 
@@ -925,7 +1071,7 @@ public class BLECharacteristic {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicUuid
 
@@ -941,7 +1087,7 @@ public var characteristicUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicValue
 
@@ -957,7 +1103,7 @@ public var characteristicValue: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var descriptors
 
@@ -973,7 +1119,7 @@ public var descriptors: Array<BLEDescriptor>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var properties
 
@@ -989,7 +1135,7 @@ public var properties: GattProperties
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -1005,7 +1151,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, Array\<Byte>, Array\<BLEDescriptor>, GattProperties, GattPermissions, UInt32)
 
@@ -1025,7 +1171,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1052,7 +1198,7 @@ public class BLEConnectionChangeState {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -1068,7 +1214,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var state
 
@@ -1084,7 +1230,7 @@ public var state: ProfileConnectionState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class BLEDescriptor
 
@@ -1109,7 +1255,7 @@ public class BLEDescriptor {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicUuid
 
@@ -1125,7 +1271,7 @@ public var characteristicUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var descriptorUuid
 
@@ -1141,7 +1287,7 @@ public var descriptorUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var descriptorValue
 
@@ -1157,7 +1303,7 @@ public var descriptorValue: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -1173,7 +1319,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, String, Array\<Byte>, UInt32, GattPermissions)
 
@@ -1192,7 +1338,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1221,7 +1367,7 @@ public class CharacteristicReadRequest {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicUuid
 
@@ -1237,7 +1383,7 @@ public var characteristicUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -1253,7 +1399,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -1269,7 +1415,7 @@ public var offset: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -1285,7 +1431,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var transId
 
@@ -1301,7 +1447,7 @@ public var transId: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class CharacteristicWriteRequest
 
@@ -1322,7 +1468,7 @@ public class CharacteristicWriteRequest {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicUuid
 
@@ -1338,7 +1484,7 @@ public var characteristicUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -1354,7 +1500,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isPrepared
 
@@ -1370,7 +1516,7 @@ public var isPrepared: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var needRsp
 
@@ -1386,7 +1532,7 @@ public var needRsp: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -1402,7 +1548,7 @@ public var offset: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -1418,7 +1564,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var transId
 
@@ -1434,7 +1580,7 @@ public var transId: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -1450,7 +1596,7 @@ public var value: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class DescriptorReadRequest
 
@@ -1469,7 +1615,7 @@ public class DescriptorReadRequest {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicUuid
 
@@ -1485,7 +1631,7 @@ public var characteristicUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var descriptorUuid
 
@@ -1501,7 +1647,7 @@ public var descriptorUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -1517,7 +1663,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -1533,7 +1679,7 @@ public var offset: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -1549,7 +1695,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var transId
 
@@ -1565,7 +1711,7 @@ public var transId: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class DescriptorWriteRequest
 
@@ -1587,7 +1733,7 @@ public class DescriptorWriteRequest {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicUuid
 
@@ -1603,7 +1749,7 @@ public var characteristicUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var descriptorUuid
 
@@ -1619,7 +1765,7 @@ public var descriptorUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -1635,7 +1781,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isPrepared
 
@@ -1651,7 +1797,7 @@ public var isPrepared: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var needRsp
 
@@ -1667,7 +1813,7 @@ public var needRsp: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -1683,7 +1829,7 @@ public var offset: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -1699,7 +1845,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var transId
 
@@ -1715,7 +1861,7 @@ public var transId: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -1731,7 +1877,7 @@ public var value: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class GattClientDevice
 
@@ -1743,7 +1889,7 @@ public class GattClientDevice {}
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func close()
 
@@ -1757,7 +1903,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1804,7 +1950,7 @@ public func connect(): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1851,7 +1997,7 @@ public func disconnect(): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1898,7 +2044,7 @@ public func getDeviceName(): String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1952,7 +2098,7 @@ public func getRssiValue(callback: AsyncCallback<Int32>): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2010,7 +2156,7 @@ public func getServices(callback: AsyncCallback<Array<GattService>>): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2069,7 +2215,7 @@ public func off(eventType: BluetoothBleGattClientDeviceCallbackType, callback!: 
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2135,7 +2281,7 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2199,7 +2345,7 @@ public func on(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2265,7 +2411,7 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2329,7 +2475,7 @@ public func readCharacteristicValue(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2419,7 +2565,7 @@ public func readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallba
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2502,7 +2648,7 @@ public func setBLEMtuSize(mtu: Int32): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2547,6 +2693,7 @@ try {
 
 ```cangjie
 public func setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: Bool, callback: AsyncCallback<Unit>): Unit
+```
 
 **功能：** 向服务端发送设置通知此特征值请求，需要对端设备的回复。
 
@@ -2554,7 +2701,7 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2563,8 +2710,6 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 |characteristic|[BLECharacteristic](#class-blecharacteristic)|是|-|蓝牙设备特征对应的二进制值及其它参数。|
 |enable|Bool|是|-|蓝牙设备特征的写入类型。|
 |callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<Unit>|是|-|回调函数。|
-
-**异常：**
 
 **异常：**
 
@@ -2637,7 +2782,7 @@ public func setCharacteristicChangeNotification(characteristic: BLECharacteristi
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2719,7 +2864,7 @@ public func writeCharacteristicValue(characteristic: BLECharacteristic, writeTyp
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2802,7 +2947,7 @@ public func writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallb
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2891,7 +3036,7 @@ public class GattPermissions <: Equatable<GattPermissions> {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2911,7 +3056,7 @@ public var read: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var readEncrypted
 
@@ -2927,7 +3072,7 @@ public var readEncrypted: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var readEncryptedMitm
 
@@ -2943,7 +3088,7 @@ public var readEncryptedMitm: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var write
 
@@ -2959,7 +3104,7 @@ public var write: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var writeEncrypted
 
@@ -2975,7 +3120,7 @@ public var writeEncrypted: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var writeEncryptedMitm
 
@@ -2991,7 +3136,7 @@ public var writeEncryptedMitm: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var writeSigned
 
@@ -3007,7 +3152,7 @@ public var writeSigned: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var writeSignedMitm
 
@@ -3023,7 +3168,7 @@ public var writeSignedMitm: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Bool, Bool, Bool, Bool, Bool, Bool, Bool, Bool)
 
@@ -3044,7 +3189,7 @@ public init (
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3124,7 +3269,7 @@ public class GattProperties {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var indicate
 
@@ -3140,7 +3285,7 @@ public var indicate: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var notify
 
@@ -3156,7 +3301,7 @@ public var notify: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var read
 
@@ -3172,7 +3317,7 @@ public var read: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var write
 
@@ -3188,7 +3333,7 @@ public var write: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var writeNoResponse
 
@@ -3204,7 +3349,7 @@ public var writeNoResponse: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Bool, Bool, Bool, Bool, Bool, Bool, Bool, Bool)
 
@@ -3225,7 +3370,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3250,7 +3395,7 @@ public class GattServer {}
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func addService(GattService)
 
@@ -3264,7 +3409,7 @@ public func addService(service: GattService): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3354,7 +3499,7 @@ public func close(): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -3400,7 +3545,7 @@ public func notifyCharacteristicChanged(deviceId: String, notifyCharacteristic: 
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3462,7 +3607,7 @@ public func off(eventType: BluetoothBleGattServerCallbackType, callback!: ?Callb
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3523,7 +3668,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3600,7 +3745,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3684,7 +3829,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3761,7 +3906,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3842,7 +3987,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3903,7 +4048,7 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3963,7 +4108,7 @@ public func removeService(serviceUuid: String): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4017,7 +4162,7 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4084,7 +4229,7 @@ public class GattService {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristics
 
@@ -4100,7 +4245,7 @@ public var characteristics: Array<BLECharacteristic>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var includeServices
 
@@ -4116,7 +4261,7 @@ public var includeServices: Array<GattService>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isPrimary
 
@@ -4132,7 +4277,7 @@ public var isPrimary: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -4148,7 +4293,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Bool, Array\<BLECharacteristic>, Array\<GattService>)
 
@@ -4165,7 +4310,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4193,7 +4338,7 @@ public class ManufactureData {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var manufactureId
 
@@ -4209,7 +4354,7 @@ public var manufactureId: UInt16
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var manufactureValue
 
@@ -4225,7 +4370,7 @@ public var manufactureValue: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(UInt16, Array\<Byte>)
 
@@ -4240,7 +4385,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4270,7 +4415,7 @@ public class NotifyCharacteristic {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicUuid
 
@@ -4286,7 +4431,7 @@ public var characteristicUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var characteristicValue
 
@@ -4302,7 +4447,7 @@ public var characteristicValue: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var confirm
 
@@ -4318,7 +4463,7 @@ public var confirm: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -4334,7 +4479,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, Array\<Byte>, Bool)
 
@@ -4351,7 +4496,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4397,7 +4542,7 @@ public class ScanFilter {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -4413,7 +4558,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var manufactureData
 
@@ -4429,7 +4574,7 @@ public var manufactureData: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var manufactureDataMask
 
@@ -4445,7 +4590,7 @@ public var manufactureDataMask: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var manufactureId
 
@@ -4461,7 +4606,7 @@ public var manufactureId: UInt16
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -4477,7 +4622,7 @@ public var name: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceData
 
@@ -4493,7 +4638,7 @@ public var serviceData: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceDataMask
 
@@ -4509,7 +4654,7 @@ public var serviceDataMask: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceSolicitationUuid
 
@@ -4525,7 +4670,7 @@ public var serviceSolicitationUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceSolicitationUuidMask
 
@@ -4541,7 +4686,7 @@ public var serviceSolicitationUuidMask: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -4557,7 +4702,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuidMask
 
@@ -4573,7 +4718,7 @@ public var serviceUuidMask: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, String, String, String, String, Array\<Byte>, Array\<Byte>, UInt16, Array\<Byte>, Array\<Byte>)
 
@@ -4597,7 +4742,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4637,7 +4782,7 @@ public class ScanOptions {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dutyMode
 
@@ -4653,7 +4798,7 @@ public var dutyMode: ScanDuty
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var interval
 
@@ -4669,7 +4814,7 @@ public var interval: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var matchMode
 
@@ -4685,7 +4830,7 @@ public var matchMode: MatchMode
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var phyType
 
@@ -4701,7 +4846,7 @@ public var phyType: PhyType
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, ScanDuty, MatchMode, PhyType, ScanReportMode)
 
@@ -4719,7 +4864,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4747,7 +4892,7 @@ public class ScanResult {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var connectable
 
@@ -4763,7 +4908,7 @@ public var connectable: Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var data
 
@@ -4779,7 +4924,7 @@ public var data: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -4795,7 +4940,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceName
 
@@ -4811,7 +4956,7 @@ public var deviceName: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var rssi
 
@@ -4827,7 +4972,7 @@ public var rssi: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ServerResponse
 
@@ -4852,7 +4997,7 @@ public class ServerResponse {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -4868,7 +5013,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -4884,7 +5029,7 @@ public var offset: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var status
 
@@ -4900,7 +5045,7 @@ public var status: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var transId
 
@@ -4916,7 +5061,7 @@ public var transId: Int32
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -4932,7 +5077,7 @@ public var value: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Int32, Int32, Int32, Array\<Byte>)
 
@@ -4950,7 +5095,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -4979,7 +5124,7 @@ public class ServiceData {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceUuid
 
@@ -4995,7 +5140,7 @@ public var serviceUuid: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var serviceValue
 
@@ -5011,7 +5156,7 @@ public var serviceValue: Array<Byte>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Array\<Byte>)
 
@@ -5026,7 +5171,7 @@ public init(
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -5051,7 +5196,7 @@ public enum AdvertisingState <: Equatable<AdvertisingState> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5068,7 +5213,7 @@ Disabled
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Enabled
 
@@ -5080,7 +5225,7 @@ Enabled
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Started
 
@@ -5092,7 +5237,7 @@ Started
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Stopped
 
@@ -5104,7 +5249,7 @@ Stopped
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AdvertisingState)
 
@@ -5176,7 +5321,7 @@ public enum BluetoothBleCallbackType <: Equatable<BluetoothBleCallbackType> & Ha
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5196,7 +5341,7 @@ AdvertisingStateChange
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BleDeviceFind
 
@@ -5210,7 +5355,7 @@ BleDeviceFind
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(BluetoothBleCallbackType)
 
@@ -5297,7 +5442,7 @@ public enum BluetoothBleGattClientDeviceCallbackType <: Equatable<BluetoothBleGa
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5317,7 +5462,7 @@ BleCharacteristicChange
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BleConnectionStateChange
 
@@ -5331,7 +5476,7 @@ BleConnectionStateChange
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ClientBleMtuChange
 
@@ -5345,7 +5490,7 @@ ClientBleMtuChange
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(BluetoothBleGattClientDeviceCallbackType)
 
@@ -5435,7 +5580,7 @@ public enum BluetoothBleGattServerCallbackType <: Equatable<BluetoothBleGattServ
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5455,7 +5600,7 @@ CharacteristicRead
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CharacteristicWrite
 
@@ -5469,7 +5614,7 @@ CharacteristicWrite
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ConnectionStateChange
 
@@ -5483,7 +5628,7 @@ ConnectionStateChange
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DescriptorRead
 
@@ -5497,7 +5642,7 @@ DescriptorRead
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DescriptorWrite
 
@@ -5511,7 +5656,7 @@ DescriptorWrite
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ServerBleMtuChange
 
@@ -5525,7 +5670,7 @@ ServerBleMtuChange
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(BluetoothBleGattServerCallbackType)
 
@@ -5609,7 +5754,7 @@ public enum GattWriteType <: Equatable<GattWriteType> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5626,7 +5771,7 @@ Write
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WriteNoResponse
 
@@ -5638,7 +5783,7 @@ WriteNoResponse
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(GattWriteType)
 
@@ -5708,7 +5853,7 @@ public enum MatchMode <: Equatable<MatchMode> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5725,7 +5870,7 @@ MatchModeAggressive
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MatchModeSticky
 
@@ -5737,7 +5882,7 @@ MatchModeSticky
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(MatchMode)
 
@@ -5807,7 +5952,7 @@ public enum PhyType <: Equatable<PhyType> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5824,7 +5969,7 @@ PhyLe1M
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PhyLeAllSupported
 
@@ -5836,7 +5981,7 @@ PhyLeAllSupported
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PhyType)
 
@@ -5907,7 +6052,7 @@ public enum ScanDuty <: Equatable<ScanDuty> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -5924,7 +6069,7 @@ ScanModeBalanced
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScanModeLowLatency
 
@@ -5936,7 +6081,7 @@ ScanModeLowLatency
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ScanModeLowPower
 
@@ -5948,7 +6093,7 @@ ScanModeLowPower
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ScanDuty)
 
@@ -6024,7 +6169,7 @@ public enum ScanReportMode <: Equatable<ScanReportMode> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -6041,7 +6186,7 @@ Batch
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FenceSensitivityHigh
 
@@ -6061,7 +6206,7 @@ FenceSensitivityHigh
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FenceSensitivityLow
 
@@ -6081,7 +6226,7 @@ FenceSensitivityLow
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Normal
 
@@ -6093,7 +6238,7 @@ Normal
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ScanReportMode)
 

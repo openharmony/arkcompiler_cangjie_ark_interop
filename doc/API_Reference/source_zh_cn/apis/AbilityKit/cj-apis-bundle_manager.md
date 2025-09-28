@@ -51,7 +51,7 @@ public class AbilityInfo {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appIndex
 
@@ -67,7 +67,7 @@ public let appIndex: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let applicationInfo
 
@@ -83,7 +83,7 @@ public let applicationInfo: ApplicationInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bundleName
 
@@ -99,7 +99,7 @@ public let bundleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let description
 
@@ -115,7 +115,7 @@ public let description: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let descriptionId
 
@@ -131,7 +131,7 @@ public let descriptionId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let deviceTypes
 
@@ -147,7 +147,7 @@ public let deviceTypes: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let enabled
 
@@ -163,7 +163,7 @@ public let enabled: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let excludeFromDock
 
@@ -179,7 +179,7 @@ public let excludeFromDock: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let exported
 
@@ -195,7 +195,7 @@ public let exported: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let icon
 
@@ -211,7 +211,7 @@ public let icon: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let iconId
 
@@ -227,7 +227,7 @@ public let iconId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let label
 
@@ -243,7 +243,7 @@ public let label: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let labelId
 
@@ -259,7 +259,7 @@ public let labelId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let launchType
 
@@ -275,7 +275,7 @@ public let launchType: LaunchType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let metadata
 
@@ -291,7 +291,7 @@ public let metadata: Array<Metadata>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let moduleName
 
@@ -307,7 +307,7 @@ public let moduleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let name
 
@@ -323,7 +323,7 @@ public let name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let orientation
 
@@ -339,7 +339,7 @@ public let orientation: DisplayOrientation
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let permissions
 
@@ -355,7 +355,7 @@ public let permissions: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let process
 
@@ -371,7 +371,7 @@ public let process: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let skills
 
@@ -387,7 +387,7 @@ public let skills: Array<Skill>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let supportWindowModes
 
@@ -403,7 +403,7 @@ public let supportWindowModes: Array<SupportWindowMode>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let windowSize
 
@@ -419,7 +419,7 @@ public let windowSize: WindowSize
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ApplicationInfo
 
@@ -462,7 +462,7 @@ public class ApplicationInfo {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let accessTokenId
 
@@ -478,7 +478,7 @@ public let accessTokenId: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appDistributionType
 
@@ -494,7 +494,7 @@ public let appDistributionType: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appIndex
 
@@ -510,7 +510,7 @@ public let appIndex: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appProvisionType
 
@@ -526,7 +526,7 @@ public let appProvisionType: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bundleType
 
@@ -542,7 +542,7 @@ public let bundleType: BundleType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let cloudFileSyncEnabled
 
@@ -558,7 +558,7 @@ public let cloudFileSyncEnabled: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let codePath
 
@@ -574,7 +574,7 @@ public let codePath: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let dataUnclearable
 
@@ -590,7 +590,7 @@ public let dataUnclearable: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let debug
 
@@ -606,7 +606,7 @@ public let debug: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let description
 
@@ -622,7 +622,7 @@ public let description: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let descriptionId
 
@@ -638,7 +638,7 @@ public let descriptionId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let descriptionResource
 
@@ -654,7 +654,7 @@ public let descriptionResource: AppResource
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let enabled
 
@@ -670,7 +670,7 @@ public let enabled: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let icon
 
@@ -686,7 +686,7 @@ public let icon: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let iconId
 
@@ -702,7 +702,7 @@ public let iconId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let iconResource
 
@@ -718,7 +718,7 @@ public let iconResource: AppResource
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let installSource
 
@@ -734,7 +734,7 @@ public let installSource: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let label
 
@@ -750,7 +750,7 @@ public let label: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let labelId
 
@@ -766,7 +766,7 @@ public let labelId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let labelResource
 
@@ -782,7 +782,7 @@ public let labelResource: AppResource
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let metadataArray
 
@@ -798,7 +798,7 @@ public let metadataArray: Array<ModuleMetadata>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let multiAppMode
 
@@ -814,7 +814,7 @@ public let multiAppMode: MultiAppMode
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let name
 
@@ -830,7 +830,7 @@ public let name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let nativeLibraryPath
 
@@ -846,7 +846,7 @@ public let nativeLibraryPath: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let permissions
 
@@ -862,7 +862,7 @@ public let permissions: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let process
 
@@ -878,7 +878,7 @@ public let process: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let releaseType
 
@@ -894,7 +894,7 @@ public let releaseType: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let removable
 
@@ -910,7 +910,7 @@ public let removable: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let systemApp
 
@@ -926,7 +926,7 @@ public let systemApp: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let uid
 
@@ -942,7 +942,7 @@ public let uid: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class BundleFlag
 
@@ -967,7 +967,7 @@ public class BundleFlag {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_DEFAULT
 
@@ -981,7 +981,7 @@ public static const GET_BUNDLE_INFO_DEFAULT: Int32 = 0x00000000
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_ABILITY
 
@@ -995,7 +995,7 @@ public static const GET_BUNDLE_INFO_WITH_ABILITY: Int32 = 0x00000004
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_APPLICATION
 
@@ -1009,7 +1009,7 @@ public static const GET_BUNDLE_INFO_WITH_APPLICATION: Int32 = 0x00000001
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_DISABLE
 
@@ -1023,7 +1023,7 @@ public static const GET_BUNDLE_INFO_WITH_DISABLE: Int32 = 0x00000040
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
 
@@ -1037,7 +1037,7 @@ public static const GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY: Int32 = 0x00000008
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_HAP_MODULE
 
@@ -1051,7 +1051,7 @@ public static const GET_BUNDLE_INFO_WITH_HAP_MODULE: Int32 = 0x00000002
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_MENU
 
@@ -1065,7 +1065,7 @@ public static const GET_BUNDLE_INFO_WITH_MENU: Int32 = 0x00000100
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_METADATA
 
@@ -1079,7 +1079,7 @@ public static const GET_BUNDLE_INFO_WITH_METADATA: Int32 = 0x00000020
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION
 
@@ -1093,7 +1093,7 @@ public static const GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION: Int32 = 0x0000001
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_ROUTER_MAP
 
@@ -1107,7 +1107,7 @@ public static const GET_BUNDLE_INFO_WITH_ROUTER_MAP: Int32 = 0x00000200
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO
 
@@ -1121,7 +1121,7 @@ public static const GET_BUNDLE_INFO_WITH_SIGNATURE_INFO: Int32 = 0x00000080
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const GET_BUNDLE_INFO_WITH_SKILL
 
@@ -1135,7 +1135,7 @@ public static const GET_BUNDLE_INFO_WITH_SKILL: Int32 = 0x00000800
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class BundleInfo
 
@@ -1163,7 +1163,7 @@ public class BundleInfo {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appIndex
 
@@ -1179,7 +1179,7 @@ public let appIndex: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appInfo
 
@@ -1195,7 +1195,7 @@ public let appInfo: ApplicationInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let hapModulesInfo
 
@@ -1211,7 +1211,7 @@ public let hapModulesInfo: Array<HapModuleInfo>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let installTime
 
@@ -1227,7 +1227,7 @@ public let installTime: Int64
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let minCompatibleVersionCode
 
@@ -1243,7 +1243,7 @@ public let minCompatibleVersionCode: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let name
 
@@ -1259,7 +1259,7 @@ public let name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let permissionGrantStates
 
@@ -1275,7 +1275,7 @@ public let permissionGrantStates: Array<PermissionGrantState>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let reqPermissionDetails
 
@@ -1291,7 +1291,7 @@ public let reqPermissionDetails: Array<ReqPermissionDetail>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let routerMap
 
@@ -1307,7 +1307,7 @@ public let routerMap: Array<RouterItem>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let signatureInfo
 
@@ -1323,7 +1323,7 @@ public let signatureInfo: SignatureInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let targetVersion
 
@@ -1339,7 +1339,7 @@ public let targetVersion: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let updateTime
 
@@ -1355,7 +1355,7 @@ public let updateTime: Int64
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let vendor
 
@@ -1371,7 +1371,7 @@ public let vendor: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let versionCode
 
@@ -1387,7 +1387,7 @@ public let versionCode: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let versionName
 
@@ -1403,7 +1403,7 @@ public let versionName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class BundleManager
 
@@ -1415,7 +1415,7 @@ public class BundleManager {}
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func canOpenLink(String)
 
@@ -1427,7 +1427,7 @@ public static func canOpenLink(link: String): Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1475,7 +1475,7 @@ public static func getBundleInfoForSelf(bundleFlags: Int32): BundleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1522,7 +1522,7 @@ public static func getProfileByAbility(moduleName: String, abilityName: String, 
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1586,7 +1586,7 @@ public static func getProfileByExtensionAbility(moduleName: String, extensionAbi
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1642,7 +1642,7 @@ public class DataItem {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let key
 
@@ -1658,7 +1658,7 @@ public let key: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let value
 
@@ -1674,7 +1674,7 @@ public let value: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class DefaultAppManager
 
@@ -1686,7 +1686,7 @@ public class DefaultAppManager {}
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func isDefaultApplication(String)
 
@@ -1698,7 +1698,7 @@ public static func isDefaultApplication(appType: String): Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1747,7 +1747,7 @@ public class Dependency {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bundleName
 
@@ -1763,7 +1763,7 @@ public let bundleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let moduleName
 
@@ -1779,7 +1779,7 @@ public let moduleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let versionCode
 
@@ -1795,7 +1795,7 @@ public let versionCode: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ExtensionAbilityInfo
 
@@ -1825,7 +1825,7 @@ public class ExtensionAbilityInfo {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appIndex
 
@@ -1841,7 +1841,7 @@ public let appIndex: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let applicationInfo
 
@@ -1857,7 +1857,7 @@ public let applicationInfo: ApplicationInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bundleName
 
@@ -1873,7 +1873,7 @@ public let bundleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let descriptionId
 
@@ -1889,7 +1889,7 @@ public let descriptionId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let enabled
 
@@ -1905,7 +1905,7 @@ public let enabled: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let exported
 
@@ -1921,7 +1921,7 @@ public let exported: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let extensionAbilityType
 
@@ -1937,7 +1937,7 @@ public let extensionAbilityType: ExtensionAbilityType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let extensionAbilityTypeName
 
@@ -1953,7 +1953,7 @@ public let extensionAbilityTypeName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let iconId
 
@@ -1969,7 +1969,7 @@ public let iconId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let labelId
 
@@ -1985,7 +1985,7 @@ public let labelId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let metadata
 
@@ -2001,7 +2001,7 @@ public let metadata: Array<Metadata>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let moduleName
 
@@ -2017,7 +2017,7 @@ public let moduleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let name
 
@@ -2033,7 +2033,7 @@ public let name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let permissions
 
@@ -2049,7 +2049,7 @@ public let permissions: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let readPermission
 
@@ -2065,7 +2065,7 @@ public let readPermission: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let skills
 
@@ -2081,7 +2081,7 @@ public let skills: Array<Skill>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let writePermission
 
@@ -2097,7 +2097,7 @@ public let writePermission: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HapModuleInfo
 
@@ -2131,7 +2131,7 @@ public class HapModuleInfo {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let abilitiesInfo
 
@@ -2147,7 +2147,7 @@ public let abilitiesInfo: Array<AbilityInfo>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let codePath
 
@@ -2163,7 +2163,7 @@ public let codePath: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let dependencies
 
@@ -2179,7 +2179,7 @@ public let dependencies: Array<Dependency>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let description
 
@@ -2195,7 +2195,7 @@ public let description: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let descriptionId
 
@@ -2211,7 +2211,7 @@ public let descriptionId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let deviceTypes
 
@@ -2227,7 +2227,7 @@ public let deviceTypes: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let extensionAbilitiesInfo
 
@@ -2243,7 +2243,7 @@ public let extensionAbilitiesInfo: Array<ExtensionAbilityInfo>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let fileContextMenuConfig
 
@@ -2259,7 +2259,7 @@ public let fileContextMenuConfig: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let hashValue
 
@@ -2275,7 +2275,7 @@ public let hashValue: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let icon
 
@@ -2291,7 +2291,7 @@ public let icon: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let iconId
 
@@ -2307,7 +2307,7 @@ public let iconId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let installationFree
 
@@ -2323,7 +2323,7 @@ public let installationFree: Bool
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let label
 
@@ -2339,7 +2339,7 @@ public let label: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let labelId
 
@@ -2355,7 +2355,7 @@ public let labelId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let mainElementName
 
@@ -2371,7 +2371,7 @@ public let mainElementName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let metadata
 
@@ -2387,7 +2387,7 @@ public let metadata: Array<Metadata>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let moduleType
 
@@ -2403,7 +2403,7 @@ public let moduleType: ModuleType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let name
 
@@ -2419,7 +2419,7 @@ public let name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let nativeLibraryPath
 
@@ -2435,7 +2435,7 @@ public let nativeLibraryPath: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let preloads
 
@@ -2451,7 +2451,7 @@ public let preloads: Array<PreloadItem>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let routerMap
 
@@ -2467,7 +2467,7 @@ public let routerMap: Array<RouterItem>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ModuleMetadata
 
@@ -2482,7 +2482,7 @@ public class ModuleMetadata {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let metadata
 
@@ -2498,7 +2498,7 @@ public let metadata: Array<Metadata>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let moduleName
 
@@ -2514,7 +2514,7 @@ public let moduleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class MultiAppMode
 
@@ -2529,7 +2529,7 @@ public class MultiAppMode {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let maxCount
 
@@ -2545,7 +2545,7 @@ public let maxCount: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let multiAppModeType
 
@@ -2561,7 +2561,7 @@ public let multiAppModeType: MultiAppModeType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class PreloadItem
 
@@ -2575,7 +2575,7 @@ public class PreloadItem {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let moduleName
 
@@ -2591,7 +2591,7 @@ public let moduleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ReqPermissionDetail
 
@@ -2609,7 +2609,7 @@ public class ReqPermissionDetail {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var moduleName
 
@@ -2625,7 +2625,7 @@ public var moduleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -2641,7 +2641,7 @@ public var name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var reason
 
@@ -2657,7 +2657,7 @@ public var reason: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var reasonId
 
@@ -2673,7 +2673,7 @@ public var reasonId: Int32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var usedScene
 
@@ -2689,7 +2689,7 @@ public var usedScene: UsedScene
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class RouterItem
 
@@ -2707,7 +2707,7 @@ public class RouterItem {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let buildFunction
 
@@ -2723,7 +2723,7 @@ public let buildFunction: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let customData
 
@@ -2739,7 +2739,7 @@ public let customData: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let data
 
@@ -2755,7 +2755,7 @@ public let data: Array<DataItem>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let name
 
@@ -2771,7 +2771,7 @@ public let name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let pageSourceFile
 
@@ -2787,7 +2787,7 @@ public let pageSourceFile: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class SignatureInfo
 
@@ -2803,7 +2803,7 @@ public class SignatureInfo {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appId
 
@@ -2819,7 +2819,7 @@ public let appId: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let appIdentifier
 
@@ -2835,7 +2835,7 @@ public let appIdentifier: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let fingerprint
 
@@ -2851,7 +2851,7 @@ public let fingerprint: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class UsedScene
 
@@ -2866,7 +2866,7 @@ public class UsedScene {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var abilities
 
@@ -2882,7 +2882,7 @@ public var abilities: Array<String>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var when
 
@@ -2898,7 +2898,7 @@ public var when: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class WindowSize
 
@@ -2917,7 +2917,7 @@ public class WindowSize {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let maxWindowHeight
 
@@ -2933,7 +2933,7 @@ public let maxWindowHeight: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let maxWindowRatio
 
@@ -2949,7 +2949,7 @@ public let maxWindowRatio: Float64
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let maxWindowWidth
 
@@ -2965,7 +2965,7 @@ public let maxWindowWidth: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let minWindowHeight
 
@@ -2981,7 +2981,7 @@ public let minWindowHeight: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let minWindowRatio
 
@@ -2997,7 +2997,7 @@ public let minWindowRatio: Float64
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let minWindowWidth
 
@@ -3013,7 +3013,7 @@ public let minWindowWidth: UInt32
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ApplicationType
 
@@ -3036,7 +3036,7 @@ public enum ApplicationType {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Audio
 
@@ -3048,7 +3048,7 @@ Audio
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Browser
 
@@ -3060,7 +3060,7 @@ Browser
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Email
 
@@ -3072,7 +3072,7 @@ Email
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Excel
 
@@ -3084,7 +3084,7 @@ Excel
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Image
 
@@ -3096,7 +3096,7 @@ Image
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Pdf
 
@@ -3108,7 +3108,7 @@ Pdf
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Ppt
 
@@ -3120,7 +3120,7 @@ Ppt
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Video
 
@@ -3132,7 +3132,7 @@ Video
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Word
 
@@ -3144,7 +3144,7 @@ Word
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getValue()
 
@@ -3156,7 +3156,7 @@ public func getValue(): String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -3178,7 +3178,7 @@ public enum BundleType {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### App
 
@@ -3190,7 +3190,7 @@ App
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AtomicService
 
@@ -3202,7 +3202,7 @@ AtomicService
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum DisplayOrientation
 
@@ -3231,7 +3231,7 @@ public enum DisplayOrientation {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoRotation
 
@@ -3243,7 +3243,7 @@ AutoRotation
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoRotationLandscape
 
@@ -3255,7 +3255,7 @@ AutoRotationLandscape
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoRotationLandscapeRestricted
 
@@ -3267,7 +3267,7 @@ AutoRotationLandscapeRestricted
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoRotationPortrait
 
@@ -3279,7 +3279,7 @@ AutoRotationPortrait
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoRotationPortraitRestricted
 
@@ -3291,7 +3291,7 @@ AutoRotationPortraitRestricted
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoRotationRestricted
 
@@ -3303,7 +3303,7 @@ AutoRotationRestricted
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AutoRotationUnspecified
 
@@ -3315,7 +3315,7 @@ AutoRotationUnspecified
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FollowDesktop
 
@@ -3327,7 +3327,7 @@ FollowDesktop
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FollowRecent
 
@@ -3339,7 +3339,7 @@ FollowRecent
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Landscape
 
@@ -3351,7 +3351,7 @@ Landscape
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LandscapeInverted
 
@@ -3363,7 +3363,7 @@ LandscapeInverted
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Locked
 
@@ -3375,7 +3375,7 @@ Locked
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Portrait
 
@@ -3387,7 +3387,7 @@ Portrait
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PortraitInverted
 
@@ -3399,7 +3399,7 @@ PortraitInverted
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unspecified
 
@@ -3411,7 +3411,7 @@ Unspecified
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ExtensionAbilityType
 
@@ -3448,7 +3448,7 @@ public enum ExtensionAbilityType {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Accessibility
 
@@ -3460,7 +3460,7 @@ Accessibility
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Action
 
@@ -3472,7 +3472,7 @@ Action
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AdsService
 
@@ -3484,7 +3484,7 @@ AdsService
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Backup
 
@@ -3496,7 +3496,7 @@ Backup
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DataShare
 
@@ -3508,7 +3508,7 @@ DataShare
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Driver
 
@@ -3520,7 +3520,7 @@ Driver
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### EmbeddedUi
 
@@ -3532,7 +3532,7 @@ EmbeddedUi
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### EnterpriseAdmin
 
@@ -3544,7 +3544,7 @@ EnterpriseAdmin
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FileShare
 
@@ -3556,7 +3556,7 @@ FileShare
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Form
 
@@ -3568,7 +3568,7 @@ Form
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### InputMethod
 
@@ -3580,7 +3580,7 @@ InputMethod
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### InsightIntentUi
 
@@ -3592,7 +3592,7 @@ InsightIntentUi
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Preview
 
@@ -3604,7 +3604,7 @@ Preview
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Print
 
@@ -3616,7 +3616,7 @@ Print
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Push
 
@@ -3628,7 +3628,7 @@ Push
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Service
 
@@ -3640,7 +3640,7 @@ Service
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Share
 
@@ -3652,7 +3652,7 @@ Share
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StaticSubscriber
 
@@ -3664,7 +3664,7 @@ StaticSubscriber
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Thumbnail
 
@@ -3676,7 +3676,7 @@ Thumbnail
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unspecified
 
@@ -3688,7 +3688,7 @@ Unspecified
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Wallpaper
 
@@ -3700,7 +3700,7 @@ Wallpaper
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Window
 
@@ -3712,7 +3712,7 @@ Window
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WorkScheduler
 
@@ -3724,7 +3724,7 @@ WorkScheduler
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum LaunchType
 
@@ -3741,7 +3741,7 @@ public enum LaunchType {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Multiton
 
@@ -3753,7 +3753,7 @@ Multiton
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Singleton
 
@@ -3765,7 +3765,7 @@ Singleton
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Specified
 
@@ -3777,7 +3777,7 @@ Specified
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ModuleType
 
@@ -3794,7 +3794,7 @@ public enum ModuleType {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Entry
 
@@ -3806,7 +3806,7 @@ Entry
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Feature
 
@@ -3818,7 +3818,7 @@ Feature
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Shared
 
@@ -3830,7 +3830,7 @@ Shared
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum MultiAppModeType
 
@@ -3847,7 +3847,7 @@ public enum MultiAppModeType {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AppClone
 
@@ -3859,7 +3859,7 @@ AppClone
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MultiInstance
 
@@ -3871,7 +3871,7 @@ MultiInstance
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unspecified
 
@@ -3883,7 +3883,7 @@ Unspecified
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum PermissionGrantState
 
@@ -3899,7 +3899,7 @@ public enum PermissionGrantState {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PermissionDenied
 
@@ -3911,7 +3911,7 @@ PermissionDenied
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PermissionGranted
 
@@ -3923,7 +3923,7 @@ PermissionGranted
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum SupportWindowMode
 
@@ -3940,7 +3940,7 @@ public enum SupportWindowMode {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Floating
 
@@ -3952,7 +3952,7 @@ Floating
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FullScreen
 
@@ -3964,7 +3964,7 @@ FullScreen
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Split
 
@@ -3976,4 +3976,4 @@ Split
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
