@@ -10,8 +10,6 @@ The overall architecture is shown in the following diagram:
 
 ![cangjie interop API](./figures/cangjie-interop_eng.png)
 
-As shown in the architecture diagram:
-
 Interface Layer:
 
 - Interoperability Library (ark_interop): Developers can achieve cross-language parameter passing, function calls, and other capabilities by calling the APIs provided by the interoperability library.
