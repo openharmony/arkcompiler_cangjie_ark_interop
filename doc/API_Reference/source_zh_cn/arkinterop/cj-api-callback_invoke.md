@@ -10,7 +10,7 @@ public abstract class Callback0Argument <: CallbackObject {}
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -26,7 +26,7 @@ public open func invoke(err: ?BusinessException): Unit
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -44,7 +44,7 @@ public abstract class Callback1Argument<A> <: CallbackObject {}
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -60,7 +60,7 @@ public open func invoke(err: ?BusinessException, arg: A): Unit
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -79,7 +79,7 @@ public abstract class Callback1ArgumentWithReturn<A, B> <: CallbackObject {}
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -95,7 +95,7 @@ public open func invoke(err: ?BusinessException, arg1: A): B
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -120,7 +120,7 @@ public abstract class Callback2Argument<A, B> <: CallbackObject {}
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -136,7 +136,7 @@ public open func invoke(err: ?BusinessException, arg1: A, arg2: B): Unit
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -156,7 +156,7 @@ public abstract class Callback3ArgumentWithReturn<A, B, C, D> <: CallbackObject 
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -172,7 +172,7 @@ public open func invoke(err: ?BusinessException, arg1: A, arg2: B, arg3: C): D
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -199,7 +199,7 @@ public abstract class CallbackObject {}
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class CallbackWithReturn
 
@@ -211,7 +211,7 @@ public abstract class CallbackWithReturn<A> <: CallbackObject {}
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -227,7 +227,7 @@ public open func invoke(err: ?BusinessException): A
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -251,4 +251,4 @@ public type Callback<T>=(T) -> Unit
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22

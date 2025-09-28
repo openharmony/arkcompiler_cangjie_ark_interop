@@ -15,7 +15,7 @@ public open class BusinessException <: Exception {
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -33,7 +33,7 @@ public let code: Int32
 
 **读写能力：** 只读
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, String)
 
@@ -45,7 +45,7 @@ public init(code: Int32, msg: String)
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -64,7 +64,7 @@ public open func toString(): String
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -85,7 +85,7 @@ public class BusinessError<T> <: BusinessException  {
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -103,7 +103,7 @@ public var data: T
 
 **读写能力：** 读写
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(T, Int32, String)
 
@@ -115,7 +115,7 @@ public init(data: T, code: Int32, msg: String)
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -135,7 +135,7 @@ protected override func getClassName(): String
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -153,4 +153,4 @@ public type AsyncCallback<T>=(Option<AsyncError>, Option<T>) -> Unit
 
 **系统能力：** SystemCapability.Base
 
-**起始版本：** 21
+**起始版本：** 22
