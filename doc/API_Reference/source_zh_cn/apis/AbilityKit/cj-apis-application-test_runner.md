@@ -104,7 +104,7 @@ public open func onRun(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
