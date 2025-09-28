@@ -53,6 +53,20 @@ public mut prop context: AbilityStageContext
 
 **起始版本：** 22
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import ohos.base.*
+import kit.AbilityKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let context = this.context
+    }
+}
+```
+
 ### static func registerCreator(String, () -> AbilityStage)
 
 ```cangjie
@@ -72,6 +86,22 @@ public static func registerCreator(moduleName: String, creator: () -> AbilitySta
 |moduleName|String|是|-|模块名称。|
 |creator|()->[AbilityStage](#class-abilitystage)|是|-|AbilityStage的创建者。|
 
+**示例：**
+
+<!-- compile -->
+```cangjie
+import ohos.base.*
+import kit.AbilityKit.*
+
+let ENTRY_STAGE_REGISTER_RESULT = AbilityStage.registerCreator("entry", () -> MyAbilityStage)
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let context = this.context
+    }
+}
+```
+
 ### func onCreate()
 
 ```cangjie
@@ -82,4 +112,18 @@ public open func onCreate(): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 22
+**起始版本：** 21
+
+**示例：**
+
+<!-- compile -->
+```cangjie
+import ohos.base.*
+import kit.AbilityKit.*
+
+class MyAbilityStage <: AbilityStage {
+    public override func onCreate(): Unit {
+        let context = this.context
+    }
+}
+```

@@ -56,6 +56,25 @@ public func addAbilityMonitor(monitor: AbilityMonitor): Unit
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | AddAbilityMonitor failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let monitor = AbilityMonitor(
+        "EntryAbility", moduleName: "entry",
+        onAbilityCreate: {ability => delegator.print("onAbilityCreate called, abilityName: ${ability.launchWant.abilityName}")}
+)
+delegator.addAbilityMonitor(monitor)
+```
+
 ### func addAbilityStageMonitor(AbilityStageMonitor)
 
 ```cangjie
@@ -82,6 +101,22 @@ public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
   | :--- | :--- |
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | AddAbilityStageMonitor failed. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let monitor = AbilityStageMonitor("entry", "ohos_app_cangjie_entry.MyAbilityStage")
+delegator.addAbilityStageMonitor(monitor)
+```
 
 ### func doAbilityBackground(UIAbility)
 
@@ -110,6 +145,22 @@ public func doAbilityBackground(ability: UIAbility): Unit
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | DoAbilityBackground failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let ability = delegator.getCurrentTopAbility()
+delegator.doAbilityBackground(ability)
+```
+
 ### func doAbilityForeground(UIAbility)
 
 ```cangjie
@@ -137,6 +188,22 @@ public func doAbilityForeground(ability: UIAbility): Unit
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | DoAbilityForeground failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let ability = delegator.getCurrentTopAbility()
+delegator.doAbilityForeground(ability)
+```
+
 ### func executeShellCommand(String, Int64)
 
 ```cangjie
@@ -162,6 +229,22 @@ public func executeShellCommand(cmd: String, timeoutSecs!: Int64 = 0): ShellCmdR
 |:----|:----|
 |[ShellCmdResult](#class-shellcmdresult)|返回Shell命令执行结果[ShellCmdResult](#class-shellcmdresult)对象。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let cmd = "cmd"
+delegator.executeShellCommand(cmd, 2)
+```
+
 ### func finishTest(String, Int64)
 
 ```cangjie
@@ -180,6 +263,22 @@ public func finishTest(msg: String, code: Int64): Unit
 |:---|:---|:---|:---|:---|
 |msg|String|是|-|日志字符串。|
 |code|Int64|是|-|日志码。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let msg = "msg"
+delegator.finishTest(msg, 0)
+```
 
 ### func getAbilityState(UIAbility)
 
@@ -213,6 +312,22 @@ public func getAbilityState(ability: UIAbility): AbilityLifecycleState
   | :--- | :--- |
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let ability = delegator.getCurrentTopAbility()
+delegator.getAbilityState(ability)
+```
+
 ### func getAppContext()
 
 ```cangjie
@@ -230,6 +345,21 @@ public func getAppContext(): Context
 |类型|说明|
 |:----|:----|
 |[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)|应用Context。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let context = delegator.getAppContext()
+```
 
 ### func getCurrentTopAbility()
 
@@ -258,6 +388,22 @@ public func getCurrentTopAbility(): UIAbility
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | GetCurrentTopAbility failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let ability = delegator.getCurrentTopAbility()
+delegator.getAbilityState(ability)
+```
+
 ### func print(String)
 
 ```cangjie
@@ -283,6 +429,22 @@ public func print(msg: String): Unit
   | 错误码ID | 错误信息 |
   | :--- | :--- |
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let msg = "msg"
+delegator.print(msg)
+```
 
 ### func removeAbilityMonitor(AbilityMonitor)
 
@@ -311,6 +473,25 @@ public func removeAbilityMonitor(monitor: AbilityMonitor): Unit
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | RemoveAbilityMonitor failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let monitor = AbilityMonitor(
+    "EntryAbility", moduleName: "entry",
+    onAbilityCreate: {ability => delegator.print("onAbilityCreate called, abilityName: ${ability.launchWant.abilityName}")}
+)
+delegator.removeAbilityMonitor(monitor)
+```
+
 ### func removeAbilityStageMonitor(AbilityStageMonitor)
 
 ```cangjie
@@ -338,6 +519,22 @@ public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | RemoveAbilityStageMonitor failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let monitor = AbilityStageMonitor("entry", "ohos_app_cangjie_entry.MyAbilityStage")
+delegator.removeAbilityStageMonitor(monitor)
+```
+
 ### func startAbility(Want)
 
 ```cangjie
@@ -355,6 +552,22 @@ public func startAbility(want: Want): Future<Unit>
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |want|[Want](../AbilityKit/cj-apis-app-ability-want.md#class-want)|是|-|启动[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)参数。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let want = Want(bundleName: "com.example.myapplication", abilityName: "EntryAbility")
+delegator.startAbility(want).get()
+```
 
 ### func waitAbilityMonitor(AbilityMonitor, Int64)
 
@@ -391,6 +604,26 @@ doc/API_Reference/source_zh_cn/apis/AbilityKit/
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | WaitAbilityMonitor failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let monitor = AbilityMonitor("EntryAbility", moduleName: "entry",
+    onAbilityCreate: {ability => delegator.print("call onAbilityCreate success!")}
+)
+spawn {
+    let ability = delegator.waitAbilityMonitor(monitor)
+}
+```
+
 ### func waitAbilityStageMonitor(AbilityStageMonitor, Int64)
 
 ```cangjie
@@ -424,6 +657,24 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
   | :--- | :--- |
   | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
   | 16000100 | WaitAbilityStageMonitor failed. |
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let stageMonitor = AbilityStageMonitor("entry", "ohos_app_cangjie_entry.MyAbilityStage")
+spawn {
+    let abilityStage = delegator.waitAbilityStageMonitor(stageMonitor, 2000)
+}
+```
 
 ## class AbilityDelegatorArgs
 
@@ -549,10 +800,27 @@ public static func getArguments(): AbilityDelegatorArgs
 |:----|:----|
 |[AbilityDelegatorArgs](#class-abilitydelegatorargs)|[AbilityDelegatorArgs](#class-abilitydelegatorargs)对象。可以用来获取测试参数。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TestKit.*
+
+let args = AbilityDelegatorRegistry.getArguments()
+AppLog.info("args is ${args.bundleName}")
+AppLog.info("args is ${args.testCaseNames}")
+AppLog.info("args is ${args.testRunnerClassName}")
+AppLog.info("args is ${args.parameters}")
+```
+
 ## class AbilityMonitor
 
 ```cangjie
-public class AbilityMonitor <: FFIData {
+public class AbilityMonitor {
     public var abilityName: String
     public var moduleName: String
     public var onAbilityCreate:?(UIAbility) -> Unit
@@ -581,10 +849,6 @@ public class AbilityMonitor <: FFIData {
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 22
-
-**父类型：**
-
-- FFIData
 
 ### var abilityName
 
@@ -766,6 +1030,22 @@ public init(
 |onWindowStageRestore|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage被重载时的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
 |onWindowStageDestroy|?([UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)) -> Unit|否|None| **命名参数。** windowStage销毁前调用的回调函数。None即不设置该属性，则不能收到该生命周期回调。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.TestKit.*
+
+let monitor = AbilityMonitor(
+    "EntryAbility", moduleName: "entry",
+    onAbilityCreate: {ability => delegator.print("onAbilityCreate called, abilityName: ${ability.launchWant.abilityName}")}
+)
+```
+
 ## class AbilityStageMonitor
 
 ```cangjie
@@ -842,6 +1122,22 @@ public init(
 |:---|:---|:---|:---|:---|
 |moduleName|String|是|-|要监视的abilityStage的模块名。|
 |srcEntrance|String|是|-|要监视的abilityStage的源路径。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.base.*
+import kit.AbilityKit.*
+import kit.TestKit.*
+
+let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
+let monitor = AbilityStageMonitor("entry", "ohos_app_cangjie_entry.MyAbilityStage")
+delegator.addAbilityStageMonitor(monitor)
+```
 
 ## class ShellCmdResult
 

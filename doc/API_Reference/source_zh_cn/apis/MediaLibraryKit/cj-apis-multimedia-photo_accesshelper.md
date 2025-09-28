@@ -1517,7 +1517,7 @@ let ctx = Global.abilityContext // 需获取Context应用上下文，详见本�
 let phAccessHelper = getPhotoAccessHelper(ctx)
 let predicates = DataSharePredicates()
 let fetchOptions: FetchOptions = FetchOptions([], predicates)
-let burstKey = "a042847b-2f1a-492a-897e-028b7d6dc475"
+let burstKey = YOUR_UUID // 请输入uuid
 let fetchResult: PhotoAssetResult = phAccessHelper.getBurstAssets(burstKey, fetchOptions)
 ```
 

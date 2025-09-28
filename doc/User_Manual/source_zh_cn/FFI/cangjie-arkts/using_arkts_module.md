@@ -1,6 +1,8 @@
-# 仓颉应用中使用 ArkTS 模块
+# 仓颉调用 ArkTS
 
-ArkTS 模块主要分为 NAPI（Node.js API）模块以及普通 ArkTS 模块，仓颉仅支持对 NAPI 模块的调用。
+仓颉应用中支持增加 ArkTS 模块，不支持增加 ArkTS 页面，以下主要介绍增加 ArkTS 模块。
+
+ArkTS 模块主要分为 NAPI（Node.js API） 模块以及三方库模块，仓颉仅支持对 NAPI 模块的调用。
 
 在介绍具体的加载前，首先介绍仓颉的导入名称及 ArkTS 模块名称的映射规范，如下：
 
