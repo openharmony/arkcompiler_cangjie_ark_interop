@@ -42,7 +42,7 @@ public enum Flags <: Equatable<Flags> & ToString {
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -59,7 +59,7 @@ FlagAuthPersistableUriPermission
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FlagAuthReadUriPermission
 
@@ -71,7 +71,7 @@ FlagAuthReadUriPermission
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FlagAuthWriteUriPermission
 
@@ -83,7 +83,7 @@ FlagAuthWriteUriPermission
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FlagInstallOnDemand
 
@@ -95,7 +95,7 @@ FlagInstallOnDemand
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FlagStartWithoutTips
 
@@ -107,7 +107,7 @@ FlagStartWithoutTips
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(Flags)
 
@@ -119,7 +119,7 @@ public operator func !=(other: Flags): Bool
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -143,7 +143,7 @@ public operator func ==(other: Flags): Bool
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -167,7 +167,7 @@ public func getValue(): UInt32
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -193,7 +193,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -220,7 +220,7 @@ public enum Params <: Equatable<Params> & ToString {
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -237,7 +237,7 @@ AbilityBackToOtherMissionStack
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AbilityRecoveryRestart
 
@@ -249,7 +249,7 @@ AbilityRecoveryRestart
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ContentTitleKey
 
@@ -261,7 +261,7 @@ ContentTitleKey
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ShareAbstractKey
 
@@ -273,7 +273,7 @@ ShareAbstractKey
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ShareUrlKey
 
@@ -285,7 +285,7 @@ ShareUrlKey
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SupportContinuePageStackKey
 
@@ -297,7 +297,7 @@ SupportContinuePageStackKey
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SupportContinueSourceExitKey
 
@@ -309,7 +309,7 @@ SupportContinueSourceExitKey
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(Params)
 
@@ -321,7 +321,7 @@ public operator func !=(other: Params): Bool
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -345,7 +345,7 @@ public operator func ==(other: Params): Bool
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -369,7 +369,7 @@ public func getValue(): String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -395,7 +395,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

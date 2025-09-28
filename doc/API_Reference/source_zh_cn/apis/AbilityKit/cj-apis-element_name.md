@@ -24,7 +24,7 @@ public class ElementName {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var abilityName
 
@@ -40,7 +40,7 @@ public var abilityName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bundleName
 
@@ -56,7 +56,7 @@ public var bundleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -72,7 +72,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var moduleName
 
@@ -88,7 +88,7 @@ public var moduleName: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, String, String)
 
@@ -100,7 +100,7 @@ public init(bundleName: String, abilityName: String, deviceId!: String = "", mod
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

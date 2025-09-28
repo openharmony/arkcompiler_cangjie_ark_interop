@@ -35,7 +35,7 @@ public func getSensorList(): Array<Sensor>
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -81,7 +81,7 @@ public func getSingleSensor(sensorType: SensorId): Sensor
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -132,7 +132,7 @@ public func off(sensorType: SensorId, callback!: ?CallbackObject = None): Unit
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -185,7 +185,7 @@ public func on<T>(sensorType: SensorId, callback: Callback1Argument<T>, option!:
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -233,7 +233,7 @@ public func once<T>(sensorType: SensorId, callback: Callback1Argument<T>): Unit 
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -283,7 +283,7 @@ public class AccelerometerResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -303,7 +303,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -319,7 +319,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -335,7 +335,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class AccelerometerUncalibratedResponse
 
@@ -354,7 +354,7 @@ public class AccelerometerUncalibratedResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -374,7 +374,7 @@ public var biasX: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var biasY
 
@@ -390,7 +390,7 @@ public var biasY: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var biasZ
 
@@ -406,7 +406,7 @@ public var biasZ: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var x
 
@@ -422,7 +422,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -438,7 +438,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -454,7 +454,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class AmbientTemperatureResponse
 
@@ -468,7 +468,7 @@ public class AmbientTemperatureResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -488,7 +488,7 @@ public var temperature: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class BarometerResponse
 
@@ -502,7 +502,7 @@ public class BarometerResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -522,7 +522,7 @@ public var pressure: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class GravityResponse
 
@@ -538,7 +538,7 @@ public class GravityResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -558,7 +558,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -574,7 +574,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -590,7 +590,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class GyroscopeResponse
 
@@ -606,7 +606,7 @@ public class GyroscopeResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -626,7 +626,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -642,7 +642,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -658,7 +658,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class GyroscopeUncalibratedResponse
 
@@ -677,7 +677,7 @@ public class GyroscopeUncalibratedResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -697,7 +697,7 @@ public var biasX: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var biasY
 
@@ -713,7 +713,7 @@ public var biasY: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var biasZ
 
@@ -729,7 +729,7 @@ public var biasZ: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var x
 
@@ -745,7 +745,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -761,7 +761,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -777,7 +777,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HallResponse
 
@@ -791,7 +791,7 @@ public class HallResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -811,7 +811,7 @@ public var status: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HeartRateResponse
 
@@ -825,7 +825,7 @@ public class HeartRateResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -845,7 +845,7 @@ public var heartRate: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HumidityResponse
 
@@ -859,7 +859,7 @@ public class HumidityResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -879,7 +879,7 @@ public var humidity: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class LightResponse
 
@@ -895,7 +895,7 @@ public class LightResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -915,7 +915,7 @@ public var colorTemperature:?Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var infraredLuminance
 
@@ -931,7 +931,7 @@ public var infraredLuminance:?Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var intensity
 
@@ -947,7 +947,7 @@ public var intensity: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class LinearAccelerometerResponse
 
@@ -963,7 +963,7 @@ public class LinearAccelerometerResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -983,7 +983,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -999,7 +999,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -1015,7 +1015,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class MagneticFieldResponse
 
@@ -1031,7 +1031,7 @@ public class MagneticFieldResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1051,7 +1051,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -1067,7 +1067,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -1083,7 +1083,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class MagneticFieldUncalibratedResponse
 
@@ -1102,7 +1102,7 @@ public class MagneticFieldUncalibratedResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1122,7 +1122,7 @@ public var biasX: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var biasY
 
@@ -1138,7 +1138,7 @@ public var biasY: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var biasZ
 
@@ -1154,7 +1154,7 @@ public var biasZ: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var x
 
@@ -1170,7 +1170,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -1186,7 +1186,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -1202,7 +1202,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Options
 
@@ -1218,7 +1218,7 @@ public class Options {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var interval
 
@@ -1234,7 +1234,7 @@ public var interval: IntervalOption
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sensorInfoParam
 
@@ -1250,7 +1250,7 @@ public var sensorInfoParam:?SensorInfoParam
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(IntervalOption, ?SensorInfoParam)
 
@@ -1262,7 +1262,7 @@ public init(interval!: IntervalOption = NormalMode, sensorInfoParam!: ?SensorInf
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1285,7 +1285,7 @@ public class OrientationResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1305,7 +1305,7 @@ public var alpha: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var beta
 
@@ -1321,7 +1321,7 @@ public var beta: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var gamma
 
@@ -1337,7 +1337,7 @@ public var gamma: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class PedometerDetectionResponse
 
@@ -1351,7 +1351,7 @@ public class PedometerDetectionResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1371,7 +1371,7 @@ public var scalar: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class PedometerResponse
 
@@ -1385,7 +1385,7 @@ public class PedometerResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1405,7 +1405,7 @@ public var steps: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ProximityResponse
 
@@ -1419,7 +1419,7 @@ public class ProximityResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1439,7 +1439,7 @@ public var distance: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Response
 
@@ -1454,7 +1454,7 @@ public open class Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var accuracy
 
@@ -1470,7 +1470,7 @@ public var accuracy: SensorAccuracy
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var timestamp
 
@@ -1486,7 +1486,7 @@ public var timestamp: Int64
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class RotationVectorResponse
 
@@ -1503,7 +1503,7 @@ public class RotationVectorResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1523,7 +1523,7 @@ public var w: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var x
 
@@ -1539,7 +1539,7 @@ public var x: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -1555,7 +1555,7 @@ public var y: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var z
 
@@ -1571,7 +1571,7 @@ public var z: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Sensor
 
@@ -1594,7 +1594,7 @@ public class Sensor {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var firmwareVersion
 
@@ -1610,7 +1610,7 @@ public var firmwareVersion: String
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var hardwareVersion
 
@@ -1626,7 +1626,7 @@ public var hardwareVersion: String
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var maxRange
 
@@ -1642,7 +1642,7 @@ public var maxRange: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var maxSamplePeriod
 
@@ -1658,7 +1658,7 @@ public var maxSamplePeriod: Int64
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var minSamplePeriod
 
@@ -1674,7 +1674,7 @@ public var minSamplePeriod: Int64
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var power
 
@@ -1690,7 +1690,7 @@ public var power: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var precision
 
@@ -1706,7 +1706,7 @@ public var precision: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sensorId
 
@@ -1722,7 +1722,7 @@ public var sensorId: Int32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sensorName
 
@@ -1738,7 +1738,7 @@ public var sensorName: String
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var vendorName
 
@@ -1754,7 +1754,7 @@ public var vendorName: String
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class SensorInfoParam
 
@@ -1770,7 +1770,7 @@ public class SensorInfoParam {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -1786,7 +1786,7 @@ public var deviceId: Int32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sensorIndex
 
@@ -1802,7 +1802,7 @@ public var sensorIndex: Int32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int32)
 
@@ -1814,7 +1814,7 @@ public init(deviceId!: Int32 = -1, sensorIndex!: Int32 = 0)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1835,7 +1835,7 @@ public class SignificantMotionResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1855,7 +1855,7 @@ public var scalar: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class WearDetectionResponse
 
@@ -1869,7 +1869,7 @@ public class WearDetectionResponse <: Response {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1889,7 +1889,7 @@ public var value: Float32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum IntervalOption
 
@@ -1907,7 +1907,7 @@ public enum IntervalOption <: Equatable<IntervalOption> & ToString {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1924,7 +1924,7 @@ GameMode
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NormalMode
 
@@ -1936,7 +1936,7 @@ NormalMode
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SensorNumber(Int64)
 
@@ -1948,7 +1948,7 @@ SensorNumber(Int64)
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UIMode
 
@@ -1960,7 +1960,7 @@ UIMode
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(IntervalOption)
 
@@ -2032,7 +2032,7 @@ public enum SensorAccuracy  <: Equatable<SensorAccuracy> & ToString {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2049,7 +2049,7 @@ AccuracyHigh
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AccuracyLow
 
@@ -2061,7 +2061,7 @@ AccuracyLow
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AccuracyMedium
 
@@ -2073,7 +2073,7 @@ AccuracyMedium
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### AccuracyUnreliable
 
@@ -2085,7 +2085,7 @@ AccuracyUnreliable
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(SensorAccuracy)
 
@@ -2174,7 +2174,7 @@ public enum SensorId <: Equatable<SensorId> & ToString {
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -2191,7 +2191,7 @@ Accelerometer
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2238,7 +2238,7 @@ AccelerometerUncalibrated
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2285,7 +2285,7 @@ AmbientLight
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2332,7 +2332,7 @@ AmbientTemperature
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2379,7 +2379,7 @@ Barometer
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2426,7 +2426,7 @@ Gravity
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2473,7 +2473,7 @@ Gyroscope
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2520,7 +2520,7 @@ GyroscopeUncalibrated
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2567,7 +2567,7 @@ Hall
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2614,7 +2614,7 @@ HeartRate
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2661,7 +2661,7 @@ Humidity
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2708,7 +2708,7 @@ LinearAccelerometer
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2755,7 +2755,7 @@ MagneticField
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2802,7 +2802,7 @@ MagneticFieldUncalibrated
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2849,7 +2849,7 @@ Orientation
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2896,7 +2896,7 @@ Pedometer
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2943,7 +2943,7 @@ PedometerDetection
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2990,7 +2990,7 @@ Proximity
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -3037,7 +3037,7 @@ RotationVector
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -3084,7 +3084,7 @@ SignificantMotion
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -3131,7 +3131,7 @@ WearDetection
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -3218,7 +3218,7 @@ public func getValue(): Int32
 
 **系统能力：** SystemCapability.Sensors.Sensor
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

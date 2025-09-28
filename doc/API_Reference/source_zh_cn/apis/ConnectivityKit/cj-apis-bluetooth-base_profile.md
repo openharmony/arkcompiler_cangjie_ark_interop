@@ -37,7 +37,7 @@ public interface BaseProfile {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getConnectedDevices()
 
@@ -51,7 +51,7 @@ func getConnectedDevices(): Array<String>
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -104,7 +104,7 @@ func getConnectionState(deviceId: String): ProfileConnectionState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -164,7 +164,7 @@ func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -226,7 +226,7 @@ func off(eventType: ProfileCallbackType): Unit
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -287,7 +287,7 @@ func on(eventType: ProfileCallbackType, callback: Callback1Argument<StateChangeP
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -350,7 +350,7 @@ public class StateChangeParam {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var cause
 
@@ -366,7 +366,7 @@ public var cause: DisconnectCause
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -382,7 +382,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var state
 
@@ -398,7 +398,7 @@ public var state: ProfileConnectionState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum DisconnectCause
 
@@ -418,7 +418,7 @@ public enum DisconnectCause <: Equatable<DisconnectCause> & ToString {
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -435,7 +435,7 @@ ConnectFailInternal
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ConnectFromCar
 
@@ -447,7 +447,7 @@ ConnectFromCar
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ConnectFromKeyboard
 
@@ -459,7 +459,7 @@ ConnectFromKeyboard
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ConnectFromMouse
 
@@ -471,7 +471,7 @@ ConnectFromMouse
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### TooManyConnectedDevices
 
@@ -483,7 +483,7 @@ TooManyConnectedDevices
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UserDisconnect
 
@@ -495,7 +495,7 @@ UserDisconnect
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(DisconnectCause)
 
@@ -564,7 +564,7 @@ public enum ProfileCallbackType <: Equatable<ProfileCallbackType> & Hashable & T
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -582,7 +582,7 @@ ConnectionStateChange
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ProfileCallbackType)
 
@@ -634,7 +634,7 @@ public func hashCode(): Int64
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

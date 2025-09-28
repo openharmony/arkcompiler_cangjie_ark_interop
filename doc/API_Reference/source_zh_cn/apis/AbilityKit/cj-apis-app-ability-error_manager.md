@@ -35,7 +35,7 @@ public class ErrorManager {}
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func off(ErrorManagerEvent, Int32)
 
@@ -47,7 +47,7 @@ public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -91,7 +91,7 @@ public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): In
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -154,7 +154,7 @@ public enum ErrorManagerEvent {
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Error
 
@@ -166,4 +166,4 @@ Error
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**起始版本：** 21
+**起始版本：** 22

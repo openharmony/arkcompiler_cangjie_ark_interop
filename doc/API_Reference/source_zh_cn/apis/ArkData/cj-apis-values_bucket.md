@@ -23,7 +23,7 @@ public enum ValueType {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Boolean(Bool)
 
@@ -35,7 +35,7 @@ Boolean(Bool)
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Double(Float64)
 
@@ -47,7 +47,7 @@ Double(Float64)
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Integer(Int64)
 
@@ -59,7 +59,7 @@ Integer(Int64)
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -71,4 +71,4 @@ StringValue(String)
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22

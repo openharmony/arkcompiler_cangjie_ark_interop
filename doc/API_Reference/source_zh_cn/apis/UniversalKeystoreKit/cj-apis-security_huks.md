@@ -30,7 +30,7 @@ public func abortSession(handle: HuksHandleId, options: HuksOptions): Unit
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -53,6 +53,49 @@ public func abortSession(handle: HuksHandleId, options: HuksOptions): Unit
   | 12000012 | external error |
   | 12000014 | memory is insufficient |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_abort"
+let plainText = "123456"
+let iv = "0011223344556677"
+let options = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(
+            HuksTag.HUKS_TAG_PURPOSE,
+            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        )
+    ],
+    None
+)
+let encOptions = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
+        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
+        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
+    ],
+    plainText.toArray()
+)
+
+generateKeyItem(keyAlias, options)
+
+// encrypt and abort
+let handle = initSession(keyAlias, encOptions).handle
+
+abortSession(handle, encOptions)
+```
+
 ## func anonAttestKeyItem(String, HuksOptions)
 
 ```cangjie
@@ -64,7 +107,7 @@ public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<Str
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -98,6 +141,45 @@ public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<Str
   | 12000012 | external error |
   | 12000014 | memory is insufficient |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_rsa_anno"
+// generate key
+generateKeyItem(
+    keyAlias,
+    HuksOptions(
+        [
+            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_RSA),
+            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_RSA_KEY_SIZE_2048),
+            HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY),
+            HuksParam(HuksTag.HUKS_TAG_DIGEST, HuksKeyDigest.HUKS_DIGEST_SHA256),
+            HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PSS),
+            HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_ECB)
+        ],
+        None
+    )
+)
+
+let challenge = "hi_challenge_data"
+let chains = anonAttestKeyItem(
+    keyAlias,
+    HuksOptions(
+        [
+            HuksParam(HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, HuksParamValue.bytes(challenge.toArray())),
+            HuksParam(HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS, HuksParamValue.bytes(keyAlias.toArray()))
+        ],
+        None
+    )
+)
+```
+
 ## func deleteKeyItem(String, HuksOptions)
 
 ```cangjie
@@ -109,7 +191,7 @@ public func deleteKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -132,10 +214,44 @@ public func deleteKeyItem(keyAlias: String, options: HuksOptions): Unit
   | 12000012 | external error |
   | 12000014 | memory is insufficient |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+// 此处代码可添加在依赖项定义中
+func generateSimpleKey(keyAlias: String) {
+    let options = HuksOptions(
+        [
+            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+            HuksParam(
+                HuksTag.HUKS_TAG_PURPOSE,
+                HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            )
+        ],
+        None
+    )
+    generateKeyItem(keyAlias, options)
+}
+
+func test_delete_key() {
+    let keyAlias = "test_delete_key"
+    generateSimpleKey(keyAlias)
+    // delete
+    deleteKeyItem(keyAlias, HuksOptions.NONE)
+}
+
+test_delete_key()
+```
+
 ## func exportKeyItem(String, HuksOptions)
 
 ```cangjie
-
 public func exportKeyItem(keyAlias: String, _: HuksOptions): Bytes
 ```
 
@@ -143,7 +259,7 @@ public func exportKeyItem(keyAlias: String, _: HuksOptions): Bytes
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -176,6 +292,36 @@ public func exportKeyItem(keyAlias: String, _: HuksOptions): Bytes
   | 12000012 | external error |
   | 12000014 | memory is insufficient |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_export_key"
+/* 1. Generate Key */
+generateKeyItem(
+    keyAlias,
+    HuksOptions(
+        [
+            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_ECC),
+            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_ECC_KEY_SIZE_256),
+            HuksParam(
+                HuksTag.HUKS_TAG_PURPOSE,
+                HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY | HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN
+            ),
+            HuksParam(HuksTag.HUKS_TAG_DIGEST, HuksKeyDigest.HUKS_DIGEST_SHA256)
+        ],
+        None
+    )
+)
+/* 2. Export Key */
+let data = exportKeyItem(keyAlias, HuksOptions.NONE)
+```
+
 ## func finishSession(HuksHandleId, HuksOptions, Bytes)
 
 ```cangjie
@@ -187,7 +333,7 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -224,6 +370,68 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
   | 12000012 | Device environment or input parameter abnormal |
   | 12000014 | memory is insufficient |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.hilog.Hilog
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_encrypt_decrypt_cbc_pkcs7"
+let plainText = "123456"
+let iv = "1122334455667788"
+let options = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(
+            HuksTag.HUKS_TAG_PURPOSE,
+            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        ),
+        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
+        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
+        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
+    ],
+    None
+)
+let encOptions = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
+        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
+        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
+    ],
+    plainText.toArray()
+)
+generateKeyItem(keyAlias, options)
+// encrypt
+let handle1 = initSession(keyAlias, encOptions).handle
+let cipherData = finishSession(handle1, encOptions)
+let decOptions = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT),
+        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
+        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
+        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
+    ],
+    cipherData
+)
+// decrypt
+let handle2 = initSession(keyAlias, decOptions).handle
+let decData = finishSession(handle2, decOptions)
+let dec = String.fromUtf8(decData.getOrThrow())
+Hilog.info(0, "Hks testEntry", "${plainText == dec}")
+abortSession(handle1, HuksOptions([], None))
+abortSession(handle2, HuksOptions([], None))
+```
+
 ## func generateKeyItem(String, HuksOptions)
 
 ```cangjie
@@ -235,7 +443,7 @@ public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -263,6 +471,30 @@ public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit
   | 12000014 | memory is insufficient |
   | 12000015 | call service failed |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_generate_key"
+let options = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(
+            HuksTag.HUKS_TAG_PURPOSE,
+            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        )
+    ],
+    None
+)
+generateKeyItem(keyAlias, options)
+```
+
 ## func getKeyItemProperties(String, HuksOptions)
 
 ```cangjie
@@ -274,7 +506,7 @@ public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksPa
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -307,6 +539,30 @@ public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksPa
   | 12000012 | external error|
   | 12000014 | memory is insufficient|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_get_key_item_properties"
+let options = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(
+            HuksTag.HUKS_TAG_PURPOSE,
+            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        )
+    ],
+    Option.None
+)
+let properties = getKeyItemProperties(keyAlias, HuksOptions.NONE)
+```
+
 ## func importKeyItem(String, HuksOptions)
 
 ```cangjie
@@ -318,7 +574,7 @@ public func importKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -347,10 +603,37 @@ public func importKeyItem(keyAlias: String, options: HuksOptions): Unit
   | 12000014 | memory is insufficient |
   | 12000015 | call service failed |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_import_aes"
+let key = Array<UInt8>(Int64(HuksKeySize.HUKS_AES_KEY_SIZE_256.toUInt32().getOrThrow() / 8),
+    {i => UInt8(i & 0xFF)})
+importKeyItem(
+    keyAlias,
+    HuksOptions(
+        [
+            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_256),
+            HuksParam(
+                HuksTag.HUKS_TAG_PURPOSE,
+                HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            )
+        ],
+        key
+    )
+)
+```
+
 ## func importWrappedKeyItem(String, String, HuksOptions)
 
 ```cangjie
-
 public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, options: HuksOptions): Unit
 ```
 
@@ -358,7 +641,7 @@ public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, opt
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -399,7 +682,7 @@ public func initSession(keyAlias: String, options: HuksOptions): HuksSessionHand
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -433,6 +716,68 @@ public func initSession(keyAlias: String, options: HuksOptions): HuksSessionHand
   | 12000012 | external error |
   | 12000014 | memory is insufficient |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import ohos.hilog.Hilog
+import kit.UniversalKeystoreKit.*
+
+let keyAlias = "test_encrypt_decrypt_cbc_pkcs7"
+let plainText = "123456"
+let iv = "1122334455667788"
+let options = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(
+            HuksTag.HUKS_TAG_PURPOSE,
+            HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+        ),
+        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
+        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
+        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
+    ],
+    None
+)
+let encOptions = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT),
+        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
+        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
+        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
+    ],
+    plainText.toArray()
+)
+generateKeyItem(keyAlias, options)
+// encrypt
+let handle1 = initSession(keyAlias, encOptions).handle
+let cipherData = finishSession(handle1, encOptions)
+let decOptions = HuksOptions(
+    [
+        HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+        HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+        HuksParam(HuksTag.HUKS_TAG_PURPOSE, HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT),
+        HuksParam(HuksTag.HUKS_TAG_PADDING, HuksKeyPadding.HUKS_PADDING_PKCS7),
+        HuksParam(HuksTag.HUKS_TAG_BLOCK_MODE, HuksCipherMode.HUKS_MODE_CBC),
+        HuksParam(HuksTag.HUKS_TAG_IV, HuksParamValue.bytes(iv.toArray()))
+    ],
+    cipherData
+)
+// decrypt
+let handle2 = initSession(keyAlias, decOptions).handle
+let decData = finishSession(handle2, decOptions)
+let dec = String.fromUtf8(decData.getOrThrow())
+Hilog.info(0, "Hks testEntry", "${plainText == dec}")
+abortSession(handle1, HuksOptions([], None))
+abortSession(handle2, HuksOptions([], None))
+```
+
 ## func isKeyItemExist(String, HuksOptions)
 
 ```cangjie
@@ -444,7 +789,7 @@ public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -475,6 +820,37 @@ public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool
   | 12000012 | external error |
   | 12000014 | memory is insufficient |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.UniversalKeystoreKit.*
+
+// 此处代码可添加在依赖项定义中
+func generateSimpleKey(keyAlias: String) {
+    let options = HuksOptions(
+        [
+            HuksParam(HuksTag.HUKS_TAG_ALGORITHM, HuksKeyAlg.HUKS_ALG_AES),
+            HuksParam(HuksTag.HUKS_TAG_KEY_SIZE, HuksKeySize.HUKS_AES_KEY_SIZE_128),
+            HuksParam(
+                HuksTag.HUKS_TAG_PURPOSE,
+                HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+            )
+        ],
+        Option.None
+    )
+    generateKeyItem(keyAlias, options)
+}
+
+let keyAlias = "test_is_key_item_exist"
+isKeyItemExist(keyAlias, HuksOptions.NONE) // false
+generateSimpleKey(keyAlias)
+isKeyItemExist(keyAlias, HuksOptions.NONE) // true
+```
+
 ## func updateSession(HuksHandleId, HuksOptions, Bytes)
 
 ```cangjie
@@ -486,7 +862,7 @@ public func updateSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -536,7 +912,7 @@ public class HuksAuthAccessType {
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
 
@@ -550,7 +926,7 @@ public static const HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD: UInt32 = 1 << 0
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL
 
@@ -564,7 +940,7 @@ public static const HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL: UInt32 = 1 << 1
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksAuthStorageLevel
 
@@ -580,7 +956,7 @@ public class HuksAuthStorageLevel {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AUTH_STORAGE_LEVEL_CE
 
@@ -594,7 +970,7 @@ public static const HUKS_AUTH_STORAGE_LEVEL_CE: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AUTH_STORAGE_LEVEL_DE
 
@@ -608,7 +984,7 @@ public static const HUKS_AUTH_STORAGE_LEVEL_DE: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AUTH_STORAGE_LEVEL_ECE
 
@@ -622,7 +998,7 @@ public static const HUKS_AUTH_STORAGE_LEVEL_ECE: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksChallengePosition
 
@@ -639,7 +1015,7 @@ public class HuksChallengePosition {
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CHALLENGE_POS_0
 
@@ -653,7 +1029,7 @@ public static const HUKS_CHALLENGE_POS_0: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CHALLENGE_POS_1
 
@@ -667,7 +1043,7 @@ public static const HUKS_CHALLENGE_POS_1: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CHALLENGE_POS_2
 
@@ -681,7 +1057,7 @@ public static const HUKS_CHALLENGE_POS_2: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CHALLENGE_POS_3
 
@@ -695,7 +1071,7 @@ public static const HUKS_CHALLENGE_POS_3: UInt32 = 3
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksChallengeType
 
@@ -711,7 +1087,7 @@ public class HuksChallengeType {
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CHALLENGE_TYPE_CUSTOM
 
@@ -725,7 +1101,7 @@ public static const HUKS_CHALLENGE_TYPE_CUSTOM: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CHALLENGE_TYPE_NONE
 
@@ -739,7 +1115,7 @@ public static const HUKS_CHALLENGE_TYPE_NONE: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CHALLENGE_TYPE_NORMAL
 
@@ -752,7 +1128,7 @@ public static const HUKS_CHALLENGE_TYPE_NORMAL: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksCipherMode
 
@@ -771,7 +1147,7 @@ public class HuksCipherMode {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_MODE_CBC
 
@@ -785,7 +1161,7 @@ public static const HUKS_MODE_CBC: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_MODE_CCM
 
@@ -799,7 +1175,7 @@ public static const HUKS_MODE_CCM: UInt32 = 31
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_MODE_CTR
 
@@ -813,7 +1189,7 @@ public static const HUKS_MODE_CTR: UInt32 = 3
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_MODE_ECB
 
@@ -827,7 +1203,7 @@ public static const HUKS_MODE_ECB: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_MODE_GCM
 
@@ -841,7 +1217,7 @@ public static const HUKS_MODE_GCM: UInt32 = 32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_MODE_OFB
 
@@ -855,7 +1231,7 @@ public static const HUKS_MODE_OFB: UInt32 = 4
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksHandleId
 
@@ -867,7 +1243,7 @@ public class HuksHandleId {}
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksImportKeyType
 
@@ -883,7 +1259,7 @@ public class HuksImportKeyType {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_TYPE_KEY_PAIR
 
@@ -897,7 +1273,7 @@ public static const HUKS_KEY_TYPE_KEY_PAIR: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_TYPE_PRIVATE_KEY
 
@@ -911,7 +1287,7 @@ public static const HUKS_KEY_TYPE_PRIVATE_KEY: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_TYPE_PUBLIC_KEY
 
@@ -925,7 +1301,7 @@ public static const HUKS_KEY_TYPE_PUBLIC_KEY: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeyAlg
 
@@ -952,7 +1328,7 @@ public class HuksKeyAlg {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_AES
 
@@ -966,7 +1342,7 @@ public static const HUKS_ALG_AES: UInt32 = 20
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_DH
 
@@ -980,7 +1356,7 @@ public static const HUKS_ALG_DH: UInt32 = 103
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_DSA
 
@@ -994,7 +1370,7 @@ public static const HUKS_ALG_DSA: UInt32 = 3
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_ECC
 
@@ -1008,7 +1384,7 @@ public static const HUKS_ALG_ECC: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_ECDH
 
@@ -1022,7 +1398,7 @@ public static const HUKS_ALG_ECDH: UInt32 = 100
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_ED25519
 
@@ -1036,7 +1412,7 @@ public static const HUKS_ALG_ED25519: UInt32 = 102
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_HKDF
 
@@ -1050,7 +1426,7 @@ public static const HUKS_ALG_HKDF: UInt32 = 51
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_HMAC
 
@@ -1064,7 +1440,7 @@ public static const HUKS_ALG_HMAC: UInt32 = 50
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_PBKDF2
 
@@ -1078,7 +1454,7 @@ public static const HUKS_ALG_PBKDF2: UInt32 = 52
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_RSA
 
@@ -1092,7 +1468,7 @@ public static const HUKS_ALG_RSA: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_SM2
 
@@ -1106,7 +1482,7 @@ public static const HUKS_ALG_SM2: UInt32 = 150
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_SM3
 
@@ -1120,7 +1496,7 @@ public static const HUKS_ALG_SM3: UInt32 = 151
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_SM4
 
@@ -1134,7 +1510,7 @@ public static const HUKS_ALG_SM4: UInt32 = 152
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ALG_X25519
 
@@ -1148,7 +1524,7 @@ public static const HUKS_ALG_X25519: UInt32 = 101
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeyDigest
 
@@ -1169,7 +1545,7 @@ public class HuksKeyDigest {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_MD5
 
@@ -1183,7 +1559,7 @@ public static const HUKS_DIGEST_MD5: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_NONE
 
@@ -1197,7 +1573,7 @@ public static const HUKS_DIGEST_NONE: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_SHA1
 
@@ -1211,7 +1587,7 @@ public static const HUKS_DIGEST_SHA1: UInt32 = 10
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_SHA224
 
@@ -1225,7 +1601,7 @@ public static const HUKS_DIGEST_SHA224: UInt32 = 11
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_SHA256
 
@@ -1239,7 +1615,7 @@ public static const HUKS_DIGEST_SHA256: UInt32 = 12
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_SHA384
 
@@ -1253,7 +1629,7 @@ public static const HUKS_DIGEST_SHA384: UInt32 = 13
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_SHA512
 
@@ -1267,7 +1643,7 @@ public static const HUKS_DIGEST_SHA512: UInt32 = 14
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DIGEST_SM3
 
@@ -1281,7 +1657,7 @@ public static const HUKS_DIGEST_SM3: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeyFlag
 
@@ -1298,7 +1674,7 @@ public class HuksKeyFlag {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_FLAG_AGREE_KEY
 
@@ -1312,7 +1688,7 @@ public static const HUKS_KEY_FLAG_AGREE_KEY: UInt32 = 3
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_FLAG_DERIVE_KEY
 
@@ -1326,7 +1702,7 @@ public static const HUKS_KEY_FLAG_DERIVE_KEY: UInt32 = 4
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_FLAG_GENERATE_KEY
 
@@ -1340,7 +1716,7 @@ public static const HUKS_KEY_FLAG_GENERATE_KEY: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_FLAG_IMPORT_KEY
 
@@ -1354,7 +1730,7 @@ public static const HUKS_KEY_FLAG_IMPORT_KEY: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeyGenerateType
 
@@ -1370,7 +1746,7 @@ public class HuksKeyGenerateType {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_GENERATE_TYPE_AGREE
 
@@ -1384,7 +1760,7 @@ public static const HUKS_KEY_GENERATE_TYPE_AGREE: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_GENERATE_TYPE_DEFAULT
 
@@ -1398,7 +1774,7 @@ public static const HUKS_KEY_GENERATE_TYPE_DEFAULT: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_GENERATE_TYPE_DERIVE
 
@@ -1412,7 +1788,7 @@ public static const HUKS_KEY_GENERATE_TYPE_DERIVE: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeyPadding
 
@@ -1431,7 +1807,7 @@ public class HuksKeyPadding {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_PADDING_NONE
 
@@ -1445,7 +1821,7 @@ public static const HUKS_PADDING_NONE: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_PADDING_OAEP
 
@@ -1459,7 +1835,7 @@ public static const HUKS_PADDING_OAEP: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_PADDING_PKCS1_V1_5
 
@@ -1473,7 +1849,7 @@ public static const HUKS_PADDING_PKCS1_V1_5: UInt32 = 3
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_PADDING_PKCS5
 
@@ -1487,7 +1863,7 @@ public static const HUKS_PADDING_PKCS5: UInt32 = 4
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_PADDING_PKCS7
 
@@ -1501,7 +1877,7 @@ public static const HUKS_PADDING_PKCS7: UInt32 = 5
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_PADDING_PSS
 
@@ -1515,7 +1891,7 @@ public static const HUKS_PADDING_PSS: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeyPurpose
 
@@ -1537,7 +1913,7 @@ public class HuksKeyPurpose {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_AGREE
 
@@ -1551,7 +1927,7 @@ public static const HUKS_KEY_PURPOSE_AGREE: UInt32 = 256
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_DECRYPT
 
@@ -1565,7 +1941,7 @@ public static const HUKS_KEY_PURPOSE_DECRYPT: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_DERIVE
 
@@ -1579,7 +1955,7 @@ public static const HUKS_KEY_PURPOSE_DERIVE: UInt32 = 16
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_ENCRYPT
 
@@ -1593,7 +1969,7 @@ public static const HUKS_KEY_PURPOSE_ENCRYPT: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_MAC
 
@@ -1607,7 +1983,7 @@ public static const HUKS_KEY_PURPOSE_MAC: UInt32 = 128
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_SIGN
 
@@ -1621,7 +1997,7 @@ public static const HUKS_KEY_PURPOSE_SIGN: UInt32 = 4
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_UNWRAP
 
@@ -1635,7 +2011,7 @@ public static const HUKS_KEY_PURPOSE_UNWRAP: UInt32 = 64
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_VERIFY
 
@@ -1649,7 +2025,7 @@ public static const HUKS_KEY_PURPOSE_VERIFY: UInt32 = 8
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_KEY_PURPOSE_WRAP
 
@@ -1663,7 +2039,7 @@ public static const HUKS_KEY_PURPOSE_WRAP: UInt32 = 32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeySize
 
@@ -1695,7 +2071,7 @@ public class HuksKeySize {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AES_KEY_SIZE_128
 
@@ -1709,7 +2085,7 @@ public static const HUKS_AES_KEY_SIZE_128: UInt32 = 128
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AES_KEY_SIZE_192
 
@@ -1723,7 +2099,7 @@ public static const HUKS_AES_KEY_SIZE_192: UInt32 = 192
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_AES_KEY_SIZE_256
 
@@ -1737,7 +2113,7 @@ public static const HUKS_AES_KEY_SIZE_256: UInt32 = 256
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_CURVE25519_KEY_SIZE_256
 
@@ -1751,7 +2127,7 @@ public static const HUKS_CURVE25519_KEY_SIZE_256: UInt32 = 256
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DH_KEY_SIZE_2048
 
@@ -1765,7 +2141,7 @@ public static const HUKS_DH_KEY_SIZE_2048: UInt32 = 2048
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DH_KEY_SIZE_3072
 
@@ -1779,7 +2155,7 @@ public static const HUKS_DH_KEY_SIZE_3072: UInt32 = 3072
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_DH_KEY_SIZE_4096
 
@@ -1793,7 +2169,7 @@ public static const HUKS_DH_KEY_SIZE_4096: UInt32 = 4096
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ECC_KEY_SIZE_224
 
@@ -1807,7 +2183,7 @@ public static const HUKS_ECC_KEY_SIZE_224: UInt32 = 224
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ECC_KEY_SIZE_256
 
@@ -1821,7 +2197,7 @@ public static const HUKS_ECC_KEY_SIZE_256: UInt32 = 256
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ECC_KEY_SIZE_384
 
@@ -1835,7 +2211,7 @@ public static const HUKS_ECC_KEY_SIZE_384: UInt32 = 384
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_ECC_KEY_SIZE_521
 
@@ -1849,7 +2225,7 @@ public static const HUKS_ECC_KEY_SIZE_521: UInt32 = 521
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_KEY_SIZE_1024
 
@@ -1863,7 +2239,7 @@ public static const HUKS_RSA_KEY_SIZE_1024: UInt32 = 1024
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_KEY_SIZE_2048
 
@@ -1877,7 +2253,7 @@ public static const HUKS_RSA_KEY_SIZE_2048: UInt32 = 2048
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_KEY_SIZE_3072
 
@@ -1891,7 +2267,7 @@ public static const HUKS_RSA_KEY_SIZE_3072: UInt32 = 3072
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_KEY_SIZE_4096
 
@@ -1905,7 +2281,7 @@ public static const HUKS_RSA_KEY_SIZE_4096: UInt32 = 4096
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_KEY_SIZE_512
 
@@ -1919,7 +2295,7 @@ public static const HUKS_RSA_KEY_SIZE_512: UInt32 = 512
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_KEY_SIZE_768
 
@@ -1933,7 +2309,7 @@ public static const HUKS_RSA_KEY_SIZE_768: UInt32 = 768
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_SM2_KEY_SIZE_256
 
@@ -1947,7 +2323,7 @@ public static const HUKS_SM2_KEY_SIZE_256: UInt32 = 256
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_SM4_KEY_SIZE_128
 
@@ -1961,7 +2337,7 @@ public static const HUKS_SM4_KEY_SIZE_128: UInt32 = 128
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksKeyStorageType
 
@@ -1976,7 +2352,7 @@ public class HuksKeyStorageType {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_STORAGE_KEY_EXPORT_ALLOWED
 
@@ -1990,7 +2366,7 @@ public static const HUKS_STORAGE_KEY_EXPORT_ALLOWED: UInt32 = 3
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_STORAGE_ONLY_USED_IN_HUKS
 
@@ -2004,7 +2380,7 @@ public static const HUKS_STORAGE_ONLY_USED_IN_HUKS: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksOptions
 
@@ -2021,7 +2397,7 @@ public class HuksOptions {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var inData
 
@@ -2037,7 +2413,7 @@ public var inData: Bytes
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var properties
 
@@ -2053,7 +2429,7 @@ public var properties: Array<HuksParam>
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<HuksParam>, Bytes)
 
@@ -2066,7 +2442,7 @@ public init(properties!: Array<HuksParam> = Array<HuksParam>(), inData!: Bytes =
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2090,7 +2466,7 @@ public class HuksParam {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var tag
 
@@ -2106,7 +2482,7 @@ public var tag: UInt32
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -2122,7 +2498,7 @@ public var value: HuksParamValue
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(UInt32, HuksParamValue)
 
@@ -2135,7 +2511,7 @@ public init(tag: UInt32, value: HuksParamValue)
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2157,7 +2533,7 @@ public class HuksRsaPssSaltLenType {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_PSS_SALT_LEN_DIGEST
 
@@ -2171,7 +2547,7 @@ public static const HUKS_RSA_PSS_SALT_LEN_DIGEST: UInt32 = 0
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_RSA_PSS_SALT_LEN_MAX
 
@@ -2185,7 +2561,7 @@ public static const HUKS_RSA_PSS_SALT_LEN_MAX: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksSecureSignType
 
@@ -2199,7 +2575,7 @@ public class HuksSecureSignType {
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_SECURE_SIGN_WITH_AUTHINFO
 
@@ -2213,7 +2589,7 @@ public static const HUKS_SECURE_SIGN_WITH_AUTHINFO: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksSessionHandle
 
@@ -2228,7 +2604,7 @@ public class HuksSessionHandle {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var challenge
 
@@ -2244,7 +2620,7 @@ public var challenge: Bytes
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var handle
 
@@ -2260,7 +2636,7 @@ public var handle: HuksHandleId
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksTag
 
@@ -2317,7 +2693,7 @@ public class HuksTag {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AE_TAG
 
@@ -2331,7 +2707,7 @@ public static const HUKS_TAG_AE_TAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AGREE_ALG
 
@@ -2345,7 +2721,7 @@ public static const HUKS_TAG_AGREE_ALG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT 
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS
 
@@ -2359,7 +2735,7 @@ public static const HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS: UInt32 = HuksTagType.HUKS_
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AGREE_PUBLIC_KEY
 
@@ -2373,7 +2749,7 @@ public static const HUKS_TAG_AGREE_PUBLIC_KEY: UInt32 = HuksTagType.HUKS_TAG_TYP
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS
 
@@ -2387,7 +2763,7 @@ public static const HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS: UInt32 = HuksTagType
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_ALGORITHM
 
@@ -2401,7 +2777,7 @@ public static const HUKS_TAG_ALGORITHM: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_ASSOCIATED_DATA
 
@@ -2415,7 +2791,7 @@ public static const HUKS_TAG_ASSOCIATED_DATA: UInt32 = HuksTagType.HUKS_TAG_TYPE
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_ATTESTATION_CHALLENGE
 
@@ -2429,7 +2805,7 @@ public static const HUKS_TAG_ATTESTATION_CHALLENGE: UInt32 = HuksTagType.HUKS_TA
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AUTH_TIMEOUT
 
@@ -2443,7 +2819,7 @@ public static const HUKS_TAG_AUTH_TIMEOUT: UInt32 = HuksTagType.HUKS_TAG_TYPE_UI
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AUTH_TOKEN
 
@@ -2457,7 +2833,7 @@ public static const HUKS_TAG_AUTH_TOKEN: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTE
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_BLOCK_MODE
 
@@ -2471,7 +2847,7 @@ public static const HUKS_TAG_BLOCK_MODE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_CHALLENGE_POS
 
@@ -2485,7 +2861,7 @@ public static const HUKS_TAG_CHALLENGE_POS: UInt32 = HuksTagType.HUKS_TAG_TYPE_U
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_CHALLENGE_TYPE
 
@@ -2499,7 +2875,7 @@ public static const HUKS_TAG_CHALLENGE_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_DERIVE_KEY_SIZE
 
@@ -2513,7 +2889,7 @@ public static const HUKS_TAG_DERIVE_KEY_SIZE: UInt32 = HuksTagType.HUKS_TAG_TYPE
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG
 
@@ -2527,7 +2903,7 @@ public static const HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG: UInt32 = HuksTagTy
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_DIGEST
 
@@ -2541,7 +2917,7 @@ public static const HUKS_TAG_DIGEST: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 4
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_IMPORT_KEY_TYPE
 
@@ -2555,7 +2931,7 @@ public static const HUKS_TAG_IMPORT_KEY_TYPE: UInt32 =  HuksTagType.HUKS_TAG_TYP
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_INFO
 
@@ -2569,7 +2945,7 @@ public static const HUKS_TAG_INFO: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 11
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_IS_ALLOWED_WRAP
 
@@ -2583,7 +2959,7 @@ public static const HUKS_TAG_IS_ALLOWED_WRAP: UInt32 = HuksTagType.HUKS_TAG_TYPE
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_IS_KEY_ALIAS
 
@@ -2597,7 +2973,7 @@ public static const HUKS_TAG_IS_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BO
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_ITERATION
 
@@ -2611,7 +2987,7 @@ public static const HUKS_TAG_ITERATION: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT 
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_IV
 
@@ -2625,7 +3001,7 @@ public static const HUKS_TAG_IV: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 10
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY
 
@@ -2639,7 +3015,7 @@ public static const HUKS_TAG_KEY: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 100
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_ALIAS
 
@@ -2653,7 +3029,7 @@ public static const HUKS_TAG_KEY_ALIAS: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_AUTH_ACCESS_TYPE
 
@@ -2667,7 +3043,7 @@ public static const HUKS_TAG_KEY_AUTH_ACCESS_TYPE: UInt32 = HuksTagType.HUKS_TAG
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_AUTH_ID
 
@@ -2681,7 +3057,7 @@ public static const HUKS_TAG_KEY_AUTH_ID: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYT
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_AUTH_PURPOSE
 
@@ -2695,7 +3071,7 @@ public static const HUKS_TAG_KEY_AUTH_PURPOSE: UInt32 = HuksTagType.HUKS_TAG_TYP
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_FLAG
 
@@ -2709,7 +3085,7 @@ public static const HUKS_TAG_KEY_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT |
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_GENERATE_TYPE
 
@@ -2723,7 +3099,7 @@ public static const HUKS_TAG_KEY_GENERATE_TYPE: UInt32 = HuksTagType.HUKS_TAG_TY
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_SECURE_SIGN_TYPE
 
@@ -2737,7 +3113,7 @@ public static const HUKS_TAG_KEY_SECURE_SIGN_TYPE: UInt32 = HuksTagType.HUKS_TAG
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_SIZE
 
@@ -2751,7 +3127,7 @@ public static const HUKS_TAG_KEY_SIZE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT 
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_STORAGE_FLAG
 
@@ -2765,7 +3141,7 @@ public static const HUKS_TAG_KEY_STORAGE_FLAG: UInt32 = HuksTagType.HUKS_TAG_TYP
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_TYPE
 
@@ -2779,7 +3155,7 @@ public static const HUKS_TAG_KEY_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT |
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_KEY_WRAP_TYPE
 
@@ -2793,7 +3169,7 @@ public static const HUKS_TAG_KEY_WRAP_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_U
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_NO_AUTH_REQUIRED
 
@@ -2807,7 +3183,7 @@ public static const HUKS_TAG_NO_AUTH_REQUIRED: UInt32 = HuksTagType.HUKS_TAG_TYP
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_NONCE
 
@@ -2821,7 +3197,7 @@ public static const HUKS_TAG_NONCE: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 9
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_PADDING
 
@@ -2835,7 +3211,7 @@ public static const HUKS_TAG_PADDING: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_PURPOSE
 
@@ -2849,7 +3225,7 @@ public static const HUKS_TAG_PURPOSE: UInt32 =  HuksTagType.HUKS_TAG_TYPE_UINT |
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_RSA_PSS_SALT_LEN_TYPE
 
@@ -2863,7 +3239,7 @@ public static const HUKS_TAG_RSA_PSS_SALT_LEN_TYPE: UInt32 = HuksTagType.HUKS_TA
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_SALT
 
@@ -2877,7 +3253,7 @@ public static const HUKS_TAG_SALT: UInt32 = HuksTagType.HUKS_TAG_TYPE_BYTES | 12
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_UNWRAP_ALGORITHM_SUITE
 
@@ -2891,7 +3267,7 @@ public static const HUKS_TAG_UNWRAP_ALGORITHM_SUITE: UInt32 = HuksTagType.HUKS_T
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_USER_AUTH_TYPE
 
@@ -2905,7 +3281,7 @@ public static const HUKS_TAG_USER_AUTH_TYPE: UInt32 = HuksTagType.HUKS_TAG_TYPE_
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_USER_ID
 
@@ -2919,7 +3295,7 @@ public static const HUKS_TAG_USER_ID: UInt32 = HuksTagType.HUKS_TAG_TYPE_UINT | 
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_AUTH_STORAGE_LEVEL
 
@@ -2933,7 +3309,7 @@ public static const HUKS_TAG_AUTH_STORAGE_LEVEL: UInt32 = HuksTagType.HUKS_TAG_T
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksTagType
 
@@ -2952,7 +3328,7 @@ public class HuksTagType {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_TYPE_BOOL
 
@@ -2966,7 +3342,7 @@ public static const HUKS_TAG_TYPE_BOOL: UInt32 = 4 << 28
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_TYPE_BYTES
 
@@ -2980,7 +3356,7 @@ public static const HUKS_TAG_TYPE_BYTES: UInt32 = 5 << 28
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_TYPE_INT
 
@@ -2994,7 +3370,7 @@ public static const HUKS_TAG_TYPE_INT: UInt32 = 1 << 28
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_TYPE_INVALID
 
@@ -3008,7 +3384,7 @@ public static const HUKS_TAG_TYPE_INVALID: UInt32 = 0 << 28
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_TYPE_UINT
 
@@ -3022,7 +3398,7 @@ public static const HUKS_TAG_TYPE_UINT: UInt32 = 2 << 28
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_TAG_TYPE_ULONG
 
@@ -3036,7 +3412,7 @@ public static const HUKS_TAG_TYPE_ULONG: UInt32 = 3 << 28
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksUnwrapSuite
 
@@ -3051,7 +3427,7 @@ public class HuksUnwrapSuite {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
 
@@ -3065,7 +3441,7 @@ public static const HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING: UInt32 = 2
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
 
@@ -3079,7 +3455,7 @@ public static const HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING: UInt32 = 1
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HuksUserAuthType
 
@@ -3095,7 +3471,7 @@ public class HuksUserAuthType {
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_USER_AUTH_TYPE_FACE
 
@@ -3109,7 +3485,7 @@ public static const HUKS_USER_AUTH_TYPE_FACE: UInt32 = 1 << 1
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_USER_AUTH_TYPE_FINGERPRINT
 
@@ -3123,7 +3499,7 @@ public static const HUKS_USER_AUTH_TYPE_FINGERPRINT: UInt32 = 1 << 0
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const HUKS_USER_AUTH_TYPE_PIN
 
@@ -3137,7 +3513,7 @@ public static const HUKS_USER_AUTH_TYPE_PIN: UInt32 = 1 << 2
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum HuksParamValue
 
@@ -3156,7 +3532,7 @@ public enum HuksParamValue {
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BooleanValue(Bool)
 
@@ -3168,7 +3544,7 @@ BooleanValue(Bool)
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BytesValue(Bytes)
 
@@ -3180,7 +3556,7 @@ BytesValue(Bytes)
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Int32Value(Int32)
 
@@ -3192,7 +3568,7 @@ Int32Value(Int32)
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Uint32Value(UInt32)
 
@@ -3204,7 +3580,7 @@ Uint32Value(UInt32)
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Uint64Value(UInt64)
 
@@ -3216,4 +3592,4 @@ Uint64Value(UInt64)
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-**起始版本：** 21
+**起始版本：** 22

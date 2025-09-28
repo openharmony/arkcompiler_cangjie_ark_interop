@@ -35,7 +35,7 @@ public class HiTraceMeter {}
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func finishTrace(String, Int32)
 
@@ -49,7 +49,7 @@ public static func finishTrace(name: String, taskId: Int32): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -113,7 +113,7 @@ public static func startTrace(name: String, taskId: Int32): Unit
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

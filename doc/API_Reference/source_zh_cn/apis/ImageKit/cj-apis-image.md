@@ -28,7 +28,7 @@ public func createImagePacker(): ImagePacker
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -58,7 +58,7 @@ public func createImageReceiver(size: Size, format: ImageFormat, capacity: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -105,7 +105,7 @@ public func createImageSource(uri: String): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -119,6 +119,19 @@ public func createImageSource(uri: String): ImageSource
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let path: String = "../test.jpg"
+let imageSourceApi: ImageSource = createImageSource(path)
+```
+
 ## func createImageSource(String, SourceOptions)
 
 ```cangjie
@@ -129,7 +142,7 @@ public func createImageSource(uri: String, options: SourceOptions): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -144,6 +157,19 @@ public func createImageSource(uri: String, options: SourceOptions): ImageSource
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let imageSource: ImageSource = createImageSource("test.png", sourceOptions)
+```
+
 ## func createImageSource(Int32)
 
 ```cangjie
@@ -154,7 +180,7 @@ public func createImageSource(fd: Int32): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -168,6 +194,18 @@ public func createImageSource(fd: Int32): ImageSource
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let imageSourceApi : ImageSource = createImageSource(0)
+```
+
 ## func createImageSource(Int32, SourceOptions)
 
 ```cangjie
@@ -178,7 +216,7 @@ public func createImageSource(fd: Int32, options: SourceOptions): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -193,6 +231,19 @@ public func createImageSource(fd: Int32, options: SourceOptions): ImageSource
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let imageSource: ImageSource = createImageSource(0, sourceOptions)
+```
+
 ## func createImageSource(Array\<UInt8>)
 
 ```cangjie
@@ -203,7 +254,7 @@ public func createImageSource(buf: Array<UInt8>): ImageSource
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -217,6 +268,19 @@ public func createImageSource(buf: Array<UInt8>): ImageSource
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let buf: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
+let imageSourceApi: ImageSource = createImageSource(buf)
+```
+
 ## func createImageSource(Array\<UInt8>, SourceOptions)
 
 ```cangjie
@@ -227,7 +291,7 @@ public func createImageSource(buf: Array<UInt8>, options: SourceOptions): ImageS
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -242,6 +306,20 @@ public func createImageSource(buf: Array<UInt8>, options: SourceOptions): ImageS
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(sourceDensity: 120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)
+```
+
 ## func createImageSource(RawFileDescriptor, SourceOptions)
 
 ```cangjie
@@ -252,7 +330,7 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -267,6 +345,28 @@ public func createImageSource(rawfile: RawFileDescriptor, options!: SourceOption
 |:----|:----|
 |[ImageSource](#class-imagesource)|返回ImageSource类实例。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+import ohos.resource_manager.ResourceManager
+import ohos.base.*
+
+let resourceManager = ResourceManager.getResourceManager(Global.getStageContext()) // 需获取Context应用上下文，详见本文使用说明
+try {
+    let rawfd = resourceManager.getRawFd("test.png")
+    createImageSource(rawfd)
+} catch (e: BusinessException) {
+    let code = e.code
+    let message = e.message
+    AppLog.info("getRawFd failed, error code: ${code}, message: ${message}.")
+}
+```
+
 ## func createPixelMap(Array\<UInt8>, InitializationOptions)
 
 ```cangjie
@@ -277,7 +377,7 @@ public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -300,6 +400,21 @@ public func createPixelMap(colors: Array<UInt8>, options: InitializationOptions)
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types. 3.Parameter verification failed. |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let color: Array<UInt8> = Array<UInt8>(96, repeat: 0) //96为需要创建的像素buffer大小，取值为：height * width *4
+let opts: InitializationOptions = InitializationOptions(editable: true, pixelFormat: RGBA_8888,
+    size: Size(height: 4, width: 6))
+let pixelMap = createPixelMap(color, opts)
+```
+
 ## class Component
 
 ```cangjie
@@ -315,7 +430,7 @@ public class Component {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let byteBuffer
 
@@ -331,7 +446,7 @@ public let byteBuffer: Array<UInt8>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let componentType
 
@@ -347,7 +462,7 @@ public let componentType: ComponentType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let pixelStride
 
@@ -363,7 +478,7 @@ public let pixelStride: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let rowStride
 
@@ -379,7 +494,7 @@ public let rowStride: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class DecodingOptions
 
@@ -406,7 +521,7 @@ public class DecodingOptions {
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var desiredColorSpace
 
@@ -422,7 +537,7 @@ public var desiredColorSpace:?ColorSpaceManager
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var desiredDynamicRange
 
@@ -440,7 +555,7 @@ public var desiredDynamicRange: DecodingDynamicRange
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var desiredPixelFormat
 
@@ -456,7 +571,7 @@ public var desiredPixelFormat: PixelMapFormat
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var desiredRegion
 
@@ -472,7 +587,7 @@ public var desiredRegion: Region
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var desiredSize
 
@@ -488,7 +603,7 @@ public var desiredSize: Size
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var editable
 
@@ -504,7 +619,7 @@ public var editable: Bool
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var fitDensity
 
@@ -520,7 +635,7 @@ public var fitDensity: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var index
 
@@ -536,7 +651,7 @@ public var index: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var rotate
 
@@ -552,7 +667,7 @@ public var rotate: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sampleSize
 
@@ -568,7 +683,7 @@ public var sampleSize: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(UInt32, UInt32, Bool, Size, Region, PixelMapFormat, UInt32, Int32, ?ColorSpaceManager, DecodingDynamicRange)
 
@@ -583,7 +698,7 @@ public init(sampleSize!: UInt32 = 1, rotate!: UInt32 = 0, editable!: Bool = fals
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -610,7 +725,7 @@ public class Image {}
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop clipRect
 
@@ -626,7 +741,7 @@ public prop clipRect: Region
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop format
 
@@ -642,7 +757,7 @@ public prop format: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop size
 
@@ -658,7 +773,7 @@ public prop size: Size
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getComponent(ComponentType)
 
@@ -670,7 +785,7 @@ public func getComponent(componentType: ComponentType): Component
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -684,6 +799,20 @@ public func getComponent(componentType: ComponentType): Component
 |:----|:----|
 |[Component](#class-component)|返回组件缓冲区。|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let imageCreator = createImageCreator(8192, 8, 4, 8)
+let img = imageCreator.dequeueImage()
+let component : Component = img.getComponent(ComponentType.JPEG)
+```
+
 ### func release()
 
 ```cangjie
@@ -694,7 +823,21 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let imageCreator = createImageCreator(8192, 8, 4, 8)
+let img = imageCreator.dequeueImage()
+img.release()
+```
 
 ## class ImageInfo
 
@@ -714,7 +857,7 @@ public class ImageInfo {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var alphaType
 
@@ -730,7 +873,7 @@ public var alphaType: AlphaType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var density
 
@@ -746,7 +889,7 @@ public var density: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isHdr
 
@@ -762,7 +905,7 @@ public var isHdr: Bool
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mimeType
 
@@ -778,7 +921,7 @@ public var mimeType: String
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var pixelFormat
 
@@ -794,7 +937,7 @@ public var pixelFormat: PixelMapFormat
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var size
 
@@ -810,7 +953,7 @@ public var size: Size
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var stride
 
@@ -826,7 +969,7 @@ public var stride: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class ImagePacker
 
@@ -838,7 +981,7 @@ public class ImagePacker {}
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop supportedFormats
 
@@ -854,7 +997,7 @@ public prop supportedFormats: Array<String>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func packToData(ImageSource, PackingOption)
 
@@ -866,7 +1009,7 @@ public func packToData(source: ImageSource, options: PackingOption): Array<UInt8
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -926,7 +1069,7 @@ public func packToData(source: PixelMap, options: PackingOption): Array<UInt8>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -985,7 +1128,7 @@ public func packToFile(source: ImageSource, fd: Int32, options: PackingOption): 
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1043,7 +1186,7 @@ public func packToFile(source: PixelMap, fd: Int32, options: PackingOption): Uni
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1103,7 +1246,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1132,7 +1275,7 @@ public class ImagePropertyOptions {
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var defaultValue
 
@@ -1148,7 +1291,7 @@ public var defaultValue: String
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var index
 
@@ -1164,7 +1307,7 @@ public var index: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(UInt32, String)
 
@@ -1176,7 +1319,7 @@ public init(index!: UInt32 = 0, defaultValue!: String = "")
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1197,7 +1340,7 @@ public class ImageReceiver {}
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop capacity
 
@@ -1213,7 +1356,7 @@ public prop capacity: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop format
 
@@ -1229,7 +1372,7 @@ public prop format: ImageFormat
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop size
 
@@ -1245,7 +1388,7 @@ public prop size: Size
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getReceivingSurfaceId()
 
@@ -1257,7 +1400,7 @@ public func getReceivingSurfaceId(): String
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1289,7 +1432,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1315,7 +1458,7 @@ public class ImageSource {}
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop supportedFormats
 
@@ -1331,7 +1474,7 @@ public prop supportedFormats: Array<String>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func createPixelMap(DecodingOptions)
 
@@ -1343,7 +1486,7 @@ public func createPixelMap(options!: DecodingOptions = DecodingOptions()): Pixel
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1393,7 +1536,7 @@ public func createPixelMapList(options!: DecodingOptions = DecodingOptions()): A
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1427,6 +1570,32 @@ public func createPixelMapList(options!: DecodingOptions = DecodingOptions()): A
   | 62980173 | The DMA memory does not exist. |
   | 62980174 | The DMA memory data is abnormal. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+let option = DecodingOptions(
+    sampleSize: 1,
+    rotate: 10,
+    editable: true,
+    desiredSize: Size(3, 4),
+    desiredRegion: Region(Size(3, 4), 0, 0),
+    desiredPixelFormat: PixelMapFormat.Rgba8888,
+    index: 0,
+    fitDensity: 20
+)
+let pixelMap = imageSourceApi.createPixelMapList(options: option)
+```
+
 ### func getDelayTimeList()
 
 ```cangjie
@@ -1437,7 +1606,7 @@ public func getDelayTimeList(): Array<Int32>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1460,6 +1629,22 @@ public func getDelayTimeList(): Array<Int32>
   | 62980122 | Failed to decode the image header. |
   | 62980149 | Invalid MIME type for the image source. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+let list = imageSourceApi.getDelayTimeList()
+```
+
 ### func getFrameCount()
 
 ```cangjie
@@ -1470,7 +1655,7 @@ public func getFrameCount(): UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1494,6 +1679,22 @@ public func getFrameCount(): UInt32
   | 62980122 | Failed to decode the image header. |
   | 62980137 | Invalid media operation. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+let count = imageSourceApi.getFrameCount()
+```
+
 ### func getImageInfo(UInt32)
 
 ```cangjie
@@ -1504,7 +1705,7 @@ public func getImageInfo(index!: UInt32 = 0): ImageInfo
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1544,7 +1745,7 @@ public func getImageProperty(key: PropertyKey, options!: ImagePropertyOptions = 
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1604,7 +1805,7 @@ public func modifyImageProperty(key: PropertyKey, value: String): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1625,6 +1826,22 @@ public func modifyImageProperty(key: PropertyKey, value: String): Unit
   | 62980135 | The EXIF value is invalid. |
   | 62980146 | The EXIF data failed to be written to the file. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+imageSourceApi.modifyImageProperty(PropertyKey.ImageLength, "200")
+```
+
 ### func release()
 
 ```cangjie
@@ -1635,7 +1852,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1662,7 +1879,7 @@ public func updateData(buf: Array<UInt8>, isFinished: Bool, offset: UInt32, leng
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1719,7 +1936,7 @@ public class InitializationOptions {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var alphaType
 
@@ -1735,7 +1952,7 @@ public var alphaType: AlphaType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var editable
 
@@ -1751,7 +1968,7 @@ public var editable: Bool
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var pixelFormat
 
@@ -1767,7 +1984,7 @@ public var pixelFormat: PixelMapFormat
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var scaleMode
 
@@ -1783,7 +2000,7 @@ public var scaleMode: ScaleMode
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var size
 
@@ -1799,7 +2016,7 @@ public var size: Size
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var srcPixelFormat
 
@@ -1815,7 +2032,7 @@ public var srcPixelFormat: PixelMapFormat
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Size, AlphaType, Bool, PixelMapFormat, PixelMapFormat, ScaleMode)
 
@@ -1828,7 +2045,7 @@ public init(size: Size, alphaType!: AlphaType = AlphaType.Premul, editable!: Boo
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1859,7 +2076,7 @@ public class PackingOption {
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bufferSize
 
@@ -1875,7 +2092,7 @@ public var bufferSize: UInt64
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var desiredDynamicRange
 
@@ -1891,7 +2108,7 @@ public var desiredDynamicRange: PackingDynamicRange
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var format
 
@@ -1907,7 +2124,7 @@ public var format: String
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var needsPackProperties
 
@@ -1923,7 +2140,7 @@ public var needsPackProperties: Bool
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var quality
 
@@ -1939,7 +2156,7 @@ public var quality: UInt8
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, UInt8, UInt64, PackingDynamicRange, Bool)
 
@@ -1952,7 +2169,7 @@ public init(format: String, quality: UInt8, bufferSize!: UInt64 = 0,
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1978,7 +2195,7 @@ PixelMap支持通过worker跨线程调用。当PixelMap通过Worker跨线程后�
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop isEditable
 
@@ -1994,7 +2211,7 @@ public prop isEditable: Bool
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop isStrideAlignment
 
@@ -2010,7 +2227,7 @@ public prop isStrideAlignment: Bool
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func applyColorSpace(ColorSpaceManager)
 
@@ -2022,7 +2239,7 @@ public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2041,6 +2258,25 @@ public func applyColorSpace(targetColorSpace: ColorSpaceManager): Unit
   | 62980108 | Failed to convert the color space. |
   | 62980115 | Invalid image parameter. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+import kit.ArkGraphics2D.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+let pixelMap = imageSourceApi.createPixelMap()
+let colorSpaceManager = create(SRGB)
+pixelMap.applyColorSpace(colorSpaceManager)
+```
+
 ### func createAlphaPixelmap()
 
 ```cangjie
@@ -2051,7 +2287,7 @@ public func createAlphaPixelmap(): PixelMap
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2086,7 +2322,7 @@ public func crop(region: Region): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2122,7 +2358,7 @@ public func flip(horizontal: Bool, vertical: Bool): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2160,7 +2396,7 @@ public func getBytesNumberPerRow(): UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2195,7 +2431,7 @@ public func getColorSpace(): ColorSpaceManager
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2213,6 +2449,24 @@ public func getColorSpace(): ColorSpaceManager
   | 62980103 | If the image data unsupport. |
   | 62980115 | If the image parameter invalid. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+import kit.ArkGraphics2D.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+let pixelMap = imageSourceApi.createPixelMap()
+let colorSpaceManager = pixelMap.getColorSpace()
+```
+
 ### func getDensity()
 
 ```cangjie
@@ -2223,7 +2477,7 @@ public func getDensity(): Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2258,7 +2512,7 @@ public func getImageInfo(): ImageInfo
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2293,7 +2547,7 @@ public func getPixelBytesNumber(): UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -2328,7 +2582,7 @@ public func opacity(rate: Float32): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2364,7 +2618,7 @@ public func readPixels(area: PositionArea): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2405,7 +2659,7 @@ public func readPixelsToBuffer(dst: Array<UInt8>): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2441,7 +2695,7 @@ public func release(): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -2470,7 +2724,7 @@ public func rotate(angle: Float32): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2506,7 +2760,7 @@ public func scale(x: Float32, y: Float32): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2514,6 +2768,22 @@ public func scale(x: Float32, y: Float32): Unit
 |:---|:---|:---|:---|:---|
 |x|Float32|是|-|宽度的缩放倍数。|
 |y|Float32|是|-|高度的缩放倍数。|
+
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+pixelMap.scale(1.0, 1.0)
+```
 
 ### func setColorSpace(ColorSpaceManager)
 
@@ -2525,7 +2795,7 @@ public func setColorSpace(colorSpace: ColorSpaceManager): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2542,6 +2812,25 @@ public func setColorSpace(colorSpace: ColorSpaceManager): Unit
   | 62980111 | The image source data is incomplete. |
   | 62980115 | If the image parameter invalid. |
 
+**示例：**
+
+<!-- compile only -->
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ImageKit.*
+import kit.ArkGraphics2D.*
+
+let data: Array<UInt8> = Array<UInt8>(112, repeat: 0)
+let sourceOptions: SourceOptions = SourceOptions(120)
+let imageSourceApi: ImageSource = createImageSource(data, sourceOptions)  // 请替换为正确的图片源，参考本文使用说明。
+let pixelMap = imageSourceApi.createPixelMap()
+let colorSpaceManager = create(SRGB)
+pixelMap.setColorSpace(colorSpaceManager)
+```
+
 ### func translate(Float32, Float32)
 
 ```cangjie
@@ -2552,7 +2841,7 @@ public func translate(x: Float32, y: Float32): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2590,7 +2879,7 @@ public func writeBufferToPixels(src: Array<UInt8>): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2626,7 +2915,7 @@ public func writePixels(area: PositionArea): Unit
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2673,7 +2962,7 @@ public class PositionArea {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var offset
 
@@ -2689,7 +2978,7 @@ public var offset: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var pixels
 
@@ -2705,7 +2994,7 @@ public var pixels: Array<UInt8>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var region
 
@@ -2721,7 +3010,7 @@ public var region: Region
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var stride
 
@@ -2737,7 +3026,7 @@ public var stride: UInt32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Array\<UInt8>, UInt32, UInt32, Region)
 
@@ -2749,7 +3038,7 @@ public init(pixels: Array<UInt8>, offset: UInt32, stride: UInt32, region: Region
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2775,7 +3064,7 @@ public class Region {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var size
 
@@ -2791,7 +3080,7 @@ public var size: Size
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var x
 
@@ -2807,7 +3096,7 @@ public var x: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var y
 
@@ -2823,7 +3112,7 @@ public var y: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Size, Int32, Int32)
 
@@ -2835,7 +3124,7 @@ public init(size: Size, x: Int32, y: Int32)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2859,7 +3148,7 @@ public class Size {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var height
 
@@ -2875,7 +3164,7 @@ public var height: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var width
 
@@ -2891,7 +3180,7 @@ public var width: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int32)
 
@@ -2903,7 +3192,7 @@ public init(height: Int32, width: Int32)
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2927,7 +3216,7 @@ public class SourceOptions {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sourceDensity
 
@@ -2947,7 +3236,7 @@ public var sourceDensity: Int32
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sourcePixelFormat
 
@@ -2963,7 +3252,7 @@ public var sourcePixelFormat: PixelMapFormat
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sourceSize
 
@@ -2979,7 +3268,7 @@ public var sourceSize: Size
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, PixelMapFormat, Size)
 
@@ -2991,7 +3280,7 @@ public init(sourceDensity: Int32, sourcePixelFormat!: PixelMapFormat = PixelMapF
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -3017,7 +3306,7 @@ public enum AlphaType <: Equatable<AlphaType> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3034,7 +3323,7 @@ Opaque
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Premul
 
@@ -3046,7 +3335,7 @@ Premul
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UnPremul
 
@@ -3058,7 +3347,7 @@ UnPremul
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unknown
 
@@ -3070,7 +3359,7 @@ Unknown
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(AlphaType)
 
@@ -3142,7 +3431,7 @@ public enum ComponentType <: Equatable<ComponentType> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3159,7 +3448,7 @@ Jpeg
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### YuvU
 
@@ -3171,7 +3460,7 @@ YuvU
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### YuvV
 
@@ -3183,7 +3472,7 @@ YuvV
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### YuvY
 
@@ -3195,7 +3484,7 @@ YuvY
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ComponentType)
 
@@ -3266,7 +3555,7 @@ public enum DecodingDynamicRange <: Equatable<DecodingDynamicRange> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3283,7 +3572,7 @@ Auto
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Hdr
 
@@ -3295,7 +3584,7 @@ Hdr
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Sdr
 
@@ -3307,7 +3596,7 @@ Sdr
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(DecodingDynamicRange)
 
@@ -3377,7 +3666,7 @@ public enum ImageFormat <: Equatable<ImageFormat> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3394,7 +3683,7 @@ Jpeg
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Ycbcr422Sp
 
@@ -3406,7 +3695,7 @@ Ycbcr422Sp
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ImageFormat)
 
@@ -3476,7 +3765,7 @@ public enum PackingDynamicRange <: Equatable<PackingDynamicRange> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3493,7 +3782,7 @@ Auto
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Sdr
 
@@ -3505,7 +3794,7 @@ Sdr
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PackingDynamicRange)
 
@@ -3585,7 +3874,7 @@ public enum PixelMapFormat <: Equatable<PixelMapFormat> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3602,7 +3891,7 @@ Alpha8
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Bgra8888
 
@@ -3614,7 +3903,7 @@ Bgra8888
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Nv12
 
@@ -3626,7 +3915,7 @@ Nv12
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Nv21
 
@@ -3638,7 +3927,7 @@ Nv21
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rgb565
 
@@ -3650,7 +3939,7 @@ Rgb565
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rgb888
 
@@ -3662,7 +3951,7 @@ Rgb888
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rgba1010102
 
@@ -3674,7 +3963,7 @@ Rgba1010102
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Rgba8888
 
@@ -3686,7 +3975,7 @@ Rgba8888
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### RgbaF16
 
@@ -3698,7 +3987,7 @@ RgbaF16
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Unknown
 
@@ -3710,7 +3999,7 @@ Unknown
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### YcbcrP010
 
@@ -3722,7 +4011,7 @@ YcbcrP010
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### YcrcbP010
 
@@ -3734,7 +4023,7 @@ YcrcbP010
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PixelMapFormat)
 
@@ -3853,7 +4142,7 @@ public enum PropertyKey <: ToString & Equatable<PropertyKey> {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -3870,7 +4159,7 @@ ApertureValue
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BitsPerSample
 
@@ -3882,7 +4171,7 @@ BitsPerSample
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### CaptureMode
 
@@ -3894,7 +4183,7 @@ CaptureMode
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateTime
 
@@ -3906,7 +4195,7 @@ DateTime
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DateTimeOriginal
 
@@ -3918,7 +4207,7 @@ DateTimeOriginal
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ExposureBiasValue
 
@@ -3930,7 +4219,7 @@ ExposureBiasValue
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ExposureTime
 
@@ -3942,7 +4231,7 @@ ExposureTime
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FNumber
 
@@ -3954,7 +4243,7 @@ FNumber
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FaceCount
 
@@ -3966,7 +4255,7 @@ FaceCount
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Flash
 
@@ -3978,7 +4267,7 @@ Flash
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocalLength
 
@@ -3990,7 +4279,7 @@ FocalLength
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocalLengthIn35mmFilm
 
@@ -4002,7 +4291,7 @@ FocalLengthIn35mmFilm
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FocusMode
 
@@ -4014,7 +4303,7 @@ FocusMode
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GpsDateStamp
 
@@ -4026,7 +4315,7 @@ GpsDateStamp
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GpsLatitude
 
@@ -4038,7 +4327,7 @@ GpsLatitude
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GpsLatitudeRef
 
@@ -4050,7 +4339,7 @@ GpsLatitudeRef
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GpsLongitude
 
@@ -4062,7 +4351,7 @@ GpsLongitude
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GpsLongitudeRef
 
@@ -4074,7 +4363,7 @@ GpsLongitudeRef
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### GpsTimeStamp
 
@@ -4086,7 +4375,7 @@ GpsTimeStamp
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IsoSpeed
 
@@ -4098,7 +4387,7 @@ IsoSpeed
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### IsoSpeedRatings
 
@@ -4110,7 +4399,7 @@ IsoSpeedRatings
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ImageDescription
 
@@ -4122,7 +4411,7 @@ ImageDescription
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ImageLength
 
@@ -4134,7 +4423,7 @@ ImageLength
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ImageWidth
 
@@ -4146,7 +4435,7 @@ ImageWidth
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### LightSource
 
@@ -4158,7 +4447,7 @@ LightSource
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Make
 
@@ -4170,7 +4459,7 @@ Make
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### MeteringMode
 
@@ -4182,7 +4471,7 @@ MeteringMode
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Model
 
@@ -4194,7 +4483,7 @@ Model
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Orientation
 
@@ -4206,7 +4495,7 @@ Orientation
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PhotoMode
 
@@ -4218,7 +4507,7 @@ PhotoMode
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PhysicalAperture
 
@@ -4230,7 +4519,7 @@ PhysicalAperture
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PitchAngle
 
@@ -4242,7 +4531,7 @@ PitchAngle
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PixelXDimension
 
@@ -4254,7 +4543,7 @@ PixelXDimension
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### PixelYDimension
 
@@ -4266,7 +4555,7 @@ PixelYDimension
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### RecommendedExposureIndex
 
@@ -4278,7 +4567,7 @@ RecommendedExposureIndex
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### RollAngle
 
@@ -4290,7 +4579,7 @@ RollAngle
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneBeachConf
 
@@ -4302,7 +4591,7 @@ SceneBeachConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneBlueSkyConf
 
@@ -4314,7 +4603,7 @@ SceneBlueSkyConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneFlowersConf
 
@@ -4326,7 +4615,7 @@ SceneFlowersConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneFoodConf
 
@@ -4338,7 +4627,7 @@ SceneFoodConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneGreenPlantConf
 
@@ -4350,7 +4639,7 @@ SceneGreenPlantConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneNightConf
 
@@ -4362,7 +4651,7 @@ SceneNightConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneSnowConf
 
@@ -4374,7 +4663,7 @@ SceneSnowConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneStageConf
 
@@ -4386,7 +4675,7 @@ SceneStageConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneSunsetConf
 
@@ -4398,7 +4687,7 @@ SceneSunsetConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneTextConf
 
@@ -4410,7 +4699,7 @@ SceneTextConf
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SceneType
 
@@ -4422,7 +4711,7 @@ SceneType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### SensitivityType
 
@@ -4434,7 +4723,7 @@ SensitivityType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StandardOutputSensitivity
 
@@ -4446,7 +4735,7 @@ StandardOutputSensitivity
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UserComment
 
@@ -4458,7 +4747,7 @@ UserComment
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### WhiteBalance
 
@@ -4470,7 +4759,7 @@ WhiteBalance
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(PropertyKey)
 
@@ -4522,7 +4811,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -4551,7 +4840,7 @@ public enum ReceiveType {
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ImageArrival
 
@@ -4563,7 +4852,7 @@ ImageArrival
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ScaleMode
 
@@ -4579,7 +4868,7 @@ public enum ScaleMode <: Equatable<ScaleMode> & ToString {
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -4596,7 +4885,7 @@ CenterCrop
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### FitTargetSize
 
@@ -4608,7 +4897,7 @@ FitTargetSize
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ScaleMode)
 

@@ -35,7 +35,7 @@ public func createHttp(): HttpRequest
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -66,7 +66,7 @@ public func createHttpResponseCache(cacheSize!: UInt32 = MAX_CACHE_SIZE): HttpRe
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -109,7 +109,7 @@ public class ClientCert {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var certPath
 
@@ -125,7 +125,7 @@ public var certPath: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var certType
 
@@ -141,7 +141,7 @@ public var certType: CertType
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var keyPassword
 
@@ -157,7 +157,7 @@ public var keyPassword: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var keyPath
 
@@ -173,7 +173,7 @@ public var keyPath: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, CertType, String)
 
@@ -185,7 +185,7 @@ public init(certPath: String, keyPath: String, certType!: CertType = CertType.Pe
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -209,7 +209,7 @@ public class DataReceiveProgressInfo {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var receiveSize
 
@@ -225,7 +225,7 @@ public var receiveSize: Int64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var totalSize
 
@@ -241,7 +241,7 @@ public var totalSize: Int64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class DataSendProgressInfo
 
@@ -256,7 +256,7 @@ public class DataSendProgressInfo {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var sendSize
 
@@ -272,7 +272,7 @@ public var sendSize: Int64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var totalSize
 
@@ -288,7 +288,7 @@ public var totalSize: Int64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HttpRequest
 
@@ -300,7 +300,7 @@ public class HttpRequest {}
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func destroy()
 
@@ -312,7 +312,7 @@ public func destroy(): Unit
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -339,7 +339,7 @@ public func off(event: HttpRequestEvent, callback!: ?CallbackObject = None): Uni
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -366,7 +366,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<HashMap<Stri
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -393,7 +393,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<Array<Byte>>
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -420,7 +420,7 @@ public func on(event: HttpRequestEvent, callback: Callback0Argument): Unit
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -447,7 +447,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataReceiveP
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -474,7 +474,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataSendProg
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -501,7 +501,7 @@ public func once(event: HttpRequestEvent, callback: Callback1Argument<HashMap<St
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -534,7 +534,7 @@ public func request(url: String, options: HttpRequestOptions, callback: AsyncCal
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -543,8 +543,6 @@ public func request(url: String, options: HttpRequestOptions, callback: AsyncCal
 |url|String|是|-|发起网络请求的URL地址。|
 |options|[HttpRequestOptions](#class-httprequestoptions)|是|-|参考[HttpRequestOptions](#class-httprequestoptions)。|
 |callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)>|是|-|回调函数。|
-
-**异常：**
 
 **异常：**
 
@@ -625,7 +623,7 @@ public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -709,7 +707,7 @@ public func requestInStream(url: String, options: HttpRequestOptions, callback: 
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -794,7 +792,7 @@ public func requestInStream(url: String, callback: AsyncCallback<UInt32>): Unit
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -903,7 +901,7 @@ public class HttpRequestOptions {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var caPath
 
@@ -919,7 +917,7 @@ public var caPath: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var clientCert
 
@@ -935,7 +933,7 @@ public var clientCert: ClientCert
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var connectTimeout
 
@@ -951,7 +949,7 @@ public var connectTimeout: UInt32
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dnsOverHttps
 
@@ -967,7 +965,7 @@ public var dnsOverHttps: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dnsServers
 
@@ -983,7 +981,7 @@ public var dnsServers: Array<String>
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var expectDataType
 
@@ -999,7 +997,7 @@ public var expectDataType:?HttpDataType
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var extraData
 
@@ -1025,7 +1023,7 @@ public var extraData: HttpData
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var header
 
@@ -1041,7 +1039,7 @@ public var header: HashMap<String, String>
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var maxLimit
 
@@ -1057,7 +1055,7 @@ public var maxLimit: UInt32
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var method
 
@@ -1073,7 +1071,7 @@ public var method: RequestMethod
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var multiFormDataList
 
@@ -1089,7 +1087,7 @@ public var multiFormDataList: Array<MultiFormData>
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var priority
 
@@ -1105,7 +1103,7 @@ public var priority: UInt32
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var readTimeout
 
@@ -1121,7 +1119,7 @@ public var readTimeout: UInt32
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var resumeFrom
 
@@ -1137,7 +1135,7 @@ public var resumeFrom: Int64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var resumeTo
 
@@ -1153,7 +1151,7 @@ public var resumeTo: Int64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var usingCache
 
@@ -1169,7 +1167,7 @@ public var usingCache: Bool
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var usingProtocol
 
@@ -1185,7 +1183,7 @@ public var usingProtocol:?HttpProtocol
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var usingProxy
 
@@ -1201,7 +1199,7 @@ public var usingProxy: UsingProxy
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(RequestMethod, HttpData, ?HttpDataType, Bool, UInt32, HashMap\<String,String>, UInt32, UInt32, ?HttpProtocol, UsingProxy, String, Int64, Int64, ClientCert, String, Array\<String>, UInt32, Array\<MultiFormData>)
 
@@ -1220,7 +1218,7 @@ public init(method!: RequestMethod = RequestMethod.Get, extraData!: HttpData = H
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1262,7 +1260,7 @@ public class HttpResponse {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var cookies
 
@@ -1278,7 +1276,7 @@ public var cookies: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var header
 
@@ -1294,7 +1292,7 @@ public var header: HashMap<String, String>
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var performanceTiming
 
@@ -1310,7 +1308,7 @@ public var performanceTiming: PerformanceTiming
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var responseCode
 
@@ -1326,7 +1324,7 @@ public var responseCode: UInt32
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var result
 
@@ -1342,7 +1340,7 @@ public var result: HttpData
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var resultType
 
@@ -1358,7 +1356,7 @@ public var resultType: HttpDataType
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class HttpResponseCache
 
@@ -1370,7 +1368,7 @@ public class HttpResponseCache {}
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func delete()
 
@@ -1382,7 +1380,7 @@ public func delete(): Unit
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1414,7 +1412,7 @@ public func flush(): Unit
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **示例：**
 
@@ -1454,7 +1452,7 @@ public class MultiFormData {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var contentType
 
@@ -1470,7 +1468,7 @@ public var contentType: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var data
 
@@ -1486,7 +1484,7 @@ public var data: HttpData
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var filePath
 
@@ -1502,7 +1500,7 @@ public var filePath: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -1518,7 +1516,7 @@ public var name: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var remoteFileName
 
@@ -1534,7 +1532,7 @@ public var remoteFileName: String
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, String, HttpData, String)
 
@@ -1547,7 +1545,7 @@ public init(name: String, contentType: String,  remoteFileName!: String = "",
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1580,7 +1578,7 @@ public class PerformanceTiming {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var dnsTiming
 
@@ -1596,7 +1594,7 @@ public var dnsTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var firstReceiveTiming
 
@@ -1612,7 +1610,7 @@ public var firstReceiveTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var firstSendTiming
 
@@ -1628,7 +1626,7 @@ public var firstSendTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var redirectTiming
 
@@ -1644,7 +1642,7 @@ public var redirectTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var responseBodyTiming
 
@@ -1660,7 +1658,7 @@ public var responseBodyTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var responseHeaderTiming
 
@@ -1676,7 +1674,7 @@ public var responseHeaderTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var tcpTiming
 
@@ -1692,7 +1690,7 @@ public var tcpTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var tlsTiming
 
@@ -1708,7 +1706,7 @@ public var tlsTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var totalFinishTiming
 
@@ -1724,7 +1722,7 @@ public var totalFinishTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var totalTiming
 
@@ -1740,7 +1738,7 @@ public var totalTiming: Float64
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum CertType
 
@@ -1757,7 +1755,7 @@ public enum CertType {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Der
 
@@ -1769,7 +1767,7 @@ Der
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### P12
 
@@ -1781,7 +1779,7 @@ P12
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Pem
 
@@ -1793,7 +1791,7 @@ Pem
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum HttpData
 
@@ -1809,7 +1807,7 @@ public enum HttpData {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayData(Array\<Byte>)
 
@@ -1821,7 +1819,7 @@ ArrayData(Array<Byte>)
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringData(String)
 
@@ -1833,7 +1831,7 @@ StringData(String)
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum HttpDataType
 
@@ -1849,7 +1847,7 @@ public enum HttpDataType {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayBuffer
 
@@ -1861,7 +1859,7 @@ ArrayBuffer
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue
 
@@ -1873,7 +1871,7 @@ StringValue
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum HttpProtocol
 
@@ -1890,7 +1888,7 @@ public enum HttpProtocol {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Http1_1
 
@@ -1902,7 +1900,7 @@ Http1_1
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Http2
 
@@ -1914,7 +1912,7 @@ Http2
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Http3
 
@@ -1926,7 +1924,7 @@ Http3
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum HttpRequestEvent
 
@@ -1945,7 +1943,7 @@ public enum HttpRequestEvent <: Equatable<HttpRequestEvent> & Hashable & ToStrin
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -1963,7 +1961,7 @@ DataEnd
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DataReceive
 
@@ -1975,7 +1973,7 @@ DataReceive
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DataReceiveProgress
 
@@ -1987,7 +1985,7 @@ DataReceiveProgress
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### DataSendProgress
 
@@ -1999,7 +1997,7 @@ DataSendProgress
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### HeadersReceive
 
@@ -2011,7 +2009,7 @@ HeadersReceive
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(HttpRequestEvent)
 
@@ -2043,7 +2041,7 @@ public operator func ==(other: HttpRequestEvent): Bool
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2091,7 +2089,7 @@ public enum RequestMethod {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Connect
 
@@ -2103,7 +2101,7 @@ Connect
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Delete
 
@@ -2115,7 +2113,7 @@ Delete
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Get
 
@@ -2127,7 +2125,7 @@ Get
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Head
 
@@ -2139,7 +2137,7 @@ Head
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Options
 
@@ -2151,7 +2149,7 @@ Options
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Post
 
@@ -2163,7 +2161,7 @@ Post
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Put
 
@@ -2175,7 +2173,7 @@ Put
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Trace
 
@@ -2187,7 +2185,7 @@ Trace
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum UsingProxy
 
@@ -2204,7 +2202,7 @@ public enum UsingProxy {
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### NotUse
 
@@ -2216,7 +2214,7 @@ NotUse
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UseDefault
 
@@ -2228,7 +2226,7 @@ UseDefault
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### UseSpecified(HttpProxy)
 
@@ -2240,7 +2238,7 @@ UseSpecified(HttpProxy)
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## 完整示例
 

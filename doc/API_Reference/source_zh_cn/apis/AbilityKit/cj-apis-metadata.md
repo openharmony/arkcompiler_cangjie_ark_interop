@@ -31,7 +31,7 @@ public class Metadata {
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var name
 
@@ -47,7 +47,7 @@ public var name: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var resource
 
@@ -63,7 +63,7 @@ public var resource: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -79,4 +79,4 @@ public var value: String
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**起始版本：** 21
+**起始版本：** 22

@@ -44,7 +44,7 @@ public class CommonEventPublishData {
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bundleName
 
@@ -60,7 +60,7 @@ public var bundleName: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var code
 
@@ -76,7 +76,7 @@ public var code: Int32
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var data
 
@@ -92,7 +92,7 @@ public var data: String
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isOrdered
 
@@ -108,7 +108,7 @@ public var isOrdered: Bool
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var isSticky
 
@@ -124,7 +124,7 @@ public var isSticky: Bool
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var parameters
 
@@ -140,7 +140,7 @@ public var parameters: HashMap<String, ValueType>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var subscriberPermissions
 
@@ -156,7 +156,7 @@ public var subscriberPermissions: Array<String>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, Int32, Array\<String>, Bool, Bool, HashMap\<String,ValueType>)
 
@@ -176,7 +176,7 @@ public init(
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 

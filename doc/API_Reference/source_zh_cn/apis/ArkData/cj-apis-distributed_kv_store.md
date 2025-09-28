@@ -46,7 +46,7 @@ public class Constants {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let MAX_BATCH_SIZE
 
@@ -60,7 +60,7 @@ public static let MAX_BATCH_SIZE: Int32 = 128
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let MAX_KEY_LENGTH
 
@@ -74,7 +74,7 @@ public static let MAX_KEY_LENGTH: Int32 = 1024
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let MAX_KEY_LENGTH_DEVICE
 
@@ -88,7 +88,7 @@ public static let MAX_KEY_LENGTH_DEVICE: Int32 = 896
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let MAX_QUERY_LENGTH
 
@@ -102,7 +102,7 @@ public static let MAX_QUERY_LENGTH: Int32 = 512000
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let MAX_STORE_ID_LENGTH
 
@@ -116,7 +116,7 @@ public static let MAX_STORE_ID_LENGTH: Int32 = 128
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static let MAX_VALUE_LENGTH
 
@@ -130,7 +130,7 @@ public static let MAX_VALUE_LENGTH: Int32 = 4194303
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class DeviceKVStore
 
@@ -148,7 +148,7 @@ public class DeviceKVStore <: SingleKVStore {}
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -165,7 +165,7 @@ public func get(key: String): ValueType
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -190,6 +190,21 @@ public func get(key: String): ValueType
   | 15100004 | Not found.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+store.put("key", KVValueType.STRING("value"))
+store.get("key")
+```
+
 ### func getEntries(String)
 
 ```cangjie
@@ -201,7 +216,7 @@ public func getEntries(keyPrefix: String): Array<Entry>
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -225,6 +240,21 @@ public func getEntries(keyPrefix: String): Array<Entry>
   | 15100003 | Database corrupted.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+store.put("key", KVValueType.STRING("value"))
+store.getEntries("key")
+```
+
 ### func getEntries(Query)
 
 ```cangjie
@@ -236,7 +266,7 @@ public func getEntries(query: Query): Array<Entry>
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -260,6 +290,21 @@ public func getEntries(query: Query): Array<Entry>
   | 15100003 | Database corrupted.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+store.put("key", KVValueType.STRING("value"))
+store.getEntries(Query())
+```
+
 ### func getResultSet(String)
 
 ```cangjie
@@ -271,7 +316,7 @@ public func getResultSet(keyPrefix: String): KVStoreResultSet
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -296,6 +341,21 @@ public func getResultSet(keyPrefix: String): KVStoreResultSet
   | 15100003 | Database corrupted.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+store.put("key", KVValueType.STRING("value"))
+store.getResultSet("key")
+```
+
 ### func getResultSet(Query)
 
 ```cangjie
@@ -307,7 +367,7 @@ public func getResultSet(query: Query): KVStoreResultSet
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -332,6 +392,21 @@ public func getResultSet(query: Query): KVStoreResultSet
   | 15100003 | Database corrupted.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+store.put("key", KVValueType.STRING("value"))
+store.getResultSet(Query())
+```
+
 ### func getResultSize(Query)
 
 ```cangjie
@@ -343,7 +418,7 @@ public func getResultSize(query: Query): Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -367,6 +442,21 @@ public func getResultSize(query: Query): Int32
   | 15100003 | Database corrupted.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let manager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let store = manager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+store.put("key", KVValueType.STRING("value"))
+store.getResultSize(Query())
+```
+
 ## class DistributedKVStore
 
 ```cangjie
@@ -377,7 +467,7 @@ public class DistributedKVStore {}
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func createKVManager(KVManagerConfig)
 
@@ -390,7 +480,7 @@ public static func createKVManager(config: KVManagerConfig): KVManager
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -412,6 +502,18 @@ public static func createKVManager(config: KVManagerConfig): KVManager
   | :---- | :--- | :--- |
   | The context type is not supported. Only support UIAbilityContext.| todo | todo |
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "com.example.myapplication")) // 需获取Context应用上下文，详见本文使用说明
+```
+
 ## class Entry
 
 ```cangjie
@@ -427,7 +529,7 @@ public class Entry {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var key
 
@@ -443,7 +545,7 @@ public var key: String
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var value
 
@@ -459,7 +561,7 @@ public var value: ValueType
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, ValueType)
 
@@ -472,7 +574,7 @@ public init(key: String, value: ValueType)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -497,7 +599,7 @@ public class FieldNode {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var default
 
@@ -513,7 +615,7 @@ public var default: String
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var nodeType
 
@@ -529,7 +631,7 @@ public var nodeType: Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var nullable
 
@@ -545,7 +647,7 @@ public var nullable: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, Bool, String, Int32)
 
@@ -558,7 +660,7 @@ public init(name: String, nullable: Bool, default: String, nodeType: Int32)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -579,7 +681,7 @@ public class KVManager {}
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func closeKVStore(String, String)
 
@@ -592,7 +694,7 @@ public func closeKVStore(appId: String, storeId: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -609,6 +711,19 @@ public func closeKVStore(appId: String, storeId: String): Unit
   | :---- | :--- |
   | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "com.example.myapplication")) // 需获取Context应用上下文，详见本文使用说明
+kvManager.closeKVStore("com.example.myapplication", "myStore")
+```
+
 ### func deleteKVStore(String, String)
 
 ```cangjie
@@ -620,7 +735,7 @@ public func deleteKVStore(appId: String, storeId: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -638,6 +753,19 @@ public func deleteKVStore(appId: String, storeId: String): Unit
   | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Parameter verification failed.|
   | 15100004 | Not found.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "com.example.myapplication")) // 需获取Context应用上下文，详见本文使用说明
+kvManager.deleteKVStore("com.example.myapplication", "myStore")
+```
+
 ### func getAllKVStoreId(String)
 
 ```cangjie
@@ -649,7 +777,7 @@ public func getAllKVStoreId(appId: String): Array<String>
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -671,6 +799,19 @@ public func getAllKVStoreId(appId: String): Array<String>
   | :---- | :--- |
   | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "com.example.myapplication")) // 需获取Context应用上下文，详见本文使用说明
+kvManager.getAllKVStoreId("com.example.myapplication")
+```
+
 ### func getKVStore\<T>(String, Options) where T \<: SingleKVStore
 
 ```cangjie
@@ -682,7 +823,7 @@ public func getKVStore<T>(storeId: String, options: Options): T where T <: Singl
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -713,6 +854,25 @@ public func getKVStore<T>(storeId: String, options: Options): T where T <: Singl
   | :---- | :--- | :--- |
   | The type is not supported yet.| todo | todo |
 
+  **示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "com.example.myapplication")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let kvStore = kvManager.getKVStore("myStoreId", opt)
+```
 ## class KVManagerConfig
 
 ```cangjie
@@ -728,7 +888,7 @@ public class KVManagerConfig {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bundleName
 
@@ -744,7 +904,7 @@ public var bundleName: String
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var context
 
@@ -760,7 +920,7 @@ public var context: BaseContext
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(BaseContext, String)
 
@@ -773,7 +933,7 @@ public init(context: BaseContext, bundleName: String)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -792,7 +952,7 @@ public class KVStoreResultSet {}
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getCount()
 
@@ -805,13 +965,29 @@ public func getCount(): Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int32|返回数据的总行数。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let store = kvManager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+store.put("key", KVValueType.STRING("value"))
+var resultSet = store.getResultSet("key")
+resultSet.getCount()
+```
 
 ## class Options
 
@@ -833,7 +1009,7 @@ public class Options {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var autoSync
 
@@ -849,7 +1025,7 @@ public var autoSync: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var backup
 
@@ -865,7 +1041,7 @@ public var backup: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var createIfMissing
 
@@ -881,7 +1057,7 @@ public var createIfMissing: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var encrypt
 
@@ -897,7 +1073,7 @@ public var encrypt: Bool
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var schema
 
@@ -913,7 +1089,7 @@ public var schema:?Schema
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var securityLevel
 
@@ -929,7 +1105,7 @@ public var securityLevel: SecurityLevel
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(SecurityLevel, Bool, Bool, Bool, Bool, ?Schema)
 
@@ -943,7 +1119,7 @@ public init(securityLevel: SecurityLevel, createIfMissing!: Bool = true, encrypt
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -969,7 +1145,7 @@ public class Query {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init()
 
@@ -982,7 +1158,7 @@ public init()
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## class Schema
 
@@ -1001,7 +1177,7 @@ public class Schema {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var indexes
 
@@ -1017,7 +1193,7 @@ public var indexes: Array<String>
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var mode
 
@@ -1033,7 +1209,7 @@ public var mode: Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var root
 
@@ -1049,7 +1225,7 @@ public var root: FieldNode
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var skip
 
@@ -1065,7 +1241,7 @@ public var skip: Int32
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(FieldNode, Array\<String>, Int32, Int32)
 
@@ -1078,7 +1254,7 @@ public init(root: FieldNode, indexes: Array<String>, mode: Int32, skip: Int32)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1099,7 +1275,7 @@ public open class SingleKVStore {}
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func backup(String)
 
@@ -1112,7 +1288,7 @@ public open func backup(file: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1129,6 +1305,27 @@ public open func backup(file: String): Unit
   | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Parameter verification failed.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+singleKVStore.backup("myBackupfile")
+```
+
 ### func commit()
 
 ```cangjie
@@ -1140,7 +1337,7 @@ public open func commit(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1149,6 +1346,27 @@ public open func commit(): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 15100005 | Database or result set already closed.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+singleKVStore.commit()
+```
 
 ### func delete(String)
 
@@ -1161,7 +1379,7 @@ public open func delete(key: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1180,6 +1398,27 @@ public open func delete(key: String): Unit
   | 15100005 | Database or result set already closed.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+singleKVStore.delete("myKey")
+```
+
 ### func deleteBatch(Array\<String>)
 
 ```cangjie
@@ -1191,7 +1430,7 @@ public open func deleteBatch(keys: Array<String>): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1210,6 +1449,32 @@ public open func deleteBatch(keys: Array<String>): Unit
   | 15100005 | Database or result set already closed.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import ohos.base.*
+import std.collection.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+let results = singleKVStore.deleteBackup(ArrayList<String>(["myBackupfile", "BK002"]))
+for (result in results) {
+    AppLog.info("${result[0]}的删除结果是: ${result[1]}")
+}
+```
+
 ### func enableSync(Bool)
 
 ```cangjie
@@ -1221,7 +1486,7 @@ public open func enableSync(enabled: Bool): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1237,6 +1502,35 @@ public open func enableSync(enabled: Bool): Unit
   | :---- | :--- |
   | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.ArrayList
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+let key = "batch_test_string_key"
+let entries = ArrayList<Entry>()
+for (i in 0..10) {
+    entries.add(Entry("${key}${i}", KVValueType.STRING("batch_test_string_value")))
+}
+singleKVStore.putBatch(entries)
+let query = Query().prefixKey("batch_test_string_key")
+let result = singleKVStore.getEntries(query)
+```
+
 ### func get(String)
 
 ```cangjie
@@ -1248,7 +1542,7 @@ public open func get(key: String): ValueType
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1273,6 +1567,31 @@ public open func get(key: String): ValueType
   | 15100004 | Not found.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import ohos.base.*
+
+let kvManager = DistributedKVStore.createKVManager(KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let kvStore = kvManager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+try {
+    let value = kvStore.get("myKey")
+    match (value) {
+        case STRING(v) => AppLog.info("The obtained value is a String: ${v}")
+        case INTEGER(v) => AppLog.info("The obtained value is a Int32: ${v}")
+        case DOUBLE(v) => AppLog.info("The obtained value is a Float64: ${v}")
+        case _ => AppLog.info("The obtained value is of another type.")
+    }
+} catch (e: BusinessException) {
+    AppLog.info("get failed.")
+}
+```
+
 ### func put(String, ValueType)
 
 ```cangjie
@@ -1284,7 +1603,7 @@ public open func put(key: String, value: ValueType): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1304,6 +1623,26 @@ public open func put(key: String, value: ValueType): Unit
   | 15100005 | Database or result set already closed.|
   | 14800047 | The WAL file size exceeds the default limit.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import ohos.base.*
+
+let kvManager = DistributedKVStore.createKVManager(
+    KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let kvStore = kvManager.getDeviceKVStore("test", KVOptions(KVSecurityLevel.S1))
+try {
+    kvStore.put("myKey", ValueType.STRING("myValue"))
+} catch (e: BusinessException) {
+    AppLog.info("put failed.")
+}
+```
+
 ### func putBatch(Array\<Entry>)
 
 ```cangjie
@@ -1315,7 +1654,7 @@ public open func putBatch(entries: Array<Entry>): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1333,6 +1672,35 @@ public open func putBatch(entries: Array<Entry>): Unit
   | 15100003 | Database corrupted.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+import std.collection.*
+
+let kvManager = DistributedKVStore.createKVManager(
+    KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+let entries = ArrayList<Entry>()
+for (i in 0..10) {
+    let entry = Entry("batch_test_string_key${i}", KVValueType.("batch_test_string_value")
+    )
+    entries.add(entry)
+}
+singleKVStore.putBatch(entries.toArray())
+```
+
 ### func restore(String)
 
 ```cangjie
@@ -1344,7 +1712,7 @@ public open func restore(file: String): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1361,6 +1729,28 @@ public open func restore(file: String): Unit
   | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Parameter verification failed.|
   | 15100005 | Database or result set already closed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(
+    KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+singleKVStore.restore("myBackupfile")
+```
+
 ### func rollback()
 
 ```cangjie
@@ -1372,7 +1762,7 @@ public open func rollback(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1381,6 +1771,28 @@ public open func rollback(): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 15100005 | Database or result set already closed.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(
+    KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+singleKVStore.rollback()
+```
 
 ### func setSyncParam(UInt32)
 
@@ -1393,7 +1805,7 @@ public open func setSyncParam(defaultAllowedDelayMs: UInt32): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1409,6 +1821,28 @@ public open func setSyncParam(defaultAllowedDelayMs: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(
+    KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+singleKVStore.setSyncParam(500)
+```
+
 ### func startTransaction()
 
 ```cangjie
@@ -1420,7 +1854,7 @@ public open func startTransaction(): Unit
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -1429,6 +1863,38 @@ public open func startTransaction(): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 15100005 | Database or result set already closed.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.ArkData.*
+
+let kvManager = DistributedKVStore.createKVManager(
+    KVManagerConfig(Global.getStageContext(), "test_kvstore")) // 需获取Context应用上下文，详见本文使用说明
+let opt = KVOptions(
+    KVSecurityLevel.S4,
+    createIfMissing: true,
+    encrypt: false,
+    backup: true,
+    autoSync: false,
+)
+let singleKVStore = kvManager.getSingleKVStore("myStoreId", opt)
+singleKVStore.startTransaction()
+```
+
+## struct Entry
+
+```cangjie
+public struct Entry <: ToString {
+    public var key: String
+    public var value: KVValueType
+    public init (key: String, value: KVValueType)
+}
+```
 
 ## enum SecurityLevel
 
@@ -1446,7 +1912,7 @@ public enum SecurityLevel {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S1
 
@@ -1458,7 +1924,7 @@ S1
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S2
 
@@ -1470,7 +1936,7 @@ S2
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S3
 
@@ -1482,7 +1948,7 @@ S3
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### S4
 
@@ -1494,7 +1960,7 @@ S4
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## enum ValueType
 
@@ -1514,7 +1980,7 @@ public enum ValueType {
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Boolean(Bool)
 
@@ -1526,7 +1992,7 @@ Boolean(Bool)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ByteArray(Array\<Byte>)
 
@@ -1538,7 +2004,7 @@ ByteArray(Array<Byte>)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Double(Float64)
 
@@ -1550,7 +2016,7 @@ Double(Float64)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Float(Float32)
 
@@ -1562,7 +2028,7 @@ Float(Float32)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Integer(Int32)
 
@@ -1574,7 +2040,7 @@ Integer(Int32)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -1586,4 +2052,4 @@ StringValue(String)
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
 
-**起始版本：** 21
+**起始版本：** 22

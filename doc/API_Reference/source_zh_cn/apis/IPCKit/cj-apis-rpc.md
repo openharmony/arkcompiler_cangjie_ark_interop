@@ -32,7 +32,7 @@ public interface Parcelable {
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func marshalling(MessageSequence)
 
@@ -45,7 +45,7 @@ func marshalling(dataOut: MessageSequence): Bool
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -70,7 +70,7 @@ func unmarshalling(dataIn: MessageSequence): Bool
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -101,7 +101,7 @@ public class Ashmem {
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const PROT_EXEC
 
@@ -115,7 +115,7 @@ public static const PROT_EXEC: UInt32 = 4
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const PROT_NONE
 
@@ -129,7 +129,7 @@ public static const PROT_NONE: UInt32 = 0
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const PROT_READ
 
@@ -143,7 +143,7 @@ public static const PROT_READ: UInt32 = 1
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static const PROT_WRITE
 
@@ -157,7 +157,7 @@ public static const PROT_WRITE: UInt32 = 2
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func create(String, Int32)
 
@@ -170,7 +170,7 @@ public static func create(name: String, size: Int32): Ashmem
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -193,6 +193,18 @@ public static func create(name: String, size: Int32): Ashmem
   | :---- | :--- |
   | 401 |Parameter error. Possible causes:<br>1.The number of parameters is incorrect;<br>2.The passed parameter is not an Ahmem object;<br>3.3.The ashmem instance for obtaining packaging is empty.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+```
+
 ### static func create(Ashmem)
 
 ```cangjie
@@ -204,7 +216,7 @@ public static func create(ashmem: Ashmem): Ashmem
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -226,6 +238,19 @@ public static func create(ashmem: Ashmem): Ashmem
   | :---- | :--- |
   | 401 |Parameter error. Possible causes:<br>1.The number of parameters is incorrect;<br>2.The passed parameter is not an Ahmem object;<br>3.3.The ashmem instance for obtaining packaging is empty.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024) //static func create(String, Int32)
+let ashmem2 = Ashmem.create(ashmem) //static func create(Ashmem)
+```
+
 ### func closeAshmem()
 
 ```cangjie
@@ -237,7 +262,20 @@ public func closeAshmem(): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.closeAshmem()
+```
 
 ### func getAshmemSize()
 
@@ -250,13 +288,26 @@ public func getAshmemSize(): Int32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Int32|返回Ashmem对象的内存大小。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.getAshmemSize()
+```
 
 ### func mapReadWriteAshmem()
 
@@ -269,7 +320,7 @@ public func mapReadWriteAshmem(): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -279,6 +330,19 @@ public func mapReadWriteAshmem(): Unit
   |:---|:---|
   |401|Parameter error. Possible causes:<br>1.The number of parameters is incorrect;<br>2.The parameter is not an instance of the Ashmem object.|
   |1900001|Failed to call mmap.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.mapReadWriteAshmem()
+```
 
 ### func mapReadonlyAshmem()
 
@@ -291,7 +355,7 @@ public func mapReadonlyAshmem(): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -300,6 +364,19 @@ public func mapReadonlyAshmem(): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 1900001 | Failed to call mmap.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.mapReadonlyAshmem()
+```
 
 ### func mapTypedAshmem(UInt32)
 
@@ -312,7 +389,7 @@ public func mapTypedAshmem(mapType: UInt32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -329,6 +406,19 @@ public func mapTypedAshmem(mapType: UInt32): Unit
   |401|Parameter error. Possible causes:<br>1.The number of parameters is incorrect;<br>2.The parameter type does not match;<br>3.The passed mapType exceeds the maximum protection level.|
   |1900001|Failed to call mmap.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.mapTypedAshmem(Ashmem.PROT_READ | Ashmem.PROT_WRITE)
+```
+
 ### func readDataFromAshmem(Int64, Int64)
 
 ```cangjie
@@ -340,7 +430,7 @@ public func readDataFromAshmem(size: Int64, offset: Int64): Array<Byte>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -364,6 +454,19 @@ public func readDataFromAshmem(size: Int64, offset: Int64): Array<Byte>
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900004 | Failed to read data from the shared memory.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.readDataFromAshmem(1, 0)
+```
+
 ### func setProtectionType(UInt32)
 
 ```cangjie
@@ -375,7 +478,7 @@ public func setProtectionType(protectionType: UInt32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -392,6 +495,19 @@ public func setProtectionType(protectionType: UInt32): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900002 | Failed to call ioctl.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.setProtectionType(Ashmem.PROT_READ)
+```
+
 ### func unmapAshmem()
 
 ```cangjie
@@ -403,7 +519,20 @@ public func unmapAshmem(): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.unmapAshmem()
+```
 
 ### func writeDataToAshmem(Array\<Byte>, Int64, Int64)
 
@@ -416,7 +545,7 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -435,6 +564,19 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain arrayBuffer information.|
   | 1900003 | Failed to write data to the shared memory.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let ashmem = Ashmem.create("ashmem", 1024*1024)
+ashmem.writeDataToAshmem([1], 1, 0)
+```
+
 ## class MessageSequence
 
 ```cangjie
@@ -445,7 +587,7 @@ public class MessageSequence {}
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### static func closeFileDescriptor(Int32)
 
@@ -458,7 +600,7 @@ public static func closeFileDescriptor(fd: Int32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -474,6 +616,21 @@ public static func closeFileDescriptor(fd: Int32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+import kit.CoreFileKit.*
+
+let filePath = "path/to/file"
+let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | OpenMode.READ_WRITE.mode))
+MessageSequence.closeFileDescriptor(file.fd)
+```
+
 ### static func create()
 
 ```cangjie
@@ -485,7 +642,7 @@ public static func create(): MessageSequence
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -501,6 +658,18 @@ public static func create(): MessageSequence
   | :---- | :--- |
   | 401 |Parameter error. Possible causes:<br>1.The number of parameters is incorrect;<br>2.The passed parameter is not an Ahmem object;<br>3.3.The ashmem instance for obtaining packaging is empty.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+```
+
 ### static func dupFileDescriptor(Int32)
 
 ```cangjie
@@ -512,7 +681,7 @@ public static func dupFileDescriptor(fd: Int32): Int32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -535,6 +704,21 @@ public static func dupFileDescriptor(fd: Int32): Int32
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900013 | Failed to call dup.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+import kit.CoreFileKit.*
+
+let filePath = "path/to/file"
+let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | OpenMode.READ_WRITE.mode))
+MessageSequence.dupFileDescriptor(file.fd)
+```
+
 ### func containFileDescriptors()
 
 ```cangjie
@@ -546,13 +730,26 @@ public func containFileDescriptors(): Bool
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |Bool|true：包含文件描述符，false：不包含文件描述符。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.containFileDescriptors()
+```
 
 ### func getCapacity()
 
@@ -565,13 +762,26 @@ public func getCapacity(): UInt32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |UInt32|获取的MessageSequence实例的容量大小。以字节为单位。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let result = data.getCapacity()
+```
 
 ### func getRawDataCapacity()
 
@@ -584,13 +794,26 @@ public func getRawDataCapacity(): UInt32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |UInt32|返回MessageSequence可以容纳的最大原始数据量，即128MB。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.getRawDataCapacity()
+```
 
 ### func getReadPosition()
 
@@ -603,13 +826,26 @@ public func getReadPosition(): UInt32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |UInt32|返回MessageSequence实例中的当前读取位置。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let pos = data.getReadPosition()
+```
 
 ### func getReadableBytes()
 
@@ -622,13 +858,26 @@ public func getReadableBytes(): UInt32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |UInt32|获取到的MessageSequence实例的可读字节空间。以字节为单位。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let bytes = data.getReadableBytes()
+```
 
 ### func getSize()
 
@@ -641,13 +890,26 @@ public func getSize(): UInt32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |UInt32|获取的MessageSequence实例的数据大小。以字节为单位。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let size = data.getSize()
+```
 
 ### func getWritableBytes()
 
@@ -660,13 +922,26 @@ public func getWritableBytes(): UInt32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |UInt32|获取到的MessageSequence实例的可写字节空间。以字节为单位。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let bytes = data.getWritableBytes()
+```
 
 ### func getWritePosition()
 
@@ -679,13 +954,26 @@ public func getWritePosition(): UInt32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
 |UInt32|返回MessageSequence实例中的当前写入位置。|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let pos = data.getWritePosition()
+```
 
 ### func readAshmem()
 
@@ -698,7 +986,7 @@ public func readAshmem(): Ashmem
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -715,6 +1003,19 @@ public func readAshmem(): Ashmem
   | 401 | check param failed |
   | 1900004 | Failed to read data from the shared memory.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let ashMem = data.readAshmem()
+```
+
 ### func readBoolean()
 
 ```cangjie
@@ -726,7 +1027,7 @@ public func readBoolean(): Bool
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -742,6 +1043,19 @@ public func readBoolean(): Bool
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readBoolean()
+```
+
 ### func readBooleanArray()
 
 ```cangjie
@@ -753,7 +1067,7 @@ public func readBooleanArray(): Array<Bool>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -769,6 +1083,19 @@ public func readBooleanArray(): Array<Bool>
   |:---|:---|
   |1900010|Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readBooleanArray()
+```
+
 ### func readByte()
 
 ```cangjie
@@ -780,7 +1107,7 @@ public func readByte(): Int8
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -796,6 +1123,19 @@ public func readByte(): Int8
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readByte()
+```
+
 ### func readByteArray()
 
 ```cangjie
@@ -807,7 +1147,7 @@ public func readByteArray(): Array<Int8>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -823,6 +1163,19 @@ public func readByteArray(): Array<Int8>
   |:---|:---|
   |1900010|Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readByteArray()
+```
+
 ### func readChar()
 
 ```cangjie
@@ -834,7 +1187,7 @@ public func readChar(): UInt8
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -850,6 +1203,19 @@ public func readChar(): UInt8
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readChar()
+```
+
 ### func readCharArray()
 
 ```cangjie
@@ -861,7 +1227,7 @@ public func readCharArray(): Array<UInt8>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -877,6 +1243,19 @@ public func readCharArray(): Array<UInt8>
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readCharArray()
+```
+
 ### func readDouble()
 
 ```cangjie
@@ -888,7 +1267,7 @@ public func readDouble(): Float64
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -904,6 +1283,19 @@ public func readDouble(): Float64
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readDouble()
+```
+
 ### func readDoubleArray()
 
 ```cangjie
@@ -915,7 +1307,7 @@ public func readDoubleArray(): Array<Float64>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -931,6 +1323,20 @@ public func readDoubleArray(): Array<Float64>
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+import std.collection.ArrayList
+
+let data = MessageSequence.create()
+data.readDoubleArray()
+```
+
 ### func readException()
 
 ```cangjie
@@ -942,7 +1348,7 @@ public func readException(): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -951,6 +1357,19 @@ public func readException(): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readException()
+```
 
 ### func readFileDescriptor()
 
@@ -963,7 +1382,7 @@ public func readFileDescriptor(): Int32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -979,6 +1398,19 @@ public func readFileDescriptor(): Int32
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readFileDescriptor()
+```
+
 ### func readFloat()
 
 ```cangjie
@@ -990,7 +1422,7 @@ public func readFloat(): Float32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1006,6 +1438,19 @@ public func readFloat(): Float32
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readFloat()
+```
+
 ### func readFloatArray()
 
 ```cangjie
@@ -1017,7 +1462,7 @@ public func readFloatArray(): Array<Float32>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1033,6 +1478,19 @@ public func readFloatArray(): Array<Float32>
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readFloatArray()
+```
+
 ### func readInt()
 
 ```cangjie
@@ -1044,7 +1502,7 @@ public func readInt(): Int32
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1060,6 +1518,19 @@ public func readInt(): Int32
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readInt()
+```
+
 ### func readIntArray()
 
 ```cangjie
@@ -1071,7 +1542,7 @@ public func readIntArray(): Array<Int32>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1087,6 +1558,19 @@ public func readIntArray(): Array<Int32>
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readIntArray()
+```
+
 ### func readInterfaceToken()
 
 ```cangjie
@@ -1098,7 +1582,7 @@ public func readInterfaceToken(): String
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1114,6 +1598,19 @@ public func readInterfaceToken(): String
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readInterfaceToken()
+```
+
 ### func readLong()
 
 ```cangjie
@@ -1125,7 +1622,7 @@ public func readLong(): Int64
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1141,6 +1638,19 @@ public func readLong(): Int64
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readLong()
+```
+
 ### func readLongArray()
 
 ```cangjie
@@ -1152,7 +1662,7 @@ public func readLongArray(): Array<Int64>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1168,6 +1678,19 @@ public func readLongArray(): Array<Int64>
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readLongArray()
+```
+
 ### func readParcelable\<T>(T) where T \<: Parcelable
 
 ```cangjie
@@ -1179,7 +1702,7 @@ public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1197,6 +1720,45 @@ public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
   | 1900010 | Failed to read data from the message sequence.|
   | 1900012 | Failed to call the JS callback function.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+// 此处代码可添加在依赖项定义中
+class MyParcelable <: Parcelable {
+    var num: Int32 = 0
+    var str: String = ''
+
+    init() {}
+
+    init(num: Int32, str: String) {
+        this.num = num
+        this.str = str
+    }
+    public func marshalling(messageSequence: MessageSequence): Bool {
+        messageSequence.writeInt(this.num)
+        messageSequence.writeString(this.str)
+        return true
+    }
+    public func unmarshalling(messageSequence: MessageSequence): Bool {
+        this.num = messageSequence.readInt()
+        this.str = messageSequence.readString()
+        return true
+    }
+}
+
+let parcelable = MyParcelable(1, "aaa")
+let data = MessageSequence.create()
+data.writeParcelable(parcelable)
+let ret = MyParcelable()
+data.readParcelable(ret)
+```
+
 ### func readParcelableArray\<T>(Array\<T>) where T \<: Parcelable
 
 ```cangjie
@@ -1208,7 +1770,7 @@ public func readParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: P
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1226,6 +1788,47 @@ public func readParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: P
   | 1900010 | Failed to read data from the message sequence.|
   | 1900012 | Failed to call the JS callback function.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+// 此处代码可添加在依赖项定义中
+class MyParcelable <: Parcelable {
+    var num: Int32 = 0
+    var str: String = ''
+
+    init() {}
+
+    init(num: Int32, str: String) {
+        this.num = num
+        this.str = str
+    }
+    public func marshalling(messageSequence: MessageSequence): Bool {
+        messageSequence.writeInt(this.num)
+        messageSequence.writeString(this.str)
+        return true
+    }
+    public func unmarshalling(messageSequence: MessageSequence): Bool {
+        this.num = messageSequence.readInt()
+        this.str = messageSequence.readString()
+        return true
+    }
+}
+
+let parcelable = MyParcelable(1, "aaa")
+let parcelable2 = MyParcelable(2, "bbb")
+let parcelable3 = MyParcelable(3, "ccc")
+let data = MessageSequence.create()
+data.writeParcelableArray(parcelable,parcelable2,parcelable3)
+let ret: Array<Parcelable> = [MyParcelable(0, ""), MyParcelable(0, ""), MyParcelable(0, "")]
+data.readParcelableArray(ret)
+```
+
 ### func readRawDataBuffer(Int64)
 
 ```cangjie
@@ -1237,7 +1840,7 @@ public func readRawDataBuffer(size: Int64): Array<Byte>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1260,6 +1863,19 @@ public func readRawDataBuffer(size: Int64): Array<Byte>
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readRawDataBuffer(1)
+```
+
 ### func readShort()
 
 ```cangjie
@@ -1271,7 +1887,7 @@ public func readShort(): Int16
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1287,6 +1903,19 @@ public func readShort(): Int16
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readShort()
+```
+
 ### func readShortArray()
 
 ```cangjie
@@ -1298,7 +1927,7 @@ public func readShortArray(): Array<Int16>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1314,6 +1943,19 @@ public func readShortArray(): Array<Int16>
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readShortArray()
+```
+
 ### func readString()
 
 ```cangjie
@@ -1325,7 +1967,7 @@ public func readString(): String
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1341,6 +1983,19 @@ public func readString(): String
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readString()
+```
+
 ### func readStringArray()
 
 ```cangjie
@@ -1352,7 +2007,7 @@ public func readStringArray(): Array<String>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1368,6 +2023,19 @@ public func readStringArray(): Array<String>
   | :---- | :--- |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readStringArray()
+```
+
 ### func readUInt16Array()
 
 ```cangjie
@@ -1379,7 +2047,7 @@ public func readUInt16Array(): Array<UInt16>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1396,6 +2064,19 @@ public func readUInt16Array(): Array<UInt16>
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The obtained value of typeCode is incorrect; |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readUInt16Array()
+```
+
 ### func readUInt32Array()
 
 ```cangjie
@@ -1407,7 +2088,7 @@ public func readUInt32Array(): Array<UInt32>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1424,6 +2105,19 @@ public func readUInt32Array(): Array<UInt32>
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The obtained value of typeCode is incorrect; |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readUInt32Array()
+```
+
 ### func readUInt64Array()
 
 ```cangjie
@@ -1435,7 +2129,7 @@ public func readUInt64Array(): Array<UInt64>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1452,6 +2146,19 @@ public func readUInt64Array(): Array<UInt64>
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The obtained value of typeCode is incorrect; |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readUInt64Array()
+```
+
 ### func readUInt8Array()
 
 ```cangjie
@@ -1463,7 +2170,7 @@ public func readUInt8Array(): Array<UInt8>
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -1480,6 +2187,19 @@ public func readUInt8Array(): Array<UInt8>
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The obtained value of typeCode is incorrect; |
   | 1900010 | Failed to read data from the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.readUInt8Array()
+```
+
 ### func reclaim()
 
 ```cangjie
@@ -1491,7 +2211,20 @@ public func reclaim(): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.reclaim()
+```
 
 ### func rewindRead(UInt32)
 
@@ -1504,7 +2237,7 @@ public func rewindRead(pos: UInt32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1520,6 +2253,19 @@ public func rewindRead(pos: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.rewindRead(0)
+```
+
 ### func rewindWrite(UInt32)
 
 ```cangjie
@@ -1531,7 +2277,7 @@ public func rewindWrite(pos: UInt32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1547,6 +2293,19 @@ public func rewindWrite(pos: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.rewindWrite(0)
+```
+
 ### func setCapacity(UInt32)
 
 ```cangjie
@@ -1558,7 +2317,7 @@ public func setCapacity(size: UInt32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1575,6 +2334,19 @@ public func setCapacity(size: UInt32): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900011 | Memory allocation failed.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.setCapacity(100)
+```
+
 ### func setSize(UInt32)
 
 ```cangjie
@@ -1586,7 +2358,7 @@ public func setSize(size: UInt32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1602,6 +2374,19 @@ public func setSize(size: UInt32): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.setSize(16)
+```
+
 ### func writeAshmem(Ashmem)
 
 ```cangjie
@@ -1613,7 +2398,7 @@ public func writeAshmem(ashmem: Ashmem): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1630,6 +2415,20 @@ public func writeAshmem(ashmem: Ashmem): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter is not an instance of the Ashmem object.|
   | 1900003 | Failed to write data to the shared memory.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+let ashmem = Ashmem.create("ashmem", 1024)
+data.writeAshmem(ashmem)
+```
+
 ### func writeBoolean(Bool)
 
 ```cangjie
@@ -1641,7 +2440,7 @@ public func writeBoolean(val: Bool): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1658,6 +2457,19 @@ public func writeBoolean(val: Bool): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeBoolean(false)
+```
+
 ### func writeBooleanArray(Array\<Bool>)
 
 ```cangjie
@@ -1669,7 +2481,7 @@ public func writeBooleanArray(booleanArray: Array<Bool>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1686,6 +2498,19 @@ public func writeBooleanArray(booleanArray: Array<Bool>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeBooleanArray([false, true, false])
+```
+
 ### func writeByte(Int8)
 
 ```cangjie
@@ -1697,7 +2522,7 @@ public func writeByte(val: Int8): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1714,6 +2539,19 @@ public func writeByte(val: Int8): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeByte(2)
+```
+
 ### func writeByteArray(Array\<Int8>)
 
 ```cangjie
@@ -1725,7 +2563,7 @@ public func writeByteArray(byteArray: Array<Int8>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1742,6 +2580,19 @@ public func writeByteArray(byteArray: Array<Int8>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. 5.The type of the element in the array is incorrect.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeByteArray([1])
+```
+
 ### func writeChar(UInt8)
 
 ```cangjie
@@ -1753,7 +2604,7 @@ public func writeChar(val: UInt8): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1770,6 +2621,19 @@ public func writeChar(val: UInt8): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeChar(97)
+```
+
 ### func writeCharArray(Array\<UInt8>)
 
 ```cangjie
@@ -1781,7 +2645,7 @@ public func writeCharArray(charArray: Array<UInt8>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1798,6 +2662,19 @@ public func writeCharArray(charArray: Array<UInt8>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeCharArray([97, 98, 88])
+```
+
 ### func writeDouble(Float64)
 
 ```cangjie
@@ -1809,7 +2686,7 @@ public func writeDouble(val: Float64): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1826,6 +2703,19 @@ public func writeDouble(val: Float64): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeDouble(10.2)
+```
+
 ### func writeDoubleArray(Array\<Float64>)
 
 ```cangjie
@@ -1837,7 +2727,7 @@ public func writeDoubleArray(doubleArray: Array<Float64>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1854,6 +2744,19 @@ public func writeDoubleArray(doubleArray: Array<Float64>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeDoubleArray([1.1])
+```
+
 ### func writeFileDescriptor(Int32)
 
 ```cangjie
@@ -1865,7 +2768,7 @@ public func writeFileDescriptor(fd: Int32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1882,6 +2785,22 @@ public func writeFileDescriptor(fd: Int32): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+import kit.CoreFileKit.*
+
+let data = MessageSequence.create()
+let filePath = "path/to/file"
+let file = FileFs.open(filePath, mode: (OpenMode.CREATE.mode | OpenMode.READ_WRITE.mode))
+data.writeFileDescriptor(file.fd)
+```
+
 ### func writeFloat(Float32)
 
 ```cangjie
@@ -1893,7 +2812,7 @@ public func writeFloat(val: Float32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1910,6 +2829,19 @@ public func writeFloat(val: Float32): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeFloat(1.2)
+```
+
 ### func writeFloatArray(Array\<Float32>)
 
 ```cangjie
@@ -1921,7 +2853,7 @@ public func writeFloatArray(floatArray: Array<Float32>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1938,6 +2870,19 @@ public func writeFloatArray(floatArray: Array<Float32>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeFloat32Array([1.1])
+```
+
 ### func writeInt(Int32)
 
 ```cangjie
@@ -1949,7 +2894,7 @@ public func writeInt(val: Int32): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1966,6 +2911,19 @@ public func writeInt(val: Int32): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeInt(10)
+```
+
 ### func writeIntArray(Array\<Int32>)
 
 ```cangjie
@@ -1977,7 +2935,7 @@ public func writeIntArray(intArray: Array<Int32>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -1994,6 +2952,19 @@ public func writeIntArray(intArray: Array<Int32>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeIntArray([1])
+```
+
 ### func writeInterfaceToken(String)
 
 ```cangjie
@@ -2005,7 +2976,7 @@ public func writeInterfaceToken(token: String): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2022,6 +2993,19 @@ public func writeInterfaceToken(token: String): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The String length exceeds 40960 bytes; 4.The number of bytes copied to the buffer is different from the length of the obtained String.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeInterfaceToken("aaa")
+```
+
 ### func writeLong(Int64)
 
 ```cangjie
@@ -2033,7 +3017,7 @@ public func writeLong(val: Int64): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2050,6 +3034,19 @@ public func writeLong(val: Int64): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeLong(10000)
+```
+
 ### func writeLongArray(Array\<Int64>)
 
 ```cangjie
@@ -2061,7 +3058,7 @@ public func writeLongArray(longArray: Array<Int64>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2078,6 +3075,19 @@ public func writeLongArray(longArray: Array<Int64>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeLongArray([1])
+```
+
 ### func writeNoException()
 
 ```cangjie
@@ -2089,7 +3099,7 @@ public func writeNoException(): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **异常：**
 
@@ -2098,6 +3108,19 @@ public func writeNoException(): Unit
   | 错误码ID | 错误信息 |
   | :---- | :--- |
   | 1900009 | Failed to write data to the message sequence.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeNoException()
+```
 
 ### func writeParcelable\<T>(T) where T \<: Parcelable
 
@@ -2110,7 +3133,7 @@ public func writeParcelable<T>(val: T): Unit where T <: Parcelable
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2127,6 +3150,45 @@ public func writeParcelable<T>(val: T): Unit where T <: Parcelable
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+// 此处代码可添加在依赖项定义中
+class MyParcelable <: Parcelable {
+    var num: Int32 = 0
+    var str: String = ''
+
+    init() {}
+
+    init(num: Int32, str: String) {
+        this.num = num
+        this.str = str
+    }
+    public func marshalling(messageSequence: MessageSequence): Bool {
+        messageSequence.writeInt(this.num)
+        messageSequence.writeString(this.str)
+        return true
+    }
+    public func unmarshalling(messageSequence: MessageSequence): Bool {
+        this.num = messageSequence.readInt()
+        this.str = messageSequence.readString()
+        return true
+    }
+}
+
+let parcelable = MyParcelable(1, "aaa")
+let data = MessageSequence.create()
+data.writeParcelable(parcelable)
+let ret = MyParcelable()
+data.readParcelable(ret)
+```
+
 ### func writeParcelableArray\<T>(Array\<T>) where T \<: Parcelable
 
 ```cangjie
@@ -2138,7 +3200,7 @@ public func writeParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: 
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2155,6 +3217,47 @@ public func writeParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: 
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+// 此处代码可添加在依赖项定义中
+class MyParcelable <: Parcelable {
+    var num: Int32 = 0
+    var str: String = ''
+
+    init() {}
+
+    init(num: Int32, str: String) {
+        this.num = num
+        this.str = str
+    }
+    public func marshalling(messageSequence: MessageSequence): Bool {
+        messageSequence.writeInt(this.num)
+        messageSequence.writeString(this.str)
+        return true
+    }
+    public func unmarshalling(messageSequence: MessageSequence): Bool {
+        this.num = messageSequence.readInt()
+        this.str = messageSequence.readString()
+        return true
+    }
+}
+
+let parcelable = MyParcelable(1, "aaa")
+let parcelable2 = MyParcelable(2, "bbb")
+let parcelable3 = MyParcelable(3, "ccc")
+let data = MessageSequence.create()
+data.writeParcelableArray(parcelable,parcelable2,parcelable3)
+let ret: Array<Parcelable> = [MyParcelable(0, ""), MyParcelable(0, ""), MyParcelable(0, "")]
+data.readParcelableArray(ret)
+```
+
 ### func writeRawDataBuffer(Array\<Byte>, Int64)
 
 ```cangjie
@@ -2166,7 +3269,7 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2184,6 +3287,19 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain array information; 4.The transferred size cannot be obtained; 5.The transferred size is less than or equal to 0; 6.The transferred size is greater than the byte length of rawData.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeRawDataBuffer([1], 1)
+```
+
 ### func writeShort(Int16)
 
 ```cangjie
@@ -2195,7 +3311,7 @@ public func writeShort(val: Int16): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2212,6 +3328,19 @@ public func writeShort(val: Int16): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeShort(8)
+```
+
 ### func writeShortArray(Array\<Int16>)
 
 ```cangjie
@@ -2223,7 +3352,7 @@ public func writeShortArray(shortArray: Array<Int16>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2240,6 +3369,19 @@ public func writeShortArray(shortArray: Array<Int16>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeShortArray([1])
+```
+
 ### func writeString(String)
 
 ```cangjie
@@ -2251,7 +3393,7 @@ public func writeString(val: String): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2268,6 +3410,19 @@ public func writeString(val: String): Unit
   | 401 | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The String length exceeds 40960 bytes; 4.The number of bytes copied to the buffer is different from the length of the obtained String.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeString('abc')
+```
+
 ### func writeStringArray(Array\<String>)
 
 ```cangjie
@@ -2279,7 +3434,7 @@ public func writeStringArray(stringArray: Array<String>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2296,6 +3451,19 @@ public func writeStringArray(stringArray: Array<String>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The String length exceeds 40960 bytes; 5.The number of bytes copied to the buffer is different from the length of the obtained String.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeStringArray(["abc", "def"])
+```
+
 ### func writeUInt16Array(Array\<UInt16>)
 
 ```cangjie
@@ -2307,7 +3475,7 @@ public func writeUInt16Array(buf: Array<UInt16>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2324,6 +3492,19 @@ public func writeUInt16Array(buf: Array<UInt16>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The obtained value of typeCode is incorrect; 5.Failed to obtain array information.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeUInt16Array([1])
+```
+
 ### func writeUInt32Array(Array\<UInt32>)
 
 ```cangjie
@@ -2335,7 +3516,7 @@ public func writeUInt32Array(buf: Array<UInt32>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2352,6 +3533,19 @@ public func writeUInt32Array(buf: Array<UInt32>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The obtained value of typeCode is incorrect; 5.Failed to obtain array information.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeUInt32Array([1])
+```
+
 ### func writeUInt64Array(Array\<UInt64>)
 
 ```cangjie
@@ -2363,7 +3557,7 @@ public func writeUInt64Array(buf: Array<UInt64>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2380,6 +3574,19 @@ public func writeUInt64Array(buf: Array<UInt64>): Unit
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The obtained value of typeCode is incorrect; 5.Failed to obtain array information.|
   | 1900009 | Failed to write data to the message sequence.|
 
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeUInt64Array([1])
+```
+
 ### func writeUInt8Array(Array\<UInt8>)
 
 ```cangjie
@@ -2391,7 +3598,7 @@ public func writeUInt8Array(buf: Array<UInt8>): Unit
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -2407,3 +3614,16 @@ public func writeUInt8Array(buf: Array<UInt8>): Unit
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The obtained value of typeCode is incorrect; 5.Failed to obtain array information.|
   | 1900009 | Failed to write data to the message sequence.|
+
+**示例：**
+
+<!-- compile -->
+
+```cangjie
+// index.cj
+
+import kit.IPCKit.*
+
+let data = MessageSequence.create()
+data.writeUInt8Array([1])
+```

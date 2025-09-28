@@ -24,7 +24,7 @@ public enum ProfileConnectionState <: Equatable<ProfileConnectionState> & ToStri
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -41,7 +41,7 @@ StateConnected
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StateConnecting
 
@@ -53,7 +53,7 @@ StateConnecting
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StateDisconnected
 
@@ -65,7 +65,7 @@ StateDisconnected
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StateDisconnecting
 
@@ -77,7 +77,7 @@ StateDisconnecting
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func !=(ProfileConnectionState)
 
@@ -89,7 +89,7 @@ public operator func !=(other: ProfileConnectionState): Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -113,7 +113,7 @@ public operator func ==(other: ProfileConnectionState): Bool
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -137,7 +137,7 @@ public func toString(): String
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 

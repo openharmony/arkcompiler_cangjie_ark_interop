@@ -59,7 +59,7 @@ public class Want {
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var abilityName
 
@@ -75,7 +75,7 @@ public var abilityName: String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var action
 
@@ -91,7 +91,7 @@ public var action: String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var bundleName
 
@@ -107,7 +107,7 @@ public var bundleName: String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var deviceId
 
@@ -123,7 +123,7 @@ public var deviceId: String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var entities
 
@@ -139,7 +139,7 @@ public var entities: Array<String>
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var flags
 
@@ -155,7 +155,7 @@ public var flags: UInt32
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var moduleName
 
@@ -171,7 +171,7 @@ public var moduleName: String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var parameters
 
@@ -187,7 +187,7 @@ public var parameters: HashMap<String, WantValueType>
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var uri
 
@@ -203,7 +203,7 @@ public var uri: String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var wantType
 
@@ -219,7 +219,7 @@ public var wantType: String
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(String, String, String, String, UInt32, String, String, Array\<String>, String, HashMap\<String,WantValueType>, HashMap\<String,Int32>)
 
@@ -243,7 +243,7 @@ public init(
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -279,7 +279,7 @@ public enum WantValueType {
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### ArrayValue(Array\<WantValueType>)
 
@@ -291,7 +291,7 @@ ArrayValue(Array<WantValueType>)
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### BoolValue(Bool)
 
@@ -303,7 +303,7 @@ BoolValue(Bool)
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Float64Value(Float64)
 
@@ -315,7 +315,7 @@ Float64Value(Float64)
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### HashMapValue(HashMap\<String, WantValueType>)
 
@@ -327,7 +327,7 @@ HashMapValue(HashMap<String, WantValueType>)
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### Int64Value(Int64)
 
@@ -339,7 +339,7 @@ Int64Value(Int64)
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### StringValue(String)
 
@@ -351,4 +351,4 @@ StringValue(String)
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**起始版本：** 21
+**起始版本：** 22

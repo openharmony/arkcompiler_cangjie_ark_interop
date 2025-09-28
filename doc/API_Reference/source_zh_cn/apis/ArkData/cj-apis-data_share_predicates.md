@@ -35,7 +35,7 @@ public class DataSharePredicates {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init()
 
@@ -47,7 +47,7 @@ public init()
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func `in`(String, Array\<ValueType>)
 
@@ -59,7 +59,7 @@ public func `in`(field: String, value: Array<ValueType>): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -108,7 +108,7 @@ public func and(): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
@@ -151,7 +151,7 @@ public func equalTo(field: String, value: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -200,7 +200,7 @@ public func limit(total: Int32, offset: Int32): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -249,7 +249,7 @@ public func orderByAsc(field: String): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -296,7 +296,7 @@ public func orderByDesc(field: String): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
