@@ -345,7 +345,6 @@
     - [Media Library Kit]()
         - [Cangjie API]()
             - [ohos.file.photo_access_helper (Photo Album Management Module)](source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md)
-            - [ohos.file.photo_access_helper (Photo Album Management Module)](source_en/apis/MediaLibraryKit/cj-apis-file-photo_access_helper.md)
 - [Graphics]()
     - [ArkGraphics2D]()
         - [Cangjie API]()
