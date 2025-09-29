@@ -313,9 +313,22 @@ public static func clearAllCookies(incognito!: Bool = false): Unit
 // index.cj
 
 import kit.ArkWeb.*
-import kit.ArkUI.Web
+import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
 
-WebCookieManager.clearAllCookies()
+try {
+    // 需要设置的cookie，其中cookie的格式为name=value，本例中name为ZFY，value为4Mvfh8V4iYFnDc8CGowMa3KE4m0dV
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置指定url的cookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // 获取指定url的cookie
+    let value = WebCookieManager.fetchCookie("https://www.example.com")
+    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
+    // 删除cookie
+    WebCookieManager.clearAllCookies()
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
+}
 ```
 
 ### static func clearSessionCookie()
@@ -338,8 +351,22 @@ public static func clearSessionCookie(): Unit
 // index.cj
 
 import kit.ArkWeb.*
+import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
 
-WebCookieManager.clearSessionCookie()
+try {
+    // 需要设置的cookie，其中cookie的格式为name=value，本例中name为ZFY，value为4Mvfh8V4iYFnDc8CGowMa3KE4m0dV
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置指定url的cookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // 获取指定url的cookie
+    let value = WebCookieManager.fetchCookie("https://www.example.com")
+    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
+    // 删除cookie
+    WebCookieManager.clearSessionCookie()
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
+}
 ```
 
 ### static func configCookie(String, String, Bool)
@@ -381,9 +408,18 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 
 import kit.ArkWeb.*
 import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
-    WebCookieManager.configCookie("https://www.example.com", "a=b", incognito: false)
+    // 需要设置的cookie，其中cookie的格式为name=value，本例中name为ZFY，value为4Mvfh8V4iYFnDc8CGowMa3KE4m0dV
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置指定url的cookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // 获取指定url的cookie
+    let value = WebCookieManager.fetchCookie("https://www.example.com")
+    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
+    // 删除cookie
+    WebCookieManager.clearAllCookies()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
 }
@@ -473,8 +509,19 @@ import ohos.base.*
 import kit.ArkWeb.*
 import kit.PerformanceAnalysisKit.Hilog
 
-let value = WebCookieManager.fetchCookie("https://www.example.com")
-Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
+try {
+    // 需要设置的cookie，其中cookie的格式为name=value，本例中name为ZFY，value为4Mvfh8V4iYFnDc8CGowMa3KE4m0dV
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置指定url的cookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // 获取指定url的cookie
+    let value = WebCookieManager.fetchCookie("https://www.example.com")
+    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
+    // 删除cookie
+    WebCookieManager.clearAllCookies()
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
+}
 ```
 
 ### static func isCookieAllowed()
