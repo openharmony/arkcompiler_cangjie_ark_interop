@@ -238,10 +238,10 @@ static func fromJSValue(context: JSContext, input: JSValue): Int8
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
+| 2     | Outside error occurred.|
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
 | 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
 
 ### static func toArktsType()
 
@@ -335,12 +335,12 @@ static func fromJSValue(context: JSContext, input: JSValue): Int16
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -434,12 +434,12 @@ static func fromJSValue(context: JSContext, input: JSValue): Int32
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -533,12 +533,12 @@ static func fromJSValue(context: JSContext, input: JSValue): Int64
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -582,11 +582,11 @@ func toJSValue(context: JSContext): JSValue
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
 
 ## extend UInt8 <: JSInteropType<UInt8>
 
@@ -629,6 +629,17 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt8
 |:----|:----|
 |UInt8|仓颉类型。|
 
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
+| 3     | Accessing reference is beyond reach. |
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
+
 ### static func toArktsType()
 
 ```cangjie
@@ -644,18 +655,6 @@ static func toArktsType(): String
 |类型|说明|
 |:----|:----|
 |String|转换后 ArkTS 类型名。|
-
-
-**异常：**
-
-- BusinessException：对应错误码如下表。
-
-| 错误码ID | 错误信息 |
-|:------| :--- |
-| 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
 
 ### func toJSValue(JSContext)
 
@@ -720,17 +719,16 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt16
 |:----|:----|
 |UInt16|仓颉类型。|
 
-
 **异常：**
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-~~| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|~~
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -825,12 +823,12 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt32
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -924,12 +922,12 @@ static func fromJSValue(context: JSContext, input: JSValue): UInt64
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -973,11 +971,11 @@ func toJSValue(context: JSContext): JSValue
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
 
 ## extend Float16 <: JSInteropType<Float16>
 
@@ -1024,12 +1022,12 @@ static func fromJSValue(context: JSContext, input: JSValue): Float16
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -1123,12 +1121,12 @@ static func fromJSValue(context: JSContext, input: JSValue): Float32
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 12    | Integer overflow.|
+| 4     | Thread mismatch.                     |
+| 5     | The ArkTS data types do not match.   |
 
 ### static func toArktsType()
 
@@ -1484,12 +1482,11 @@ func toJSValue(context: JSContext): JSValue
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.              |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 5     | The ArkTS data types do not match.|
-| 9     | Codec error.|
+| 4     | Thread mismatch.                     |
 
 ## extend Unit <: JSInteropType<Unit>
 
@@ -1667,6 +1664,15 @@ func toJSValue(context: JSContext): JSValue
 |类型|说明|
 |:----|:----|
 |[JSValue](#struct-jsvalue)|ArkTS 统一类型。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表。
+
+| 错误码ID | 错误信息 |
+|:------| :--- |
+| 3     | Accessing reference is beyond reach. |
+| 4     | Thread mismatch. |
 
 ## extend<T> Array<T> <: JSInteropType<Array<T>> where T <: JSInteropByte
 
@@ -2032,10 +2038,9 @@ public func toArrayBufferJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred.|
+| 2     | Outside error occurred.|
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2069,11 +2074,11 @@ public func toFloat32Array(): Array<Float32>
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 8     | Binding memory's size is not uniformed.|
+| 4     | Thread mismatch.                     |
 
 **示例：**
 
@@ -2107,11 +2112,11 @@ public func toFloat32ArrayJSValue(): JSValue
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息 |
-|:------| :--- |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
-| 4     | Thread mismatch. |
-| 11    | Property is not target type.|
+| 4     | Thread mismatch. 　                   |
 
 **示例：**
 
@@ -2147,10 +2152,9 @@ public func toFloat64Array(): Array<Float64>
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2186,10 +2190,9 @@ public func toFloat64ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2224,9 +2227,9 @@ public func toInt16Array(): Array<Int16>
 
 | 错误码ID | 错误信息                                     |
 |:------|:-----------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach.     |
 | 4     | Thread mismatch.                         |
-| 8     | Binding memory's size is not uniformed.  |
 
 **示例：**
 
@@ -2262,10 +2265,9 @@ public func toInt16ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2300,9 +2302,9 @@ public func toInt32Array(): Array<Int32>
 
 | 错误码ID | 错误信息                                     |
 |:------|:-----------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach.     |
 | 4     | Thread mismatch.                         |
-| 8     | Binding memory's size is not uniformed.  |
 
 **示例：**
 
@@ -2338,10 +2340,9 @@ public func toInt32ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2376,9 +2377,9 @@ public func toInt64Array(): Array<Int64>
 
 | 错误码ID | 错误信息                                     |
 |:------|:-----------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach.     |
 | 4     | Thread mismatch.                         |
-| 8     | Binding memory's size is not uniformed.  |
 
 **示例：**
 
@@ -2414,10 +2415,9 @@ public func toInt64ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2489,10 +2489,9 @@ public func toInt8ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2525,11 +2524,11 @@ public func toUInt16Array(): Array<UInt16>
 
 - BusinessException：对应错误码如下表。
 
-| 错误码ID | 错误信息                                     |
-|:------|:-----------------------------------------|
-| 3     | Accessing reference is beyond reach.     |
-| 4     | Thread mismatch.                         |
-| 8     | Binding memory's size is not uniformed.  |
+| 错误码ID | 错误信息                                 |
+|:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
+| 3     | Accessing reference is beyond reach. |
+| 4     | Thread mismatch.                     |
 
 **示例：**
 
@@ -2565,10 +2564,9 @@ public func toUInt16ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2603,9 +2601,9 @@ public func toUInt32Array(): Array<UInt32>
 
 | 错误码ID | 错误信息                                     |
 |:------|:-----------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach.     |
 | 4     | Thread mismatch.                         |
-| 8     | Binding memory's size is not uniformed.  |
 
 **示例：**
 
@@ -2641,10 +2639,9 @@ public func toUInt32ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2679,9 +2676,9 @@ public func toUInt64Array(): Array<UInt64>
 
 | 错误码ID | 错误信息                                     |
 |:------|:-----------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach.     |
 | 4     | Thread mismatch.                         |
-| 8     | Binding memory's size is not uniformed.  |
 
 **示例：**
 
@@ -2717,10 +2714,9 @@ public func toUInt64ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2792,10 +2788,9 @@ public func toUInt8ArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -2830,10 +2825,9 @@ public func toUInt8ClampedArrayJSValue(): JSValue
 
 | 错误码ID | 错误信息 |
 |:------| :--- |
-| 2     | ArkTS error occurred. |
+| 2     | Outside error occurred. |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch. |
-| 11    | Property is not target type.|
 
 **示例：**
 
@@ -3242,7 +3236,7 @@ public func toJSValue(context: JSContext): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -3423,7 +3417,7 @@ public prop prototype: JSObject
 
 | 错误码ID | 错误信息                           |
 |:------|:-------------------------------|
-| 11    | Property is not target type.   |
+| 2     | Outside error occurred.　             |
 
 **示例：**
 
@@ -3466,10 +3460,9 @@ public func addAccessor(key: JSKeyable, getter!: ?JSFunction = None, setter!: ?J
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 11     | Property is not target type.         |
 
 **示例：**
 
@@ -3515,10 +3508,9 @@ public func addAccessor(key: JSKeyable, getter!: ?JSLambda = None, setter!: ?JSL
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 11     | Property is not target type.         |
 
 **示例：**
 
@@ -3563,10 +3555,9 @@ public func addMethod(key: JSKeyable, method: JSFunction): Unit
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 11     | Property is not target type.         |
 
 **示例：**
 
@@ -3611,10 +3602,9 @@ public func addMethod(key: JSKeyable, method: JSLambda): Unit
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 11     | Property is not target type.         |
 
 **示例：**
 
@@ -3659,10 +3649,9 @@ public func addProperty(key: JSKeyable, value: JSValue): Unit
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 11     | Property is not target type.         |
 
 **示例：**
 
@@ -3703,7 +3692,7 @@ public func new(): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -3749,7 +3738,7 @@ public func new(arg: JSValue): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -3799,7 +3788,7 @@ public func new(args: Array<JSValue>): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -3938,7 +3927,7 @@ public func array(arr: Array<JSValue>): JSArray
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -3981,7 +3970,7 @@ public func arrayBuffer(length: Int32): JSArrayBuffer
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
 | 1     | The arrayBuffer length is invalid.          |
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4023,7 +4012,7 @@ public func arrayBuffer(data: Array<Byte>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4066,7 +4055,7 @@ public func arrayBuffer(data: Array<Int8>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4112,7 +4101,7 @@ public func arrayBuffer(data: Array<Int16>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4158,7 +4147,7 @@ public func arrayBuffer(data: Array<UInt16>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4204,7 +4193,7 @@ public func arrayBuffer(data: Array<UInt32>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4250,7 +4239,7 @@ public func arrayBuffer(data: Array<Int32>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4296,7 +4285,7 @@ public func arrayBuffer(data: Array<Float32>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4342,7 +4331,7 @@ public func arrayBuffer(data: Array<Int64>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4388,7 +4377,7 @@ public func arrayBuffer(data: Array<UInt64>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4434,7 +4423,7 @@ public func arrayBuffer(data: Array<Float64>): JSArrayBuffer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4482,7 +4471,7 @@ public unsafe func arrayBuffer(rawData: CPointer<Byte>, length: Int32, finalizer
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4529,7 +4518,7 @@ public func bigint(value: Int64): JSBigInt
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4571,7 +4560,7 @@ public func bigint(value: BigInt): JSBigInt
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4657,7 +4646,7 @@ public func clazz(ctor: JSLambda, superClass!: ?JSClass = None): JSClass
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4703,7 +4692,7 @@ public func external(data: SharedObject): JSExternal
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4748,7 +4737,7 @@ public func function(lambda: JSLambda): JSFunction
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -4970,7 +4959,7 @@ public func object(): JSObject
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -5037,7 +5026,7 @@ public func promiseCapability(): JSPromiseCapability
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -5080,7 +5069,7 @@ public func requireSystemNativeModule(moduleName: String, prefix!: ?String = Non
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -5122,10 +5111,9 @@ public func string(value: String): JSString
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 9     | Codec error.                         |
 
 **示例：**
 
@@ -5165,7 +5153,7 @@ public func string(value: Utf16String): JSString
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -5208,7 +5196,7 @@ public func symbol(description!: String = ""): JSSymbol
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -5296,9 +5284,9 @@ public func cast<T>(): Option<T> where T <: SharedObject
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 10    | Unknown native reference.            |
 
 **示例：**
 
@@ -5341,9 +5329,9 @@ public func getData(): SharedObject
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 10    | Unknown native reference.            |
 
 **示例：**
 
@@ -5407,7 +5395,7 @@ public func call(thisArg!: JSValue = context.undefined().toJSValue()): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -5450,7 +5438,7 @@ public func call(arg: JSValue, thisArg!: JSValue = context.undefined().toJSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -5494,7 +5482,7 @@ public func call(args: Array<JSValue>, thisArg!: JSValue = context.undefined().t
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -6207,9 +6195,9 @@ public operator func [](key: K): V
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
-| 13    | Dict key not found.                  |
 
 **示例：**
 
@@ -6556,7 +6544,7 @@ public func callMethod(key: JSKeyable, args: Array<JSValue>): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -6605,7 +6593,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSFunction = None, sette
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -6658,7 +6646,7 @@ public func defineOwnAccessor(key: JSKeyable, getter!:? JSLambda = None, setter!
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -6712,7 +6700,7 @@ public func defineOwnProperty(key: JSKeyable, setValue: JSValue,
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -6797,7 +6785,7 @@ public func getProperty(key: JSKeyable): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -6961,7 +6949,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -7004,7 +6992,7 @@ public operator func [](key: JSKeyable): JSValue
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -7042,7 +7030,7 @@ public operator func [](key: JSKeyable, value!: JSValue): Unit
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 
@@ -7356,7 +7344,7 @@ public init()
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 14     | Create ArkTS engine fail.              |
+| 2     | Outside error occurred.　             |
 
 ### func getNapiEnv()
 
@@ -8920,10 +8908,11 @@ public func getBindingObject(): ?SharedObject
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 | 5     | The ArkTS data types do not match.   |
-| 10    | Unknown native reference.            |
+
 **示例：**
 
 <!--compile-->
@@ -9644,7 +9633,7 @@ public func setProperty(key: JSKeyable, setValue: JSValue): Unit
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 2     | ArkTS error occurred.                |
+| 2     | Outside error occurred.                |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 | 5     | The ArkTS data types do not match.   |
@@ -9840,10 +9829,10 @@ public func toString(): String
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
+| 2     | Outside error occurred.　             |
 | 3     | Accessing reference is beyond reach. |
 | 4     | Thread mismatch.                     |
 | 5     | The ArkTS data types do not match.   |
-| 9     | Codec error.                         |
 
 **示例：**
 
@@ -10162,7 +10151,7 @@ public init(src: String)
 
 | 错误码ID | 错误信息                                 |
 |:------|:-------------------------------------|
-| 9     | Codec error.                         |
+| 2     | Outside error occurred.　             |
 
 **示例：**
 
