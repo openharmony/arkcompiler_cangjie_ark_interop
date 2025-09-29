@@ -117,3 +117,7 @@
         }
     }
     ```
+
+## 备注：
+
+传感器的开发均同上述加速度传感器ACCELEROMETER。需要注意的是，瞬时传感器受相关触发因素影响，如计步传感器PEDOMETER，步数有变化会上报。瞬时传感器有HALL、PROXIMITY、WEAR_DETECTION、PEDOMETER、PEDOMETER_DETECTION。
