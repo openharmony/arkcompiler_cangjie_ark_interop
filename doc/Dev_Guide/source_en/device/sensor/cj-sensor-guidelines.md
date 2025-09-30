@@ -68,6 +68,8 @@ The development procedure is demonstrated using the accelerometer sensor (ACCELE
     func onExample() {
         let callback = SensorCallback()
         try {
+            // The development steps for periodic sensors and instantaneous sensors are the same. 
+            // The difference is that periodic sensors collect and output data at preset fixed time intervals defined by the option, whereas instantaneous sensors collect and output data when triggered by specific events, unaffected by the option.
             on(SensorId.ACCELEROMETER, callback, option: SensorOptions(SensorNumber(100000000)))
         } catch (e: BusinessException) {
             AppLog.error("Sensor on error code: ${e.code}, message: ${e.message}")
