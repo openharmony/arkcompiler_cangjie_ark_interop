@@ -117,3 +117,7 @@ The development procedure is demonstrated using the accelerometer sensor (ACCELE
         }
     }
     ```
+
+## Notes
+
+The development of sensors is similar to the aforementioned accelerometer ACCELEROMETER. It should be noted that sensors are categorized into periodic sensors and instantaneous sensors based on their data collection methods. Periodic sensors collect and output data at preset fixed intervals, such as the ambient temperature sensor AMBIENT_TEMPERATURE. After subscription, the sensor reports data according to the designed time intervals. Periodic sensors include GRAVITY, AMBIENT_TEMPERATURE, HUMIDITY, BAROMETER, and others. Instantaneous sensors collect and output data only when triggered by specific events, such as the pedometer sensor PEDOMETER, which reports when there is a change in step count. Instantaneous sensors include HALL, PROXIMITY, WEAR_DETECTION, PEDOMETER, and PEDOMETER_DETECTION.
