@@ -2,7 +2,7 @@
 
 以AES和SM4为例，随机生成对称密钥（SymKey），并获得二进制数据。
 
-对称密钥对象可用于后续的加解密操作，二进制数据可用于存储或传输。
+对称密钥可用于后续的加解密操作，二进制数据可用于存储或传输。
 
 ## 随机生成AES密钥
 
@@ -10,9 +10,9 @@
 
 1. 调用[createSymKeyGenerator](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring)，指定字符串参数'AES256'，创建密钥算法为AES、密钥长度为256位的对称密钥生成器（SymKeyGenerator）。
 
-2. 调用[generateSymKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey)，随机生成对称密钥对象（SymKey）。
+2. 调用[generateSymKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey)，随机生成对称密钥（SymKey）。
 
-3. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥对象的二进制数据。
+3. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥的二进制数据。
 
 ## 以随机生成AES密钥为例
 
@@ -40,9 +40,9 @@ func testSyncGenerateAesKey() {
 1. 调用[createSymKeyGenerator](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring)，指定字符串参数'SM4_128'，创建密钥算法为SM4、密钥长度为128位的对称密钥生成器（SymKeyGenerator）。
    如果开发者需要使用其他算法，请注意修改此处入参的字符串参数。
 
-2. 调用[generateSymKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey)，随机生成对称密钥对象（SymKey）。
+2. 调用[generateSymKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey)，随机生成对称密钥（SymKey）。
 
-3. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥对象的二进制数据。
+3. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥的二进制数据。
 
 ## 以随机生成SM4密钥为例
 
