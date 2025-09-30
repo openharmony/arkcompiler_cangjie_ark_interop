@@ -1320,7 +1320,7 @@ public var scalar: Float32
 
 ```cangjie
 public class PedometerResponse <: Response {
-    public var steps: Float32
+    public var steps: Int64
 }
 ```
 
@@ -1337,12 +1337,12 @@ public class PedometerResponse <: Response {
 ### var steps
 
 ```cangjie
-public var steps: Float32
+public var steps: Int64
 ```
 
-**Function:** User's step count.
+**Function:** The user's walking steps. The initial number of steps is 0. After the user subscribes to the pedometer sensor, each step taken will increment the step count by one.
 
-**Type:** Float32
+**Type:** Int64
 
 **Access:** Read-Write
 
