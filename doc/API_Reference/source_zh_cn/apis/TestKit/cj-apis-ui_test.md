@@ -902,7 +902,7 @@ driver.drag(100, 100, 200, 200, speed: 600)
 public func findComponent(on: On): ?Component
 ```
 
-**功能：** 在[Driver](#class-driver)对象中，根据给出的目标控件属性要求查找目标控件。
+**功能：** 在[Driver](#class-driver)对象中，根据给出的目标控件属性要求查找目标控件。当UI组件树存在多个满足条件的控件时，会优先返回深度优先搜索到的第一个控件。
 
 **系统能力：** SystemCapability.Test.UiTest
 
@@ -986,7 +986,7 @@ let buttonList: Option<Array<Component>> = driver.findComponents(On().text("next
 public func findWindow(filter: WindowFilter): ?UiWindow
 ```
 
-**功能：** 通过指定窗口的属性来查找目标窗口。
+**功能：** 通过指定窗口的属性来查找目标窗口。当存在多个满足条件的窗口时，会优先返回最上层且可见的窗口。
 
 **系统能力：** SystemCapability.Test.UiTest
 

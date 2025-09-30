@@ -105,6 +105,7 @@ func example() {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
     let predicates: DataSharePredicates = DataSharePredicates()
+    predicates.equalTo('album_name', StringValue('test1'))
     let fetchOptions: FetchOptions = FetchOptions(
         fetchColumns: [],
         predicates: predicates
@@ -254,6 +255,7 @@ func example() {
     let context = ctx.getOrThrow()
     let phAccessHelper = getPhotoAccessHelper(context)
     let predicates: DataSharePredicates = DataSharePredicates()
+    predicates.equalTo('display_name', StringValue('test2'))
     let fetchOptions: FetchOptions = FetchOptions(
         fetchColumns: [],
         predicates: predicates
