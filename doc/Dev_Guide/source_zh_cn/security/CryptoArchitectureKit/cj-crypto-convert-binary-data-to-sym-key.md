@@ -1,10 +1,10 @@
-# 指定二进制数据转换对称密钥
+# 指定二进制数据生成密钥对象
 
-以3DES和HMAC为例，根据指定的对称密钥二进制数据，生成密钥（SymKey），即将外部或存储的二进制数据转换为算法库的密钥对象，该对象可用于后续的加解密等操作。
+以3DES和HMAC为例，根据指定的对称密钥二进制数据，生成密钥（SymKey），即将外部或存储的二进制数据作为密钥生成算法库的密钥对象，该对象可用于后续的加解密等操作。
 
-## 指定二进制数据转换3DES密钥
+## 指定二进制数据生成3DES密钥对象
 
-对应的算法规格请参见[对称密钥生成和转换规格：3DES](./cj-crypto-sym-key-generation-conversion-spec.md#3des)。
+对应的算法规格请参见[对称密钥生成规格：3DES](./cj-crypto-sym-key-generation-conversion-spec.md#3des)。
 
 1. 获取3DES二进制密钥数据，封装成[DataBlob](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#struct-datablob)对象。
 
@@ -39,7 +39,7 @@ func testConvertSymKey() {
 }
 ```
 
-## 指定二进制数据转换HMAC密钥
+## 指定二进制数据生成HMAC密钥对象
 
 对应的算法规格请参见[对称密钥生成和转换规格：HMAC](./cj-crypto-sym-key-generation-conversion-spec.md#hmac)。
 

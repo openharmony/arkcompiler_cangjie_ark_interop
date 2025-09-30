@@ -26,12 +26,9 @@ Crypto Architecture Kit提供加解密、签名验签、消息验证码、哈希
 
 - [密钥生成和转换](./cj-crypto-key-generation-conversion-overview.md)
 - [加解密](./cj-crypto-encryption-decryption-overview.md)
-- [签名验签](./cj-crypto-sign-sig-verify-overview.md)
-- [密钥协商](./cj-crypto-key-agreement-overview.md)
 - [消息摘要计算](./cj-crypto-generate-message-digest-overview.md)
 - [消息认证码计算](./cj-crypto-compute-mac.md)
 - [安全随机数生成](./cj-crypto-generate-random-number.md)
-- [密钥派生](./cj-crypto-key-derivation-overview.md)
 
 ## 与相关Kit的关系
 
