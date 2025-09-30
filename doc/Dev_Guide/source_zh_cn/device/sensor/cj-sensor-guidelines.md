@@ -68,6 +68,8 @@
     func onExample() {
         let callback = SensorCallback()
         try {
+            //周期传感器与瞬时传感器开发步骤相同。
+            //区别是周期传感器按设定的固定时间间隔option采集并输出数据,瞬时传感器受特定触发事件影响采集并输出数据,不受option约束。
             on(SensorId.ACCELEROMETER, callback, option: SensorOptions(SensorNumber(100000000)))
         } catch (e: BusinessException) {
             AppLog.error("Sensor on error code: ${e.code}, message: ${e.message}")
