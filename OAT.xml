@@ -21,6 +21,7 @@
 			    <filteritem type="filename" name="zimu.srt" desc="不支持添加许可头"/>
                 <filteritem type="filename" name="*.lrc" desc="不支持添加许可头"/>
 			    <filteritem type="filename" name="*.mp4" desc="不支持添加许可头"/>	
+                <filteritem type="filename" name="*.ets" desc="不支持添加许可头"/>
             </filefilter>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binaryFile">
                 <filteritem type="filename" name="*.png" desc="png图片文件，完成检查"/>
