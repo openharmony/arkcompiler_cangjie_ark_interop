@@ -313,9 +313,21 @@ public static func clearAllCookies(incognito!: Bool = false): Unit
 // index.cj
 
 import kit.ArkWeb.*
-import kit.ArkUI.Web
+import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
 
-WebCookieManager.clearAllCookies()
+try {
+    // The cookie is obtained from the web session, such as from the request in an HTTP request. In this example, it is assumed that the obtained cookie is "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV".
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // configCookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // ... 
+    // Execute business logic here, such as loading a webpage with cookies.
+    // clear cookie
+    WebCookieManager.clearAllCookies()
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
+}
 ```
 
 ### static func clearSessionCookie()
@@ -338,8 +350,21 @@ public static func clearSessionCookie(): Unit
 // index.cj
 
 import kit.ArkWeb.*
+import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
 
-WebCookieManager.clearSessionCookie()
+try {
+    // The cookie is obtained from the web session, such as from the request in an HTTP request. In this example, it is assumed that the obtained cookie is "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV".
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // configCookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // ... 
+    // Execute business logic here, such as loading a webpage with cookies.
+    // clear cookie
+    WebCookieManager.clearSessionCookie()
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
+}
 ```
 
 ### static func configCookie(String, String, Bool)
@@ -381,9 +406,17 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 
 import kit.ArkWeb.*
 import ohos.business_exception.BusinessException
+import kit.PerformanceAnalysisKit.Hilog
 
 try {
-    WebCookieManager.configCookie("https://www.example.com", "a=b", incognito: false)
+    // The cookie is obtained from the web session, such as from the request in an HTTP request. In this example, it is assumed that the obtained cookie is "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV".
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // configCookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // ... 
+    // Execute business logic here, such as loading a webpage with cookies.
+    // clear cookie
+    WebCookieManager.clearSessionCookie()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
 }
@@ -473,8 +506,17 @@ import ohos.base.*
 import kit.ArkWeb.*
 import kit.PerformanceAnalysisKit.Hilog
 
-let value = WebCookieManager.fetchCookie("https://www.example.com")
-Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
+try {
+    // The cookie is obtained from the web session, such as from the request in an HTTP request. In this example, it is assumed that the obtained cookie is "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV".
+    let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // configCookie
+    WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
+    // fetchCookie
+    let value = WebCookieManager.fetchCookie("https://www.example.com")
+    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
+} catch (e: BusinessException) {
+    Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
+}
 ```
 
 ### static func isCookieAllowed()

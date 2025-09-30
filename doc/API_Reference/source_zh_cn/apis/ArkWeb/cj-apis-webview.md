@@ -317,14 +317,14 @@ import ohos.business_exception.BusinessException
 import kit.PerformanceAnalysisKit.Hilog
 
 try {
-    // 需要设置的cookie，其中cookie的格式为name=value，本例中name为ZFY，value为4Mvfh8V4iYFnDc8CGowMa3KE4m0dV
+    // cookie从web session中获取，如从http请求的request中获取。此示例中假设获取到的cookie为"ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置的cookie
     let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
     // 设置指定url的cookie
     WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
-    // 获取指定url的cookie
-    let value = WebCookieManager.fetchCookie("https://www.example.com")
-    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
     WebCookieManager.clearAllCookies()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
@@ -355,14 +355,14 @@ import ohos.business_exception.BusinessException
 import kit.PerformanceAnalysisKit.Hilog
 
 try {
-    // 需要设置的cookie，其中cookie的格式为name=value，本例中name为ZFY，value为4Mvfh8V4iYFnDc8CGowMa3KE4m0dV
+    // cookie从web session中获取，如从http请求的request中获取。此示例中假设获取到的cookie为"ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置的cookie
     let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
     // 设置指定url的cookie
     WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
-    // 获取指定url的cookie
-    let value = WebCookieManager.fetchCookie("https://www.example.com")
-    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
     WebCookieManager.clearSessionCookie()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
@@ -411,15 +411,15 @@ import ohos.business_exception.BusinessException
 import kit.PerformanceAnalysisKit.Hilog
 
 try {
-    // 需要设置的cookie，其中cookie的格式为name=value，本例中name为ZFY，value为4Mvfh8V4iYFnDc8CGowMa3KE4m0dV
+    // cookie从web session中获取，如从http请求的request中获取。此示例中假设获取到的cookie为"ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
+    // 设置的cookie
     let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
     // 设置指定url的cookie
     WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
-    // 获取指定url的cookie
-    let value = WebCookieManager.fetchCookie("https://www.example.com")
-    Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
-    WebCookieManager.clearAllCookies()
+    // ... 
+    // 此处执行业务逻辑，如加载带有cookie的网页。
+    // 执行完后清除cookie
+    WebCookieManager.clearSessionCookie()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
 }
@@ -514,11 +514,9 @@ try {
     let cookie = "ZFY=4Mvfh8V4iYFnDc8CGowMa3KE4m0dV"
     // 设置指定url的cookie
     WebCookieManager.configCookie("https://www.example.com", cookie, incognito: false)
-    // 获取指定url的cookie
+    // 设置完后获取指定url的cookie
     let value = WebCookieManager.fetchCookie("https://www.example.com")
     Hilog.info(0, "AppLogCj",  "WebCookieManager,fetchCookie cookie = ${value}")
-    // 删除cookie
-    WebCookieManager.clearAllCookies()
 } catch (e: BusinessException) {
     Hilog.error(0, "AppLogCj", "ErrorCode: ${e.code}, ErrorMessage: ${e.message}")
 }
