@@ -39,9 +39,11 @@ class MyParcelable <: Parcelable {
     // 字符串数据
     var str: String = ''
     // 匿名共享内存对象
-    var ashmem: Ashmem = Ashmem.create("ashmem", 1024)
+    var ashmem: Ashmem
 
-    init() {}
+    init() {
+        this.ashmem = Ashmem.create("ashmem", 1024)
+    }
 
     init(num: Int32, str: String, ashmem: Ashmem) {
         this.num = num
