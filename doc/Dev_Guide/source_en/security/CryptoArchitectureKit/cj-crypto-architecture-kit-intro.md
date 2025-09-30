@@ -25,12 +25,9 @@ The cryptographic algorithm library offers the following functionalities to deve
 
 - [Key Generation and Conversion](./cj-crypto-key-generation-conversion-overview.md)
 - [Encryption and Decryption](./cj-crypto-encryption-decryption-overview.md)
-- [Signature Generation and Verification](./cj-crypto-sign-sig-verify-overview.md)
-- [Key Agreement](./cj-crypto-key-agreement-overview.md)
 - [Message Digest Calculation](./cj-crypto-generate-message-digest-overview.md)
 - [Message Authentication Code (MAC) Calculation](./cj-crypto-compute-mac.md)
 - [Secure Random Number Generation](./cj-crypto-generate-random-number.md)
-- [Key Derivation](./cj-crypto-key-derivation-overview.md)
 
 ## Relationship with Other Kits
 
