@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+ // The Cangjie API is in Beta. For Details on its capabilities and limitations, please refer to the README file.
+
 macro package ohos.ark_interop_macro
 
 import std.ast.*
