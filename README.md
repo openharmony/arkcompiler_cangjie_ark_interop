@@ -1,4 +1,4 @@
-# Cangjie - ArkTS Interoperability
+# Cangjie - ArkTS Interoperability(beta)
 
 ## Introduction
 
