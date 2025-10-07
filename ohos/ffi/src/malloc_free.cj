@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+ // The Cangjie API is in Beta. For Details on its capabilities and limitations, please refer to the README file.
+
 protected package ohos.ffi
 
 protected func safeMalloc<T>(count!: Int64 = 1): CPointer<T> where T <: CType {
