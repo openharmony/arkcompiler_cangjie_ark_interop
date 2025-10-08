@@ -1,8 +1,8 @@
-# 指定二进制数据生成密钥对象
+# 指定二进制数据生成密钥
 
-以3DES和HMAC为例，根据指定的对称密钥二进制数据，生成密钥（SymKey），即将外部或存储的二进制数据作为密钥生成算法库的密钥对象，该对象可用于后续的加解密等操作。
+以3DES和HMAC为例，根据指定的对称密钥二进制数据，生成密钥（SymKey），即将外部或存储的二进制数据生成密钥，该对象可用于后续的加解密等操作。
 
-## 指定二进制数据生成3DES密钥对象
+## 指定二进制数据生成3DES密钥
 
 对应的算法规格请参见[对称密钥生成规格：3DES](./cj-crypto-sym-key-generation-conversion-spec.md#3des)。
 
@@ -10,9 +10,9 @@
 
 2. 调用[createSymKeyGenerator](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring)，指定字符串参数'3DES192'，创建密钥算法为3DES、密钥长度为192位的对称密钥生成器（SymKeyGenerator）。
 
-3. 调用[convertKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob)，根据指定的对称密钥二进制数据，生成对称密钥对象（SymKey）。
+3. 调用[convertKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob)，根据指定的对称密钥二进制数据，生成对称密钥（SymKey）。
 
-4. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥对象的二进制数据。
+4. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥的二进制数据。
 
 以生成3DES密钥为例：
 
@@ -39,7 +39,7 @@ func testConvertSymKey() {
 }
 ```
 
-## 指定二进制数据生成HMAC密钥对象
+## 指定二进制数据生成HMAC密钥
 
 对应的算法规格请参见[对称密钥生成和转换规格：HMAC](./cj-crypto-sym-key-generation-conversion-spec.md#hmac)。
 
@@ -47,9 +47,9 @@ func testConvertSymKey() {
 
 2. 调用[createSymKeyGenerator](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring)，指定字符串参数'HMAC'，创建密钥算法为HMAC、密钥长度为[1, 32768]位的对称密钥生成器（SymKeyGenerator）。
 
-3. 调用[convertKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob)，根据指定的对称密钥二进制数据，生成对称密钥对象（SymKey）。
+3. 调用[convertKey](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob)，根据指定的对称密钥二进制数据，生成对称密钥（SymKey）。
 
-4. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥对象的二进制数据。
+4. 调用[getEncoded](../../../../API_Reference/source_zh_cn/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded)，获取密钥的二进制数据。
 
 以生成HMAC密钥为例：
 
