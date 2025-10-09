@@ -38,7 +38,7 @@ Subscribers receive notifications for database insertions, deletions, and modifi
 
 ## API Description
 
-The following interfaces support cross-device data synchronization for relational distributed databases. For more interfaces and usage details, refer to [Relational Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md).
+The following interfaces support cross-device data synchronization for relational distributed databases. For more interfaces and usage details, refer to [Relational Database](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md).
 
 | API Name | Description |
 | -------- | -------- |

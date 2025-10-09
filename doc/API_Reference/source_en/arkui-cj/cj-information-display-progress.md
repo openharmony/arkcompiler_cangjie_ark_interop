@@ -62,7 +62,7 @@ public func color(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The foreground color of the progress bar.<br/>Initial value:<br/>- Capsule: '0x33007dff'<br/>- Ring: Start: '0xff86c1ff', End: '0xff254ff7'<br/>- Other styles: '0xff007dff' |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The foreground color of the progress bar.<br/>Initial value:<br/>- Capsule: '0x33007dff'<br/>- Ring: Start: '0xff86c1ff', End: '0xff254ff7'<br/>- Other styles: '0xff007dff' |
 
 ### func style(Length, Int32, Length)
 
@@ -80,9 +80,9 @@ public func style(strokeWidth!: Length = 10.vp, scaleCount!: Int32 = 120, scaleW
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| strokeWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.vp | **Named parameter.** Sets the width of the progress bar (percentage values are not supported). |
+| strokeWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.vp | **Named parameter.** Sets the width of the progress bar (percentage values are not supported). |
 | scaleCount | Int32 | No | 120 | **Named parameter.** Sets the total number of scale marks for the ring progress bar. |
-| scaleWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 2.vp | **Named parameter.** Sets the thickness of the scale marks for the ring progress bar (percentage values are not supported). If the scale thickness exceeds the progress bar width, the system default thickness is used. |
+| scaleWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 2.vp | **Named parameter.** Sets the thickness of the scale marks for the ring progress bar (percentage values are not supported). If the scale thickness exceeds the progress bar width, the system default thickness is used. |
 
 ### func style(RingStyleOptions)
 
@@ -219,7 +219,7 @@ public var strokeWidth: Length
 
 **Function:** Sets the width of the progress bar (percentage values are not supported).
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -245,7 +245,7 @@ public init(strokeWidth!: Length = 4.vp, shadow!: Bool = false,
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| strokeWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 4.vp | **Named parameter.** Sets the width of the progress bar (percentage values are not supported). If the width is greater than or equal to the radius, it defaults to half the radius value. |
+| strokeWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 4.vp | **Named parameter.** Sets the width of the progress bar (percentage values are not supported). If the width is greater than or equal to the radius, it defaults to half the radius value. |
 | shadow | Bool | No | false | **Named parameter.** Toggles the shadow effect of the progress bar. |
 | status | [ProgressStatus](#enum-progressstatus) | No | ProgressStatus.Progressing | **Named parameter.** Sets the status of the progress bar. When set to LOADING, the update check animation is enabled, and setting the progress value has no effect. When changed from LOADING to PROGRESSING, the update check animation completes before stopping. |
 | enableSmoothEffect | Bool | No | true | **Named parameter.** Toggles the smooth animation effect. When enabled, the progress transitions smoothly from the current value to the target value; otherwise, it changes abruptly. |

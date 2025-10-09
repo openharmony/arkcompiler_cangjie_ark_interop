@@ -57,7 +57,7 @@ public func decoration(decorationType!: TextDecorationType, color!: ResourceColo
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | **Named parameter.** Text decoration line style.<br>Initial value: TextDecorationType.None. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Text decoration line color. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Text decoration line color. |
 
 ### func fontColor(ResourceColor)
 
@@ -75,7 +75,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
 
 ### func fontFamily(ResourceStr)
 
@@ -93,7 +93,7 @@ public func fontFamily(value: ResourceStr): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font list. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font list. |
 
 ### func fontSize(Length)
 
@@ -111,7 +111,7 @@ public func fontSize(value: Length): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When Length is of type Int64 or Float64, the fp unit is used. Percentage strings are not supported. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When Length is of type Int64 or Float64, the fp unit is used. Percentage strings are not supported. |
 
 ### func fontStyle(FontStyle)
 
@@ -165,7 +165,7 @@ public func letterSpacing(value: Length): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Character spacing of the text. Unit: fp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Character spacing of the text. Unit: fp. |
 
 ### func textCase(TextCase)
 

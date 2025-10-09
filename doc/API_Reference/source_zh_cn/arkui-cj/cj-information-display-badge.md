@@ -101,7 +101,7 @@ public var badgeColor: ResourceColor
 
 **功能：** badge的颜色。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -117,7 +117,7 @@ public var badgeSize: Length
 
 **功能：** badge的大小，单位为vp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -133,7 +133,7 @@ public var borderColor: ResourceColor
 
 **功能：** 底板描边颜色。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -149,7 +149,7 @@ public var borderWidth: Length
 
 **功能：** 底板描边粗细。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -165,7 +165,7 @@ public var color: ResourceColor
 
 **功能：** 文本颜色。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -181,7 +181,7 @@ public var fontSize: Length
 
 **功能：** 文本大小，单位为fp。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -223,13 +223,13 @@ public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badg
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.White|**命名参数。** 文本颜色。|
-|fontSize|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|10.fp|**命名参数。** 文本大小。<br>单位：fp。|
-|badgeSize|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** badge的大小。<br>单位：fp。|
-|badgeColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Red|**命名参数。** badge的颜色。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.White|**命名参数。** 文本颜色。|
+|fontSize|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.fp|**命名参数。** 文本大小。<br>单位：fp。|
+|badgeSize|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** badge的大小。<br>单位：fp。|
+|badgeColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Red|**命名参数。** badge的颜色。|
 |fontWeight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 设置文本的字体粗细。|
-|borderColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Red|**命名参数。** 底板描边颜色。|
-|borderWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|1.vp|**命名参数。** 底板描边粗细。<br>单位：vp。|
+|borderColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Red|**命名参数。** 底板描边颜色。|
+|borderWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|1.vp|**命名参数。** 底板描边粗细。<br>单位：vp。|
 
 ### enum BadgePosition
 

@@ -38,7 +38,7 @@ public init(
 |:---|:---|:---|:---|:---|
 | value | ResourceStr | No | "" | **Named parameter.** Currently displayed search text content. |
 | placeholder | ResourceStr | No | "" | **Named parameter.** Hint text when there is no input. |
-| icon | Option\<[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)> | No | Option.None | Search icon path, using the system search icon by default.<br>**Note:** <br>The icon data source supports local and network images.<br> - Supported image formats include png, jpg, bmp, svg, gif, pixelmap, and heif.<br> - Supports Base64 strings. Format: data:image/[png\|jpeg\|bmp\|webp\| **Named parameter.** heif];base64,[base64 data], where [base64 data] is the Base64 string data.<br>If set together with the searchIcon property, searchIcon takes precedence. |
+| icon | Option\<[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)> | No | Option.None | Search icon path, using the system search icon by default.<br>**Note:** <br>The icon data source supports local and network images.<br> - Supported image formats include png, jpg, bmp, svg, gif, pixelmap, and heif.<br> - Supports Base64 strings. Format: data:image/[png\|jpeg\|bmp\|webp\| **Named parameter.** heif];base64,[base64 data], where [base64 data] is the Base64 string data.<br>If set together with the searchIcon property, searchIcon takes precedence. |
 | controller | [SearchController](#class-searchcontroller) | No | Option.None | **Named parameter.** Search component controller. |
 
 ## Common Properties/Common Events
@@ -85,7 +85,7 @@ public func placeholderColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Target color.<br>Initial value: 0x99000000. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Target color.<br>Initial value: 0x99000000. |
 
 ### func placeholderFont(Length, FontWeight, FontStyle, ResourceStr)
 
@@ -109,10 +109,10 @@ public func placeholderFont(
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | **Named parameter.** Placeholder text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | **Named parameter.** Placeholder text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.W400 | **Named parameter.** Target font weight for the placeholder. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Target font style for the placeholder. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Font family for the placeholder. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Font family for the placeholder. |
 
 ### func searchButton(String)
 
@@ -154,10 +154,10 @@ public func textFont(
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | **Named parameter.** Text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | **Named parameter.** Text size. When Length is Int64 or Float64, uses fp unit. Supports percentage strings. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.W400 | **Named parameter.** Target font weight for the input. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Target font style for the input. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Font family for the input. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Font family for the input. |
 
 ## Component Events
 

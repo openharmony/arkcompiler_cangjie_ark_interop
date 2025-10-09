@@ -127,7 +127,7 @@ public func maxSideBarWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置侧边栏最大宽度。<br>初始值：280.vp。<br>单位：vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置侧边栏最大宽度。<br>初始值：280.vp。<br>单位：vp。|
 
 ### func minContentWidth(Length)
 
@@ -156,7 +156,7 @@ public func minContentWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|SideBarContainer组件内容区可显示的最小宽度。<br>初始值：360.vp。<br>单位：vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|SideBarContainer组件内容区可显示的最小宽度。<br>初始值：360.vp。<br>单位：vp。|
 
 ### func minSideBarWidth(Length)
 
@@ -179,7 +179,7 @@ public func minSideBarWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏最小宽度。<br>初始值：240.vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏最小宽度。<br>初始值：240.vp。|
 
 ### func showControlButton(Bool)
 
@@ -255,7 +255,7 @@ public func sideBarWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏的宽度。<br>初始值：240.vp。<br>单位：vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏的宽度。<br>初始值：240.vp。<br>单位：vp。|
 
 ## 组件事件
 
@@ -312,7 +312,7 @@ public var hidden: ResourceStr
 
 **功能：**设置侧边栏隐藏时控制按钮的图标。
 
-**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -328,7 +328,7 @@ public var shown: ResourceStr
 
 **功能：**设置侧边栏显示时控制按钮的图标。
 
-**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -344,7 +344,7 @@ public var switching: ResourceStr
 
 **功能：**设置侧边栏显示和隐藏状态切换时控制按钮的图标。
 
-**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -368,9 +368,9 @@ public init(shown!: ResourceStr, hidden!: ResourceStr, switching!: ResourceStr =
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|shown|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏显示时控制按钮的图标。|
-|hidden|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏隐藏时控制按钮的图标。|
-|switching|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|设置侧边栏显示和隐藏状态切换时控制按钮的图标。|
+|shown|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏显示时控制按钮的图标。|
+|hidden|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏隐藏时控制按钮的图标。|
+|switching|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|设置侧边栏显示和隐藏状态切换时控制按钮的图标。|
 
 ### class ButtonStyle
 
@@ -540,7 +540,7 @@ public var color:?ResourceColor
 
 **功能：**分割线的颜色。
 
-**类型：** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -556,7 +556,7 @@ public var endMargin: Length
 
 **功能：** 分割线与侧边栏底端的距离。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -572,7 +572,7 @@ public var startMargin: Length
 
 **功能：** 分割线与侧边栏顶端的距离。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -588,7 +588,7 @@ public var strokeWidth: Length
 
 **功能：**分割线的线宽。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -613,10 +613,10 @@ public init(strokeWidth!: Length, color!: ?ResourceColor = 0x08000000, startMarg
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 分割线的线宽。<br/>初始值：1.vp。|
-|color|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|0x08000000|**命名参数。** 分割线的颜色。<br/>初始值：0x000000。|
-|startMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏顶端的距离。|
-|endMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏底端的距离。|
+|strokeWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 分割线的线宽。<br/>初始值：1.vp。|
+|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|0x08000000|**命名参数。** 分割线的颜色。<br/>初始值：0x000000。|
+|startMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏顶端的距离。|
+|endMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏底端的距离。|
 
 ## 示例代码
 

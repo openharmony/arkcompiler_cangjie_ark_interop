@@ -12,7 +12,7 @@ Both key-value databases and relational databases support encryption operations.
 
 For key-value databases, encryption is configured via the `encrypt` parameter in `options`, which defaults to `false` (no encryption). Setting `encrypt` to `true` enables encryption.
 
-For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-distributed_kv_store.md).
+For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/ArkData/cj-apis-distributed_kv_store.md).
 
 1. Obtain the context.
 
@@ -83,7 +83,7 @@ For specific interfaces and functionalities, refer to [Distributed Key-Value Dat
 
 For relational databases, encryption is configured via the `encrypt` property in `StoreConfig`, which defaults to `false` (no encryption). Setting `encrypt` to `true` enables encryption.
 
-For specific interfaces and functionalities, refer to [Relational Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md).
+For specific interfaces and functionalities, refer to [Relational Database](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md).
 
 1. Obtain the context.
 

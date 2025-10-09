@@ -52,7 +52,7 @@ The access control mechanism of distributed databases ensures security during da
 
 Key-value databases use the `securityLevel` parameter to set the database's security level. Below is an example of creating a database with security level S1.
 
-For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-distributed_kv_store.md).
+For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/ArkData/cj-apis-distributed_kv_store.md).
 
 > **Note:**
 >
@@ -131,7 +131,7 @@ For specific interfaces and functionalities, refer to [Distributed Key-Value Dat
 
 Relational databases use the `securityLevel` parameter to set the database's security level. Below is an example of creating a database with security level S1.
 
-For specific interfaces and functionalities, refer to [Relational Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md).
+For specific interfaces and functionalities, refer to [Relational Database](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md).
 
 1. Obtain the context.
 

@@ -31,8 +31,8 @@ public init(placeholder!: ResourceStr = "", text!: ResourceStr = "",
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| placeholder | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Hint text when no input is present.<br/>The hint text disappears when content is entered. When only the placeholder property is set, the handle still follows drag movements, and the cursor stays at the beginning of the text when the handle is released. |
-| text | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Current text content of the input box.<br/>It is recommended to bind state variables with text in real-time through the onChange event to avoid abnormal text content in TextArea during component refresh. |
+| placeholder | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Hint text when no input is present.<br/>The hint text disappears when content is entered. When only the placeholder property is set, the handle still follows drag movements, and the cursor stays at the beginning of the text when the handle is released. |
+| text | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Current text content of the input box.<br/>It is recommended to bind state variables with text in real-time through the onChange event to avoid abnormal text content in TextArea during component refresh. |
 | controller | [TextAreaController](#class-textareacontroller) | No | TextAreaController() | **Named parameter.** TextArea controller. |
 
 ## Common Attributes/Common Events
@@ -59,7 +59,7 @@ public func caretColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Cursor color of the input box.<br>Default: 0xFF0A59F7. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Cursor color of the input box.<br>Default: 0xFF0A59F7. |
 
 ### func enterKeyType(EnterKeyType)
 
@@ -95,7 +95,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color.<br>Default: 0xE5000000. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color.<br>Default: 0xE5000000. |
 
 ### func fontFamily(ResourceStr)
 
@@ -113,7 +113,7 @@ public func fontFamily(value: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font family list. Default font is 'HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' and [registered custom fonts](../apis/BasicServicesKit/cj-apis-base.md#func-registerfont). |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font family list. Default font is 'HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' and [registered custom fonts](../BasicServicesKit/cj-apis-base.md#func-registerfont). |
 
 ### func fontSize(Length)
 
@@ -131,7 +131,7 @@ public func fontSize(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When Length is Int64 or Float64, uses fp units. Percentage strings are not supported.<br>Default: 16.fp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When Length is Int64 or Float64, uses fp units. Percentage strings are not supported.<br>Default: 16.fp. |
 
 ### func fontStyle(FontStyle)
 
@@ -189,7 +189,7 @@ public func inputFilter(value!: ResourceStr, error!: ?(String) -> Unit = None): 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Regular expression. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Regular expression. |
 | error | ?(String)->Unit | No | None | **Named parameter.** Returns filtered content when regex matching fails. |
 
 ### func maxLength(UInt32)
@@ -230,7 +230,7 @@ public func placeholderColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of the placeholder.<br>Default: Follows theme. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of the placeholder.<br>Default: Follows theme. |
 
 ### func placeholderFont(Length, FontWeight, String, FontStyle)
 
@@ -249,7 +249,7 @@ public func placeholderFont(size!: Length, weight!: FontWeight = FontWeight.W400
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Text size. Unit: fp.<br>Default: 16.fp. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Text size. Unit: fp.<br>Default: 16.fp. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.W400 | **Named parameter.** Font weight of the text. |
 | family | String | No | "" | **Named parameter.** Font family list of the text. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Font style of the text. |

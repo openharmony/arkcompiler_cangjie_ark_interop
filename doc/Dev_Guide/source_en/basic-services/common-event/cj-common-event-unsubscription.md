@@ -2,13 +2,13 @@
 
 ## Scenario Description
 
-After completing business requirements, dynamic subscribers should proactively unsubscribe. Call the [unsubscribe()](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#static-func-unsubscribecommoneventsubscriber) method to unsubscribe from events.
+After completing business requirements, dynamic subscribers should proactively unsubscribe. Call the [unsubscribe()](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#static-func-unsubscribecommoneventsubscriber) method to unsubscribe from events.
 
 ## Interface Description
 
 | Interface Name | Description |
 | -------- | -------- |
-| unsubscribe(subscriber:&nbsp;[CommonEventSubscriber](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscriber)): Unit | Unsubscribes from common events. |
+| unsubscribe(subscriber:&nbsp;[CommonEventSubscriber](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscriber)): Unit | Unsubscribes from common events. |
 
 ## Development Steps
 
@@ -22,7 +22,7 @@ After completing business requirements, dynamic subscribers should proactively u
 
 2. Follow the steps in the [Dynamic Subscription to Common Events](./cj-common-event-subscription.md) section to subscribe to an event.
 
-3. Call the [unsubscribe()](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#static-func-unsubscribecommoneventsubscriber) method in CommonEvent to unsubscribe from an event.
+3. Call the [unsubscribe()](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#static-func-unsubscribecommoneventsubscriber) method in CommonEvent to unsubscribe from an event.
 
    <!-- compile -->
 

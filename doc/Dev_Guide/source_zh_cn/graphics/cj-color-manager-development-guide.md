@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-完整的仓颉 API 说明以及实例代码请参见：[色彩管理接口](../../API_Reference/source_zh_cn/apis/ArkGraphics2D/cj-apis-color_manager.md)。
+完整的仓颉 API 说明以及实例代码请参见：[色彩管理接口](../../API_Reference/source_zh_cn/ArkGraphics2D/cj-apis-color_manager.md)。
 
 具体接口说明如下表。
 
@@ -230,4 +230,4 @@ colorManager.getCurrentColorSpaceInfo()
   - Bt709：BT.709色域
   - DisplayP3：Display P3色域
   - Bt2020Hlg、Bt2020Pq：BT.2020色域的不同转换函数
-  - 更多色域类型请参考[ColorSpace枚举](../../API_Reference/source_zh_cn/apis/ArkGraphics2D/cj-apis-color_manager.md#enum-colorspace)
+  - 更多色域类型请参考[ColorSpace枚举](../../API_Reference/source_zh_cn/ArkGraphics2D/cj-apis-color_manager.md#enum-colorspace)

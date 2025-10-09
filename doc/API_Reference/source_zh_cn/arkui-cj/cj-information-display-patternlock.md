@@ -56,7 +56,7 @@ public func activeColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“激活”状态的填充颜色。<br/>初始值：0xff182431。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“激活”状态的填充颜色。<br/>初始值：0xff182431。|
 
 ### func autoReset(Bool)
 
@@ -92,7 +92,7 @@ public func circleRadius(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|宫格中圆点的半径。<br/>初始值：6.vp。<br/>取值范围：(0, sideLength/11]，设置小于等于0的值时按初始值处理，超过最大值按最大值处理。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|宫格中圆点的半径。<br/>初始值：6.vp。<br/>取值范围：(0, sideLength/11]，设置小于等于0的值时按初始值处理，超过最大值按最大值处理。|
 
 ### func pathColor(ResourceColor)
 
@@ -110,7 +110,7 @@ public func pathColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|连线的颜色。<br/>初始值：0x33182431。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|连线的颜色。<br/>初始值：0x33182431。|
 
 ### func pathStrokeWidth(Length)
 
@@ -128,7 +128,7 @@ public func pathStrokeWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|连线的宽度。<br/>初始值：12.vp。<br/>取值范围：[0, sideLength/3]，超过最大值按最大值处理。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|连线的宽度。<br/>初始值：12.vp。<br/>取值范围：[0, sideLength/3]，超过最大值按最大值处理。|
 
 ### func regularColor(ResourceColor)
 
@@ -146,7 +146,7 @@ public func regularColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“未选中”状态的填充颜色。<br/>初始值：0xff182431。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“未选中”状态的填充颜色。<br/>初始值：0xff182431。|
 
 ### func selectedColor(ResourceColor)
 
@@ -164,7 +164,7 @@ public func selectedColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“选中”状态的填充颜色。<br/>初始值：0xff182431。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“选中”状态的填充颜色。<br/>初始值：0xff182431。|
 
 ### func sideLength(Length)
 
@@ -182,7 +182,7 @@ public func sideLength(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的宽度和高度。<br/>初始值：288.vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的宽度和高度。<br/>初始值：288.vp。|
 
 ## 组件事件
 

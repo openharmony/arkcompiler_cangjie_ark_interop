@@ -36,7 +36,7 @@ public init(min!: Length = 0.vp)
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| min | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The minimum size of the Blank component along the main axis of the container. The default unit is vp if no pixel unit is specified. Percentage values are not supported. Negative values use the default value. If the minimum value exceeds the available container space, the minimum value is used as the component size, causing it to overflow the container. |
+| min | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The minimum size of the Blank component along the main axis of the container. The default unit is vp if no pixel unit is specified. Percentage values are not supported. Negative values use the default value. If the minimum value exceeds the available container space, the minimum value is used as the component size, causing it to overflow the container. |
 
 ## Common Attributes/Common Events
 
@@ -62,7 +62,7 @@ public func color(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The fill color of the Blank component.<br/>Initial value: Color.TRANSPARENT |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The fill color of the Blank component.<br/>Initial value: Color.TRANSPARENT |
 
 ## Example Code
 

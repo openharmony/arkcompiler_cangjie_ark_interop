@@ -91,7 +91,7 @@ public init(
 | modalTransition | [ModalTransition](./cj-common-types.md#enum-modaltransition) | No | ModalTransition.Default | **Named parameter.** Transition method for the full-screen modal page. |
 | onWillDismiss | ?([DismissContentCoverAction](./cj-common-types.md#class-dismisscontentcoveraction))->Unit | No | Option.None | **Named parameter.** Callback function for interactive dismissal of the full-screen modal page. |
 | transition | ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect) | No | Option.None | **Named parameter.** Custom transition method for the full-screen modal page. |
-| backgroundColor | ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Option.None | **Named parameter.** Background color of the full-modal page. |
+| backgroundColor | ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Option.None | **Named parameter.** Background color of the full-modal page. |
 | onAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function after the full-modal page is displayed (after animation ends). |
 | onDisappear | ?()->Unit | No | Option.None | **Named parameter.** Callback function after the full-modal page is dismissed (after animation ends). |
 | onWillAppear | ?()->Unit | No | Option.None | **Named parameter.** Callback function before the full-modal page is displayed (before animation starts). |

@@ -28,7 +28,7 @@ Specific development methods are described below.
 
 ## Interface Description
 
-For the complete Cangjie API documentation and sample code, refer to [Network Connection Management](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md).
+For the complete Cangjie API documentation and sample code, refer to [Network Connection Management](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md).
 
 | Interface Name                                                                                | Description                                                                                                                                                            |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -61,13 +61,13 @@ For the complete Cangjie API documentation and sample code, refer to [Network Co
 
 2. Import `connection` from `@kit.NetworkKit`.
 
-3. Call the [`createNetConnection`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-createnetconnectionnetspecifier-uint32) method, specifying network capabilities, network type, and timeout (optional; if not provided, defaults to the default network). This creates a NetConnection object.
+3. Call the [`createNetConnection`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-createnetconnectionnetspecifier-uint32) method, specifying network capabilities, network type, and timeout (optional; if not provided, defaults to the default network). This creates a NetConnection object.
 
-4. Call the [`register()`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-register) method to subscribe to notifications for specified network status changes.
+4. Call the [`register()`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-register) method to subscribe to notifications for specified network status changes.
 
 5. When the network becomes available, the `netAvailable` event callback is triggered; when unavailable, the `netUnavailable` callback is triggered.
 
-6. When the network is no longer needed, call the [`unregister()`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-unregister) method to unsubscribe.
+6. When the network is no longer needed, call the [`unregister()`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-unregister) method to unsubscribe.
 
 <!-- compile -->
 
@@ -183,7 +183,7 @@ func test() {
 
 2. Import `connection` from `kit.NetworkKit`.
 
-3. Call the [`getAllNets`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-getallnets) method to retrieve a list of all connected networks.
+3. Call the [`getAllNets`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-getallnets) method to retrieve a list of all connected networks.
 
 <!-- compile -->
 
@@ -202,11 +202,11 @@ let nets = getAllNets()
 
 2. Import `connection` from `kit.NetworkKit`.
 
-3. Call [`getDefaultNet`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-getdefaultnet) to retrieve the default data network (`NetHandle`), or call [`getAllNets`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-getallnets) to retrieve a list of all connected networks (`Array<NetHandle>`).
+3. Call [`getDefaultNet`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-getdefaultnet) to retrieve the default data network (`NetHandle`), or call [`getAllNets`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-getallnets) to retrieve a list of all connected networks (`Array<NetHandle>`).
 
-4. Call [`getNetCapabilities`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-getnetcapabilitiesnethandle) to retrieve the capability information of the network corresponding to the `NetHandle`. Capabilities include network type (cellular, WiFi, Ethernet) and specific network capabilities.
+4. Call [`getNetCapabilities`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-getnetcapabilitiesnethandle) to retrieve the capability information of the network corresponding to the `NetHandle`. Capabilities include network type (cellular, WiFi, Ethernet) and specific network capabilities.
 
-5. Call [`getConnectionProperties`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-getconnectionpropertiesnethandle) to retrieve the connection information of the network corresponding to the `NetHandle`.
+5. Call [`getConnectionProperties`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-getconnectionpropertiesnethandle) to retrieve the connection information of the network corresponding to the `NetHandle`.
 
 <!-- compile -->
 
@@ -312,7 +312,7 @@ func test() {
 
 2. Import `connection` from `kit.NetworkKit`.
 
-3. Call the [`getAddressesByName`](../../../API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md#func-getaddressesbynamestring) method to resolve a hostname using the default network and retrieve all IP addresses.
+3. Call the [`getAddressesByName`](../../../API_Reference/source_en/NetworkKit/cj-apis-net-connection.md#func-getaddressesbynamestring) method to resolve a hostname using the default network and retrieve all IP addresses.
 
 <!-- compile -->
 

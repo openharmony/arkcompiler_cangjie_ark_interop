@@ -34,7 +34,7 @@
 
 ## 接口说明
 
-以下是关系型数据库持久化功能的相关接口，更多接口及使用方式请参见[关系型数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md)。
+以下是关系型数据库持久化功能的相关接口，更多接口及使用方式请参见[关系型数据库](../../../API_Reference/source_zh_cn/ArkData/cj-apis-relational_store.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -221,7 +221,7 @@
 
 6. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），详情请参见[关系型数据库数据恢复](cj-data-backup-and-restore.md#关系型数据库数据恢复)。
 
-    此处以调用[restore](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md#func-restorestring)接口恢复手动备份数据为例：
+    此处以调用[restore](../../../API_Reference/source_zh_cn/ArkData/cj-apis-relational_store.md#func-restorestring)接口恢复手动备份数据为例：
 
     <!-- compile -->
 

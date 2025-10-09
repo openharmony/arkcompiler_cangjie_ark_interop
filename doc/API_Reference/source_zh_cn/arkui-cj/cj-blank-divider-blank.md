@@ -36,7 +36,7 @@ public init(min!: Length = 0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|min|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 空白填充组件在容器主轴上的最小大小。不指定像素单位时，默认单位vp。不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。|
+|min|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 空白填充组件在容器主轴上的最小大小。不指定像素单位时，默认单位vp。不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。|
 
 ## 通用属性/通用事件
 
@@ -62,7 +62,7 @@ public func color(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|空白填充的填充颜色。<br/>初始值：Color.TRANSPARENT|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|空白填充的填充颜色。<br/>初始值：Color.TRANSPARENT|
 
 ## 示例代码
 

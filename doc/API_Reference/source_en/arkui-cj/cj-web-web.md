@@ -1,6 +1,6 @@
 # Web
 
-Provides Web components with web display capabilities. [@ohos.web.webview](../apis/ArkWeb/cj-apis-webview.md) offers web control functionalities.
+Provides Web components with web display capabilities. [@ohos.web.webview](../ArkWeb/cj-apis-webview.md) offers web control functionalities.
 
 ## Import Module
 
@@ -33,8 +33,8 @@ public init(
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The src cannot dynamically change addresses via state variables (e.g., @State). |
-| controller | [WebviewController](../apis/ArkWeb/cj-apis-webview.md#class-webviewcontroller) | Yes | - | **Named parameter.** Sets the Web controller. |
+| src | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The src cannot dynamically change addresses via state variables (e.g., @State). |
+| controller | [WebviewController](../ArkWeb/cj-apis-webview.md#class-webviewcontroller) | Yes | - | **Named parameter.** Sets the Web controller. |
 
 ## Common Attributes/Common Events
 
@@ -173,7 +173,7 @@ public func javaScriptProxy(funcList!: Array<(String) -> String>, name!: String,
 | funcList | Array\<(String)->String> | Yes | - | **Named parameter.** The synchronous methods of the JavaScript object on the application side participating in registration. |
 | name | String | Yes | - | **Named parameter.** The name of the registered object, consistent with the object name called in the window. |
 | methodList | Array\<String> | Yes | - | **Named parameter.** The asynchronous methods of the JavaScript object on the application side participating in registration. |
-| controller | [WebviewController](../apis/ArkWeb/cj-apis-webview.md#class-webviewcontroller) | Yes | - | **Named parameter.** Sets the Web controller. |
+| controller | [WebviewController](../ArkWeb/cj-apis-webview.md#class-webviewcontroller) | Yes | - | **Named parameter.** Sets the Web controller. |
 
 ### func mixedMode(MixedMode)
 
@@ -269,7 +269,7 @@ public func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): Thi
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnLoadInterceptEvent](#class-onloadinterceptevent),Bool> | Yes | - | Callback function triggered when resource loading is intercepted. <br> Return value boolean. Returns true to block this loading, otherwise allows it. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[OnLoadInterceptEvent](#class-onloadinterceptevent),Bool> | Yes | - | Callback function triggered when resource loading is intercepted. <br> Return value boolean. Returns true to block this loading, otherwise allows it. |
 
 ### func onPageBegin(Callback\<OnPageBeginEvent,Unit>)
 
@@ -287,7 +287,7 @@ public func onPageBegin(callback: Callback<OnPageBeginEvent, Unit>): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageBeginEvent](#class-onpagebeginevent),Unit> | Yes | - | Callback function triggered when webpage loading starts. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageBeginEvent](#class-onpagebeginevent),Unit> | Yes | - | Callback function triggered when webpage loading starts. |
 
 ### func onPageEnd(Callback\<OnPageEndEvent,Unit>)
 
@@ -305,7 +305,7 @@ public func onPageEnd(callback: Callback<OnPageEndEvent, Unit>): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageEndEvent](#class-onpageendevent),Unit> | Yes | - | Triggered when webpage loading ends. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageEndEvent](#class-onpageendevent),Unit> | Yes | - | Triggered when webpage loading ends. |
 
 ### func onlineImageAccess(Bool)
 

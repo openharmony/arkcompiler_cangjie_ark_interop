@@ -68,7 +68,7 @@ Archived image data sources can be categorized into local resources, network res
 
 ## Displaying Vector Graphics
 
-The Image component can display vector graphics (SVG format images). For SVG tag documentation, refer to the [SVG Description](../../../API_Reference/source_en/apis/ImageKit/cj-apis-image.md#svg标签说明).
+The Image component can display vector graphics (SVG format images). For SVG tag documentation, refer to the [SVG Description](../../../API_Reference/source_en/ImageKit/cj-apis-image.md#svg标签说明).
 
 SVG format images can use the `fillColor` property to change the drawing color.
 

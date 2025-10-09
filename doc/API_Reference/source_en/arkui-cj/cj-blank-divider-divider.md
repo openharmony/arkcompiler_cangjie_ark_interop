@@ -50,7 +50,7 @@ public func color(value: ResourceColor): This
 
 | Name   | Type                                       | Required | Default | Description     |
 |:----- |:---------------------------------------- |:--- |:--- |:------ |
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes   | -   | The color of the divider line. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes   | -   | The color of the divider line. |
 
 ### func lineCap(LineCapStyle)
 
@@ -86,7 +86,7 @@ public func strokeWidth(value: Length): This
 
 | Name   | Type       | Required | Default | Description                                                                                                                                       |
 |:----- |:-------- |:--- |:--- |:---------------------------------------------------------------------------------------------------------------------------------------- |
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes   | -   | The width of the divider line. When pixel units are not specified, the default unit is vp. Percentage settings are not supported. The width of the divider line does not support percentage settings. Priority is lower than the universal attribute [height](./cj-universal-attribute-size.md#func-heightlength). When exceeding the size set by universal attributes, it will be clipped according to the universal attributes. On some devices, there may be issues where the divider line does not display after rounding to 1 pixel. It is recommended to use 2 pixels. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes   | -   | The width of the divider line. When pixel units are not specified, the default unit is vp. Percentage settings are not supported. The width of the divider line does not support percentage settings. Priority is lower than the universal attribute [height](./cj-universal-attribute-size.md#func-heightlength). When exceeding the size set by universal attributes, it will be clipped according to the universal attributes. On some devices, there may be issues where the divider line does not display after rounding to 1 pixel. It is recommended to use 2 pixels. |
 
 ### func vertical(Bool)
 

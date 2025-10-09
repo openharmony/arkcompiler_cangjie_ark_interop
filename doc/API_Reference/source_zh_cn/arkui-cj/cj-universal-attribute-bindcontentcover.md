@@ -91,7 +91,7 @@ public init(
 |modalTransition|[ModalTransition](./cj-common-types.md#enum-modaltransition)|否|ModalTransition.Default|**命名参数。** 全屏模态页面的转场方式|
 |onWillDismiss|?([DismissContentCoverAction](./cj-common-types.md#class-dismisscontentcoveraction))->Unit|否|Option.None|**命名参数。** 全屏模态页面交互式关闭回调函数|
 |transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|Option.None|**命名参数。** 全屏模态页面的自定义转场方式|
-|backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Option.None|**命名参数。** 全模态页面的背板颜色。|
+|backgroundColor|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Option.None|**命名参数。** 全模态页面的背板颜色。|
 |onAppear|?()->Unit|否|Option.None|**命名参数。** 全模态页面显示（动画结束后）回调函数|
 |onDisappear|?()->Unit|否|Option.None|**命名参数。** 全模态页面回退（动画结束后）回调函数|
 |onWillAppear|?()->Unit|否|Option.None|**命名参数。** 全模态页面显示（动画开始前）回调函数|

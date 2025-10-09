@@ -68,7 +68,7 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
     }
     ```
 
-4. 若示例代码中涉及[Context](./apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中定义Global类并对其赋值，“main_ability.cj”内容如下：
+4. 若示例代码中涉及[Context](./AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)对象，需要在仓颉模板工程的“main_ability.cj”文件中定义Global类并对其赋值，“main_ability.cj”内容如下：
 
     ```cangjie
     import kit.AbilityKit.*

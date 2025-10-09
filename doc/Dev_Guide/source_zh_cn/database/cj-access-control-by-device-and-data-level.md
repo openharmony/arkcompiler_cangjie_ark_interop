@@ -52,7 +52,7 @@
 
 键值型数据库通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S1的数据库为例。
 
-具体接口及功能，请参见[分布式键值数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-distributed_kv_store.md)。
+具体接口及功能，请参见[分布式键值数据库](../../../API_Reference/source_zh_cn/ArkData/cj-apis-distributed_kv_store.md)。
 
 > **说明：**
 >
@@ -131,7 +131,7 @@
 
 关系型数据库通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S1的数据库为例。
 
-具体接口及功能，请参见[关系型数据库](../../../API_Reference/source_zh_cn/apis/ArkData/cj-apis-relational_store.md)。
+具体接口及功能，请参见[关系型数据库](../../../API_Reference/source_zh_cn/ArkData/cj-apis-relational_store.md)。
 
 1. 获取context。
 

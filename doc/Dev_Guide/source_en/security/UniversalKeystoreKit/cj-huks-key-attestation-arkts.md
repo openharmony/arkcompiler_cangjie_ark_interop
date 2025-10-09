@@ -6,11 +6,11 @@ Before using this feature, you need to apply for the permission: [ohos.permissio
 
 1. Determine the key alias `keyAlias`. The maximum length of the key alias is 128 bytes.
 
-2. Initialize the parameter set. The `properties` field in [HuksOptions](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions) must include the [HUKS_TAG_ATTESTATION_CHALLENGE](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag) attribute. Optional parameters include [HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag) and [HUKS_TAG_ATTESTATION_ID_ALIAS](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag).
+2. Initialize the parameter set. The `properties` field in [HuksOptions](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions) must include the [HUKS_TAG_ATTESTATION_CHALLENGE](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag) attribute. Optional parameters include [HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag) and [HUKS_TAG_ATTESTATION_ID_ALIAS](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag).
 
 3. Generate an asymmetric key. For details, refer to [Key Generation](./cj-huks-key-generation-overview.md).
 
-4. Pass the key alias and parameter set as parameters to the [huks.attestKeyItem](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-attestkeyitemstring-huksoptions) method to attest the key.
+4. Pass the key alias and parameter set as parameters to the [huks.attestKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-attestkeyitemstring-huksoptions) method to attest the key.
 
 <!--compile-->
 ```cangjie

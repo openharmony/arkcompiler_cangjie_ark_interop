@@ -2,7 +2,7 @@
 
 ## Overview
 
-When users open, switch, or return to a corresponding application, the [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instances within the application transition between different states in their lifecycle. The UIAbility class provides a series of callbacks that notify when the current UIAbility instance undergoes state changes, including creation and destruction of the UIAbility instance, or transitions between foreground and background states.
+When users open, switch, or return to a corresponding application, the [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instances within the application transition between different states in their lifecycle. The UIAbility class provides a series of callbacks that notify when the current UIAbility instance undergoes state changes, including creation and destruction of the UIAbility instance, or transitions between foreground and background states.
 
 The lifecycle of UIAbility includes four states: Create, Foreground, Background, and Destroy, as illustrated below.
 
@@ -14,7 +14,7 @@ The lifecycle of UIAbility includes four states: Create, Foreground, Background,
 
 ### Create State
 
-The Create state is triggered when the [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance is created during application loading. The system calls the [onCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) callback. This callback can be used for page initialization operations, such as variable definition and resource loading, to prepare for subsequent UI display.
+The Create state is triggered when the [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance is created during application loading. The system calls the [onCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) callback. This callback can be used for page initialization operations, such as variable definition and resource loading, to prepare for subsequent UI display.
 
 <!-- compile -->
 
@@ -32,11 +32,11 @@ class MainAbility <: UIAbility {
 
 > **Note:**
 >
-> [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) is a carrier for information transfer between objects and can be used for inter-component communication. For detailed information about Want, refer to [Information Carrier Want](cj-want-overview.md).
+> [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) is a carrier for information transfer between objects and can be used for inter-component communication. For detailed information about Want, refer to [Information Carrier Want](cj-want-overview.md).
 
 ### WindowStageCreate and WindowStageDestroy States
 
-After the [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance is created and before it enters the Foreground state, the system creates a WindowStage. Upon WindowStage creation, the [onWindowStageCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) callback is triggered. This callback can be used to set up UI loading and subscribe to WindowStage events.
+After the [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance is created and before it enters the Foreground state, the system creates a WindowStage. Upon WindowStage creation, the [onWindowStageCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) callback is triggered. This callback can be used to set up UI loading and subscribe to WindowStage events.
 
 **Figure 2** WindowStageCreate and WindowStageDestroy States
 
@@ -97,7 +97,7 @@ class MainAbility <: UIAbility {
 
 ### Foreground and Background States
 
-The Foreground and Background states are triggered when the [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance transitions to the foreground and background, respectively, corresponding to the [onForeground()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onforeground) and [onBackground()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onbackground) callbacks.
+The Foreground and Background states are triggered when the [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance transitions to the foreground and background, respectively, corresponding to the [onForeground()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onforeground) and [onBackground()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onbackground) callbacks.
 
 The `onForeground()` callback is triggered before the UI of the UIAbility becomes visible, such as when the UIAbility transitions to the foreground. Use this callback to request system resources or reacquire resources released in `onBackground()`.
 
@@ -126,7 +126,7 @@ class MainAbility <: UIAbility {
 }
 ```
 
-When a UIAbility instance is already created and configured with the [singleton](cj-uiability-launch-type.md#singleton启动模式) launch mode, calling [startAbility()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilityforresultwant-asynccallbackabilityresult) to launch this UIAbility instance again will only trigger the [onNewWant()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) callback, bypassing the [onCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) and [onWindowStageCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) lifecycle callbacks. Use this callback to update resources and data for subsequent UI display.
+When a UIAbility instance is already created and configured with the [singleton](cj-uiability-launch-type.md#singleton启动模式) launch mode, calling [startAbility()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilityforresultwant-asynccallbackabilityresult) to launch this UIAbility instance again will only trigger the [onNewWant()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) callback, bypassing the [onCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) and [onWindowStageCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) lifecycle callbacks. Use this callback to update resources and data for subsequent UI display.
 
 <!-- compile -->
 
@@ -143,9 +143,9 @@ class MainAbility <: UIAbility {
 
 ### Destroy State
 
-The Destroy state is triggered when the [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance is destroyed. Use the onDestroy() callback to release system resources, save data, etc.
+The Destroy state is triggered when the [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance is destroyed. Use the onDestroy() callback to release system resources, save data, etc.
 
-For example, calling the [terminateSelf()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself) method to stop the current UIAbility instance will execute the onDestroy() callback and complete the destruction of the UIAbility instance.
+For example, calling the [terminateSelf()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself) method to stop the current UIAbility instance will execute the onDestroy() callback and complete the destruction of the UIAbility instance.
 
 <!--RP1-->
 Similarly, when a user closes the UIAbility instance from the recent tasks list, the onDestroy() callback is executed, and the UIAbility instance is destroyed.

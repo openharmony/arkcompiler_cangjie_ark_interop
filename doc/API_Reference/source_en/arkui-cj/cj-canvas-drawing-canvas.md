@@ -89,7 +89,7 @@ public func addColorStop(offset: Float64, color: ResourceColor): Unit
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | offset | Float64 | Yes | - | Sets the position of the gradient point relative to the starting point as a proportion of the total length, ranging from 0 to 1. Setting offset < 0 or offset > 1 will have no gradient effect. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the gradient color. For the color format, refer to the string type description in [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor). If the color is not set in the correct format, there will be no gradient effect. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the gradient color. For the color format, refer to the string type description in [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor). If the color is not set in the correct format, there will be no gradient effect. |
 
 ### class RenderingContextSettings
 

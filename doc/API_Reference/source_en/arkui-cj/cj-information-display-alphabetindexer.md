@@ -81,7 +81,7 @@ public func color(value: ResourceColor): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of unselected items.<br>Initial value: 0x99182431. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of unselected items.<br>Initial value: 0x99182431. |
 
 ### func font(Length, FontWeight, ResourceStr, FontStyle)
 
@@ -104,9 +104,9 @@ public func font(
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.vp | **Named parameter.** Text size of selected items. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.vp | **Named parameter.** Text size of selected items. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Font weight of selected items. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Font family of selected items. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Font family of selected items. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Text style of selected items. |
 
 ### func itemSize(Length)
@@ -125,7 +125,7 @@ public func itemSize(size: Length): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Size of the index item area. The index item area is square, i.e., the side length of the square.<br>Percentage values are not supported.<br>Initial value: 16.vp.<br>Unit: vp. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Size of the index item area. The index item area is square, i.e., the side length of the square.<br>Percentage values are not supported.<br>Initial value: 16.vp.<br>Unit: vp. |
 
 ### func popupBackground(ResourceColor)
 
@@ -143,7 +143,7 @@ public func popupBackground(value: ResourceColor): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Background color of the popup.<br>Initial value: 0x66808080. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Background color of the popup.<br>Initial value: 0x66808080. |
 
 ### func popupColor(ResourceColor)
 
@@ -161,7 +161,7 @@ public func popupColor(value: ResourceColor): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of primary index items in the popup.<br>Initial value: 0xFF007DFF. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of primary index items in the popup.<br>Initial value: 0xFF007DFF. |
 
 ### func popupFont(Length, FontWeight, ResourceStr, FontStyle)
 
@@ -184,9 +184,9 @@ public func popupFont(
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 24.vp | **Named parameter.** Text size of selected items. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 24.vp | **Named parameter.** Text size of selected items. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Font weight of selected items. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Font family of selected items. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Font family of selected items. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Text style of selected items. |
 
 ### func popupPosition(Length, Length)
@@ -205,8 +205,8 @@ public func popupPosition(x!: Length = 60.vp, y!: Length = 48.vp): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 60.vp | **Named parameter.** Horizontal position of the popup relative to the midpoint of the top border of the indexer bar. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 48.vp | **Named parameter.** Vertical position of the popup relative to the midpoint of the top border of the indexer bar. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 60.vp | **Named parameter.** Horizontal position of the popup relative to the midpoint of the top border of the indexer bar. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 48.vp | **Named parameter.** Vertical position of the popup relative to the midpoint of the top border of the indexer bar. |
 
 ### func selected(Int32)
 
@@ -242,7 +242,7 @@ public func selectedBackgroundColor(value: ResourceColor): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Background color of selected items.<br>Initial value: 0x1A007DFF. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Background color of selected items.<br>Initial value: 0x1A007DFF. |
 
 ### func selectedColor(ResourceColor)
 
@@ -260,7 +260,7 @@ public func selectedColor(value: ResourceColor): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of selected items.<br>Initial value: 0xFF007DFF. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Text color of selected items.<br>Initial value: 0xFF007DFF. |
 
 ### func selectedFont(Length, FontWeight, ResourceStr, FontStyle)
 
@@ -283,9 +283,9 @@ public func selectedFont(
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.vp | **Named parameter.** Text size of selected items. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.vp | **Named parameter.** Text size of selected items. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Font weight of selected items. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Font family of selected items. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Font family of selected items. |
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Text style of selected items. |
 
 ### func usingPopup(Bool)

@@ -61,7 +61,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
 
 ### func fontFamily(ResourceStr)
 
@@ -97,7 +97,7 @@ public func fontSize(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When fontSize is of type Int64 or Float64, the fp unit is used. The initial font size is 16.fp. Percentage settings are not supported. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When fontSize is of type Int64 or Float64, the fp unit is used. The initial font size is 16.fp. Percentage settings are not supported. |
 
 ### func fontStyle(FontStyle)
 

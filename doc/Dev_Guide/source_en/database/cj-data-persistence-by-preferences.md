@@ -26,7 +26,7 @@ The persistent files for application preferences are stored within the applicati
 
 ## Interface Description
 
-Below are the key interfaces for User Preferences persistence. For more details, refer to [User Preferences](../../../API_Reference/source_en/apis/ArkData/cj-apis-preferences.md).
+Below are the key interfaces for User Preferences persistence. For more details, refer to [User Preferences](../../../API_Reference/source_en/ArkData/cj-apis-preferences.md).
 
 | Interface Name                                             | Description                                         |
 | --------------------------------------------------- | ----------------------------------------------|

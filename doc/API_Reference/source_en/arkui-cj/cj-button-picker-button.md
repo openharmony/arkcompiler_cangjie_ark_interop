@@ -55,7 +55,7 @@ Text content is displayed in a single line by default.
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| label | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The text content of the button. When the length of the text exceeds the width of the button itself, the text will be truncated. |
+| label | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The text content of the button. When the length of the text exceeds the width of the button itself, the text will be truncated. |
 
 ### init(ButtonOptions)
 
@@ -111,7 +111,7 @@ Text content is displayed in a single line by default.
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| label | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the text content. <br>**Note:** <br>When the length of the text exceeds the width of the button itself, the text will be truncated. |
+| label | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the text content. <br>**Note:** <br>When the length of the text exceeds the width of the button itself, the text will be truncated. |
 | options | [ButtonOptions](#class-buttonoptions) | Yes | - | Configures the display style of the button. |
 
 ## Common Attributes/Common Events
@@ -156,7 +156,7 @@ public func fontColor(color: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the button. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the button. |
 
 ### func fontFamily(ResourceStr)
 
@@ -174,7 +174,7 @@ public func fontFamily(value: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The text content of the button. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The text content of the button. |
 
 ### func fontSize(Length)
 
@@ -192,7 +192,7 @@ public func fontSize(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The text size of the button. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The text size of the button. |
 
 ### func fontStyle(FontStyle)
 

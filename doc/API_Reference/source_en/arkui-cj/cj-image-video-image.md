@@ -5,7 +5,7 @@ The Image component is used to display images in applications. It supports image
 > **Notes:**
 >
 > - When using shortcut keys to copy the Image component, the Image component must be in a [focused state](./cj-universal-attribute-focus.md#func-focusontouchbool). By default, the Image component is not focusable. To enable focus, set the [focusable](cj-apis-window.md#var-focusable) attribute to true, then use the TAB key to shift focus to the component. Set the [focusOnTouch](./cj-universal-attribute-focus.md#func-focusontouchbool) attribute to true to enable focus on click.
-> - The supported image formats include SVG sources. For SVG tag documentation, refer to [SVG Tag Description](../apis/ImageKit/cj-apis-image.md#svg标签说明).
+> - The supported image formats include SVG sources. For SVG tag documentation, refer to [SVG Tag Description](../ImageKit/cj-apis-image.md#svg标签说明).
 > - The playback of animated images depends on the visibility changes of the Image node. By default, animations are not played. When the node becomes visible, the animation starts via a callback, and when the node becomes invisible, the animation stops. The visibility state is determined by the [onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit) event. When the visible threshold ratios are greater than 0, the Image is considered visible.
 
 ## Import Module
@@ -52,7 +52,7 @@ public init(src: ResourceStr)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The data source of the image.<br/>ResourceStr can be used to load network and local images. |
+| src | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The data source of the image.<br/>ResourceStr can be used to load network and local images. |
 
 ### init(PixelMap)
 
@@ -76,7 +76,7 @@ public init(src: PixelMap)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | The data source of the image.<br/>PixelMap is a pixel map format commonly used in image editing scenarios. |
+| src | [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | The data source of the image.<br/>PixelMap is a pixel map format commonly used in image editing scenarios. |
 
 ## Universal Attributes/Events
 
@@ -106,7 +106,7 @@ public func alt(src: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The placeholder image displayed during loading. Local images (png, jpg, bmp, svg, gif, and heif formats) are not supported; network images are supported. |
+| src | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The placeholder image displayed during loading. Local images (png, jpg, bmp, svg, gif, and heif formats) are not supported; network images are supported. |
 
 ### func autoResize(Bool)
 
@@ -150,7 +150,7 @@ public func fillColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the fill color.<br/>By default, the component is not filled. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the fill color.<br/>By default, the component is not filled. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode. |
 
 ### func fitOriginalSize(Bool)
 
@@ -291,8 +291,8 @@ public func sourceSize(width: Length, height: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of the decoded image.<br>Unit: vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of the decoded image.<br>Unit: vp. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of the decoded image.<br>Unit: vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of the decoded image.<br>Unit: vp. |
 
 ### func syncLoad(Bool)
 

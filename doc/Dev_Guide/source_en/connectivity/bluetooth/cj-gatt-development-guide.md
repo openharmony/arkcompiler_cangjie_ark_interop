@@ -13,7 +13,7 @@ Main scenarios include:
 
 ## Interface Description
 
-For complete Cangjie API documentation and sample code, please refer to: [GATT Interface](../../../../API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-ble.md).
+For complete Cangjie API documentation and sample code, please refer to: [GATT Interface](../../../../API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-ble.md).
 
 Detailed interface descriptions are shown in the following table.
 

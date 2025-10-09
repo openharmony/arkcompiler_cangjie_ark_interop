@@ -112,7 +112,7 @@ public func columnsGap(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|列与列的间距。<br> 初始值：0 <br> 取值范围：[0, +∞)|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|列与列的间距。<br> 初始值：0 <br> 取值范围：[0, +∞)|
 
 ### func columnsTemplate(String)
 
@@ -163,7 +163,7 @@ public func rowsGap(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|用于设置行与行的间距。<br> 初始值：0 <br> 取值范围：[0, +∞)|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|用于设置行与行的间距。<br> 初始值：0 <br> 取值范围：[0, +∞)|
 
 ### func rowsTemplate(String)
 

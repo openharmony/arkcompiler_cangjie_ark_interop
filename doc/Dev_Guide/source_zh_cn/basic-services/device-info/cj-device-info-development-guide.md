@@ -14,7 +14,7 @@
 
 ## 接口说明
 
-完整的仓颉 API 说明以及实例代码请参见：[设备信息接口](../../API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-device_info.md)。
+完整的仓颉 API 说明以及实例代码请参见：[设备信息接口](../../API_Reference/source_zh_cn/BasicServicesKit/cj-apis-device_info.md)。
 
 具体接口说明如下表。
 

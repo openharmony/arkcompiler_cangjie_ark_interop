@@ -42,7 +42,7 @@ public func backgroundColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|背景颜色。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|背景颜色。|
 
 ## func backgroundImage(ResourceStr)
 
@@ -60,7 +60,7 @@ public func backgroundImage(src: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
+|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
 
 ## func backgroundImage(ResourceStr, ImageRepeat)
 
@@ -78,7 +78,7 @@ public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
+|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
 |repeat|[ImageRepeat](./cj-common-types.md#enum-imagerepeat)|是|-|图片重复方式。|
 
 ## func backgroundImagePosition(Alignment)
@@ -115,8 +115,8 @@ public func backgroundImagePosition(x!: Length = 0.vp, y!: Length = 0.vp): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|X轴位置。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Y轴位置。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|X轴位置。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Y轴位置。|
 
 ## func backgroundImageSize(ImageSize)
 
@@ -152,8 +152,8 @@ public func backgroundImageSize(width!: Length = 0.vp, height!: Length = 0.vp): 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|图片宽度。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|图片高度。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|图片宽度。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|图片高度。|
 
 ## 基础类型定义
 

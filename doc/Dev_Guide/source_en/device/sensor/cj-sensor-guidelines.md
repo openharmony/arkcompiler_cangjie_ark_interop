@@ -4,7 +4,7 @@
 
 When a device needs to acquire sensor data, the sensor module can be utilized. For example: subscribing to orientation sensor data to perceive the current device orientation, or subscribing to step counter sensor data to track user step counts.
 
-For detailed API documentation, refer to [Sensor API](../../../../API_Reference/source_en/apis/SensorServiceKit/cj-apis-sensor.md).
+For detailed API documentation, refer to [Sensor API](../../../../API_Reference/source_en/SensorServiceKit/cj-apis-sensor.md).
 
 ## Interface Specifications
 

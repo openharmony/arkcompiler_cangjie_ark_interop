@@ -76,7 +76,7 @@ When the slider thumb shape is set to SliderBlockType.SHAPE, `blockBorderColor` 
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The border color of the slider thumb.<br/>Initial value: 0x00000000. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The border color of the slider thumb.<br/>Initial value: 0x00000000. |
 
 ### func blockColor(ResourceColor)
 
@@ -100,7 +100,7 @@ When the slider thumb shape is set to SliderBlockType.SHAPE, `blockColor` sets t
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the slider thumb.<br/>Initial value: @r(sys.color.ohos_id_color_foreground_contrary). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the slider thumb.<br/>Initial value: @r(sys.color.ohos_id_color_foreground_contrary). |
 
 ### func selectedColor(ResourceColor)
 
@@ -118,7 +118,7 @@ public func selectedColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the track's filled portion.<br/>Initial value: @r(sys.color.ohos_id_color_emphasize). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the track's filled portion.<br/>Initial value: @r(sys.color.ohos_id_color_emphasize). |
 
 ### func showSteps(Bool)
 
@@ -159,7 +159,7 @@ The tip's drawing area is the overlay of the Slider component's node.
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | Bool | Yes | - | Whether to display a bubble tip during sliding.<br/>Initial value: false. |
-| content | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** The text content of the bubble tip. By default, it displays the current percentage. |
+| content | ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** The text content of the bubble tip. By default, it displays the current percentage. |
 
 ### func trackColor(ResourceColor)
 
@@ -177,7 +177,7 @@ public func trackColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the track.<br/>**Note:**<br/>For gradient colors, if the color stop value is invalid or the gradient stop is empty, the gradient effect will not apply.<br>Initial value: @r(sys.color.ohos_id_color_component_normal). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the track.<br/>**Note:**<br/>For gradient colors, if the color stop value is invalid or the gradient stop is empty, the gradient effect will not apply.<br>Initial value: @r(sys.color.ohos_id_color_component_normal). |
 
 ### func trackThickness(Length)
 
@@ -201,7 +201,7 @@ During `trackThickness` adjustment, if `trackThickness` or `blockSize` exceeds t
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the track.<br/>Initial value: 4.0.vp for SliderStyle.OutSet, 20.0.vp for SliderStyle.InSet. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the track.<br/>Initial value: 4.0.vp for SliderStyle.OutSet, 20.0.vp for SliderStyle.InSet. |
 
 ## Component Events
 

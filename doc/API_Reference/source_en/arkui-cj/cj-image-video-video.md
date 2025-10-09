@@ -43,9 +43,9 @@ public init(
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The data source of the video, supporting both local and network videos.<br/>String format can be used to load network and local videos, commonly used for loading network videos.<br/>- Supports network video URLs.<br/>- Supports strings with the file:// path prefix, i.e., application sandbox URI: file://<bundleName>/<sandboxPath>. Used to read resources within the application sandbox path. Ensure the files in the directory path have read permissions.<br/>Supported video formats: mp4, mkv, TS. |
+| src | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The data source of the video, supporting both local and network videos.<br/>String format can be used to load network and local videos, commonly used for loading network videos.<br/>- Supports network video URLs.<br/>- Supports strings with the file:// path prefix, i.e., application sandbox URI: file://<bundleName>/<sandboxPath>. Used to read resources within the application sandbox path. Ensure the files in the directory path have read permissions.<br/>Supported video formats: mp4, mkv, TS. |
 | currentProgressRate | [PlaybackSpeed](#enum-playbackspeed) | No | SpeedForward100X | **Named parameter.** The playback speed of the video.<br/>Supported values: 0.75, 1.0, 1.25, 1.75, 2.0. |
-| previewUri | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The path of the preview image displayed when the video is not playing. |
+| previewUri | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The path of the preview image displayed when the video is not playing. |
 | controller | [VideoController](#class-videocontroller) | No | VideoController() | **Named parameter.** Sets the video controller to manage the playback state of the video. |
 
 ## Common Attributes/Common Events
@@ -164,7 +164,7 @@ public func onError(event: VoidCallback): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when playback fails. |
+| event | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when playback fails. |
 
 ### func onFinish(() -> Unit)
 
@@ -200,7 +200,7 @@ public func onFullscreenChange(callback: Callback<FullscreenInfo, Unit>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[FullscreenInfo](#class-fullscreeninfo),Unit> | Yes | - | Callback function triggered when switching between full-screen and non-full-screen playback modes. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[FullscreenInfo](#class-fullscreeninfo),Unit> | Yes | - | Callback function triggered when switching between full-screen and non-full-screen playback modes. |
 
 ### func onPause(VoidCallback)
 
@@ -218,7 +218,7 @@ public func onPause(event: VoidCallback): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when playback is paused. |
+| event | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when playback is paused. |
 
 ### func onPrepared(Callback\<PreparedInfo,Unit>)
 
@@ -236,7 +236,7 @@ public func onPrepared(callback: Callback<PreparedInfo, Unit>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PreparedInfo](#class-preparedinfo),Unit> | Yes | - | Callback function triggered when video preparation is complete. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PreparedInfo](#class-preparedinfo),Unit> | Yes | - | Callback function triggered when video preparation is complete. |
 
 ### func onSeeked(Callback\<PlaybackInfo,Unit>)
 
@@ -254,7 +254,7 @@ public func onSeeked(callback: Callback<PlaybackInfo, Unit>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit> | Yes | - | Callback function triggered after seeking is completed. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit> | Yes | - | Callback function triggered after seeking is completed. |
 
 ### func onSeeking(Callback\<PlaybackInfo,Unit>)
 
@@ -272,7 +272,7 @@ public func onSeeking(callback: Callback<PlaybackInfo, Unit>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit> | Yes | - | Callback function triggered during seeking.<br>Parameter value: Current video duration in seconds. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit> | Yes | - | Callback function triggered during seeking.<br>Parameter value: Current video duration in seconds. |
 
 ### func onStart(VoidCallback)
 
@@ -290,7 +290,7 @@ public func onStart(event: VoidCallback): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when playback starts. |
+| event | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when playback starts. |
 
 ### func onUpdate(Callback\<PlaybackInfo,Unit>)
 
@@ -308,7 +308,7 @@ public func onUpdate(callback: Callback<PlaybackInfo, Unit>): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit> | Yes | - | Callback function triggered when playback progress changes. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit> | Yes | - | Callback function triggered when playback progress changes. |
 
 ## Basic Type Definitions
 

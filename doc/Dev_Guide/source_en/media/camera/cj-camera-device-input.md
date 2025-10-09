@@ -6,7 +6,7 @@ The camera application can perform basic operations such as preview, photo captu
 
 ## Development Steps
 
-For detailed API specifications, refer to the [Camera API Reference](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md).
+For detailed API specifications, refer to the [Camera API Reference](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md).
 
 1. Import the camera interface, which provides camera-related properties and methods. The import method is as follows:
 
@@ -23,7 +23,7 @@ For detailed API specifications, refer to the [Camera API Reference](../../../..
     >
     > Camera device management must be completed before camera device input. For detailed development steps, refer to [Camera Management](./cj-camera-device-management.md).
 
-2. Create a camera input stream using the [createCameraInput](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-createcamerainputcameradevice) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class.
+2. Create a camera input stream using the [createCameraInput](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-createcamerainputcameradevice) method in the [CameraManager](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class.
 
     <!-- compile -->
 
@@ -48,7 +48,7 @@ For detailed API specifications, refer to the [Camera API Reference](../../../..
     }
     ```
 
-3. Use the [getSupportedSceneModes](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedscenemodescameradevice) method to obtain the list of modes supported by the current camera device. The list contains all supported [SceneMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#enum-scenemode) values.
+3. Use the [getSupportedSceneModes](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedscenemodescameradevice) method to obtain the list of modes supported by the current camera device. The list contains all supported [SceneMode](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#enum-scenemode) values.
 
     <!-- compile -->
 
@@ -68,7 +68,7 @@ For detailed API specifications, refer to the [Camera API Reference](../../../..
     }
     ```
 
-4. Use the [getSupportedOutputCapability](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedoutputcapabilitycameradevice-scenemode) method to obtain all output streams supported by the current camera device, such as preview streams, photo capture streams, and video recording streams. The output streams are contained in various profile fields of [CameraOutputCapability](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameraoutputcapability). Depending on the specified [SceneMode](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#enum-scenemode) of the camera device, different types of output streams need to be added.
+4. Use the [getSupportedOutputCapability](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedoutputcapabilitycameradevice-scenemode) method to obtain all output streams supported by the current camera device, such as preview streams, photo capture streams, and video recording streams. The output streams are contained in various profile fields of [CameraOutputCapability](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameraoutputcapability). Depending on the specified [SceneMode](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#enum-scenemode) of the camera device, different types of output streams need to be added.
 
     <!-- compile -->
 

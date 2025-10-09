@@ -70,7 +70,7 @@ public func selectedColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](./../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the checkbox in the selected state.<br>Initial value:<br>@r(sys.color.ohos_id_color_text_primary_activated).<br>Invalid values are treated as the default value. |
+| value | [ResourceColor](./../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the checkbox in the selected state.<br>Initial value:<br>@r(sys.color.ohos_id_color_text_primary_activated).<br>Invalid values are treated as the default value. |
 
 ### func shape(CheckBoxShape)
 

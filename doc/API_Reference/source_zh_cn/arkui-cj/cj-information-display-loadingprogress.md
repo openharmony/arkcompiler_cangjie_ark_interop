@@ -56,7 +56,7 @@ public func color(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|默认加载进度条的前景色。<br>初始值：0xff666666。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|默认加载进度条的前景色。<br>初始值：0xff666666。|
 
 ## 示例代码
 
