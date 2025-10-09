@@ -8,18 +8,18 @@
     - [Declaring Permissions](cj-declare-permissions.md)
     - [Requesting User Authorization](cj-request-user-authorization.md)
     - [Requesting One-Time Authorization](cj-one-time-authorization.md)
-        <!--Del-->
+    <!--Del-->
     - [Requesting Restricted Permissions](cj-declare-permissions-in-acl.md)
-        <!--DelEnd-->
+    <!--DelEnd-->
     - [Application Permission List](cj-app-permissions.md)
     - [Open Permissions (System Authorization)](cj-permissions-for-all.md)
     - [Open Permissions (User Authorization)](cj-permissions-for-all-user.md)
     - [Restricted Open Permissions](cj-restricted-permissions.md)
-        <!--Del-->
+    <!--Del-->
     - [System-App-Only Permissions (System Authorization) with ACL](cj-permissions-for-system-apps.md)
     - [System-App-Only Permissions (System Authorization) without ACL](cj-permissions-for-system-apps-no-acl.md)
     - [System-App-Only Permissions (User Authorization)](cj-permissions-for-system-apps-user.md)
-        <!--DelEnd-->
+    <!--DelEnd-->
     - [Enterprise Application Permissions](cj-permissions-for-enterprise-apps.md)
     - [MDM-Application-Only Permissions](cj-permissions-for-mdm-apps.md)
 - [Application Permission Group List](cj-app-permission-group-list.md)

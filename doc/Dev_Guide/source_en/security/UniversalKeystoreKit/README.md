@@ -40,9 +40,9 @@
     - [Key Attestation Overview and Algorithm Specifications](cj-huks-key-attestation-overview.md)
     - Development Guide
         - [Anonymous Key Attestation (Cangjie)](cj-huks-key-anon-attestation.md)
-                    <!--Del-->
+        <!--Del-->
         - [Non-Anonymous Key Attestation(source_en/Cangjie)](cj-huks-key-attestation-arkts.md)
-                    <!--DelEnd-->
+        <!--DelEnd-->
 - Other Operations
     - Checking Key Existence
         - [Checking Key Existence (Cangjie)](cj-huks-check-key.md)
