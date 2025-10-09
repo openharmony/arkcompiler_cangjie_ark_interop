@@ -123,7 +123,7 @@ public var arrowHeight: Length = 8.vp
 
 **Function:** Sets the arrow height. Default: 8.vp.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Access:** Read-Write
 
@@ -139,7 +139,7 @@ public var arrowOffset: Length = 0.vp
 
 **Function:** Sets the offset of the popup arrow on the dialog. When the arrow is above or below the bubble, a value of 0 means the arrow is aligned to the far left, and the offset is the distance from the arrow to the far left (default is centered). When the arrow is to the left or right of the bubble, the offset is the distance from the arrow to the top (default is centered). If displayed at the screen edge, the bubble will automatically shift left or right. A value of 0 means the arrow always points to the bound component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Access:** Read-Write
 
@@ -171,7 +171,7 @@ public var arrowWidth: Length = 16.vp
 
 **Function:** Sets the arrow width. If the set arrow width exceeds the length of the side minus twice the bubble's corner radius, the arrow will not be drawn. Default: 16.vp.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Access:** Read-Write
 
@@ -419,7 +419,7 @@ public var radius: Length = 20.vp
 
 **Function:** Sets the corner radius of the bubble. Default: 20.vp.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Access:** Read-Write
 
@@ -467,7 +467,7 @@ public var targetSpace: Length = 0.vp
 
 **Function:** Sets the gap between the popup and the target.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Access:** Read-Write
 
@@ -505,7 +505,7 @@ public var width: Length = 0.vp
 
 **Function:** Sets the width of the popup.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Access:** Read-Write
 
@@ -689,7 +689,7 @@ public var arrowHeight: Length = 8.0.vp
 
 **Function:** Sets arrow height. Default: 8.vp.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -705,7 +705,7 @@ public var arrowOffset: Length = 0.vp
 
 **Function:** Sets popup arrow offset on the popup. When arrow is above/below bubble, 0 means arrow is leftmost, offset is distance from arrow to leftmost, default centered. When arrow is left/right of bubble, offset is distance from arrow to topmost, default centered. If displayed at screen edge, bubble auto-adjusts horizontally; at 0 arrow always points to bound component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -737,7 +737,7 @@ public var arrowWidth: Length = 16.0.vp
 
 **Function:** Sets arrow width. If set width exceeds edge length minus twice bubble corner radius, arrow isn't drawn. Default: 16.vp.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -965,7 +965,7 @@ public var radius: Length = 20.0.vp
 
 **Function:** Sets the corner radius of the bubble. Default value: 20.vp.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -1031,7 +1031,7 @@ public var targetSpace: Length = 0.vp
 
 **Function:** Sets the gap between the popup and its target.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -1068,7 +1068,7 @@ public var width: Length = 0.vp
 
 **Function:** Sets the width of the popup.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -1121,21 +1121,21 @@ public init(
 | primaryButton | [PopupButton](./cj-common-types.md#class-popupbutton) | No | PopupButton(value: "", action: { => }) | Sets the primary button |
 | secondaryButton | [PopupButton](./cj-common-types.md#class-popupbutton) | No | PopupButton(value: "", action: { => }) | Sets the secondary button |
 | onStateChange | Option<(PopupStateChangeParam) -> Unit> | No | Option.None | Sets the callback for popup state changes |
-| arrowOffset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Sets the offset of the popup arrow relative to the popup |
+| arrowOffset | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Sets the offset of the popup arrow relative to the popup |
 | showInSubWindow | Bool | Yes | - | Sets whether to display the bubble in a subwindow |
 | messageOptions | [PopupMessageOptions](#class-popupmessageoptions) | No | PopupMessageOptions() | Sets the text parameters for the popup message |
-| mask | [Color](../apis/BasicServicesKit/cj-apis-base.md#class-color) | No | Color(0x1000000) | Sets the color of the mask layer |
-| targetSpace | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Sets the gap between the popup and its target |
+| mask | [Color](../BasicServicesKit/cj-apis-base.md#class-color) | No | Color(0x1000000) | Sets the color of the mask layer |
+| targetSpace | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Sets the gap between the popup and its target |
 | placement | [Placement](cj-common-types.md#enum-placement) | No | Placement.BottomLeft | Sets the display position of the popup relative to its target |
 | offset | [Position](cj-common-types.md#class-position) | No | Position(x: 0.0, y: 0.0) | Sets the offset of the popup relative to the position defined by `placement` |
 | enableArrow | Bool | No | true | Sets whether to display the arrow |
-| popupColor | [Color](../apis/BasicServicesKit/cj-apis-base.md#class-color) | No | Color(0x1000000) | Sets the color of the bubble |
+| popupColor | [Color](../BasicServicesKit/cj-apis-base.md#class-color) | No | Color(0x1000000) | Sets the color of the bubble |
 | autoCancel | Bool | No | true | Sets whether to automatically close the bubble when an operation is performed on the page |
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Sets the width of the popup |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Sets the width of the popup |
 | arrowPointPosition | ?[ArrowPointPosition](cj-common-types.md#enum-arrowpointposition) | No | None | Sets the position of the bubble's arrow relative to its parent component |
-| arrowWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | Sets the width of the arrow |
-| arrowHeight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 8.vp | Sets the height of the arrow |
-| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 20.vp | Sets the corner radius of the bubble |
+| arrowWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | Sets the width of the arrow |
+| arrowHeight | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 8.vp | Sets the height of the arrow |
+| radius | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 20.vp | Sets the corner radius of the bubble |
 | shadow | [ShadowStyle](cj-common-types.md#enum-shadowstyle) | No | ShadowStyle.OuterDefaultMD | Sets the shadow effect of the bubble |
 | backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | Sets the blur effect parameters for the bubble background |
 | transition | ?[TransitionEffect](cj-animation-transition.md#class-transitioneffect) | No | Option.None | Customizes the animation effects for popup display and exit |

@@ -5,7 +5,7 @@ Image为图片组件，常用于在应用中显示图片。支持png、jpg、jpe
 > 说明：
 >
 > - 使用快捷组合键对Image组件复制时，Image组件必须处于[获焦状态](./cj-universal-attribute-focus.md#func-focusontouchbool)。Image组件默认不获焦，需将[focusable](cj-apis-window.md#var-focusable)属性设置为true，即可使用TAB键将焦点切换到组件上，再将[focusOnTouch](./cj-universal-attribute-focus.md#func-focusontouchbool)  属性设置为true，即可实现点击获焦。
-> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](../apis/ImageKit/cj-apis-image.md#svg标签说明)。
+> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](../ImageKit/cj-apis-image.md#svg标签说明)。
 > - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit)事件触发的，当可见阈值raitos大于0时，表明Image处于可见状态。
 
 ## 导入模块
@@ -52,7 +52,7 @@ public init(src: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片的数据源。<br/>ResourceStr可用于加载网络图片和本地图片。|
+|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片的数据源。<br/>ResourceStr可用于加载网络图片和本地图片。|
 
 ### init(PixelMap)
 
@@ -76,7 +76,7 @@ public init(src: PixelMap)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片的数据源。<br/>PixelMap格式为像素图，常用于图片编辑的场景。|
+|src|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片的数据源。<br/>PixelMap格式为像素图，常用于图片编辑的场景。|
 
 ## 通用属性/通用事件
 
@@ -106,7 +106,7 @@ public func alt(src: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|加载时显示的占位图，不支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持网络图片。|
+|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|加载时显示的占位图，不支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持网络图片。|
 
 ### func autoResize(Bool)
 
@@ -150,7 +150,7 @@ public func fillColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置填充颜色。<br/>默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置填充颜色。<br/>默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。|
 
 ### func fitOriginalSize(Bool)
 
@@ -291,8 +291,8 @@ public func sourceSize(width: Length, height: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|图片解码后的宽度。<br>单位：vp。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|图片解码后的高度。<br>单位：vp。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|图片解码后的宽度。<br>单位：vp。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|图片解码后的高度。<br>单位：vp。|
 
 ### func syncLoad(Bool)
 

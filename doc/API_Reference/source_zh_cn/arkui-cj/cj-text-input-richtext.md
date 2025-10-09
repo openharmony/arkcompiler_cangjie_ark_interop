@@ -49,7 +49,7 @@ public init(content: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|HTML格式的字符串。|
+|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|HTML格式的字符串。|
 
 ## 通用属性/通用事件
 

@@ -6,11 +6,11 @@ EXIF (Exchangeable Image File Format) is a file format specifically designed for
 
 In applications such as photo galleries, there is a need to view or modify the EXIF information of digital photos. Since parameters from manual camera lenses cannot be automatically written to EXIF information or shooting time errors frequently occur due to camera power loss, manual correction of incorrect EXIF data becomes necessary. This functionality can be utilized for such purposes.
 
-OpenHarmony currently supports viewing and modifying only certain EXIF information. For the specific supported range, please refer to: [Exif Information](../../../../API_Reference/source_en/apis/ImageKit/cj-apis-image.md#enum-propertykey).
+OpenHarmony currently supports viewing and modifying only certain EXIF information. For the specific supported range, please refer to: [Exif Information](../../../../API_Reference/source_en/ImageKit/cj-apis-image.md#enum-propertykey).
 
 ## Development Steps
 
-For detailed information on the APIs related to reading and editing EXIF information, please refer to the [API Reference](../../../../API_Reference/source_en/apis/ImageKit/cj-apis-image.md#func-getimagepropertypropertykey-imagepropertyoptions).
+For detailed information on the APIs related to reading and editing EXIF information, please refer to the [API Reference](../../../../API_Reference/source_en/ImageKit/cj-apis-image.md#func-getimagepropertypropertykey-imagepropertyoptions).
 
 1. Obtain the image and create an ImageSource.
 

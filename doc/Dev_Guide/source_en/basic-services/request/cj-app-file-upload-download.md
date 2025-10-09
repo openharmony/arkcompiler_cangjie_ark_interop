@@ -4,7 +4,7 @@ Applications can upload files to a web server or download network resource files
 
 ## Uploading Application Files
 
-Developers can use the upload interface of the upload-download module ([ohos.request](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-request-agent.md)) to upload local files. The file upload process is completed using a system service proxy, which supports custom proxy address configuration.
+Developers can use the upload interface of the upload-download module ([ohos.request](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-request-agent.md)) to upload local files. The file upload process is completed using a system service proxy, which supports custom proxy address configuration.
 
 > **Note:**
 >
@@ -88,7 +88,7 @@ public class ProgressCallback <: Callback1Argument<RProgress> {
 
 ## Downloading Network Resource Files to Application Directory
 
-Developers can use the download interface of the upload-download module ([ohos.request](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-request-agent.md)) to download network resource files to the application directory. For downloaded files, developers can access them using basic file I/O interfaces ([ohos.file_fs](../../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md)), following the same approach as [Application File Access](../../file-management/cj-app-file-access.md). The download process uses a system service proxy, supporting custom proxy address configuration.
+Developers can use the download interface of the upload-download module ([ohos.request](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-request-agent.md)) to download network resource files to the application directory. For downloaded files, developers can access them using basic file I/O interfaces ([ohos.file_fs](../../../../API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md)), following the same approach as [Application File Access](../../file-management/cj-app-file-access.md). The download process uses a system service proxy, supporting custom proxy address configuration.
 
 > **Note:**
 >

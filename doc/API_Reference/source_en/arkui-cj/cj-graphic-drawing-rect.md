@@ -30,8 +30,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width of the rectangle, value range ≥0. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height of the rectangle, value range ≥0. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width of the rectangle, value range ≥0. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height of the rectangle, value range ≥0. |
 
 ## Common Attributes/Events
 
@@ -69,7 +69,7 @@ public func radius(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Corner radius size.<br>Initial value: 0.<br>Default unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Corner radius size.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radius(Array\<Length>)
 
@@ -87,7 +87,7 @@ public func radius(value: Array<Length>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Top-left, top-right, bottom-right, and bottom-left corner radius sizes.<br>Initial value: 0.<br>Default unit: vp. |
+| value | Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Top-left, top-right, bottom-right, and bottom-left corner radius sizes.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radius(Array\<(Length,Length)>)
 
@@ -105,7 +105,7 @@ public func radius(radiusArray: Array<(Length, Length)>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| radiusArray | Array\<([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))> | Yes | - | Width and height of top-left, top-right, bottom-right, and bottom-left corners.<br>Initial value: 0.<br>Default unit: vp. |
+| radiusArray | Array\<([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))> | Yes | - | Width and height of top-left, top-right, bottom-right, and bottom-left corners.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radiusHeight(Length)
 
@@ -123,7 +123,7 @@ public func radiusHeight(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
 
 ### func radiusWidth(Length)
 
@@ -141,7 +141,7 @@ public func radiusWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of the corner radius.<br>Initial value: 0.<br>Default unit: vp. |
 
 ## Example Code
 

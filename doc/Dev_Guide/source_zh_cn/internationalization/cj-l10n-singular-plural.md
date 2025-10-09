@@ -22,4 +22,4 @@
 
 ## 开发步骤
 
-接口的具体使用方法请参见[getPluralStringValue](../../../API_Reference/source_zh_cn/apis/LocalizationKit/cj-apis-resource_manager.md#func-getpluralstringvalueappresource-int64)的API接口文档。
+接口的具体使用方法请参见[getPluralStringValue](../../../API_Reference/source_zh_cn/LocalizationKit/cj-apis-resource_manager.md#func-getpluralstringvalueappresource-int64)的API接口文档。

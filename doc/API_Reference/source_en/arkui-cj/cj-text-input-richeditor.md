@@ -61,7 +61,7 @@ public func aboutToDelete(callback: Callback<RichEditorDeleteValue, Bool>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorDeleteValue](#class-richeditordeletevalue),Bool> | Yes | - | Callback function triggered before the input method deletes content.<br>[RichEditorDeleteValue](#class-richeditordeletevalue): Text span information where the content to be deleted resides.<br>true: The component performs the delete operation.<br>false: The component does not perform the delete operation. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorDeleteValue](#class-richeditordeletevalue),Bool> | Yes | - | Callback function triggered before the input method deletes content.<br>[RichEditorDeleteValue](#class-richeditordeletevalue): Text span information where the content to be deleted resides.<br>true: The component performs the delete operation.<br>false: The component does not perform the delete operation. |
 
 ### func aboutToIMEInput(Callback\<RichEditorInsertValue,Bool>)
 
@@ -79,7 +79,7 @@ public func aboutToIMEInput(callback: Callback<RichEditorInsertValue, Bool>): Th
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorInsertValue](#class-richeditorinsertvalue),Bool> | Yes | - | Callback function triggered before the input method inputs content.<br>[RichEditorInsertValue](#class-richeditorinsertvalue): Information about the content to be input by the input method.<br>true: The component performs the add content operation.<br>false: The component does not perform the add content operation. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorInsertValue](#class-richeditorinsertvalue),Bool> | Yes | - | Callback function triggered before the input method inputs content.<br>[RichEditorInsertValue](#class-richeditorinsertvalue): Information about the content to be input by the input method.<br>true: The component performs the add content operation.<br>false: The component does not perform the add content operation. |
 
 ### func bindSelectionMenu(RichEditorSpanType, CustomBuilder, ResponseType, SelectionMenuOptions)
 
@@ -161,7 +161,7 @@ public func onDeleteComplete(callback: VoidCallback): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when the input method completes deletion. |
+| callback | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered when the input method completes deletion. |
 
 ### func onDidChange(OnDidChangeCallback)
 
@@ -197,7 +197,7 @@ public func onIMEInputComplete(callback: Callback<RichEditorTextSpanResult, Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorTextSpanResult](#class-richeditortextspanresult),Unit> | Yes | - | Callback function triggered after the input method completes input.<br>RichEditorTextSpanResult: Text span information after the input method completes input. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorTextSpanResult](#class-richeditortextspanresult),Unit> | Yes | - | Callback function triggered after the input method completes input.<br>RichEditorTextSpanResult: Text span information after the input method completes input. |
 
 **Return Value:**
 
@@ -239,7 +239,7 @@ public func onReady(callback: VoidCallback): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered after the rich text component is initialized. |
+| callback | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback function triggered after the rich text component is initialized. |
 
 ### func onSelect(Callback\<RichEditorSelection,Unit>)
 
@@ -257,7 +257,7 @@ public func onSelect(callback: Callback<RichEditorSelection, Unit>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| callback | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[RichEditorSelection](#class-richeditorselection),Unit> | Yes | - | Callback function triggered when the left mouse button is pressed for selection and released.<br>Triggered when selection is made with a finger and released.<br>RichEditorSelection: Information about all selected spans. |
+| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[RichEditorSelection](#class-richeditorselection),Unit> | Yes | - | Callback function triggered when the left mouse button is pressed for selection and released.<br>Triggered when selection is made with a finger and released.<br>RichEditorSelection: Information about all selected spans. |
 
 ## Basic Type Definitions
 
@@ -289,7 +289,7 @@ public var color: ResourceColor
 
 **Function:** Decoration line color.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -333,7 +333,7 @@ public init(
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | Decoration line type. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the entity color after text recognition succeeds.<br>Default: '#ff0a59f7'<br>Meta Service API: Supported in meta services from API version 12. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the entity color after text recognition succeeds.<br>Default: '#ff0a59f7'<br>Meta Service API: Supported in meta services from API version 12. |
 
 ### class PasteEvent
 
@@ -557,7 +557,7 @@ public var valuePixelMap: Option<PixelMap>= None
 
 **Function:** Represents the image content.
 
-**Type:** Option\<[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)>
+**Type:** Option\<[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)>
 
 **Read/Write Permission:** Readable and Writable
 
@@ -605,7 +605,7 @@ public init(
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | spanPosition | [RichEditorSpanPosition](#class-richeditorspanposition) | Yes | - | Span position. |
-| valuePixelMap | Option\<[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)> | Yes | - | Image content. |
+| valuePixelMap | Option\<[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)> | Yes | - | Image content. |
 | valueResourceStr | String | Yes | - | Image resource ID. |
 | imageStyle | [RichEditorImageSpanStyleResult](#class-richeditorimagespanstyleresult) | Yes | - | Image style. |
 | offsetInSpan | (Int32,Int32) | Yes | - | Start and end positions of the image within the Span. |
@@ -1341,7 +1341,7 @@ public var pixelMap: PixelMap
 
 **Description:** Image content.
 
-**Type:** [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)
+**Type:** [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)
 
 **Access:** Read-Write
 
@@ -1357,7 +1357,7 @@ public var size:(Length, Length)
 
 **Description:** Image size (percentage values are not supported).
 
-**Type:** ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length), [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))
+**Type:** ([Length](../BasicServicesKit/cj-apis-base.md#interface-length), [Length](../BasicServicesKit/cj-apis-base.md#interface-length))
 
 **Access:** Read-Write
 
@@ -1381,8 +1381,8 @@ public init(pixelMap!: PixelMap, size!: (Length, Length))
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|Yes|-|Image content.|
-|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|Yes|-|Image size (percentage values are not supported).|### class RichEditorBaseController
+|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|Yes|-|Image content.|
+|size|([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))|Yes|-|Image size (percentage values are not supported).|### class RichEditorBaseController
 
 ```cangjie
 public open class RichEditorBaseController {}
@@ -1507,7 +1507,7 @@ public func addImageSpan(value!: AppResource, options!: RichEditorImageSpanOptio
 
 |Parameter|Type|Mandatory|Default|Description|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|Yes|-|Image content.|
+|value|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|Yes|-|Image content.|
 |options|[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|No|RichEditorImageSpanOptions()|Image options.|
 
 **Return Value:**
@@ -1532,7 +1532,7 @@ public func addTextSpan(value!: ResourceStr, options!: RichEditorTextSpanOptions
 
 |Parameter|Type|Mandatory|Default|Description|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|Yes|-|Text content.|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|Yes|-|Text content.|
 |options|[RichEditorTextSpanOptions](#class-richeditortextspanoptions)|No|RichEditorTextSpanOptions()|Text options.|
 
 **Return Value:**
@@ -1779,7 +1779,7 @@ public var size: Option <(Length, Length)>
 
 **Description:** Image width and height.
 
-**Type:** Option\<([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))>
+**Type:** Option\<([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))>
 
 **Access:** Read-Write
 
@@ -1823,7 +1823,7 @@ public init(
 
 |Parameter|Type|Mandatory|Default|Description|
 |:---|:---|:---|:---|:---|
-|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|Yes|-|Image width and height.|
+|size|([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))|Yes|-|Image width and height.|
 |verticalAlign|[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|No|ImageSpanAlignment.Baseline|Image vertical alignment.|
 |objectFit|[ImageFit](./cj-common-types.md#enum-imagefit)|No|ImageFit.Cover|Image scaling type.|
 
@@ -1923,8 +1923,8 @@ public init(margin!: Length, borderRadius!: Length)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| margin | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Margin value. |
-| borderRadius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border radius value. |
+| margin | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Margin value. |
+| borderRadius | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border radius value. |
 
 ### class RichEditorParagraphStyle
 
@@ -2011,7 +2011,7 @@ public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length)
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | textAlign | [TextAlign](./cj-common-types.md#enum-textalign) | No | TextAlign.Start | Horizontal alignment of text paragraphs. |
-| leadingMargin | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Text paragraph indentation. Percentage values are not supported. |
+| leadingMargin | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Text paragraph indentation. Percentage values are not supported. |
 
 #### init(TextAlign, LeadingMarginPlaceholder)
 
@@ -2150,7 +2150,7 @@ public var fontColor: ResourceColor
 
 **Function:** Text color.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -2166,7 +2166,7 @@ public var fontFamily: ResourceStr
 
 **Function:** Font list.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write:** Readable and Writable
 
@@ -2182,7 +2182,7 @@ public var fontSize: Length
 
 **Function:** Font size. When Length is Int64 or Float64, the unit is fp. Percentage values are not supported.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -2245,11 +2245,11 @@ public init(
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| fontColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Text color. |
-| fontSize | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | Font size. When Length is Int64 or Float64, the unit is fp. Percentage values are not supported. |
+| fontColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Text color. |
+| fontSize | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | Font size. When Length is Int64 or Float64, the unit is fp. Percentage values are not supported. |
 | fontStyle | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | Font style. |
 | fontWeight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | Font weight. |
-| fontFamily | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | DEFAULT_FONT | Font list. |
+| fontFamily | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | DEFAULT_FONT | Font list. |
 | decoration | [TextDecorationOptions](#class-textdecorationoptions) | No | TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black) | Text decoration line style and its color. |### class SelectionMenuOptions
 
 ```cangjie
@@ -2274,7 +2274,7 @@ public var onAppear: VoidCallback
 
 **Function:** Callback function triggered when a custom selection menu appears.
 
-**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
+**Type:** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-voidcallback)
 
 **Readable/Writable:** Readable and writable
 
@@ -2290,7 +2290,7 @@ public var onDisappear: VoidCallback
 
 **Function:** Callback function triggered when a custom selection menu closes.
 
-**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
+**Type:** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-voidcallback)
 
 **Readable/Writable:** Readable and writable
 
@@ -2341,7 +2341,7 @@ public var color: ResourceColor
 
 **Function:** Sets the color of the text decoration line.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Readable/Writable:** Readable and writable
 
@@ -2382,7 +2382,7 @@ public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.B
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | Type of the decoration line. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Color of the decoration line. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Color of the decoration line. |
 
 ### enum LeadingMarginType
 

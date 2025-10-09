@@ -471,7 +471,7 @@ public override func aboutToReuseInternal(param: ReuseParams): Unit
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| param | [ReuseParams](../apis/BasicServicesKit/cj-apis-base.md#class-reuseparams) | Yes | - | - |
+| param | [ReuseParams](../BasicServicesKit/cj-apis-base.md#class-reuseparams) | Yes | - | - |
 
 ### func addChildById(Int64, CustomView)
 
@@ -599,7 +599,7 @@ public func forEachUpdateFunction<T>(
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | elmtId | Int64 | Yes | - | - |
-| arr | [CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T> | Yes | - | - |
+| arr | [CollectionEx](../BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T> | Yes | - | - |
 | itemGenFunc | (T,Int64)->Unit | Yes | - | **Named parameter.** - |
 | keyGeneratorFunc | (T,Int64)->String | No | { realData: T, idx: Int64 => match(realData) { case realDataStr: ToString => idx.toString() + "_" + realDataStr.toString() case _ => idx.toString() } } | **Named parameter.** - |
 
@@ -989,7 +989,7 @@ keyGeneratorFunc!: KeyGenFuncType<T> = {
 |:---|:---|:---|:---|:---|
 | viewID | Int64 | Yes | - | Component ID. |
 | parentView | [CustomView](#class-customview) | Yes | - | Parent component. |
-| dataSource | [CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T> | Yes | - | Data source. |
+| dataSource | [CollectionEx](../BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T> | Yes | - | Data source. |
 | itemGeneratorFunc | ItemGenFuncType\<T> | Yes | - | **Named parameter.** Component generator function. |
 | keyGeneratorFunc | KeyGenFuncType\<T> | No | { realData: T, idx: Int64 =>} | **Named parameter.** Key generator function. |
 

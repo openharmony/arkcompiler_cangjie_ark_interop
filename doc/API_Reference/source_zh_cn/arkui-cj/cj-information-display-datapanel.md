@@ -84,7 +84,7 @@ public func strokeWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆环粗细。<br>初始值：24.vp。<br>单位：vp。<br>设置小于0的值时，按默认值显示。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆环粗细。<br>初始值：24.vp。<br>单位：vp。<br>设置小于0的值时，按默认值显示。|
 
 ### func trackBackgroundColor(ResourceColor)
 
@@ -102,7 +102,7 @@ public func trackBackgroundColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|底板颜色。<br>初始值：0x08182431。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|底板颜色。<br>初始值：0x08182431。|
 
 ### func trackShadow(DataPanelShadowOptions)
 
@@ -166,7 +166,7 @@ public var color: ResourceColor
 
 **功能：** 颜色值。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -182,7 +182,7 @@ public var offset: Length
 
 **功能：** 渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -206,8 +206,8 @@ public init(color: ResourceColor, offset: Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|颜色值。|
-|offset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|颜色值。|
+|offset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。|
 
 ### class DataPanelShadowOptions
 
@@ -265,10 +265,10 @@ public init(radius!: Length = 20.vp, colors!: Array<LinearGradient> = [], offset
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|radius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|20.vp|**命名参数。** 投影模糊半径。|
+|radius|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|20.vp|**命名参数。** 投影模糊半径。|
 |colors|Array\<[LinearGradient](#class-lineargradient)>|否|[]|**命名参数。** 各数据段投影的颜色。<br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。|
-|offsetX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|5.vp|**命名参数。** X轴的偏移量。|
-|offsetY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|5.vp|**命名参数。** Y轴的偏移量。|
+|offsetX|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|5.vp|**命名参数。** X轴的偏移量。|
+|offsetY|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|5.vp|**命名参数。** Y轴的偏移量。|
 
 ### class LinearGradient
 
@@ -319,7 +319,7 @@ public init(color: ResourceColor)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|单一渐变颜色。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|单一渐变颜色。|
 
 ## class MultiShadowOptions
 
@@ -345,7 +345,7 @@ public var offsetX: Length = 5.vp
 
 **功能：** 设置阴影的水平偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -361,7 +361,7 @@ public var offsetY: Length = 5.vp
 
 **功能：** 设置阴影的垂直偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -377,7 +377,7 @@ public var radius: Length = 20.vp
 
 **功能：** 设置阴影的模糊半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 

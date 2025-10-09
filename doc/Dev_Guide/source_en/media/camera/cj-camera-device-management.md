@@ -4,7 +4,7 @@ Before developing a camera application, you need to create an independent camera
 
 ## Development Steps
 
-For detailed API documentation, refer to the [Camera API Reference](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md).
+For detailed API documentation, refer to the [Camera API Reference](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md).
 
 1. Import the camera interface, which provides camera-related properties and methods. The import method is as follows:
 
@@ -18,7 +18,7 @@ For detailed API documentation, refer to the [Camera API Reference](../../../../
     import ohos.business_exception.BusinessException
     ```
 
-2. Obtain the cameraManager object through the [getCameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-getcameramanagerabilitycontext) method.
+2. Obtain the cameraManager object through the [getCameraManager](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-getcameramanagerabilitycontext) method.
 
     For Context acquisition methods, refer to: [Obtaining UIAbility Context Information](../../application-models/cj-uiability-usage.md#获取uiability的上下文信息).
 
@@ -35,7 +35,7 @@ For detailed API documentation, refer to the [Camera API Reference](../../../../
     >
     > If the object acquisition fails, it may indicate that the camera is occupied or unavailable. If occupied, you must wait until the camera is released before attempting to acquire it again.
 
-3. Use the [getSupportedCameras](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedcameras) method in the [CameraManager](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to obtain the list of cameras supported by the current device. The list contains all camera IDs supported by the device. If the list is not empty, each ID in the list can independently create a camera object; otherwise, it indicates that no cameras are available on the current device, and subsequent operations cannot proceed.
+3. Use the [getSupportedCameras](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-getsupportedcameras) method in the [CameraManager](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to obtain the list of cameras supported by the current device. The list contains all camera IDs supported by the device. If the list is not empty, each ID in the list can independently create a camera object; otherwise, it indicates that no cameras are available on the current device, and subsequent operations cannot proceed.
 
     <!-- compile -->
 
@@ -61,7 +61,7 @@ For detailed API documentation, refer to the [Camera API Reference](../../../../
 
 During camera application development, you can monitor camera status at any time, including the appearance of new cameras, removal of cameras, and camera availability. In the callback function, monitoring is performed using two parameters: camera ID and camera status. For example, when a new camera appears, it can be added to the application's backup cameras.
 
-Register the cameraStatus event to receive monitoring results via callback. The callback returns a CameraStatusInfo parameter. For specific details of the parameter, refer to the camera manager callback interface instance [CameraStatusInfo](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#class-camerastatusinfo).
+Register the cameraStatus event to receive monitoring results via callback. The callback returns a CameraStatusInfo parameter. For specific details of the parameter, refer to the camera manager callback interface instance [CameraStatusInfo](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-camerastatusinfo).
 
 <!-- compile -->
 

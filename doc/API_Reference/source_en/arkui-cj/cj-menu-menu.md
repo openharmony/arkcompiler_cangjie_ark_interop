@@ -69,7 +69,7 @@ public func font(
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is of type Int64 or Float64, the fp unit is used. Percentage settings are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is of type Int64 or Float64, the fp unit is used. Percentage settings are not supported. |
 | weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
 | family | String | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list for the text. Multiple fonts can be specified, separated by commas, with priority given in order. For example: 'Arial, HarmonyOS Sans'. Currently supports the 'HarmonyOS Sans' font and [registered custom fonts](https://gitcode.com/Cangjie/cangjie-ohos-docs/blob/main/docs/API_Reference/source_en/arkui-cj/cj-apis-font.md). |
 | style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
@@ -90,7 +90,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of all text in the Menu.<br/>Initial value: 0xE5000000 |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of all text in the Menu.<br/>Initial value: 0xE5000000 |
 
 ### func radius(Length)
 
@@ -112,7 +112,7 @@ public func radius(value: Length): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The border radius of the Menu.<br/>Initial value: 20.vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The border radius of the Menu.<br/>Initial value: 20.vp. |
 
 ### func radius(BorderRadiuses)
 

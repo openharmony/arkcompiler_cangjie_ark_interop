@@ -10,7 +10,7 @@ HMAC stands for Hash-based Message Authentication Code, which is a key-dependent
 
 2. Initialize the key property set.
 
-3. Call [generateKeyItem](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For HMAC-supported specifications, see [Key Generation](./cj-huks-key-generation-overview.md#supported-algorithms).
+3. Call [generateKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For HMAC-supported specifications, see [Key Generation](./cj-huks-key-generation-overview.md#supported-algorithms).
 
 Alternatively, developers can refer to the specifications in [Key Import](./cj-huks-key-import-overview.md#supported-algorithms) to import an existing key.
 
@@ -20,9 +20,9 @@ Alternatively, developers can refer to the specifications in [Key Import](./cj-h
 
 2. Get the data to be processed.
 
-3. Call [initSession](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
+3. Call [initSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
 
-4. Call [finishSession](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes) to complete the key session and obtain the HMAC result.
+4. Call [finishSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes) to complete the key session and obtain the HMAC result.
 
 ## Example
 

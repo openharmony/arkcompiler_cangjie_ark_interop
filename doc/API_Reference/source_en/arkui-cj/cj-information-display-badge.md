@@ -101,7 +101,7 @@ public var badgeColor: ResourceColor
 
 **Function:** Color of the badge.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Read-Write
 
@@ -117,7 +117,7 @@ public var badgeSize: Length
 
 **Function:** Size of the badge, in vp units.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -133,7 +133,7 @@ public var borderColor: ResourceColor
 
 **Function:** Border color of the base plate.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Read-Write
 
@@ -149,7 +149,7 @@ public var borderWidth: Length
 
 **Function:** Border thickness of the base plate.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -165,7 +165,7 @@ public var color: ResourceColor
 
 **Function:** Text color.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Read-Write
 
@@ -181,7 +181,7 @@ public var fontSize: Length
 
 **Function:** Text size, in fp units.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -223,13 +223,13 @@ public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badg
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.White | **Named parameter.** Text color. |
-| fontSize | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.fp | **Named parameter.** Text size.<br>Unit: fp. |
-| badgeSize | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Size of the badge.<br>Unit: fp. |
-| badgeColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Red | **Named parameter.** Color of the badge. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.White | **Named parameter.** Text color. |
+| fontSize | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 10.fp | **Named parameter.** Text size.<br>Unit: fp. |
+| badgeSize | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Size of the badge.<br>Unit: fp. |
+| badgeColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Red | **Named parameter.** Color of the badge. |
 | fontWeight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Font weight of the text. |
-| borderColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Red | **Named parameter.** Border color of the base plate. |
-| borderWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 1.vp | **Named parameter.** Border thickness of the base plate.<br>Unit: vp. |
+| borderColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Red | **Named parameter.** Border color of the base plate. |
+| borderWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 1.vp | **Named parameter.** Border thickness of the base plate.<br>Unit: vp. |
 
 ### enum BadgePosition
 

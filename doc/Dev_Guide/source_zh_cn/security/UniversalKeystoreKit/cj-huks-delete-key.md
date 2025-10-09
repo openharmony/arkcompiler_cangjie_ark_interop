@@ -8,9 +8,9 @@
 
 1. 确定密钥别名keyAlias，密钥别名最大长度为128字节。
 
-2. 初始化密钥属性集。用于删除时指定[密钥的属性TAG](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag)，当删除单个时，TAG字段可传空。
+2. 初始化密钥属性集。用于删除时指定[密钥的属性TAG](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag)，当删除单个时，TAG字段可传空。
 
-3. 调用接口[deleteKeyItem](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions)，删除密钥。
+3. 调用接口[deleteKeyItem](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions)，删除密钥。
 
 ## 示例
 

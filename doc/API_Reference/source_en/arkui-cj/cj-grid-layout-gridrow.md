@@ -39,7 +39,7 @@ public init(
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | columns | Int32 | No | 12 | **Named parameter.** Sets the number of layout columns.<br>Must be a positive integer. Initial value: 12. |
-| gutter | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Grid layout spacing, where x represents the horizontal direction.<br>Initial value: 0. |
+| gutter | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Grid layout spacing, where x represents the horizontal direction.<br>Initial value: 0. |
 | breakpoints | [BreakPoints](#class-breakpoints) | No | BreakPoints() | **Named parameter.** Breakpoint sequence and corresponding reference based on window or container size.<br>Initial value:<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>} |
 | direction | [GridRowDirection](#enum-gridrowdirection) | No | GridRowDirection.Row | **Named parameter.** Grid layout arrangement direction. |
 | child | ()->Unit | No | { => } | **Named parameter.** Subcomponents of the GridRow container. |
@@ -67,7 +67,7 @@ public init(
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | columns | [GridRowColumnOption](#class-gridrowcolumnoption) | Yes | - | **Named parameter.** Sets the number of layout columns. |
-| gutter | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Grid layout spacing, where x represents the horizontal direction.<br>Initial value: 0. |
+| gutter | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Grid layout spacing, where x represents the horizontal direction.<br>Initial value: 0. |
 | breakpoints | [BreakPoints](#class-breakpoints) | No | BreakPoints() | **Named parameter.** Breakpoint sequence and corresponding reference based on window or container size.<br>Initial value:<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>} |
 | direction | [GridRowDirection](#enum-gridrowdirection) | No | GridRowDirection.Row | **Named parameter.** Grid layout arrangement direction. |
 | child | ()->Unit | No | { => } | **Named parameter.** Subcomponents of the GridRow container. |
@@ -217,7 +217,7 @@ public var value: Array<Length>
 
 **Function:** Sets a monotonically increasing array of breakpoint positions.
 
-**Type:** Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>
+**Type:** Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>
 
 **Read/Write:** Read-Write
 
@@ -243,7 +243,7 @@ public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | No | [320.vp, 600.vp, 840.vp] | **Named parameter.** Monotonically increasing array of breakpoint positions. |
+| value | Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)> | No | [320.vp, 600.vp, 840.vp] | **Named parameter.** Monotonically increasing array of breakpoint positions. |
 | reference | [BreakpointsReference](#enum-breakpointsreference) | No | BreakpointsReference.WindowSize | **Named parameter.** Reference for breakpoint switching. |
 
 ### class GridRowSizeOption
@@ -282,7 +282,7 @@ public var lg: Length
 
 **Function:** Large-width device type.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -298,7 +298,7 @@ public var md: Length
 
 **Function:** Medium-width device type.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -314,7 +314,7 @@ public var sm: Length
 
 **Function:** Small-width device type.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -330,7 +330,7 @@ public var xl: Length
 
 **Function:** Extra-large-width device type.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -346,7 +346,7 @@ public var xs: Length
 
 **Function:** Minimum-width device type.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -362,7 +362,7 @@ public var xxl: Length
 
 **Function:** Super-large-width device type.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Read-Write
 
@@ -393,12 +393,12 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| xs | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on xs-sized devices. |
-| sm | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on sm-sized devices. |
-| md | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on md-sized devices. |
-| lg | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on lg-sized devices. |
-| xl | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on xl-sized devices. |
-| xxl | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on xxl-sized devices. |
+| xs | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on xs-sized devices. |
+| sm | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on sm-sized devices. |
+| md | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on md-sized devices. |
+| lg | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on lg-sized devices. |
+| xl | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on xl-sized devices. |
+| xxl | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Number of columns occupied or offset by the grid subcomponent on xxl-sized devices. |
 
 #### init(Length)
 
@@ -416,7 +416,7 @@ public init(value: Length)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Number of columns occupied or offset by the grid subcomponent on any device size. |### class GutterOption
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Number of columns occupied or offset by the grid subcomponent on any device size. |### class GutterOption
 
 ```cangjie
 public class GutterOption {
@@ -447,8 +447,8 @@ public init(x!: Length, y!: Length)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|**Named parameter.** Spacing of grid subcomponents in the x-direction.|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|**Named parameter.** Spacing of grid subcomponents in the y-direction.|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|**Named parameter.** Spacing of grid subcomponents in the x-direction.|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|**Named parameter.** Spacing of grid subcomponents in the y-direction.|
 
 #### init(GridRowSizeOption, GridRowSizeOption)
 

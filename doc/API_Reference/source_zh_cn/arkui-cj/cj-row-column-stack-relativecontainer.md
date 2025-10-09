@@ -191,7 +191,7 @@ public var end:?Length = None
 
 **功能：** guideline距离容器右侧或者底部的距离。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -207,7 +207,7 @@ public var start:?Length = None
 
 **功能：** guideline距离容器左侧或者顶部的距离。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -232,8 +232,8 @@ public init(start!: ?Length = None, end!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器左侧或者顶部的距离。|
-|end|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器右侧或者底部的距离。|
+|start|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器左侧或者顶部的距离。|
+|end|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器右侧或者底部的距离。|
 
 ### class GuideLineStyle
 

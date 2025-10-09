@@ -6,7 +6,7 @@
 
 ## 开发步骤
 
-接口具体说明请参见[ResourceManager](../../../API_Reference/source_zh_cn/apis/LocalizationKit/cj-apis-resource_manager.md#class-resourcemanager)的API文档。
+接口具体说明请参见[ResourceManager](../../../API_Reference/source_zh_cn/LocalizationKit/cj-apis-resource_manager.md#class-resourcemanager)的API文档。
 
 1. 导入模块。
 

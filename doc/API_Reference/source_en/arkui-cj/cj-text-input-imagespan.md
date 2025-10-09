@@ -48,7 +48,7 @@ public init(value: PixelMap)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | The data source of the image, supporting local and network images. <br>PixelMap format is a pixel map, commonly used in image editing scenarios. <br>Supports Base64 strings. Format: data:image[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where [base64 data] is the Base64 string data. |
+| value | [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | The data source of the image, supporting local and network images. <br>PixelMap format is a pixel map, commonly used in image editing scenarios. <br>Supports Base64 strings. Format: data:image[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where [base64 data] is the Base64 string data. |
 
 ## Universal Attributes/Events
 

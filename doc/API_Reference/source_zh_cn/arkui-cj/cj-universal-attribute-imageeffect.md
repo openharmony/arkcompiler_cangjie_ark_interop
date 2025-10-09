@@ -60,7 +60,7 @@ public func colorBlend(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|颜色混合值。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|颜色混合值。|
 
 ## func contrast(Float64)
 
@@ -209,7 +209,7 @@ public func shadow(radius!: Float64, color!: ResourceColor = Color(0x666666), of
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |radius|Float64|是|-|阴影模糊半径。|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x666666)|阴影颜色。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x666666)|阴影颜色。|
 |offsetX|Float64|否|0.0|阴影X轴偏移量。|
 |offsetY|Float64|否|0.0|阴影Y轴偏移量。|
 

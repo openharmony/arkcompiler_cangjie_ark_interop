@@ -25,10 +25,10 @@ public func constraintSize(minWidth!: Length = 0.vp, maxWidth!: Length = (Float6
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| minWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Minimum width. |
-| maxWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | (Float64.Inf).vp | Maximum width. |
-| minHeight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Minimum height. |
-| maxHeight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | (Float64.Inf).vp | Maximum height. |
+| minWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Minimum width. |
+| maxWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | (Float64.Inf).vp | Maximum width. |
+| minHeight | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Minimum height. |
+| maxHeight | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | (Float64.Inf).vp | Maximum height. |
 
 ## func height(Option\<Length>)
 
@@ -46,7 +46,7 @@ public func height(value: Option<Length>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Component height.<br>Unit: vp. |
+| value | Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Component height.<br>Unit: vp. |
 
 ## func layoutWeight(Int32)
 
@@ -82,7 +82,7 @@ public func margin(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component margins, applied uniformly to all four sides.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component margins, applied uniformly to all four sides.<br>Unit: vp. |
 
 ## func margin(Length, Length, Length, Length)
 
@@ -100,10 +100,10 @@ public func margin(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length =
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Top margin: distance from the component's top to external elements. |
-| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Right margin: distance from the component's right boundary to external elements. |
-| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Bottom margin: distance from the component's bottom to external elements. |
-| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Left margin: distance from the component's left boundary to external elements. |
+| top | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Top margin: distance from the component's top to external elements. |
+| right | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Right margin: distance from the component's right boundary to external elements. |
+| bottom | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Bottom margin: distance from the component's bottom to external elements. |
+| left | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Left margin: distance from the component's left boundary to external elements. |
 
 ## func padding(Length)
 
@@ -121,7 +121,7 @@ public func padding(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component padding, applied uniformly to all four sides.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component padding, applied uniformly to all four sides.<br>Unit: vp. |
 
 ## func padding(Length, Length, Length, Length)
 
@@ -139,10 +139,10 @@ public func padding(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Top padding: distance from internal elements to the component's top.<br>Default: 0.vp. |
-| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Right padding: distance from internal elements to the component's right boundary.<br>Default: 0.vp. |
-| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Bottom padding: distance from internal elements to the component's bottom.<br>Default: 0.vp. |
-| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Left padding: distance from internal elements to the component's left boundary.<br>Default: 0.vp. |
+| top | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Top padding: distance from internal elements to the component's top.<br>Default: 0.vp. |
+| right | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Right padding: distance from internal elements to the component's right boundary.<br>Default: 0.vp. |
+| bottom | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Bottom padding: distance from internal elements to the component's bottom.<br>Default: 0.vp. |
+| left | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Left padding: distance from internal elements to the component's left boundary.<br>Default: 0.vp. |
 
 > **Note:**
 >
@@ -164,8 +164,8 @@ public func size(width!: Length, height!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component width.<br>Unit: vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component height.<br>Unit: vp. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component width.<br>Unit: vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component height.<br>Unit: vp. |
 
 ## func width(Option\<Length>)
 
@@ -183,4 +183,4 @@ public func width(value: Option<Length>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Component width.<br>Default unit: vp. |
+| value | Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Component width.<br>Default unit: vp. |

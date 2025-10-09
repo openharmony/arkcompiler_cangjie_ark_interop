@@ -294,7 +294,7 @@ public var height: Length
 
 **功能：** 定义目标元素的高度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -326,7 +326,7 @@ public var width: Length
 
 **功能：** 定义目标元素的宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -355,8 +355,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|目标元素的宽度，单位为vp。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|目标元素的高度，单位为vp。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|目标元素的宽度，单位为vp。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|目标元素的高度，单位为vp。|
 |position|[Position](#class-position)|是|-|目标元素左上角相对父元素左上角的位置。|
 |globalPosition|[Position](#class-position)|是|-|目标元素左上角相对页面左上角的位置。|
 
@@ -387,7 +387,7 @@ public var bottomLeft: Length
 
 **功能：** 组件左下角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -403,7 +403,7 @@ public var bottomRight: Length
 
 **功能：** 组件右下角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -419,7 +419,7 @@ public var topLeft: Length
 
 **功能：** 组件左上角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -435,7 +435,7 @@ public var topRight: Length
 
 **功能：** 组件右上角圆角半径。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -460,10 +460,10 @@ public init(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bottomLeft!: Leng
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|topLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件左上角圆角半径。|
-|topRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件右上角圆角半径。|
-|bottomLeft|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件左下角圆角半径。|
-|bottomRight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件右下角圆角半径。|
+|topLeft|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件左上角圆角半径。|
+|topRight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件右上角圆角半径。|
+|bottomLeft|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件左下角圆角半径。|
+|bottomRight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|组件右下角圆角半径。|
 
 ## class DismissContentCoverAction
 
@@ -646,7 +646,7 @@ public var family:?ResourceStr
 
 **功能：** 设置文本的字体列表。
 
-**类型：** ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**类型：** ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -662,7 +662,7 @@ public var size:?Length
 
 **功能：** 设置文本尺寸，使用fp单位。
 
-**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -718,9 +718,9 @@ public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?Resour
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
 |weight|?[FontWeight](#enum-fontweight)|否|None|设置文本的字体粗细。|
-|family|?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
+|family|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
 |style|?[FontStyle](#enum-fontstyle)|否|None|设置文本的字体样式。|
 
 ## class Fonts
@@ -766,7 +766,7 @@ public var size: Length
 
 **功能：** 设置文本尺寸，使用fp单位。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -823,9 +823,9 @@ public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, fami
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.fp|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.fp|设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
 |weight|[FontWeight](#enum-fontweight)|否|FontWeight.Normal|设置文本的字体粗细。|
-|family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
+|family|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。|
 |style|[FontStyle](#enum-fontstyle)|否|FontStyle.Normal|设置文本的字体样式。|
 
 ## class HorizontalAlignment
@@ -925,10 +925,10 @@ public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|上外边距，组件顶部距组件外元素的尺寸。|
-|right|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|右外边距，组件右边界距组件外元素的尺寸。|
-|bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|下外边距，组件底部距组件外元素的尺寸。|
-|left|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|左外边距，组件左边界距组件外元素的尺寸。|
+|top|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|上外边距，组件顶部距组件外元素的尺寸。|
+|right|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|右外边距，组件右边界距组件外元素的尺寸。|
+|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|下外边距，组件底部距组件外元素的尺寸。|
+|left|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|左外边距，组件左边界距组件外元素的尺寸。|
 
 ## class Offset
 
@@ -954,7 +954,7 @@ public var dx: Length
 
 **功能：** 水平方向偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -970,7 +970,7 @@ public var dy: Length
 
 **功能：** 竖直方向偏移量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -994,8 +994,8 @@ public init(dx: Length, dy: Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|dx|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|x点坐标。|
-|dy|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|y点坐标。|
+|dx|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|x点坐标。|
+|dy|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|y点坐标。|
 
 ## class OverlayOffset
 
@@ -1170,7 +1170,7 @@ public var x: Length
 
 **功能：** 定义x轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1186,7 +1186,7 @@ public var y: Length
 
 **功能：** 定义y轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1210,8 +1210,8 @@ public init(x!: Length = 0, y!: Length = 0)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0|x轴坐标，单位为vp。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0|y轴坐标，单位为vp。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0|x轴坐标，单位为vp。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0|y轴坐标，单位为vp。|
 
 ## class Rectangle
 
@@ -1239,7 +1239,7 @@ public var height: Length
 
 **功能：** 触摸热区的高度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1255,7 +1255,7 @@ public var width: Length
 
 **功能：** 触摸热区的宽度。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1271,7 +1271,7 @@ public var x: Length
 
 **功能：** 触摸点相对于组件左上角的x轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1287,7 +1287,7 @@ public var y: Length
 
 **功能：** 触摸点相对于组件左上角的y轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1311,10 +1311,10 @@ public init(x!: Length = 0.vp, y!: Length = 0.vp, width!: Length = 100.percent, 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的y轴坐标。|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的宽度。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的高度。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的x轴坐标。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 触摸点相对于组件左上角的y轴坐标。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的宽度。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|100.percent| **命名参数。** 触摸热区的高度。|
 
 ## class VerticalAlignment
 

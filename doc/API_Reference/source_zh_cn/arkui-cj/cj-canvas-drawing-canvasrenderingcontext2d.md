@@ -756,7 +756,7 @@ public func drawImage(pixelMap: PixelMap, dx: Float64, dy: Float64): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-| 图片资源，请参考[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)。|
+|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-| 图片资源，请参考[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)。|
 |dx|Float64|是|-|绘制区域左上角在 x 轴的位置。<br>默认单位：vp。|
 |dy|Float64|是|-|绘制区域左上角在 y 轴的位置。<br>默认单位：vp。|
 
@@ -776,7 +776,7 @@ public func drawImage(pixelMap: PixelMap, dx: Float64, dy: Float64, dWidth: Floa
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片资源，请参考[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)。|
+|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片资源，请参考[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)。|
 |dx|Float64|是|-|绘制区域左上角在 x 轴的位置。<br>默认单位：vp。|
 |dy|Float64|是|-|绘制区域左上角在 y 轴的位置。<br>默认单位：vp。|
 |dWidth|Float64|是|-|绘制区域的宽度。当绘制区域的宽度和裁剪图像的宽度不一致时，将图像宽度拉伸或压缩为绘制区域的宽度。<br>默认单位：vp。|
@@ -808,7 +808,7 @@ public func drawImage(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片资源，请参考[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)。|
+|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片资源，请参考[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)。|
 |sx|Float64|是|-|裁切源图像时距离源图像左上角的x坐标值。<br>单位：px。|
 |sy|Float64|是|-|裁切源图像时距离源图像左上角的y坐标值。<br>单位：px。|
 |sWidth|Float64|是|-|裁切源图像时需要裁切的宽度。<br>单位：px。|
@@ -926,7 +926,7 @@ public func fillStyle(color: ResourceColor): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|表示设置填充区域的颜色。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|表示设置填充区域的颜色。|
 
 ### func fillStyle(CanvasGradient)
 
@@ -1008,7 +1008,7 @@ public func font(
 |:---|:---|:---|:---|:---|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 用于指定字体样式。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 用于指定字体的粗细。|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|14.px|**命名参数。** 指定字号和行高。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|14.px|**命名参数。** 指定字号和行高。|
 |family|String|否|"sans-serif"|**命名参数。** 指定字体系列。|
 
 ### func getImageData(Float64, Float64, Float64, Float64)
@@ -1062,7 +1062,7 @@ public func getLineDash(): Array<Float64>
 public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Float64): PixelMap
 ```
 
-**功能：** 以当前canvas指定区域内的像素创建[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)对象。
+**功能：** 以当前canvas指定区域内的像素创建[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1081,7 +1081,7 @@ public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Flo
 
 |类型|说明|
 |:----|:----|
-|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|新的[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)对象。|
+|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|新的[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)对象。|
 
 ### func getTransform()
 
@@ -1180,8 +1180,8 @@ public func putImageData(imageData: ImageData, dx: Length, dy: Length): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |imageData|[ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata)|是|-| 包含像素值的ImageData对象。|
-|dx|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|填充区域在x轴方向的偏移量。<br>默认单位：vp。|
-|dy|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|填充区域在y轴方向的偏移量。<br>默认单位：vp。|
+|dx|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|填充区域在x轴方向的偏移量。<br>默认单位：vp。|
+|dy|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|填充区域在y轴方向的偏移量。<br>默认单位：vp。|
 
 ### func putImageData(ImageData, Float64, Float64, Float64, Float64, Float64, Float64)
 
@@ -1390,7 +1390,7 @@ public func setLineDash(dashArr: Array<Float64>): Unit
 public func setPixelMap(pixelMap: Option<PixelMap>): Unit
 ```
 
-**功能：** 将当前传入[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)对象绘制在画布上。setPixelMap示例同[getPixelMap](#func-getpixelmapfloat64-float64-float64-float64)。
+**功能：** 将当前传入[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)对象绘制在画布上。setPixelMap示例同[getPixelMap](#func-getpixelmapfloat64-float64-float64-float64)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1517,7 +1517,7 @@ public func strokeStyle(color: ResourceColor): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|表示设置填充区域的颜色。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|表示设置填充区域的颜色。|
 
 ### func strokeStyle(CanvasGradient)
 

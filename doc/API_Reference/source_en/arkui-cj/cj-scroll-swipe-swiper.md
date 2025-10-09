@@ -316,7 +316,7 @@ For Int64 and Float64 types, the default unit is vp. For string types, pixel uni
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Gap between child components.<br/>For Int64 and Float64 types, the default unit is vp.<br>Values less than 0 or exceeding the Swiper component width default to the initial value.<br>Initial value: 0. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Gap between child components.<br/>For Int64 and Float64 types, the default unit is vp.<br>Values less than 0 or exceeding the Swiper component width default to the initial value.<br>Initial value: 0. |
 
 ### func loop(Bool)
 
@@ -488,7 +488,7 @@ public func color(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the color of the dot navigation indicator for the Swiper component.<br>Initial value: 0x182431 (10% opacity). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the color of the dot navigation indicator for the Swiper component.<br>Initial value: 0x182431 (10% opacity). |
 
 #### func itemHeight(Length)
 
@@ -506,7 +506,7 @@ public func itemHeight(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the height of the dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 6.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the height of the dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 6.<br>Unit: vp. |
 
 #### func itemWidth(Length)
 
@@ -524,7 +524,7 @@ public func itemWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the width of the dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 6.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the width of the dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 6.<br>Unit: vp. |
 
 #### func mask(Bool)
 
@@ -580,7 +580,7 @@ public func selectedColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the color of the selected dot navigation indicator for the Swiper component.<br>Initial value: 0x007DFF. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the color of the selected dot navigation indicator for the Swiper component.<br>Initial value: 0x007DFF. |
 
 #### func selectedItemHeight(Length)
 
@@ -598,7 +598,7 @@ public func selectedItemHeight(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the height of the selected dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 6.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the height of the selected dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 6.<br>Unit: vp. |
 
 #### func selectedItemWidth(Length)
 
@@ -616,7 +616,7 @@ public func selectedItemWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the width of the selected dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 12.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the width of the selected dot navigation indicator for the Swiper component. Percentage values are not supported.<br>Initial value: 12.<br>Unit: vp. |
 
 ### class FontOptions
 
@@ -642,7 +642,7 @@ public var size: Length
 
 **Function:** Sets the font size for the numeric navigation dot indicator. Percentage values are not supported.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -682,7 +682,7 @@ public init(size!: Length = 14.vp, weight!: FontWeight = FontWeight.Normal)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 14.vp | **Named parameter.** Sets the font size for the numeric navigation dot indicator. Percentage values are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 14.vp | **Named parameter.** Sets the font size for the numeric navigation dot indicator. Percentage values are not supported. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Sets the font weight for the selected numeric navigation dot indicator. |
 
 ### class Indicator
@@ -749,7 +749,7 @@ public func bottom(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the bottom of the Swiper.<br>If neither `top` nor `bottom` is set, adaptive layout is applied, placing the indicator at the bottom in the cross-axis direction (same effect as `bottom=0`).<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Lower than the `top` property.<br>Valid range: [0, Swiper height - navigation dot area height]. Values outside this range are clamped to the nearest boundary. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the bottom of the Swiper.<br>If neither `top` nor `bottom` is set, adaptive layout is applied, placing the indicator at the bottom in the cross-axis direction (same effect as `bottom=0`).<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Lower than the `top` property.<br>Valid range: [0, Swiper height - navigation dot area height]. Values outside this range are clamped to the nearest boundary. |
 
 #### func end(Length)
 
@@ -767,7 +767,7 @@ public func end(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | In RTL mode, sets the distance between the navigation dots and the left side of the Swiper. In LTR mode, sets the distance between the navigation dots and the right side of the Swiper.<br>Initial value: 0.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | In RTL mode, sets the distance between the navigation dots and the left side of the Swiper. In LTR mode, sets the distance between the navigation dots and the right side of the Swiper.<br>Initial value: 0.<br>Unit: vp. |
 
 #### func left(Length)
 
@@ -785,7 +785,7 @@ public func left(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the left side of the Swiper.<br>If neither `left` nor `right` is set, adaptive layout is applied, centering the indicator along the main axis.<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Higher than the `right` property.<br>Valid range: [0, Swiper width - navigation dot area width]. Values outside this range are clamped to the nearest boundary. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the left side of the Swiper.<br>If neither `left` nor `right` is set, adaptive layout is applied, centering the indicator along the main axis.<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Higher than the `right` property.<br>Valid range: [0, Swiper width - navigation dot area width]. Values outside this range are clamped to the nearest boundary. |
 
 #### func right(Length)
 
@@ -803,7 +803,7 @@ public func right(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the right side of the Swiper.<br>If neither `left` nor `right` is set, adaptive layout is applied, centering the indicator along the main axis.<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Lower than the `left` property.<br>Valid range: [0, Swiper width - navigation dot area width]. Values outside this range are clamped to the nearest boundary. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the right side of the Swiper.<br>If neither `left` nor `right` is set, adaptive layout is applied, centering the indicator along the main axis.<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Lower than the `left` property.<br>Valid range: [0, Swiper width - navigation dot area width]. Values outside this range are clamped to the nearest boundary. |
 
 #### func start(Length)
 
@@ -821,7 +821,7 @@ public func start(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | In RTL mode, sets the distance between the navigation dots and the right side of the Swiper. In LTR mode, sets the distance between the navigation dots and the left side of the Swiper.<br>Initial value: 0.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | In RTL mode, sets the distance between the navigation dots and the right side of the Swiper. In LTR mode, sets the distance between the navigation dots and the left side of the Swiper.<br>Initial value: 0.<br>Unit: vp. |
 
 #### func top(Length)
 
@@ -839,7 +839,7 @@ public func top(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the top of the Swiper.<br>If neither `top` nor `bottom` is set, adaptive layout is applied, placing the indicator at the bottom in the cross-axis direction (same effect as `bottom=0`).<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Higher than the `bottom` property.<br>Valid range: [0, Swiper height - navigation dot area height]. Values outside this range are clamped to the nearest boundary. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the position of the navigation dots relative to the top of the Swiper.<br>If neither `top` nor `bottom` is set, adaptive layout is applied, placing the indicator at the bottom in the cross-axis direction (same effect as `bottom=0`).<br>When set to 0: Layout is calculated based on the 0 position.<br>Priority: Higher than the `bottom` property.<br>Valid range: [0, Swiper height - navigation dot area height]. Values outside this range are clamped to the nearest boundary. |
 
 ### class SwiperController
 

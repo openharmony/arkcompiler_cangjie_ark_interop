@@ -62,7 +62,7 @@ public var centerX: Length
 
 **Function:** Specifies the x-coordinate of the component's transformation center point (i.e., anchor point).
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -78,7 +78,7 @@ public var centerY: Length
 
 **Function:** Specifies the y-coordinate of the component's transformation center point (i.e., anchor point).
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -94,7 +94,7 @@ public var centerZ: Length
 
 **Function:** Specifies the z-axis anchor point, i.e., the z-axis component of the 3D rotation center point.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -187,9 +187,9 @@ public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 
 | x | Float32 | No | 0.0 | **Named parameter.** X-coordinate of the rotation axis vector. |
 | y | Float32 | No | 0.0 | **Named parameter.** Y-coordinate of the rotation axis vector. |
 | z | Float32 | No | 0.0 | **Named parameter.** Z-coordinate of the rotation axis vector. |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Specifies the x-coordinate of the component's transformation center point (i.e., anchor point). |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Specifies the y-coordinate of the component's transformation center point (i.e., anchor point). |
-| centerZ | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | **Named parameter.** Z-axis anchor point, i.e., the z-axis component of the 3D rotation center point. |
+| centerX | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Specifies the x-coordinate of the component's transformation center point (i.e., anchor point). |
+| centerY | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Specifies the y-coordinate of the component's transformation center point (i.e., anchor point). |
+| centerZ | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | **Named parameter.** Z-axis anchor point, i.e., the z-axis component of the 3D rotation center point. |
 | perspective | Float32 | No | 0.0 | **Named parameter.** Perspective distance, i.e., the distance from the viewpoint to the z=0 plane.<br>The rotation axis and rotation center point are based on the coordinate system settings. When the component moves, the coordinate system does not follow. |
 
 ## class ScaleOptions
@@ -220,7 +220,7 @@ public var centerX: Length
 
 **Function:** Specifies the x-coordinate of the transformation center point.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -236,7 +236,7 @@ public var centerY: Length
 
 **Function:** Specifies the y-coordinate of the transformation center point.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -312,8 +312,8 @@ public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: L
 | x | Float32 | No | 1.0 | **Named parameter.** Scaling factor along the x-axis. Values >1 scale up along the x-axis; values between 0 and 1 scale down along the x-axis; values <0 reverse and scale along the x-axis. |
 | y | Float32 | No | 1.0 | **Named parameter.** Scaling factor along the y-axis. Values >1 scale up along the y-axis; values between 0 and 1 scale down along the y-axis; values <0 reverse and scale along the y-axis. |
 | z | Float32 | No | 1.0 | **Named parameter.** Scaling factor along the z-axis. Values >1 scale up along the z-axis; values between 0 and 1 scale down along the z-axis; values <0 reverse and scale along the z-axis. |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Specifies the x-coordinate of the component's transformation center point (i.e., anchor point). |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Specifies the y-coordinate of the component's transformation center point (i.e., anchor point). |
+| centerX | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Specifies the x-coordinate of the component's transformation center point (i.e., anchor point). |
+| centerY | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Specifies the y-coordinate of the component's transformation center point (i.e., anchor point). |
 
 ## class TransitionEffect
 
@@ -469,7 +469,7 @@ public var x: Length
 
 **Function:** Represents the translation distance along the x-axis
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Attribute:** Readable and Writable
 
@@ -485,7 +485,7 @@ public var y: Length
 
 **Function:** Represents the translation distance along the y-axis
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Attribute:** Readable and Writable
 
@@ -501,7 +501,7 @@ public var z: Length
 
 **Function:** Represents the translation distance along the z-axis
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Attribute:** Readable and Writable
 
@@ -525,9 +525,9 @@ public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along x-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along y-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
-|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along z-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along x-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along y-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
+|z|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|No|0.0.vp| **Named parameter.** Translation distance along z-axis.<br>Unit: vp.<br>Value range: (-∞, +∞)|
 
 ## enum TransitionEdge
 

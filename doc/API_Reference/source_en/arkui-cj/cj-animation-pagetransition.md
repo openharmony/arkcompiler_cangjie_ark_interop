@@ -71,8 +71,8 @@ public func scale(
 | x         | Float32                                          | No      | 1.0            | **Named parameter.** Horizontal scaling factor (or shrinking ratio).        |
 | y         | Float32                                          | No      | 1.0            | **Named parameter.** Vertical scaling factor (or shrinking ratio).         |
 | z         | Float32                                          | No      | 1.0            | **Named parameter.** Depth scaling factor (or shrinking ratio).             |
-| centerX   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No      | 50.percent     | **Named parameter.** X-axis scaling center point. Defaults to the page center.<br>(0, 0) represents the top-left corner of the page. |
-| centerY   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No      | 50.percent     | **Named parameter.** Y-axis scaling center point. Defaults to the page center.<br>(0, 0) represents the top-left corner of the page. |
+| centerX   | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No      | 50.percent     | **Named parameter.** X-axis scaling center point. Defaults to the page center.<br>(0, 0) represents the top-left corner of the page. |
+| centerY   | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No      | 50.percent     | **Named parameter.** Y-axis scaling center point. Defaults to the page center.<br>(0, 0) represents the top-left corner of the page. |
 
 ### func slide(SlideEffect)
 
@@ -112,9 +112,9 @@ public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): 
 
 | Parameter | Type                                              | Required | Default | Description               |
 |:----------|:-------------------------------------------------|:--------|:--------|:--------------------------|
-| x         | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| No      | 0.vp    | **Named parameter.** X-axis translation distance. |
-| y         | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No      | 0.vp    | **Named parameter.** Y-axis translation distance. |
-| z         | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| No      | 0.vp    | **Named parameter.** Z-axis translation distance. |
+| x         | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)| No      | 0.vp    | **Named parameter.** X-axis translation distance. |
+| y         | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No      | 0.vp    | **Named parameter.** Y-axis translation distance. |
+| z         | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)| No      | 0.vp    | **Named parameter.** Z-axis translation distance. |
 
 ## class PageTransitionEnter
 

@@ -36,8 +36,8 @@ public func rotate(x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 1.0, angl
 |y|Float32|否|0.0|**命名参数。** 旋转轴向量y坐标。|
 |z|Float32|否|1.0|**命名参数。** 旋转轴向量z坐标。|
 |angle|Float32|否|0.0|**命名参数。** 旋转角度。取值为正时相对于旋转轴方向顺时针转动，取值为负时相对于旋转轴方向逆时针转动。|
-|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|**命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
-|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|**命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
+|centerX|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|**命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
+|centerY|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|**命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
 
 ## func scale(Float32, Float32, Float32, Length, Length)
 
@@ -59,8 +59,8 @@ public func scale(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, cente
 |x|Float32|否|1.0|X轴缩放分量。|
 |y|Float32|否|1.0|Y轴缩放分量。|
 |z|Float32|否|1.0|Z轴缩放分量。|
-|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
-|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
+|centerX|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
+|centerY|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent|变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
 
 ## func translate(Length, Length, Length)
 
@@ -78,7 +78,7 @@ public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|X轴平移距离。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Y轴平移距离。|
-|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Z轴平移距离。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|X轴平移距离。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Y轴平移距离。|
+|z|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|Z轴平移距离。|
 

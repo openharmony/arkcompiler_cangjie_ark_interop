@@ -30,7 +30,7 @@ public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|space|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|纵向布局元素垂直方向间距。<br> space为负数或者[justifyContent](#func-justifycontentflexalign)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。 <br> 初始值：0 <br> 单位：vp <br> **说明：** <br> space为大于等于0的数字。|
+|space|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|纵向布局元素垂直方向间距。<br> space为负数或者[justifyContent](#func-justifycontentflexalign)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。 <br> 初始值：0 <br> 单位：vp <br> **说明：** <br> space为大于等于0的数字。|
 |child|()->Unit|否|{ => }|Column 容器的子组件|
 
 ## 通用属性/通用事件

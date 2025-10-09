@@ -854,7 +854,7 @@ public func fillStyle(color: ResourceColor): Unit
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color used to fill the area. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color used to fill the area. |
 
 ### func fillStyle(CanvasGradient)
 
@@ -936,7 +936,7 @@ public func font(
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Normal | **Named parameter.** Specifies the font weight. |
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 14.px | **Named parameter.** Specifies the font size and line height. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 14.px | **Named parameter.** Specifies the font size and line height. |
 | family | String | No | "sans-serif" | **Named parameter.** Specifies the font family. |
 
 ### func getImageData(Float64, Float64, Float64, Float64)
@@ -990,7 +990,7 @@ public func getLineDash(): Array<Float64>
 public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Float64): PixelMap
 ```
 
-**Function:** Creates a [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object from the pixels in the specified area of the current canvas.
+**Function:** Creates a [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) object from the pixels in the specified area of the current canvas.
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1009,7 +1009,7 @@ public func getPixelMap(left: Float64, top: Float64, width: Float64, height: Flo
 
 | Type | Description |
 |:----|:----|
-| [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | A new [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object. |
+| [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) | A new [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) object. |
 
 ### func getTransform()
 
@@ -1108,8 +1108,8 @@ public func putImageData(imageData: ImageData, dx: Length, dy: Length): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | imageData | [ImageData](./cj-canvas-drawing-imagedata.md#class-imagedata) | Yes | - | The ImageData object containing pixel values. |
-| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The x-axis offset of the fill area, in vp. |
-| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The y-axis offset of the fill area, in vp. |
+| dx | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The x-axis offset of the fill area, in vp. |
+| dy | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The y-axis offset of the fill area, in vp. |
 
 ### func putImageData(ImageData, Float64, Float64, Float64, Float64, Float64, Float64)
 
@@ -1316,7 +1316,7 @@ public func setLineDash(dashArr: Array<Float64>): Unit
 public func setPixelMap(pixelMap: Option<PixelMap>): Unit
 ```
 
-**Function:** Draws the provided [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) object onto the canvas. Example usage is the same as [getPixelMap](#func-getpixelmapfloat64-float64-float64-float64).
+**Function:** Draws the provided [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) object onto the canvas. Example usage is the same as [getPixelMap](#func-getpixelmapfloat64-float64-float64-float64).
 
 **System Capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1443,7 +1443,7 @@ public func strokeStyle(color: ResourceColor): Unit
 
 | Parameter | Type                                      | Required | Default | Description |
 |:----------|:------------------------------------------|:---------|:--------|:------------|
-| color     | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes      | -       | Specifies the color for the stroke. |
+| color     | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes      | -       | Specifies the color for the stroke. |
 
 ### func strokeStyle(CanvasGradient)
 

@@ -60,7 +60,7 @@ public func colorBlend(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Color blend value. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Color blend value. |
 
 ## func contrast(Float64)
 
@@ -209,6 +209,6 @@ public func shadow(radius!: Float64, color!: ResourceColor = Color(0x666666), of
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | radius | Float64 | Yes | - | Shadow blur radius. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x666666) | Shadow color. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x666666) | Shadow color. |
 | offsetX | Float64 | No | 0.0 | Shadow X-axis offset. |
 | offsetY | Float64 | No | 0.0 | Shadow Y-axis offset. |

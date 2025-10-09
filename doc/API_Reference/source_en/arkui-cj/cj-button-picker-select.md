@@ -81,8 +81,8 @@ public func font(
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Medium | **Named parameter.** Specifies the font weight. |
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage values are not supported. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "sans-serif" | **Named parameter.** Specifies the font family. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage values are not supported. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "sans-serif" | **Named parameter.** Specifies the font family. |
 
 ### func fontColor(ResourceColor)
 
@@ -100,7 +100,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the dropdown button itself.<br>Initial value: @r(sys.color.ohos_id_color_text_primary) blended with the transparency of @r(sys.color.ohos_id_alpha_content_primary). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the dropdown button itself.<br>Initial value: @r(sys.color.ohos_id_color_text_primary) blended with the transparency of @r(sys.color.ohos_id_alpha_content_primary). |
 
 ### func menuAlign(MenuAlignType, Offset)
 
@@ -155,7 +155,7 @@ public func menuBackgroundColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the dropdown menu.<br>Initial value: Color.Transparent. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the dropdown menu.<br>Initial value: Color.Transparent. |
 
 ### func optionBgColor(ResourceColor)
 
@@ -173,7 +173,7 @@ public func optionBgColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of dropdown menu items.<br>Initial value: Color.Transparent. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of dropdown menu items.<br>Initial value: Color.Transparent. |
 
 ### func optionFont(FontStyle, FontWeight, Length, ResourceStr)
 
@@ -198,8 +198,8 @@ public func optionFont(
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Medium | **Named parameter.** Specifies the font weight. |
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage values are not supported. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "sans-serif" | **Named parameter.** Specifies the font family. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the font size and line height. Percentage values are not supported. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "sans-serif" | **Named parameter.** Specifies the font family. |
 
 ### func optionFontColor(ResourceColor)
 
@@ -217,7 +217,7 @@ public func optionFontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of dropdown menu items.<br>Initial value: @r(sys.color.ohos_id_color_text_primary). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of dropdown menu items.<br>Initial value: @r(sys.color.ohos_id_color_text_primary). |
 
 ### func optionHeight(Length)
 
@@ -239,7 +239,7 @@ Valid values are greater than 0. If the actual height of all dropdown menu items
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The maximum height of the dropdown menu. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The maximum height of the dropdown menu. |
 
 ### func optionWidth(OptionWidthMode)
 
@@ -277,7 +277,7 @@ When set to an invalid value or less than the minimum width (56.vp), the attribu
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of dropdown menu items. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of dropdown menu items. |
 
 ### func selected(Int32)
 
@@ -313,7 +313,7 @@ public func selectedOptionBgColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the selected dropdown menu item.<br>Initial value: @r(sys.color.ohos_id_color_component_activated) blended with the transparency of @r(sys.color.ohos_id_alpha_highlight_bg). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the selected dropdown menu item.<br>Initial value: @r(sys.color.ohos_id_color_component_activated) blended with the transparency of @r(sys.color.ohos_id_alpha_highlight_bg). |
 
 ### func selectedOptionFont(FFontStyle, FontWeight, Length, String)
 
@@ -338,7 +338,7 @@ public func selectedOptionFont(
 |:---|:---|:---|:---|:---|
 | style | [FontStyle](./cj-common-types.md#enum-fontstyle) | No | FontStyle.Normal | **Named parameter.** Specifies the font style. |
 | weight | [FontWeight](./cj-common-types.md#enum-fontweight) | No | FontWeight.Medium | **Named parameter.** Specifies the font weight. |
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the text size. Percentage values are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Specifies the text size. Percentage values are not supported. |
 | family | String | No | "sans-serif" | **Named parameter.** Specifies the font list. |
 
 ### func selectedOptionFontColor(ResourceColor)
@@ -357,7 +357,7 @@ public func selectedOptionFontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the selected dropdown menu item.<br>Initial value: @r(sys.color.ohos_id_color_text_primary_activated) |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The text color of the selected dropdown menu item.<br>Initial value: @r(sys.color.ohos_id_color_text_primary_activated) |
 
 ### func space(Length)
 
@@ -375,7 +375,7 @@ public func space(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The spacing between the text and arrow of dropdown menu items.<br>Initial value: 8 |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The spacing between the text and arrow of dropdown menu items.<br>Initial value: 8 |
 
 ### func value(ResourceStr)
 
@@ -393,7 +393,7 @@ public func value(value: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The text content of the dropdown button itself. If the text length exceeds the column width, it is truncated. |
+| content | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The text content of the dropdown button itself. If the text length exceeds the column width, it is truncated. |
 
 ## Component Events
 
@@ -479,8 +479,8 @@ public init(value!: ResourceStr, icon!: ResourceStr)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Content of the dropdown option. |
-| icon | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Icon for the dropdown option. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Content of the dropdown option. |
+| icon | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** Icon for the dropdown option. |
 
 #### init(String, String)
 
@@ -518,7 +518,7 @@ public init(value: String, icon!: AppResource)
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | value | String | Yes | - | Content of the dropdown option. |
-| icon | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | **Named parameter.** Icon for the dropdown option. |
+| icon | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | **Named parameter.** Icon for the dropdown option. |
 
 #### init(AppResource, String)
 
@@ -536,7 +536,7 @@ public init(value: AppResource, icon!: String)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Content of the dropdown option. |
+| value | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Content of the dropdown option. |
 | icon | String | Yes | - | **Named parameter.** Icon for the dropdown option. |
 
 #### init(AppResource, AppResource)
@@ -555,8 +555,8 @@ public init(value: AppResource, icon!: AppResource)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Content of the dropdown option. |
-| icon | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | **Named parameter.** Icon for the dropdown option. |
+| value | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Content of the dropdown option. |
+| icon | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | **Named parameter.** Icon for the dropdown option. |
 
 ### enum ArrowPosition
 

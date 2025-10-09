@@ -2,7 +2,7 @@
 
 ## Overview  
 
-[UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is a UI-included application component primarily designed for user interaction.  
+[UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is a UI-included application component primarily designed for user interaction.  
 
 Design philosophy of UIAbility:  
 

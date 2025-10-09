@@ -30,8 +30,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width of the fill area, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or omitted, it will be processed according to the width required by its content. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height of the fill area, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or omitted, it will be processed according to the height required by its content. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width of the fill area, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or omitted, it will be processed according to the width required by its content. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height of the fill area, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or omitted, it will be processed according to the height required by its content. |
 
 ## Common Attributes/Common Events
 

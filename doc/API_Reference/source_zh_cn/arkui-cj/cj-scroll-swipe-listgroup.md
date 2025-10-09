@@ -47,7 +47,7 @@ public init(
 |:------ |:--------------------------------------------------------------------- |:--- |:----------------------- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | header | [CustomBuilder](./cj-common-types.md#type-custombuilder) | 否   | { => }                  | **命名参数。** 设置ListItemGroup头部组件。<br/>**说明：**<br/>可以放单个子组件或不放子组件。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。                                                                                                                                                                                                                                                                                        |
 | footer | [CustomBuilder](./cj-common-types.md#type-custombuilder) | 否   | { => }                  | **命名参数。** 设置ListItemGroup尾部组件。<br/>**说明：**<br/>可以放单个子组件或不放子组件。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。                                                                                                                                                                                                                                                                                        |
-| space  | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp                    | **命名参数。** 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。<br/>初始值：0。<br/>单位：vp。<br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按初始值显示。                                                                                                                                                                                                                                                                                   |
+| space  | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp                    | **命名参数。** 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。<br/>初始值：0。<br/>单位：vp。<br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按初始值显示。                                                                                                                                                                                                                                                                                   |
 | style  | [ListItemGroupStyle](#enum-listitemgroupstyle)                        | 否   | ListItemGroupStyle.None | **命名参数。** 设置List组件卡片样式。<br/>初始值：ListItemGroupStyle.NONE<br/>设置为ListItemGroupStyle.NONE时无样式。设置为ListItemGroupStyle.CARD时，建议配合ListItem的ListItemStyle.CARD同时使用，显示默认卡片样式。<br/>卡片样式下，ListItemGroup初始规格：左右外边距12.vp，上下左右内边距4.vp。<br/>卡片样式下，为卡片内的列表选项提供了默认的focus、hover、press、selected和disable样式。<br/>**说明：**<br/>当前卡片模式下，使用默认Axis.Vertical排列方向，如果listDirection属性设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
 | child  | ()->Unit                                                              | 是   | -                       | 声明容器子组件。                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
@@ -114,7 +114,7 @@ public var color: ResourceColor = Color(0X08000000)
 
 **功能：** 设置分割线的颜色。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -130,7 +130,7 @@ public var endMargin: Length = 0.vp
 
 **功能：** 设置分割线距离列表侧边结束端的距离。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -146,7 +146,7 @@ public var startMargin: Length = 0.vp
 
 **功能：** 设置分割线距离列表侧边起始端的距离。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -162,7 +162,7 @@ public var strokeWidth: Length
 
 **功能：** 设置分割线的线宽。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -191,10 +191,10 @@ public init(
 
 | 参数名         | 类型                                                                    | 必填  | 默认值         | 说明               |
 |:----------- |:--------------------------------------------------------------------- |:--- |:----------- |:---------------- |
-| strokeWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)        | 是   | -           | 分割线的线宽。          |
-| color       | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | 否   | Color.Black | 分割线的颜色。          |
-| startMargin | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp        | 分割线距离列表侧边起始端的距离。 |
-| endMargin   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp        | 分割线距离列表侧边结束端的距离。 |
+| strokeWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 是   | -           | 分割线的线宽。          |
+| color       | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | 否   | Color.Black | 分割线的颜色。          |
+| startMargin | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp        | 分割线距离列表侧边起始端的距离。 |
+| endMargin   | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp        | 分割线距离列表侧边结束端的距离。 |
 
 ### enum ListItemGroupStyle
 

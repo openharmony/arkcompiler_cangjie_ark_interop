@@ -84,7 +84,7 @@ public func strokeWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the ring.<br>Initial value: 24.vp.<br>Unit: vp.<br>If a value less than 0 is set, the default value will be displayed. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the ring.<br>Initial value: 24.vp.<br>Unit: vp.<br>If a value less than 0 is set, the default value will be displayed. |
 
 ### func trackBackgroundColor(ResourceColor)
 
@@ -102,7 +102,7 @@ public func trackBackgroundColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the track.<br>Initial value: 0x08182431. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The background color of the track.<br>Initial value: 0x08182431. |
 
 ### func trackShadow(DataPanelShadowOptions)
 
@@ -166,7 +166,7 @@ public var color: ResourceColor
 
 **Function:** The color value.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -182,7 +182,7 @@ public var offset: Length
 
 **Function:** The gradient color stop (a proportional value between 0 and 1; if the value is less than 0, it is set to 0; if the value is greater than 1, it is set to 1).
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -206,8 +206,8 @@ public init(color: ResourceColor, offset: Length)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color value. |
-| offset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The gradient color stop (a proportional value between 0 and 1; if the value is less than 0, it is set to 0; if the value is greater than 1, it is set to 1). |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color value. |
+| offset | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The gradient color stop (a proportional value between 0 and 1; if the value is less than 0, it is set to 0; if the value is greater than 1, it is set to 1). |
 
 ### class DataPanelShadowOptions
 
@@ -265,10 +265,10 @@ public init(radius!: Length = 20.vp, colors!: Array<LinearGradient> = [], offset
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 20.vp | **Named parameter.** The blur radius of the shadow. |
+| radius | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 20.vp | **Named parameter.** The blur radius of the shadow. |
 | colors | Array\<[LinearGradient](#class-lineargradient)> | No | [] | **Named parameter.** The shadow colors for each data segment.<br>If the number of shadow colors set is less than the number of data segments, the number of shadow colors displayed will match the number of shadow colors set.<br>If the number of shadow colors set is greater than the number of data segments, the number of shadow colors displayed will match the number of data segments. |
-| offsetX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 5.vp | **Named parameter.** The horizontal offset of the shadow. |
-| offsetY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 5.vp | **Named parameter.** The vertical offset of the shadow. |
+| offsetX | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 5.vp | **Named parameter.** The horizontal offset of the shadow. |
+| offsetY | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 5.vp | **Named parameter.** The vertical offset of the shadow. |
 
 ### class LinearGradient
 
@@ -319,7 +319,7 @@ public init(color: ResourceColor)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | A single gradient color. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | A single gradient color. |
 
 ## class MultiShadowOptions
 
@@ -345,7 +345,7 @@ public var offsetX: Length = 5.vp
 
 **Function:** Sets the horizontal offset of the shadow.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -361,7 +361,7 @@ public var offsetY: Length = 5.vp
 
 **Function:** Sets the vertical offset of the shadow.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -377,7 +377,7 @@ public var radius: Length = 20.vp
 
 **Function:** Sets the blur radius of the shadow.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 

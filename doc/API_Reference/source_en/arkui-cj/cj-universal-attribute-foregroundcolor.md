@@ -42,4 +42,4 @@ public func foregroundColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The foreground color of the component or setting the foreground color based on intelligent color picking strategy. Property animation is not supported. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The foreground color of the component or setting the foreground color based on intelligent color picking strategy. Property animation is not supported. |

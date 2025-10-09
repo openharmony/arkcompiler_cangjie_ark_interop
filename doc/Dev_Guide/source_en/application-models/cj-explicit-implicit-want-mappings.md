@@ -1,10 +1,10 @@
 # Explicit Want and Implicit Want Matching Rules
 
-When launching a target application component, matching is performed through either an explicit [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) or an implicit [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want). The matching rules described in this chapter specify how the parameters set in the [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter passed by the caller are matched with the configuration file declared by the target application component.
+When launching a target application component, matching is performed through either an explicit [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) or an implicit [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want). The matching rules described in this chapter specify how the parameters set in the [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter passed by the caller are matched with the configuration file declared by the target application component.
 
 ## Explicit Want Matching Principle
 
-The matching principle for explicit [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) is shown in the following table.
+The matching principle for explicit [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) is shown in the following table.
 
 | Name | Type | Matching Item | Required | Rule |
 | -------- | -------- | -------- | -------- | -------- |
@@ -21,7 +21,7 @@ The matching principle for explicit [Want](../../../API_Reference/source_en/apis
 
 ## Implicit Want Matching Principle
 
-The matching principle for implicit [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) is shown in the following table.
+The matching principle for implicit [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) is shown in the following table.
 
 | Name        | Type                           | Matching Item | Required | Rule                                                         |
 | ----------- | ------------------------------ | ------ | ---- | ------------------------------------------------------------ |

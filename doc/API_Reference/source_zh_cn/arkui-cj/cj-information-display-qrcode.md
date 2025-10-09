@@ -30,7 +30,7 @@ public init(value: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|二维码内容字符串。最大支持512个字符，若超出，则截取前512个字符。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|二维码内容字符串。最大支持512个字符，若超出，则截取前512个字符。|
 
 ## 通用属性/通用事件
 
@@ -56,7 +56,7 @@ public func color(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|二维码颜色。<br/>初始值：0xff000000，且不跟随系统深浅色模式切换而修改。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|二维码颜色。<br/>初始值：0xff000000，且不跟随系统深浅色模式切换而修改。|
 
 ### func contentOpacity(Float64)
 

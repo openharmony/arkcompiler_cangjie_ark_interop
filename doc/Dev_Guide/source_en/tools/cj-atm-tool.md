@@ -123,9 +123,9 @@ In the commands listed below, `-t`, <!--Del-->`-r`, <!--DelEnd-->`-v` are mandat
 | ----- | ----- |  
 | -h | Help information. |  
 | -t | Mandatory parameter. Queries all application process information in the system. |  
-| -t&nbsp;-i \<token-id> | Optional parameter. Queries basic information and corresponding [permission information](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) for an application process using its token ID. |  
-| -t&nbsp;-b \<bundle-name> | Optional parameter. Queries basic information and corresponding [permission information](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) for an application process using its bundle name. |  
-| -t&nbsp;-n \<process-name> | Optional parameter. Queries basic information and corresponding [permission information](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) for an application process using its process name. |  
+| -t&nbsp;-i \<token-id> | Optional parameter. Queries basic information and corresponding [permission information](../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) for an application process using its token ID. |  
+| -t&nbsp;-b \<bundle-name> | Optional parameter. Queries basic information and corresponding [permission information](../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) for an application process using its bundle name. |  
+| -t&nbsp;-n \<process-name> | Optional parameter. Queries basic information and corresponding [permission information](../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) for an application process using its process name. |  
 | <!--DelRow-->-r | Mandatory parameter. Queries all permission usage logs in the system. |  
 | <!--DelRow-->-r&nbsp;-i \<token-id> | Optional parameter. Queries permission usage logs for an application process using its token ID. |  
 | <!--DelRow-->-r&nbsp;-p \<permission-name> | Optional parameter. Queries usage logs for a specified permission. |  

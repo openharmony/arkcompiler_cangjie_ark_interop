@@ -30,7 +30,7 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容，引入系统资源或者应用资源中的文本。|
+|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容，引入系统资源或者应用资源中的文本。|
 |controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
 
 ### init(ResourceStr, TextController, () -> Unit)
@@ -49,7 +49,7 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。包含子组件Span且未设置属性字符串时不生效，显示Span内容，并且此时text组件的样式不生效。<br/>初始值：''。|
+|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。包含子组件Span且未设置属性字符串时不生效，显示Span内容，并且此时text组件的样式不生效。<br/>初始值：''。|
 |controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
 |child|()->Unit|否|{ =>}|Text的子组件。|
 
@@ -119,7 +119,7 @@ public func baselineOffset(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本基线的偏移量。设置该值为百分比时，按默认值显示。<br>初始值：0。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本基线的偏移量。设置该值为百分比时，按默认值显示。<br>初始值：0。|
 
 ### func decoration(TextDecorationType, ResourceColor, TextDecorationStyle)
 
@@ -139,7 +139,7 @@ public func decoration(decorationType!: TextDecorationType, color!: ResourceColo
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|**命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|**命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
 |decorationStyle|[TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle)|否|TextDecorationStyle.Solid|**命名参数。** 文本装饰线样式。|
 
 ### func fontColor(ResourceColor)
@@ -158,7 +158,7 @@ public func fontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|使用引入资源的方式设置字体颜色。<br>初始值：'e6182431'。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|使用引入资源的方式设置字体颜色。<br>初始值：'e6182431'。|
 
 ### func fontFamily(ResourceStr)
 
@@ -176,7 +176,7 @@ public func fontFamily(value: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。|
 
 ### func fontSize(Length)
 
@@ -194,7 +194,7 @@ public func fontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。不支持百分比单位。<br>初始值：16.fp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。不支持百分比单位。<br>初始值：16.fp。|
 
 ### func fontStyle(FontStyle)
 
@@ -248,7 +248,7 @@ public func lineHeight(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的文本行高，设置值不大于 0 时，不限制文本行高，自适应字体大小。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的文本行高，设置值不大于 0 时，不限制文本行高，自适应字体大小。|
 
 ### func lineSpacing(Length)
 
@@ -266,7 +266,7 @@ public func lineSpacing(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的行间距。<br>初始值：0。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的行间距。<br>初始值：0。|
 
 ### func maxFontSize(Length)
 
@@ -290,7 +290,7 @@ public func maxFontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本最大显示字号。单位：fp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本最大显示字号。单位：fp。|
 
 ### func maxLines(Int32)
 
@@ -336,7 +336,7 @@ public func minFontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本最小显示字号。单位：fp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本最小显示字号。单位：fp。|
 
 ### func textAlign(TextAlign)
 

@@ -2,7 +2,7 @@
 
 ## Interface Description
 
-For detailed API usage instructions (parameter constraints, value ranges, etc.), please refer to the [Application Event Logging API Documentation](../../../API_Reference/source_en/apis/PerformanceAnalysisKit/cj-apis-hiappevent.md).
+For detailed API usage instructions (parameter constraints, value ranges, etc.), please refer to the [Application Event Logging API Documentation](../../../API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hiappevent.md).
 
 **Subscription Interface Functionality:**
 

@@ -76,7 +76,7 @@ public func selectedColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color for the selected or partially selected state.<br/>Initial value:<br/>@r(sys.color.ohos_id_color_text_primary_activated).<br/>Invalid values are handled as the default. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color for the selected or partially selected state.<br/>Initial value:<br/>@r(sys.color.ohos_id_color_text_primary_activated).<br/>Invalid values are handled as the default. |
 
 ## Component Events
 

@@ -44,7 +44,7 @@ public func flexBasis(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The basis size of the component in the main axis direction of the parent container. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The basis size of the component in the main axis direction of the parent container. |
 
 ## func flexGrow(Float64)
 

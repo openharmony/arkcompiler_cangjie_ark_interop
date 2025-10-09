@@ -20,7 +20,7 @@
 
 ![keyt](figures/keyt.png)
 
-其中，密钥算法的值取自结构体[HuksKeyAlg](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg)。
+其中，密钥算法的值取自结构体[HuksKeyAlg](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg)。
 
 <!-- compile -->
 

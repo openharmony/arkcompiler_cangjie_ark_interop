@@ -87,7 +87,7 @@ public func barHeight(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|TabBar 的高度值。<br/>初始值：<br/>未设置带样式的TabBar且vertical属性为false时，初始值为56.vp。<br/>未设置带样式的TabBar且vertical属性为true时，初始值为Tabs的高度。<br/>设置[SubTabBarStyle](./cj-common-types.md#enum-subtabbarstyle)样式且vertical属性为false时，初始值为56.vp。<br/>设置SubTabBarStyle样式且vertical属性为true时，初始值为Tabs的高度。<br/>设置[BottomTabBarStyle](./cj-common-types.md#enum-bottomtabbarstyle)样式且vertical属性为true时，初始值为Tabs的高度。<br/>设置BottomTabBarStyle样式且vertical属性为false时，初始值为48.vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|TabBar 的高度值。<br/>初始值：<br/>未设置带样式的TabBar且vertical属性为false时，初始值为56.vp。<br/>未设置带样式的TabBar且vertical属性为true时，初始值为Tabs的高度。<br/>设置[SubTabBarStyle](./cj-common-types.md#enum-subtabbarstyle)样式且vertical属性为false时，初始值为56.vp。<br/>设置SubTabBarStyle样式且vertical属性为true时，初始值为Tabs的高度。<br/>设置[BottomTabBarStyle](./cj-common-types.md#enum-bottomtabbarstyle)样式且vertical属性为true时，初始值为Tabs的高度。<br/>设置BottomTabBarStyle样式且vertical属性为false时，初始值为48.vp。|
 
 ### func barMode(BarMode)
 
@@ -123,7 +123,7 @@ public func barWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|TabBar 的宽度值。<br/>初始值：<br/>未设置[SubTabBarStyle](./cj-navigation-switching-tabs.md#class-subtabbarstyle)和[BottomTabBarStyle](./cj-navigation-switching-tabs.md#class-bottomtabbarstyle)的TabBar且vertical属性为false时，初始值为Tabs的宽度。<br/>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，初始值为56.vp。<br/>设置SubTabBarStyle样式且vertical属性为false时，初始值为Tabs的宽度。<br/>设置SubTabBarStyle样式且vertical属性为true时，初始值为56.vp。<br/>设置BottomTabBarStyle样式且vertical属性为true时，初始值为96.vp。<br/>设置BottomTabBarStyle样式且vertical属性为false时，初始值为Tabs的宽度。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|TabBar 的宽度值。<br/>初始值：<br/>未设置[SubTabBarStyle](./cj-navigation-switching-tabs.md#class-subtabbarstyle)和[BottomTabBarStyle](./cj-navigation-switching-tabs.md#class-bottomtabbarstyle)的TabBar且vertical属性为false时，初始值为Tabs的宽度。<br/>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，初始值为56.vp。<br/>设置SubTabBarStyle样式且vertical属性为false时，初始值为Tabs的宽度。<br/>设置SubTabBarStyle样式且vertical属性为true时，初始值为56.vp。<br/>设置BottomTabBarStyle样式且vertical属性为true时，初始值为96.vp。<br/>设置BottomTabBarStyle样式且vertical属性为false时，初始值为Tabs的宽度。|
 
 ### func scrollable(Bool)
 
@@ -193,7 +193,7 @@ public func onChange(event: Callback<Int32, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<Int32,Unit>|是|-|Tab页签切换事件回调。<br/>参数：<br/>当前显示的index索引，索引从0开始计算。|
+|event|[Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<Int32,Unit>|是|-|Tab页签切换事件回调。<br/>参数：<br/>当前显示的index索引，索引从0开始计算。|
 
 ## 基础类型定义
 
@@ -262,7 +262,7 @@ public func tabBar(content: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|TabBar上显示内容。|
+|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|TabBar上显示内容。|
 
 #### func tabBar(ResourceStr, ResourceStr)
 
@@ -280,8 +280,8 @@ public func tabBar(icon!: ResourceStr = "", text!: ResourceStr = ""): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|icon|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** TabBar上显示的图标。<br/>**说明：** 如果icon采用svg格式图源，则要求svg图源删除其自有宽高属性值。如采用带有自有宽高属性的svg图源，icon大小则是svg本身内置的宽高属性值大小。|
-|text|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** TabBar上显示的文字内容。|
+|icon|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** TabBar上显示的图标。<br/>**说明：** 如果icon采用svg格式图源，则要求svg图源删除其自有宽高属性值。如采用带有自有宽高属性的svg图源，icon大小则是svg本身内置的宽高属性值大小。|
+|text|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** TabBar上显示的文字内容。|
 
 #### func tabBar(CustomBuilder)
 

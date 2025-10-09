@@ -18,7 +18,7 @@ Taking RSA keys as an example, applications need to request an Array\<UInt8> and
 
 The following diagram shows the RSA key material memory structure as an example. Formats for other algorithms are illustrated in subsequent diagrams.
 
-The key algorithm values are taken from the [HuksKeyAlg](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg) structure.
+The key algorithm values are taken from the [HuksKeyAlg](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg) structure.
 
 <!--compile-->
 ```cangjie

@@ -42,7 +42,7 @@ public func backgroundColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Background color. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Background color. |
 
 ## func backgroundImage(ResourceStr)
 
@@ -60,7 +60,7 @@ public func backgroundImage(src: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Image resource path. |
+| src | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Image resource path. |
 
 ## func backgroundImage(ResourceStr, ImageRepeat)
 
@@ -78,7 +78,7 @@ public func backgroundImage(src: ResourceStr, repeat: ImageRepeat): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| src | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Image resource path. |
+| src | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Image resource path. |
 | repeat | [ImageRepeat](./cj-common-types.md#enum-imagerepeat) | Yes | - | Image repeat mode. |
 
 ## func backgroundImagePosition(Alignment)
@@ -115,8 +115,8 @@ public func backgroundImagePosition(x!: Length = 0.vp, y!: Length = 0.vp): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | X-axis position. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Y-axis position. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | X-axis position. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Y-axis position. |
 
 ## func backgroundImageSize(ImageSize)
 
@@ -152,8 +152,8 @@ public func backgroundImageSize(width!: Length = 0.vp, height!: Length = 0.vp): 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Image width. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Image height. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Image width. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Image height. |
 
 ## Basic Type Definitions
 

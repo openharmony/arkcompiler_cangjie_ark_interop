@@ -143,10 +143,10 @@ List的分割线画在主轴方向两个子组件之间，第一个子组件上�
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 分割线的线宽。<br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按0处理。|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 分割线的颜色。|
-|startMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 分割线距离列表侧边起始端的距离。<br/>**说明：**<br/>设置为负数时，按初始值处理。|
-|endMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 分割线距离列表侧边结束端的距离。<br/>**说明：**<br/>设置为负数时，按初始值处理。|
+|strokeWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 分割线的线宽。<br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按0处理。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 分割线的颜色。|
+|startMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 分割线距离列表侧边起始端的距离。<br/>**说明：**<br/>设置为负数时，按初始值处理。|
+|endMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 分割线距离列表侧边结束端的距离。<br/>**说明：**<br/>设置为负数时，按初始值处理。|
 
 ### func edgeEffect(EdgeEffect)
 
@@ -203,8 +203,8 @@ public func lanes(minLength!: Length, maxLength!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|minLength|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件最小长度。|
-|maxLength|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件最大长度。|
+|minLength|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件最小长度。|
+|maxLength|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件最大长度。|
 
 ### func listDirection(Axis)
 

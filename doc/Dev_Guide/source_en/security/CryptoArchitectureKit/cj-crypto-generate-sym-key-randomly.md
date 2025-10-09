@@ -8,11 +8,11 @@ The symmetric key object can be used for subsequent encryption/decryption operat
 
 For corresponding algorithm specifications, refer to [Symmetric Key Generation and Conversion Specifications: AES](./cj-crypto-sym-key-generation-conversion-spec.md#aes).
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter 'AES256' to create a symmetric key generator (SymKeyGenerator) using AES algorithm with 256-bit key length.
+1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter 'AES256' to create a symmetric key generator (SymKeyGenerator) using AES algorithm with 256-bit key length.
 
-2. Call [generateSymKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to randomly generate a symmetric key object (SymKey).
+2. Call [generateSymKey](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to randomly generate a symmetric key object (SymKey).
 
-3. Call [getEncoded](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
+3. Call [getEncoded](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
 
 ## Example: Random AES Key Generation
 
@@ -37,12 +37,12 @@ func testSyncGenerateAesKey() {
 
 For corresponding algorithm specifications, refer to [Symmetric Key Generation and Conversion Specifications: SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4).
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter 'SM4_128' to create a symmetric key generator (SymKeyGenerator) using SM4 algorithm with 128-bit key length.
+1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter 'SM4_128' to create a symmetric key generator (SymKeyGenerator) using SM4 algorithm with 128-bit key length.
    If developers need to use other algorithms, please modify the string parameter here accordingly.
 
-2. Call [generateSymKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to randomly generate a symmetric key object (SymKey).
+2. Call [generateSymKey](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to randomly generate a symmetric key object (SymKey).
 
-3. Call [getEncoded](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
+3. Call [getEncoded](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
 
 ## Example: Random SM4 Key Generation
 

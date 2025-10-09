@@ -187,7 +187,7 @@ public var end:?Length = None
 
 **Function:** The distance from the guideline to the right or bottom of the container.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -203,7 +203,7 @@ public var start:?Length = None
 
 **Function:** The distance from the guideline to the left or top of the container.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -227,8 +227,8 @@ public init(start!: ?Length = None, end!: ?Length = None)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| start | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** The distance from the guideline to the left or top of the container. |
-| end | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** The distance from the guideline to the right or bottom of the container. |
+| start | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** The distance from the guideline to the left or top of the container. |
+| end | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** The distance from the guideline to the right or bottom of the container. |
 
 ### class GuideLineStyle
 

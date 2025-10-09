@@ -30,7 +30,7 @@ public init(value: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片的数据源，支持本地图片和网络图片。<br/>支持的图片格式包括png、jpg、bmp、svg、gif和heif。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片的数据源，支持本地图片和网络图片。<br/>支持的图片格式包括png、jpg、bmp、svg、gif和heif。|
 
 ### init(PixelMap)
 
@@ -48,7 +48,7 @@ public init(value: PixelMap)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片的数据源，支持本地图片和网络图片。<br>PixelMap格式为像素图，常用于图片编辑的场景。<br>支持Base64字符串。格式data:image[png\|jpeg\|bmp\|webp\|heif]；base64，[base64 data]，其中[base64 data]为Base64字符串数据。|
+|value|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片的数据源，支持本地图片和网络图片。<br>PixelMap格式为像素图，常用于图片编辑的场景。<br>支持Base64字符串。格式data:image[png\|jpeg\|bmp\|webp\|heif]；base64，[base64 data]，其中[base64 data]为Base64字符串数据。|
 
 ## 通用属性/通用事件
 
