@@ -1,6 +1,3 @@
-# Sensor Service Kit（传感器服务）（Beta特性）
+# 硬件（Beta特性）
 
-- [Sensor Service Kit开发简介](sensor/cj-sensorservice-kit-intro.md)
-- 传感器
-  - [传感器开发概述](sensor/cj-sensor-overview.md)
-  - [传感器开发指导（仓颉）](sensor/cj-sensor-guidelines.md)
+- [Sensor Service Kit（传感器服务）](sensor/README_zh.md)
