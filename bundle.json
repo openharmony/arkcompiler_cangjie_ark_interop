@@ -1,7 +1,7 @@
 {
     "name": "@ohos/cangjie_ark_interop",
     "description": "Cangjie ArkTS interop library API, used to provide cross-language interoperability",
-    "version": "6.0",
+    "version": "6.1",
     "license": "Apache License 2.0",
     "publishAs": "code-segment",
     "segment": {
