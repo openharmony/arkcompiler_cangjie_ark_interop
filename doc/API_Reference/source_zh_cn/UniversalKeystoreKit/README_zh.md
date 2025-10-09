@@ -3,4 +3,4 @@
 - 仓颉API
     - [ohos.security_huks（通用密钥库系统）](cj-apis-security_huks.md)
 - 错误码
-    - [huks错误码](../../../source_zh_cn/errorcodes/cj-errorcode-huks.md)
+    - [huks错误码](../errorcodes/cj-errorcode-huks.md)

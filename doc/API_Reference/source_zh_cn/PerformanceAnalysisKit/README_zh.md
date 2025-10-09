@@ -5,5 +5,5 @@
     - [ohos.hilog（HiLog日志打印）](cj-apis-hilog.md)
     - [ohos.hi_tracemeter（性能打点）](cj-apis-hi_tracemeter.md)
 - 错误码
-    - [应用事件打点错误码](../../../source_zh_cn/errorcodes/cj-errorcode-hiappevent.md)
-    - [Hidebug CpuUsage错误码](../../../source_zh_cn/errorcodes/cj-errorcode-hidebug-cpuusage.md)
+    - [应用事件打点错误码](../errorcodes/cj-errorcode-hiappevent.md)
+    - [Hidebug CpuUsage错误码](../errorcodes/cj-errorcode-hidebug-cpuusage.md)
