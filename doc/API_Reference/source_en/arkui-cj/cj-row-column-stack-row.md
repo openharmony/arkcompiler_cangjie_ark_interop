@@ -25,7 +25,7 @@ public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Horizontal spacing between elements. <br>Does not take effect when space is negative or justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, FlexAlign.SpaceEvenly. <br> Initial value: 0, Unit: vp <br> **Note:** Optional values are numbers greater than or equal to 0. |
+| space | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Horizontal spacing between elements. <br>Does not take effect when space is negative or justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, FlexAlign.SpaceEvenly. <br> Initial value: 0, Unit: vp <br> **Note:** Optional values are numbers greater than or equal to 0. |
 | child | ()->Unit | No | { => } | Child components within the container. |
 
 ## Common Attributes/Common Events

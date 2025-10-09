@@ -71,8 +71,8 @@ public func scale(
 | x       | Float32                                         | 否   | 1.0        | **命名参数。** 横向放大倍数（或缩小比例）。                                  |
 | y       | Float32                                         | 否   | 1.0        | **命名参数。** 纵向放大倍数（或缩小比例）。                                  |
 | z       | Float32                                         | 否   | 1.0        | **命名参数。** 竖向放大倍数（或缩小比例）。                                  |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 50.percent | **命名参数。** X轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 50.percent | **命名参数。** Y轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
+| centerX | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 50.percent | **命名参数。** X轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
+| centerY | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 50.percent | **命名参数。** Y轴缩放中心点。默认以页面的中心点为旋转中心点。<br>中心点为(0, 0)代表页面的左上角。 |
 
 ### func slide(SlideEffect)
 
@@ -112,9 +112,9 @@ public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): 
 
 | 参数名 | 类型                                              | 必填  | 默认值  | 说明                 |
 |:--- |:----------------------------------------------- |:--- |:---- |:------------------ |
-| x   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| 否   | 0.vp | **命名参数。** x轴的平移距离。 |
-| y   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 0.vp | **命名参数。** y轴的平移距离。 |
-| z   | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| 否   | 0.vp | **命名参数。** z轴的平移距离。 |
+| x   | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)| 否   | 0.vp | **命名参数。** x轴的平移距离。 |
+| y   | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 否   | 0.vp | **命名参数。** y轴的平移距离。 |
+| z   | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)| 否   | 0.vp | **命名参数。** z轴的平移距离。 |
 
 ## class PageTransitionEnter
 

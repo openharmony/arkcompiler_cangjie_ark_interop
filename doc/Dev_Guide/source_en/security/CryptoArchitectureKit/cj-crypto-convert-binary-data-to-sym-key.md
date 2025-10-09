@@ -6,13 +6,13 @@ Taking 3DES and HMAC as examples, this document describes how to generate a symm
 
 For corresponding algorithm specifications, refer to [Symmetric Key Generation and Conversion Specifications: 3DES](./cj-crypto-sym-key-generation-conversion-spec.md#3des).
 
-1. Obtain 3DES binary key data and encapsulate it into a [DataBlob](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#struct-datablob) object.
+1. Obtain 3DES binary key data and encapsulate it into a [DataBlob](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#struct-datablob) object.
 
-2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter '3DES192' to create a symmetric key generator (SymKeyGenerator) for the 3DES algorithm with a key length of 192 bits.
+2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter '3DES192' to create a symmetric key generator (SymKeyGenerator) for the 3DES algorithm with a key length of 192 bits.
 
-3. Call [convertKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key object (SymKey) from the specified binary key data.
+3. Call [convertKey](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key object (SymKey) from the specified binary key data.
 
-4. Call [getEncoded](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
+4. Call [getEncoded](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
 
 Example of generating a 3DES key:
 
@@ -44,11 +44,11 @@ For corresponding algorithm specifications, refer to [Symmetric Key Generation a
 
 1. Obtain HMAC binary key data and encapsulate it into a DataBlob object.
 
-2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter 'HMAC' to create a symmetric key generator (SymKeyGenerator) for the HMAC algorithm with a key length between [1, 32768] bits.
+2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) with the string parameter 'HMAC' to create a symmetric key generator (SymKeyGenerator) for the HMAC algorithm with a key length between [1, 32768] bits.
 
-3. Call [convertKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key object (SymKey) from the specified binary key data.
+3. Call [convertKey](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key object (SymKey) from the specified binary key data.
 
-4. Call [getEncoded](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
+4. Call [getEncoded](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getencoded) to obtain the binary data of the key object.
 
 Example of generating an HMAC key:
 

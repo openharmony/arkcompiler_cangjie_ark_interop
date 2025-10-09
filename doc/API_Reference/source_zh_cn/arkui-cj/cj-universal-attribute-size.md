@@ -25,10 +25,10 @@ public func constraintSize(minWidth!: Length = 0.vp, maxWidth!: Length = (Float6
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|minWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|最小宽度。|
-|maxWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|(Float64.Inf).vp|最大宽度。|
-|minHeight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|最小高度。|
-|maxHeight|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|(Float64.Inf).vp|最大高度。|
+|minWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|最小宽度。|
+|maxWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|(Float64.Inf).vp|最大宽度。|
+|minHeight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|最小高度。|
+|maxHeight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|(Float64.Inf).vp|最大高度。|
 
 ## func height(Option\<Length>)
 
@@ -46,7 +46,7 @@ public func height(value: Option<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件高度。</br>单位：vp。|
+|value|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件高度。</br>单位：vp。|
 
 ## func layoutWeight(Int32)
 
@@ -82,7 +82,7 @@ public func margin(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的外边距，四个方向内边距同时生效。<br/> 单位：vp|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的外边距，四个方向内边距同时生效。<br/> 单位：vp|
 
 ## func margin(Length, Length, Length, Length)
 
@@ -100,10 +100,10 @@ public func margin(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length =
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  上内边距，组件顶部距组件外元素的尺寸。|
-|right|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  右内边距，组件右边界距组件外元素的尺寸。|
-|bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  下内边距，组件底部距组件外元素的尺寸。|
-|left|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  左内边距，组件左边界距组件外元素的尺寸。|
+|top|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  上内边距，组件顶部距组件外元素的尺寸。|
+|right|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  右内边距，组件右边界距组件外元素的尺寸。|
+|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  下内边距，组件底部距组件外元素的尺寸。|
+|left|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  左内边距，组件左边界距组件外元素的尺寸。|
 
 ## func padding(Length)
 
@@ -121,7 +121,7 @@ public func padding(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的内边距，四个方向内边距同时生效。<br/> 单位：vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的内边距，四个方向内边距同时生效。<br/> 单位：vp。|
 
 ## func padding(Length, Length, Length, Length)
 
@@ -139,10 +139,10 @@ public func padding(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 上内边距，组件内元素距组件顶部的尺寸。</br>初始值： 0.vp。|
-|right|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 右内边距，组件内元素距组件右边界的尺寸。</br>初始值： 0.vp。|
-|bottom|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 下内边距，组件内元素距组件底部的尺寸。</br>初始值： 0.vp。|
-|left|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 左内边距，组件内元素距组件左边界的尺寸。</br>初始值： 0.vp。|
+|top|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 上内边距，组件内元素距组件顶部的尺寸。</br>初始值： 0.vp。|
+|right|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 右内边距，组件内元素距组件右边界的尺寸。</br>初始值： 0.vp。|
+|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 下内边距，组件内元素距组件底部的尺寸。</br>初始值： 0.vp。|
+|left|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 左内边距，组件内元素距组件左边界的尺寸。</br>初始值： 0.vp。|
 
 > **说明：**
 >
@@ -164,8 +164,8 @@ public func size(width!: Length, height!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。**  组件宽度。<br/> 单位：vp。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。**  组件高度。<br/> 单位：vp。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。**  组件宽度。<br/> 单位：vp。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。**  组件高度。<br/> 单位：vp。|
 
 ## func width(Option\<Length>)
 
@@ -183,5 +183,5 @@ public func width(value: Option<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Option\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件宽度。<br>默认单位：vp。|
+|value|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件宽度。<br>默认单位：vp。|
 

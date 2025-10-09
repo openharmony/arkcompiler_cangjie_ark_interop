@@ -1,6 +1,6 @@
 # Web
 
-提供具有网页显示能力的Web组件，[@ohos.web.webview](../apis/ArkWeb/cj-apis-webview.md)提供web控制能力。
+提供具有网页显示能力的Web组件，[@ohos.web.webview](../ArkWeb/cj-apis-webview.md)提供web控制能力。
 
 ## 导入模块
 
@@ -34,8 +34,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| **命名参数。** src不能通过状态变量（例如：@State）动态更改地址。|
-|controller|[WebviewController](../apis/ArkWeb/cj-apis-webview.md#class-webviewcontroller)|是|-| **命名参数。** 设置Web控制器。|
+|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| **命名参数。** src不能通过状态变量（例如：@State）动态更改地址。|
+|controller|[WebviewController](../ArkWeb/cj-apis-webview.md#class-webviewcontroller)|是|-| **命名参数。** 设置Web控制器。|
 
 ## 通用属性/通用事件
 
@@ -181,7 +181,7 @@ public func javaScriptProxy(funcList!: Array<(String) -> String>, name!: String,
 |funcList|Array\<(String)->String>|是|-| **命名参数。** 参与注册的应用侧JavaScript对象的同步方法。|
 |name|String|是|-| **命名参数。** 注册对象的名称，与window中调用的对象名一致。|
 |methodList|Array\<String>|是|-| **命名参数。** 参与注册的应用侧JavaScript对象的异步方法。|
-|controller|[WebviewController](../apis/ArkWeb/cj-apis-webview.md#class-webviewcontroller)|是|-| **命名参数。** 设置Web控制器|
+|controller|[WebviewController](../ArkWeb/cj-apis-webview.md#class-webviewcontroller)|是|-| **命名参数。** 设置Web控制器|
 
 ### func mixedMode(MixedMode)
 
@@ -282,7 +282,7 @@ public func onLoadIntercept(callback: Callback<OnLoadInterceptEvent, Bool>): Thi
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnLoadInterceptEvent](#class-onloadinterceptevent),Bool>|是|-|回调函数，截获资源加载时触发的回调。<br> 返回值boolean。返回true表示阻止此次加载，否则允许此次加载。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[OnLoadInterceptEvent](#class-onloadinterceptevent),Bool>|是|-|回调函数，截获资源加载时触发的回调。<br> 返回值boolean。返回true表示阻止此次加载，否则允许此次加载。|
 
 ### func onPageBegin(Callback\<OnPageBeginEvent,Unit>)
 
@@ -301,7 +301,7 @@ public func onPageBegin(callback: Callback<OnPageBeginEvent, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageBeginEvent](#class-onpagebeginevent),Unit>|是|-|回调函数，网页加载开始时触发回调。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageBeginEvent](#class-onpagebeginevent),Unit>|是|-|回调函数，网页加载开始时触发回调。|
 
 ### func onPageEnd(Callback\<OnPageEndEvent,Unit>)
 
@@ -320,7 +320,7 @@ public func onPageEnd(callback: Callback<OnPageEndEvent, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageEndEvent](#class-onpageendevent),Unit>|是|-|网页加载结束时触发。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[OnPageEndEvent](#class-onpageendevent),Unit>|是|-|网页加载结束时触发。|
 
 ### func onlineImageAccess(Bool)
 

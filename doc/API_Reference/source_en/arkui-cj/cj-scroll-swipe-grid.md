@@ -112,7 +112,7 @@ public func columnsGap(value: Length): This
 
 | Name  | Type                                     | Required | Default | Description |
 |:------|:-----------------------------------------|:---------|:--------|:------------|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes      | -       | Gap between columns.<br>Initial value: 0<br>Range: [0, +∞) |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes      | -       | Gap between columns.<br>Initial value: 0<br>Range: [0, +∞) |
 
 ### func columnsTemplate(String)
 
@@ -161,7 +161,7 @@ public func rowsGap(value: Length): This
 
 | Name  | Type                                     | Required | Default | Description |
 |:------|:-----------------------------------------|:---------|:--------|:------------|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes      | -       | Gap between rows.<br>Initial value: 0<br>Range: [0, +∞) |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes      | -       | Gap between rows.<br>Initial value: 0<br>Range: [0, +∞) |
 
 ### func rowsTemplate(String)
 

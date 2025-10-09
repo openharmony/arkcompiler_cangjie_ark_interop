@@ -81,7 +81,7 @@ public func color(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|未选中项文本颜色。<br>初始值：0x99182431。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|未选中项文本颜色。<br>初始值：0x99182431。|
 
 ### func font(Length, FontWeight, ResourceStr, FontStyle)
 
@@ -104,9 +104,9 @@ public func font(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
-|family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
+|family|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
 
 ### func itemSize(Length)
@@ -125,7 +125,7 @@ public func itemSize(size: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。<br>初始值：16.vp。<br>单位：vp。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。<br>初始值：16.vp。<br>单位：vp。|
 
 ### func popupBackground(ResourceColor)
 
@@ -143,7 +143,7 @@ public func popupBackground(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗背景颜色。<br>初始值：0x66808080。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗背景颜色。<br>初始值：0x66808080。|
 
 ### func popupColor(ResourceColor)
 
@@ -161,7 +161,7 @@ public func popupColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗一级索引项文本颜色。<br>初始值：0xFF007DFF。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗一级索引项文本颜色。<br>初始值：0xFF007DFF。|
 
 ### func popupFont(Length, FontWeight, ResourceStr, FontStyle)
 
@@ -184,9 +184,9 @@ public func popupFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|24.vp|**命名参数。** 选中项文字大小。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|24.vp|**命名参数。** 选中项文字大小。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
-|family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
+|family|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
 
 ### func popupPosition(Length, Length)
@@ -205,8 +205,8 @@ public func popupPosition(x!: Length = 60.vp, y!: Length = 48.vp): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|60.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|48.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|60.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|48.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
 
 ### func selected(Int32)
 
@@ -242,7 +242,7 @@ public func selectedBackgroundColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项背景颜色。<br>初始值：0x1A007DFF。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项背景颜色。<br>初始值：0x1A007DFF。|
 
 ### func selectedColor(ResourceColor)
 
@@ -260,7 +260,7 @@ public func selectedColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项文字颜色。<br>初始值：0xFF007DFF。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项文字颜色。<br>初始值：0xFF007DFF。|
 
 ### func selectedFont(Length, FontWeight, ResourceStr, FontStyle)
 
@@ -283,9 +283,9 @@ public func selectedFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
-|family|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
+|family|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
 
 ### func usingPopup(Bool)

@@ -136,7 +136,7 @@ public func onDateChange(callback: Callback<DateTime, Unit>): This
 
 | Parameter | Type                                                                                                 | Required | Default Value | Description                                                                 |
 |:--------- |:--------------------------------------------------------------------------------------------------- |:-------- |:------------- |:-------------------------------------------------------------------------- |
-| callback  | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[DateTime](../apis/ImageKit/cj-apis-image.md#datetime),Unit> | Yes      | -             | Returns the selected time. The year, month, and day are the selected date, while the hour and minute depend on the current system time, and the second is always 00. |
+| callback  | [Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[DateTime](../ImageKit/cj-apis-image.md#datetime),Unit> | Yes      | -             | Returns the selected time. The year, month, and day are the selected date, while the hour and minute depend on the current system time, and the second is always 00. |
 
 ## Basic Type Definitions
 

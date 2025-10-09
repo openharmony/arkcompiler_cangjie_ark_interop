@@ -128,7 +128,7 @@ public var pixelMap: PixelMap = PixelMap(0)
 
 **功能：** 设置拖拽过程中显示的图片。
 
-**类型：** [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)
+**类型：** [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)
 
 **读写能力：** 可读写
 
@@ -148,7 +148,7 @@ public init(pixelMap: PixelMap, builder: CustomBuilder, extraInfo: String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|设置拖拽过程中显示的图片。|
+|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|设置拖拽过程中显示的图片。|
 |builder|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|使用自定义生成器进行绘图，如果设置了pixelMap，则忽略此值。|
 |extraInfo|String|是|-|拖拽项的描述。|
 

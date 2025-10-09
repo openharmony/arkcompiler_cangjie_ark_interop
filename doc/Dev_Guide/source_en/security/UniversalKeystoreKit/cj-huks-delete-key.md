@@ -8,9 +8,9 @@ Taking the deletion of an HKDF256 key as an example.
 
 1. Determine the key alias `keyAlias`. The maximum length of a key alias is 128 bytes.
 
-2. Initialize the key property set. Used to specify [key property TAG](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag) during deletion. When deleting a single key, the TAG field can be left empty.
+2. Initialize the key property set. Used to specify [key property TAG](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#enum-hukstag) during deletion. When deleting a single key, the TAG field can be left empty.
 
-3. Call the [deleteKeyItem](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) interface to delete the key.
+3. Call the [deleteKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) interface to delete the key.
 
 ## Example
 

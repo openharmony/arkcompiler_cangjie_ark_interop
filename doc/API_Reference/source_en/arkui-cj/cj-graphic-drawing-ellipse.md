@@ -30,8 +30,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width, value range ≥0. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height, value range ≥0. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Width, value range ≥0. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Height, value range ≥0. |
 
 ## Universal Attributes/Events
 

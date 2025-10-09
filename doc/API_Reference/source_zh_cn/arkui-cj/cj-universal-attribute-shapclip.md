@@ -96,8 +96,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 |名称|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| 是 | - | **命名参数。**  宽度。<br>初始值：0.vp。 |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 是 | - | **命名参数。**  高度。<br>初始值：0.vp。 |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)| 是 | - | **命名参数。**  宽度。<br>初始值：0.vp。 |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 是 | - | **命名参数。**  高度。<br>初始值：0.vp。 |
 
 ### class EllipseShape
 
@@ -133,8 +133,8 @@ public init(width!: Length, height!: Length)
 
 |名称|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| 是 | - | **命名参数。**  宽度。<br>初始值：0.vp。 |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 是 | - | **命名参数。**  高度。 <br>初始值：0.vp。|
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)| 是 | - | **命名参数。**  宽度。<br>初始值：0.vp。 |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 是 | - | **命名参数。**  高度。 <br>初始值：0.vp。|
 
 ### class RectShape
 
@@ -173,8 +173,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 |名称|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)| 是 | - | **命名参数。**  宽度。<br>初始值：0.vp。 |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 是 | - | **命名参数。**  高度。 <br>初始值：0.vp。|
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)| 是 | - | **命名参数。**  宽度。<br>初始值：0.vp。 |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 是 | - | **命名参数。**  高度。 <br>初始值：0.vp。|
 
 #### func radiusWidth(Length)
 
@@ -192,7 +192,7 @@ public func radiusWidth(value: Length): This
 
 |名称|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角的宽度。</br>初始值：0.vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角的宽度。</br>初始值：0.vp。|
 
 #### func radiusHeight(Length)
 
@@ -210,7 +210,7 @@ public func radiusHeight(value: Length): This
 
 |名称|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角的高度。</br>初始值：0.vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角的高度。</br>初始值：0.vp。|
 
 #### func radius(Length)
 
@@ -228,5 +228,5 @@ public func radius(value: Length): This
 
 |名称|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角的半径大小。</br>初始值：0.vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角的半径大小。</br>初始值：0.vp。|
 

@@ -4,7 +4,7 @@ Applications need to perform operations such as viewing, creating, reading, writ
 
 ## Interface Description
 
-Developers can implement application file access capabilities through basic file operation interfaces ([ohos.file_fs](../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md)). The main functionalities are listed in the following table.
+Developers can implement application file access capabilities through basic file operation interfaces ([ohos.file_fs](../../../API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md)). The main functionalities are listed in the following table.
 
 | Interface Name | Functionality | Interface Type |
 | ------------ | ---------------------- | -------- |

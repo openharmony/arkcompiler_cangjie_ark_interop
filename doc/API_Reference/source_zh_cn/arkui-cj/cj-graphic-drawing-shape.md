@@ -52,7 +52,7 @@ public init(value!: PixelMap)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-| **命名参数。** 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。|
+|value|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-| **命名参数。** 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。|
 
 ## 通用属性/通用事件
 
@@ -103,10 +103,10 @@ public func viewPort(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点x坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点y坐标。|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口宽度。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口高度。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点x坐标。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口起始点y坐标。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口宽度。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 视口高度。|
 
 ## 基础类型定义
 
@@ -160,7 +160,7 @@ public func fill(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充颜色（支持资源色/纯色）。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充颜色（支持资源色/纯色）。|
 
 #### func fillOpacity(Float64)
 
@@ -196,7 +196,7 @@ public func fillOpacity(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
+|value|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
 
 #### func stroke(ResourceColor)
 
@@ -214,7 +214,7 @@ public func stroke(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|描边颜色（支持资源色/纯色）。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|描边颜色（支持资源色/纯色）。|
 
 #### func strokeDashArray(Array\<Length>)
 
@@ -232,7 +232,7 @@ public func strokeDashArray(value: Array<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|虚线模式的长度数组，每个元素表示线段或间隔长度，支持长度单位。|
+|value|Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|虚线模式的长度数组，每个元素表示线段或间隔长度，支持长度单位。|
 
 #### func strokeDashOffset(Length)
 
@@ -250,7 +250,7 @@ public func strokeDashOffset(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|起始偏移量，支持长度单位。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|起始偏移量，支持长度单位。|
 
 #### func strokeLineCap(LineCapStyle)
 
@@ -340,7 +340,7 @@ public func strokeOpacity(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
+|value|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|不透明度资源。|
 
 #### func strokeWidth(Length)
 
@@ -358,7 +358,7 @@ public func strokeWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|描边宽度（如 vp/px 等）。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|描边宽度（如 vp/px 等）。|
 
 ### class BaseShape
 
@@ -388,7 +388,7 @@ public func fill(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充区域颜色。初始值：Color.BLACK。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|填充区域颜色。初始值：Color.BLACK。|
 
 #### func height(Length)
 
@@ -406,7 +406,7 @@ public func height(height: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件高度。<br>单位：vp。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件高度。<br>单位：vp。|
 
 #### func offset(Length, Length)
 
@@ -424,8 +424,8 @@ public func offset(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴偏移量。<br>单位：vp。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴偏移量。<br>单位：vp。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴偏移量。<br>单位：vp。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴偏移量。<br>单位：vp。|
 
 #### func size(Length, Length)
 
@@ -443,8 +443,8 @@ public func size(width!: Length, height!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件宽度。<br>单位：vp。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件高度。<br>单位：vp。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件宽度。<br>单位：vp。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 组件高度。<br>单位：vp。|
 
 #### func width(Length)
 
@@ -462,7 +462,7 @@ public func width(width: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件宽度。</br>单位：vp。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件宽度。</br>单位：vp。|
 
 ## 示例代码
 

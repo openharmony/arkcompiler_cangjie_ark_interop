@@ -77,7 +77,7 @@ public func selectedColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置组件打开状态的背景颜色。<br/>初始值: 当ToggleType为Switch时，初始值为@r(sys.color.ohos_id_color_component_activated)。<br/>当ToggleType为Checkbox时，初始值为@r(sys.color.ohos_id_color_component_activated)。<br/>当ToggleType为Button时，初始值为@r(sys.color.ohos_id_color_component_activated)混合@r(sys.color.ohos_id_color_text_highlight_bg)的透明度。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置组件打开状态的背景颜色。<br/>初始值: 当ToggleType为Switch时，初始值为@r(sys.color.ohos_id_color_component_activated)。<br/>当ToggleType为Checkbox时，初始值为@r(sys.color.ohos_id_color_component_activated)。<br/>当ToggleType为Button时，初始值为@r(sys.color.ohos_id_color_component_activated)混合@r(sys.color.ohos_id_color_text_highlight_bg)的透明度。|
 
 ### func switchPointColor(ResourceColor)
 
@@ -95,7 +95,7 @@ public func switchPointColor(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|Switch类型的圆形滑块颜色。初始值：@r(sys.color.ohos_id_color_foreground_contrary)|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|Switch类型的圆形滑块颜色。初始值：@r(sys.color.ohos_id_color_foreground_contrary)|
 
 ## 组件事件
 

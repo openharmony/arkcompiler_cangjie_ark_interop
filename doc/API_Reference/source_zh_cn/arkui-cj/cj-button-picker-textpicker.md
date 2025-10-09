@@ -80,7 +80,7 @@ public func defaultPickerItemHeight(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|Picker各选择项的高度。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|Picker各选择项的高度。|
 
 ## 组件事件
 

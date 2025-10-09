@@ -52,7 +52,7 @@ public init(value!: PixelMap)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | **Named parameter.** The drawing target. Graphics can be drawn on the specified PixelMap object. If not set, drawing occurs in the current target. |
+| value | [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | **Named parameter.** The drawing target. Graphics can be drawn on the specified PixelMap object. If not set, drawing occurs in the current target. |
 
 ## Common Attributes/Common Events
 
@@ -103,10 +103,10 @@ public func viewPort(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The x-coordinate of the viewport starting point. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The y-coordinate of the viewport starting point. |
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The width of the viewport. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The height of the viewport. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The x-coordinate of the viewport starting point. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The y-coordinate of the viewport starting point. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The width of the viewport. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** The height of the viewport. |
 
 ## Basic Type Definitions
 
@@ -160,7 +160,7 @@ public func fill(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color (supports resource colors/solid colors). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color (supports resource colors/solid colors). |
 
 #### func fillOpacity(Float64)
 
@@ -196,7 +196,7 @@ public func fillOpacity(value: AppResource): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Opacity resource. |
+| value | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Opacity resource. |
 
 #### func stroke(ResourceColor)
 
@@ -214,7 +214,7 @@ public func stroke(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Stroke color (supports resource colors/solid colors). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Stroke color (supports resource colors/solid colors). |
 
 #### func strokeDashArray(Array\<Length>)
 
@@ -232,7 +232,7 @@ public func strokeDashArray(value: Array<Length>): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Dash pattern length array, where each element represents the length of a line or gap, supporting length units. |
+| value | Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)> | Yes | - | Dash pattern length array, where each element represents the length of a line or gap, supporting length units. |
 
 #### func strokeDashOffset(Length)
 
@@ -250,7 +250,7 @@ public func strokeDashOffset(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Starting offset, supporting length units. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Starting offset, supporting length units. |
 
 #### func strokeLineCap(LineCapStyle)
 
@@ -340,7 +340,7 @@ public func strokeOpacity(value: AppResource): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Opacity resource. |
+| value | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes | - | Opacity resource. |
 
 #### func strokeWidth(Length)
 
@@ -358,7 +358,7 @@ public func strokeWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Stroke width (e.g., vp/px). |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Stroke width (e.g., vp/px). |
 
 ### class BaseShape
 
@@ -388,7 +388,7 @@ public func fill(color: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color. Initial value: Color.BLACK. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color. Initial value: Color.BLACK. |
 
 #### func height(Length)
 
@@ -406,7 +406,7 @@ public func height(height: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component height.<br>Unit: vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component height.<br>Unit: vp. |
 
 #### func offset(Length, Length)
 
@@ -424,8 +424,8 @@ public func offset(x!: Length, y!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis offset.<br>Unit: vp. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis offset.<br>Unit: vp. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis offset.<br>Unit: vp. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis offset.<br>Unit: vp. |
 
 #### func size(Length, Length)
 
@@ -443,8 +443,8 @@ public func size(width!: Length, height!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component width.<br>Unit: vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component height.<br>Unit: vp. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component width.<br>Unit: vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Component height.<br>Unit: vp. |
 
 #### func width(Length)
 
@@ -462,7 +462,7 @@ public func width(width: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component width.<br>Unit: vp. |## Sample Code
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Component width.<br>Unit: vp. |## Sample Code
 
 <!-- run -->
 

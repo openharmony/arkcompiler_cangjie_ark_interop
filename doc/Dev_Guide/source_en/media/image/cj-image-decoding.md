@@ -4,7 +4,7 @@ Image decoding refers to the process of converting archived images in supported 
 
 ## Development Steps
 
-For detailed API documentation on image decoding, refer to: [Image Decoding API Reference](../../../../API_Reference/source_en/apis/ImageKit/cj-apis-image.md#class-imagesource).
+For detailed API documentation on image decoding, refer to: [Image Decoding API Reference](../../../../API_Reference/source_en/ImageKit/cj-apis-image.md#class-imagesource).
 
 1. Import the Image module globally.
 
@@ -15,7 +15,7 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
     ```
 
 2. Obtain the image.
-    - Method 1: Get the file descriptor through the sandbox path. Refer to the [file.fs API documentation](../../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md).
+    - Method 1: Get the file descriptor through the sandbox path. Refer to the [file.fs API documentation](../../../../API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md).
        This method requires importing the kit.CoreFileKit and kit.AbilityKit modules first.
 
         <!-- compile -->
@@ -36,7 +36,7 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         let fd = file.fd 
         ```
 
-    - Method 2: Get the resource file's Array\<UInt8> through the resource manager. Refer to the [ResourceManager API documentation](../../../../API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfilecontentstring).
+    - Method 2: Get the resource file's Array\<UInt8> through the resource manager. Refer to the [ResourceManager API documentation](../../../../API_Reference/source_en/LocalizationKit/cj-apis-resource_manager.md#func-getrawfilecontentstring).
 
         <!-- compile -->
 
@@ -62,7 +62,7 @@ For detailed API documentation on image decoding, refer to: [Image Decoding API 
         }
         ```
 
-    - Method 4: Get the resource file's RawFileDescriptor through the resource manager. Refer to the [ResourceManager API documentation](../../../../API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring).
+    - Method 4: Get the resource file's RawFileDescriptor through the resource manager. Refer to the [ResourceManager API documentation](../../../../API_Reference/source_en/LocalizationKit/cj-apis-resource_manager.md#func-getrawfdstring).
 
         <!-- compile -->
 

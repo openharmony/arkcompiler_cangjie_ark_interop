@@ -1,6 +1,6 @@
 # 启动应用内的UIAbility组件
 
-[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)是系统调度的最小单元。在设备内的功能模块之间跳转时，会涉及到启动特定的Ability，包括应用内的其他Ability，或其他应用的Ability（例如启动三方支付Ability）。
+[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)是系统调度的最小单元。在设备内的功能模块之间跳转时，会涉及到启动特定的Ability，包括应用内的其他Ability，或其他应用的Ability（例如启动三方支付Ability）。
 
 本章主要介绍启动应用内的Ability组件的方式。
 
@@ -14,11 +14,11 @@
 
 ## 启动应用内的UIAbility
 
-当一个应用内包含多个[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)时，存在应用内启动Ability的场景。例如在支付应用中从入口Ability启动收付款Ability。
+当一个应用内包含多个[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)时，存在应用内启动Ability的场景。例如在支付应用中从入口Ability启动收付款Ability。
 
 假设应用中有两个Ability：EntryAbility和FuncAbility（可以在同一个Module中，也可以在不同的Module中），需要从EntryAbility的页面中启动FuncAbility。
 
-1. 在EntryAbility中，通过调用[startAbility()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant-startoptions)方法启动Ability，[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)为Ability实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的Ability属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
+1. 在EntryAbility中，通过调用[startAbility()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant-startoptions)方法启动Ability，[Want](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-want.md#class-want)为Ability实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的Ability属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
 
     <!-- compile -->
 
@@ -69,7 +69,7 @@
     }
     ```
 
-2. 在FuncAbility的[onCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)或者[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)生命周期回调文件中接收EntryAbility传递过来的参数。
+2. 在FuncAbility的[onCreate()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)或者[onNewWant()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)生命周期回调文件中接收EntryAbility传递过来的参数。
 
     <!-- compile -->
 
@@ -90,9 +90,9 @@
 
     > **说明：**
     >
-    > 在被拉起的FuncAbility中，可以通过获取传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数的`parameters`来获取拉起方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)的PID、Bundle Name等信息。
+    > 在被拉起的FuncAbility中，可以通过获取传递过来的[Want](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-want.md#class-want)参数的`parameters`来获取拉起方[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)的PID、Bundle Name等信息。
 
-3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例，在FuncAbility中通过调用[terminateSelf()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself)方法实现。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
+3. 在FuncAbility业务完成之后，如需要停止当前[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例，在FuncAbility中通过调用[terminateSelf()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself)方法实现。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
 
     <!-- compile -->
 
@@ -136,7 +136,7 @@
 
 ### 概述
 
-一个[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)可以对应多个页面，在不同的场景下启动该UIAbility时需要展示不同的页面，例如从一个UIAbility的页面中跳转到另外一个UIAbility时，希望启动目标UIAbility的指定页面。
+一个[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)可以对应多个页面，在不同的场景下启动该UIAbility时需要展示不同的页面，例如从一个UIAbility的页面中跳转到另外一个UIAbility时，希望启动目标UIAbility的指定页面。
 
 UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动。
 
@@ -147,7 +147,7 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 
 ### 调用方UIAbility指定启动页面
 
-调用方[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，FuncA对应功能A页面），此时需要在传入的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数中配置指定的页面信息，可以通过want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
+调用方[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，FuncA对应功能A页面），此时需要在传入的[Want](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-want.md#class-want)参数中配置指定的页面信息，可以通过want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见[获取UIAbility的上下文信息](cj-uiability-usage.md#获取uiability的上下文信息)。
 
 <!-- compile -->
 
@@ -196,7 +196,7 @@ class PageAbilityComponentsInteractive {
 
 ### 目标UIAbility冷启动
 
-目标[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)冷启动时，在目标Ability的[onCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)生命周期回调中，接收调用方传过来的参数。然后在目标Ability的[onWindowStageCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage)生命周期回调中，解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-window.md#class-windowstage)方法。
+目标[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)冷启动时，在目标Ability的[onCreate()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)生命周期回调中，接收调用方传过来的参数。然后在目标Ability的[onWindowStageCreate()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage)生命周期回调中，解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-want.md#class-want)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-window.md#class-windowstage)方法。
 
 <!-- compile -->
 
@@ -221,7 +221,7 @@ class FuncAbilityA <: UIAbility {
 
 ### 目标UIAbility热启动
 
-在应用开发中，会遇到目标[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例之前已经启动过的场景，这时再次启动目标Ability时，不会重新走初始化逻辑，只会直接触发[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)生命周期方法。为了实现跳转到指定页面，需要在onNewWant()中解析参数进行处理。
+在应用开发中，会遇到目标[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例之前已经启动过的场景，这时再次启动目标Ability时，不会重新走初始化逻辑，只会直接触发[onNewWant()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)生命周期方法。为了实现跳转到指定页面，需要在onNewWant()中解析参数进行处理。
 
 例如短信应用和联系人应用配合使用的场景。
 
@@ -229,7 +229,7 @@ class FuncAbilityA <: UIAbility {
 2. 用户将设备回到桌面界面，短信应用进入后台运行状态。
 3. 用户打开联系人应用，找到联系人张三。
 4. 用户点击联系人张三的短信按钮，会重新启动短信应用的UIAbility实例。
-5. 由于短信应用的UIAbility实例已经启动过了，此时会触发该UIAbility的onNewWant()回调，而不会再执行[onCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)和[onWindowStageCreate()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage)等初始化逻辑。
+5. 由于短信应用的UIAbility实例已经启动过了，此时会触发该UIAbility的onNewWant()回调，而不会再执行[onCreate()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)和[onWindowStageCreate()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage)等初始化逻辑。
 
 **图1** 目标UIAbility热启动
 
@@ -267,7 +267,7 @@ class FuncAbilityA <: UIAbility {
     }
     ```
 
-2. 在短信应用UIAbility的[onNewWant()](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)回调中解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-want.md#class-want)参数，通过[Router](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#class-router)对象，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
+2. 在短信应用UIAbility的[onNewWant()](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam)回调中解析调用方传递过来的[Want](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-want.md#class-want)参数，通过[Router](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#class-router)对象，并进行指定页面的跳转。此时再次启动该短信应用的UIAbility实例时，即可跳转到该短信应用的UIAbility实例的指定页面。
 
     <!-- compile -->
 

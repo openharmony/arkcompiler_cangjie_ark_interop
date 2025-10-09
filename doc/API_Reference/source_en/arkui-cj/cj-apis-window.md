@@ -107,7 +107,7 @@ public func getLastWindow(ctx: BaseContext): Window
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| ctx | [BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext) | Yes | - | Current application context information. |
+| ctx | [BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext) | Yes | - | Current application context information. |
 
 **Return Value:**
 
@@ -340,7 +340,7 @@ public var ctx: BaseContext
 
 **Function:** Represents the current application context information. Used for creating floating windows, modal windows, or system windows.
 
-**Type:** [BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext)
+**Type:** [BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -436,7 +436,7 @@ public init(
 |:---|:---|:---|:---|:---|
 | name | String | Yes | - | Window name. |
 | windowType | [WindowType](#enum-windowtype) | Yes | - | Window type. |
-| ctx | [BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext) | Yes | - | Current application context information. Used for creating floating windows, modal windows, or system windows. |
+| ctx | [BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext) | Yes | - | Current application context information. Used for creating floating windows, modal windows, or system windows. |
 | displayId | Int64 | No | -1 | Current physical screen ID. |
 | parentId | Int64 | No | -1 | Parent window ID. |## class Rect
 
@@ -1708,7 +1708,7 @@ public func snapshot(): PixelMap
 
 | Type | Description |
 |:----|:----|
-| [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Returns the screenshot of the current window. |
+| [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) | Returns the screenshot of the current window. |
 
 **Exceptions:**
 

@@ -107,7 +107,7 @@ public func getLastWindow(ctx: BaseContext): Window
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ctx|[BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|当前应用上下文信息。|
+|ctx|[BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|当前应用上下文信息。|
 
 **返回值：**
 
@@ -340,7 +340,7 @@ public var ctx: BaseContext
 
 **功能：** 表示当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。
 
-**类型：** [BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext)
+**类型：** [BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)
 
 **读写能力：** 可读写
 
@@ -436,7 +436,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |name|String|是|-|窗口名字。|
 |windowType|[WindowType](#enum-windowtype)|是|-|窗口类型。|
-|ctx|[BaseContext](../apis/AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。|
+|ctx|[BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|当前应用上下文信息。用于创建悬浮窗、模态窗或系统窗口。|
 |displayId|Int64|否|- 1|当前物理屏幕id。|
 |parentId|Int64|否|- 1|父窗口id。|
 
@@ -1714,7 +1714,7 @@ public func snapshot(): PixelMap
 
 |类型|说明|
 |:----|:----|
-|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|返回当前窗口截图。|
+|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|返回当前窗口截图。|
 
 **异常：**
 

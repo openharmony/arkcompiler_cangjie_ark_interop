@@ -41,7 +41,7 @@ During backup, the current database is saved to a specified file. Subsequent ope
 
 ### Database Encryption Mechanism  
 
-In OpenHarmony, developers do not need to provide encryption keys for database encryption. Instead, they only need to set the encryption state of the database. The system automatically handles encryption using the [HUKS Universal Keystore System](../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md), generating and protecting the database encryption key.  
+In OpenHarmony, developers do not need to provide encryption keys for database encryption. Instead, they only need to set the encryption state of the database. The system automatically handles encryption using the [HUKS Universal Keystore System](../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md), generating and protecting the database encryption key.  
 
 ## Constraints  
 

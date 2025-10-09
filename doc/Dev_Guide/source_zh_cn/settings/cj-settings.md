@@ -4,7 +4,7 @@
 
 当应用需要访问或修改系统设置项时，可以使用settings模块。例如：获取或设置屏幕亮度、获取日期时间格式、获取字体缩放比例等系统设置信息。
 
-详细的API介绍请参见[Settings API](../../../API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-settings.md)。
+详细的API介绍请参见[Settings API](../../../API_Reference/source_zh_cn/BasicServicesKit/cj-apis-settings.md)。
 
 ## 接口说明
 

@@ -4,35 +4,35 @@ For the corresponding algorithm specifications, please refer to [Symmetric Key E
 
 ## Encryption
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) and [convertKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key (SymKey) with the 3DES algorithm and a key length of 192 bits.
+1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) and [convertKey](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key (SymKey) with the 3DES algorithm and a key length of 192 bits.
 
    For guidance on generating a 3DES symmetric key, developers can refer to the example below, along with [Symmetric Key Generation and Conversion Specifications: 3DES](./cj-crypto-sym-key-generation-conversion-spec.md#3des) and [Convert Binary Data to Symmetric Key](./cj-crypto-convert-binary-data-to-sym-key.md). Note that there may be parameter differences between the reference documents and the current example, so please pay attention to these distinctions when reading.
 
-2. Call [createCipher](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter '3DES192|ECB|PKCS7' to create a Cipher instance for encryption operations, specifying the symmetric key type as 3DES192, block mode as ECB, and padding mode as PKCS7.
+2. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter '3DES192|ECB|PKCS7' to create a Cipher instance for encryption operations, specifying the symmetric key type as 3DES192, block mode as ECB, and padding mode as PKCS7.
 
-3. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey), and initialize the encryption Cipher instance.
+3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey), and initialize the encryption Cipher instance.
 
    ECB mode does not require encryption parameters, so pass None directly.
 
-4. Call [update](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (plaintext).
+4. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (plaintext).
 
    - For small amounts of data, you can directly call doFinal after init.
    - For large amounts of data, you can call update multiple times, i.e., perform segmented encryption/decryption.
    - The threshold for data size can be determined by the user. For example, use update for data larger than 20 bytes.
 
-5. Call [doFinal](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
+5. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
 
    Since the data has already been passed via update, pass None here for data.
 
 ## Decryption
 
-1. Call [createCipher](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter '3DES192|ECB|PKCS7' to create a Cipher instance for decryption operations, specifying the symmetric key type as 3DES192, block mode as ECB, and padding mode as PKCS7.
+1. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter '3DES192|ECB|PKCS7' to create a Cipher instance for decryption operations, specifying the symmetric key type as 3DES192, block mode as ECB, and padding mode as PKCS7.
 
-2. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey), and initialize the decryption Cipher instance. ECB mode does not require encryption parameters, so pass None directly.
+2. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey), and initialize the decryption Cipher instance. ECB mode does not require encryption parameters, so pass None directly.
 
-3. Call [update](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (ciphertext).
+3. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (ciphertext).
 
-4. Call [doFinal](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
+4. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
 
 ## Example
 

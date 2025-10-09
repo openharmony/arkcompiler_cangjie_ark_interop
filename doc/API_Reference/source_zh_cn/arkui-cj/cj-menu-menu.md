@@ -69,7 +69,7 @@ public func font(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
 |weight|FontWeight|否|FontWeight.Normal|**命名参数。** 设置文本的字体粗细。|
 |family|String|否|"HarmonyOS Sans"|**命名参数。** 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体和[注册自定义字体](https://gitcode.com/Cangjie/cangjie-ohos-docs/blob/main/docs/API_Reference/source_zh_cn/arkui-cj/cj-apis-font.md)。|
 |style|FontStyle|否|FontStyle.Normal|**命名参数。** 设置文本的字体样式。|
@@ -90,7 +90,7 @@ public func fontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|Menu中所有文本的颜色。<br/>初始值：0xE5000000|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|Menu中所有文本的颜色。<br/>初始值：0xE5000000|
 
 ### func radius(Length)
 
@@ -112,7 +112,7 @@ public func radius(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|        | Menu边框圆角半径。<br/>初始值：20.vp。 |
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|        | Menu边框圆角半径。<br/>初始值：20.vp。 |
 
 ### func radius(BorderRadiuses)
 

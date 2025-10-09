@@ -294,7 +294,7 @@ public var height: Length
 
 **Function:** Defines the height of the target element.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Readable/Writable:** Readable and writable
 
@@ -326,7 +326,7 @@ public var width: Length
 
 **Function:** Defines the width of the target element.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Readable/Writable:** Readable and writable
 
@@ -355,8 +355,8 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of the target element in vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of the target element in vp. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of the target element in vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of the target element in vp. |
 | position | [Position](#class-position) | Yes | - | Position of the top-left corner of the target element relative to the top-left corner of its parent element. |
 | globalPosition | [Position](#class-position) | Yes | - | Position of the top-left corner of the target element relative to the top-left corner of the page. |
 
@@ -387,7 +387,7 @@ public var bottomLeft: Length
 
 **Function:** Bottom-left corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Readable/Writable:** Readable and writable
 
@@ -403,7 +403,7 @@ public var bottomRight: Length
 
 **Function:** Bottom-right corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Readable/Writable:** Readable and writable
 
@@ -419,7 +419,7 @@ public var topLeft: Length
 
 **Function:** Top-left corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Readable/Writable:** Readable and writable
 
@@ -435,7 +435,7 @@ public var topRight: Length
 
 **Function:** Top-right corner radius of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Readable/Writable:** Readable and writable
 
@@ -460,10 +460,10 @@ public init(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bottomLeft!: Leng
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| topLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-left corner radius of the component. |
-| topRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-right corner radius of the component. |
-| bottomLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-left corner radius of the component. |
-| bottomRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-right corner radius of the component. |
+| topLeft | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-left corner radius of the component. |
+| topRight | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-right corner radius of the component. |
+| bottomLeft | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-left corner radius of the component. |
+| bottomRight | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-right corner radius of the component. |
 
 ## class DismissContentCoverAction
 
@@ -646,7 +646,7 @@ public var family:?ResourceStr
 
 **Function:** Sets the font list for text.
 
-**Type:** ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Access:** Read-write
 
@@ -662,7 +662,7 @@ public var size:?Length
 
 **Function:** Sets text size using fp units.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -718,9 +718,9 @@ public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?Resour
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | Sets text size using fp units when Length is Int64 or Float64. Percentage values are not supported. |
+| size | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | None | Sets text size using fp units when Length is Int64 or Float64. Percentage values are not supported. |
 | weight | ?[FontWeight](#enum-fontweight) | No | None | Sets the font weight for text. |
-| family | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | Sets the font list for text. Multiple fonts can be specified using commas (e.g., 'Arial, HarmonyOS Sans'), with priority given in order. Currently supports 'HarmonyOS Sans' font. |
+| family | ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | Sets the font list for text. Multiple fonts can be specified using commas (e.g., 'Arial, HarmonyOS Sans'), with priority given in order. Currently supports 'HarmonyOS Sans' font. |
 | style | ?[FontStyle](#enum-fontstyle) | No | None | Sets the font style for text. |
 
 ## class Fonts
@@ -766,7 +766,7 @@ public var size: Length
 
 **Function:** Sets text size using fp units.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -823,9 +823,9 @@ public init(size!: Length = 16.fp, weight!: FontWeight = FontWeight.Normal, fami
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | Sets text size using fp units when Length is Int64 or Float64. Percentage values are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.fp | Sets text size using fp units when Length is Int64 or Float64. Percentage values are not supported. |
 | weight | [FontWeight](#enum-fontweight) | No | FontWeight.Normal | Sets the font weight for text. |
-| family | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | Sets the font list for text. Multiple fonts can be specified using commas (e.g., 'Arial, HarmonyOS Sans'), with priority given in order. Currently supports 'HarmonyOS Sans' font. |
+| family | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "HarmonyOS Sans" | Sets the font list for text. Multiple fonts can be specified using commas (e.g., 'Arial, HarmonyOS Sans'), with priority given in order. Currently supports 'HarmonyOS Sans' font. |
 | style | [FontStyle](#enum-fontstyle) | No | FontStyle.Normal | Sets the font style for text. |
 
 ## class HorizontalAlignment
@@ -924,10 +924,10 @@ public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top margin, the distance from the top of the component to external elements. |
-| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Right margin, the distance from the right boundary of the component to external elements. |
-| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom margin, the distance from the bottom of the component to external elements. |
-| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Left margin, the distance from the left boundary of the component to external elements. |
+| top | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top margin, the distance from the top of the component to external elements. |
+| right | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Right margin, the distance from the right boundary of the component to external elements. |
+| bottom | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom margin, the distance from the bottom of the component to external elements. |
+| left | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Left margin, the distance from the left boundary of the component to external elements. |
 
 ## class Offset
 
@@ -953,7 +953,7 @@ public var dx: Length
 
 **Description:** Horizontal offset.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -969,7 +969,7 @@ public var dy: Length
 
 **Description:** Vertical offset.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -993,8 +993,8 @@ public init(dx: Length, dy: Length)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | X-coordinate. |
-| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Y-coordinate. |
+| dx | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | X-coordinate. |
+| dy | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Y-coordinate. |
 
 ## class OverlayOffset
 
@@ -1169,7 +1169,7 @@ public var x: Length
 
 **Description:** Defines the X-coordinate.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -1185,7 +1185,7 @@ public var y: Length
 
 **Description:** Defines the Y-coordinate.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -1209,8 +1209,8 @@ public init(x!: Length = 0, y!: Length = 0)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | X-coordinate, in vp units. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | Y-coordinate, in vp units. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | X-coordinate, in vp units. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | Y-coordinate, in vp units. |
 
 ## class Rectangle
 
@@ -1238,7 +1238,7 @@ public var height: Length
 
 **Description:** Height of the touch hotspot.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -1254,7 +1254,7 @@ public var width: Length
 
 **Description:** Width of the touch hotspot.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -1270,7 +1270,7 @@ public var x: Length
 
 **Description:** X-coordinate of the touch point relative to the top-left corner of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -1286,7 +1286,7 @@ public var y: Length
 
 **Description:** Y-coordinate of the touch point relative to the top-left corner of the component.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write:** Read-Write
 
@@ -1310,10 +1310,10 @@ public init(x!: Length = 0.vp, y!: Length = 0.vp, width!: Length = 100.percent, 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** X-coordinate of the touch point relative to the top-left corner of the component. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Y-coordinate of the touch point relative to the top-left corner of the component. |
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Width of the touch hotspot. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Height of the touch hotspot. |## class VerticalAlignment
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** X-coordinate of the touch point relative to the top-left corner of the component. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Y-coordinate of the touch point relative to the top-left corner of the component. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Width of the touch hotspot. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.percent | **Named parameter.** Height of the touch hotspot. |## class VerticalAlignment
 
 ```cangjie
 public class VerticalAlignment {

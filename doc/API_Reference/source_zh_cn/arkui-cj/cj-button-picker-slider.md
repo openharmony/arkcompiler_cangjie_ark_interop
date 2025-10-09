@@ -78,7 +78,7 @@ public func blockBorderColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块描边颜色。<br/>初始值：0x00000000。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块描边颜色。<br/>初始值：0x00000000。|
 
 ### func blockColor(ResourceColor)
 
@@ -103,7 +103,7 @@ public func blockColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块的颜色。<br/>初始值：@r(sys.color.ohos_id_color_foreground_contrary)。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块的颜色。<br/>初始值：@r(sys.color.ohos_id_color_foreground_contrary)。|
 
 ### func selectedColor(ResourceColor)
 
@@ -122,7 +122,7 @@ public func selectedColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨已滑动部分的颜色。<br/>初始值：@r(sys.color.ohos_id_color_emphasize)。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨已滑动部分的颜色。<br/>初始值：@r(sys.color.ohos_id_color_emphasize)。|
 
 ### func showSteps(Bool)
 
@@ -165,7 +165,7 @@ tip的绘制区域为Slider自身节点的overlay。
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|Bool|是|-|滑动时是否显示气泡提示。<br/>初始值：false。|
-|content|?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None| **命名参数。** 气泡提示的文本内容，默认显示当前百分比。|
+|content|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None| **命名参数。** 气泡提示的文本内容，默认显示当前百分比。|
 
 ### func trackColor(ResourceColor)
 
@@ -184,7 +184,7 @@ public func trackColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨的背景颜色。<br/>**说明：**<br/>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。<br>初始值：@r(sys.color.ohos_id_color_component_normal)。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨的背景颜色。<br/>**说明：**<br/>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。<br>初始值：@r(sys.color.ohos_id_color_component_normal)。|
 
 ### func trackThickness(Length)
 
@@ -209,7 +209,7 @@ public func trackThickness(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|滑轨的粗细。<br/>初始值：当参数style的值设置SliderStyle.OutSet 时为 4.0.vp，SliderStyle.InSet时为20.0.vp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|滑轨的粗细。<br/>初始值：当参数style的值设置SliderStyle.OutSet 时为 4.0.vp，SliderStyle.InSet时为20.0.vp。|
 
 ## 组件事件
 

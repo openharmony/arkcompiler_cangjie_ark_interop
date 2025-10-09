@@ -139,10 +139,10 @@ In multi-column mode, the starting margin of dividers between ListItems is calcu
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| strokeWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width of the divider line.<br/>**Note:**<br/>If set to a negative number or greater than or equal to the length of the List content area, it will be treated as 0. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Color of the divider. |
-| startMargin | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Distance from the divider to the starting edge of the list side.<br/>**Note:**<br/>If set to a negative number, the initial value will be used. |
-| endMargin | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Distance from the divider to the ending edge of the list side.<br/>**Note:**<br/>If set to a negative number, the initial value will be used. |
+| strokeWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width of the divider line.<br/>**Note:**<br/>If set to a negative number or greater than or equal to the length of the List content area, it will be treated as 0. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Color of the divider. |
+| startMargin | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Distance from the divider to the starting edge of the list side.<br/>**Note:**<br/>If set to a negative number, the initial value will be used. |
+| endMargin | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Distance from the divider to the ending edge of the list side.<br/>**Note:**<br/>If set to a negative number, the initial value will be used. |
 
 ### func edgeEffect(EdgeEffect)
 
@@ -196,8 +196,8 @@ public func lanes(minLength!: Length, maxLength!: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| minLength | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Minimum length of the component. |
-| maxLength | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Maximum length of the component. |
+| minLength | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Minimum length of the component. |
+| maxLength | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Maximum length of the component. |
 
 ### func listDirection(Axis)
 

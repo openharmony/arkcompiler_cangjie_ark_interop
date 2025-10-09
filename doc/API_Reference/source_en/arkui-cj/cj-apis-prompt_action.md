@@ -274,7 +274,7 @@ public var maskColor: ResourceColor
 
 **Function:** Custom mask layer color.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -448,7 +448,7 @@ public init(
 | isModal | Bool | No | true | Whether the dialog is a modal window. Modal windows have a mask layer, while non-modal windows do not. By default, dialogs have a mask layer. |
 | showInSubWindow | Bool | No | false | Whether to display the dialog in a sub-window when it needs to appear outside the main window. By default, dialogs are displayed within the application, not in an independent sub-window. |
 | autoCancel | Bool | No | true | Whether to close the dialog when clicking the mask layer. true means closing the dialog, false means not closing. |
-| maskColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x33000000) | Custom mask layer color. |
+| maskColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x33000000) | Custom mask layer color. |
 | transition | [TransitionEffect](./cj-animation-transition.md#class-transitioneffect) | No | TransitionEffect.OPACITY | Transition effects for dialog display and exit. |
 | onDidAppear | ()->Unit | No | { => } | Callback when the dialog pops up. |
 | onDidDisappear | ()->Unit | No | { => } | Callback when the dialog disappears. |
@@ -481,7 +481,7 @@ public var color: ResourceColor
 
 **Function:** Represents the text color of the button.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -538,7 +538,7 @@ public init(text!: ResourceStr, color!: ResourceColor, primary!: Bool = false)
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | text | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | Button text content. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Button text color. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Button text color. |
 | primary | Bool | No | false | Whether the button responds to the Enter key by default when the dialog is focused and no tab navigation is performed. |
 
 ## class CustomDialogOptions
@@ -620,7 +620,7 @@ public var backgroundColor: ResourceColor
 
 **Function:** Represents the background color of the dialog.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -716,7 +716,7 @@ public var height: Length
 
 **Function:** Represents the height of the dialog backdrop.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -748,7 +748,7 @@ public var width: Length
 
 **Function:** Represents the width of the dialog backdrop.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -806,7 +806,7 @@ public init(
 | isModal | Bool | No | true | Whether the dialog is modal. Modal dialogs have a mask layer; non-modal dialogs do not. Default is modal. |
 | showInSubWindow | Bool | No | false | Whether to display the dialog in a sub-window when it needs to appear outside the main window. Default is within the application, not in an independent sub-window. |
 | autoCancel | Bool | No | true | Whether to close the dialog when clicking the mask layer. true means close; false means do not close. |
-| maskColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x33000000) | Custom mask color. |
+| maskColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x33000000) | Custom mask color. |
 | transition | [TransitionEffect](./cj-animation-transition.md#class-transitioneffect) | No | TransitionEffect.OPACITY | Sets the transition effect for dialog appearance and disappearance. |
 | onDidAppear | ()->Unit | No | { => } | Callback when the dialog appears. |
 | onDidDisappear | ()->Unit | No | { => } | Callback when the dialog disappears. |
@@ -815,13 +815,13 @@ public init(
 | keyboardAvoidMode | [KeyboardAvoidMode](#enum-keyboardavoidmode) | No | KeyboardAvoidMode.Default | Sets whether the dialog automatically avoids the soft keyboard when it appears. |
 | enableHoverMode | Bool | No | false | Whether to respond to hover state. |
 | hoverModeArea | [HoverModeAreaType](#enum-hovermodeareatype) | No | HoverModeAreaType.BottomScreen | Default display area of the dialog in hover state. |
-| backgroundColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | Sets the background color of the dialog. |
+| backgroundColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | Sets the background color of the dialog. |
 | cornerRadius | [BorderRadiuses](./cj-common-types.md#class-borderradiuses) | No | BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp) | Sets the corner radius of the backdrop. |
 | borderWidth | EdgeWidths | No | EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp) | Sets the border width of the dialog backdrop. |
 | borderColor | [EdgeColors](#class-edgecolors) | No | EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black) | Sets the border color of the dialog backdrop. |
 | borderStyle | [EdgeStyles](./cj-common-types.md#class-edgestyles) | No | EdgeStyles() | Sets the border style of the dialog backdrop. |
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 400.vp | Sets the width of the dialog backdrop. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.vp | Sets the height of the dialog backdrop. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 400.vp | Sets the width of the dialog backdrop. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 100.vp | Sets the height of the dialog backdrop. |
 | shadow | ?[ShadowOptions](./cj-text-input-text.md#class-shadowoptions) | No | None | Sets the shadow of the dialog backdrop. |
 | backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | The blur material of the dialog backdrop. |
 
@@ -856,7 +856,7 @@ public var bottom: ResourceColor
 
 **Function:** Sets the bottom border color of the component.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -872,7 +872,7 @@ public var left: ResourceColor
 
 **Function:** Sets the left border color of the component.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -888,7 +888,7 @@ public var right: ResourceColor
 
 **Function:** Sets the right border color of the component.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -904,7 +904,7 @@ public var top: ResourceColor
 
 **Function:** Sets the top border color of the component.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -933,8 +933,8 @@ public init(
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Top border color of the component. |
-| right | [ResourceColor](../apis/BasicServicesKit/c## class PromptActionInner
+| top | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Top border color of the component. |
+| right | [ResourceColor](../BasicServicesKit/c## class PromptActionInner
 
 ```cangjie
 public class PromptActionInner {}
@@ -1023,7 +1023,7 @@ public var backgroundColor: ResourceColor
 
 **Function:** Indicates the background color of the pop-up window.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -1314,7 +1314,7 @@ public var backgroundColor: ResourceColor
 
 **Function:** Indicates the background color of the text prompt box.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -1330,7 +1330,7 @@ public var bottom: Length
 
 **Function:** Indicates the distance from the text prompt box to the bottom of the screen.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -1458,7 +1458,7 @@ public var textColor: ResourceColor
 
 **Function:** Indicates the text color of the text prompt box.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -1497,7 +1497,7 @@ public init(
 |:---|:---|:---|:---|:---|
 | message | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | The text message to display. |
 | duration | UInt32 | No | 1500 | The duration of the pop-up window, in milliseconds. Valid range: 1500ms-10000ms. If less than 1500ms, the default value is used; if greater than 10000ms, the upper limit of 10000ms is used. |
-| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 80.vp | Sets the height of the pop-up window's bottom border from the navigation bar. |
+| bottom | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 80.vp | Sets the height of the pop-up window's bottom border from the navigation bar. |
 | showMode | [ToastShowMode](#enum-toastshowmode) | No | ToastShowMode.Default | Sets whether the pop-up window## enum HoverModeAreaType
 
 ```cangjie
@@ -1756,7 +1756,7 @@ public operator func ==(other: ToastShowMode): Bool
 public type ShowActionMenuCallBack = AsyncCallback<Int32>
 ```
 
-**Function:** [ShowActionMenuCallBack](#type-showactionmenucallback) is an alias of [AsyncCallback\<Int32>](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback) type.
+**Function:** [ShowActionMenuCallBack](#type-showactionmenucallback) is an alias of [AsyncCallback\<Int32>](../BasicServicesKit/cj-apis-base.md#type-asynccallback) type.
 
 ## type ShowDialogCallBack
 
@@ -1764,4 +1764,4 @@ public type ShowActionMenuCallBack = AsyncCallback<Int32>
 public type ShowDialogCallBack = AsyncCallback<Int32>
 ```
 
-**Function:** [ShowDialogCallBack](#type-showdialogcallback) is an alias of [AsyncCallback\<Int32>](../apis/BasicServicesKit/cj-apis-base.md#type-asynccallback) type.
+**Function:** [ShowDialogCallBack](#type-showdialogcallback) is an alias of [AsyncCallback\<Int32>](../BasicServicesKit/cj-apis-base.md#type-asynccallback) type.

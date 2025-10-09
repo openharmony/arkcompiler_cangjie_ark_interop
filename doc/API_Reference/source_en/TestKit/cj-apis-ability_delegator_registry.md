@@ -362,7 +362,7 @@ public func startAbility(want: Want): Future<Unit>
 public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility
 ```
 
-doc/API_Reference/source_en/apis/AbilityKit/
+doc/API_Reference/source_en/AbilityKit/
 **Description:** Sets a wait time and waits for the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) matching the [AbilityMonitor](#class-abilitymonitor) instance to reach the [onCreate](../AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) lifecycle, then returns the [UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core

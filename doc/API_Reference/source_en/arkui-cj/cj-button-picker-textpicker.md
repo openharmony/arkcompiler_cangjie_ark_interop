@@ -80,7 +80,7 @@ public func defaultPickerItemHeight(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of each picker item. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of each picker item. |
 
 ## Component Events
 

@@ -4,7 +4,7 @@ Application file sharing refers to the process where applications share files th
 
 ## File Sharing via Launching File Handler Applications (startAbility)
 
-Based on the [File Picker (startAbility)](../application-models/cj-file-processing-apps-startup.md) sharing method, applications can share individual files. The receiving application can open the URI using [ohos.file_fs's open](../../../API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md#static-func-openstring-int64) and perform read/write operations.
+Based on the [File Picker (startAbility)](../application-models/cj-file-processing-apps-startup.md) sharing method, applications can share individual files. The receiving application can open the URI using [ohos.file_fs's open](../../../API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md#static-func-openstring-int64) and perform read/write operations.
 
 ## Shareable Application Directories
 

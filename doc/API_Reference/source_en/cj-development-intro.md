@@ -68,7 +68,7 @@ The Cangjie samples in each Kit are not complete programs but rather key code sn
     }
     ```
 
-4. If the sample code involves the [Context](./apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) object, define a Global class and assign values in the "main_ability.cj" file of the Cangjie template project. The content of "main_ability.cj" is as follows:
+4. If the sample code involves the [Context](./AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) object, define a Global class and assign values in the "main_ability.cj" file of the Cangjie template project. The content of "main_ability.cj" is as follows:
 
     ```cangjie
     import kit.AbilityKit.*

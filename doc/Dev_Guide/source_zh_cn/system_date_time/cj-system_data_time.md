@@ -4,7 +4,7 @@
 
 当应用需要获取系统时间、时区信息或系统运行时间时，可以使用system_date_time模块。例如：获取当前时间戳、获取系统时区、获取设备运行时间等。
 
-详细的API介绍请参见[SystemDateTime API](../../../API_Reference/source_zh_cn/apis/BasicServicesKit/cj-apis-system_date_time.md)。
+详细的API介绍请参见[SystemDateTime API](../../../API_Reference/source_zh_cn/BasicServicesKit/cj-apis-system_date_time.md)。
 
 ## 接口说明
 

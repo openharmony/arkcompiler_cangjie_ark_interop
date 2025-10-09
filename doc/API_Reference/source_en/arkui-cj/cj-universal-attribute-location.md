@@ -78,8 +78,8 @@ public func markAnchor(x!: Length, y!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
 
 ## func offset(Length, Length)
 
@@ -97,8 +97,8 @@ public func offset(x!: Length, y!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
 
 ## func position(Length, Length)
 
@@ -116,8 +116,8 @@ public func position(x!: Length, y!: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** X-axis coordinate. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Y-axis coordinate. |
 
 ## Basic Type Definitions
 

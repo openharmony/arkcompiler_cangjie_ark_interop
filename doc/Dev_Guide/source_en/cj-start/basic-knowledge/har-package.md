@@ -48,7 +48,7 @@ Interfaces and other elements to be exported from the HAR can be marked with the
 
 > **Note:**  
 >  
-> When a HAR is compiled with its host application, the HAR's code is directly compiled into the host application. The HAR package is an intermediate compilation artifact, not the final runtime entity. At runtime, the HAR operates under the identity of its host application, and the system distinguishes behavior based on the host application's version. If different behaviors are required in the HAR based on the host application's version, developers can call the [`getBundleInfoForSelf`](../../../../API_Reference/source_en/apis/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) interface to obtain the host application's `targetVersion` and implement logic accordingly.  
+> When a HAR is compiled with its host application, the HAR's code is directly compiled into the host application. The HAR package is an intermediate compilation artifact, not the final runtime entity. At runtime, the HAR operates under the identity of its host application, and the system distinguishes behavior based on the host application's version. If different behaviors are required in the HAR based on the host application's version, developers can call the [`getBundleInfoForSelf`](../../../../API_Reference/source_en/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) interface to obtain the host application's `targetVersion` and implement logic accordingly.  
 
 ### Exporting Cangjie Components  
 

@@ -63,7 +63,7 @@ public var backgroundColor:?ResourceColor
 
 **Function:** Background color of the button.
 
-**Type:** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read-Write Permission:** Readable and Writable
 
@@ -111,7 +111,7 @@ public var fontColor:?ResourceColor
 
 **Function:** Text color of the button.
 
-**Type:** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read-Write Permission:** Readable and Writable
 
@@ -179,8 +179,8 @@ public init(
 |defaultFocus|Bool|No|false| **Named parameter.** Sets whether the button is the default focus. |
 |style|DialogButtonStyle|No|DialogButtonStyle.Default| **Named parameter.** Sets the style of the button. |
 |value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|Yes|-| **Named parameter.** Text content of the button. |
-|fontColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Text color of the button. |
-|backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Background color of the button. |
+|fontColor|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Text color of the button. |
+|backgroundColor|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Background color of the button. |
 |action|VoidCallback|Yes|-| **Named parameter.** Callback when the button is selected. |
 
 ### class AlertDialogButtonOptions
@@ -256,8 +256,8 @@ public init(
 |defaultFocus|Bool|No|false| **Named parameter.** Sets whether the button is the default focus. |
 |style|DialogButtonStyle|No|DialogButtonStyle.Default| **Named parameter.** Sets the style of the button. |
 |value|[ResourceStr](./cj-common-types.md#interface-resourcestr)|Yes|-| **Named parameter.** Text content of the button. |
-|fontColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Text color of the button. |
-|backgroundColor|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Background color of the button. |
+|fontColor|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Text color of the button. |
+|backgroundColor|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|No|None| **Named parameter.** Background color of the button. |
 |action|VoidCallback|Yes|-| **Named parameter.** Callback when the button is selected. |
 |primary|Bool|No|false| **Named parameter.** Determines whether the button responds to the Enter key by default when the dialog is focused and no tab key navigation has occurred. For multiple buttons, only one button can have this field set to true; otherwise, none will respond. Nested dialogs can automatically focus and respond continuously. Does not take effect when defaultFocus is true.|
 
@@ -379,7 +379,7 @@ public var backgroundColor: ResourceColor
 
 **Function:** Background color of the dialog.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read-Write Permission:** Readable and Writable
 
@@ -395,7 +395,7 @@ public var borderColor: ResourceColor
 
 **Function:** Sets the border color of the dialog's background panel. If using borderColor, it must be used together with borderWidth.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read-Write Permission:** Readable and Writable
 
@@ -427,7 +427,7 @@ public var borderWidth: Length
 
 **Function:** Sets the border width of the dialog's background panel.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Permission:** Readable and Writable
 
@@ -491,7 +491,7 @@ public var height:?Length
 
 **Function:** Sets the height of the dialog's background panel.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read-Write Permission:** Readable and Writable
 
@@ -768,15 +768,15 @@ public init(
 | maskRect | [Rectangle](./cj-common-types.md#class-rectangle>) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** Mask layer area of the dialog. Events within the mask layer area are not transmitted, while events outside the mask layer area are transmitted.<br/>**Note:**<br/>maskRect does not take effect when showInSubWindow is true. |
 | showInSubWindow | Bool | No | false | **Named parameter.** Whether to display the dialog in a sub-window when it needs to be displayed outside the main window.<br/>Initial value: false, the dialog is displayed within the application, not in an independent sub-window.<br/>**Note:** A dialog with showInSubWindow set to true cannot trigger another dialog with showInSubWindow set to true. |
 | isModal | Bool | No | true | **Named parameter.** Whether the dialog is a modal window. Modal windows have a mask layer, while non-modal windows do not.<br/>Initial value: true, the dialog has a mask layer. |
-| backgroundColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | **Named parameter.** Background color of the dialog.<br/>**Note:** <br/>When backgroundColor is set to a non-transparent color, backgroundBlurStyle should be set to BlurStyle.NONE; otherwise, the color display may not meet expectations. |
+| backgroundColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | **Named parameter.** Background color of the dialog.<br/>**Note:** <br/>When backgroundColor is set to a non-transparent color, backgroundBlurStyle should be set to BlurStyle.NONE; otherwise, the color display may not meet expectations. |
 | backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | **Named parameter.** Background blur material of the dialog.<br/>**Note:** <br/>Set to BlurStyle.NONE to disable background blur. When backgroundBlurStyle is set to a non-NONE value, do not set backgroundColor; otherwise, the color display may not meet expectations. |
 | onWillDismiss | ?Callback\<DismissDialogAction,Unit> | No | None | **Named parameter.** Interactive close callback function.<br/>**Note:**<br/>1. When the user performs operations like clicking the mask layer to close, swiping left/right, pressing the back key, or pressing the ESC key to close the dialog, if this callback is registered, the dialog will not close immediately. The callback function can determine whether to close the dialog based on the operation type obtained from reason. Currently, the reason returned by this component does not support the CLOSE_BUTTON enumeration value.<br/>2. In the onWillDismiss callback, onWillDismiss interception cannot be performed again. |
 | cornerRadius | [BorderRadiuses](./cj-common-types.md#class-borderradiuses) | No | BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp) | **Named parameter.** Sets the corner radius of the background panel.<br />The radius of each corner can be set separately.<br />The corner radius is limited by the component size, with the maximum value being half of the component width or height. Negative values are treated as default values.<br />Percentage parameter method: Sets the corner radius of the dialog as a percentage of the parent dialog's width and height.<br/>**Note:**<br/>When the cornerRadius property type is LocalizedBorderRadiuses, it supports changing the layout order according to language habits. |
 | transition | ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect) | No | None | **Named parameter.** Sets the transition effect for dialog display and exit.<br/>**Note:**<br/> 1. If not set, the default display/exit animation is used.<br/> 2. Pressing the back key during the display animation interrupts the display animation and executes the exit animation. The animation effect is a superposition of the display and exit animation curves.<br/> 3. Pressing the back key during the exit animation does not interrupt the exit animation. The exit animation continues, and pressing the back key again exits the application. |
-| width | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** Sets the width of the dialog background panel.<br />**Note:**<br>- Default maximum width of the dialog: None.<br />- Percentage parameter method: Adjusts the dialog width based on the window width. |
-| height | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** Sets the height of the dialog background panel.<br />**Note:**<br />- Default maximum height of the dialog: None.<br />- Percentage parameter method: Adjusts the dialog height based on (window height - safe area). |
-| borderWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | **Named parameter.** Sets the width of each border separately.<br />Percentage parameter method: Sets the border width of the dialog as a percentage of the parent dialog's width.<br />When the left and right borders exceed the dialog width, or the top and bottom borders exceed the dialog height, the display may not meet expectations.<br/>**Note:**<br/>When the borderWidth property type is LocalizedEdgeWidths, it supports changing the layout order according to language habits. |
-| borderColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Sets the border color of the dialog background panel.<br/> If the borderColor property is used, it must be used together with the borderWidth property.<br/>**Note:**<br/>When the borderColor property type is LocalizedEdgeColors, it supports changing the layout order according to language habits. |
+| width | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** Sets the width of the dialog background panel.<br />**Note:**<br>- Default maximum width of the dialog: None.<br />- Percentage parameter method: Adjusts the dialog width based on the window width. |
+| height | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | None | **Named parameter.** Sets the height of the dialog background panel.<br />**Note:**<br />- Default maximum height of the dialog: None.<br />- Percentage parameter method: Adjusts the dialog height based on (window height - safe area). |
+| borderWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0 | **Named parameter.** Sets the width of each border separately.<br />Percentage parameter method: Sets the border width of the dialog as a percentage of the parent dialog's width.<br />When the left and right borders exceed the dialog width, or the top and bottom borders exceed the dialog height, the display may not meet expectations.<br/>**Note:**<br/>When the borderWidth property type is LocalizedEdgeWidths, it supports changing the layout order according to language habits. |
+| borderColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Sets the border color of the dialog background panel.<br/> If the borderColor property is used, it must be used together with the borderWidth property.<br/>**Note:**<br/>When the borderColor property type is LocalizedEdgeColors, it supports changing the layout order according to language habits. |
 | borderStyle | [EdgeStyles](./cj-common-types.md#class-edgestyles) | No | EdgeStyles() | **Named parameter.** Sets the border style of the dialog background panel.<br/>If the borderStyle property is used, it must be used together with the borderWidth property. |
 | textStyle | WordBreak | No | WordBreak.BreakAll | **Named parameter.** Sets the text style of the dialog message content. |
 | primaryButton | [AlertDialogButtonBaseOptions](#class-alertdialogbuttonbaseoptions) | Yes | - | **Named parameter.** Specifies the enabled state, default focus, button style, text content, text color, button background color, and click callback of the primary confirmation button. |

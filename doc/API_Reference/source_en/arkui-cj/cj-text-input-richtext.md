@@ -48,7 +48,7 @@ public init(content: ResourceStr)
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | HTML-formatted string. |
+| content | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | HTML-formatted string. |
 
 ## Common Properties/Common Events
 

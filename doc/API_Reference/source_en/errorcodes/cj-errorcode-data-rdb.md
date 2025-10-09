@@ -593,7 +593,7 @@ Inconsistent distributed table types set for the same database table.
 
 **Possible Causes**
 
-Conflicting distributed table types assigned to the same table. See [DistributedType](../apis/ArkData/cj-apis-relational_store.md#enum-distributedtype).
+Conflicting distributed table types assigned to the same table. See [DistributedType](../ArkData/cj-apis-relational_store.md#enum-distributedtype).
 
 **Resolution Steps**
 

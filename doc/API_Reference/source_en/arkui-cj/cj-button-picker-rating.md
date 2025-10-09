@@ -59,9 +59,9 @@ Default image loading is asynchronous; synchronous loading is not supported.
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| backgroundUri | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The image link for unselected stars, which can be customized by the user or use the system default image. |
-| foregroundUri | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The image path for selected stars, which can be customized by the user or use the system default image. |
-| secondaryUri | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | backgroundUri | **Named parameter.** The image path for partially selected stars, which can be customized by the user or use the system default image. |
+| backgroundUri | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The image link for unselected stars, which can be customized by the user or use the system default image. |
+| foregroundUri | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | **Named parameter.** The image path for selected stars, which can be customized by the user or use the system default image. |
+| secondaryUri | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | backgroundUri | **Named parameter.** The image path for partially selected stars, which can be customized by the user or use the system default image. |
 
 > **Notes:**
 >

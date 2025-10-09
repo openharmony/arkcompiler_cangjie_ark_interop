@@ -30,7 +30,7 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content, referencing system resources or application resources. |
+| content | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content, referencing system resources or application resources. |
 | controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** Controller for the Text component. |
 
 ### init(ResourceStr, TextController, () -> Unit)
@@ -49,7 +49,7 @@ public init(content: ResourceStr, controller!: TextController = TextController()
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content. Does not take effect when containing Span child components without attribute strings, displaying Span content instead, and the Text component's styles will not apply.<br/>Initial value: ''. |
+| content | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content. Does not take effect when containing Span child components without attribute strings, displaying Span content instead, and the Text component's styles will not apply.<br/>Initial value: ''. |
 | controller | [TextController](#class-textcontroller) | No | TextController() | **Named parameter.** Controller for the Text component. |
 | child | () -> Unit | No | { => } | Child components of the Text component. |
 
@@ -119,7 +119,7 @@ public func baselineOffset(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Baseline offset for text. When set as a percentage, the default value is displayed.<br>Initial value: 0. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Baseline offset for text. When set as a percentage, the default value is displayed.<br>Initial value: 0. |
 
 ### func decoration(TextDecorationType, ResourceColor, TextDecorationStyle)
 
@@ -139,7 +139,7 @@ public func decoration(decorationType!: TextDecorationType, color!: ResourceColo
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | decorationType | [TextDecorationType](./cj-common-types.md#enum-textdecorationtype) | Yes | - | **Named parameter.** Text decoration line style.<br>Initial value: TextDecorationType.None. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | **Named parameter.** Text decoration line color.<br>Initial value: Color.Black. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | **Named parameter.** Text decoration line color.<br>Initial value: Color.Black. |
 | decorationStyle | [TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle) | No | TextDecorationStyle.Solid | **Named parameter.** Text decoration line style. |
 
 ### func fontColor(ResourceColor)
@@ -158,7 +158,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the font color using resource references.<br>Initial value: 'e6182431'. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the font color using resource references.<br>Initial value: 'e6182431'. |
 
 ### func fontFamily(ResourceStr)
 
@@ -176,7 +176,7 @@ public func fontFamily(value: ResourceStr): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font family list. Default font: 'HarmonyOS Sans'. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font family list. Default font: 'HarmonyOS Sans'. |
 
 ### func fontSize(Length)
 
@@ -194,7 +194,7 @@ public func fontSize(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. Percentage units are not supported.<br>Initial value: 16.fp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. Percentage units are not supported.<br>Initial value: 16.fp. |
 
 ### func fontStyle(FontStyle)
 
@@ -248,7 +248,7 @@ public func lineHeight(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Line height of the text. When set to a value ≤ 0, the line height is not restricted and adapts to the font size. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Line height of the text. When set to a value ≤ 0, the line height is not restricted and adapts to the font size. |
 
 ### func lineSpacing(Length)
 
@@ -266,7 +266,7 @@ public func lineSpacing(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Line spacing of the text.<br>Initial value: 0. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Line spacing of the text.<br>Initial value: 0. |
 
 ### func maxFontSize(Length)
 
@@ -290,7 +290,7 @@ public func maxFontSize(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Maximum display font size for the text. Unit: fp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Maximum display font size for the text. Unit: fp. |
 
 ### func maxLines(Int32)
 
@@ -336,7 +336,7 @@ public func minFontSize(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Minimum display font size for the text. Unit: fp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Minimum display font size for the text. Unit: fp. |
 
 ### func textAlign(TextAlign)
 

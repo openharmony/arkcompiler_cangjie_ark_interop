@@ -56,7 +56,7 @@ public init(label: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|label|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|按钮文本内容。当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
+|label|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|按钮文本内容。当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
 
 ### init(ButtonOptions)
 
@@ -115,7 +115,7 @@ public init(label: ResourceStr, options: ButtonOptions)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|label|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置文本内容。<br>**说明：**<br>当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
+|label|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置文本内容。<br>**说明：**<br>当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
 |options|[ButtonOptions](#class-buttonoptions)|是|-|配置按钮的显示样式。|
 
 ## 通用属性/通用事件
@@ -162,7 +162,7 @@ public func fontColor(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|按钮文本颜色。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|按钮文本颜色。|
 
 ### func fontFamily(ResourceStr)
 
@@ -181,7 +181,7 @@ public func fontFamily(value: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|按钮文本内容。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|按钮文本内容。|
 
 ### func fontSize(Length)
 
@@ -200,7 +200,7 @@ public func fontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|按钮文本大小。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|按钮文本大小。|
 
 ### func fontStyle(FontStyle)
 

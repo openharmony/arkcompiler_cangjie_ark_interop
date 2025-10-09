@@ -265,7 +265,7 @@ public var fadingEdgeLength: Length
 **功能：** 设置边缘渐隐长度。如果设置小于0的值则取默认值，默认长度为32vp。
 如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -289,7 +289,7 @@ public init(fadingEdgeLength!: Length = 32.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fadingEdgeLength|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|32.vp|设置边缘渐隐长度。如果设置小于0的值则取默认值，默认长度为32vp。如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。|
+|fadingEdgeLength|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|32.vp|设置边缘渐隐长度。如果设置小于0的值则取默认值，默认长度为32vp。如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。|
 
 ### class NestedScrollOptions
 
@@ -781,7 +781,7 @@ public var extraOffset: Length = 0.vp
 
 **起始版本：** 21
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -801,7 +801,7 @@ public init(extraOffset!: Length = 0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|extraOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。|
+|extraOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。|
 
 ### class ScrollableBase
 
@@ -962,7 +962,7 @@ public func friction(value: AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|摩擦系数。默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|
+|value|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|摩擦系数。默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|
 
 #### func nestedScroll(NestedScrollOptions)
 
@@ -1156,7 +1156,7 @@ public func scrollBarColor(color: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滚动条的颜色。<br/>默认值：‘#182431’（40%不透明度）<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：‘#ffffff’。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滚动条的颜色。<br/>默认值：‘#182431’（40%不透明度）<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：‘#ffffff’。|
 
 #### func scrollBarWidth(Length)
 
@@ -1174,7 +1174,7 @@ public func scrollBarWidth(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|滚动条的宽度。默认值：4<br/>单位：vp<br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|滚动条的宽度。默认值：4<br/>单位：vp<br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。|
 
 ### class Scroller
 
@@ -1339,8 +1339,8 @@ public func scrollBy(xOffset!: Length, yOffset!: Length): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|水平方向滚动距离，不支持百分比形式。<br/>取值范围：(-∞, +∞)|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|竖直方向滚动距离，不支持百分比形式。 取值范围：(-∞, +∞)|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|水平方向滚动距离，不支持百分比形式。<br/>取值范围：(-∞, +∞)|
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|竖直方向滚动距离，不支持百分比形式。 取值范围：(-∞, +∞)|
 
 #### func scrollEdge(Edge)
 
@@ -1432,8 +1432,8 @@ public func scrollTo(xOffset!: Length, yOffset!: Length): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。**  水平滚动偏移（Int64、Float64类型值单位为vp）。<br>**说明：**<br>该参数值不支持设置百分比。<br>仅滚动轴为x轴时生效。<br>当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止。 |
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。**  竖直滚动偏移（Int64、Float64类型值单位为vp）。<br>**说明：**<br>该参数值不支持设置百分比。<br>仅滚动轴为y轴时生效。<br>当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止。|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。**  水平滚动偏移（Int64、Float64类型值单位为vp）。<br>**说明：**<br>该参数值不支持设置百分比。<br>仅滚动轴为x轴时生效。<br>当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止。 |
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。**  竖直滚动偏移（Int64、Float64类型值单位为vp）。<br>**说明：**<br>该参数值不支持设置百分比。<br>仅滚动轴为y轴时生效。<br>当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止。|
 
 #### func scrollTo(Length, Length, ScrollAnimationOptions)
 
@@ -1451,8 +1451,8 @@ public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: ScrollAnima
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|水平滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|垂直滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|水平滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|垂直滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
 |animation|[ScrollAnimationOptions](#class-scrollanimationoptions)|是|-|自定义滚动动效，初始值：ScrollAnimationOptions(duration: 1000, curve: Curve.Ease, canOverScroll: false)|
 
 #### func scrollTo(Length, Length, Bool)
@@ -1471,8 +1471,8 @@ public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: Bool): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|水平滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|垂直滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|水平滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为x轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|垂直滚动偏移。<br/>**说明：**<br/>该参数值不支持设置百分比。<br/>仅滚动轴为y轴时生效。<br/>取值范围：当值小于0时，不带动画的滚动，按0处理。带动画的滚动，默认滚动到起始位置后停止，可通过设置animation参数，使滚动在越界时启动回弹动画。|
 | animation | Bool | 是 | - | **命名参数。**  动画配置，使能默认弹簧动效。<br>初始值：false。|
 
 #### func scrollToIndex(Int32, Bool, ScrollAlign, ScrollToIndexOptions)

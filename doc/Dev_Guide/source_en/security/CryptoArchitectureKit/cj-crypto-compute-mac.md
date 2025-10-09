@@ -28,18 +28,18 @@ Below are example codes for both approaches.
 
 ### HMAC (Single Pass)
 
-1. Call [createMac](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createmacstring), specifying the SHA256 digest algorithm to generate a message authentication code instance (Mac).
+1. Call [createMac](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createmacstring), specifying the SHA256 digest algorithm to generate a message authentication code instance (Mac).
 
-2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) and [convertKey](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key (SymKey) with HMAC as the key algorithm.
+2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) and [convertKey](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-convertkeydatablob) to generate a symmetric key (SymKey) with HMAC as the key algorithm.
    For detailed guidance on symmetric key generation, refer to [Generate Symmetric Key from Binary Data](./cj-crypto-convert-binary-data-to-sym-key.md).
 
-3. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initsymkey), specifying the shared symmetric key (SymKey) to initialize the Mac object.
+3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initsymkey), specifying the shared symmetric key (SymKey) to initialize the Mac object.
 
-4. Call [update](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-1), passing custom message data for MAC calculation. There is no length restriction for single update operations.
+4. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-1), passing custom message data for MAC calculation. There is no length restriction for single update operations.
 
-5. Call [doFinal](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinal) to obtain the MAC calculation result.
+5. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinal) to obtain the MAC calculation result.
 
-6. Call [getMacLength](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getmaclength) to retrieve the MAC length in bytes.
+6. Call [getMacLength](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getmaclength) to retrieve the MAC length in bytes.
 
 ### Example: Single-Pass Data Input for MAC Calculation
 
@@ -75,18 +75,18 @@ func doHmacBySync() {
 
 ### Segmented HMAC
 
-1. Call [createMac](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createmacstring), specifying the SHA256 digest algorithm to generate a message authentication code instance (Mac).
+1. Call [createMac](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createmacstring), specifying the SHA256 digest algorithm to generate a message authentication code instance (Mac).
 
-2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with HMAC as the key algorithm.
+2. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with HMAC as the key algorithm.
    For detailed guidance on symmetric key generation, refer to [Generate Symmetric Key from Binary Data](./cj-crypto-convert-binary-data-to-sym-key.md).
 
-3. Call [init](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-initsymkey), specifying the shared symmetric key (SymKey) to initialize the Mac object.
+3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initsymkey), specifying the shared symmetric key (SymKey) to initialize the Mac object.
 
-4. Pass custom message data, setting each update segment to 20 bytes. Call [update](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-1) multiple times for MAC calculation.
+4. Pass custom message data, setting each update segment to 20 bytes. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-1) multiple times for MAC calculation.
 
-5. Call [doFinal](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinal) to obtain the MAC calculation result.
+5. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinal) to obtain the MAC calculation result.
 
-6. Call [getMacLength](../../../../API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md#func-getmaclength) to retrieve the MAC length in bytes.
+6. Call [getMacLength](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getmaclength) to retrieve the MAC length in bytes.
 
 ### Example: Segmented Data Input for MAC Calculation
 

@@ -78,8 +78,8 @@ public func markAnchor(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
 
 ## func offset(Length, Length)
 
@@ -97,8 +97,8 @@ public func offset(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
 
 ## func position(Length, Length)
 
@@ -116,8 +116,8 @@ public func position(x!: Length, y!: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** x轴坐标。|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** y轴坐标。|
 
 ## 基础类型定义
 

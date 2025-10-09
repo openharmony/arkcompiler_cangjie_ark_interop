@@ -1,6 +1,6 @@
 # Launching UIAbility Components Within an Application
 
-[UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is the smallest unit scheduled by the system. When navigating between functional modules within a device, it involves launching specific Abilities, including other Abilities within the same application or Abilities from other applications (e.g., launching a third-party payment Ability).
+[UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) is the smallest unit scheduled by the system. When navigating between functional modules within a device, it involves launching specific Abilities, including other Abilities within the same application or Abilities from other applications (e.g., launching a third-party payment Ability).
 
 This chapter primarily introduces the methods for launching Ability components within an application.
 
@@ -14,11 +14,11 @@ This chapter primarily introduces the methods for launching Ability components w
 
 ## Launching UIAbility Within an Application
 
-When an application contains multiple [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) components, there are scenarios where Abilities are launched within the application. For example, in a payment application, launching the payment Ability from the entry Ability.
+When an application contains multiple [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) components, there are scenarios where Abilities are launched within the application. For example, in a payment application, launching the payment Ability from the entry Ability.
 
 Assume the application has two Abilities: EntryAbility and FuncAbility (which can be in the same Module or different Modules), and FuncAbility needs to be launched from a page in EntryAbility.
 
-1. In EntryAbility, launch the Ability by calling the [startAbility()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant-startoptions) method. [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) is the entry parameter for launching the Ability instance, where `bundleName` is the Bundle name of the application to be launched, `abilityName` is the name of the Ability to be launched, `moduleName` is added when the target Ability belongs to a different Module, and `parameters` are custom information parameters. For how to obtain the context in the example, refer to [Obtaining UIAbility Context Information](cj-uiability-usage.md#obtaining-uiability-context-information).
+1. In EntryAbility, launch the Ability by calling the [startAbility()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant-startoptions) method. [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) is the entry parameter for launching the Ability instance, where `bundleName` is the Bundle name of the application to be launched, `abilityName` is the name of the Ability to be launched, `moduleName` is added when the target Ability belongs to a different Module, and `parameters` are custom information parameters. For how to obtain the context in the example, refer to [Obtaining UIAbility Context Information](cj-uiability-usage.md#obtaining-uiability-context-information).
 
     <!-- compile -->
 
@@ -69,7 +69,7 @@ Assume the application has two Abilities: EntryAbility and FuncAbility (which ca
     }
     ```
 
-2. In FuncAbility's [onCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) or [onNewWant()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) lifecycle callback file, receive the parameters passed from EntryAbility.
+2. In FuncAbility's [onCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) or [onNewWant()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) lifecycle callback file, receive the parameters passed from EntryAbility.
 
     <!-- compile -->
 
@@ -90,9 +90,9 @@ Assume the application has two Abilities: EntryAbility and FuncAbility (which ca
 
     > **Note:**
     >
-    > In the launched FuncAbility, you can obtain the PID, Bundle Name, and other information of the caller [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) by accessing the `parameters` of the passed [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter.
+    > In the launched FuncAbility, you can obtain the PID, Bundle Name, and other information of the caller [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) by accessing the `parameters` of the passed [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter.
 
-3. After completing the business logic in FuncAbility, if you need to terminate the current [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance, call the [terminateSelf()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself) method in FuncAbility. For how to obtain the context in the example, refer to [Obtaining UIAbility Context Information](cj-uiability-usage.md#obtaining-uiability-context-information).
+3. After completing the business logic in FuncAbility, if you need to terminate the current [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance, call the [terminateSelf()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself) method in FuncAbility. For how to obtain the context in the example, refer to [Obtaining UIAbility Context Information](cj-uiability-usage.md#obtaining-uiability-context-information).
 
     <!-- compile -->
 
@@ -136,7 +136,7 @@ Assume the application has two Abilities: EntryAbility and FuncAbility (which ca
 
 ### Overview
 
-A [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) can correspond to multiple pages. When launching the UIAbility in different scenarios, different pages may need to be displayed. For example, when navigating from one UIAbility's page to another UIAbility, you may want to launch a specified page of the target UIAbility.
+A [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) can correspond to multiple pages. When launching the UIAbility in different scenarios, different pages may need to be displayed. For example, when navigating from one UIAbility's page to another UIAbility, you may want to launch a specified page of the target UIAbility.
 
 UIAbility launches are divided into two scenarios: cold start and hot start.
 
@@ -147,7 +147,7 @@ This chapter mainly explains the two scenarios of launching a specified page: [T
 
 ### Caller UIAbility Specifies the Launch Page
 
-When a caller [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) launches another UIAbility, it often needs to navigate to a specified page. For example, FuncAbility contains two pages (Index for the home page and FuncA for the function A page). In this case, you need to configure the specified page information in the passed [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter by adding a custom parameter to the `parameters` field of the Want object to pass the page navigation information. For how to obtain the context in the example, refer to [Obtaining UIAbility Context Information](cj-uiability-usage.md#obtaining-uiability-context-information).
+When a caller [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) launches another UIAbility, it often needs to navigate to a specified page. For example, FuncAbility contains two pages (Index for the home page and FuncA for the function A page). In this case, you need to configure the specified page information in the passed [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter by adding a custom parameter to the `parameters` field of the Want object to pass the page navigation information. For how to obtain the context in the example, refer to [Obtaining UIAbility Context Information](cj-uiability-usage.md#obtaining-uiability-context-information).
 
 <!-- compile -->
 
@@ -196,7 +196,7 @@ class PageAbilityComponentsInteractive {
 
 ### Cold Start of Target UIAbility
 
-During the cold start of the target [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability), the parameters passed from the caller are received in the target Ability's [onCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) lifecycle callback. Then, in the target Ability's [onWindowStageCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) lifecycle callback, parse the [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter passed from the caller to obtain the URL of the page to be loaded, and pass it to the [windowStage.loadContent()](../../../API_Reference/source_en/arkui-cj/cj-apis-window.md#class-windowstage) method.
+During the cold start of the target [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability), the parameters passed from the caller are received in the target Ability's [onCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) lifecycle callback. Then, in the target Ability's [onWindowStageCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) lifecycle callback, parse the [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter passed from the caller to obtain the URL of the page to be loaded, and pass it to the [windowStage.loadContent()](../../../API_Reference/source_en/arkui-cj/cj-apis-window.md#class-windowstage) method.
 
 <!-- compile -->
 
@@ -221,7 +221,7 @@ class FuncAbilityA <: UIAbility {
 
 ### Hot Start of Target UIAbility
 
-In application development, there are scenarios where the target [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance has already been launched. In this case, when launching the target Ability again, the initialization logic is not re-executed; only the [onNewWant()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) lifecycle method is triggered. To navigate to a specified page, you need to parse the parameters in onNewWant() for processing.
+In application development, there are scenarios where the target [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance has already been launched. In this case, when launching the target Ability again, the initialization logic is not re-executed; only the [onNewWant()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) lifecycle method is triggered. To navigate to a specified page, you need to parse the parameters in onNewWant() for processing.
 
 For example, consider a scenario involving a messaging application and a contacts application.
 
@@ -229,7 +229,7 @@ For example, consider a scenario involving a messaging application and a contact
 2. The user returns to the home screen, and the messaging application enters the background.
 3. The user opens the contacts application and finds contact "Zhang San."
 4. The user clicks the message button for "Zhang San," which relaunches the UIAbility instance of the messaging application.
-5. Since the UIAbility instance of the messaging application has already been launched, the onNewWant() callback of this UIAbility is triggered, without executing [onCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) and [onWindowStageCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) initialization logic.
+5. Since the UIAbility instance of the messaging application has already been launched, the onNewWant() callback of this UIAbility is triggered, without executing [onCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam) and [onWindowStageCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) initialization logic.
 
 **Figure 1** Hot Start of Target UIAbility
 
@@ -267,7 +267,7 @@ The development steps are as follows:
     }
     ```
 
-2. In the [onNewWant()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) callback of the messaging application's UIAbility, parse the [Want](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter passed from the caller, use the [Router](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#class-router) object, and navigate to the specified page. When the UIAbility instance of the messaging application is launched again, it will navigate to the specified page.
+2. In the [onNewWant()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onnewwantwant-launchparam) callback of the messaging application's UIAbility, parse the [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) parameter passed from the caller, use the [Router](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#class-router) object, and navigate to the specified page. When the UIAbility instance of the messaging application is launched again, it will navigate to the specified page.
 
     <!-- compile -->
 
