@@ -76,7 +76,7 @@ public func selectedColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|被选中或部分选中状态的颜色。<br/>初始值：<br/>@r(sys.color.ohos_id_color_text_primary_activated)。<br/>异常值按照默认值处理。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|被选中或部分选中状态的颜色。<br/>初始值：<br/>@r(sys.color.ohos_id_color_text_primary_activated)。<br/>异常值按照默认值处理。|
 
 ## 组件事件
 

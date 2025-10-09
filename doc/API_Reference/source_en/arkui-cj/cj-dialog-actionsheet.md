@@ -36,7 +36,7 @@ public var action: VoidCallback
 
 **Description:** Callback when the button is selected.
 
-**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)
+**Type:** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)
 
 **Access:** Read-write
 
@@ -100,7 +100,7 @@ public var value: ResourceStr
 
 **Description:** Text content of the button.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Access:** Read-write
 
@@ -130,8 +130,8 @@ public init(
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content of the button. |
-| action | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback when the button is selected. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content of the button. |
+| action | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback when the button is selected. |
 | enabled | Bool | No | true | **Named parameter.** Whether the button responds to clicks. `true` means the button responds, `false` means it doesn't. |
 | defaultFocus | Bool | No | false | **Named parameter.** Sets whether the button is the default focus. `true` means it is the default focus, `false` means it isn't. |
 | style | [DialogButtonStyle](./cj-common-types.md#enum-dialogbuttonstyle) | No | DialogButtonStyle.Default | **Named parameter.** Sets the style of the button. |
@@ -164,7 +164,7 @@ public var dx: Length
 
 **Description:** Horizontal offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%').
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -180,7 +180,7 @@ public var dy: Length
 
 **Description:** Vertical offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%').
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-write
 
@@ -207,8 +207,8 @@ public init(
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| dx | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Horizontal offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%'). |
-| dy | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Vertical offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%'). |
+| dx | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Horizontal offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%'). |
+| dy | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Vertical offset of the dialog relative to the alignment position. Requires explicit pixel units (e.g., '10px') or percentage strings (e.g., '100%'). |
 
 ## class ActionSheetOptions
 
@@ -357,7 +357,7 @@ public var backgroundColor: ResourceColor
 
 **Description:** Background color of the dialog.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -373,7 +373,7 @@ public var borderColor: ResourceColor
 
 **Description:** Sets the border color of the dialog background. Must be used with the `borderWidth` property.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Access:** Read-write
 
@@ -403,7 +403,7 @@ public var borderWidth: Length
 
 **Function:** Sets the border width of the dialog backdrop.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -419,7 +419,7 @@ public var cancel: VoidCallback
 
 **Function:** Callback triggered when clicking the mask layer to close the dialog.
 
-**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)
+**Type:** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)
 
 **Read/Write:** Readable and Writable
 
@@ -467,7 +467,7 @@ public var height:?Length
 
 **Function:** Sets the height of the dialog backdrop.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -515,7 +515,7 @@ public var message: ResourceStr
 
 **Function:** Content of the dialog.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write:** Readable and Writable
 
@@ -547,7 +547,7 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 
 **Function:** Interactive close callback function.
 
-**Type:** ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit>
+**Type:** ?[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit>
 
 **Read/Write:** Readable and Writable
 
@@ -611,7 +611,7 @@ public var subtitle: ResourceStr
 
 **Function:** Subtitle of the dialog.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write:** Readable and Writable
 
@@ -627,7 +627,7 @@ public var title: ResourceStr
 
 **Function:** Title of the dialog.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write:** Readable and Writable
 
@@ -659,7 +659,7 @@ public var width:?Length
 
 **Function:** Sets the width of the dialog backdrop.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -735,26 +735,26 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| title | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Title of the dialog. <br/>If the text is too long to display, an ellipsis replaces the hidden part. |
-| message | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Content of the dialog. <br/>A scrollbar appears if the text exceeds the display area. |
+| title | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Title of the dialog. <br/>If the text is too long to display, an ellipsis replaces the hidden part. |
+| message | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Content of the dialog. <br/>A scrollbar appears if the text exceeds the display area. |
 | sheets | Array\<[SheetInfo](#class-sheetinfo)> | Yes | - | Sets the option content. Each option supports configuring an image, text, and selection callback. |
-| subtitle | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Subtitle of the dialog. <br/>If the text is too long to display, an ellipsis replaces the hidden part. |
+| subtitle | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** Subtitle of the dialog. <br/>If the text is too long to display, an ellipsis replaces the hidden part. |
 | confirm | [ActionSheetButtonOptions](#class-actionsheetbuttonoptions) | No | ActionSheetButtonOptions(value: "", action: { => }) | **Named parameter.** Configures the enabled state, default focus, button style, text content, and click callback of the confirmation button. When the dialog gains focus and no tab key navigation is performed, this button responds to the Enter key by default, and multiple dialogs can automatically gain focus for continuous response. The default Enter key response does not take effect when `defaultFocus` is true. <br/>`enabled`: Determines whether the button responds to clicks. `true` means the button can respond; `false` means it cannot. <br/>Initial value: `true`. <br/>`defaultFocus`: Sets whether the button is the default focus. `true` means it is the default focus; `false` means it is not. <br/>Initial value: `false`. <br/>`style`: Sets the button's style. <br/>Initial value: `DialogButtonStyle.DEFAULT`. <br/>`value`: Text content of the button. If the text is too long to display, an ellipsis replaces the hidden part. <br/>`action`: Callback triggered when the button is selected. |
 | autoCancel | Bool | No | true | **Named parameter.** Determines whether clicking the mask layer closes the dialog. <br/>`true` means clicking the mask layer closes the dialog; `false` means it does not. |
-| cancel | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | No | { => } | **Named parameter.** Callback triggered when clicking the mask layer to close the dialog. |
+| cancel | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | No | { => } | **Named parameter.** Callback triggered when clicking the mask layer to close the dialog. |
 | alignment | [DialogAlignment](./cj-common-types.md#enum-dialogalignment) | No | DialogAlignment.Bottom | **Named parameter.** Vertical alignment of the dialog. |
 | offset | ?[ActionSheetOffset](#class-actionsheetoffset) | No | None | **Named parameter.** Requires explicit pixel units (e.g., `10.vp`) or percentage strings (e.g., `100.percent`). <br/>If no unit is specified, `vp` is used by default (e.g., `10` is equivalent to `10.vp`). <br/>Offset of the dialog relative to the position specified by `alignment`. <br/>Initial value: <br/>1. When `alignment` is set to `Top`, `TopStart`, or `TopEnd`, the default is `{dx: 0, dy: 40.vp}`. <br/>2. For other alignments, the default is `{dx: 0, dy: -40.vp}`. |
 | maskRect | [Rectangle](./cj-common-types.md#class-rectangle) | No | Rectangle(x: 0, y: 0, width: 100.percent, height: 100.percent) | **Named parameter.** Mask layer area of the dialog. Events within this area are not transmitted; events outside are transmitted. <br>**Note:** <br> `maskRect` does not take effect when `showInSubWindow` is `true`. |
 | showInSubWindow | Bool | No | false | **Named parameter.** Determines whether the dialog should be displayed in a sub-window when it needs to appear outside the main window. <br>Initial value: `false`, meaning the dialog appears within the application, not in an independent sub-window. <br>**Note:** <br> A dialog with `showInSubWindow` set to `true` cannot trigger another dialog with `showInSubWindow` set to `true`. |
 | isModal | Bool | No | true | **Named parameter.** Indicates whether the dialog is a modal window. Modal windows have a mask layer; non-modal windows do not. <br/>Initial value: `true`, meaning the dialog has a mask layer. |
-| backgroundColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | **Named parameter.** Background color of the dialog backdrop. <br>**Note:** <br> When `backgroundColor` is set to a non-transparent color, `backgroundBlurStyle` must be set to `BlurStyle.NONE`; otherwise, the color display may not meet expectations. |
+| backgroundColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Transparent | **Named parameter.** Background color of the dialog backdrop. <br>**Note:** <br> When `backgroundColor` is set to a non-transparent color, `backgroundBlurStyle` must be set to `BlurStyle.NONE`; otherwise, the color display may not meet expectations. |
 | backgroundBlurStyle | [BlurStyle](./cj-universal-attribute-background.md#enum-blurstyle) | No | BlurStyle.ComponentUltraThick | **Named parameter.** Blur material of the dialog backdrop. <br>**Note:** <br> Set to `BlurStyle.NONE` to disable background blurring. When `backgroundBlurStyle` is set to a non-`NONE` value, avoid setting `backgroundColor`; otherwise, the color display may not meet expectations. |
-| onWillDismiss | ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit> | No | None | **Named parameter.** Interactive close callback function. <br>**Note:** <br> 1. When the user performs actions like clicking the mask layer to close, swiping left/right, pressing the back button, or using the ESC key to close the dialog, if this callback is registered, the dialog will not close immediately. The callback provides the `reason` for the close attempt, allowing conditional closure based on the operation type. The current component does not support the `CLOSE_BUTTON` enum value in the `reason` parameter. <br> 2. The `onWillDismiss` callback cannot intercept itself. |
+| onWillDismiss | ?[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](#class-dismissdialogaction),Unit> | No | None | **Named parameter.** Interactive close callback function. <br>**Note:** <br> 1. When the user performs actions like clicking the mask layer to close, swiping left/right, pressing the back button, or using the ESC key to close the dialog, if this callback is registered, the dialog will not close immediately. The callback provides the `reason` for the close attempt, allowing conditional closure based on the operation type. The current component does not support the `CLOSE_BUTTON` enum value in the `reason` parameter. <br> 2. The `onWillDismiss` callback cannot intercept itself. |
 | cornerRadius | [BorderRadiuses](./cj-common-types.md#class-borderradiuses) | No | BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp) | **Named parameter.** Sets the corner radius of the backdrop. Each corner's radius can be set individually. <br>The maximum corner radius is limited by the component's dimensions (half of the width or height). Negative values are treated as the default. <br>Percentage-based parameters: The corner radius is calculated as a percentage of the dialog's width and height. <br>**Note:** <br> When `cornerRadius` is of type `LocalizedBorderRadiuses`, it supports layout adjustments based on language preferences. |
-| borderWidth | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Sets the border width of the dialog backdrop. <br>Percentage-based parameters: The border width is calculated as a percentage of the dialog's width and height. <br>If the left/right borders exceed the dialog's width or the top/bottom borders exceed its height, the display may not meet expectations. <br>**Note:** <br> When `borderWidth` is of type `LocalizedEdgeWidths`, it supports layout adjustments based on language preferences. |
-| borderColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Sets the border color of the dialog backdrop. Requires `borderWidth` to be set. <br>**Note:** <br> When `borderColor` is of type `LocalizedEdgeColors`, it supports layout adjustments based on language preferences. |
+| borderWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Sets the border width of the dialog backdrop. <br>Percentage-based parameters: The border width is calculated as a percentage of the dialog's width and height. <br>If the left/right borders exceed the dialog's width or the top/bottom borders exceed its height, the display may not meet expectations. <br>**Note:** <br> When `borderWidth` is of type `LocalizedEdgeWidths`, it supports layout adjustments based on language preferences. |
+| borderColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | **Named parameter.** Sets the border color of the dialog backdrop. Requires `borderWidth` to be set. <br>**Note:** <br> When `borderColor` is of type `LocalizedEdgeColors`, it supports layout adjustments based on language preferences. |
 | borderStyle | [EdgeStyles](./cj-common-types.md#class-edgestyles) | No | EdgeStyles() | **Named parameter.** Sets the border style of the dialog backdrop. Requires `borderWidth` to be set. |
-| width | ?[Length](../apis/BasicServices## class SheetInfo
+| width | ?[Length](../BasicServices## class SheetInfo
 
 ```cangjie
 public class SheetInfo {
@@ -784,7 +784,7 @@ public var action: VoidCallback
 
 **Function:** Callback when the option is selected.
 
-**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)
+**Type:** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)
 
 **Read/Write:** Readable and Writable
 
@@ -800,7 +800,7 @@ public var icon:?ResourceStr
 
 **Function:** Icon of the option. No icon is displayed by default.
 
-**Type:** ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write:** Readable and Writable
 
@@ -816,7 +816,7 @@ public var title: ResourceStr
 
 **Function:** Text content of the option.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write:** Readable and Writable
 
@@ -844,9 +844,9 @@ public init(
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| title | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content of the option.<br/>A scroll bar appears when the text is too long. |
-| action | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback when the option is selected. |
-| icon | ?[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** Icon of the option. No icon is displayed by default.<br/>The string format can be used to load network images and local images, and is commonly used to load network images. When referencing a local image using a relative path, for example, Image("common/test.jpg"). |
+| title | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Text content of the option.<br/>A scroll bar appears when the text is too long. |
+| action | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | Yes | - | Callback when the option is selected. |
+| icon | ?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | None | **Named parameter.** Icon of the option. No icon is displayed by default.<br/>The string format can be used to load network images and local images, and is commonly used to load network images. When referencing a local image using a relative path, for example, Image("common/test.jpg"). |
 
 ## enum DismissReason
 

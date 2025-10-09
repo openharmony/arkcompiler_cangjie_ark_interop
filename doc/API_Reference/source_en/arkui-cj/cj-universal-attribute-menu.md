@@ -7,7 +7,7 @@ Bind a popup menu to a component. The popup menu displays menu items in a vertic
 > - `bindMenu` and `bindContextMenu` cannot be used within `CustomBuilder` to pop up menus. For multi-level menus, use the [Menu](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) component.
 > - The text content of a popup menu does not support long-press selection.
 > - If a component is a draggable node and `bindContextMenu` is bound without specifying `preview`, the menu popup will display a floating drag preview, and the menu options will not avoid the preview. Developers can address this by setting `preview` or configuring the target node as a non-draggable node.
-> - The menu supports long-press (500ms) to pop up submenus and follows finger movement during press state.<br> a. Only supported when using the [Menu](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) component with subcomponents containing [MenuItem](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) or [MenuItemGroup](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu).<br> b. Only supported when [MenuPreviewMode](../apis/BasicServicesKit/cj-apis-base.md#enum-menupreviewmode) is set to `NONE`.
+> - The menu supports long-press (500ms) to pop up submenus and follows finger movement during press state.<br> a. Only supported when using the [Menu](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) component with subcomponents containing [MenuItem](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) or [MenuItemGroup](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu).<br> b. Only supported when [MenuPreviewMode](../BasicServicesKit/cj-apis-base.md#enum-menupreviewmode) is set to `NONE`.
 
 ## Import Module
 
@@ -231,7 +231,7 @@ public var arrowOffset: Length = 0.vp
 
 **Function:** The offset of the arrow on the menu. The offset must be valid and greater than 0 when converted to a specific value. Additionally, this value will not cause the arrow to exceed the safe distance around the menu.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -263,7 +263,7 @@ public var backgroundColor: ResourceColor = Color.Transparent
 
 **Function:** The color of the popup backdrop.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -457,5 +457,5 @@ public init(value!: ResourceStr, action!: () -> Unit)
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Menu item text. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Menu item text. |
 | action | () -> Unit | Yes | - | Callback for menu item click events. |

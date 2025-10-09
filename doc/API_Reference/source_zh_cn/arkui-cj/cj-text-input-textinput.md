@@ -30,8 +30,8 @@ public init(placeholder!: ResourceStr = "", text!: ResourceStr = "", controller!
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|placeholder|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 无输入时的提示文本。|
-|text|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。**。 输入框当前的文本内容。建议通过onChange事件将状态变量与文本实时绑定，避免组件刷新时TextInput中的文本内容异常。|
+|placeholder|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 无输入时的提示文本。|
+|text|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。**。 输入框当前的文本内容。建议通过onChange事件将状态变量与文本实时绑定，避免组件刷新时TextInput中的文本内容异常。|
 |controller|[TextInputController](#class-textinputcontroller)|否|TextInputController()|**命名参数。** TextInput控制器。|
 
 ## 通用属性/通用事件
@@ -58,7 +58,7 @@ public func caretColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|输入框光标颜色。<br>初始值：0xFF0A59F7。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|输入框光标颜色。<br>初始值：0xFF0A59F7。|
 
 ### func customKeyboard(CustomBuilder, Bool)
 
@@ -140,7 +140,7 @@ public func fontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。<br/>初始值：0xE5000000。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。<br/>初始值：0xE5000000。|
 
 ### func fontFamily(ResourceStr)
 
@@ -158,7 +158,7 @@ public func fontFamily(value: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md)。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md)。|
 
 ### func fontSize(Length)
 
@@ -176,7 +176,7 @@ public func fontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。Length为Int64、Float64类型时，使用fp单位。不支持设置百分比字符串。<br/>初始值：16.fp。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。Length为Int64、Float64类型时，使用fp单位。不支持设置百分比字符串。<br/>初始值：16.fp。|
 
 ### func fontStyle(FontStyle)
 
@@ -234,7 +234,7 @@ public func inputFilter(value: ResourceStr, error!: ?(String) -> Unit = None): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 正则表达式。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 正则表达式。|
 |error|?(String)->Unit|否|None|**命名参数。** 正则匹配失败时，返回被过滤的内容。|
 
 ### func maxLength(UInt32)
@@ -293,7 +293,7 @@ public func placeholderColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|placeholder文本颜色。<br>初始值：跟随主题。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|placeholder文本颜色。<br>初始值：跟随主题。|
 
 ### func placeholderFont(Length, FontWeight, String, FontStyle)
 
@@ -312,7 +312,7 @@ public func placeholderFont(size!: Length, weight!: FontWeight = FontWeight.W400
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 文本尺寸。 单位：fp。<br>初始值：16.fp。|
+|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 文本尺寸。 单位：fp。<br>初始值：16.fp。|
 |weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.W400|**命名参数。** 文本的字体粗细。|
 |family|String|否|""|**命名参数。** 文本的字体列表。|
 |style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 文本的字体样式。|

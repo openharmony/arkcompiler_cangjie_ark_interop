@@ -35,7 +35,7 @@ The [public key plaintext material returned by the export key interface is encap
 
 > **Note:**  
 >  
-> For encrypted key import, the agreement algorithms supported are ECDH and X25519. The Shared_Key derived from the agreement is used to encrypt Caller_Kek using the AES-GCM algorithm. For the corresponding algorithm suite definitions, refer to [HuksUnwrapSuite](../../../../API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksunwrapsuite).  
+> For encrypted key import, the agreement algorithms supported are ECDH and X25519. The Shared_Key derived from the agreement is used to encrypt Caller_Kek using the AES-GCM algorithm. For the corresponding algorithm suite definitions, refer to [HuksUnwrapSuite](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksunwrapsuite).  
 
 ### Encrypted Key Import Material Format  
 

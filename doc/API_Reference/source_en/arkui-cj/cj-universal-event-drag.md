@@ -128,7 +128,7 @@ public var pixelMap: PixelMap = PixelMap(0)
 
 **Function:** Sets the image displayed during the drag process.
 
-**Type:** [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)
+**Type:** [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)
 
 **Read-Write Capability:** Readable and Writable
 
@@ -148,7 +148,7 @@ public init(pixelMap: PixelMap, builder: CustomBuilder, extraInfo: String)
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| pixelMap | [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | Sets the image displayed during the drag process. |
+| pixelMap | [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap) | Yes | - | Sets the image displayed during the drag process. |
 | builder | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | Uses a custom builder for drawing. If `pixelMap` is set, this value is ignored. |
 | extraInfo | String | Yes | - | Description of the drag item. |
 

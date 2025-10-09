@@ -473,7 +473,7 @@ public override func aboutToReuseInternal(param: ReuseParams): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|param|[ReuseParams](../apis/BasicServicesKit/cj-apis-base.md#class-reuseparams)|是|-| -    |
+|param|[ReuseParams](../BasicServicesKit/cj-apis-base.md#class-reuseparams)|是|-| -    |
 
 ### func addChildById(Int64, CustomView)
 
@@ -601,7 +601,7 @@ public func forEachUpdateFunction<T>(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |elmtId|Int64|是|-|-|
-|arr|[CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|-|
+|arr|[CollectionEx](../BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|-|
 |itemGenFunc|(T,Int64)->Unit|是|-|**命名参数。** -|
 |keyGeneratorFunc|(T,Int64)->String|否|{ realData: T, idx: Int64 => match(realData) { case realDataStr: ToString => idx.toString() + "_" + realDataStr.toString() <br>case _ => idx.toString() } }|**命名参数。** -|
 
@@ -993,7 +993,7 @@ keyGeneratorFunc!: KeyGenFuncType<T> = {
 |:---|:---|:---|:---|:---|
 |viewID|Int64|是|-|组件id。|
 |parentView|[CustomView](#class-customview)|是|-|父组件。|
-|dataSource|[CollectionEx](../apis/BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|数据源。|
+|dataSource|[CollectionEx](../BasicServicesKit/cj-apis-base.md#interface-collectionex)\<T>|是|-|数据源。|
 |itemGeneratorFunc|ItemGenFuncType\<T>|是|-|**命名参数。** 组件生成函数。|
 |keyGeneratorFunc|KeyGenFuncType\<T>|否|{ realData: T, idx: Int64 =>}|**命名参数。** 键值生成函数。|
 

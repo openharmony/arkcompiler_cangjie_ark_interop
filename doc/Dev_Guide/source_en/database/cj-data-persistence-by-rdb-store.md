@@ -34,7 +34,7 @@ Relational databases offer universal operation interfaces to applications, with 
 
 ## API Description
 
-The following are key APIs for relational database persistence. For more APIs and usage details, refer to [Relational Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md).
+The following are key APIs for relational database persistence. For more APIs and usage details, refer to [Relational Database](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md).
 
 | API Name | Description |
 | -------- | -------- |
@@ -221,7 +221,7 @@ During relational database operations or storage, unexpected exceptions (error c
 
 6. Restore data from backup. Two methods are supported: restoring manual backups and restoring automatic backups (system apps only). See [Relational Database Restoration](cj-data-backup-and-restore.md#关系型数据库数据恢复).
 
-    Example using [restore](../../../API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md#func-restorestring) for manual backups:
+    Example using [restore](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md#func-restorestring) for manual backups:
 
     <!-- compile -->
 

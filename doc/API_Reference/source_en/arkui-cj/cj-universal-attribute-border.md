@@ -25,9 +25,9 @@ public func border(width!: Length, color!: ResourceColor = Color.Black, radius!:
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border width. |
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Border color. |
-| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Border corner radius. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border width. |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color.Black | Border color. |
+| radius | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Border corner radius. |
 | style | [BorderStyle](./cj-common-types.md#enum-borderstyle) | No | BorderStyle.Solid | Border style. |
 
 ## func borderColor(ResourceColor)
@@ -46,7 +46,7 @@ public func borderColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Border color. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Border color. |
 
 ## func borderRadius(Length)
 
@@ -64,7 +64,7 @@ public func borderRadius(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Corner radius. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Corner radius. |
 
 ## func borderRadius(Length, Length, Length, Length)
 
@@ -83,10 +83,10 @@ public func borderRadius(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bott
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| topLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-left corner radius. |
-| topRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-right corner radius. |
-| bottomLeft | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-left corner radius. |
-| bottomRight | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-right corner radius. |
+| topLeft | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-left corner radius. |
+| topRight | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Top-right corner radius. |
+| bottomLeft | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-left corner radius. |
+| bottomRight | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Bottom-right corner radius. |
 
 ## func borderStyle(BBorderStyle)
 
@@ -140,7 +140,7 @@ public func borderWidth(value: Length): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border width. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Border width. |
 
 **Exceptions:**
 
@@ -178,7 +178,7 @@ public var bottom: Length
 
 **Function:** Bottom border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-Write
 
@@ -194,7 +194,7 @@ public var left: Length
 
 **Function:** Left border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-Write
 
@@ -210,7 +210,7 @@ public var right: Length
 
 **Function:** Right border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-Write
 
@@ -226,7 +226,7 @@ public var top: Length
 
 **Function:** Top border width.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Access:** Read-Write
 
@@ -250,7 +250,7 @@ public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| top | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Top border width. |
-| right | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Right border width. |
-| bottom | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Bottom border width. |
-| left | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Left border width. |
+| top | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Top border width. |
+| right | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Right border width. |
+| bottom | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Bottom border width. |
+| left | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | **Named parameter.** Left border width. |

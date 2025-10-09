@@ -56,7 +56,7 @@ public func color(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The default foreground color of the loading progress bar.<br>Initial value: 0xff666666. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The default foreground color of the loading progress bar.<br>Initial value: 0xff666666. |
 
 ## Example Code
 

@@ -78,8 +78,8 @@ public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Uni
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|familyName|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 设置注册字体的名称。|
-|familySrc|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 设置注册字体文件的路径。|
+|familyName|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 设置注册字体的名称。|
+|familySrc|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 设置注册字体文件的路径。|
 
 ## class FontInfo
 

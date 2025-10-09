@@ -265,7 +265,7 @@ public var fadingEdgeLength: Length
 **Function:** Sets the edge fading length. If set to a value less than 0, the default value is used. The default length is 32vp.
 If the set length exceeds half the container height, the fading length is set to half the container height.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write Capability:** Readable and Writable
 
@@ -289,7 +289,7 @@ public init(fadingEdgeLength!: Length = 32.vp)
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| fadingEdgeLength | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 32.vp | Sets the edge fading length. If set to a value less than 0, the default value is used. The default length is 32vp. If the set length exceeds half the container height, the fading length is set to half the container height. |
+| fadingEdgeLength | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 32.vp | Sets the edge fading length. If set to a value less than 0, the default value is used. The default length is 32vp. If the set length exceeds half the container height, the fading length is set to half the container height. |
 
 ### class NestedScrollOptions
 
@@ -779,7 +779,7 @@ public var extraOffset: Length = 0.vp
 
 **Since:** 21
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Readable/Writable:** Yes
 
@@ -799,7 +799,7 @@ public init(extraOffset!: Length = 0.vp)
 
 | Parameter   | Type                                      | Required | Default | Description                                                                 |
 |:------------|:------------------------------------------|:---------|:--------|:----------------------------------------------------------------------------|
-| extraOffset | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No       | 0.vp    | Extra offset for scrolling to the specified index. Positive values add an offset toward the bottom; negative values add an offset toward the top. |
+| extraOffset | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No       | 0.vp    | Extra offset for scrolling to the specified index. Positive values add an offset toward the bottom; negative values add an offset toward the top. |
 
 ### class ScrollableBase
 
@@ -960,7 +960,7 @@ public func friction(value: AppResource): This
 
 | Parameter | Type                                | Required | Default | Description                                                                 |
 |:----------|:------------------------------------|:---------|:--------|:----------------------------------------------------------------------------|
-| value     | [AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource) | Yes      | -       | Friction coefficient. Default: 0.6 for non-wearable devices; 0.9 for wearable devices.<br>From API version 11, the default for non-wearable devices is 0.7.<br>From API version 12, the default for non-wearable devices is 0.75.<br>Range: (0, +∞). If set to ≤0, the default value is used. |
+| value     | [AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource) | Yes      | -       | Friction coefficient. Default: 0.6 for non-wearable devices; 0.9 for wearable devices.<br>From API version 11, the default for non-wearable devices is 0.7.<br>From API version 12, the default for non-wearable devices is 0.75.<br>Range: (0, +∞). If set to ≤0, the default value is used. |
 
 #### func nestedScroll(NestedScrollOptions)
 
@@ -1167,8 +1167,8 @@ public func scrollBy(xOffset!: Length, yOffset!: Length): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll distance. Percentage values are not supported.<br/>Range: (-∞, +∞)|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll distance. Percentage values are not supported. Range: (-∞, +∞)|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll distance. Percentage values are not supported.<br/>Range: (-∞, +∞)|
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll distance. Percentage values are not supported. Range: (-∞, +∞)|
 
 #### func scrollEdge(Edge)
 
@@ -1260,8 +1260,8 @@ public func scrollTo(xOffset!: Length, yOffset!: Length): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Horizontal scroll offset (Int64, Float64 values in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the x-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. |
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Vertical scroll offset (Int64, Float64 values in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the y-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position.|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Horizontal scroll offset (Int64, Float64 values in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the x-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position. |
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-| **Named parameter.** Vertical scroll offset (Int64, Float64 values in vp).<br>**Note:**<br>Percentage values are not supported.<br>Only effective when the scroll axis is the y-axis.<br>For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position.|
 
 #### func scrollTo(Length, Length, ScrollAnimationOptions)
 
@@ -1279,8 +1279,8 @@ public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: ScrollAnima
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
 |animation|[ScrollAnimationOptions](#class-scrollanimationoptions)|Yes|-|Custom scroll animation. Initial value: ScrollAnimationOptions(duration: 1000, curve: Curve.Ease, canOverScroll: false)|
 
 #### func scrollTo(Length, Length, Bool)
@@ -1299,8 +1299,8 @@ public func scrollTo(xOffset!: Length, yOffset!: Length, animation!: Bool): Unit
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-|xOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
-|yOffset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+|xOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Horizontal scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the x-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
+|yOffset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|Yes|-|Vertical scroll offset.<br/>**Note:**<br/>Percentage values are not supported.<br/>Only effective when the scroll axis is the y-axis.<br/>Range: For values less than 0, non-animated scrolling treats them as 0. Animated scrolling defaults to stopping at the starting position, but the `animation` parameter can enable rebound animations when scrolling exceeds bounds.|
 | animation | Bool | Yes | - | **Named parameter.** Animation configuration, enabling the default spring animation.<br>Initial value: false.|
 
 #### func scrollToIndex(Int32, Bool, ScrollAlign, ScrollToIndexOptions)

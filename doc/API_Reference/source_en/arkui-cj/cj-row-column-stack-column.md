@@ -30,7 +30,7 @@ public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Vertical spacing between child elements in the Column layout.<br> Does not take effect when space is negative or when [justifyContent](#func-justifycontentflexalign) is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, or FlexAlign.SpaceEvenly. <br> Initial value: 0 <br> Unit: vp <br> **Note:** <br> space must be a number greater than or equal to 0. |
+| space | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Vertical spacing between child elements in the Column layout.<br> Does not take effect when space is negative or when [justifyContent](#func-justifycontentflexalign) is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, or FlexAlign.SpaceEvenly. <br> Initial value: 0 <br> Unit: vp <br> **Note:** <br> space must be a number greater than or equal to 0. |
 | child | () -> Unit | No | { => } | Child components of the Column container |
 
 ## Common Attributes/Common Events

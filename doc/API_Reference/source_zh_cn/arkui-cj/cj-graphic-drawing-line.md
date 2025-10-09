@@ -31,8 +31,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 填充区域宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 填充区域高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 填充区域宽度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的宽度处理。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 填充区域高度，取值范围≥0。<br>默认单位：vp。<br>值为异常值或缺省时按照自身内容需要的高度处理。|
 
 ## 通用属性/通用事件
 

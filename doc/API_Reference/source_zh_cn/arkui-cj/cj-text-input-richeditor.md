@@ -63,7 +63,7 @@ public func aboutToDelete(callback: Callback<RichEditorDeleteValue, Bool>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorDeleteValue](#class-richeditordeletevalue),Bool>|是|-|回调函数，输入法删除内容前触发该回调 。<br>[RichEditorDeleteValue](#class-richeditordeletevalue)：准备删除的内容所在的文本Span信息。<br>true：组件执行删除操作。<br>false：组件不执行删除操作。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorDeleteValue](#class-richeditordeletevalue),Bool>|是|-|回调函数，输入法删除内容前触发该回调 。<br>[RichEditorDeleteValue](#class-richeditordeletevalue)：准备删除的内容所在的文本Span信息。<br>true：组件执行删除操作。<br>false：组件不执行删除操作。|
 
 ### func aboutToIMEInput(Callback\<RichEditorInsertValue,Bool>)
 
@@ -82,7 +82,7 @@ public func aboutToIMEInput(callback: Callback<RichEditorInsertValue, Bool>): Th
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorInsertValue](#class-richeditorinsertvalue),Bool>|是|-|回调函数，输入法输入内容前触发。<br>[RichEditorInsertValue](#class-richeditorinsertvalue)：输入法将要输入内容信息。<br>true：组件执行添加内容操作。<br>false：组件不执行添加内容操作。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorInsertValue](#class-richeditorinsertvalue),Bool>|是|-|回调函数，输入法输入内容前触发。<br>[RichEditorInsertValue](#class-richeditorinsertvalue)：输入法将要输入内容信息。<br>true：组件执行添加内容操作。<br>false：组件不执行添加内容操作。|
 
 ### func bindSelectionMenu(RichEditorSpanType, CustomBuilder, ResponseType, SelectionMenuOptions)
 
@@ -168,7 +168,7 @@ public func onDeleteComplete(callback: VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，订阅输入法完成删除时触发。|
+|callback|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，订阅输入法完成删除时触发。|
 
 ### func onDidChange(OnDidChangeCallback)
 
@@ -206,7 +206,7 @@ public func onIMEInputComplete(callback: Callback<RichEditorTextSpanResult, Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorTextSpanResult](#class-richeditortextspanresult),Unit>|是|-|回调函数，输入法完成输入后触发回调。<br>RichEditorTextSpanResult：输入法完成输入后的文本Span信息。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorTextSpanResult](#class-richeditortextspanresult),Unit>|是|-|回调函数，输入法完成输入后触发回调。<br>RichEditorTextSpanResult：输入法完成输入后的文本Span信息。|
 
 **返回值：**
 
@@ -250,7 +250,7 @@ public func onReady(callback: VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，富文本组件初始化完成后触发回调。|
+|callback|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，富文本组件初始化完成后触发回调。|
 
 ### func onSelect(Callback\<RichEditorSelection,Unit>)
 
@@ -269,7 +269,7 @@ public func onSelect(callback: Callback<RichEditorSelection, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[RichEditorSelection](#class-richeditorselection),Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。<br>用手指选择时，松开手指触发回调。<br>RichEditorSelection：选中的所有Span信息。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[RichEditorSelection](#class-richeditorselection),Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。<br>用手指选择时，松开手指触发回调。<br>RichEditorSelection：选中的所有Span信息。|
 
 ## 基础类型定义
 
@@ -301,7 +301,7 @@ public var color: ResourceColor
 
 **功能：** 装饰线颜色。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -346,7 +346,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|装饰线类型。|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置文本识别成功后的实体颜色。<br>默认值：'#ff0a59f7'<br>元服务API： 从API version 12开始，该接口支持在元服务中使用。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置文本识别成功后的实体颜色。<br>默认值：'#ff0a59f7'<br>元服务API： 从API version 12开始，该接口支持在元服务中使用。|
 
 ### class PasteEvent
 
@@ -574,7 +574,7 @@ public var valuePixelMap: Option<PixelMap>= None
 
 **功能：** 表示图片内容。
 
-**类型：** Option\<[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)>
+**类型：** Option\<[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)>
 
 **读写能力：** 可读写
 
@@ -622,7 +622,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |spanPosition|[RichEditorSpanPosition](#class-richeditorspanposition)|是|-|Span位置。|
-|valuePixelMap|Option\<[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)>|是|-|图片内容。|
+|valuePixelMap|Option\<[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)>|是|-|图片内容。|
 |valueResourceStr|String|是|-|图片资源id。|
 |imageStyle|[RichEditorImageSpanStyleResult](#class-richeditorimagespanstyleresult)|是|-|图片样式。|
 |offsetInSpan|(Int32,Int32)|是|-|Span里图片的起始和结束位置。|
@@ -1360,7 +1360,7 @@ public var pixelMap: PixelMap
 
 **功能：** 图片内容。
 
-**类型：** [PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)
+**类型：** [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)
 
 **读写能力：** 可读写
 
@@ -1376,7 +1376,7 @@ public var size:(Length, Length)
 
 **功能：** 图片大小，不支持设置百分比。
 
-**类型：** ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length), [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))
+**类型：** ([Length](../BasicServicesKit/cj-apis-base.md#interface-length), [Length](../BasicServicesKit/cj-apis-base.md#interface-length))
 
 **读写能力：** 可读写
 
@@ -1400,8 +1400,8 @@ public init(pixelMap!: PixelMap, size!: (Length, Length))
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片内容。|
-|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片大小，不支持设置百分比。|
+|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片内容。|
+|size|([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片大小，不支持设置百分比。|
 
 ### class RichEditorBaseController
 
@@ -1528,7 +1528,7 @@ public func addImageSpan(value!: AppResource, options!: RichEditorImageSpanOptio
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AppResource](../apis/LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|图片内容。|
+|value|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|图片内容。|
 |options|[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|否|RichEditorImageSpanOptions()|图片选项。|
 
 **返回值：**
@@ -1553,7 +1553,7 @@ public func addTextSpan(value!: ResourceStr, options!: RichEditorTextSpanOptions
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。|
 |options|[RichEditorTextSpanOptions](#class-richeditortextspanoptions)|否|RichEditorTextSpanOptions()|文本选项。|
 
 **返回值：**
@@ -1800,7 +1800,7 @@ public var size: Option <(Length, Length)>
 
 **功能：** 图片宽度和高度。
 
-**类型：** Option\<([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))>
+**类型：** Option\<([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))>
 
 **读写能力：** 可读写
 
@@ -1844,7 +1844,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片宽度和高度。|
+|size|([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片宽度和高度。|
 |verticalAlign|[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|否|ImageSpanAlignment.Baseline|图片垂直对齐方式。|
 |objectFit|[ImageFit](./cj-common-types.md#enum-imagefit)|否|ImageFit.Cover|图片缩放类型。|
 
@@ -1946,8 +1946,8 @@ public init(margin!: Length, borderRadius!: Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|margin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|外边距值。|
-|borderRadius|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径值。|
+|margin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|外边距值。|
+|borderRadius|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径值。|
 
 ### class RichEditorParagraphStyle
 
@@ -2034,7 +2034,7 @@ public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |textAlign|[TextAlign](./cj-common-types.md#enum-textalign)|否|TextAlign.Start|文本段落在水平方向的对齐方式。|
-|leadingMargin|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本段落缩进，不支持设置百分比。|
+|leadingMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本段落缩进，不支持设置百分比。|
 
 #### init(TextAlign, LeadingMarginPlaceholder)
 
@@ -2173,7 +2173,7 @@ public var fontColor: ResourceColor
 
 **功能：** 文本颜色。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -2189,7 +2189,7 @@ public var fontFamily: ResourceStr
 
 **功能：** 字体列表。
 
-**类型：** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -2205,7 +2205,7 @@ public var fontSize: Length
 
 **功能：** 字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -2268,11 +2268,11 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fontColor|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|文本颜色。|
-|fontSize|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
+|fontColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|文本颜色。|
+|fontSize|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
 |fontStyle|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|字体样式。|
 |fontWeight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|字体粗细。|
-|fontFamily|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|DEFAULT_FONT|字体列表。|
+|fontFamily|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|DEFAULT_FONT|字体列表。|
 |decoration|[TextDecorationOptions](#class-textdecorationoptions)|否|TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)|文本装饰线样式及其颜色。|
 
 ### class SelectionMenuOptions
@@ -2299,7 +2299,7 @@ public var onAppear: VoidCallback
 
 **功能：** 回调函数，自定义选择菜单弹出时触发回调函数。
 
-**类型：** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
+**类型：** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-voidcallback)
 
 **读写能力：** 可读写
 
@@ -2315,7 +2315,7 @@ public var onDisappear: VoidCallback
 
 **功能：** 回调函数，自定义选择菜单关闭时触发回调函数。
 
-**类型：** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-voidcallback)
+**类型：** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-voidcallback)
 
 **读写能力：** 可读写
 
@@ -2366,7 +2366,7 @@ public var color: ResourceColor
 
 **功能：**  设置文本装饰线颜色。
 
-**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -2407,7 +2407,7 @@ public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.B
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|装饰线类型。|
-|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|装饰颜色。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|装饰颜色。|
 
 ### enum LeadingMarginType
 

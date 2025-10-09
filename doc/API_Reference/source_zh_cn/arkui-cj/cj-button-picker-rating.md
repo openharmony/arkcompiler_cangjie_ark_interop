@@ -59,9 +59,9 @@ public func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|backgroundUri|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。|
-|foregroundUri|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 选中的星级的图片路径，可由用户自定义或使用系统默认图片。|
-|secondaryUri|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|backgroundUri|**命名参数。** 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。|
+|backgroundUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。|
+|foregroundUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 选中的星级的图片路径，可由用户自定义或使用系统默认图片。|
+|secondaryUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|backgroundUri|**命名参数。** 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。|
 
 > **说明：**
 >

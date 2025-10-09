@@ -96,8 +96,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width.<br>Initial value: 0.vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Height.<br>Initial value: 0.vp. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width.<br>Initial value: 0.vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Height.<br>Initial value: 0.vp. |
 
 ### class EllipseShape
 
@@ -133,8 +133,8 @@ public init(width!: Length, height!: Length)
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width.<br>Initial value: 0.vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Height.<br>Initial value: 0.vp. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width.<br>Initial value: 0.vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Height.<br>Initial value: 0.vp. |
 
 ### class RectShape
 
@@ -173,8 +173,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width.<br>Initial value: 0.vp. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Height.<br>Initial value: 0.vp. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Width.<br>Initial value: 0.vp. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** Height.<br>Initial value: 0.vp. |
 
 #### func radiusWidth(Length)
 
@@ -192,7 +192,7 @@ public func radiusWidth(value: Length): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of rounded corners.<br>Initial value: 0.vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of rounded corners.<br>Initial value: 0.vp. |
 
 #### func radiusHeight(Length)
 
@@ -210,7 +210,7 @@ public func radiusHeight(value: Length): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of rounded corners.<br>Initial value: 0.vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Height of rounded corners.<br>Initial value: 0.vp. |
 
 #### func radius(Length)
 
@@ -228,4 +228,4 @@ public func radius(value: Length): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Radius size of rounded corners.<br>Initial value: 0.vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Radius size of rounded corners.<br>Initial value: 0.vp. |

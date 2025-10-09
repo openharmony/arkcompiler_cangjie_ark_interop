@@ -10,12 +10,12 @@
 
 2. 封装密钥属性集和密钥材料。
 
-    - 密钥属性集同样与密钥生成中指定的密钥属性一致，须包含[HuksKeyAlg](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg)、[HuksKeySize](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeysize)、[HuksKeyPurpose](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeypurpose)属性。
-    - 密钥材料须符合[HUKS密钥材料格式](./cj-huks-concepts.md#密钥材料格式)，并以Array\<UInt8>形式赋值给[HuksOptions](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions)的inData字段。
+    - 密钥属性集同样与密钥生成中指定的密钥属性一致，须包含[HuksKeyAlg](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg)、[HuksKeySize](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeysize)、[HuksKeyPurpose](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeypurpose)属性。
+    - 密钥材料须符合[HUKS密钥材料格式](./cj-huks-concepts.md#密钥材料格式)，并以Array\<UInt8>形式赋值给[HuksOptions](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions)的inData字段。
 
-3. 调用[importKeyItem](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-importkeyitemstring-huksoptions)，传入密钥别名和密钥属性集，即可导入密钥。
+3. 调用[importKeyItem](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#func-importkeyitemstring-huksoptions)，传入密钥别名和密钥属性集，即可导入密钥。
 
-    HuksParam和HuksOptions的含义参考：[HuksParam](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) 和 [HuksOptions](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions)
+    HuksParam和HuksOptions的含义参考：[HuksParam](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) 和 [HuksOptions](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions)
 
 ### 导入AES256密钥
 
@@ -126,7 +126,7 @@ func importKeyFunc(): Unit {
 
 ## 调测验证
 
-调用[isKeyItemExist](../../../../API_Reference/source_zh_cn/apis/UniversalKeystoreKit/cj-apis-security_huks.md#func-iskeyitemexiststring-huksoptions)验证密钥是否存在，如密钥存在即表示密钥导入成功。
+调用[isKeyItemExist](../../../../API_Reference/source_zh_cn/UniversalKeystoreKit/cj-apis-security_huks.md#func-iskeyitemexiststring-huksoptions)验证密钥是否存在，如密钥存在即表示密钥导入成功。
 
 <!-- compile -->
 

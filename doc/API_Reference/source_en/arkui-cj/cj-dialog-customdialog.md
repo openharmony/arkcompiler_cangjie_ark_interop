@@ -227,7 +227,7 @@ public var backgroundColor: ResourceColor
 
 **Function:** Sets the background fill color of the dialog.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -243,7 +243,7 @@ public var borderColor: ResourceColor
 
 **Function:** Sets the border color of the dialog's background panel.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -275,7 +275,7 @@ public var borderWidth: Length
 
 **Function:** Sets the border width of the dialog's background panel.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -291,7 +291,7 @@ public var cancel: VoidCallback
 
 **Function:** Callback triggered when the dialog is closed via back button, ESC key, or mask layer click.
 
-**Type:** [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)
+**Type:** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)
 
 **Read/Write:** Readable and Writable
 
@@ -323,7 +323,7 @@ public var cornerRadius: Length
 
 **Function:** Sets the corner radius of the background panel.
 
-**Type:** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -371,7 +371,7 @@ public var height:?Length
 
 **Function:** Sets the height of the dialog's background panel.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -403,7 +403,7 @@ public var maskColor: ResourceColor
 
 **Function:** Customizes the mask layer color.
 
-**Type:** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**Type:** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **Read/Write:** Readable and Writable
 
@@ -451,7 +451,7 @@ public var onWillDismiss:?Callback<DismissDialogAction, Unit>
 
 **Function:** Interactive close callback function.
 
-**Type:** ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](./cj-dialog-actionsheet.md#class-dismissdialogaction),Unit>
+**Type:** ?[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[DismissDialogAction](./cj-dialog-actionsheet.md#class-dismissdialogaction),Unit>
 
 **Read/Write:** Readable and Writable
 
@@ -515,7 +515,7 @@ public var width:?Length
 
 **Function:** Sets the width of the dialog's background panel.
 
-**Type:** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**Type:** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **Read/Write:** Readable and Writable
 
@@ -562,13 +562,13 @@ public init(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| cancel | [VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback) | No | { => } | **Named parameter.** Callback triggered when the dialog is closed via back button, ESC key, or mask layer click. |
+| cancel | [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback) | No | { => } | **Named parameter.** Callback triggered when the dialog is closed via back button, ESC key, or mask layer click. |
 | autoCancel | Bool | No | true | **Named parameter.** Whether clicking the mask layer closes the dialog. `true` means the dialog will close. `false` means it will not. |
 | alignment | [DialogAlignment](./cj-common-types.md#enum-dialogalignment) | No | DialogAlignment.Default | **Named parameter.** The vertical alignment of the dialog. |
 | offset | [Offset](./cj-common-types.md#class-offset) | No | Offset(0.vp, 0.vp) | **Named parameter.** The offset of the dialog relative to its alignment position. |
 | customStyle | Bool | No | false | **Named parameter.** Whether the dialog container style is customized.<br>When set to `false` (default):<br/>1. Corner radius is 32.vp.<br/>2. If dialog width/height is not set: The dialog width adapts to the grid system, and the height adapts to the custom content node.<br/>3. If dialog width/height is set: The dialog width does not exceed the maximum width in default style (custom node sets 100% width), and the height does not exceed the maximum height in default style (custom node sets 100% height).<br/>When set to `true`:<br/>1. Corner radius is 0, and the background color is transparent.<br/>2. Dialog width, height, border width, border style, border color, and shadow width cannot be set. |
 | gridCount | ?UInt32 | No | None | **Named parameter.** The number of grid widths occupied by the dialog.<br>Defaults to adaptive based on window size. Invalid values are treated as defaults, with the maximum grid count being the system's maximum. |
-| maskColor | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x33000000) | **Named parameter.** Customizes the mask layer color. |
+| maskColor | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | No | Color(0x33000000) | **Named parameter.** Customizes the mask layer color. |
 | maskRect | [Rectangle](./cj-common-types.md#class-rectangle) | No | Rectangle() | **Named parameter.** The mask layer area of the dialog. Events within this area are not passed through; events outside are passed through. <br/>**Note:**<br/>`maskRect` does not take effect when `showInSubWindow` is `true`. |
 | openAnimation | ?[AnimateParam](./cj-common-types.md#class-animateparam) | No | None | **Named parameter.** Customizes the animation parameters for dialog opening.<br>**Note:**<br>`tempo` defaults to 1## Sample Code
 

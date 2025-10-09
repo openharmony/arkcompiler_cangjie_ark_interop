@@ -30,7 +30,7 @@ public init(value: ResourceStr)
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The content string of the QR code. Supports up to 512 characters. If exceeded, only the first 512 characters will be used. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The content string of the QR code. Supports up to 512 characters. If exceeded, only the first 512 characters will be used. |
 
 ## Common Attributes/Common Events
 
@@ -56,7 +56,7 @@ public func color(value: ResourceColor): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the QR code.<br/>Initial value: 0xff000000, and does not change with system light/dark mode switching. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the QR code.<br/>Initial value: 0xff000000, and does not change with system light/dark mode switching. |
 
 ### func contentOpacity(Float64)
 

@@ -39,7 +39,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |columns|Int32|否|12|**命名参数。** 布局列数设置。<br>取值为大于0的整数，初始值：12。|
-|gutter|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 栅格布局间距，x代表水平方向。<br>初始值：0。|
+|gutter|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 栅格布局间距，x代表水平方向。<br>初始值：0。|
 |breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()|**命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
 |direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|
 |child|()->Unit|否|{ => }| **命名参数。** GridRow容器的子组件。|
@@ -67,7 +67,7 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |columns|[GridRowColumnOption](#class-gridrowcolumnoption)|是|-| **命名参数。** 布局列数设置。|
-|gutter|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 栅格布局间距，x代表水平方向。<br>初始值：0。|
+|gutter|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 栅格布局间距，x代表水平方向。<br>初始值：0。|
 |breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
 |direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|
 |child|()->Unit|否|{ => }| **命名参数。** GridRow 容器的子组件。|
@@ -217,7 +217,7 @@ public var value: Array<Length>
 
 **功能：** 断点位置的单调递增数组设置。
 
-**类型：** Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>
+**类型：** Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>
 
 **读写能力：** 可读写
 
@@ -243,7 +243,7 @@ public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|否|[320.vp, 600.vp, 840.vp]| **命名参数。** 断点位置的单调递增数组设置|
+|value|Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|否|[320.vp, 600.vp, 840.vp]| **命名参数。** 断点位置的单调递增数组设置|
 |reference|[BreakpointsReference](#enum-breakpointsreference)|否|BreakpointsReference.WindowSize| **命名参数。** 断点切换参照物。|
 
 ### class GridRowSizeOption
@@ -282,7 +282,7 @@ public var lg: Length
 
 **功能：** 大宽度类型设备。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -298,7 +298,7 @@ public var md: Length
 
 **功能：** 中等宽度类型设备。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -314,7 +314,7 @@ public var sm: Length
 
 **功能：** 小宽度类型设备。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -330,7 +330,7 @@ public var xl: Length
 
 **功能：** 特大宽度类型设备。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -346,7 +346,7 @@ public var xs: Length
 
 **功能：** 最小宽度类型设备。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -362,7 +362,7 @@ public var xxl: Length
 
 **功能：** 超大宽度类型设备。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -393,12 +393,12 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xs|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。|
-|sm|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。|
-|md|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。|
-|lg|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。|
-|xl|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。|
-|xxl|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。|
+|xs|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。|
+|sm|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。|
+|md|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。|
+|lg|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。|
+|xl|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。|
+|xxl|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。|
 
 #### init(Length)
 
@@ -416,7 +416,7 @@ public init(value: Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。|
 
 ### class GutterOption
 
@@ -449,8 +449,8 @@ public init(x!: Length, y!: Length)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 栅格子组件x方向的间距|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 栅格子组件y方向的间距|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 栅格子组件x方向的间距|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 栅格子组件y方向的间距|
 
 #### init(GridRowSizeOption, GridRowSizeOption)
 

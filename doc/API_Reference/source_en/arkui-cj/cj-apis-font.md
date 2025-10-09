@@ -78,8 +78,8 @@ public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Uni
 
 | Parameter  | Type                                                                 | Required | Default | Description                                                                 |
 |:-----------|:---------------------------------------------------------------------|:---------|:--------|:----------------------------------------------------------------------------|
-| familyName | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes      | -       | **Named parameter.** The name of the font to be registered.                 |
-| familySrc  | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes      | -       | **Named parameter.** The file path of the font to be registered.           |
+| familyName | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes      | -       | **Named parameter.** The name of the font to be registered.                 |
+| familySrc  | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes      | -       | **Named parameter.** The file path of the font to be registered.           |
 
 ## class FontInfo
 

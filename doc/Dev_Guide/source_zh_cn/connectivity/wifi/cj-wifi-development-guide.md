@@ -15,7 +15,7 @@ WLAN（Wireless Local Area Network）是一种无线局域网络技术，允许�
 
 ## 接口说明
 
-完整的仓颉 API 说明以及实例代码请参见：[WLAN 接口](../../../../API_Reference/source_zh_cn/apis/ConnectivityKit/cj-apis-wifi_manager.md)。
+完整的仓颉 API 说明以及实例代码请参见：[WLAN 接口](../../../../API_Reference/source_zh_cn/ConnectivityKit/cj-apis-wifi_manager.md)。
 
 具体接口说明如下表。
 

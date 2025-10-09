@@ -62,7 +62,7 @@ public func color(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|进度条前景色。<br/>初始值：<br/>- Capsule：'0x33007dff'<br/>- Ring：起始端：'0xff86c1ff'，结束端：'0xff254ff7'<br/>- 其他样式：'0xff007dff'|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|进度条前景色。<br/>初始值：<br/>- Capsule：'0x33007dff'<br/>- Ring：起始端：'0xff86c1ff'，结束端：'0xff254ff7'<br/>- 其他样式：'0xff007dff'|
 
 ### func style(Length, Int32, Length)
 
@@ -80,9 +80,9 @@ public func style(strokeWidth!: Length = 10.vp, scaleCount!: Int32 = 120, scaleW
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 设置进度条宽度（不支持百分比设置）。|
+|strokeWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 设置进度条宽度（不支持百分比设置）。|
 |scaleCount|Int32|否|120|**命名参数。** 设置环形进度条总刻度数。|
-|scaleWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|2.vp|**命名参数。** 设置环形进度条刻度粗细（不支持百分比设置），刻度粗细大于进度条宽度时，为系统默认粗细。|
+|scaleWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|2.vp|**命名参数。** 设置环形进度条刻度粗细（不支持百分比设置），刻度粗细大于进度条宽度时，为系统默认粗细。|
 
 ### func style(RingStyleOptions)
 
@@ -219,7 +219,7 @@ public var strokeWidth: Length
 
 **功能：** 设置进度条宽度（不支持百分比设置）。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -245,7 +245,7 @@ public init(strokeWidth!: Length = 4.vp, shadow!: Bool = false,
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|4.vp|**命名参数。** 设置进度条宽度（不支持百分比设置），宽度大于等于半径时，默认修改宽度至半径值的二分之一。|
+|strokeWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|4.vp|**命名参数。** 设置进度条宽度（不支持百分比设置），宽度大于等于半径时，默认修改宽度至半径值的二分之一。|
 |shadow|Bool|否|false|**命名参数。** 进度条阴影开关。|
 |status|[ProgressStatus](#enum-progressstatus)|否|ProgressStatus.Progressing|**命名参数。** 进度条状态，当设置为LOADING时会开启检查更新动效，此时设置进度值不生效。当从LOADING设置为PROGRESSING，检查更新动效会执行到终点再停止。|
 |enableSmoothEffect|Bool|否|true|**命名参数。** 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。|

@@ -61,7 +61,7 @@ public func fontColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
 
 ### func fontFamily(ResourceStr)
 
@@ -79,7 +79,7 @@ public func fontFamily(value: ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。<br/>初始字体：'HarmonyOS Sans'。<br/>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。|
+|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。<br/>初始字体：'HarmonyOS Sans'。<br/>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。|
 
 ### func fontSize(Length)
 
@@ -97,7 +97,7 @@ public func fontSize(value: Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。fontSize为Int64、Float64类型时，使用fp单位。字体初始大小16.fp。不支持设置百分比。|
+|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。fontSize为Int64、Float64类型时，使用fp单位。字体初始大小16.fp。不支持设置百分比。|
 
 ### func fontStyle(FontStyle)
 

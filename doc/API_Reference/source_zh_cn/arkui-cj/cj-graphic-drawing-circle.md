@@ -25,8 +25,8 @@ public init(width!: Length = 0.vp, height!: Length = 0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 宽度，取值范围≥0。<br>初始值：0。<br>默认单位：vp。|
-|height|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 高度，取值范围≥0。<br>初始值：0。<br>默认单位：vp。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 宽度，取值范围≥0。<br>初始值：0。<br>默认单位：vp。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 高度，取值范围≥0。<br>初始值：0。<br>默认单位：vp。|
 
 ## 通用属性/通用事件
 

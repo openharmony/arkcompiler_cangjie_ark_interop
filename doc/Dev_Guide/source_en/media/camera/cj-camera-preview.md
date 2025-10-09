@@ -6,7 +6,7 @@ The preview is the live view displayed after launching the camera, typically exe
 
 ## Development Steps
 
-For detailed API documentation, please refer to the [Camera API Reference](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md).
+For detailed API documentation, please refer to the [Camera API Reference](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md).
 
 1. Import the camera interface, which provides camera-related properties and methods. The import method is as follows:
 
@@ -27,7 +27,7 @@ For detailed API documentation, please refer to the [Camera API Reference](../..
     >
     > The aspect ratio of the preview stream resolution must match that of the video output stream. If the Surface display area aspect ratio in the XComponent is set to 1920:1080 (16:9), then the preview stream resolution must also maintain a 16:9 aspect ratio, such as 640:360, 960:540, or 1920:1080, and so on.
 
-3. Use the `previewProfiles` property in the [CameraOutputCapability](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#struct-cameraoutputcapability) class to obtain the device's supported preview capabilities, which returns a `previewProfilesArray`. Then create a preview output stream using the [createPreviewOutput](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string) method. The two parameters for this method are the first item in the `previewProfilesArray` and the `surfaceId` obtained in Step 2.
+3. Use the `previewProfiles` property in the [CameraOutputCapability](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#struct-cameraoutputcapability) class to obtain the device's supported preview capabilities, which returns a `previewProfilesArray`. Then create a preview output stream using the [createPreviewOutput](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-createpreviewoutputprofile-string) method. The two parameters for this method are the first item in the `previewProfilesArray` and the `surfaceId` obtained in Step 2.
 
     <!-- compile -->
 
@@ -39,7 +39,7 @@ For detailed API documentation, please refer to the [Camera API Reference](../..
     }
     ```
 
-4. Enable the preview. Use the [Session.start](../../../../API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md#func-start) method to output the preview stream. If the API call fails, it will return an error code. For error code types, refer to [Camera Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md).
+4. Enable the preview. Use the [Session.start](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-start) method to output the preview stream. If the API call fails, it will return an error code. For error code types, refer to [Camera Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md).
 
     <!-- compile -->
 

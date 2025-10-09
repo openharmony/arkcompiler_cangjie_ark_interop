@@ -32,7 +32,7 @@ public func linearGradient(angle!: ?Float64 = None, direction!: GradientDirectio
 |:---|:---|:---|:---|:---|
 | angle | ?Float64 | No | None | **Named parameter.** The starting angle of the linear gradient. Positive angles are measured clockwise from the 0-degree direction. |
 | direction | [GradientDirection](./cj-common-types.md#enum-gradientdirection) | No | GradientDirection.Bottom | **Named parameter.** The direction of the linear gradient. This parameter becomes invalid when angle is set. |
-| colors | Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)> | No | [(Color.Transparent, 0.0)] | **Named parameter.** An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
+| colors | Array\<([ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)> | No | [(Color.Transparent, 0.0)] | **Named parameter.** An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
 | repeating | Bool | No | false | **Named parameter.** Repeats the gradient colors. |
 
 ## func radialGradient((Length,Length), Length, Array\<(ResourceColor,Float64)>, Bool)
@@ -52,9 +52,9 @@ public func radialGradient(center: (Length, Length), radius: Length, colors: Arr
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| center | ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)) | Yes | - | The center point of the radial gradient, i.e., the coordinates relative to the top-left corner of the current component. |
-| radius | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The radius of the radial gradient.<br>Valid range: \[0.0,+∞).<br> **Note:** <br> Values less than 0 will be treated as 0. Default value: 0.0. |
-| colors | Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)> | Yes | - | An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
+| center | ([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length)) | Yes | - | The center point of the radial gradient, i.e., the coordinates relative to the top-left corner of the current component. |
+| radius | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The radius of the radial gradient.<br>Valid range: \[0.0,+∞).<br> **Note:** <br> Values less than 0 will be treated as 0. Default value: 0.0. |
+| colors | Array\<([ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float64)> | Yes | - | An array specifying gradient colors and their corresponding percentage positions. Invalid colors will be skipped. |
 | repeating | Bool | No | false | **Named parameter.** Repeats the gradient colors. |
 
 ## func sweepGradient((Length,Length), Float64, Float64, Float64, Array\<(ResourceColor,Float64)>, Bool)
@@ -75,7 +75,7 @@ public func sweepGradient(center: (Length, Length), start!: Float64 = 0.0, end!:
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| center | ([Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length),[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)) | Yes | - | The center point of the angular gradient, i.e., the coordinates relative to the top-left corner of the current component. |
+| center | ([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length)) | Yes | - | The center point of the angular gradient, i.e., the coordinates relative to the top-left corner of the current component. |
 | start | Float64 | No | 0.0 | **Named parameter.** The starting point of the angular gradient. |
 | end | Float64 | No | 0.0 | **Named parameter.** The ending point of the angular gradient. |
 | rotation | Float64 | No | 0.0 | **Named parameter.** The rotation angle of the angular gradient. |

@@ -62,7 +62,7 @@ public var centerX: Length
 
 **功能：** 表示组件变换中心点（即锚点）的x方向坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -78,7 +78,7 @@ public var centerY: Length
 
 **功能：** 表示组件变换中心点（即锚点）的y方向坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -94,7 +94,7 @@ public var centerZ: Length
 
 **功能：** 表示z轴锚点，即3D旋转中心点的z轴分量。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -187,9 +187,9 @@ public init(angle: Float32, x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 
 |x|Float32|否|0.0| **命名参数。** 旋转轴向量x坐标。|
 |y|Float32|否|0.0| **命名参数。** 旋转轴向量y坐标。|
 |z|Float32|否|0.0| **命名参数。** 旋转轴向量z坐标。|
-|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
-|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
-|centerZ|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0| **命名参数。** z轴锚点，即3D旋转中心点的z轴分量。|
+|centerX|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
+|centerY|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
+|centerZ|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0| **命名参数。** z轴锚点，即3D旋转中心点的z轴分量。|
 |perspective|Float32|否|0.0| **命名参数。** 视距，即视点到z=0平面的距离。<br>旋转轴和旋转中心点都基于坐标系设定，组件发生位移时，坐标系不会随之移动。|
 
 ## class ScaleOptions
@@ -220,7 +220,7 @@ public var centerX: Length
 
 **功能：** 表示变换中心点x轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -236,7 +236,7 @@ public var centerY: Length
 
 **功能：** 表示变换中心点y轴坐标。
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -312,8 +312,8 @@ public init(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, centerX!: L
 |x|Float32|否|1.0| **命名参数。** x轴的缩放倍数。x>1时以x轴方向放大，0<x<1时以x轴方向缩小，x<0时沿x轴反向并缩放。|
 |y|Float32|否|1.0| **命名参数。** y轴的缩放倍数。y>1时以y轴方向放大，0<y<1时以y轴方向缩小，y<0时沿y轴反向并缩放。|
 |z|Float32|否|1.0| **命名参数。** z轴的缩放倍数。z>1时以z轴方向放大，0<z<1时以z轴方向缩小，z<0时沿z轴反向并缩放。|
-|centerX|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
-|centerY|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
+|centerX|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。|
+|centerY|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|50.percent| **命名参数。** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。|
 
 ## class TransitionEffect
 
@@ -625,7 +625,7 @@ public var x: Length
 
 **功能：** 表示x轴的平移距离
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -641,7 +641,7 @@ public var y: Length
 
 **功能：** 表示y轴的平移距离
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -657,7 +657,7 @@ public var z: Length
 
 **功能：** 表示z轴的平移距离
 
-**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -681,9 +681,9 @@ public init(x!: Length = 0.0.vp, y!: Length = 0.0.vp, z!: Length = 0.0.vp)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** x轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
-|y|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** y轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
-|z|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** z轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
+|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** x轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
+|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** y轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
+|z|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** z轴的平移距离。<br>单位为vp。<br>取值范围 (-∞, +∞)|
 
 ## enum TransitionEdge
 

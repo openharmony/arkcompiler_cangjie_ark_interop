@@ -58,7 +58,7 @@ public func colors(value: Array<(ResourceColor, Float32)>): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | Array\<([ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float32)> | Yes | - | The colors of the gauge, supporting segmented color settings. |
+| value | Array\<([ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor),Float32)> | Yes | - | The colors of the gauge, supporting segmented color settings. |
 
 ### func colors(Array\<(LinearGradient,Float32)>)
 
@@ -104,7 +104,7 @@ The segmented gradient ring supports up to 9 segments. Any additional segments w
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the gauge, supporting segmented color settings. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the gauge, supporting segmented color settings. |
 
 API version 9 default: Color.Black
 
@@ -194,8 +194,8 @@ public func indicator(icon!: ResourceStr = "default", space!: Length = 8.0.vp): 
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| icon | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "default" | **Named parameter.** The pointer style: "default" for a triangular arrow, "null" for no pointer. |
-| space | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 8.0.vp | **Named parameter.** The spacing between the pointer and the outer edge of the ring (percentage not supported).<br>Unit: vp. |
+| icon | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "default" | **Named parameter.** The pointer style: "default" for a triangular arrow, "null" for no pointer. |
+| space | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 8.0.vp | **Named parameter.** The spacing between the pointer and the outer edge of the ring (percentage not supported).<br>Unit: vp. |
 
 ### func startAngle(Float64)
 
@@ -233,7 +233,7 @@ public func strokeWidth(length: Length): This
 
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| length | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the circular gauge ring.<br>Default: 4.vp.<br>Unit: vp.<br>**Note:**<br>If set to a negative value, the default value will be used.<br>The maximum thickness is the radius of the ring. Values exceeding this will be capped.<br>Percentage values are not supported. |
+| length | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The thickness of the circular gauge ring.<br>Default: 4.vp.<br>Unit: vp.<br>**Note:**<br>If set to a negative value, the default value will be used.<br>The maximum thickness is the radius of the ring. Values exceeding this will be capped.<br>Percentage values are not supported. |
 
 ### func trackShadow(Float64, Float64, Float64)
 

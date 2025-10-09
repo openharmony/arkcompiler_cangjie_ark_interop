@@ -6,7 +6,7 @@ CES (Common Event Service) provides applications with the capability to subscrib
 
 From a system perspective, common events can be categorized into: system common events and custom common events.
 
-- **System Common Events**: Common events defined internally by CES. Currently, only system applications and system services can publish these events, such as HAP installation, update, and uninstallation events. For the list of currently supported system common events, refer to [System Common Event List](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#struct-support).
+- **System Common Events**: Common events defined internally by CES. Currently, only system applications and system services can publish these events, such as HAP installation, update, and uninstallation events. For the list of currently supported system common events, refer to [System Common Event List](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-support).
 - **Custom Common Events**: Events defined by applications, which can be used to implement cross-process event communication.
 
 Common events can also be classified by their delivery method: unordered common events, ordered common events, and sticky common events.
@@ -26,9 +26,9 @@ Each application can subscribe to common events as needed. Upon successful subsc
 ## Security Considerations
 
 - **Common Event Publishers**: Without restrictions, any application can subscribe to common events and read the information they contain. Therefore, sensitive information should not be included in common events. The following methods can be used to limit the scope of event recipients:
-    - Use the `subscriberPermissions` parameter in [CommonEventPublishData](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata) to specify the permissions required by subscribers.
-    - Use the `bundleName` parameter in [CommonEventPublishData](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata) to specify the package names of the subscribers.
+    - Use the `subscriberPermissions` parameter in [CommonEventPublishData](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata) to specify the permissions required by subscribers.
+    - Use the `bundleName` parameter in [CommonEventPublishData](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata) to specify the package names of the subscribers.
 - **Common Event Subscribers**: After subscribing to custom common events, any application can potentially send malicious events to the subscriber. The following methods can be used to limit the scope of event publishers:
-    - Use the `publisherPermission` parameter in [CommonEventSubscribeInfo](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo) to specify the permissions required by publishers.
-    - Use the `publisherBundleName` parameter in [CommonEventSubscribeInfo](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo) to specify the package names of the publishers.
+    - Use the `publisherPermission` parameter in [CommonEventSubscribeInfo](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo) to specify the permissions required by publishers.
+    - Use the `publisherBundleName` parameter in [CommonEventSubscribeInfo](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo) to specify the package names of the publishers.
 - Custom common event names should be globally unique to avoid conflicts with other common events.

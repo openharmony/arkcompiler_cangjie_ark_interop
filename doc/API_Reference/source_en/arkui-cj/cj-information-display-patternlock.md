@@ -56,7 +56,7 @@ public func activeColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color of grid dots in the "active" state.<br/>Initial value: 0xff182431. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color of grid dots in the "active" state.<br/>Initial value: 0xff182431. |
 
 ### func autoReset(Bool)
 
@@ -92,7 +92,7 @@ public func circleRadius(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Radius of dots in the grid.<br/>Initial value: 6.vp.<br/>Valid range: (0, sideLength/11]. Values less than or equal to 0 will use the initial value; values exceeding the maximum will use the maximum. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Radius of dots in the grid.<br/>Initial value: 6.vp.<br/>Valid range: (0, sideLength/11]. Values less than or equal to 0 will use the initial value; values exceeding the maximum will use the maximum. |
 
 ### func pathColor(ResourceColor)
 
@@ -110,7 +110,7 @@ public func pathColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Color of connecting lines.<br/>Initial value: 0x33182431. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Color of connecting lines.<br/>Initial value: 0x33182431. |
 
 ### func pathStrokeWidth(Length)
 
@@ -128,7 +128,7 @@ public func pathStrokeWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of connecting lines.<br/>Initial value: 12.vp.<br/>Valid range: [0, sideLength/3]. Values exceeding the maximum will use the maximum. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width of connecting lines.<br/>Initial value: 12.vp.<br/>Valid range: [0, sideLength/3]. Values exceeding the maximum will use the maximum. |
 
 ### func regularColor(ResourceColor)
 
@@ -146,7 +146,7 @@ public func regularColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color of grid dots in the "unselected" state.<br/>Initial value: 0xff182431. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color of grid dots in the "unselected" state.<br/>Initial value: 0xff182431. |
 
 ### func selectedColor(ResourceColor)
 
@@ -164,7 +164,7 @@ public func selectedColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color of grid dots in the "selected" state.<br/>Initial value: 0xff182431. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Fill color of grid dots in the "selected" state.<br/>Initial value: 0xff182431. |
 
 ### func sideLength(Length)
 
@@ -182,7 +182,7 @@ public func sideLength(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width and height of the component.<br/>Initial value: 288.vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Width and height of the component.<br/>Initial value: 288.vp. |
 
 ## Component Events
 

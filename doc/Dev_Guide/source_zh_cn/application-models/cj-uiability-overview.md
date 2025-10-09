@@ -2,7 +2,7 @@
 
 ## 概述
 
-[UIAbility](../../../API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)组件是一种包含UI的应用组件，主要用于和用户交互。
+[UIAbility](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)组件是一种包含UI的应用组件，主要用于和用户交互。
 
 UIAbility的设计理念：
 

@@ -127,7 +127,7 @@ public func maxSideBarWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the maximum width of the sidebar.<br>Initial value: 280.vp.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Sets the maximum width of the sidebar.<br>Initial value: 280.vp.<br>Unit: vp. |
 
 ### func minContentWidth(Length)
 
@@ -156,7 +156,7 @@ public func minContentWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The minimum width of the content area that can be displayed in the SideBarContainer component.<br>Initial value: 360.vp.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The minimum width of the content area that can be displayed in the SideBarContainer component.<br>Initial value: 360.vp.<br>Unit: vp. |
 
 ### func minSideBarWidth(Length)
 
@@ -179,7 +179,7 @@ public func minSideBarWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The minimum width of the sidebar.<br>Initial value: 240.vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The minimum width of the sidebar.<br>Initial value: 240.vp. |
 
 ### func showControlButton(Bool)
 
@@ -255,7 +255,7 @@ public func sideBarWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of the sidebar.<br>Initial value: 240.vp.<br>Unit: vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of the sidebar.<br>Initial value: 240.vp.<br>Unit: vp. |
 
 ## Component Events
 
@@ -312,7 +312,7 @@ public var hidden: ResourceStr
 
 **Function:** Sets the icon of the control button when the sidebar is hidden.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write Capability:** Readable and writable
 
@@ -328,7 +328,7 @@ public var shown: ResourceStr
 
 **Function:** Sets the icon of the control button when the sidebar is shown.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write Capability:** Readable and writable
 
@@ -344,7 +344,7 @@ public var switching: ResourceStr
 
 **Function:** Sets the icon of the control button when the sidebar state is switching between shown and hidden.
 
-**Type:** [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**Type:** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
 
 **Read/Write Capability:** Readable and writable
 
@@ -368,9 +368,9 @@ public init(shown!: ResourceStr, hidden!: ResourceStr, switching!: ResourceStr =
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| shown | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the icon of the control button when the sidebar is shown. |
-| hidden | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the icon of the control button when the sidebar is hidden. |
-| switching | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | Sets the icon of the control button when the sidebar state is switching between shown and hidden. |
+| shown | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the icon of the control button when the sidebar is shown. |
+| hidden | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the icon of the control button when the sidebar is hidden. |
+| switching | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | Sets the icon of the control button when the sidebar state is switching between shown and hidden. |
 
 ### class ButtonStyle
 

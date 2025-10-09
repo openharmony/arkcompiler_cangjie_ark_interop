@@ -1,10 +1,10 @@
 # Basic Usage of UIAbility Component
 
-The basic usage of the [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) component includes: specifying the startup page for UIAbility and obtaining the context information of UIAbility [UIAbilityContext](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext).
+The basic usage of the [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) component includes: specifying the startup page for UIAbility and obtaining the context information of UIAbility [UIAbilityContext](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext).
 
 ## Specifying the Startup Page for UIAbility
 
-When launching an application's [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability), a startup page must be specified. Otherwise, the application may display a blank screen due to the absence of a default loaded page. The startup page can be set in the [onWindowStageCreate()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) lifecycle callback of UIAbility using the [loadContent()](../../../API_Reference/source_en/arkui-cj/cj-apis-window.md#class-windowstage) method of the [WindowStage](../../../API_Reference/source_en/arkui-cj/cj-apis-window.md#class-windowstage) object.
+When launching an application's [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability), a startup page must be specified. Otherwise, the application may display a blank screen due to the absence of a default loaded page. The startup page can be set in the [onWindowStageCreate()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-onwindowstagecreatewindowstage) lifecycle callback of UIAbility using the [loadContent()](../../../API_Reference/source_en/arkui-cj/cj-apis-window.md#class-windowstage) method of the [WindowStage](../../../API_Reference/source_en/arkui-cj/cj-apis-window.md#class-windowstage) object.
 
 <!-- compile -->
 
@@ -27,7 +27,7 @@ class MainAbility <: UIAbility {
 
 ## Obtaining Context Information of UIAbility
 
-The [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) class has its own context information, which is an instance of the [UIAbilityContext](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) class. The [UIAbilityContext](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) class includes properties such as `abilityInfo` and `currentHapModuleInfo`. Through AbilityContext, you can obtain relevant configuration information of the Ability, such as the package code path, Bundle name, Ability name, and environmental state required by the application. Additionally, you can access methods to operate the Ability instance (e.g., [startAbility()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant), [terminateSelf()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself)).
+The [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) class has its own context information, which is an instance of the [UIAbilityContext](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) class. The [UIAbilityContext](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) class includes properties such as `abilityInfo` and `currentHapModuleInfo`. Through AbilityContext, you can obtain relevant configuration information of the Ability, such as the package code path, Bundle name, Ability name, and environmental state required by the application. Additionally, you can access methods to operate the Ability instance (e.g., [startAbility()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-startabilitywant), [terminateSelf()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself)).
 
 - In UIAbility, you can obtain the context information of the UIAbility instance via `this.context`.
 
@@ -79,7 +79,7 @@ The [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-abi
   }
   ```
 
-  Alternatively, after importing the dependent resource context module, you can define the variable before using [UIAbilityContext](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext).
+  Alternatively, after importing the dependent resource context module, you can define the variable before using [UIAbilityContext](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext).
   
   <!-- compile -->
 
@@ -108,7 +108,7 @@ The [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-abi
   }
   ```
 
-- After completing the business logic, if developers wish to terminate the current [UIAbility](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance, they can do so by calling the [terminateSelf()](../../../API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself) method.
+- After completing the business logic, if developers wish to terminate the current [UIAbility](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability) instance, they can do so by calling the [terminateSelf()](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md#func-terminateself) method.
 
   <!-- compile -->
 

@@ -59,7 +59,7 @@ public func fontColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color. |
 
 ### func fontFamily(ResourceStr)
 
@@ -77,7 +77,7 @@ public func fontFamily(value: ResourceStr): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font list. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Font list. |
 
 ### func fontSize(Length)
 
@@ -95,7 +95,7 @@ public func fontSize(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When fontSize is Int64 or Float64, the unit is fp. Initial value: 16.fp. Percentage values are not supported. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | Font size. When fontSize is Int64 or Float64, the unit is fp. Initial value: 16.fp. Percentage values are not supported. |
 
 ### func fontStyle(FontStyle)
 
@@ -179,7 +179,7 @@ If format is empty, the initial value is used.
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the time display format, such as `yyyy/MM/dd`, `yyyy-MM-dd`. |
+| value | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | Sets the time display format, such as `yyyy/MM/dd`, `yyyy-MM-dd`. |
 
 ### func textShadow(Array\<ShadowOptions>)
 

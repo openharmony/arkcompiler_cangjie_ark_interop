@@ -2,7 +2,7 @@
 
 ## Scenario Description
 
-When needing to publish a custom public event, you can use the [publish()](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#static-func-publishstring) method to publish the event. Published public events can carry data for subscribers to parse and process further.
+When needing to publish a custom public event, you can use the [publish()](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#static-func-publishstring) method to publish the event. Published public events can carry data for subscribers to parse and process further.
 
 > **Note:**
 >
@@ -10,12 +10,12 @@ When needing to publish a custom public event, you can use the [publish()](../..
 
 ## Interface Description
 
-For detailed interfaces, please refer to the [API documentation](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#static-func-publishstring).
+For detailed interfaces, please refer to the [API documentation](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#static-func-publishstring).
 
 | Interface Name                                               | Description                  |
 | ------------------------------------------------------------ | ---------------------------- |
 | publish(event:&nbsp;String): Unit | Publish a public event.      |
-| publish(event:&nbsp;String,&nbsp;options:&nbsp;[CommonEventPublishData](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata)): Unit | Publish a public event with specified information. |
+| publish(event:&nbsp;String,&nbsp;options:&nbsp;[CommonEventPublishData](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata)): Unit | Publish a public event with specified information. |
 
 ## Publishing Public Events Without Data
 
@@ -41,7 +41,7 @@ Public events without data can only be published as unordered events.
 
 ## Publishing Public Events With Data
 
-Public events with data can be published as unordered events, ordered events, or sticky events. This can be configured via the `isOrdered` and `isSticky` fields in the [CommonEventPublishData](../../../../API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata) parameter.
+Public events with data can be published as unordered events, ordered events, or sticky events. This can be configured via the `isOrdered` and `isSticky` fields in the [CommonEventPublishData](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventpublishdata) parameter.
 
 1. Import the module.
 

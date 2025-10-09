@@ -2,7 +2,7 @@
 
 ## Scenario Overview
 
-Before using the [Location Kit](../../../API_Reference/source_en/apis/LocationKit/cj-apis-geo_location_manager.md) system capability, an application needs to verify whether it has obtained user authorization to access device location information. If authorization has not been granted, the application can request the required location permissions from the user.
+Before using the [Location Kit](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md) system capability, an application needs to verify whether it has obtained user authorization to access device location information. If authorization has not been granted, the application can request the required location permissions from the user.
 
 The system provides the following location permissions:
 
@@ -12,7 +12,7 @@ The system provides the following location permissions:
 
 - ohos.permission.LOCATION_IN_BACKGROUND: Used for scenarios where the application needs to continue obtaining location information after switching to the background.
 
-For permission requirements of Location Kit interfaces, refer to: [Location Kit](../../../API_Reference/source_en/apis/LocationKit/cj-apis-geo_location_manager.md).
+For permission requirements of Location Kit interfaces, refer to: [Location Kit](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md).
 
 ## Development Steps
 

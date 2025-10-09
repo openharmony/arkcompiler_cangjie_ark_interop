@@ -84,7 +84,7 @@ public func contentFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
 | weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
 | family | String | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font and [custom font registration](cj-apis-font.md). |
 | style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
@@ -110,7 +110,7 @@ public func contentFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
 | weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
 | family | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. Currently supports 'HarmonyOS Sans' font and [custom font registration](cj-apis-font.md). |
 | style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
@@ -131,7 +131,7 @@ public func contentFontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color of the content information in the menu item.<br/>Initial value: 0xE5000000 |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color of the content information in the menu item.<br/>Initial value: 0xE5000000 |
 
 ### func labelFont(Length, FontWeight, String, FontStyle)
 
@@ -154,7 +154,7 @@ public func labelFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
 | weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
 | family | String | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. |
 | style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
@@ -180,7 +180,7 @@ public func labelFont(
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| size | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
+| size | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 16.vp | **Named parameter.** Sets the text size. When Length is Int64 or Float64, uses fp unit. Percentage settings are not supported. |
 | weight | FontWeight | No | FontWeight.Normal | **Named parameter.** Sets the font weight of the text. |
 | family | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "HarmonyOS Sans" | **Named parameter.** Sets the font list of the text. Multiple fonts can be specified, separated by commas, with priority in order. Example: 'Arial, HarmonyOS Sans'. |
 | style | FontStyle | No | FontStyle.Normal | **Named parameter.** Sets the font style of the text. |
@@ -201,7 +201,7 @@ public func labelFontColor(value: ResourceColor): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color of the label information in the menu item.<br/>Initial value: '0x99000000' |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Font color of the label information in the menu item.<br/>Initial value: '0x99000000' |
 
 ### func selectIcon(Bool)
 

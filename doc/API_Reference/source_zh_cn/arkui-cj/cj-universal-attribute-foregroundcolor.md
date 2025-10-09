@@ -42,5 +42,5 @@ public func foregroundColor(value: ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。|
+|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。|
 

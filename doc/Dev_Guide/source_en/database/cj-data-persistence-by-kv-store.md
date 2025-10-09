@@ -13,7 +13,7 @@ Key-value databases store data in key-value pairs. When the data to be stored do
 
 ## Interface Description
 
-The following are key interfaces for key-value database persistence functionality, most of which are asynchronous. Asynchronous interfaces support both callback and Promise return types. The table below uses callback forms as examples. For more interfaces and usage details, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/apis/ArkData/cj-apis-distributed_kv_store.md).
+The following are key interfaces for key-value database persistence functionality, most of which are asynchronous. Asynchronous interfaces support both callback and Promise return types. The table below uses callback forms as examples. For more interfaces and usage details, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/ArkData/cj-apis-distributed_kv_store.md).
 
 | Interface Name | Description |
 | -------- | -------- |

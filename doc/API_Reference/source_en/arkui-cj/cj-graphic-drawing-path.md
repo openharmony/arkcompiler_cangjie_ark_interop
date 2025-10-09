@@ -30,7 +30,7 @@ public init(commands!: ResourceStr = "")
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| commands | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The command string for path drawing. |
+| commands | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The command string for path drawing. |
 
 ### init(Length, Length, ResourceStr)
 
@@ -48,9 +48,9 @@ public init(width!: Length, height!: Length, commands!: ResourceStr = "")
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The width of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the width required by its own content. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The height of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the height required by its own content. |
-| commands | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The command string for path drawing. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The width of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the width required by its own content. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The height of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the height required by its own content. |
+| commands | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The command string for path drawing. |
 
 ## Common Attributes/Common Events
 
@@ -76,7 +76,7 @@ public func commands(commands: ResourceStr): This
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| commands | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The command string for path drawing. Initial value: "", abnormal values are processed as the initial value. |
+| commands | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The command string for path drawing. Initial value: "", abnormal values are processed as the initial value. |
 
 ### func initial()
 
@@ -145,8 +145,8 @@ public init(width!: Length, height!: Length, commands!: ResourceStr = "")
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| width | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The width of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the width required by its own content. |
-| height | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The height of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the height required by its own content. |
+| width | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The width of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the width required by its own content. |
+| height | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | **Named parameter.** The height of the rectangle where the path is located, value range ≥0.<br>Default unit: vp.<br>If the value is abnormal or missing, it will be processed according to the height required by its own content. |
 | commands | [ResourceStr](./cj-common-types.md#interface-resourcestr) | No | "" | **Named parameter.** The command string for path drawing. |
 
 ## SVG Path Description Specification

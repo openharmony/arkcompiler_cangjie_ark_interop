@@ -43,9 +43,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频的数据源，支持本地视频和网络视频。<br/>string格式可用于加载网络视频和本地视频，常用于加载网络视频。<br/>\- 支持网络视频地址。<br/>\- 支持file://路径前缀的字符串，即应用沙箱URI：file://<bundleName>/<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>视频支持的格式是：mp4、mkv、TS。|
+|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频的数据源，支持本地视频和网络视频。<br/>string格式可用于加载网络视频和本地视频，常用于加载网络视频。<br/>\- 支持网络视频地址。<br/>\- 支持file://路径前缀的字符串，即应用沙箱URI：file://<bundleName>/<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>视频支持的格式是：mp4、mkv、TS。|
 |currentProgressRate|[PlaybackSpeed](#enum-playbackspeed)|否|SpeedForward100X|**命名参数。** 视频播放倍速。<br/>取值仅支持：0.75，1.0，1.25，1.75，2.0。|
-|previewUri|[ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频未播放时的预览图片路径。|
+|previewUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频未播放时的预览图片路径。|
 |controller|[VideoController](#class-videocontroller)|否|VideoController()|**命名参数。** 设置视频控制器，可以控制视频的播放状态。|
 
 ## 通用属性/通用事件
@@ -164,7 +164,7 @@ public func onError(event: VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，播放失败时触发。|
+|event|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，播放失败时触发。|
 
 ### func onFinish(() -> Unit)
 
@@ -200,7 +200,7 @@ public func onFullscreenChange(callback: Callback<FullscreenInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[FullscreenInfo](#class-fullscreeninfo),Unit>|是|-|回调函数，在全屏播放与非全屏播放状态之间切换时触发。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[FullscreenInfo](#class-fullscreeninfo),Unit>|是|-|回调函数，在全屏播放与非全屏播放状态之间切换时触发。|
 
 ### func onPause(VoidCallback)
 
@@ -218,7 +218,7 @@ public func onPause(event: VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，暂停播放时触发。|
+|event|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，暂停播放时触发。|
 
 ### func onPrepared(Callback\<PreparedInfo,Unit>)
 
@@ -236,7 +236,7 @@ public func onPrepared(callback: Callback<PreparedInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PreparedInfo](#class-preparedinfo),Unit>|是|-|回调函数，视频准备完成时触发。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PreparedInfo](#class-preparedinfo),Unit>|是|-|回调函数，视频准备完成时触发。|
 
 ### func onSeeked(Callback\<PlaybackInfo,Unit>)
 
@@ -254,7 +254,7 @@ public func onSeeked(callback: Callback<PlaybackInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，操作进度条完成后触发。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，操作进度条完成后触发。|
 
 ### func onSeeking(Callback\<PlaybackInfo,Unit>)
 
@@ -272,7 +272,7 @@ public func onSeeking(callback: Callback<PlaybackInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，操作进度条过程时触发。<br>参数值：当前视频的时长，单位为秒。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，操作进度条过程时触发。<br>参数值：当前视频的时长，单位为秒。|
 
 ### func onStart(VoidCallback)
 
@@ -290,7 +290,7 @@ public func onStart(event: VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[VoidCallback](../apis/BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，播放时触发。|
+|event|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，播放时触发。|
 
 ### func onUpdate(Callback\<PlaybackInfo,Unit>)
 
@@ -308,7 +308,7 @@ public func onUpdate(callback: Callback<PlaybackInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，说明播放进度变化时触发。|
+|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，说明播放进度变化时触发。|
 
 ## 基础类型定义
 

@@ -36,8 +36,8 @@ public func rotate(x!: Float32 = 0.0, y!: Float32 = 0.0, z!: Float32 = 1.0, angl
 | y | Float32 | No | 0.0 | **Named parameter.** Y-coordinate of the rotation axis vector. |
 | z | Float32 | No | 1.0 | **Named parameter.** Z-coordinate of the rotation axis vector. |
 | angle | Float32 | No | 0.0 | **Named parameter.** Rotation angle. A positive value indicates clockwise rotation relative to the rotation axis direction, while a negative value indicates counterclockwise rotation. |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Represents the x-coordinate of the component's transformation center point (i.e., the anchor point). |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Represents the y-coordinate of the component's transformation center point (i.e., the anchor point). |
+| centerX | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** X-coordinate of the transformation center point. Represents the x-coordinate of the component's transformation center point (i.e., the anchor point). |
+| centerY | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | **Named parameter.** Y-coordinate of the transformation center point. Represents the y-coordinate of the component's transformation center point (i.e., the anchor point). |
 
 ## func scale(Float32, Float32, Float32, Length, Length)
 
@@ -59,8 +59,8 @@ public func scale(x!: Float32 = 1.0, y!: Float32 = 1.0, z!: Float32 = 1.0, cente
 | x | Float32 | No | 1.0 | X-axis scaling component. |
 | y | Float32 | No | 1.0 | Y-axis scaling component. |
 | z | Float32 | No | 1.0 | Z-axis scaling component. |
-| centerX | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | X-coordinate of the transformation center point. Represents the x-coordinate of the component's transformation center point (i.e., the anchor point). |
-| centerY | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | Y-coordinate of the transformation center point. Represents the y-coordinate of the component's transformation center point (i.e., the anchor point). |
+| centerX | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | X-coordinate of the transformation center point. Represents the x-coordinate of the component's transformation center point (i.e., the anchor point). |
+| centerY | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 50.percent | Y-coordinate of the transformation center point. Represents the y-coordinate of the component's transformation center point (i.e., the anchor point). |
 
 ## func translate(Length, Length, Length)
 
@@ -78,6 +78,6 @@ public func translate(x!: Length = 0.vp, y!: Length = 0.vp, z!: Length = 0.vp): 
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| x | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | X-axis translation distance. |
-| y | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Y-axis translation distance. |
-| z | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Z-axis translation distance. |
+| x | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | X-axis translation distance. |
+| y | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Y-axis translation distance. |
+| z | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 0.vp | Z-axis translation distance. |

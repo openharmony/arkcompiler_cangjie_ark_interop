@@ -68,7 +68,7 @@ Image支持加载存档图、多媒体像素图两种类型。
 
 ## 显示矢量图
 
-Image组件可显示矢量图（svg格式的图片），svg标签文档请参考[svg说明](../../../API_Reference/source_zh_cn/apis/ImageKit/cj-apis-image.md#svg标签说明)。
+Image组件可显示矢量图（svg格式的图片），svg标签文档请参考[svg说明](../../../API_Reference/source_zh_cn/ImageKit/cj-apis-image.md#svg标签说明)。
 
 svg格式的图片可以使用fillColor属性改变图片的绘制颜色。
 

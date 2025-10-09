@@ -575,7 +575,7 @@ delegator.startAbility(want).get()
 public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility
 ```
 
-doc/API_Reference/source_zh_cn/apis/AbilityKit/
+doc/API_Reference/source_zh_cn/AbilityKit/
 **功能：** 设置等待时间，并等待与[AbilityMonitor](#class-abilitymonitor)实例匹配的[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)到达[onCreate](../AbilityKit/cj-apis-app-ability-ui_ability.md#func-oncreatewant-launchparam)生命周期，并返回[UIAbility](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiability)实例。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

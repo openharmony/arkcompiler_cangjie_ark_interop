@@ -87,7 +87,7 @@ public func barHeight(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of the TabBar.<br/>Initial value:<br/>When no styled TabBar is set and the vertical property is false, the initial value is 56.vp.<br/>When no styled TabBar is set and the vertical property is true, the initial value is the height of Tabs.<br/>When [SubTabBarStyle](./cj-common-types.md#enum-subtabbarstyle) is set and the vertical property is false, the initial value is 56.vp.<br/>When SubTabBarStyle is set and the vertical property is true, the initial value is the height of Tabs.<br/>When [BottomTabBarStyle](./cj-common-types.md#enum-bottomtabbarstyle) is set and the vertical property is true, the initial value is the height of Tabs.<br/>When BottomTabBarStyle is set and the vertical property is false, the initial value is 48.vp. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The height of the TabBar.<br/>Initial value:<br/>When no styled TabBar is set and the vertical property is false, the initial value is 56.vp.<br/>When no styled TabBar is set and the vertical property is true, the initial value is the height of Tabs.<br/>When [SubTabBarStyle](./cj-common-types.md#enum-subtabbarstyle) is set and the vertical property is false, the initial value is 56.vp.<br/>When SubTabBarStyle is set and the vertical property is true, the initial value is the height of Tabs.<br/>When [BottomTabBarStyle](./cj-common-types.md#enum-bottomtabbarstyle) is set and the vertical property is true, the initial value is the height of Tabs.<br/>When BottomTabBarStyle is set and the vertical property is false, the initial value is 48.vp. |
 
 ### func barMode(BarMode)
 
@@ -123,7 +123,7 @@ public func barWidth(value: Length): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of the TabBar.<br/>Initial value:<br/>When no [SubTabBarStyle](./cj-navigation-switching-tabs.md#class-subtabbarstyle) or [BottomTabBarStyle](./cj-navigation-switching-tabs.md#class-bottomtabbarstyle) is set and the vertical property is false, the initial value is the width of Tabs.<br/>When no SubTabBarStyle or BottomTabBarStyle is set and the vertical property is true, the initial value is 56.vp.<br/>When SubTabBarStyle is set and the vertical property is false, the initial value is the width of Tabs.<br/>When SubTabBarStyle is set and the vertical property is true, the initial value is 56.vp.<br/>When BottomTabBarStyle is set and the vertical property is true, the initial value is 96.vp.<br/>When BottomTabBarStyle is set and the vertical property is false, the initial value is the width of Tabs. |
+| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | Yes | - | The width of the TabBar.<br/>Initial value:<br/>When no [SubTabBarStyle](./cj-navigation-switching-tabs.md#class-subtabbarstyle) or [BottomTabBarStyle](./cj-navigation-switching-tabs.md#class-bottomtabbarstyle) is set and the vertical property is false, the initial value is the width of Tabs.<br/>When no SubTabBarStyle or BottomTabBarStyle is set and the vertical property is true, the initial value is 56.vp.<br/>When SubTabBarStyle is set and the vertical property is false, the initial value is the width of Tabs.<br/>When SubTabBarStyle is set and the vertical property is true, the initial value is 56.vp.<br/>When BottomTabBarStyle is set and the vertical property is true, the initial value is 96.vp.<br/>When BottomTabBarStyle is set and the vertical property is false, the initial value is the width of Tabs. |
 
 ### func scrollable(Bool)
 
@@ -193,7 +193,7 @@ This event is triggered under any of the following conditions:
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| event | [Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<Int32,Unit> | Yes | - | The callback for the Tab tab switching event.<br/>Parameter:<br/>The index of the currently displayed tab, starting from 0. |
+| event | [Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<Int32,Unit> | Yes | - | The callback for the Tab tab switching event.<br/>Parameter:<br/>The index of the currently displayed tab, starting from 0. |
 
 ## Basic Type Definitions
 
@@ -262,7 +262,7 @@ public func tabBar(content: ResourceStr): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| content | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The content displayed on the TabBar. |
+| content | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | Yes | - | The content displayed on the TabBar. |
 
 #### func tabBar(ResourceStr, ResourceStr)
 
@@ -280,8 +280,8 @@ public func tabBar(icon!: ResourceStr = "", text!: ResourceStr = ""): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| icon | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The icon displayed on the TabBar.<br/>**Note:** If the icon uses an SVG image source, the SVG image source should remove its own width and height attributes. If an SVG image source with its own width and height attributes is used, the icon size will be the built-in width and height attribute values of the SVG itself. |
-| text | [ResourceStr](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The text content displayed on the TabBar. |
+| icon | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The icon displayed on the TabBar.<br/>**Note:** If the icon uses an SVG image source, the SVG image source should remove its own width and height attributes. If an SVG image source with its own width and height attributes is used, the icon size will be the built-in width and height attribute values of the SVG itself. |
+| text | [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr) | No | "" | **Named parameter.** The text content displayed on the TabBar. |
 
 #### func tabBar(CustomBuilder)
 

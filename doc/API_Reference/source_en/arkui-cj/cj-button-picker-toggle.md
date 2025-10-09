@@ -77,7 +77,7 @@ public func selectedColor(value: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the background color of the component in the on state.<br/>Initial value: When ToggleType is Switch, the initial value is @r(sys.color.ohos_id_color_component_activated).<br/>When ToggleType is Checkbox, the initial value is @r(sys.color.ohos_id_color_component_activated).<br/>When ToggleType is Button, the initial value is @r(sys.color.ohos_id_color_component_activated) mixed with the transparency of @r(sys.color.ohos_id_color_text_highlight_bg). |
+| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | Sets the background color of the component in the on state.<br/>Initial value: When ToggleType is Switch, the initial value is @r(sys.color.ohos_id_color_component_activated).<br/>When ToggleType is Checkbox, the initial value is @r(sys.color.ohos_id_color_component_activated).<br/>When ToggleType is Button, the initial value is @r(sys.color.ohos_id_color_component_activated) mixed with the transparency of @r(sys.color.ohos_id_color_text_highlight_bg). |
 
 ### func switchPointColor(ResourceColor)
 
@@ -95,7 +95,7 @@ public func switchPointColor(color: ResourceColor): This
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| color | [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the circular slider for the Switch type. Initial value: @r(sys.color.ohos_id_color_foreground_contrary) |
+| color | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | Yes | - | The color of the circular slider for the Switch type. Initial value: @r(sys.color.ohos_id_color_foreground_contrary) |
 
 ## Component Events
 

@@ -13,7 +13,7 @@ Main scenarios include:
 
 ## API Description
 
-For complete Cangjie API documentation and sample code, refer to: [BLE APIs](../../../../API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-ble.md).
+For complete Cangjie API documentation and sample code, refer to: [BLE APIs](../../../../API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-ble.md).
 
 Detailed API descriptions are shown in the following table.
 
