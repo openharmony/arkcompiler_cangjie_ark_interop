@@ -707,7 +707,7 @@ During application/service debugging or runtime, an error occurred while install
 
 1. Adjust the bundleName in the app.json5 configuration file and the name field in the module.json5 file according to naming rules. <!--Del-->
 
-2. If the type field in extensionAbilities is configured as "service" or "dataShare," the application must configure the [allowAppUsePrivilegeExtension privilege](https://docs.openharmony.cn/pages/v5.1/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md) as follows:
+2. If the type field in extensionAbilities is configured as "service" or "dataShare," the application must configure the [allowAppUsePrivilegeExtension privilege](https://docs.openharmony.cn/pages/v5.1/en/device-dev/subsystems/subsys-app-privilege-config-guide.md) as follows:
 
     1. Obtain a new signature fingerprint.
 
@@ -957,7 +957,7 @@ During debugging or runtime, HAP installation fails with the message "error: sig
 
 - Scenario 1:
   1. Use [auto-signing](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237). Re-sign the app after connecting the device.
-  2. For manual signing in OpenHarmony, refer to <!--RP2-->[OpenHarmony Manual Signing Guide](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/security/hapsigntool-guidelines.md)<!--RP2End--> and add the device's **UDID** to `UnsgnedDebugProfileTemplate.json`.
+  2. For manual signing in OpenHarmony, refer to <!--RP2-->[OpenHarmony Manual Signing Guide](https://docs.openharmony.cn/pages/v4.1/en/application-dev/security/hapsigntool-guidelines.md)<!--RP2End--> and add the device's **UDID** to `UnsgnedDebugProfileTemplate.json`.
 
       a. Retrieve the device UDID:
       ```bash
@@ -1449,7 +1449,7 @@ The required privilege for installing an inter-application HSP is missing.
 
 **Resolution Steps:**  
 
-Check whether the application has the `AllowAppShareLibrary` privilege in the device's `install_list_capability.json`. Refer to the [Application Privilege Configuration Guide](https://docs.openharmony.cn/pages/v5.1/zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md).  
+Check whether the application has the `AllowAppShareLibrary` privilege in the device's `install_list_capability.json`. Refer to the [Application Privilege Configuration Guide](https://docs.openharmony.cn/pages/v5.1/en/device-dev/subsystems/subsys-app-privilege-config-guide.md).  
 
 ---  
 

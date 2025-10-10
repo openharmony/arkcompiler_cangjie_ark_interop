@@ -4,7 +4,7 @@ Advanced Notification Manager (referred to as anm) is a tool designed to impleme
 
 ## Environment Requirements
 
-Before using this tool, developers need to obtain the [hdc tool](https://docs.openharmony.cn/pages/v5.1/zh-cn/device-dev/subsystems/subsys-toolchain-hdc-guide.md) and execute `hdc shell`.
+Before using this tool, developers need to obtain the [hdc tool](https://docs.openharmony.cn/pages/v5.1/en/device-dev/subsystems/subsys-toolchain-hdc-guide.md) and execute `hdc shell`.
 
 Currently, this tool is only supported in eng versions. Using it in user versions will result in the error: `error: user version cannot use setting`.
 
