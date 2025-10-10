@@ -10,7 +10,7 @@ This chapter introduces how to load Cangjie modules in ArkTS. There are three wa
 > **Note:**
 >
 > - This loading method is supported from API version 18. Minimum compatible version: OpenHarmony 5.1.0(18). If the code for loading Cangjie modules needs to run on OpenHarmony 12 Release or later, please use [Loading Cangjie Modules Using the `requireCJLib` Interface](#method-3-loading-cangjie-modules-using-the-requirecjlib-interface).
-> - The method of loading Cangjie modules using the `import` syntax is consistent with loading native modules using the `import` syntax. For detailed information, refer to: [Loading Native Modules Statically](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/arkts-utils/arkts-import-native-module.md).
+> - The method of loading Cangjie modules using the `import` syntax is consistent with loading native modules using the `import` syntax. For detailed information, refer to: [Loading Native Modules Statically](https://docs.openharmony.cn/pages/v5.1/en/application-dev/arkts-utils/arkts-import-native-module.md).
 
 Below is an example of loading the Cangjie module `ohos_app_cangjie_entry` using the `import` syntax and calling the `addNumber` interface:
 
@@ -111,7 +111,7 @@ Below is an example of loading the Cangjie module `ohos_app_cangjie_entry` using
 > **Note:**
 >
 > - This loading method is supported from API version 18. Minimum compatible version: OpenHarmony 5.1.0(18). If the code for loading Cangjie modules needs to run on OpenHarmony 12 Release or later, please use [Loading Cangjie Modules Using the `requireCJLib` Interface](#method-3-loading-cangjie-modules-using-the-requirecjlib-interface).
-> - For detailed information about the `loadNativeModule` interface, refer to: [Loading Native Modules Dynamically in Synchronous Mode](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/arkts-utils/js-apis-load-native-module.md)
+> - For detailed information about the `loadNativeModule` interface, refer to: [Loading Native Modules Dynamically in Synchronous Mode](https://docs.openharmony.cn/pages/v5.1/en/application-dev/arkts-utils/js-apis-load-native-module.md)
 
 Below is an example of loading the Cangjie module `ohos_app_cangjie_entry` using the `loadNativeModule` interface and calling the `addNumber` function:
 
