@@ -436,7 +436,6 @@
                     - [mediatool工具](source_zh_cn/tools/cj-mediatool.md)
                     - [devicedebug工具](source_zh_cn/tools/cj-devicedebug-tool.md)
     - [媒体]()
-        - [Audio Kit（音频服务）]()
         - [Camera Kit（相机服务）]()
             - [Camera Kit简介](source_zh_cn/media/camera/cj-camera-overview.md)
             - [开发准备](source_zh_cn/media/camera/cj-camera-preparation.md)
