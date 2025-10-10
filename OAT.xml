@@ -13,7 +13,7 @@
                 <filteritem type="filepath" name="doc/.*" desc="doc目录过滤"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Files not to check">
-                <filteritem type="filename" name="COPYRIGHT|COPYRIGHT_EN" desc="doc file"/>
+                <filteritem type="filename" name="COPYRIGHT_zh|COPYRIGHT" desc="doc file"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Files not to check">
                 <filteritem type="filename" name="*.png | *.PNG | *.jpg | *.jpeg | *.gif" desc="desc files"/>

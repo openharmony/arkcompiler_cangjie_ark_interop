@@ -53,7 +53,6 @@ arkcompiler/cangjie_ark_interop
 ├── doc                    # Cangjie documentation, including API reference, application development guide, Cangjie programming language user manual
 |   ├── API_Reference      # Cangjie API reference
 |   ├── Dev_Guide          # Cangjie development guide
-|   ├── release-notes      # Cangjie release notes
 |   ├── User_Manual        # Cangjie user manual
 ├── figures                # Images required for this README
 ├── test                   # Cangjie interoperability test cases
