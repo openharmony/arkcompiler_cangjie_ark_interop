@@ -14,7 +14,7 @@ Favorites is a system album. When an image or video is marked as a favorite, it 
 
 ### Obtaining the Favorites Album Object
 
-Use the [getAlbums](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the favorites album object.
+Use the [getAlbums](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the favorites album object.
 
 **Prerequisites**
 
@@ -79,7 +79,7 @@ class MainAbility <: UIAbility {
 
 ### Obtaining Images and Videos from the Favorites Album
 
-First, [obtain the favorites album object](#obtaining-the-favorites-album-object), then call the [getAssets](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions) interface to obtain resources from the favorites album.
+First, [obtain the favorites album object](#obtaining-the-favorites-album-object), then call the [getAssets](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getassetsfetchoptions) interface to obtain resources from the favorites album.
 
 **Prerequisites**
 
@@ -92,7 +92,7 @@ The following example demonstrates obtaining an image from the favorites album.
 1. [Obtain the favorites album object](#obtaining-the-favorites-album-object).
 2. Set up image retrieval conditions to obtain the image.
 3. Call the `Album.getAssets` interface to obtain the image resource.
-4. Call the [getFirstObject](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject) interface to obtain the first image.
+4. Call the [getFirstObject](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getfirstobject) interface to obtain the first image.
 
 <!-- compile -->
 
@@ -163,7 +163,7 @@ The video album is a system album. Media files of the video type in user files a
 
 ### Obtaining the Video Album Object
 
-Use the [getAlbums](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the video album object.
+Use the [getAlbums](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions) interface to obtain the video album object.
 
 **Prerequisites**
 
@@ -228,7 +228,7 @@ class MainAbility <: UIAbility {
 
 ### Obtaining Videos from the Video Album
 
-First, [obtain the video album object](#obtaining-the-video-album-object), then call the [getAssets](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions) interface to obtain video resources from the video album.
+First, [obtain the video album object](#obtaining-the-video-album-object), then call the [getAssets](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getassetsfetchoptions) interface to obtain video resources from the video album.
 
 **Prerequisites**
 
@@ -241,7 +241,7 @@ The following example demonstrates obtaining a video from the video album.
 1. First, [obtain the video album object](#obtaining-the-video-album-object).
 2. Set up video retrieval conditions to obtain the video.
 3. Call the `Album.getAssets` interface to obtain the video resource.
-4. Call the [getFirstObject](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject) interface to obtain the first video.
+4. Call the [getFirstObject](../../../../API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getfirstobject) interface to obtain the first video.
 
 <!-- compile -->
 
