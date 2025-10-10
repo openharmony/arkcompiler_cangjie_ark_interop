@@ -302,7 +302,7 @@
     - [硬件]()
         - [Sensor Service Kit（传感器服务）]()
             - [仓颉API]()
-                - [ohos.sensor（传感器））](source_zh_cn/SensorServiceKit/cj-apis-sensor.md)
+                - [ohos.sensor（传感器）](source_zh_cn/SensorServiceKit/cj-apis-sensor.md)
             - [错误码]()
                 - [传感器错误码](source_zh_cn/errorcodes/cj-errorcode-sensor.md)
         - [Telephony Kit]()
