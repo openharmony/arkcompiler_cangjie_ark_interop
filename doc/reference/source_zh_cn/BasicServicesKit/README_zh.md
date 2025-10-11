@@ -1,4 +1,5 @@
 # Basic Services Kit（基础服务）（Beta特性）
+
 - 仓颉API
     - 设备管理
         - [ohos.battery_info（电量信息）](cj-apis-battery_info.md)
@@ -17,8 +18,8 @@
         - [ohos.common_event_publish_data](cj-apis-common_event_publish_data.md)
         - [ohos.value_type](cj-apis-value_type.md)
 - 错误码
-    - [上传下载错误码](../errorcodes/cj-errorcode-request.md)
-    - [时间时区错误码](../errorcodes/cj-errorcode-time.md)
-    - [事件错误码](../errorcodes/cj-errorcode-common_event_service.md)
-    - [系统电源管理错误码](../errorcodes/cj-errorcode-power.md)
-    - [账号管理错误码](../errorcodes/cj-errorcode-basic-account.md)
+    - [上传下载错误码](cj-errorcode-request.md)
+    - [时间时区错误码](cj-errorcode-time.md)
+    - [事件错误码](cj-errorcode-common_event_service.md)
+    - [系统电源管理错误码](cj-errorcode-power.md)
+    - [账号管理错误码](cj-errorcode-basic-account.md)

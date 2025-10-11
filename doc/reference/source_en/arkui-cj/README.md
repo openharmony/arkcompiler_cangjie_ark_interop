@@ -165,7 +165,7 @@
     - [Framework Interfaces](cj-ui-framework.md)
 - Error Codes
     - UI Interface
-        - [Animation Error Codes](source_en/errorcodes/cj-errorcode-animator.md)
+        - [Animation Error Codes](cj-errorcode-animator.md)
     - Graphics
-        - [Screen Error Codes](source_en/errorcodes/cj-errorcode-display.md)
-        - [Window Error Codes](source_en/errorcodes/cj-errorcode-window.md)
+        - [Screen Error Codes](cj-errorcode-display.md)
+        - [Window Error Codes](cj-errorcode-window.md)

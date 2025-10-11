@@ -21,7 +21,7 @@ API sample code usage instructions:
 - If the first line of sample code contains a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template, refer to [Cangjie Sample Code Description](../../cj-development-intro.md).
+For details about the sample project and configuration template, refer to [Cangjie Sample Code Description](../cj-development-intro.md).
 
 ## func getScanInfoList()
 
@@ -45,7 +45,7 @@ public func getScanInfoList(): Array<WifiScanInfo>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -73,7 +73,7 @@ public func isWifiActive(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -99,11 +99,11 @@ public func off(eventType: WifiCallbackType, callback!: ?CallbackObject = None):
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | eventType | [WifiCallbackType](#enum-wificallbacktype) | Yes | - | Callback event. |
-| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** State change callback function. If no callback parameter is provided, all callback functions associated with the event will be unregistered. |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** State change callback function. If no callback parameter is provided, all callback functions associated with the event will be unregistered. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -130,11 +130,11 @@ public func on(eventType: WifiCallbackType, callback: Callback1Argument<Int32>):
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | eventType | [WifiCallbackType](#enum-wificallbacktype) | Yes | - | Callback event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32> | Yes | - | State change callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32> | Yes | - | State change callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -158,7 +158,7 @@ public func p2pCancelConnect(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -189,7 +189,7 @@ public func p2pConnect(config: WifiP2PConfig): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -214,7 +214,7 @@ public func startDiscoverDevices(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -239,7 +239,7 @@ public func stopDiscoverDevices(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [WIFI Error Codes](../../errorcodes/cj-errorcode-wifi-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [WIFI Error Codes](./cj-errorcode-wifi-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

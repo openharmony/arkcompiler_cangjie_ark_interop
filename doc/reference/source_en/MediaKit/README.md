@@ -4,4 +4,4 @@
     - [ohos.multimedia.media (Media Services)](cj-apis-multimedia_media.md)
     - [ohos.multimedia.image](cj-apis-multimedia-image.md)
 - Error Codes
-    - [Media Error Codes](../errorcodes/cj-errorcode-multimedia-media.md)
+    - [Media Error Codes](cj-errorcode-multimedia-media.md)

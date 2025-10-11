@@ -15,7 +15,7 @@ API example code usage instructions:
 - If the first line of the example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#cangjie-example-code-instructions).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../cj-development-intro.md#cangjie-example-code-instructions).
 
 ## class AbilityDelegator
 
@@ -49,7 +49,7 @@ public func addAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -76,7 +76,7 @@ public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -103,7 +103,7 @@ public func doAbilityBackground(ability: UIAbility): Unit
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -130,7 +130,7 @@ public func doAbilityForeground(ability: UIAbility): Unit
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -207,7 +207,7 @@ public func getAbilityState(ability: UIAbility): AbilityLifecycleState
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -251,7 +251,7 @@ public func getCurrentTopAbility(): UIAbility
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -278,7 +278,7 @@ public func print(msg: String): Unit
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -304,7 +304,7 @@ public func removeAbilityMonitor(monitor: AbilityMonitor): Unit
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -331,7 +331,7 @@ public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -384,7 +384,7 @@ doc/reference/source_en/AbilityKit/
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -418,7 +418,7 @@ public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int6
 
 **Exceptions:**
 
-For detailed error code descriptions, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../../errorcodes/cj-errorcode-ability.md).
+For detailed error code descriptions, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Ability Subsystem Error Codes](../AbilityKit/cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |

@@ -165,7 +165,7 @@
     - [框架接口](cj-ui-framework.md)
 - 错误码
     - UI界面
-        - [动画错误码](source_zh_cn/errorcodes/cj-errorcode-animator.md)
+        - [动画错误码](cj-errorcode-animator.md)
     - 图形图像
-        - [屏幕错误码](source_zh_cn/errorcodes/cj-errorcode-display.md)
-        - [窗口错误码](source_zh_cn/errorcodes/cj-errorcode-window.md)
+        - [屏幕错误码](cj-errorcode-display.md)
+        - [窗口错误码](cj-errorcode-window.md)

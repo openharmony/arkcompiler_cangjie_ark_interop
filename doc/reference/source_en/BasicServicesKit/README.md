@@ -1,4 +1,5 @@
-# Basic Services Kit(Beta Feature)
+# Basic Services Kit (Beta Feature)
+
 - Cangjie API
     - Device Management
         - [ohos.battery_info (Battery Information)](cj-apis-battery_info.md)
@@ -17,4 +18,4 @@
         - [ohos.common_event_publish_data](cj-apis-common_event_publish_data.md)
         - [ohos.value_type](cj-apis-value_type.md)
 - Error Codes
-    - [Upload/Download Error Codes](../errorcodes/cj-errorcode-request.md)
+    - [Upload/Download Error Codes](cj-errorcode-request.md)

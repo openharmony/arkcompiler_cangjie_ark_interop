@@ -25,7 +25,7 @@ API sample code usage instructions:
 - If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Interface Usage Instructions](../../cj-development-intro.md#接口使用说明).
+For details about the sample project and configuration template mentioned above, refer to [Interface Usage Instructions](../cj-development-intro.md#接口使用说明).
 
 ## class BackForwardList
 
@@ -97,7 +97,7 @@ public func getItemAtIndex(index: Int32): HistoryItem
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -389,7 +389,7 @@ public static func configCookie(url: String, value: String, incognito!: Bool = f
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -488,7 +488,7 @@ public static func fetchCookie(url: String, incognito!: Bool = false): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -766,7 +766,7 @@ public static func setWebDebuggingAccess(webDebuggingAccess: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -831,7 +831,7 @@ public func accessBackward(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -903,7 +903,7 @@ public func accessStep(step: Int32): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -972,7 +972,7 @@ When going forward or backward, the already loaded web page is used directly wit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1031,7 +1031,7 @@ public func backward(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1088,7 +1088,7 @@ public func clearHistory(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1153,7 +1153,7 @@ public func enableSafeBrowsing(enable: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1212,7 +1212,7 @@ public func forward(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1277,7 +1277,7 @@ public func getBackForwardEntries(): BackForwardList
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1344,7 +1344,7 @@ public func getCustomUserAgent(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1411,7 +1411,7 @@ public func getHitTest(): WebHitTestType
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1481,7 +1481,7 @@ public func getHitTestValue(): HitTestValue
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1550,7 +1550,7 @@ public func getOriginalUrl(): String
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                  |
   | :----------- | :---------------------------- |
@@ -1616,7 +1616,7 @@ public func getPageHeight(): Int32
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                  |
   | :----------- | :---------------------------- |
@@ -1643,7 +1643,7 @@ public func getSecurityLevel(): SecurityLevel
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                  |
   | :----------- | :---------------------------- |
@@ -1714,7 +1714,7 @@ public func getTitle(): String
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                  |
   | :----------- | :---------------------------- |
@@ -1780,7 +1780,7 @@ public func getUrl(): String
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                  |
   | :----------- | :---------------------------- |
@@ -1845,7 +1845,7 @@ public func getUserAgent(): String
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                  |
   | :----------- | :---------------------------- |
@@ -1911,7 +1911,7 @@ public func isIncognitoMode(): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message                  |
   | :----------- | :---------------------------- |
@@ -1975,7 +1975,7 @@ public func isSafeBrowsingEnabled(): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2040,7 +2040,7 @@ public func pageDown(bottom: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2105,7 +2105,7 @@ public func pageUp(top: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2164,7 +2164,7 @@ public func refresh(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2251,7 +2251,7 @@ public func loadUrl<T>(url: T, headers!: Array<WebHeader> = Array<WebHeader>()):
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2318,7 +2318,7 @@ public func setCustomUserAgent(userAgent: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are shown in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2374,7 +2374,7 @@ public func stop(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2434,11 +2434,11 @@ public func storeWebArchive(baseName: String, autoName: Bool, callback: AsyncCal
 | :--- | :--- | :--- | :--- | :--- |
 | baseName | String | Yes | - | The storage location for the generated offline webpage. This value cannot be empty. |
 | autoName | Bool | Yes | - | Determines whether to auto-generate the filename. If false, the file is stored with the name specified in `baseName`. If true, the filename is auto-generated based on the current URL and stored in the directory specified by `baseName`. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<String> | Yes | - | Returns the file storage path. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<String> | Yes | - | Returns the file storage path. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2513,7 +2513,7 @@ public func zoom(factor: Float32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2571,7 +2571,7 @@ public func zoomIn(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2628,7 +2628,7 @@ public func zoomOut(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2688,11 +2688,11 @@ public func runJavaScript(script: String, callback: AsyncCallback<String>): Unit
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | script | String | Yes | - | The JavaScript script to execute. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<String> | Yes | - | Callback to return the result of the JavaScript script execution. Returns `null` if the script fails or has no return value. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<String> | Yes | - | Callback to return the result of the JavaScript script execution. Returns `null` if the script fails or has no return value. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2787,7 +2787,7 @@ public func scrollBy(deltaX: Float32, deltaY: Float32, duration!: ?Int32 = None)
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2875,7 +2875,7 @@ public func scrollTo(x: Float32, y: Float32, duration!: ?Int32 = None): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2962,7 +2962,7 @@ public func removeCache(clearRom: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](../../errorcodes/cj-errorcode-webview.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Webview Error Codes](./cj-errorcode-webview.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

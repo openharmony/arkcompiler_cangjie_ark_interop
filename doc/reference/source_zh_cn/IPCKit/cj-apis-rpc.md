@@ -15,7 +15,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## interface Parcelable
 
@@ -187,7 +187,7 @@ public static func create(name: String, size: Int32): Ashmem
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -232,7 +232,7 @@ public static func create(ashmem: Ashmem): Ashmem
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -324,7 +324,7 @@ public func mapReadWriteAshmem(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   |错误码ID|错误信息|
   |:---|:---|
@@ -359,7 +359,7 @@ public func mapReadonlyAshmem(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -399,7 +399,7 @@ public func mapTypedAshmem(mapType: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   |错误码ID|错误信息|
   |:---|:---|
@@ -447,7 +447,7 @@ public func readDataFromAshmem(size: Int64, offset: Int64): Array<Byte>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -488,7 +488,7 @@ public func setProtectionType(protectionType: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -557,7 +557,7 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -610,7 +610,7 @@ public static func closeFileDescriptor(fd: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码的详细介绍请参见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -652,7 +652,7 @@ public static func create(): MessageSequence
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -697,7 +697,7 @@ public static func dupFileDescriptor(fd: Int32): Int32
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -996,7 +996,7 @@ public func readAshmem(): Ashmem
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1037,7 +1037,7 @@ public func readBoolean(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1077,7 +1077,7 @@ public func readBooleanArray(): Array<Bool>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)。
 
   |错误码ID|错误信息|
   |:---|:---|
@@ -1117,7 +1117,7 @@ public func readByte(): Int8
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1157,7 +1157,7 @@ public func readByteArray(): Array<Int8>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)。
 
   |错误码ID|错误信息|
   |:---|:---|
@@ -1197,7 +1197,7 @@ public func readChar(): UInt8
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1237,7 +1237,7 @@ public func readCharArray(): Array<UInt8>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1277,7 +1277,7 @@ public func readDouble(): Float64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1317,7 +1317,7 @@ public func readDoubleArray(): Array<Float64>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1352,7 +1352,7 @@ public func readException(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1392,7 +1392,7 @@ public func readFileDescriptor(): Int32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1432,7 +1432,7 @@ public func readFloat(): Float32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1472,7 +1472,7 @@ public func readFloatArray(): Array<Float32>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1512,7 +1512,7 @@ public func readInt(): Int32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1552,7 +1552,7 @@ public func readIntArray(): Array<Int32>
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码的详细介绍请参见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1592,7 +1592,7 @@ public func readInterfaceToken(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1632,7 +1632,7 @@ public func readLong(): Int64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1672,7 +1672,7 @@ public func readLongArray(): Array<Int64>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1712,7 +1712,7 @@ public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1780,7 +1780,7 @@ public func readParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: P
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1856,7 +1856,7 @@ public func readRawDataBuffer(size: Int64): Array<Byte>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1897,7 +1897,7 @@ public func readShort(): Int16
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1937,7 +1937,7 @@ public func readShortArray(): Array<Int16>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1977,7 +1977,7 @@ public func readString(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2017,7 +2017,7 @@ public func readStringArray(): Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2057,7 +2057,7 @@ public func readUInt16Array(): Array<UInt16>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2098,7 +2098,7 @@ public func readUInt32Array(): Array<UInt32>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2139,7 +2139,7 @@ public func readUInt64Array(): Array<UInt64>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2180,7 +2180,7 @@ public func readUInt8Array(): Array<UInt8>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2247,7 +2247,7 @@ public func rewindRead(pos: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2287,7 +2287,7 @@ public func rewindWrite(pos: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2327,7 +2327,7 @@ public func setCapacity(size: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2368,7 +2368,7 @@ public func setSize(size: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2408,7 +2408,7 @@ public func writeAshmem(ashmem: Ashmem): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2450,7 +2450,7 @@ public func writeBoolean(val: Bool): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2491,7 +2491,7 @@ public func writeBooleanArray(booleanArray: Array<Bool>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2532,7 +2532,7 @@ public func writeByte(val: Int8): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2573,7 +2573,7 @@ public func writeByteArray(byteArray: Array<Int8>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2614,7 +2614,7 @@ public func writeChar(val: UInt8): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2655,7 +2655,7 @@ public func writeCharArray(charArray: Array<UInt8>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2696,7 +2696,7 @@ public func writeDouble(val: Float64): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2737,7 +2737,7 @@ public func writeDoubleArray(doubleArray: Array<Float64>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2778,7 +2778,7 @@ public func writeFileDescriptor(fd: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2822,7 +2822,7 @@ public func writeFloat(val: Float32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2863,7 +2863,7 @@ public func writeFloatArray(floatArray: Array<Float32>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2904,7 +2904,7 @@ public func writeInt(val: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2945,7 +2945,7 @@ public func writeIntArray(intArray: Array<Int32>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2986,7 +2986,7 @@ public func writeInterfaceToken(token: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3027,7 +3027,7 @@ public func writeLong(val: Int64): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3068,7 +3068,7 @@ public func writeLongArray(longArray: Array<Int64>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3103,7 +3103,7 @@ public func writeNoException(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3143,7 +3143,7 @@ public func writeParcelable<T>(val: T): Unit where T <: Parcelable
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3210,7 +3210,7 @@ public func writeParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3280,7 +3280,7 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3321,7 +3321,7 @@ public func writeShort(val: Int16): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3362,7 +3362,7 @@ public func writeShortArray(shortArray: Array<Int16>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3403,7 +3403,7 @@ public func writeString(val: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3444,7 +3444,7 @@ public func writeStringArray(stringArray: Array<String>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3485,7 +3485,7 @@ public func writeUInt16Array(buf: Array<UInt16>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3526,7 +3526,7 @@ public func writeUInt32Array(buf: Array<UInt32>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3567,7 +3567,7 @@ public func writeUInt64Array(buf: Array<UInt64>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3608,7 +3608,7 @@ public func writeUInt8Array(buf: Array<UInt8>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[RPC错误码](../../errorcodes/cj-errorcode-rpc.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[RPC错误码](./cj-errorcode-rpc.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

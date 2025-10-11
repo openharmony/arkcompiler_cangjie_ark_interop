@@ -19,7 +19,7 @@ API示例代码使用说明：
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func create(UIAbilityContext, Config)
 
@@ -53,7 +53,7 @@ public func create(context: UIAbilityContext, config: Config): Task
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)与[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息                                                                                                                          |
   | :------- | :-------------------------------------------------------------------------------------------------------------------------------- |
@@ -126,7 +126,7 @@ public func getTask(context: UIAbilityContext, id: String, token!: ?String = Non
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)与[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息                                                                                                                          |
   | :------- | :-------------------------------------------------------------------------------------------------------------------------------- |
@@ -185,7 +185,7 @@ public func remove(id: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)。
 
   | 错误码ID | 错误信息                                                                                        |
   | :------- | :---------------------------------------------------------------------------------------------- |
@@ -244,7 +244,7 @@ public func search(filter!: Filter = Filter()): Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)与[通用错误码说明文档](../cj-errorcode-universal.md)
 
   | 错误码ID | 错误信息                                                                                        |
   | :------- | :---------------------------------------------------------------------------------------------- |
@@ -305,7 +305,7 @@ public func show(id: String): TaskInfo
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)与[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息                                                                                        |
   | :------- | :---------------------------------------------------------------------------------------------- |
@@ -365,7 +365,7 @@ public func touch(id: String, token: String): TaskInfo
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)与[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)与[通用错误码说明文档](../cj-errorcode-universal.md)
 
   | 错误码ID | 错误信息                                                                                        |
   | :------- | :---------------------------------------------------------------------------------------------- |
@@ -1620,7 +1620,7 @@ public func off(event: EventCallbackType, callback!: ?CallbackObject = None): Un
 | 参数名   | 类型                                                                               | 必填 | 默认值 | 说明                                                                                                                                                                                                                                                                               |
 | :------- | :--------------------------------------------------------------------------------- | :--- | :----- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | event    | [EventCallbackType](#enum-eventcallbacktype)                                       | 是   | -      | 订阅的事件类型。<br>- 取值为'progress'，表示任务进度。<br>- 取值为'completed'，表示任务完成。<br>- 取值为'failed'，表示任务失败。<br>- 取值为'pause'，表示任务暂停。<br>- 取值为'resume'，表示任务恢复。<br>- 取值为'remove'，表示任务删除。<br>- 取值为'response'，表示任务响应。 |
-| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | 否   | None   | **命名参数。** 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。                                                                                                                                                                                              |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | 否   | None   | **命名参数。** 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。                                                                                                                                                                                              |
 
 **示例：**
 
@@ -1676,11 +1676,11 @@ public func on(event: EventCallbackType, callback: Callback1Argument<HttpRespons
 | 参数名   | 类型                                                                                                   | 必填 | 默认值 | 说明                                                       |
 | :------- | :----------------------------------------------------------------------------------------------------- | :--- | :----- | :--------------------------------------------------------- |
 | event    | [EventCallbackType](#enum-eventcallbacktype)                                                           | 是   | -      | 订阅的事件类型。<br>- 取值为'response'，表示任务响应。     |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HttpResponse> | 是   | -      | 发生相关的事件时触发该回调方法，返回任务响应头的数据结构。 |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HttpResponse> | 是   | -      | 发生相关的事件时触发该回调方法，返回任务响应头的数据结构。 |
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)
 
   | 错误码ID | 错误信息                       |
   | :------- | :----------------------------- |
@@ -1705,11 +1705,11 @@ public func on(event: EventCallbackType, callback: Callback1Argument<Progress>):
 | 参数名   | 类型                                                                                                                  | 必填 | 默认值 | 说明                                                                                                                                                                                                                                         |
 | :------- | :-------------------------------------------------------------------------------------------------------------------- | :--- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | event    | [EventCallbackType](#enum-eventcallbacktype)                                                                          | 是   | -      | 订阅的事件类型。<br>- 取值为'progress'，表示任务进度。<br>- 取值为'completed'，表示任务完成。<br>- 取值为'failed'，表示任务失败。<br>- 取值为'pause'，表示任务暂停。<br>- 取值为'resume'，表示任务恢复。<br>- 取值为'remove'，表示任务删除。 |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[Progress](#class-progress)> | 是   | -      | 发生相关的事件时触发该回调方法，返回任务信息的数据结构。                                                                                                                                                                                     |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[Progress](#class-progress)> | 是   | -      | 发生相关的事件时触发该回调方法，返回任务信息的数据结构。                                                                                                                                                                                     |
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)。
 
   | 错误码ID | 错误信息                       |
   | :------- | :----------------------------- |
@@ -1730,7 +1730,7 @@ public func pause(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)。
 
   | 错误码ID | 错误信息                         |
   | :------- | :------------------------------- |
@@ -1755,7 +1755,7 @@ public func resume(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)。
 
   | 错误码ID | 错误信息                         |
   | :------- | :------------------------------- |
@@ -1781,7 +1781,7 @@ public func start(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)。
 
   | 错误码ID | 错误信息                         |
   | :------- | :------------------------------- |
@@ -1832,7 +1832,7 @@ public func stop(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[上传下载错误码](../../errorcodes/cj-errorcode-request.md)。
+- BusinessException：对应错误码如下表，详见[上传下载错误码](./cj-errorcode-request.md)。
 
   | 错误码ID | 错误信息                         |
   | :------- | :------------------------------- |

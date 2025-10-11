@@ -23,7 +23,7 @@ API示例代码使用说明：
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
 - 若示例需获取[Context](./cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func createAbilityStageContextFromJSValue(JSContext, JSValue)
 
@@ -41,8 +41,8 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
 
 **返回值：**
 
@@ -73,7 +73,7 @@ class MyAbilityStage <: AbilityStage {
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[ApplicationContext](#class-applicationcontext)类型。该转换仅可在函数传递中使用。
+**功能：** 从[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[ApplicationContext](#class-applicationcontext)类型。该转换仅可在函数传递中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -83,8 +83,8 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
 
 **返回值：**
 
@@ -116,7 +116,7 @@ class MyAbilityStage <: AbilityStage {
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[Context](./cj-apis-app-ability-ui_ability.md#class-context)类型。该转换仅可在函数传递中使用。
+**功能：** 从[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[Context](./cj-apis-app-ability-ui_ability.md#class-context)类型。该转换仅可在函数传递中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -126,8 +126,8 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-| ArkTS统一类型。|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-| ArkTS互操作上下文。|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-| ArkTS统一类型。|
 
 **返回值：**
 
@@ -158,7 +158,7 @@ class MyAbilityStage <: AbilityStage {
 public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext
 ```
 
-**功能：** 从[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[UIAbilityContext](#class-uiabilitycontext)类型。
+**功能：** 从[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)转换为[UIAbilityContext](#class-uiabilitycontext)类型。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -168,8 +168,8 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|是|-|ArkTS统一类型。|
 
 **返回值：**
 
@@ -202,7 +202,7 @@ public interface SystemObjectInteropTypeToJS {
 }
 ```
 
-**功能：** 系统对象专用的拓展接口，以实现与[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)的互转。
+**功能：** 系统对象专用的拓展接口，以实现与[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)的互转。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -214,7 +214,7 @@ public interface SystemObjectInteropTypeToJS {
 func toJSValue(context: JSContext): JSValue
 ```
 
-**功能：** 将仓颉对象转换成[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)。
+**功能：** 将仓颉对象转换成[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -224,13 +224,13 @@ func toJSValue(context: JSContext): JSValue
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|是|-|ArkTS互操作上下文。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|ArkTS统一类型。|
+|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|ArkTS统一类型。|
 
 ## class Ability
 
@@ -789,7 +789,7 @@ public func isTerminating(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -824,11 +824,11 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|需要启动的目标ServiceExtensionAbility的want信息。|
-|result|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[RequestResult](./cj-apis-app-ability-dialog_request.md#class-requestresult)>|是|-| 用于返回结果的回调。|
+|result|[AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[RequestResult](./cj-apis-app-ability-dialog_request.md#class-requestresult)>|是|-| 用于返回结果的回调。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -883,7 +883,7 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -948,11 +948,11 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|启动Ability的want信息。|
-|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[AbilityResult](./cj-apis-ability-ability_result.md#class-abilityresult)>|是|-| 执行结果回调函数。|
+|callback|[AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[AbilityResult](./cj-apis-ability-ability_result.md#class-abilityresult)>|是|-| 执行结果回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1016,11 +1016,11 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 |:---|:---|:---|:---|:---|
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|是|-|启动Ability的want信息。|
 |options|StartOptions|是|-|启动Ability所携带的参数。|
-|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<AbilityResult>|是|-|执行结果回调函数。|
+|callback|[AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<AbilityResult>|是|-|执行结果回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1078,7 +1078,7 @@ public func terminateSelf(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1118,7 +1118,7 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码说明文档](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

@@ -23,7 +23,7 @@ API example code usage instructions:
 - If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above example projects and configuration templates, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For the above example projects and configuration templates, refer to [Cangjie Example Code Instructions](../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## func getSensorList()
 
@@ -45,7 +45,7 @@ public func getSensorList(): Array<Sensor>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](./cj-errorcode-sensor.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -97,7 +97,7 @@ public func getSingleSensor(sensorType: SensorId): Sensor
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](../../errorcodes/cj-errorcode-sensor.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Sensor Error Codes](./cj-errorcode-sensor.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -139,7 +139,7 @@ public func off(sensorType: SensorId, callback!: ?CallbackObject = None): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | sensorType | [SensorId](#enum-sensorid) | Yes | - | The type of sensor. |
-| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** The callback function for asynchronously reported sensor data. The data type varies depending on the sensor type. |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** The callback function for asynchronously reported sensor data. The data type varies depending on the sensor type. |
 
 **Example:**
 
@@ -193,7 +193,7 @@ public func on<T>(sensorType: SensorId, callback: Callback1Argument<T>, option!:
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | sensorType | [SensorId](#enum-sensorid) | Yes | - | The type of sensor. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | Yes | - | The callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | Yes | - | The callback function. |
 | option | ?[Options](#class-options) | No | None | Optional parameter list for setting the sensor reporting frequency. The default value is 200000000ns. |
 
 ## func once\<T>(SensorId, Callback1Argument\<T>) where T \<: Response
@@ -213,7 +213,7 @@ public func once<T>(sensorType: SensorId, callback: Callback1Argument<T>): Unit 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | sensorType | [SensorId](#enum-sensorid) | Yes | - | The type of sensor. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | Yes | - | The callback function for asynchronously reported sensor data. The data type varies depending on the sensor type. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | Yes | - | The callback function for asynchronously reported sensor data. The data type varies depending on the sensor type. |
 
 ## class AccelerometerResponse
 

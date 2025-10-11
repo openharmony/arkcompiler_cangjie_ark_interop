@@ -27,7 +27,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## class Constants
 
@@ -181,7 +181,7 @@ public func get(key: String): ValueType
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -232,7 +232,7 @@ public func getEntries(keyPrefix: String): Array<Entry>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -282,7 +282,7 @@ public func getEntries(query: Query): Array<Entry>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -332,7 +332,7 @@ public func getResultSet(keyPrefix: String): KVStoreResultSet
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -383,7 +383,7 @@ public func getResultSet(query: Query): KVStoreResultSet
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -434,7 +434,7 @@ public func getResultSize(query: Query): Int32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -705,7 +705,7 @@ public func closeKVStore(appId: String, storeId: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -746,7 +746,7 @@ public func deleteKVStore(appId: String, storeId: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -793,7 +793,7 @@ public func getAllKVStoreId(appId: String): Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -840,7 +840,7 @@ public func getKVStore<T>(storeId: String, options: Options): T where T <: Singl
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1298,7 +1298,7 @@ public open func backup(file: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1341,7 +1341,7 @@ public open func commit(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1389,7 +1389,7 @@ public open func delete(key: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1440,7 +1440,7 @@ public open func deleteBatch(keys: Array<String>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1496,7 +1496,7 @@ public open func enableSync(enabled: Bool): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1558,7 +1558,7 @@ public open func get(key: String): ValueType
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1614,7 +1614,7 @@ public open func put(key: String, value: ValueType): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1664,7 +1664,7 @@ public open func putBatch(entries: Array<Entry>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1722,7 +1722,7 @@ public open func restore(file: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1766,7 +1766,7 @@ public open func rollback(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1815,7 +1815,7 @@ public open func setSyncParam(defaultAllowedDelayMs: UInt32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1858,7 +1858,7 @@ public open func startTransaction(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](../../errorcodes/cj-errorcode-distributed_kv_store.md)。
+- BusinessException：对应错误码如下表，详见[分布式键值数据库错误码](./cj-errorcode-distributed_kv_store.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

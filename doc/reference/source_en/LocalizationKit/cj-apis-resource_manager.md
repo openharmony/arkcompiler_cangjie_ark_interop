@@ -15,7 +15,7 @@ API example code usage instructions:
 - If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../cj-development-intro.md#仓颉示例代码说明).
 
 ## class Configuration
 
@@ -228,7 +228,7 @@ public func addResource(path: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -260,7 +260,7 @@ public func closeRawFd(path: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -299,7 +299,7 @@ public func getBoolean(resId: UInt32): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -340,7 +340,7 @@ public func getBoolean(resource: AppResource): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -381,7 +381,7 @@ public func getBooleanByName(resName: String): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -421,7 +421,7 @@ public func getColor(resource: AppResource): UInt32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -463,7 +463,7 @@ public func getColor(resId: UInt32): UInt32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -505,7 +505,7 @@ public func getColorByName(resName: String): UInt32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -601,7 +601,7 @@ public func getLocales(includeSystem!: Bool = false): Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -641,7 +641,7 @@ public func getMediaBase64ByName(resName: String, density!: ?ScreenDensity = Non
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -689,7 +689,7 @@ public func getMediaByName(resName: String, density!: ?ScreenDensity = None): Ar
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -731,7 +731,7 @@ public func getMediaContent(resId: UInt32, density!: ?ScreenDensity = None): Arr
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -773,7 +773,7 @@ public func getMediaContent(resource: AppResource, density!: ?ScreenDensity = No
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -815,7 +815,7 @@ public func getMediaContentBase64(resId: UInt32, density!: ?ScreenDensity = None
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -861,7 +861,7 @@ public func getMediaContentBase64(resource: AppResource, density!: ?ScreenDensit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -908,7 +908,7 @@ public func getNumber(resId: UInt32): NumberValueType
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -950,7 +950,7 @@ public func getNumber(resource: AppResource): NumberValueType
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -992,7 +992,7 @@ public func getNumberByName(resName: String): NumberValueType
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1035,7 +1035,7 @@ public func getPluralStringByName(resName: String, num: Int64): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1084,7 +1084,7 @@ public func getPluralStringValue(resId: UInt32, num: Int64): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1133,7 +1133,7 @@ public func getPluralStringValue(resource: AppResource, num: Int64): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1181,7 +1181,7 @@ public func getRawFd(path: String): RawFileDescriptor
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1221,7 +1221,7 @@ public func getRawFileContent(path: String): Array<UInt8>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1259,7 +1259,7 @@ public func getRawFileList(path: String): Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1300,7 +1300,7 @@ public func getString(resId: UInt32, args: Array<ArgsValueType>): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
 | Error Code ID | Error Message |
 | :---- | :--- |
@@ -1344,7 +1344,7 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
 | Error Code ID | Error Message |
 | :---- | :--- |
@@ -1386,7 +1386,7 @@ public func getString(resource: AppResource, args: Array<ArgsValueType>): String
 
  **Exceptions:**
 
- - BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+ - BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
    | Error Code ID | Error Message |
    | :---- | :--- |
@@ -1443,7 +1443,7 @@ public func getStringArrayValue(resId: UInt32): Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1485,7 +1485,7 @@ public func getStringArrayValue(resource: AppResource): Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1528,7 +1528,7 @@ public func getStringByName(resName: String, args: Array<ArgsValueType>): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1565,7 +1565,7 @@ public func removeResource(path: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](../../errorcodes/cj-errorcode-resource-manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Resource Management Error Codes](./cj-errorcode-resource-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

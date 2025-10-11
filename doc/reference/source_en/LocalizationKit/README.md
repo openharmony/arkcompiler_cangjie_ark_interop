@@ -6,5 +6,5 @@
     - [ohos.raw_file_descriptor](cj-apis-raw_file_descriptor.md)
     - [ohos.resource](cj-apis-resource.md)
 - Error Codes
-    - [I18n Error Codes](../errorcodes/cj-errorcode-i18n.md)
-    - [Resource Management Error Codes](../errorcodes/cj-errorcode-resource-manager.md)
+    - [I18n Error Codes](cj-errorcode-i18n.md)
+    - [Resource Management Error Codes](cj-errorcode-resource-manager.md)

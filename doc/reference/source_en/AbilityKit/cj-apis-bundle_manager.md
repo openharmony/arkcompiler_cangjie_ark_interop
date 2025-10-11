@@ -15,7 +15,7 @@ API sample code usage instructions:
 - If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the aforementioned sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-sample-code-instructions).
+For details about the aforementioned sample project and configuration template, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#Cangjie-sample-code-instructions).
 
 ## class AbilityInfo
 
@@ -1437,7 +1437,7 @@ public static func canOpenLink(link: String): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1534,10 +1534,10 @@ If the configuration file information uses the resource reference format, the re
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
+  | :--- | :--- |
   | 401 | Input parameters check failed. |
   | 17700002 | The specified moduleName is not existed. |
   | 17700003 | The specified abilityName is not existed. |
@@ -1598,7 +1598,7 @@ If the configuration file information uses the resource reference format, the re
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1708,7 +1708,7 @@ public static func isDefaultApplication(appType: String): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](../../errorcodes/cj-errorcode-bundle.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bundle Management Subsystem Common Error Codes](./cj-errorcode-bundle.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

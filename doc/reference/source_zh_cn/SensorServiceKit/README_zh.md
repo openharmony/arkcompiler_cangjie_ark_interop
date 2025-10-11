@@ -3,4 +3,4 @@
 - 仓颉API
     - [ohos.sensor（传感器）](cj-apis-sensor.md)
 - 错误码
-    - [传感器错误码](../errorcodes/cj-errorcode-sensor.md)
+    - [传感器错误码](cj-errorcode-sensor.md)

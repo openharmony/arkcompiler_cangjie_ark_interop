@@ -6,7 +6,7 @@
     - [Phone](cj-phone-syscap-list.md)
     - [Tablet](cj-tablet-syscap-list.md)
 - [API Tag-based Management](cj-ifavailable.md)
-- [Universal Error Codes](errorcodes/cj-errorcode-universal.md)
+- [Universal Error Codes](cj-errorcode-universal.md)
 - [Ability Kit API Reference](AbilityKit/README.md)
 - [ArkData API Reference](ArkData/README.md)
 - [ArkGraphics 2D API Reference](ArkGraphics2D/README.md)

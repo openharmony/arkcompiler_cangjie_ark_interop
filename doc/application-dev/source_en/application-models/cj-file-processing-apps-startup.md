@@ -12,7 +12,7 @@ Figure 1 Visual Demonstration
 
 ## Implementation Steps
 
-**Table 1** Description of [Want](../../../reference/source_en/AbilityKit/cj-apis-ability.md#class-want) Parameters in startAbility Requests
+**Table 1** Description of [Want](../../../reference/source_en/AbilityKit/cj-apis-app-ability-want.md#class-want) Parameters in startAbility Requests
 
 | Parameter Name | Type   | Required | Description                                                                                                                                                                                   |
 |----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

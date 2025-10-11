@@ -27,7 +27,7 @@ API example code usage guidelines:
 - If the first line of the example code has a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details on the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#仓颉示例代码说明).
+For details on the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../cj-development-intro.md#仓颉示例代码说明).
 
 ## func deleteRdbStore(UIAbilityContext, String)
 
@@ -50,10 +50,10 @@ public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
+  | :--- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14800000 | Inner error. |
   | 14800010 | Failed to open or delete the database by an invalid database path. |
@@ -85,10 +85,10 @@ public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
+  | :--- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
   | 14800000 | Inner error. |
   | 14800010 | Failed to open or delete the database by an invalid database path. |
@@ -128,10 +128,10 @@ public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStor
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
-  | :---- | :--- |
+  | :--- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
   | 14800000 | Inner error. |
   | 14800010 | Failed to open or delete the database by an invalid database path. |
@@ -515,7 +515,7 @@ public func `in`(field: String, value: Array<ValueType>): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -584,7 +584,7 @@ public func beginsWith(field: String, value: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -618,7 +618,7 @@ public func between(field: String, low: ValueType, high: ValueType): RdbPredicat
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -651,7 +651,7 @@ public func contains(field: String, value: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -720,7 +720,7 @@ public func endsWith(field: String, value: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -753,7 +753,7 @@ public func equalTo(field: String, value: ValueType): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -786,7 +786,7 @@ public func glob(field: String, value: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -819,7 +819,7 @@ public func greaterThan(field: String, value: ValueType): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -852,7 +852,7 @@ public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :------------ | :------------ |
@@ -883,7 +883,7 @@ public func groupBy(fields: Array<String>): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -935,7 +935,7 @@ public func isNotNull(field: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -968,7 +968,7 @@ public func isNull(field: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1002,7 +1002,7 @@ public func lessThan(field: String, value: ValueType): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1036,7 +1036,7 @@ public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1070,7 +1070,7 @@ public func like(field: String, value: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1103,7 +1103,7 @@ public func limitAs(value: Int32): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1138,7 +1138,7 @@ public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredi
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1172,7 +1172,7 @@ public func notEqualTo(field: String, value: ValueType): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1206,7 +1206,7 @@ public func notIn(field: String, value: Array<ValueType>): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1239,7 +1239,7 @@ public func offsetAs(rowOffset: Int32): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1291,7 +1291,7 @@ public func orderByAsc(field: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1324,7 +1324,7 @@ public func orderByDesc(field: String): RdbPredicates
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1360,7 +1360,7 @@ public func backup(destName: String): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1411,7 +1411,7 @@ public func batchInsert(table: String, values: Array<ValuesBucket>): Int64
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1445,7 +1445,7 @@ public func beginTransaction(): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1484,7 +1484,7 @@ public func commit(): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1534,7 +1534,7 @@ public func delete(predicates: RdbPredicates): Int64
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1579,7 +1579,7 @@ public func emit(event: String): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1610,7 +1610,7 @@ public func executeSql(sql: String, bindArgs!: Array<ValueType> = []): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1665,7 +1665,7 @@ public func insert(table: String, values: ValuesBucket,
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1853,7 +1853,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1887,7 +1887,7 @@ public func getAsset(columnIndex: Int32): Asset
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1939,7 +1939,7 @@ public func getAssets(columnIndex: Int32): Assets
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1991,7 +1991,7 @@ public func getBlob(columnIndex: Int32): Array<UInt8>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2043,7 +2043,7 @@ public func getColumnIndex(columnName: String): Int32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2095,7 +2095,7 @@ public func getColumnName(columnIndex: Int32): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2145,7 +2145,7 @@ public func getDouble(columnIndex: Int32): Float64
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2197,7 +2197,7 @@ public func getLong(columnIndex: Int32): Int64
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2243,7 +2243,7 @@ public func getRow(): ValuesBucket
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2294,7 +2294,7 @@ public func getString(columnIndex: Int32): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2384,7 +2384,7 @@ public func goToLastRow(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2498,7 +2498,7 @@ public func isColumnNull(columnIndex: Int32): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../errorcodes/cj-errorcode-data-rdb.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Relational Database Error Codes](./cj-errorcode-data-rdb.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3814,7 +3814,7 @@ Uint8Array(Array<UInt8>)
 public type Assets = Array<Asset>
 ```
 
-**Function:** [Assets](#type-assets) is a type alias for Array\<Asset>.
+**Function:** [Assets](#type-assets) is a type alias for [Array\<Asset>](../../../../cj-user-manual/source_en/basic_data_type/array.md#array).
 
 ## type ValuesBucket
 
@@ -3822,4 +3822,4 @@ public type Assets = Array<Asset>
 public type ValuesBucket = Map<String, ValueType>
 ```
 
-**Function:** [ValuesBucket](#type-valuesbucket) is a type alias for Map\<String,ValueType>.
+**Function:** [ValuesBucket](#type-valuesbucket) is a type alias for [Map\<String,ValueType>](../../../../cj-user-manual/source_en/generic/generic_class.md#泛型类).

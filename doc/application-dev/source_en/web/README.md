@@ -1,4 +1,4 @@
-# ArkWeb (Ark Web)(Beta Feature)
+# ArkWeb (Ark Web) (Beta Feature)
 
 - [ArkWeb Introduction](cj-web-component-overview.md)
 - Setting Basic Properties and Events

@@ -15,7 +15,7 @@ API sample code usage instructions:
 - If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
+For details about the aforementioned sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## func create(ColorSpace)
 
@@ -43,7 +43,7 @@ public func create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -77,7 +77,7 @@ public func create(primaries: ColorSpacePrimaries, gamma: Float32): ColorSpaceMa
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -120,7 +120,7 @@ public func getColorSpaceName(): ColorSpace
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -160,7 +160,7 @@ public func getGamma(): Float32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -200,7 +200,7 @@ public func getWhitePoint(): Array<Float32>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Color Management Error Codes](../../errorcodes/cj-errorcode-colorspace-manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Color Management Error Codes](./cj-errorcode-colorspace-manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
