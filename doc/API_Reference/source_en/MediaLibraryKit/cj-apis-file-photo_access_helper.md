@@ -45,7 +45,7 @@ public func getPhotoAccessHelper(context: UIAbilityContext): PhotoAccessHelper
 
 |Type|Description|
 |:----|:----|
-|[PhotoAccessHelper](./cj-apis-multimedia-photo_accesshelper.md#class-photoaccesshelper)|Instance of the album management module.|
+|[PhotoAccessHelper](./cj-apis-file-photo_access_helper.md#class-photoaccesshelper)|Instance of the album management module.|
 
 **Exceptions:**
 
@@ -104,7 +104,7 @@ public prop albumSubtype: AlbumSubtype
 
 **Description:** Album subtype.
 
-**Type:** [AlbumSubtype](./cj-apis-multimedia-photo_accesshelper.md#enum-albumsubtype)
+**Type:** [AlbumSubtype](./cj-apis-file-photo_access_helper.md#enum-albumsubtype)
 
 **Access:** Read-only
 
@@ -120,7 +120,7 @@ public prop albumType: AlbumType
 
 **Description:** Album type.
 
-**Type:** [AlbumType](./cj-apis-multimedia-photo_accesshelper.md#enum-albumtype)
+**Type:** [AlbumType](./cj-apis-file-photo_access_helper.md#enum-albumtype)
 
 **Access:** Read-only
 
@@ -194,7 +194,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|options|[FetchOptions](./cj-apis-multimedia-photo_accesshelper.md#class-fetchoptions)|Yes|-| Retrieval options.|
+|options|[FetchOptions](./cj-apis-file-photo_access_helper.md#class-fetchoptions)|Yes|-| Retrieval options.|
 
 **Return Value:**
 
@@ -772,7 +772,7 @@ public func get(member: String): MemberType
 
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| member | String | Yes | - | Member parameter name. When getting, except for 'uri', 'media_type', 'subtype', and 'display_name', other attributes need to specify the [PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys) to be retrieved in fetchColumns. For example, to get the title attribute: fetchColumns: ['title']. |
+| member | String | Yes | - | Member parameter name. When getting, except for 'uri', 'media_type', 'subtype', and 'display_name', other attributes need to specify the [PhotoKeys](./cj-apis-file-photo_access_helper.md#enum-photokeys) to be retrieved in fetchColumns. For example, to get the title attribute: fetchColumns: ['title']. |
 
 **Return Value:**
 
@@ -893,8 +893,8 @@ public func set(member: String, value: String): Unit
 
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| member | String | Yes | - | Member parameter name, e.g., [PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys).TITLE. |
-| value | String | Yes | - | Sets the member parameter name. Only the value of [PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys).TITLE can be modified. |
+| member | String | Yes | - | Member parameter name, e.g., [PhotoKeys](./cj-apis-file-photo_access_helper.md#enum-photokeys).TITLE. |
+| value | String | Yes | - | Sets the member parameter name. Only the value of [PhotoKeys](./cj-apis-file-photo_access_helper.md#enum-photokeys).TITLE can be modified. |
 
 **Exceptions:**
 

@@ -432,7 +432,6 @@
                     - [mediatool Tool](source_en/tools/cj-mediatool.md)
                     - [devicedebug Tool](source_en/tools/cj-devicedebug-tool.md)
     - [Media]()
-        - [Audio Kit (Audio Service)]()
         - [Camera Kit (Camera Service)]()
             - [Camera Kit Overview](source_en/media/camera/cj-camera-overview.md)
             - [Development Preparation](source_en/media/camera/cj-camera-preparation.md)

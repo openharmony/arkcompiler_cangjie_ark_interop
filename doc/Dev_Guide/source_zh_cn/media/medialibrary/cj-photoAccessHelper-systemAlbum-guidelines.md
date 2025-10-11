@@ -14,7 +14,7 @@ photoAccessHelper仅提供开发者对收藏夹、视频相册、截屏和录屏
 
 ### 获取收藏夹对象
 
-通过[getAlbums](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions)接口获取收藏夹对象。
+通过[getAlbums](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions)接口获取收藏夹对象。
 
 **前提条件**
 
@@ -79,7 +79,7 @@ class MainAbility <: UIAbility {
 
 ### 获取收藏夹中的图片和视频
 
-首先 [获取收藏夹对象](#获取收藏夹对象)，然后调用 [getAssets](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions) 接口获取收藏夹中的资源。
+首先 [获取收藏夹对象](#获取收藏夹对象)，然后调用 [getAssets](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getassetsfetchoptions) 接口获取收藏夹中的资源。
 
 **前提条件**
 
@@ -92,7 +92,7 @@ class MainAbility <: UIAbility {
 1. [获取收藏夹对象](#获取收藏夹对象)。
 2. 建立图片检索条件，用于获取图片。
 3. 调用Album.getAssets接口获取图片资源。
-4. 调用[getFirstObject](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject)接口获取第一张图片。
+4. 调用[getFirstObject](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getfirstobject)接口获取第一张图片。
 
 <!-- compile -->
 
@@ -164,7 +164,7 @@ class MainAbility <: UIAbility {
 
 ### 获取视频相册对象
 
-通过[getAlbums](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions)接口获取视频相册对象。
+通过[getAlbums](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getalbumsalbumtype-albumsubtype-fetchoptions)接口获取视频相册对象。
 
 **前提条件**
 
@@ -229,7 +229,7 @@ class MainAbility <: UIAbility {
 
 ### 获取视频相册中的视频
 
-先[获取视频相册对象](#获取视频相册对象)。然后调用[getAssets](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getassetsfetchoptions)接口获取视频相册对象中的视频资源。
+先[获取视频相册对象](#获取视频相册对象)。然后调用[getAssets](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getassetsfetchoptions)接口获取视频相册对象中的视频资源。
 
 **前提条件**
 
@@ -242,7 +242,7 @@ class MainAbility <: UIAbility {
 1. 先[获取视频相册对象](#获取视频相册对象)。
 2. 建立视频检索条件，用于获取视频。
 3. 调用Album.getAssets接口获取视频资源。
-4. 调用[getFirstObject](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md#func-getfirstobject)接口获取第一个视频。
+4. 调用[getFirstObject](../../../../API_Reference/source_zh_cn/MediaLibraryKit/cj-apis-file-photo_access_helper.md#func-getfirstobject)接口获取第一个视频。
 
 <!-- compile -->
 
