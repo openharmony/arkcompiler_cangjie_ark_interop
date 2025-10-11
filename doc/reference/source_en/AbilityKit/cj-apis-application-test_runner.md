@@ -23,7 +23,7 @@ API sample code usage instructions:
 - If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](./cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the aforementioned sample project and configuration template, refer to [Cangjie Sample Code Description](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the aforementioned sample project and configuration template, refer to [Cangjie Sample Code Description](../cj-development-intro.md#仓颉示例代码说明).
 
 ## class TestRunner
 

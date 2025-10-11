@@ -19,7 +19,7 @@ API example code usage instructions:
 - If the first line of example code contains a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../cj-development-intro.md#Cangjie-Example-Code-Description).
 
 ## func createHttp()
 
@@ -346,7 +346,7 @@ public func off(event: HttpRequestEvent, callback!: ?CallbackObject = None): Uni
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | Type of HTTP request event to unsubscribe from. |
-| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | Callback function. You can specify the callback passed to on to unsubscribe from the corresponding event, or omit the callback to clear all subscriptions. |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | Callback function. You can specify the callback passed to on to unsubscribe from the corresponding event, or omit the callback to clear all subscriptions. |
 
 **Exceptions:**
 
@@ -373,7 +373,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<HashMap<Stri
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports HeadersReceive events. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HashMap\<String,String>> | Yes | - | Callback function that returns the HTTP response header object. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HashMap\<String,String>> | Yes | - | Callback function that returns the HTTP response header object. |
 
 **Exceptions:**
 
@@ -400,7 +400,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<Array<Byte>>
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataReceive events. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<Byte>> | Yes | - | Callback function for receiving HTTP streaming response data. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<Byte>> | Yes | - | Callback function for receiving HTTP streaming response data. |
 
 **Exceptions:**
 
@@ -425,7 +425,7 @@ public func on(event: HttpRequestEvent, callback: Callback0Argument): Unit
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataEnd event. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
 
 **Exceptions:**
 
@@ -452,7 +452,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataReceiveP
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataReceiveProgress event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)> | Yes | - | Callback function for receiving data reception progress information, with the parameter being a DataReceiveProgressInfo object. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DataReceiveProgressInfo](#class-datareceiveprogressinfo)> | Yes | - | Callback function for receiving data reception progress information, with the parameter being a DataReceiveProgressInfo object. |
 
 **Exceptions:**
 
@@ -479,7 +479,7 @@ public func on(event: HttpRequestEvent, callback: Callback1Argument<DataSendProg
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports DataSendProgress event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DataSendProgressInfo](#class-datasendprogressinfo)> | Yes | - | Callback function for receiving data sending progress information, with the parameter being a DataSendProgressInfo object. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DataSendProgressInfo](#class-datasendprogressinfo)> | Yes | - | Callback function for receiving data sending progress information, with the parameter being a DataSendProgressInfo object. |
 
 **Exceptions:**
 
@@ -506,7 +506,7 @@ public func once(event: HttpRequestEvent, callback: Callback1Argument<HashMap<St
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | event | [HttpRequestEvent](#enum-httprequestevent) | Yes | - | HTTP request event type, only supports HeadersReceive event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HashMap\<String,String>> | Yes | - | Callback function. Returns the HTTP response header object. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<HashMap\<String,String>> | Yes | - | Callback function. Returns the HTTP response header object. |
 
 **Exceptions:**
 
@@ -540,13 +540,13 @@ public func request(url: String, options: HttpRequestOptions, callback: AsyncCal
 |:---|:---|:---|:---|:---|
 | url | String | Yes | - | URL address for initiating the network request. |
 | options | [HttpRequestOptions](#class-httprequestoptions) | Yes | - | Refer to [HttpRequestOptions](#class-httprequestoptions). |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)> | Yes | - | Callback function. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)> | Yes | - | Callback function. |
 
 **Exceptions:**
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](./cj-errorcode-net-http.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 - HTTP interface return error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
   | Error Code ID | Error Message |
@@ -630,11 +630,11 @@ public func request(url: String, callback: AsyncCallback<HttpResponse>): Unit
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | url | String | Yes | - | URL address for initiating the network request. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)> | Yes | - | Callback function. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[HttpResponse](#class-httpresponse)> | Yes | - | Callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](./cj-errorcode-net-http.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 - HTTP interface return error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
   | Error Code ID | Error Message |
@@ -715,11 +715,11 @@ public func requestInStream(url: String, options: HttpRequestOptions, callback: 
 |:---|:---|:---|:---|:---|
 | url | String | Yes | - | URL address for initiating the network request. |
 | options | [HttpRequestOptions](#class-httprequestoptions) | Yes | - | Refer to [HttpRequestOptions](#class-httprequestoptions). |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<UInt32> | Yes | - | Callback function. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<UInt32> | Yes | - | Callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](../../errorcodes/cj-errorcode-net-http.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, [HTTP Error Codes](./cj-errorcode-net-http.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 - HTTP interface return error code mapping: 2300000 + curl error code. For more common error codes, refer to: [curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
   | Error Code ID | Error Message |
@@ -799,7 +799,7 @@ public func requestInStream(url: String, callback: AsyncCallback<UInt32>): Unit
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | url | String | Yes | - | URL address for initiating the network request. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_ex## class HttpRequestOptions
+| callback | [AsyncCallback](../arkinterop/cj-api-business_ex## class HttpRequestOptions
 
 ```cangjie
 public class HttpRequestOptions {

@@ -4,4 +4,4 @@
     - [ohos.ability_delegator_registry（AbilityDelegatorRegistry）](cj-apis-ability_delegator_registry.md)
     - [ohos.ui_test（UI测试）](cj-apis-ui_test.md)
 - 错误码
-    - [uitest错误码](../errorcodes/cj-errorcode-uitest.md)
+    - [uitest错误码](cj-errorcode-uitest.md)

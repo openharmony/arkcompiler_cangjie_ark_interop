@@ -3,4 +3,4 @@
 - 仓颉API
     - [ohos.multimedia.media（媒体服务）](cj-apis-multimedia_media.md)
 - 错误码
-    - [Media错误码](../errorcodes/cj-errorcode-multimedia-media.md)
+    - [Media错误码](cj-errorcode-multimedia-media.md)

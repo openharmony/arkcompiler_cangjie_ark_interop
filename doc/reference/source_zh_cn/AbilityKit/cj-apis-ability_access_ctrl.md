@@ -15,7 +15,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## class AbilityAccessCtrl
 
@@ -88,7 +88,7 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |tokenID|UInt32|是|-|要校验的目标应用的身份标识。可通过应用的[ApplicationInfo](cj-apis-bundle_manager.md#class-applicationinfo)获得。|
-|permissionName|[Permissions](#type-permissions)|是|-|需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../../../application-dev/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)中查询。|
+|permissionName|[Permissions](#type-permissions)|是|-|需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../../application-dev/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)中查询。|
 
 **返回值：**
 
@@ -98,7 +98,7 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[访问控制错误码](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md)。
+- BusinessException：对应错误码如下表，详见[访问控制错误码](./cj-errorcode-access-token.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -139,12 +139,12 @@ public func requestPermissionsFromUser(context: UIAbilityContext, permissionList
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |context|[UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext)|是|-|请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。|
-|permissionList|Array\<[Permissions](#type-permissions)>|是|-|需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../../../application-dev/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)中查询。|
+|permissionList|Array\<[Permissions](#type-permissions)>|是|-|需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../../application-dev/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)中查询。|
 |requestCallback|AsyncCallback\<[PermissionRequestResult](cj-apis-sercurity-permission_request_result.md#class-permissionrequestresultarraystring-arrayint32-arraybool)>|是|-|回调函数，返回接口调用是否成功的结果。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[访问控制错误码](../../../source_zh_cn/errorcodes/cj-errorcode-access-token.md)。
+- BusinessException：对应错误码如下表，详见[访问控制错误码](./cj-errorcode-access-token.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

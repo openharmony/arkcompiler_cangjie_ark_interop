@@ -15,7 +15,7 @@ API sample code usage guidelines:
 - If the sample code has a "// index.cj" comment on the first line, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the above sample project and configuration template, see [Cangjie Sample Code Description](../../cj-development-intro.md#Cangjie-Sample-Code-Description).
+For details about the above sample project and configuration template, see [Cangjie Sample Code Description](../cj-development-intro.md#Cangjie-Sample-Code-Description).
 
 ## func createCipher(String)
 
@@ -25,8 +25,8 @@ public func createCipher(transformation: String): Cipher
 
 **Description:** Obtains the corresponding [Cipher](#class-cipher) instance by specifying the algorithm name.
 
-<!-- For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications). -->
-For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications).
+<!-- For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../cj-development-intro.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../cj-development-intro.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications). -->
+For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -46,7 +46,7 @@ For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message               |
   | :----------- | :-------------------------- |
@@ -93,7 +93,7 @@ public func createMac(algName: String): Mac
 
 **Exceptions:**
 
-- BusinessException: For details about the error codes, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: For details about the error codes, see [Universal Error Codes](../cj-errorcode-universal.md) and [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message       |
   | :----------- | :------------------ |
@@ -137,7 +137,7 @@ public func createMd(algName: String): Md
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message               |
   | :----------- | :-------------------------- |
@@ -175,7 +175,7 @@ public func createRandom(): Random
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :----------- | :------------ |
@@ -200,7 +200,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator
 
 **Description:** Obtains the corresponding symmetric key generator instance by specifying the algorithm name string.
 
-For supported specifications, see [Symmetric Key Generation and Conversion Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md).
+For supported specifications, see [Symmetric Key Generation and Conversion Specifications](../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -210,7 +210,7 @@ For supported specifications, see [Symmetric Key Generation and Conversion Speci
 
 | Name    | Type   | Mandatory | Default | Description                                                                 |
 | :------ | :----- | :-------- | :------ | :-------------------------------------------------------------------------- |
-| algName | String | Yes       | -       | Algorithm name of the symmetric key generator to be generated. For details about the value, see the "String Parameters" section in [Symmetric Key Generation and Conversion Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md). |
+| algName | String | Yes       | -       | Algorithm name of the symmetric key generator to be generated. For details about the value, see the "String Parameters" section in [Symmetric Key Generation and Conversion Specifications](../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md). |
 
 **Return Value:**
 
@@ -220,7 +220,7 @@ For supported specifications, see [Symmetric Key Generation and Conversion Speci
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message               |
   | :----------- | :-------------------------- |
@@ -419,7 +419,7 @@ This function can be used only after creating a [Cipher](#class-cipher) instance
 
 **Exceptions:**
 
-- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: The error codes are listed in the following table. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message               |
   | :----------- | :-------------------------- |
@@ -683,7 +683,7 @@ public func digest(): DataBlob
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [crypto framework error codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [crypto framework error codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -725,7 +725,7 @@ public func getMdLength(): UInt32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [crypto framework error codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [crypto framework error codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -764,7 +764,7 @@ public func update(input: DataBlob): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [universal error codes](../../errorcodes/cj-errorcode-universal.md) and [crypto framework error codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [universal error codes](../cj-errorcode-universal.md) and [crypto framework error codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -839,7 +839,7 @@ public func generateRandom(len: Int32): DataBlob
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [universal error codes](../../errorcodes/cj-errorcode-universal.md) and [crypto framework error codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [universal error codes](../cj-errorcode-universal.md) and [crypto framework error codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -880,7 +880,7 @@ public func setSeed(seed: DataBlob): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [crypto framework error codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [crypto framework error codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -997,7 +997,7 @@ public func getEncoded(): DataBlob
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1068,7 +1068,7 @@ This function can only be used after creating a symmetric key generator using [c
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1115,7 +1115,7 @@ Currently, OpenSSL's RAND_priv_bytes() is used as the underlying capability to g
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Crypto Framework Error Codes](../../errorcodes/cj-errorcode-crypto.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Crypto Framework Error Codes](./cj-errorcode-crypto.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

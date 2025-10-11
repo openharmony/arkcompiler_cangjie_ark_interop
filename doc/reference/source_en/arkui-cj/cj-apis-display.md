@@ -28,7 +28,7 @@ public func getAllDisplays(): Array<Display>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](./cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -71,7 +71,7 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](./cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -111,7 +111,7 @@ public func getDefaultDisplaySync(): Display
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](./cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -297,7 +297,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStat
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -311,7 +311,7 @@ import ohos.display.*
 class TestCallback <: Callback1Argument<FoldStatus> {
     public init() {}
     public open func invoke(value: FoldStatus): Unit {
-        Hilog.info(0, "AppLogCj", 
+        Hilog.info(0, "AppLogCj",
             "Display fold status changed, current fold status: " + match (value) {
                 case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
                 case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
@@ -346,7 +346,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisp
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md) and [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Screen Error Codes](./cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -360,7 +360,7 @@ import ohos.display.*
 class TestCallback <: Callback1Argument<FoldDisplayMode> {
     public init() {}
     public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "AppLogCj", 
+        Hilog.info(0, "AppLogCj",
             "Display fold status changed, current fold status: " + match (value) {
                 case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
                 case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
@@ -396,7 +396,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatu
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -442,7 +442,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDispl
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -456,7 +456,7 @@ import ohos.display.*
 class TestCallback <: Callback1Argument<FoldDisplayMode> {
     public init() {}
     public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "AppLogCj", 
+        Hilog.info(0, "AppLogCj",
             "Display fold status changed, current fold status: " + match (value) {
                 case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
                 case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
@@ -800,7 +800,7 @@ public func getCutoutInfo(): CutoutInfo
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Display Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Display Error Codes](./cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

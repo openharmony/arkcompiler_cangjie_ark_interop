@@ -39,7 +39,7 @@
     }
     ```
 
-4. 使能。通过[Session.start](../../../../reference/source_zh_cn/CameraKit/cj-apis-multimedia-camera.md#func-start)方法输出预览流，接口调用失败会返回相应错误码，错误码类型参见[Camera错误码](../../../../reference/source_zh_cn/errorcodes/cj-errorcode-multimedia-camera.md)。
+4. 使能。通过[Session.start](../../../../reference/source_zh_cn/CameraKit/cj-apis-multimedia-camera.md#func-start)方法输出预览流，接口调用失败会返回相应错误码，错误码类型参见[Camera错误码](../../../../reference/source_zh_cn/CameraKit/cj-errorcode-multimedia-camera.md)。
 
     <!-- compile -->
 
@@ -105,7 +105,7 @@
     }
     ```
 
-- 通过注册固定的error回调函数获取监听预览输出错误结果，回调返回预览输出接口使用错误时对应的错误码，错误码类型参见[Camera错误码](../../../../reference/source_zh_cn/errorcodes/cj-errorcode-multimedia-camera.md)。
+- 通过注册固定的error回调函数获取监听预览输出错误结果，回调返回预览输出接口使用错误时对应的错误码，错误码类型参见[Camera错误码](../../../../reference/source_zh_cn/CameraKit/cj-errorcode-multimedia-camera.md)。
 
     <!-- compile -->
 

@@ -24,7 +24,7 @@ API示例代码使用说明：
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 - 获取当前应用沙箱所在路径可通过UIAbilityContext.[filesDir](../AbilityKit/cj-apis-app-ability-ui_ability.md#prop-filesdir)获取。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func createAVImageGenerator()
 
@@ -46,7 +46,7 @@ public func createAVImageGenerator(): AVImageGenerator
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Media错误码](../../errorcodes/cj-errorcode-multimedia-media.md)。
+- BusinessException：对应错误码如下表，详见[Media错误码](./cj-errorcode-multimedia-media.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -223,7 +223,7 @@ public func fetchFrameByTime(timeUs: Int64, options: AVImageQueryOptions, param:
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Media错误码](../../errorcodes/cj-errorcode-multimedia-media.md)。
+- BusinessException：对应错误码如下表，详见[Media错误码](./cj-errorcode-multimedia-media.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -264,7 +264,7 @@ public func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[Media错误码](../../errorcodes/cj-errorcode-multimedia-media.md)。
+- BusinessException：对应错误码如下表，详见[Media错误码](./cj-errorcode-multimedia-media.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

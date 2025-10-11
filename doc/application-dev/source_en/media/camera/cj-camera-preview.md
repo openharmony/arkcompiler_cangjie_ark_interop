@@ -39,7 +39,7 @@ For detailed API documentation, please refer to the [Camera API Reference](../..
     }
     ```
 
-4. Enable the preview. Use the [Session.start](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-start) method to output the preview stream. If the API call fails, it will return an error code. For error code types, refer to [Camera Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md).
+4. Enable the preview. Use the [Session.start](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-start) method to output the preview stream. If the API call fails, it will return an error code. For error code types, refer to [Camera Error Codes](../../../../reference/source_en/CameraKit/cj-errorcode-multimedia-camera.md).
 
     <!-- compile -->
 
@@ -105,7 +105,7 @@ During camera application development, you can monitor the preview output stream
     }
     ```
 
-- Register a fixed `error` callback function to monitor preview output errors. The callback returns the corresponding error code when an error occurs in the preview output API. For error code types, refer to [Camera Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md).
+- Register a fixed `error` callback function to monitor preview output errors. The callback returns the corresponding error code when an error occurs in the preview output API. For error code types, refer to [Camera Error Codes](../../../../reference/source_en/CameraKit/cj-errorcode-multimedia-camera.md).
 
     <!-- compile -->
 

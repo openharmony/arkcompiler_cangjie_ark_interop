@@ -21,7 +21,7 @@ API example code usage instructions:
 - If the first line of example code contains a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example projects and configuration templates mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the example projects and configuration templates mentioned above, refer to [Cangjie Example Code Instructions](../cj-development-intro.md#仓颉示例代码说明).
 
 ## func getPhotoAccessHelper(UIAbilityContext)
 
@@ -49,7 +49,7 @@ public func getPhotoAccessHelper(context: UIAbilityContext): PhotoAccessHelper
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -204,7 +204,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -295,7 +295,7 @@ public func commitModify(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -362,7 +362,7 @@ public func getAllObjects(): Array<Album>
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -389,7 +389,7 @@ public func getFirstObject(): Album
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -416,7 +416,7 @@ public func getLastObject(): Album
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -443,7 +443,7 @@ public func getNextObject(): Album
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -476,7 +476,7 @@ public func getObjectByPosition(index: Int32): Album
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Error codes as shown in the table below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -507,7 +507,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -552,7 +552,7 @@ public func getCount(): Int32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -598,7 +598,7 @@ public func isAfterLast(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -717,7 +717,7 @@ public func commitModify(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -782,7 +782,7 @@ public func get(member: String): MemberType
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -844,7 +844,7 @@ public func getThumbnail(size!: ?Size = Size(256, 256)): PixelMap
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -898,7 +898,7 @@ public func set(member: String, value: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -968,7 +968,7 @@ public func getAllObjects(): Array<PhotoAsset>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -995,7 +995,7 @@ public func getFirstObject(): PhotoAsset
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1022,7 +1022,7 @@ public func getLastObject(): PhotoAsset
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1049,7 +1049,7 @@ public func getNextObject(): PhotoAsset
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1082,7 +1082,7 @@ public func getObjectByPosition(index: Int32): PhotoAsset
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../../errorcodes/cj-errorcode-filemanagement.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [File Management Error Codes](../CoreFileKit/cj-errorcode-filemanagement.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -15,7 +15,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## class CommonEventManager
 
@@ -98,7 +98,7 @@ public static func publish(event: String, options!: CommonEventPublishData =  Co
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
+- BusinessException：对应错误码如下表，详见[事件错误码](./cj-errorcode-common_event_service.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -148,11 +148,11 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |subscriber|[CommonEventSubscriber](cj-apis-common_event_subscriber.md#class-commoneventsubscriber)|是|-|表示订阅者对象。|
-|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)>|是|-|表示接收公共事件数据的回调函数。|
+|callback|[AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)>|是|-|表示接收公共事件数据的回调函数。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
+- BusinessException：对应错误码如下表，详见[事件错误码](./cj-errorcode-common_event_service.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -208,7 +208,7 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[事件错误码](../../../source_zh_cn/errorcodes/cj-errorcode-common_event_service.md)。
+- BusinessException：对应错误码如下表，详见[事件错误码](./cj-errorcode-common_event_service.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

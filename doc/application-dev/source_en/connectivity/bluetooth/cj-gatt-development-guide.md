@@ -332,7 +332,7 @@ Detailed interface descriptions are shown in the following table.
     let gattClientManager = GattClientManager()
     ```
 
-8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
+8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/ConnectivityKit/cj-errorcode-bluetooth_manager.md).
 
 ### Server-Side Operations on Services and Notifying Clients
 
@@ -613,5 +613,4 @@ Detailed interface descriptions are shown in the following table.
     }
     ```
 
-8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
-```
+8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/ConnectivityKit/cj-errorcode-bluetooth_manager.md).

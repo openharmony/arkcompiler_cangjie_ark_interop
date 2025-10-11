@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-完整的仓颉 API 说明以及实例代码请参见：[电池信息接口](../../reference/source_zh_cn/BasicServicesKit/cj-apis-battery_info.md)。
+完整的仓颉 API 说明以及实例代码请参见：[电池信息接口](../../../reference/source_zh_cn/BasicServicesKit/cj-apis-battery_info.md)。
 
 具体接口说明如下表。
 

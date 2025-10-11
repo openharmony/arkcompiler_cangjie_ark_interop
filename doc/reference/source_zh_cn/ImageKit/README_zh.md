@@ -3,4 +3,4 @@
 - 仓颉API
     - [ohos.multimedia.image（图片处理）](cj-apis-image.md)
 - 错误码
-    - [Image错误码](../errorcodes/cj-errorcode-image.md)
+    - [Image错误码](cj-errorcode-image.md)

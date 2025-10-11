@@ -6,7 +6,7 @@
     - [Phone](cj-phone-syscap-list.md)
     - [Tablet](cj-tablet-syscap-list.md)
 - [API标签化管控](cj-ifavailable.md)
-- [通用错误码](errorcodes/cj-errorcode-universal.md)
+- [通用错误码](cj-errorcode-universal.md)
 - [Ability Kit API参考](AbilityKit/README_zh.md)
 - [ArkData API参考](ArkData/README_zh.md)
 - [ArkGraphics 2D API参考](ArkGraphics2D/README_zh.md)

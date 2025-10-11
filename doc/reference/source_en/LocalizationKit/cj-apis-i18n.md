@@ -15,7 +15,7 @@ API example code usage instructions:
 - If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#Cangjie-example-code-instructions).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../cj-development-intro.md#Cangjie-example-code-instructions).
 
 ## func getCalendar(String, ?CalendarType)
 

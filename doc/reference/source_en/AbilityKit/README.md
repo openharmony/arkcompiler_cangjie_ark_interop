@@ -1,4 +1,5 @@
-# Ability Kit (Application Framework Services)(Beta Feature)
+# Ability Kit (Application Framework Services) (Beta Feature)
+
 - Cangjie APIs
     - [ohos.app.ability.ui_ability](cj-apis-app-ability-ui_ability.md)
     - [ohos.app.ability.want](cj-apis-app-ability-want.md)
@@ -21,7 +22,7 @@
     - [ohos.security.skill](cj-apis-skill.md)
     - [ohos.app.ability.error_manager](cj-apis-app-ability-error_manager.md)
 - Error Codes
-    - [Ability Subsystem Error Codes](../errorcodes/cj-errorcode-ability.md)
-    - [Bundle Management Subsystem Universal Error Codes](../errorcodes/cj-errorcode-bundle.md)
-    - [Access Control Error Codes](../errorcodes/cj-errorcode-access-token.md)
-    - [Screen Lock Sensitive Data Management Error Codes](../errorcodes/cj-errorcode-screen_lock_file_manager.md)
+    - [Ability Subsystem Error Codes](cj-errorcode-ability.md)
+    - [Bundle Management Subsystem Universal Error Codes](cj-errorcode-bundle.md)
+    - [Access Control Error Codes](cj-errorcode-access-token.md)
+    - [Screen Lock Sensitive Data Management Error Codes](cj-errorcode-screen_lock_file_manager.md)

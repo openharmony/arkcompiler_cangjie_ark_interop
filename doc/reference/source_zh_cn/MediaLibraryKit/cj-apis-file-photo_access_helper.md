@@ -21,7 +21,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func getPhotoAccessHelper(UIAbilityContext)
 
@@ -49,7 +49,7 @@ public func getPhotoAccessHelper(context: UIAbilityContext): PhotoAccessHelper
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -216,7 +216,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -289,7 +289,7 @@ public func commitModify(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -356,7 +356,7 @@ public func getAllObjects(): Array<Album>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -403,7 +403,7 @@ public func getFirstObject(): Album
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -450,7 +450,7 @@ public func getLastObject(): Album
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -497,7 +497,7 @@ public func getNextObject(): Album
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -550,7 +550,7 @@ public func getObjectByPosition(index: Int32): Album
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -807,7 +807,7 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -852,7 +852,7 @@ public func getCount(): Int32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -898,7 +898,7 @@ public func isAfterLast(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1007,7 +1007,7 @@ public func addAssets(assets: Array<PhotoAsset>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1057,7 +1057,7 @@ public func getAlbum(): Album
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1105,7 +1105,7 @@ public func removeAssets(assets: Array<PhotoAsset>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1163,7 +1163,7 @@ public func setAlbumName(name: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1230,7 +1230,7 @@ public init(asset: PhotoAsset)
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1286,7 +1286,7 @@ public static func createAssetRequest(context: UIAbilityContext, photoType: Phot
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1339,7 +1339,7 @@ public static func createImageAssetRequest(context: UIAbilityContext, fileUri: S
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1393,7 +1393,7 @@ public static func createVideoAssetRequest(context: UIAbilityContext, fileUri: S
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1441,7 +1441,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<PhotoAs
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1491,7 +1491,7 @@ public static func deleteAssets(context: UIAbilityContext, assets: Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1540,7 +1540,7 @@ public func addResource(resourceType: ResourceType, fileUri: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1590,7 +1590,7 @@ public func addResource(resourceType: ResourceType, data: Array<Byte>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1632,7 +1632,7 @@ public func discardCameraPhoto(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1680,7 +1680,7 @@ public func getAsset(): PhotoAsset
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1729,7 +1729,7 @@ public func getWriteCacheHandler(): Int32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1771,7 +1771,7 @@ public func saveCameraPhoto(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1819,7 +1819,7 @@ public func setTitle(title: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1882,7 +1882,7 @@ public func applyChanges(mediaChangeRequest: MediaChangeRequest): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1921,7 +1921,7 @@ public func getAlbums(albumType: AlbumType, subtype: AlbumSubtype,
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1976,7 +1976,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2030,7 +2030,7 @@ public func getBurstAssets(burstKey: String, options: FetchOptions): PhotoAssetR
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2073,11 +2073,11 @@ public func registerChange(uri: String, forChildUris: Bool, callback: Callback1A
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
 |forChildUris|Bool|是|-|是否模糊监听，uri为相册uri时，forChildUris为true能监听到相册中文件的变化，如果是false只能监听相册本身变化。uri为photoAsset时，forChildUris为true、false没有区别，uri为DefaultChangeUri时，forChildUris必须为true，如果为false将找不到该uri，收不到任何消息。|
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|是|-|返回要监听的[ChangeData](#class-changedata)。注：uri可以注册多个不同的callback监听，[unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata)可以关闭该uri所有监听，也可以关闭指定callback的监听。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|是|-|返回要监听的[ChangeData](#class-changedata)。注：uri可以注册多个不同的callback监听，[unRegisterChange](#func-unregisterchangestring-callback1argumentchangedata)可以关闭该uri所有监听，也可以关闭指定callback的监听。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2139,7 +2139,7 @@ public func release(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2185,11 +2185,11 @@ public func showAssetsCreationDialog(srcFileUris: Array<String>, photoCreationCo
 |:---|:---|:---|:---|:---|
 |srcFileUris|Array\<String>|是|-|需保存到媒体库中的图片/视频文件对应的媒体库uri。<br>**注意：**  仅支持处理图片、视频uri。|
 |photoCreationConfigs|Array\<[PhotoCreationConfig](#class-photocreationconfig)>|是|-|保存图片/视频到媒体库的配置，包括保存的文件名等，与srcFileUris保持一一对应。|
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<String>>|是|-|回调函数，获取返回给应用的媒体库文件uri列表。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2263,11 +2263,11 @@ public func unRegisterChange(uri: String, callback!: ?Callback1Argument<ChangeDa
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |uri|String|是|-|PhotoAsset的uri, Album的uri或[DefaultChangeUri](#enum-defaultchangeuri)的值。|
-|callback|?[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
+|callback|?[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[ChangeData](#class-changedata)>|否|None|**命名参数。** 取消[registerChange](#func-registerchangestring-bool-callback1argumentchangedata)注册时的callback的监听，不填时，取消该uri的所有监听。注：off指定注册的callback后不会进入此回调。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2395,7 +2395,7 @@ public func commitModify(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2460,7 +2460,7 @@ public func get(member: String): MemberType
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2523,7 +2523,7 @@ public func getThumbnail(size!: ?Size = Size(256, 256)): PixelMap
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2577,7 +2577,7 @@ public func set(member: String, value: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2649,7 +2649,7 @@ public func getAllObjects(): Array<PhotoAsset>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2676,7 +2676,7 @@ public func getFirstObject(): PhotoAsset
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2703,7 +2703,7 @@ public func getLastObject(): PhotoAsset
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2730,7 +2730,7 @@ public func getNextObject(): PhotoAsset
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2763,7 +2763,7 @@ public func getObjectByPosition(index: Int32): PhotoAsset
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](../CoreFileKit/cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
