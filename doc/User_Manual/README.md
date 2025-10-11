@@ -1,10 +1,12 @@
+# User Manual
+
 - [First Look at Cangjie Language](source_en/first_understanding/basic.md)
-- [Basic Concepts]()
+- Basic Concepts
     - [Identifiers](source_en/basic_programming_concepts/identifier.md)
     - [Program Structure](source_en/basic_programming_concepts/program_structure.md)
     - [Expressions](source_en/basic_programming_concepts/expression.md)
     - [Functions](source_en/basic_programming_concepts/function.md)
-- [Basic Data Types]()
+- Basic Data Types
     - [Basic Operators](source_en/basic_data_type/basic_operators.md)
     - [Integer Types](source_en/basic_data_type/integer.md)
     - [Floating-Point Types](source_en/basic_data_type/float.md)
@@ -16,7 +18,7 @@
     - [Range Type](source_en/basic_data_type/range.md)
     - [Unit Type](source_en/basic_data_type/unit.md)
     - [Nothing Type](source_en/basic_data_type/nothing.md)
-- [Functions]()
+- Functions
     - [Defining Functions](source_en/function/define_functions.md)
     - [Calling Functions](source_en/function/call_functions.md)
     - [Function Types](source_en/function/first_class_citizen.md)
@@ -27,24 +29,24 @@
     - [Function Overloading](source_en/function/function_overloading.md)
     - [Operator Overloading](source_en/function/operator_overloading.md)
     - [const Functions and Constant Evaluation](source_en/function/const_func_and_eval.md)
-- [Struct Types]()
+- Struct Types
     - [Defining Struct Types](source_en/struct/define_struct.md)
     - [Creating Struct Instances](source_en/struct/create_instance.md)
     - [mut Functions](source_en/struct/mut.md)
-- [Enum Types and Pattern Matching]()
+- Enum Types and Pattern Matching
     - [Enum Types](source_en/enum_and_pattern_match/enum.md)
     - [Option Type](source_en/enum_and_pattern_match/option_type.md)
     - [Pattern Overview](source_en/enum_and_pattern_match/pattern_overview.md)
     - [Pattern Refutability](source_en/enum_and_pattern_match/pattern_refutability.md)
     - [match Expressions](source_en/enum_and_pattern_match/match.md)
     - [Other Pattern Usage Scenarios](source_en/enum_and_pattern_match/other.md)
-- [Classes and Interfaces]()
+- Classes and Interfaces
     - [Classes](source_en/class_and_interface/class.md)
     - [Interfaces](source_en/class_and_interface/interface.md)
     - [Properties](source_en/class_and_interface/prop.md)
     - [Subtype Relationships](source_en/class_and_interface/subtype.md)
     - [Type Casting](source_en/class_and_interface/typecast.md)
-- [Generics]()
+- Generics
     - [Generics Overview](source_en/generic/generic_overview.md)
     - [Generic Functions](source_en/generic/generic_function.md)
     - [Generic Interfaces](source_en/generic/generic_interface.md)
@@ -54,45 +56,45 @@
     - [Subtype Relationships of Generic Types](source_en/generic/generic_subtype.md)
     - [Type Aliases](source_en/generic/typealias.md)
     - [Generic Constraints](source_en/generic/generic_constraint.md)
-- [Extensions]()
+- Extensions
     - [Extensions Overview](source_en/extension/extend_overview.md)
     - [Direct Extensions](source_en/extension/direct_extension.md)
     - [Interface Extensions](source_en/extension/interface_extension.md)
     - [Access Rules](source_en/extension/access_rules.md)
-- [Collection Types]()
+- Collection Types
     - [Basic Collection Types Overview](source_en/collections/collection_overview.md)
     - [ArrayList](source_en/collections/collection_arraylist.md)
     - [HashSet](source_en/collections/collection_hashset.md)
     - [HashMap](source_en/collections/collection_hashmap.md)
     - [Iterable and Collections](source_en/collections/collection_iterable_collections.md)
-- [Packages]()
+- Packages
     - [Packages Overview](source_en/package/package_overview.md)
     - [Package Declarations](source_en/package/package_name.md)
     - [Top-Level Declaration Visibility](source_en/package/toplevel_access.md)
     - [Package Imports](source_en/package/import.md)
     - [Program Entry](source_en/package/entry.md)
-- [Exception Handling]()
+- Exception Handling
     - [Defining Exceptions](source_en/error_handle/exception_overview.md)
     - [Throwing and Handling Exceptions](source_en/error_handle/handle.md)
     - [Common Runtime Exceptions](source_en/error_handle/common_runtime_exceptions.md)
     - [Using Option](source_en/error_handle/use_option.md)
-- [Concurrent Programming]()
+- Concurrent Programming
     - [Concurrency Overview](source_en/concurrency/concurrency_overview.md)
     - [Creating Threads](source_en/concurrency/create_thread.md)
     - [Accessing Threads](source_en/concurrency/use_thread.md)
     - [Terminating Threads](source_en/concurrency/terminal_thread.md)
     - [Synchronization Mechanisms](source_en/concurrency/sync.md)
     - [Thread Sleep Duration (sleep)](source_en/concurrency/sleep.md)
-- [Basic I/O Operations]()
+- Basic I/O Operations
     - [I/O Stream Overview](source_en/Basic_IO/basic_IO_overview.md)
     - [I/O Node Streams](source_en/Basic_IO/basic_IO_source_stream.md)
     - [I/O Processing Streams](source_en/Basic_IO/basic_IO_process_stream.md)
-- [Network Programming]()
+- Network Programming
     - [Network Programming Overview](source_en/Net/net_overview.md)
     - [Socket Programming](source_en/Net/net_socket.md)
     - [HTTP Programming](source_en/Net/net_http.md)
     - [WebSocket Programming](source_en/Net/net_websocket.md)
-- [Macros]()
+- Macros
     - [Macro Introduction](source_en/Macro/macro_introduction.md)
     - [Tokens-Related Types and Quote Expressions](source_en/Macro/Tokens_types_and_quote_expressions.md)
     - [Syntax Nodes](source_en/Macro/syntax_node.md)
@@ -101,21 +103,21 @@
     - [Macro Package Definition and Import](source_en/Macro/defining_and_importing_macro_package.md)
     - [Built-in Compilation Flags](source_en/Macro/builtin_compilation_flags.md)
     - [Practical Cases](source_en/Macro/practical_case.md)
-- [Reflection and Annotations]()
+- Reflection and Annotations
     - [Dynamic Features](source_en/reflect_and_annotation/dynamic_feature.md)
     - [Annotations](source_en/reflect_and_annotation/anno.md)
-- [Cross-Language Interoperability]()
+- Cross-Language Interoperability
     - [Cangjie-C Interoperability](source_en/FFI/cangjie-c.md)
-    - [Cangjie-ArkTS Interoperability]()
+    - Cangjie-ArkTS Interoperability
         - [Overview](source_en/FFI/cangjie-arkts/cangjie_arkts_overview.md)
         - [Scenarios](source_en/FFI/cangjie-arkts/interoperability_senario.md)
             - [Using Cangjie in ArkTS Applications](source_en/FFI/cangjie-arkts/using_cangjie.md)
                 - [Adding Cangjie Pages](source_en/FFI/cangjie-arkts/add_cangjie_page.md)
                 - [Adding Cangjie Modules](source_en/FFI/cangjie-arkts/add_cangjie_module.md)
             - [Using ArkTS in Cangjie Applications](source_en/FFI/cangjie-arkts/using_arkts_module.md)
-        - [Cangjie-ArkTS Interoperability Usage]()
+        - Cangjie-ArkTS Interoperability Usage
             - [ArkTS Calling Cangjie](source_en/FFI/cangjie-arkts/method_of_ArkTS_calling_cangjie.md)
-                - [realize interoperability code in cangjie side]()
+                - realize interoperability code in cangjie side
                     - [Declarative Interoperability Macros](source_en/FFI/cangjie-arkts/interoperability_macro.md)
                     - [Interoperability Library](source_en/FFI/cangjie-arkts/interoperability_lib.md)
                 - [use interoperability code in ArkTS side](source_en/FFI/cangjie-arkts/arkts_import_cangjie.md)
@@ -126,7 +128,7 @@
             - [Using Interoperability Library in Cangjie Multithreading](source_en/FFI/cangjie-arkts/using_interoperability_lib_multithread.md)
         - [Cangjie-ArkTS Interoperability Auxiliary Library](source_en/FFI/cangjie-arkts/auxiliary_lib.md)
         - [Cangjie-ArkTS Interoperability Development Guidelines](source_en/FFI/cangjie-arkts/interop_guidelines.md)
-- [Compilation and Building]()
+- Compilation and Building
     - [cjc Usage](source_en/compile_and_build/cjc_usage_OHOS.md)
     - [cjpm Introduction](source_en/compile_and_build/cjpm_usage_OHOS.md)
     - [Conditional Compilation](source_en/compile_and_build/conditional_compilation.md)
@@ -135,7 +137,7 @@
     - [Debugging Tool](source_en/cmd_tools/cjdb_manual.md)
     - [Formatting Tool](source_en/cmd_tools/cjfmt_manual.md)
     - [HLE Tool](source_en/FFI/cangjie-arkts/HLE_usage.md)
-- [Appendix]()
+- Appendix
     - [cjc Compilation Options](source_en/Appendix/compile_options_OHOS.md)
     - [Keywords](source_en/Appendix/keyword.md)
     - [Operators](source_en/Appendix/operator.md)
