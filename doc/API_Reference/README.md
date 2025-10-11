@@ -1,14 +1,16 @@
-- [API Reference Overview]()
+# Development References
+
+- API Reference Overview
     - [Development Guide](source_en/cj-development-intro.md)
     - [SystemCapability Usage Guide](source_en/cj-syscap.md)
-    - [SystemCapability List]()
+    - SystemCapability List
         - [Smartphones](source_en/cj-phone-syscap-list.md)
         - [Tablets](source_en/cj-tablet-syscap-list.md)
     - [API Tag-based Management](source_en/cj-ifavailable.md)
     - [Universal Error Codes](source_en/errorcodes/cj-errorcode-universal.md)
-- [Application Framework]()
-    - [Ability Kit (Application Framework Services)]()
-        - [Cangjie APIs]()
+- Application Framework
+    - Ability Kit (Application Framework Services)
+        - Cangjie APIs
             - [ohos.app.ability.ui_ability](source_en/AbilityKit/cj-apis-app-ability-ui_ability.md)
             - [ohos.app.ability.want](source_en/AbilityKit/cj-apis-app-ability-want.md)
             - [ohos.ability_access_ctrl (Application Access Control Management)](source_en/AbilityKit/cj-apis-ability_access_ctrl.md)
@@ -29,37 +31,37 @@
             - [ohos.security.permission_request_result (PermissionRequestResult)](source_en/AbilityKit/cj-apis-sercurity-permission_request_result.md)
             - [ohos.security.skill](source_en/AbilityKit/cj-apis-skill.md)
             - [ohos.app.ability.error_manager](source_en/AbilityKit/cj-apis-app-ability-error_manager.md)
-        - [Error Codes]()
+        - Error Codes
             - [Ability Subsystem Error Codes](source_en/errorcodes/cj-errorcode-ability.md)
             - [Bundle Management Subsystem Universal Error Codes](source_en/errorcodes/cj-errorcode-bundle.md)
             - [Access Control Error Codes](source_en/errorcodes/cj-errorcode-access-token.md)
             - [Screen Lock Sensitive Data Management Error Codes](source_en/errorcodes/cj-errorcode-screen_lock_file_manager.md)
-    - [ArkData (Ark Data Management)]()
-        - [Cangjie APIs]()
+    - ArkData (Ark Data Management)
+        - Cangjie APIs
             - [ohos.data_share_predicates (Data Share Predicates)](source_en/ArkData/cj-apis-data_share_predicates.md)
             - [ohos.distributed_kv_store (Distributed Key-Value Database)](source_en/ArkData/cj-apis-distributed_kv_store.md)
             - [ohos.preferences (User Preferences)](source_en/ArkData/cj-apis-preferences.md)
             - [ohos.relational_store (Relational Database)](source_en/ArkData/cj-apis-relational_store.md)
             - [ohos.values_bucket (Data Set)](source_en/ArkData/cj-apis-values_bucket.md)
-        - [Error Codes]()
+        - Error Codes
             - [Relational Database Error Codes](source_en/errorcodes/cj-errorcode-data-rdb.md)
             - [Distributed Key-Value Database Error Codes](source_en/errorcodes/cj-errorcode-distributed_kv_store.md)
             - [User Preferences Error Codes](source_en/errorcodes/cj-errorcode-preferences.md)
-    - [ArkUI (Ark UI Framework)]()
-        - [Cangjie APIs]()
-            - [UI Interface]()
+    - ArkUI (Ark UI Framework)
+        - Cangjie APIs
+            - UI Interface
                 - [ohos.component_utils (ComponentUtils)](source_en/arkui-cj/cj-apis-componentutils.md)
                 - [ohos.curves (Interpolation Calculation)](source_en/arkui-cj/cj-apis-curves.md)
                 - [ohos.font (Custom Font)](source_en/arkui-cj/cj-apis-font.md)
                 - [ohos.router (Page Routing)](source_en/arkui-cj/cj-apis-router.md)
                 - [ohos.ui_context (UIContext)](source_en/arkui-cj/cj-apis-arkui-ui_context.md)
-            - [Window Management]()
+            - Window Management
                 - [ohos.window (Window)](source_en/arkui-cj/cj-apis-window.md)
-            - [Screen Management]()
+            - Screen Management
                 - [ohos.display (Screen Properties)](source_en/arkui-cj/cj-apis-display.md)
-        - [Cangjie Components]()
-            - [Component General Information]()
-                - [Universal Events]()
+        - Cangjie Components
+            - Component General Information
+                - Universal Events
                     - [Click Event](source_en/arkui-cj/cj-universal-event-click.md)
                     - [Touch Event](source_en/arkui-cj/cj-universal-event-touch.md)
                     - [Drag Event](source_en/arkui-cj/cj-universal-event-drag.md)
@@ -67,7 +69,7 @@
                     - [Mouse Event](source_en/arkui-cj/cj-universal-event-mouse.md)
                     - [Component Visible Area Change Event](source_en/arkui-cj/cj-universal-event-visibleareachange.md)
                     - [Component Shortcut Key Event](source_en/arkui-cj/cj-universal-event-keyboardshortcut.md)
-                - [Universal Attributes]()
+                - Universal Attributes
                     - [Size Setting](source_en/arkui-cj/cj-universal-attribute-size.md)
                     - [Position Setting](source_en/arkui-cj/cj-universal-attribute-location.md)
                     - [Layout Constraints](source_en/arkui-cj/cj-universal-attribute-layoutconstraints.md)
@@ -89,31 +91,31 @@
                     - [Component Identifier](source_en/arkui-cj/cj-universal-attribute-componentid.md)
                     - [Foreground Color Setting](source_en/arkui-cj/cj-universal-attribute-foregroundcolor.md)
                     - [Component Content Blur](source_en/arkui-cj/cj-universal-attribute-foregroundblurstyle.md)
-                    - [Touch Interaction Control]()
+                    - Touch Interaction Control
                         - [Touch Hotspot Setting](source_en/arkui-cj/cj-universal-attribute-touchtarget.md)
-                    - [Modal Transition Setting]()
+                    - Modal Transition Setting
                         - [Full-Screen Modal Transition](source_en/arkui-cj/cj-universal-attribute-bindcontentcover.md)
                         - [Half-Modal Transition](source_en/arkui-cj/cj-universal-attribute-sheettransition.md)
                     - [Drag Control](source_en/arkui-cj/cj-universal-attribute-dragcontrol.md)
                     - [Safe Area](source_en/arkui-cj/cj-universal-attribute-expandsafearea.md)
                     - [Component Content Filling Methods](source_en/arkui-cj/cj-universal-attribute-renderfit.md)
-                - [Gesture Handling]()
+                - Gesture Handling
                     - [Gesture Binding Methods](source_en/arkui-cj/cj-universal-gesture-bind.md)
                     - [PanGesture](source_en/arkui-cj/cj-universal-gesture-pangesture.md)
                     - [SwipeGesture](source_en/arkui-cj/cj-universal-gesture-swipegesture.md)
                     - [Combined Gestures](source_en/arkui-cj/cj-universal-gesture-groupgesture.md)
-            - [Rows, Columns & Stacks]()
+            - Rows, Columns & Stacks
                 - [Flex](source_en/arkui-cj/cj-row-column-stack-flex.md)
                 - [Column](source_en/arkui-cj/cj-row-column-stack-column.md)
                 - [Row](source_en/arkui-cj/cj-row-column-stack-row.md)
                 - [Stack](source_en/arkui-cj/cj-row-column-stack-stack.md)
                 - [RelativeContainer](source_en/arkui-cj/cj-row-column-stack-relativecontainer.md)
-            - [Grid & Column Layout]()
+            - Grid & Column Layout
                 - [GridRow](source_en/arkui-cj/cj-grid-layout-gridrow.md)
                 - [GridCol](source_en/arkui-cj/cj-grid-layout-gridcol.md)
                 - [RowSplit](source_en/arkui-cj/cj-grid-layout-rowsplit.md)
                 - [SideBarContainer](source_en/arkui-cj/cj-grid-layout-sidebar.md)
-            - [Scrolling & Swiping]()
+            - Scrolling & Swiping
                 - [List](source_en/arkui-cj/cj-scroll-swipe-list.md)
                 - [ListItem](source_en/arkui-cj/cj-scroll-swipe-listitem.md)
                 - [ListItemGroup](source_en/arkui-cj/cj-scroll-swipe-listgroup.md)
@@ -123,12 +125,12 @@
                 - [Swiper](source_en/arkui-cj/cj-scroll-swipe-swiper.md)
                 - [ScrollBar](source_en/arkui-cj/cj-scroll-swipe-scrollbar.md)
                 - [Refresh](source_en/arkui-cj/cj-scroll-swipe-refresh.md)
-            - [Navigation & Switching]()
+            - Navigation & Switching
                 - [Navigation](source_en/arkui-cj/cj-navigation-switching-navigation.md)
                 - [Stepper](source_en/arkui-cj/cj-navigation-switching-stepper.md)
                 - [StepperItem](source_en/arkui-cj/cj-navigation-switching-stepperitem.md)
                 - [Tabs](source_en/arkui-cj/cj-navigation-switching-tabs.md)
-            - [Buttons & Pickers]()
+            - Buttons & Pickers
                 - [Button](source_en/arkui-cj/cj-button-picker-button.md)
                 - [Toggle](source_en/arkui-cj/cj-button-picker-toggle.md)
                 - [Checkbox](source_en/arkui-cj/cj-button-picker-checkbox.md)
@@ -139,7 +141,7 @@
                 - [Rating](source_en/arkui-cj/cj-button-picker-rating.md)
                 - [Select](source_en/arkui-cj/cj-button-picker-select.md)
                 - [Slider](source_en/arkui-cj/cj-button-picker-slider.md)
-            - [Text & Input]()
+            - Text & Input
                 - [Text](source_en/arkui-cj/cj-text-input-text.md)
                 - [TextArea](source_en/arkui-cj/cj-text-input-textarea.md)
                 - [TextInput](source_en/arkui-cj/cj-text-input-textinput.md)
@@ -150,10 +152,10 @@
                 - [RichText](source_en/arkui-cj/cj-text-input-richtext.md)
                 - [PromptAction](source_en/arkui-cj/cj-apis-prompt_action.md)
                 - [AlertDialog](source_en/arkui-cj/cj-dialog-alertdialog.md)
-            - [Images & Videos]()
+            - Images & Videos
                 - [Image](source_en/arkui-cj/cj-image-video-image.md)
                 - [Video](source_en/arkui-cj/cj-image-video-video.md)
-            - [Information Display]()
+            - Information Display
                 - [AlphabetIndexer](source_en/arkui-cj/cj-information-display-alphabetindexer.md)
                 - [Badge](source_en/arkui-cj/cj-information-display-badge.md)
                 - [DataPanel](source_en/arkui-cj/cj-information-display-datapanel.md)
@@ -165,10 +167,10 @@
                 - [TextClock](source_en/arkui-cj/cj-information-display-textclock.md)
                 - [TextTimer](source_en/arkui-cj/cj-information-display-texttimer.md)
                 - [Counter](source_en/arkui-cj/cj-information-display-counter.md)
-            - [Spacing & Dividers]()
+            - Spacing & Dividers
                 - [Blank](source_en/arkui-cj/cj-blank-divider-blank.md)
                 - [Divider](source_en/arkui-cj/cj-blank-divider-divider.md)
-            - [Canvas Drawing]()
+            - Canvas Drawing
                 - [Canvas](source_en/arkui-cj/cj-canvas-drawing-canvas.md)
                 - [CanvasRenderingContext2D](source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md)
                 - [Matrix2D](source_en/arkui-cj/cj-canvas-drawing-matrix2d.md)
@@ -177,18 +179,18 @@
                 - [ImageData](source_en/arkui-cj/cj-canvas-drawing-imagedata.md)
                 - [CanvasPattern](source_en/arkui-cj/cj-canvas-drawing-canvaspattern.md)
                 - [Recycle](source_en/arkui-cj/cj-apis-recycle.md)
-            - [Graphic Drawing]()
+            - Graphic Drawing
                 - [Circle](source_en/arkui-cj/cj-graphic-drawing-circle.md)
                 - [Ellipse](source_en/arkui-cj/cj-graphic-drawing-ellipse.md)
                 - [Line](source_en/arkui-cj/cj-graphic-drawing-line.md)
                 - [Path](source_en/arkui-cj/cj-graphic-drawing-path.md)
                 - [Rect](source_en/arkui-cj/cj-graphic-drawing-rect.md)
                 - [Shape](source_en/arkui-cj/cj-graphic-drawing-shape.md)
-            - [Menus]()
+            - Menus
                 - [Menu](source_en/arkui-cj/cj-menu-menu.md)
                 - [MenuItem](source_en/arkui-cj/cj-menu-menuitem.md)
                 - [MenuItemGroup](source_en/arkui-cj/cj-menu-menuitemgroup.md)
-            - [Animations]()
+            - Animations
                 - [Property Animation (animation)](source_en/arkui-cj/cj-animation-animation.md)
                 - [Animation (animator)](source_en/arkui-cj/cj-apis-animator.md)
                 - [Explicit Animation (animateTo)](source_en/arkui-cj/cj-animation-animateto.md)
@@ -197,94 +199,94 @@
                 - [Shared Element Transition (sharedTransition)](source_en/arkui-cj/cj-animation-sharedtransition.md)
                 - [Implicit Shared Element Transition within Components (geometryTransition)](source_en/arkui-cj/cj-animation-geometrytransition.md)
                 - [Path Animation (motionPath)](source_en/arkui-cj/cj-animation-motionpath.md)
-            - [Dialog]()
+            - Dialog
                 - [List Selection Dialog (ActionSheet)](source_en/arkui-cj/cj-dialog-actionsheet.md)
                 - [Custom Dialog (CustomDialog)](source_en/arkui-cj/cj-dialog-customdialog.md)
-            - [Web]()
+            - Web
                 - [Web](source_en/arkui-cj/cj-web-web.md)
-            - [State Management and Rendering Control]()
+            - State Management and Rendering Control
                 - [LazyForEach](source_en/arkui-cj/cj-state-rendering-lazyforeach.md)
                 - [Component-Level Variable State Management](source_en/arkui-cj/cj-state-rendering-componentstatemanagement.md)
                 - [Application-Level Variable State Management](source_en/arkui-cj/cj-state-rendering-appstatemanagement.md)
-            - [Common Definitions]()
+            - Common Definitions
                 - [Basic Type Definitions](source_en/arkui-cj/cj-common-types.md)
                 - [Pixel Units](source_en/arkui-cj/cj-common-pixelunits.md)
             - [Framework Interfaces](source_en/arkui-cj/cj-ui-framework.md)
-        - [Error Codes]()
-            - [UI Interface]()
+        - Error Codes
+            - UI Interface
                 - [Animation Error Codes](source_en/errorcodes/cj-errorcode-animator.md)
-            - [Graphics]()
+            - Graphics
                 - [Screen Error Codes](source_en/errorcodes/cj-errorcode-display.md)
                 - [Window Error Codes](source_en/errorcodes/cj-errorcode-window.md)
-    - [ArkWeb]()
-        - [Cangjie API]()
+    - ArkWeb
+        - Cangjie API
             - [ohos.webview (Webview)](source_en/ArkWeb/cj-apis-webview.md)
-        - [Error Codes]()
+        - Error Codes
             - [Webview Error Codes](source_en/errorcodes/cj-errorcode-webview.md)
-    - [Core File Kit]()
-        - [Cangjie API]()
+    - Core File Kit
+        - Cangjie API
             - [ohos.file_fileuri (File URI)](source_en/CoreFileKit/cj-apis-file_fileuri.md)
             - [ohos.file_fs (File Management)](source_en/CoreFileKit/cj-apis-file_fs.md)
-        - [Error Codes]()
+        - Error Codes
             - [File Management Error Codes](source_en/errorcodes/cj-errorcode-filemanagement.md)
-    - [IPC Kit]()
-        - [Cangjie API]()
+    - IPC Kit
+        - Cangjie API
             - [ohos.rpc (RPC Communication)](source_en/IPCKit/cj-apis-rpc.md)
-        - [Error Codes]()
+        - Error Codes
             - [IPC Error Codes](source_en/errorcodes/cj-errorcode-rpc.md)
-    - [Localization Kit]()
-        - [Cangjie API]()
+    - Localization Kit
+        - Cangjie API
             - [ohos.i18n (Internationalization-I18n)](source_en/LocalizationKit/cj-apis-i18n.md)
             - [ohos.resource_manager (Resource Management)](source_en/LocalizationKit/cj-apis-resource_manager.md)
             - [ohos.raw_file_descriptor](source_en/LocalizationKit/cj-apis-raw_file_descriptor.md)
             - [ohos.resource](source_en/LocalizationKit/cj-apis-resource.md)
-        - [Error Codes]()
+        - Error Codes
             - [I18n Error Codes](source_en/errorcodes/cj-errorcode-i18n.md)
             - [Resource Management Error Codes](source_en/errorcodes/cj-errorcode-resource-manager.md)
-- [System]()
-    - [Security]()
-        - [Crypto Architecture Kit]()
-            - [Cangjie API]()
+- System
+    - Security
+        - Crypto Architecture Kit
+            - Cangjie API
                 - [ohos.crypto (Cryptography Algorithm Framework)](source_en/CryptoArchitectureKit/cj-apis-crypto.md)
-            - [Error Codes]()
+            - Error Codes
                 - [Crypto Framework Error Codes](source_en/errorcodes/cj-errorcode-crypto.md)
-        - [Universal Keystore Kit]()
-            - [Cangjie API]()
+        - Universal Keystore Kit
+            - Cangjie API
                 - [ohos.security_huks (Universal Keystore System)](source_en/UniversalKeystoreKit/cj-apis-security_huks.md)
-            - [Error Codes]()
+            - Error Codes
                 - [HUKS Error Codes](source_en/errorcodes/cj-errorcode-huks.md)
-    - [Network]()
-        - [Connectivity Kit]()
-            - [Cangjie API]()
+    - Network
+        - Connectivity Kit
+            - Cangjie API
                 - [ohos.bluetooth.a2dp (Bluetooth A2DP Module)](source_en/ConnectivityKit/cj-apis-bluetooth-a2dp.md)
                 - [ohos.bluetooth.ble (Bluetooth BLE Module)](source_en/ConnectivityKit/cj-apis-bluetooth-ble.md)
                 - [ohos.bluetooth.baseProfile (Bluetooth Base Profile Module)](source_en/ConnectivityKit/cj-apis-bluetooth-base_profile.md)
                 - [ohos.bluetooth.constant (Bluetooth Constant Module)](source_en/ConnectivityKit/cj-apis-bluetooth-constant.md)
                 - [ohos.bluetooth.hfp (Bluetooth HFP Module)](source_en/ConnectivityKit/cj-apis-bluetooth-hfp.md)
                 - [ohos.wifi_manager (WLAN)](source_en/ConnectivityKit/cj-apis-wifi_manager.md)
-            - [Error Codes]()
+            - Error Codes
                 - [Bluetooth Service Subsystem Error Codes](source_en/errorcodes/cj-errorcode-bluetooth_manager.md)
                 - [WIFI Error Codes](source_en/errorcodes/cj-errorcode-wifi-manager.md)
                 - [NFC Error Codes](source_en/errorcodes/cj-errorcode-nfc.md)
                 - [SE (Secure Element) Error Codes](source_en/errorcodes/cj-errorcode-secure_element.md)
-        - [Network Kit]()
-            - [Cangjie API]()
+        - Network Kit
+            - Cangjie API
                 - [ohos.net.connection (Network Connection Management)](source_en/NetworkKit/cj-apis-net-connection.md)
                 - [ohos.net.http (Data Request)](source_en/NetworkKit/cj-apis-net-http.md)
-            - [Error Codes]()
+            - Error Codes
                 - [HTTP Error Codes](source_en/errorcodes/cj-errorcode-net-http.md)
                 - [Network Connection Management Error Codes](source_en/errorcodes/cj-errorcode-net-connection.md)
-    - [Basic Features]()
-        - [Basic Services Kit]()
-            - [Cangjie API]()
-                - [Device Management]()
+    - Basic Features
+        - Basic Services Kit
+            - Cangjie API
+                - Device Management
                     - [ohos.battery_info (Battery Information)](source_en/BasicServicesKit/cj-apis-battery_info.md)
                     - [ohos.device_info (Device Information)](source_en/BasicServicesKit/cj-apis-device_info.md)
-                - [Data File Processing]()
+                - Data File Processing
                     - [kit.BasicServicesKit.agent (Upload/Download)](source_en/BasicServicesKit/cj-apis-request-agent.md)
-                - [Process/Thread Communication]()
+                - Process/Thread Communication
                     - [ohos.common_event_manager (Common Event Module)](source_en/BasicServicesKit/cj-apis-common_event_manager.md)
-                - [Others]()
+                - Others
                     - [ohos.base (Common Callback Information)](source_en/BasicServicesKit/cj-apis-base.md)
                     - [ohos.settings (Setting Data Item Names)](source_en/BasicServicesKit/cj-apis-settings.md)
                     - [ohos.system_date_time (System Time/Timezone)](source_en/BasicServicesKit/cj-apis-system_date_time.md)
@@ -293,71 +295,71 @@
                     - [ohos.common_event_data](source_en/BasicServicesKit/cj-apis-common_event_data.md)
                     - [ohos.common_event_publish_data](source_en/BasicServicesKit/cj-apis-common_event_publish_data.md)
                     - [ohos.value_type](source_en/BasicServicesKit/cj-apis-value_type.md)
-            - [Error Codes]()
+            - Error Codes
                 - [Upload/Download Error Codes](source_en/errorcodes/cj-errorcode-request.md)
 - [Time and Timezone Error Codes](source_en/errorcodes/cj-errorcode-time.md)
 - [Event Error Codes](source_en/errorcodes/cj-errorcode-common_event_service.md)
 - [System Power Management Error Codes](source_en/errorcodes/cj-errorcode-power.md)
 - [Account Management Error Codes](source_en/errorcodes/cj-errorcode-basic-account.md)
-    - [Hardware]()
-        - [Sensor Service Kit]()
-            - [Cangjie API]()
+    - Hardware
+        - Sensor Service Kit
+            - Cangjie API
                 - [ohos.sensor (Sensors)](source_en/SensorServiceKit/cj-apis-sensor.md)
-            - [Error Codes]()
+            - Error Codes
                 - [Sensor Error Codes](source_en/errorcodes/cj-errorcode-sensor.md)
-        - [Telephony Kit]()
-            - [Cangjie API]()
+        - Telephony Kit
+            - Cangjie API
                 - [ohos.telephony.call](source_en/TelephonyKit/cj-apis-telephony-call.md)
-    - [Debugging and Optimization]()
-        - [Performance Analysis Kit]()
-            - [Cangjie API]()
+    - Debugging and Optimization
+        - Performance Analysis Kit
+            - Cangjie API
                 - [ohos.hiviewdfx.hi_app_event (Application Event Logging)](source_en/PerformanceAnalysisKit/cj-apis-hiappevent.md)
                 - [ohos.hilog (HiLog Logging)](source_en/PerformanceAnalysisKit/cj-apis-hilog.md)
                 - [ohos.hi_tracemeter (Performance Tracing)](source_en/PerformanceAnalysisKit/cj-apis-hi_tracemeter.md)
-            - [Error Codes]()
+            - Error Codes
                 - [Application Event Logging Error Codes](source_en/errorcodes/cj-errorcode-hiappevent.md)
                 - [Hidebug CpuUsage Error Codes](source_en/errorcodes/cj-errorcode-hidebug-cpuusage.md)
-        - [Test Kit]()
-            - [Cangjie API]()
+        - Test Kit
+            - Cangjie API
                 - [ohos.ability_delegator_registry (AbilityDelegatorRegistry)](source_en/TestKit/cj-apis-ability_delegator_registry.md)
                 - [ohos.ui_test (UI Testing)](source_en/TestKit/cj-apis-ui_test.md)
-            - [Error Codes]()
+            - Error Codes
                 - [UITest Error Codes](source_en/errorcodes/cj-errorcode-uitest.md)
-- [Media]()
-    - [Camera Kit]()
-        - [Cangjie API]()
+- Media
+    - Camera Kit
+        - Cangjie API
             - [ohos.multimedia.camera (Camera Management)](source_en/CameraKit/cj-apis-multimedia-camera.md)
-        - [Error Codes]()
+        - Error Codes
             - [Camera Error Codes](source_en/errorcodes/cj-errorcode-multimedia-camera.md)
-    - [Image Kit]()
-        - [Cangjie API]()
+    - Image Kit
+        - Cangjie API
             - [ohos.multimedia.image (Image Processing)](source_en/ImageKit/cj-apis-image.md)
-        - [Error Codes]()
+        - Error Codes
             - [Image Error Codes](source_en/errorcodes/cj-errorcode-image.md)
-    - [Media Kit]()
-        - [Cangjie API]()
+    - Media Kit
+        - Cangjie API
             - [ohos.multimedia.media (Media Services)](source_en/MediaKit/cj-apis-multimedia_media.md)
             - [ohos.multimedia.image](source_en/MediaKit/cj-apis-multimedia-image.md)
-        - [Error Codes]()
+        - Error Codes
             - [Media Error Codes](source_en/errorcodes/cj-errorcode-multimedia-media.md)
-    - [Media Library Kit]()
-        - [Cangjie API]()
+    - Media Library Kit
+        - Cangjie API
             - [ohos.file.photo_access_helper (Photo Album Management Module)](source_en/MediaLibraryKit/cj-apis-file-photo_access_helper.md)
-- [Graphics]()
-    - [ArkGraphics2D]()
-        - [Cangjie API]()
+- Graphics
+    - ArkGraphics2D
+        - Cangjie API
             - [ohos.color_manager (Color Management)](source_en/ArkGraphics2D/cj-apis-color_manager.md)
-        - [Error Codes]()
+        - Error Codes
             - [Color Management Error Codes](source_en/errorcodes/cj-errorcode-colorspace-manager.md)
-- [Application Services]()
-    - [Location Kit]()
-        - [Cangjie API]()
+- Application Services
+    - Location Kit
+        - Cangjie API
             - [ohos.geo_location_manager (Location Services)](source_en/LocationKit/cj-apis-geo_location_manager.md)
-        - [Error Codes]()
+        - Error Codes
             - [Location Services Error Codes](source_en/errorcodes/cj-errorcode-geo_location_manager.md)
-- [Cangjie and ArkTS Interoperability Library]()
+- Cangjie and ArkTS Interoperability Library
     - [ohos.ark_interop (ArkTS Interoperability Library)](source_en/arkinterop/cj-apis-ark_interop.md)
-        - [Error Codes]()
+        - Error Codes
             - [ArkTS Interoperability Library Error Codes](source_en/errorcodes/cj-errorcode-ark_interop.md)
     - [ohos.ark_interop_helper (ArkTS Interoperability Common Utility Functions)](source_en/arkinterop/cj-apis-ark_interop_helper.md)
     - [ohos.business_exception (Common Exception Information)](source_en/arkinterop/cj-api-business_exception.md)
