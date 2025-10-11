@@ -25,10 +25,10 @@
 
 框架层：
 
-- 模块加载：提供在ArkTS侧加载仓颉模块的能力，详细的加载方式请参考[在ArkTS中加载仓颉模块](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_zh_cn/FFI/cangjie-arkts/arkts_import_cangjie.md)。
+- 模块加载：提供在ArkTS侧加载仓颉模块的能力，详细的加载方式请参考[在ArkTS中加载仓颉模块](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/arkts_import_cangjie.md)。
 - 运行时管理：提供创建ArkTS运行时的能力。
 - 跨语言函数调用：在仓颉调用ArkTS场景，通过C语言互操作ArkTS运行时接口实现调用ArkTS函数；在ArkTS调用仓颉场景，通过互操作接口注册仓颉函数到ArkTS运行时，然后ArkTS运行时通过C语言互操作调用仓颉函数。
-- 跨语言类型转换：互操作库主要提供以下主要类型:JSUndefined,JSNull,JSBoolean,JSNumber,JSString,JSObject,JSArray,JSFunction,JSBigInt等，并提供接口实现ArkTS类型和仓颉类型的相互转换，其映射的仓颉类型请参考[类型映射](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_zh_cn/FFI/cangjie-arkts/interoperability_macro.md#%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84)。
+- 跨语言类型转换：互操作库主要提供以下主要类型:JSUndefined,JSNull,JSBoolean,JSNumber,JSString,JSObject,JSArray,JSFunction,JSBigInt等，并提供接口实现ArkTS类型和仓颉类型的相互转换，其映射的仓颉类型请参考[类型映射](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/interoperability_macro.md#%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84)。
 - 跨语言异常处理：在仓颉调用ArkTS场景，ArkTS代码中出现异常而未捕获时，该异常会转换成一个仓颉异常并传播到仓颉侧；在ArkTS调用仓颉场景，仓颉代码中出现异常而未捕获时，该异常会转换成一个JS异常并传播到ArkTS侧。
 - 跨语言引用管理：提供安全引用的机制，在仓颉侧使用仓颉对象来映射ArkTS运行时对象，保证这个ArkTS对象在跨语言调用时，不会被垃圾回收。
 - 跨语言线程协同：由于仓颉提供用户态线程，运行时会将仓颉线程调度到系统线程上执行，因此仓颉默认不会绑定在特定系统线程执行，但是仓颉与ArkTS互操作逻辑要求运行在ArkTS运行时绑定的系统线程上，所以互操作库提供接口可以切换到ArkTS线程执行的能力。
@@ -52,9 +52,9 @@ arkcompiler/cangjie_ark_interop
 |   ├── labels             # 仓颉公共能力，提供api level标签
 |   ├── utf16string        # 仓颉互操作库提供的utf16字符串处理类
 ├── doc                    # 仓颉文档，包括API参考、应用开发指南、仓颉编程语言用户手册
-|   ├── reference      # 仓颉API参考
-|   ├── application-dev          # 仓颉开发指南
-|   ├── cj-user-manual        # 仓颉用户手册
+|   ├── API_Reference      # 仓颉API参考
+|   ├── Dev_Guide          # 仓颉开发指南
+|   ├── User_Manual        # 仓颉用户手册
 ├── figures                # 本README需要使用的图片
 ├── test                   # 仓颉互操作测试用例
 ```
@@ -65,15 +65,15 @@ arkcompiler/cangjie_ark_interop
 
 - 场景一：在使用ArkTS开发时，通过跨语言互操作调用仓颉开发的代码模块，发挥仓颉高性能高并发优势，提升应用性能体验；
 
-详细的例子请参考：[ArkTS调用仓颉](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_zh_cn/FFI/cangjie-arkts/method_of_ArkTS_calling_cangjie.md)
+详细的例子请参考：[ArkTS调用仓颉](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/method_of_ArkTS_calling_cangjie.md)
 
 - 场景二：在使用仓颉开发时，通过跨语言互操作调用ArkTS库，复用ArkTS丰富的库生态；
 
-详细的例子请参考：[仓颉应用中使用ArkTS模块](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_zh_cn/FFI/cangjie-arkts/using_arkts_module.md)
+详细的例子请参考：[仓颉应用中使用ArkTS模块](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/using_arkts_module.md)
 
-同时针对互操作带来的开发复杂度，仓颉提供声明式互操作宏ark_interop_macro，使开发者可以使用宏“@Interop[ArkTS]”标注仓颉代码中需要导出给ArkTS使用的函数或类型，在编译阶段自动生成互操作“胶水层”代码及ArkTS接口声明，减少开发者手写互操作代码的复杂度。详细的例子请参考：[仓颉-ArkTS声明式互操作宏](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_zh_cn/FFI/cangjie-arkts/interoperability_macro.md)。
+同时针对互操作带来的开发复杂度，仓颉提供声明式互操作宏ark_interop_macro，使开发者可以使用宏“@Interop[ArkTS]”标注仓颉代码中需要导出给ArkTS使用的函数或类型，在编译阶段自动生成互操作“胶水层”代码及ArkTS接口声明，减少开发者手写互操作代码的复杂度。详细的例子请参考：[仓颉-ArkTS声明式互操作宏](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/interoperability_macro.md)。
 
-互操作相关API请参见[API文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)，相关指导请参见[用户指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_zh_cn/FFI/cangjie-arkts/cangjie_arkts_overview.md)
+互操作相关API请参见[API文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/arkinterop/cj-apis-ark_interop.md)，相关指导请参见[用户指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_zh_cn/FFI/cangjie-arkts/cangjie_arkts_overview.md)
 
 ## 约束
 
