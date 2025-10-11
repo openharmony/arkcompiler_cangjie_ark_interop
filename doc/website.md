@@ -434,7 +434,6 @@
                     - [mediatool Tool](Dev_Guide/source_en/tools/cj-mediatool.md)
                     - [devicedebug Tool](Dev_Guide/source_en/tools/cj-devicedebug-tool.md)
     - Media
-        - Audio Kit (Audio Service)
         - Camera Kit (Camera Service)
             - [Camera Kit Overview](Dev_Guide/source_en/media/camera/cj-camera-overview.md)
             - [Development Preparation](Dev_Guide/source_en/media/camera/cj-camera-preparation.md)
@@ -481,33 +480,31 @@
         - SystemCapability List
             - [Smartphones](API_Reference/source_en/cj-phone-syscap-list.md)
             - [Tablets](API_Reference/source_en/cj-tablet-syscap-list.md)
-            - [Smart Wearables](API_Reference/source_en/cj-wearable-syscap-list.md)
-            - [Lite Wearables](API_Reference/source_en/cj-litewearable-syscap-list.md)
         - [API Tag-based Management](API_Reference/source_en/cj-ifavailable.md)
         - [Universal Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-universal.md)
     - Application Framework
         - Ability Kit (Application Framework Services)
             - Cangjie APIs
-                - [ohos.app.ability.ui_ability](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ui_ability.md)
-                - [ohos.app.ability.want](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want.md)
-                - [ohos.ability_access_ctrl (Application Access Control Management)](API_Reference/source_en/apis/AbilityKit/cj-apis-ability_access_ctrl.md)
-                - [ohos.bundle.bundle_manager (Bundle Manager)](API_Reference/source_en/apis/AbilityKit/cj-apis-bundle_manager.md)
-                - [ohos.app.ability.ability_stage](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ability_stage.md)
-                - [ohos.app.ability.ability_result](API_Reference/source_en/apis/AbilityKit/cj-apis-ability-ability_result.md)
-                - [ohos.app.ability.app_recovery](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-app_recovery.md)
-                - [ohos.app.ability.ability_constant](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-ability_constant.md)
-                - [ohos.app.ability.context_constant](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-context_constant.md)
-                - [ohos.app.ability.dialog_request](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-dialog_request.md)
-                - [ohos.app.ability.start_options](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-start_options.md)
-                - [ohos.app.ability.want_constant](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-want_constant.md)
-                - [ohos.app.ability](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability.md)
-                - [ohos.application.error_observer](API_Reference/source_en/apis/AbilityKit/cj-apis-application-error_observer.md)
-                - [ohos.application.test_runner](API_Reference/source_en/apis/AbilityKit/cj-apis-application-test_runner.md)
-                - [ohos.element_name](API_Reference/source_en/apis/AbilityKit/cj-apis-element_name.md)
-                - [ohos.metadata](API_Reference/source_en/apis/AbilityKit/cj-apis-metadata.md)
-                - [ohos.security.permission_request_result (PermissionRequestResult)](API_Reference/source_en/apis/AbilityKit/cj-apis-sercurity-permission_request_result.md)
-                - [ohos.security.skill](API_Reference/source_en/apis/AbilityKit/cj-apis-skill.md)
-                - [ohos.app.ability.error_manager](API_Reference/source_en/apis/AbilityKit/cj-apis-app-ability-error_manager.md)
+                - [ohos.app.ability.ui_ability](API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md)
+                - [ohos.app.ability.want](API_Reference/source_en/AbilityKit/cj-apis-app-ability-want.md)
+                - [ohos.ability_access_ctrl (Application Access Control Management)](API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md)
+                - [ohos.bundle.bundle_manager (Bundle Manager)](API_Reference/source_en/AbilityKit/cj-apis-bundle_manager.md)
+                - [ohos.app.ability.ability_stage](API_Reference/source_en/AbilityKit/cj-apis-app-ability-ability_stage.md)
+                - [ohos.app.ability.ability_result](API_Reference/source_en/AbilityKit/cj-apis-ability-ability_result.md)
+                - [ohos.app.ability.app_recovery](API_Reference/source_en/AbilityKit/cj-apis-app-ability-app_recovery.md)
+                - [ohos.app.ability.ability_constant](API_Reference/source_en/AbilityKit/cj-apis-app-ability-ability_constant.md)
+                - [ohos.app.ability.context_constant](API_Reference/source_en/AbilityKit/cj-apis-app-ability-context_constant.md)
+                - [ohos.app.ability.dialog_request](API_Reference/source_en/AbilityKit/cj-apis-app-ability-dialog_request.md)
+                - [ohos.app.ability.start_options](API_Reference/source_en/AbilityKit/cj-apis-app-ability-start_options.md)
+                - [ohos.app.ability.want_constant](API_Reference/source_en/AbilityKit/cj-apis-app-ability-want_constant.md)
+                - [ohos.app.ability](API_Reference/source_en/AbilityKit/cj-apis-app-ability.md)
+                - [ohos.application.error_observer](API_Reference/source_en/AbilityKit/cj-apis-application-error_observer.md)
+                - [ohos.application.test_runner](API_Reference/source_en/AbilityKit/cj-apis-application-test_runner.md)
+                - [ohos.element_name](API_Reference/source_en/AbilityKit/cj-apis-element_name.md)
+                - [ohos.metadata](API_Reference/source_en/AbilityKit/cj-apis-metadata.md)
+                - [ohos.security.permission_request_result (PermissionRequestResult)](API_Reference/source_en/AbilityKit/cj-apis-sercurity-permission_request_result.md)
+                - [ohos.security.skill](API_Reference/source_en/AbilityKit/cj-apis-skill.md)
+                - [ohos.app.ability.error_manager](API_Reference/source_en/AbilityKit/cj-apis-app-ability-error_manager.md)
             - Error Codes
                 - [Ability Subsystem Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-ability.md)
                 - [Bundle Management Subsystem Universal Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-bundle.md)
@@ -515,11 +512,11 @@
                 - [Screen Lock Sensitive Data Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-screen_lock_file_manager.md)
         - ArkData (Ark Data Management)
             - Cangjie APIs
-                - [ohos.data_share_predicates (Data Share Predicates)](API_Reference/source_en/apis/ArkData/cj-apis-data_share_predicates.md)
-                - [ohos.distributed_kv_store (Distributed Key-Value Database)](API_Reference/source_en/apis/ArkData/cj-apis-distributed_kv_store.md)
-                - [ohos.preferences (User Preferences)](API_Reference/source_en/apis/ArkData/cj-apis-preferences.md)
-                - [ohos.relational_store (Relational Database)](API_Reference/source_en/apis/ArkData/cj-apis-relational_store.md)
-                - [ohos.values_bucket (Data Set)](API_Reference/source_en/apis/ArkData/cj-apis-values_bucket.md)
+                - [ohos.data_share_predicates (Data Share Predicates)](API_Reference/source_en/ArkData/cj-apis-data_share_predicates.md)
+                - [ohos.distributed_kv_store (Distributed Key-Value Database)](API_Reference/source_en/ArkData/cj-apis-distributed_kv_store.md)
+                - [ohos.preferences (User Preferences)](API_Reference/source_en/ArkData/cj-apis-preferences.md)
+                - [ohos.relational_store (Relational Database)](API_Reference/source_en/ArkData/cj-apis-relational_store.md)
+                - [ohos.values_bucket (Data Set)](API_Reference/source_en/ArkData/cj-apis-values_bucket.md)
             - Error Codes
                 - [Relational Database Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-data-rdb.md)
                 - [Distributed Key-Value Database Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-distributed_kv_store.md)
@@ -697,26 +694,26 @@
                     - [Window Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-window.md)
         - ArkWeb
             - Cangjie API
-                - [ohos.webview (Webview)](API_Reference/source_en/apis/ArkWeb/cj-apis-webview.md)
+                - [ohos.webview (Webview)](API_Reference/source_en/ArkWeb/cj-apis-webview.md)
             - Error Codes
                 - [Webview Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-webview.md)
         - Core File Kit
             - Cangjie API
-                - [ohos.file_fileuri (File URI)](API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fileuri.md)
-                - [ohos.file_fs (File Management)](API_Reference/source_en/apis/CoreFileKit/cj-apis-file_fs.md)
+                - [ohos.file_fileuri (File URI)](API_Reference/source_en/CoreFileKit/cj-apis-file_fileuri.md)
+                - [ohos.file_fs (File Management)](API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md)
             - Error Codes
                 - [File Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-filemanagement.md)
         - IPC Kit
             - Cangjie API
-                - [ohos.rpc (RPC Communication)](API_Reference/source_en/apis/IPCKit/cj-apis-rpc.md)
+                - [ohos.rpc (RPC Communication)](API_Reference/source_en/IPCKit/cj-apis-rpc.md)
             - Error Codes
                 - [IPC Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-rpc.md)
         - Localization Kit
             - Cangjie API
-                - [ohos.i18n (Internationalization-I18n)](API_Reference/source_en/apis/LocalizationKit/cj-apis-i18n.md)
-                - [ohos.resource_manager (Resource Management)](API_Reference/source_en/apis/LocalizationKit/cj-apis-resource_manager.md)
-                - [ohos.raw_file_descriptor](API_Reference/source_en/apis/LocalizationKit/cj-apis-raw_file_descriptor.md)
-                - [ohos.resource](API_Reference/source_en/apis/LocalizationKit/cj-apis-resource.md)
+                - [ohos.i18n (Internationalization-I18n)](API_Reference/source_en/LocalizationKit/cj-apis-i18n.md)
+                - [ohos.resource_manager (Resource Management)](API_Reference/source_en/LocalizationKit/cj-apis-resource_manager.md)
+                - [ohos.raw_file_descriptor](API_Reference/source_en/LocalizationKit/cj-apis-raw_file_descriptor.md)
+                - [ohos.resource](API_Reference/source_en/LocalizationKit/cj-apis-resource.md)
             - Error Codes
                 - [I18n Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-i18n.md)
                 - [Resource Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-resource-manager.md)
@@ -724,23 +721,23 @@
         - Security
             - Crypto Architecture Kit
                 - Cangjie API
-                    - [ohos.crypto (Cryptography Algorithm Framework)](API_Reference/source_en/apis/CryptoArchitectureKit/cj-apis-crypto.md)
+                    - [ohos.crypto (Cryptography Algorithm Framework)](API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md)
                 - Error Codes
                     - [Crypto Framework Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-crypto.md)
             - Universal Keystore Kit
                 - Cangjie API
-                    - [ohos.security_huks (Universal Keystore System)](API_Reference/source_en/apis/UniversalKeystoreKit/cj-apis-security_huks.md)
+                    - [ohos.security_huks (Universal Keystore System)](API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md)
                 - Error Codes
                     - [HUKS Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-huks.md)
         - Network
             - Connectivity Kit
                 - Cangjie API
-                    - [ohos.bluetooth.a2dp (Bluetooth A2DP Module)](API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-a2dp.md)
-                    - [ohos.bluetooth.ble (Bluetooth BLE Module)](API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-ble.md)
-                    - [ohos.bluetooth.baseProfile (Bluetooth Base Profile Module)](API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-base_profile.md)
-                    - [ohos.bluetooth.constant (Bluetooth Constant Module)](API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-constant.md)
-                    - [ohos.bluetooth.hfp (Bluetooth HFP Module)](API_Reference/source_en/apis/ConnectivityKit/cj-apis-bluetooth-hfp.md)
-                    - [ohos.wifi_manager (WLAN)](API_Reference/source_en/apis/ConnectivityKit/cj-apis-wifi_manager.md)
+                    - [ohos.bluetooth.a2dp (Bluetooth A2DP Module)](API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-a2dp.md)
+                    - [ohos.bluetooth.ble (Bluetooth BLE Module)](API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-ble.md)
+                    - [ohos.bluetooth.baseProfile (Bluetooth Base Profile Module)](API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-base_profile.md)
+                    - [ohos.bluetooth.constant (Bluetooth Constant Module)](API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-constant.md)
+                    - [ohos.bluetooth.hfp (Bluetooth HFP Module)](API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-hfp.md)
+                    - [ohos.wifi_manager (WLAN)](API_Reference/source_en/ConnectivityKit/cj-apis-wifi_manager.md)
                 - Error Codes
                     - [Bluetooth Service Subsystem Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md)
                     - [WIFI Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-wifi-manager.md)
@@ -748,8 +745,8 @@
                     - [SE (Secure Element) Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-secure_element.md)
             - Network Kit
                 - Cangjie API
-                    - [ohos.net.connection (Network Connection Management)](API_Reference/source_en/apis/NetworkKit/cj-apis-net-connection.md)
-                    - [ohos.net.http (Data Request)](API_Reference/source_en/apis/NetworkKit/cj-apis-net-http.md)
+                    - [ohos.net.connection (Network Connection Management)](API_Reference/source_en/NetworkKit/cj-apis-net-connection.md)
+                    - [ohos.net.http (Data Request)](API_Reference/source_en/NetworkKit/cj-apis-net-http.md)
                 - Error Codes
                     - [HTTP Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-net-http.md)
                     - [Network Connection Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-net-connection.md)
@@ -757,21 +754,21 @@
             - Basic Services Kit
                 - Cangjie API
                     - Device Management
-                        - [ohos.battery_info (Battery Information)](API_Reference/source_en/apis/BasicServicesKit/cj-apis-battery_info.md)
-                        - [ohos.device_info (Device Information)](API_Reference/source_en/apis/BasicServicesKit/cj-apis-device_info.md)
+                        - [ohos.battery_info (Battery Information)](API_Reference/source_en/BasicServicesKit/cj-apis-battery_info.md)
+                        - [ohos.device_info (Device Information)](API_Reference/source_en/BasicServicesKit/cj-apis-device_info.md)
                     - Data File Processing
-                        - [kit.BasicServicesKit.agent (Upload/Download)](API_Reference/source_en/apis/BasicServicesKit/cj-apis-request-agent.md)
+                        - [kit.BasicServicesKit.agent (Upload/Download)](API_Reference/source_en/BasicServicesKit/cj-apis-request-agent.md)
                     - Process/Thread Communication
-                        - [ohos.common_event_manager (Common Event Module)](API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_manager.md)
+                        - [ohos.common_event_manager (Common Event Module)](API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md)
                     - Others
-                        - [ohos.base (Common Callback Information)](API_Reference/source_en/apis/BasicServicesKit/cj-apis-base.md)
-                        - [ohos.settings (Setting Data Item Names)](API_Reference/source_en/apis/BasicServicesKit/cj-apis-settings.md)
-                        - [ohos.system_date_time (System Time/Timezone)](API_Reference/source_en/apis/BasicServicesKit/cj-apis-system_date_time.md)
-                        - [ohos.common_event_subscriber](API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_subscriber.md)
-                        - [ohos.common_event_subscribe_info](API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_subscribe_info.md)
-                        - [ohos.common_event_data](API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_data.md)
-                        - [ohos.common_event_publish_data](API_Reference/source_en/apis/BasicServicesKit/cj-apis-common_event_publish_data.md)
-                        - [ohos.value_type](API_Reference/source_en/apis/BasicServicesKit/cj-apis-value_type.md)
+                        - [ohos.base (Common Callback Information)](API_Reference/source_en/BasicServicesKit/cj-apis-base.md)
+                        - [ohos.settings (Setting Data Item Names)](API_Reference/source_en/BasicServicesKit/cj-apis-settings.md)
+                        - [ohos.system_date_time (System Time/Timezone)](API_Reference/source_en/BasicServicesKit/cj-apis-system_date_time.md)
+                        - [ohos.common_event_subscriber](API_Reference/source_en/BasicServicesKit/cj-apis-common_event_subscriber.md)
+                        - [ohos.common_event_subscribe_info](API_Reference/source_en/BasicServicesKit/cj-apis-common_event_subscribe_info.md)
+                        - [ohos.common_event_data](API_Reference/source_en/BasicServicesKit/cj-apis-common_event_data.md)
+                        - [ohos.common_event_publish_data](API_Reference/source_en/BasicServicesKit/cj-apis-common_event_publish_data.md)
+                        - [ohos.value_type](API_Reference/source_en/BasicServicesKit/cj-apis-value_type.md)
                 - Error Codes
                     - [Upload/Download Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-request.md)
     - [Time and Timezone Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-time.md)
@@ -781,57 +778,57 @@
         - Hardware
             - Sensor Service Kit
                 - Cangjie API
-                    - [ohos.sensor (Sensors)](API_Reference/source_en/apis/SensorServiceKit/cj-apis-sensor.md)
+                    - [ohos.sensor (Sensors)](API_Reference/source_en/SensorServiceKit/cj-apis-sensor.md)
                 - Error Codes
                     - [Sensor Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-sensor.md)
             - Telephony Kit
                 - Cangjie API
-                    - [ohos.telephony.call](API_Reference/source_en/apis/TelephonyKit/cj-apis-telephony-call.md)
+                    - [ohos.telephony.call](API_Reference/source_en/TelephonyKit/cj-apis-telephony-call.md)
         - Debugging and Optimization
             - Performance Analysis Kit
                 - Cangjie API
-                    - [ohos.hiviewdfx.hi_app_event (Application Event Logging)](API_Reference/source_en/apis/PerformanceAnalysisKit/cj-apis-hiappevent.md)
-                    - [ohos.hilog (HiLog Logging)](API_Reference/source_en/apis/PerformanceAnalysisKit/cj-apis-hilog.md)
-                    - [ohos.hi_tracemeter (Performance Tracing)](API_Reference/source_en/apis/PerformanceAnalysisKit/cj-apis-hi_tracemeter.md)
+                    - [ohos.hiviewdfx.hi_app_event (Application Event Logging)](API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hiappevent.md)
+                    - [ohos.hilog (HiLog Logging)](API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hilog.md)
+                    - [ohos.hi_tracemeter (Performance Tracing)](API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hi_tracemeter.md)
                 - Error Codes
                     - [Application Event Logging Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-hiappevent.md)
                     - [Hidebug CpuUsage Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-hidebug-cpuusage.md)
             - Test Kit
                 - Cangjie API
-                    - [ohos.ability_delegator_registry (AbilityDelegatorRegistry)](API_Reference/source_en/apis/TestKit/cj-apis-ability_delegator_registry.md)
-                    - [ohos.ui_test (UI Testing)](API_Reference/source_en/apis/TestKit/cj-apis-ui_test.md)
+                    - [ohos.ability_delegator_registry (AbilityDelegatorRegistry)](API_Reference/source_en/TestKit/cj-apis-ability_delegator_registry.md)
+                    - [ohos.ui_test (UI Testing)](API_Reference/source_en/TestKit/cj-apis-ui_test.md)
                 - Error Codes
                     - [UITest Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-uitest.md)
     - Media
         - Camera Kit
             - Cangjie API
-                - [ohos.multimedia.camera (Camera Management)](API_Reference/source_en/apis/CameraKit/cj-apis-multimedia-camera.md)
+                - [ohos.multimedia.camera (Camera Management)](API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md)
             - Error Codes
                 - [Camera Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md)
         - Image Kit
             - Cangjie API
-                - [ohos.multimedia.image (Image Processing)](API_Reference/source_en/apis/ImageKit/cj-apis-image.md)
+                - [ohos.multimedia.image (Image Processing)](API_Reference/source_en/ImageKit/cj-apis-image.md)
             - Error Codes
                 - [Image Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-image.md)
         - Media Kit
             - Cangjie API
-                - [ohos.multimedia.media (Media Services)](API_Reference/source_en/apis/MediaKit/cj-apis-multimedia_media.md)
-                - [ohos.multimedia.image](API_Reference/source_en/apis/MediaKit/cj-apis-multimedia-image.md)
+                - [ohos.multimedia.media (Media Services)](API_Reference/source_en/MediaKit/cj-apis-multimedia_media.md)
+                - [ohos.multimedia.image](API_Reference/source_en/MediaKit/cj-apis-multimedia-image.md)
             - Error Codes
                 - [Media Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-multimedia-media.md)
         - Media Library Kit
             - Cangjie API
-                - [ohos.file.photo_access_helper (Photo Album Management Module)](API_Reference/source_en/apis/MediaLibraryKit/cj-apis-multimedia-photo_accesshelper.md)
+                - [ohos.file.photo_access_helper (Photo Album Management Module)](API_Reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper)
     - Graphics
         - ArkGraphics2D
             - Cangjie API
-                - [ohos.color_manager (Color Management)](API_Reference/source_en/apis/ArkGraphics2D/cj-apis-color_manager.md)
+                - [ohos.color_manager (Color Management)](API_Reference/source_en/ArkGraphics2D/cj-apis-color_manager.md)
             - Error Codes
                 - [Color Management Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-colorspace-manager.md)
     - Application Services
         - Location Kit
             - Cangjie API
-                - [ohos.geo_location_manager (Location Services)](API_Reference/source_en/apis/LocationKit/cj-apis-geo_location_manager.md)
+                - [ohos.geo_location_manager (Location Services)](API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md)
             - Error Codes
                 - [Location Services Error Codes](API_Reference/source_en/errorcodes/cj-errorcode-geo_location_manager.md)
     - Cangjie and ArkTS Interoperability Library

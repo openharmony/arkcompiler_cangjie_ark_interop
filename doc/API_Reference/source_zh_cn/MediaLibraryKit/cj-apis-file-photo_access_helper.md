@@ -45,7 +45,7 @@ public func getPhotoAccessHelper(context: UIAbilityContext): PhotoAccessHelper
 
 |类型|说明|
 |:----|:----|
-|[PhotoAccessHelper](./cj-apis-multimedia-photo_accesshelper.md#class-photoaccesshelper)|相册管理模块的实例。|
+|[PhotoAccessHelper](./cj-apis-file-photo_access_helper.md#class-photoaccesshelper)|相册管理模块的实例。|
 
 **异常：**
 
@@ -206,7 +206,7 @@ public func getAssets(options: FetchOptions): PhotoAssetResult
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|[FetchOptions](./cj-apis-multimedia-photo_accesshelper.md#class-fetchoptions)|是|-| 检索选项。|
+|options|[FetchOptions](./cj-apis-file-photo_access_helper.md#class-fetchoptions)|是|-| 检索选项。|
 
 **返回值：**
 
@@ -2450,7 +2450,7 @@ public func get(member: String): MemberType
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|member|String|是|-|成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要get的[PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys)，例如：get title属性fetchColumns: ['title']。|
+|member|String|是|-|成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要get的[PhotoKeys](./cj-apis-file-photo_access_helper.md#enum-photokeys)，例如：get title属性fetchColumns: ['title']。|
 
 **返回值：**
 
@@ -2572,8 +2572,8 @@ public func set(member: String, value: String): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|member|String|是|-|成员参数名称例如：[PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys).TITLE。|
-|value|String|是|-|设置成员参数名称，只能修改[PhotoKeys](./cj-apis-multimedia-photo_accesshelper.md#enum-photokeys).TITLE的值。|
+|member|String|是|-|成员参数名称例如：[PhotoKeys](./cj-apis-file-photo_access_helper.md#enum-photokeys).TITLE。|
+|value|String|是|-|设置成员参数名称，只能修改[PhotoKeys](./cj-apis-file-photo_access_helper.md#enum-photokeys).TITLE的值。|
 
 **异常：**
 
