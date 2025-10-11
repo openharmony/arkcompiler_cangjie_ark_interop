@@ -97,7 +97,6 @@ main(): Int64 {
 ```cangjie
     let p1 = 2 ** 3                  // p1 = 8
     let p2 = 2 ** UInt64(3 ** 2)     // p2 = 512
-    // let p2 = 2 ** UInt64(3 ** 2)  // 编译错误: 无效的二元运算符“**”应用于类型“Int64”和“Int64”
     let p3 = 2.0 ** 3                // p3 = 8.0
     let p4 = 2.0 ** 3 ** 2           // p4 = 512.0
     let p5 = 2.0 ** 3.0              // p5 = 8.0
@@ -174,7 +173,7 @@ main(): Int64 {
 <!-- compile.error -->
 
 ```cangjie
-    var isTrue: Bool = (1, 3) == (0, 2)  // false
+    var isTrue: Bool = (1, 3) == (0, 2) // false
     isTrue = (1, "123") == (1.0, 2)      // 编译错误，两个操作数的类型不一致
     isTrue = (1, _) == (1.0, _)          // 编译错误，通配符不可作为元组中元素进行匹配
 ```
