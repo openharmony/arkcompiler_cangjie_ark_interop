@@ -4,7 +4,7 @@ During the encryption/decryption process, the algorithm library imposes no size 
 
 ## Symmetric Encryption/Decryption
 
-For symmetric key segmented encryption/decryption, implement it by calling the [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) function.
+For symmetric key segmented encryption/decryption, implement it by calling the [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) function.
 
 Developers can customize the data volume for each input (e.g., `updateLength` in the example) by making multiple calls to the `update` interface to pass data.
 
@@ -16,9 +16,9 @@ The current maximum supported length for a single input is `INT_MAX` (the maximu
 
 ## Asymmetric Encryption/Decryption
 
-Asymmetric encryption/decryption does not support the `update` operation. Simply call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to complete the process.
+Asymmetric encryption/decryption does not support the `update` operation. Simply call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to complete the process.
 
-Segmented encryption for asymmetric keys refers to cases where the plaintext exceeds the supported data length for single encryption (specific lengths can be found in [Asymmetric Key Encryption/Decryption Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md)). In such scenarios, the data to be encrypted must be divided into appropriately sized segments, with each segment undergoing encryption—i.e., creating a `Cipher` object and then calling the [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) interface.
+Segmented encryption for asymmetric keys refers to cases where the plaintext exceeds the supported data length for single encryption (specific lengths can be found in [Asymmetric Key Encryption/Decryption Algorithm Specifications](./cj-crypto-asym-encrypt-decrypt-spec.md)). In such scenarios, the data to be encrypted must be divided into appropriately sized segments, with each segment undergoing encryption—i.e., creating a `Cipher` object and then calling the [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) interface.
 
 Strictly speaking, this involves split-data encryption/decryption, where the length of data per input is related to the key specifications.
 
@@ -31,4 +31,4 @@ In segmented encryption/decryption, is the data volume per update related to the
 
    The data volume per update is customizable by developers and is unrelated to the encryption mode.
 
-   Different encryption modes only affect encryption/decryption parameters. Each mode uses distinct parameters; specifics can be found in [ParamsSpec](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
+   Different encryption modes only affect encryption/decryption parameters. Each mode uses distinct parameters; specifics can be found in [ParamsSpec](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).

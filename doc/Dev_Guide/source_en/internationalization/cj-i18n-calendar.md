@@ -2,11 +2,11 @@
 
 ## Usage Scenarios
 
-Users in different regions use different calendar systems. Most regions follow the Gregorian calendar, while some users utilize other calendars such as the Lunar calendar, Islamic calendar, or Hebrew calendar. Additionally, time and date representations vary across time zones and daylight saving time adjustments. Therefore, users should configure calendars that align with local conventions. The internationalization module provides the [Calendar](../../../API_Reference/source_en/LocalizationKit/cj-apis-i18n.md#class-calendar) class, which enables setting calendar types, dates, year-month-day values, time zones, first day of the week, minimum days in the first week of the year, determining whether a specific day is a weekend, calculating day differences, and more. During application development, developers can select appropriate functions based on business requirements.
+Users in different regions use different calendar systems. Most regions follow the Gregorian calendar, while some users utilize other calendars such as the Lunar calendar, Islamic calendar, or Hebrew calendar. Additionally, time and date representations vary across time zones and daylight saving time adjustments. Therefore, users should configure calendars that align with local conventions. The internationalization module provides the [Calendar](../../../reference/source_en/LocalizationKit/cj-apis-i18n.md#class-calendar) class, which enables setting calendar types, dates, year-month-day values, time zones, first day of the week, minimum days in the first week of the year, determining whether a specific day is a weekend, calculating day differences, and more. During application development, developers can select appropriate functions based on business requirements.
 
 ## Development Procedure
 
-The following example demonstrates how to use the [Calendar](../../../API_Reference/source_en/LocalizationKit/cj-apis-i18n.md#class-calendar) class APIs by converting a Gregorian date to its corresponding Lunar calendar date.
+The following example demonstrates how to use the [Calendar](../../../reference/source_en/LocalizationKit/cj-apis-i18n.md#class-calendar) class APIs by converting a Gregorian date to its corresponding Lunar calendar date.
 
 1. Import the module.
 

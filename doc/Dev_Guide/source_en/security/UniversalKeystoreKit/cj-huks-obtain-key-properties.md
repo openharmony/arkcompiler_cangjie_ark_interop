@@ -10,9 +10,9 @@ HUKS provides interfaces for applications to retrieve relevant attributes of spe
 
 1. Specify the key alias `keyAlias` to be queried. The maximum length of a key alias is 128 bytes.
 
-2. Call the interface [getKeyItemProperties](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-getkeyitempropertiesstring-huksoptions), passing the parameters `keyAlias` and `options`. The `options` parameter is reserved and can currently be passed as an empty value.
+2. Call the interface [getKeyItemProperties](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-getkeyitempropertiesstring-huksoptions), passing the parameters `keyAlias` and `options`. The `options` parameter is reserved and can currently be passed as an empty value.
 
-3. The return value is an object of type `Array<[HuksParam](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam)>`. The retrieved attribute collection is stored in the `properties` field.
+3. The return value is an object of type `Array<[HuksParam](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam)>`. The retrieved attribute collection is stored in the `properties` field.
 
 ## Example
 

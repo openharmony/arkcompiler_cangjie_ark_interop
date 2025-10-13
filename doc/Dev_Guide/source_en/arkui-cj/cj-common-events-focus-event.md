@@ -64,7 +64,7 @@ Refers to focus movement caused by intentional actions of developers or users, i
   - Cannot cross windows or ArkUI instances but can cross hierarchical pages.
 
 - **focusOnTouch**:
-  - See [focusOnTouch](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-focus.md#func-focusontouchbool) for details. Enables a bound component to gain focus upon click. If the component itself is not focusable, this feature is ineffective. If bound to a container component, clicking prioritizes transferring focus to the last focused child component; otherwise, it transfers to the first focusable child component.
+  - See [focusOnTouch](../../../reference/source_en/arkui-cj/cj-universal-attribute-focus.md#func-focusontouchbool) for details. Enables a bound component to gain focus upon click. If the component itself is not focusable, this feature is ineffective. If bound to a container component, clicking prioritizes transferring focus to the last focused child component; otherwise, it transfers to the first focusable child component.
 
 #### Passive Focus Navigation
 
@@ -206,13 +206,13 @@ Components can be broadly categorized into three types based on focusability:
 public func enabled(value: Bool): This
 ```
 
-Sets the component's interactivity property [`enabled`](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-enable.md#func-enabledbool) to `false`, making the component non-interactive and unfocusable.
+Sets the component's interactivity property [`enabled`](../../../reference/source_en/arkui-cj/cj-universal-attribute-enable.md#func-enabledbool) to `false`, making the component non-interactive and unfocusable.
 
 ```cangjie
 public func visibility(value: Visibility): This
 ```
 
-Sets the component's visibility property [`visibility`](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-visibility.md#func-visibilityvisibility) to `Visibility.None` or `Visibility.Hidden`, making the component invisible and unfocusable.
+Sets the component's visibility property [`visibility`](../../../reference/source_en/arkui-cj/cj-universal-attribute-visibility.md#func-visibilityvisibility) to `Visibility.None` or `Visibility.Hidden`, making the component invisible and unfocusable.
 
 ```cangjie
 public func focusOnTouch(isFocusOnTouch: Bool): This
@@ -410,7 +410,7 @@ When a component gains focus and has a click event (`onClick`) or single-finger 
 
 > **Note:**
 >
-> - When click events (`onClick`) or single-finger tap events (`TapGesture`) are triggered by Enter or Space, they do not bubble up by default, meaning the parent component's corresponding [key event](../../../API_Reference/source_en/arkui-cj/cj-universal-event-key.md) will not be triggered simultaneously.
+> - When click events (`onClick`) or single-finger tap events (`TapGesture`) are triggered by Enter or Space, they do not bubble up by default, meaning the parent component's corresponding [key event](../../../reference/source_en/arkui-cj/cj-universal-event-key.md) will not be triggered simultaneously.
 > - Key events (`onKeyEvent`) bubble up by default, meaning they will also trigger the parent component's key event callback.
 > - If a component has both click events (`onClick`) and key events (`onKeyEvent`), both will respond when Enter or Space is pressed.
 > - A focused component responding to click events (`onClick`) is independent of the focus active state.
@@ -457,68 +457,68 @@ Basic component focus capabilities are as follows:
 
 | Basic Component                                     | Has Focus Capability | Default focusable Value |
 | :---------------------------------------- | :------- | :------------ |
-| [AlphabetIndexer](../../../API_Reference/source_en/arkui-cj/cj-information-display-alphabetindexer.md) | Yes       | true         |
-| [Blank](../../../API_Reference/source_en/arkui-cj/cj-blank-divider-blank.md) | No       | false        |
-| [Button](../../../API_Reference/source_en/arkui-cj/cj-button-picker-button.md) | Yes       | true         |
-| [Checkbox](../../../API_Reference/source_en/arkui-cj/cj-button-picker-checkbox.md) | Yes       | true         |
-| [CheckboxGroup](../../../API_Reference/source_en/arkui-cj/cj-button-picker-checkboxgroup.md) | Yes       | true         |
-| [DataPanel](../../../API_Reference/source_en/arkui-cj/cj-information-display-datapanel.md) | Yes       | false        |
-| [DatePicker](../../../API_Reference/source_en/arkui-cj/cj-button-picker-datepicker.md) | Yes       | true         |
-| [Divider](../../../API_Reference/source_en/arkui-cj/cj-blank-divider-divider.md) | Yes       | false        |
-| [Gauge](../../../API_Reference/source_en/arkui-cj/cj-information-display-gauge.md) | Yes       | false        |
-| [Image](../../../API_Reference/source_en/arkui-cj/cj-image-video-image.md) | Yes       | false        |
-| [ImageSpan](../../../API_Reference/source_en/arkui-cj/cj-text-input-imagespan.md)                 | No       | false        |
-| [LoadingProgress](../../../API_Reference/source_en/arkui-cj/cj-information-display-loadingprogress.md) | Yes       | true        |
-| [Navigation](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) | Yes       | true         |
-| [PatternLock](../../../API_Reference/source_en/arkui-cj/cj-information-display-patternlock.md) | Yes       | true        |
-| [Progress](../../../API_Reference/source_en/arkui-cj/cj-information-display-progress.md) | Yes       | true        |
-| [QRCode](../../../API_Reference/source_en/arkui-cj/cj-information-display-qrcode.md) | Yes       | true        |
-| [Radio](../../../API_Reference/source_en/arkui-cj/cj-button-picker-radio.md) | Yes       | true         |
-| [Rating](../../../API_Reference/source_en/arkui-cj/cj-button-picker-rating.md) | Yes       | true         |
-| [RichEditor](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md) | Yes       | true         |
-| [RichText](../../../API_Reference/source_en/arkui-cj/cj-text-input-richtext.md) | No       | false        |
-| [ScrollBar](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-scrollbar.md) | No       | false        |
-| [Search](../../../API_Reference/source_en/arkui-cj/cj-text-input-search.md) | Yes       | true         |
-| [Select](../../../API_Reference/source_en/arkui-cj/cj-button-picker-select.md) | Yes       | true         |
-| [Slider](../../../API_Reference/source_en/arkui-cj/cj-button-picker-slider.md) | Yes       | true         |
-| [Span](../../../API_Reference/source_en/arkui-cj/cj-text-input-span.md) | No       | false        |
-| [Stepper](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-stepper.md) | Yes       | true         |
-| [StepperItem](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-stepperitem.md) | Yes       | true         |
-| [Text](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md) | Yes       | false        |
-| [TextArea](../../../API_Reference/source_en/arkui-cj/cj-text-input-textarea.md) | No       | false         |
-| [TextClock](../../../API_Reference/source_en/arkui-cj/cj-information-display-textclock.md) | No       | false        |
-| [TextInput](../../../API_Reference/source_en/arkui-cj/cj-text-input-textinput.md) | Yes       | true         |
-| [TextPicker](../../../API_Reference/source_en/arkui-cj/cj-button-picker-textpicker.md) | Yes       | true         |
-| [TextTimer](../../../API_Reference/source_en/arkui-cj/cj-information-display-texttimer.md) | No       | false        |
-| [Toggle](../../../API_Reference/source_en/arkui-cj/cj-button-picker-toggle.md) | Yes       | true         |
+| [AlphabetIndexer](../../../reference/source_en/arkui-cj/cj-information-display-alphabetindexer.md) | Yes       | true         |
+| [Blank](../../../reference/source_en/arkui-cj/cj-blank-divider-blank.md) | No       | false        |
+| [Button](../../../reference/source_en/arkui-cj/cj-button-picker-button.md) | Yes       | true         |
+| [Checkbox](../../../reference/source_en/arkui-cj/cj-button-picker-checkbox.md) | Yes       | true         |
+| [CheckboxGroup](../../../reference/source_en/arkui-cj/cj-button-picker-checkboxgroup.md) | Yes       | true         |
+| [DataPanel](../../../reference/source_en/arkui-cj/cj-information-display-datapanel.md) | Yes       | false        |
+| [DatePicker](../../../reference/source_en/arkui-cj/cj-button-picker-datepicker.md) | Yes       | true         |
+| [Divider](../../../reference/source_en/arkui-cj/cj-blank-divider-divider.md) | Yes       | false        |
+| [Gauge](../../../reference/source_en/arkui-cj/cj-information-display-gauge.md) | Yes       | false        |
+| [Image](../../../reference/source_en/arkui-cj/cj-image-video-image.md) | Yes       | false        |
+| [ImageSpan](../../../reference/source_en/arkui-cj/cj-text-input-imagespan.md)                 | No       | false        |
+| [LoadingProgress](../../../reference/source_en/arkui-cj/cj-information-display-loadingprogress.md) | Yes       | true        |
+| [Navigation](../../../reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) | Yes       | true         |
+| [PatternLock](../../../reference/source_en/arkui-cj/cj-information-display-patternlock.md) | Yes       | true        |
+| [Progress](../../../reference/source_en/arkui-cj/cj-information-display-progress.md) | Yes       | true        |
+| [QRCode](../../../reference/source_en/arkui-cj/cj-information-display-qrcode.md) | Yes       | true        |
+| [Radio](../../../reference/source_en/arkui-cj/cj-button-picker-radio.md) | Yes       | true         |
+| [Rating](../../../reference/source_en/arkui-cj/cj-button-picker-rating.md) | Yes       | true         |
+| [RichEditor](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md) | Yes       | true         |
+| [RichText](../../../reference/source_en/arkui-cj/cj-text-input-richtext.md) | No       | false        |
+| [ScrollBar](../../../reference/source_en/arkui-cj/cj-scroll-swipe-scrollbar.md) | No       | false        |
+| [Search](../../../reference/source_en/arkui-cj/cj-text-input-search.md) | Yes       | true         |
+| [Select](../../../reference/source_en/arkui-cj/cj-button-picker-select.md) | Yes       | true         |
+| [Slider](../../../reference/source_en/arkui-cj/cj-button-picker-slider.md) | Yes       | true         |
+| [Span](../../../reference/source_en/arkui-cj/cj-text-input-span.md) | No       | false        |
+| [Stepper](../../../reference/source_en/arkui-cj/cj-navigation-switching-stepper.md) | Yes       | true         |
+| [StepperItem](../../../reference/source_en/arkui-cj/cj-navigation-switching-stepperitem.md) | Yes       | true         |
+| [Text](../../../reference/source_en/arkui-cj/cj-text-input-text.md) | Yes       | false        |
+| [TextArea](../../../reference/source_en/arkui-cj/cj-text-input-textarea.md) | No       | false         |
+| [TextClock](../../../reference/source_en/arkui-cj/cj-information-display-textclock.md) | No       | false        |
+| [TextInput](../../../reference/source_en/arkui-cj/cj-text-input-textinput.md) | Yes       | true         |
+| [TextPicker](../../../reference/source_en/arkui-cj/cj-button-picker-textpicker.md) | Yes       | true         |
+| [TextTimer](../../../reference/source_en/arkui-cj/cj-information-display-texttimer.md) | No       | false        |
+| [Toggle](../../../reference/source_en/arkui-cj/cj-button-picker-toggle.md) | Yes       | true         |
 
 Container component focus capabilities are as follows:
 
 | Container Component                                     | Can Be Focused | Default focusable Value |
 | :---------------------------------------- | :------- | :------------ |
-| [Badge](../../../API_Reference/source_en/arkui-cj/cj-information-display-badge.md) | No     | false        |
-| [Column](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-column.md) | Yes     | true         |
-| [Flex](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-flex.md) | Yes     | true         |
-| [GridCol](../../../API_Reference/source_en/arkui-cj/cj-grid-layout-gridcol.md) | Yes     | true         |
-| [GridRow](../../../API_Reference/source_en/arkui-cj/cj-grid-layout-gridrow.md) | Yes     | true         |
-| [Grid](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-grid.md) | Yes     | true         |
-| [GridItem](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-griditem.md) | Yes     | true         |
-| [List](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md) | Yes     | true         |
-| [ListItem](../../../API_Reference/source_en/arkui-cj//cj-scroll-swipe-listitem.md) | Yes     | true         |
-| [ListItemGroup](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-listgroup.md) | Yes     | true         |
-| [Navigator](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) | Yes     | true         |
-| [Refresh](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-refresh.md) | Yes     | true        |
-| [RelativeContainer](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-relativecontainer.md) | No     | false         |
-| [Row](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-row.md) | Yes    | true         |
-| [RowSplit](../../../API_Reference/source_en/arkui-cj/cj-grid-layout-rowsplit.md) | Yes     | true         |
-| [Scroll](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md) | Yes     | true         |
-| [SideBarContainer](../../../API_Reference/source_en/arkui-cj/cj-grid-layout-sidebar.md) | Yes     | true         |
-| [Stack](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-stack.md) | Yes     | true         |
-| [Swiper](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md) | Yes     | true         |
-| [Tabs](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-tabs.md) | Yes     | true         |
+| [Badge](../../../reference/source_en/arkui-cj/cj-information-display-badge.md) | No     | false        |
+| [Column](../../../reference/source_en/arkui-cj/cj-row-column-stack-column.md) | Yes     | true         |
+| [Flex](../../../reference/source_en/arkui-cj/cj-row-column-stack-flex.md) | Yes     | true         |
+| [GridCol](../../../reference/source_en/arkui-cj/cj-grid-layout-gridcol.md) | Yes     | true         |
+| [GridRow](../../../reference/source_en/arkui-cj/cj-grid-layout-gridrow.md) | Yes     | true         |
+| [Grid](../../../reference/source_en/arkui-cj/cj-scroll-swipe-grid.md) | Yes     | true         |
+| [GridItem](../../../reference/source_en/arkui-cj/cj-scroll-swipe-griditem.md) | Yes     | true         |
+| [List](../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md) | Yes     | true         |
+| [ListItem](../../../reference/source_en/arkui-cj//cj-scroll-swipe-listitem.md) | Yes     | true         |
+| [ListItemGroup](../../../reference/source_en/arkui-cj/cj-scroll-swipe-listgroup.md) | Yes     | true         |
+| [Navigator](../../../reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) | Yes     | true         |
+| [Refresh](../../../reference/source_en/arkui-cj/cj-scroll-swipe-refresh.md) | Yes     | true        |
+| [RelativeContainer](../../../reference/source_en/arkui-cj/cj-row-column-stack-relativecontainer.md) | No     | false         |
+| [Row](../../../reference/source_en/arkui-cj/cj-row-column-stack-row.md) | Yes    | true         |
+| [RowSplit](../../../reference/source_en/arkui-cj/cj-grid-layout-rowsplit.md) | Yes     | true         |
+| [Scroll](../../../reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md) | Yes     | true         |
+| [SideBarContainer](../../../reference/source_en/arkui-cj/cj-grid-layout-sidebar.md) | Yes     | true         |
+| [Stack](../../../reference/source_en/arkui-cj/cj-row-column-stack-stack.md) | Yes     | true         |
+| [Swiper](../../../reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md) | Yes     | true         |
+| [Tabs](../../../reference/source_en/arkui-cj/cj-navigation-switching-tabs.md) | Yes     | true         |
 
 Media component focus capabilities are as follows:
 
 | Media Component                                     | Can Be Focused | Default focusable Value |
 | :---------------------------------------- | :------- | :------------ |
-| [Video](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md) | Yes     | true         |
+| [Video](../../../reference/source_en/arkui-cj/cj-image-video-video.md) | Yes     | true         |

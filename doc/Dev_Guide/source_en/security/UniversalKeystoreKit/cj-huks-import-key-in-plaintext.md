@@ -10,12 +10,12 @@ The following examples demonstrate importing AES256 and RSA2048 keys. For specif
 
 2. Encapsulate the key property set and key material.
 
-   - The key property set must be consistent with the properties specified during key generation and should include [HuksKeyAlg](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg), [HuksKeySize](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeysize), and [HuksKeyPurpose](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeypurpose) attributes.
-   - The key material must conform to the [HUKS Key Material Format](./cj-huks-concepts.md#key-material-format) and be assigned to the `inData` field of [HuksOptions](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions) as an `Array<UInt8>`.
+   - The key property set must be consistent with the properties specified during key generation and should include [HuksKeyAlg](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeyalg), [HuksKeySize](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeysize), and [HuksKeyPurpose](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-hukskeypurpose) attributes.
+   - The key material must conform to the [HUKS Key Material Format](./cj-huks-concepts.md#key-material-format) and be assigned to the `inData` field of [HuksOptions](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions) as an `Array<UInt8>`.
 
-3. Call [importKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-importkeyitemstring-huksoptions) with the key alias and key property set to import the key.
+3. Call [importKeyItem](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-importkeyitemstring-huksoptions) with the key alias and key property set to import the key.
 
-   For the meanings of `HuksParam` and `HuksOptions`, refer to: [HuksParam](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) and [HuksOptions](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions).
+   For the meanings of `HuksParam` and `HuksOptions`, refer to: [HuksParam](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) and [HuksOptions](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions).
 
 ### Importing an AES256 Key
 
@@ -125,7 +125,7 @@ func importKeyFunc(): Unit {
 
 ## Debugging and Verification
 
-Call [isKeyItemExist](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-iskeyitemexiststring-huksoptions) to verify if the key exists. If the key exists, the import was successful.
+Call [isKeyItemExist](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-iskeyitemexiststring-huksoptions) to verify if the key exists. If the key exists, the import was successful.
 
 <!-- compile -->
 

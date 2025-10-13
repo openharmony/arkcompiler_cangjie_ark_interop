@@ -4,23 +4,23 @@ For corresponding algorithm specifications, please refer to [Symmetric Key Encry
 
 ## Encryption
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) and [generateSymKey](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to generate a symmetric key (SymKey) with AES algorithm and 128-bit key length.
+1. Call [createSymKeyGenerator](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) and [generateSymKey](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-generatesymkey) to generate a symmetric key (SymKey) with AES algorithm and 128-bit key length.
 
    Developers can refer to the example below for generating AES symmetric keys, combined with [Symmetric Key Generation and Conversion Specifications: AES](./cj-crypto-sym-key-generation-conversion-spec.md#aes) and [Random Symmetric Key Generation](./cj-crypto-generate-sym-key-randomly.md). Note that reference documents may have parameter differences from the current example, so please pay attention when reading.
 
-2. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|CBC|PKCS7' to create a Cipher instance with AES128 symmetric key type, CBC block mode, and PKCS7 padding mode for encryption operations.
+2. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|CBC|PKCS7' to create a Cipher instance with AES128 symmetric key type, CBC block mode, and PKCS7 padding mode for encryption operations.
 
-3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to encryption (CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey) and the encryption parameters for CBC mode (IvParamsSpec), and initialize the encryption Cipher instance.
+3. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to encryption (CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey) and the encryption parameters for CBC mode (IvParamsSpec), and initialize the encryption Cipher instance.
 
-4. For shorter content, you can skip calling update and directly call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
+4. For shorter content, you can skip calling update and directly call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
 
 ## Decryption
 
-1. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|CBC|PKCS7' to create a Cipher instance with AES128 symmetric key type, CBC block mode, and PKCS7 padding mode for decryption operations.
+1. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|CBC|PKCS7' to create a Cipher instance with AES128 symmetric key type, CBC block mode, and PKCS7 padding mode for decryption operations.
 
-2. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to decryption (CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey) and the decryption parameters for CBC mode (IvParamsSpec), and initialize the decryption Cipher instance.
+2. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to decryption (CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey) and the decryption parameters for CBC mode (IvParamsSpec), and initialize the decryption Cipher instance.
 
-3. For shorter content, you can skip calling update and directly call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
+3. For shorter content, you can skip calling update and directly call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
 
 ## Example
 

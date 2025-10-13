@@ -55,11 +55,11 @@ Developers can configure touch testing control to block touch testing for the co
 
 ### Disable Control
 
-Components with [disable control](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-enable.md) enabled will not initiate the touch testing process for themselves or their child components. Instead, they will directly return to the parent component to continue touch testing.
+Components with [disable control](../../../reference/source_en/arkui-cj/cj-universal-attribute-enable.md) enabled will not initiate the touch testing process for themselves or their child components. Instead, they will directly return to the parent component to continue touch testing.
 
 ### Touch Hot Zone Settings
 
-[Touch hot zone settings](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-touchtarget.md) affect touch testing for touchscreen/mouse-type events. According to the [basic touch testing process](#触摸测试基本流程), only when the event coordinates hit the component's touch hot zone will the gestures and events bound to the component be collected and enter the event response chain. Developers can adjust the component's touch hot zone to control the touch testing process. If the touch hot zone is set to 0 or defined as a non-touchable area, the event will be directly passed back to the parent node for subsequent touch testing.
+[Touch hot zone settings](../../../reference/source_en/arkui-cj/cj-universal-attribute-touchtarget.md) affect touch testing for touchscreen/mouse-type events. According to the [basic touch testing process](#触摸测试基本流程), only when the event coordinates hit the component's touch hot zone will the gestures and events bound to the component be collected and enter the event response chain. Developers can adjust the component's touch hot zone to control the touch testing process. If the touch hot zone is set to 0 or defined as a non-touchable area, the event will be directly passed back to the parent node for subsequent touch testing.
 
 ### Security Components
 

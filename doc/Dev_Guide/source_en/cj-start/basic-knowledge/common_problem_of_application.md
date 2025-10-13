@@ -4,7 +4,7 @@
 
 1. Obtain via API call.
 
-    You can call [bundleManager.getBundleInfoForSelf](../../../../API_Reference/source_en/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) to retrieve your own BundleInfo, which contains signatureInfo. The signatureInfo includes fingerprint information.
+    You can call [bundleManager.getBundleInfoForSelf](../../../../reference/source_en/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) to retrieve your own BundleInfo, which contains signatureInfo. The signatureInfo includes fingerprint information.
 
     ```cangjie
     import ohos.base.*
@@ -46,7 +46,7 @@ Therefore, for scenarios requiring consistent appIdentifier across devices (e.g.
 
 ## How to Obtain appIdentifier from Application Information
 
-1. Call [bundleManager.getBundleInfoForSelf](../../../../API_Reference/source_en/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) to retrieve your own BundleInfo, which contains signatureInfo. The signatureInfo includes appIdentifier information.
+1. Call [bundleManager.getBundleInfoForSelf](../../../../reference/source_en/AbilityKit/cj-apis-bundle_manager.md#static-func-getbundleinfoforselfint32) to retrieve your own BundleInfo, which contains signatureInfo. The signatureInfo includes appIdentifier information.
 
     ```cangjie
     import ohos.base.*

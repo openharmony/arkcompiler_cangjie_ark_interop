@@ -4,7 +4,7 @@ LocalStorage是页面级的UI状态存储，通过@Entry宏接收的参数可以
 
 在阅读本文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](cj-state-management-overview.md)。
 
-LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合[LocalStorage API文档](../../../../API_Reference/source_zh_cn/arkui-cj/cj-state-rendering-appstatemanagement.md#localstorage页面级ui状态储存)阅读。
+LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合[LocalStorage API文档](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-appstatemanagement.md#localstorage页面级ui状态储存)阅读。
 
 ## 概述
 

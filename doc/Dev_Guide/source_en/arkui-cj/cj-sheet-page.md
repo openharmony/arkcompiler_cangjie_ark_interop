@@ -1,14 +1,14 @@
 # Binding Half-Modal Page (bindSheet)
 
-[The half-modal page (bindSheet)](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-sheettransition.md#func-bindsheetbool----unit-sheetoptions) is by default a non-fullscreen popup-style interactive page in modal form, allowing partial visibility of the underlying parent view to help users retain their parent view context while interacting with the half-modal.
+[The half-modal page (bindSheet)](../../../reference/source_en/arkui-cj/cj-universal-attribute-sheettransition.md#func-bindsheetbool----unit-sheetoptions) is by default a non-fullscreen popup-style interactive page in modal form, allowing partial visibility of the underlying parent view to help users retain their parent view context while interacting with the half-modal.
 
 Half-modal pages are suitable for displaying simple tasks or information panels, such as personal information, text introductions, sharing panels, creating schedules, adding content, etc. If there is a need to display a half-modal page that may affect the parent view, the half-modal supports configuration as a non-modal interactive form.
 
-Half-modal pages exhibit different behavioral capabilities on devices with varying widths. Developers with different form requirements for devices of different widths should refer to the ([preferType](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions)) attribute. The bindSheet can be used to construct half-modal transition effects; for details, see [Modal Transition](./cj-modal-transition.md). For complex or lengthy user flows, it is recommended to consider alternative transition methods instead of half-modal, such as [Full-Modal Transition](./cj-contentcover-page.md).
+Half-modal pages exhibit different behavioral capabilities on devices with varying widths. Developers with different form requirements for devices of different widths should refer to the ([preferType](../../../reference/source_en/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions)) attribute. The bindSheet can be used to construct half-modal transition effects; for details, see [Modal Transition](./cj-modal-transition.md). For complex or lengthy user flows, it is recommended to consider alternative transition methods instead of half-modal, such as [Full-Modal Transition](./cj-contentcover-page.md).
 
 ## Usage Constraints
 
-- If there are no scenarios requiring secondary confirmation or custom close behavior, it is not recommended to use the [shouldDismiss/onWilDismiss](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions) interface.
+- If there are no scenarios requiring secondary confirmation or custom close behavior, it is not recommended to use the [shouldDismiss/onWilDismiss](../../../reference/source_en/arkui-cj/cj-universal-attribute-sheettransition.md#class-sheetoptions) interface.
 
 ## Lifecycle
 

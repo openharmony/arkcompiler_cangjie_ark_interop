@@ -22,7 +22,7 @@ The specific development methods for each are described below.
 
 ## Interface Description
 
-The commonly used interfaces involved in the above scenarios are listed in the table below. For more API descriptions, please refer to the [API Reference](../../../API_Reference/source_en/arkui-cj/cj-apis-window.md).
+The commonly used interfaces involved in the above scenarios are listed in the table below. For more API descriptions, please refer to the [API Reference](../../../reference/source_en/arkui-cj/cj-apis-window.md).
 
 | Instance      | Interface                                                                  | Description                                                                                                                                       |
 | ------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -78,7 +78,7 @@ class MainAbility <: UIAbility {
 Developers can create application sub-windows, such as pop-ups, as needed, and perform operations like property setting.
 
 > **Note:**
-> The following scenarios are not recommended for using sub-windows. It is recommended to prioritize using the control [overlay](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-overlay.md) capability instead.
+> The following scenarios are not recommended for using sub-windows. It is recommended to prioritize using the control [overlay](../../../reference/source_en/arkui-cj/cj-universal-attribute-overlay.md) capability instead.
 > - On mobile devices (phones), sub-windows cannot exceed the boundaries of the main window when it is in floating or split-screen mode, similar to controls.
 > - In split-screen and free window modes, controls have better real-time following capability regarding changes in the main window's position and size compared to sub-windows.
 > - On some device platforms, due to actual system configuration limitations, sub-windows only have system-default animations and rounded corners/shadows, which cannot be set by the application, resulting in low flexibility.

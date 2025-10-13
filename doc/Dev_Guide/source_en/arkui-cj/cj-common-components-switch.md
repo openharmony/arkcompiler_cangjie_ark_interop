@@ -1,6 +1,6 @@
 # Toggle Button (Toggle)
 
-The Toggle component provides state button styles, checkbox styles, and switch styles, typically used for toggling between two states. For specific usage, please refer to [Toggle](../../../API_Reference/source_en/arkui-cj/cj-button-picker-toggle.md).
+The Toggle component provides state button styles, checkbox styles, and switch styles, typically used for toggling between two states. For specific usage, please refer to [Toggle](../../../reference/source_en/arkui-cj/cj-button-picker-toggle.md).
 
 ## Creating a Toggle Button
 
@@ -79,7 +79,7 @@ There are two forms of interface invocation:
 
 ## Adding Events
 
-In addition to supporting [Universal Events](../../../API_Reference/source_en/arkui-cj/cj-universal-event-click.md), Toggle can also trigger certain actions upon selection and deselection. You can bind the `onChange` event to respond to custom behaviors after these actions.
+In addition to supporting [Universal Events](../../../reference/source_en/arkui-cj/cj-universal-event-click.md), Toggle can also trigger certain actions upon selection and deselection. You can bind the `onChange` event to respond to custom behaviors after these actions.
 
 ```cangjie
 Toggle(ToggleType.Switch, isOn: false)

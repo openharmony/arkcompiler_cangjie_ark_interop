@@ -14,7 +14,7 @@ During the page loading process, if network resource acquisition is involved, pl
 
 ## Loading Network Pages
 
-Developers can specify the default network page to load when creating a Web component. The first parameter variable `src` of the [Web component](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#web) cannot be dynamically changed using state variables (e.g., `@State`).
+Developers can specify the default network page to load when creating a Web component. The first parameter variable `src` of the [Web component](../../../reference/source_en/arkui-cj/cj-web-web.md#web) cannot be dynamically changed using state variables (e.g., `@State`).
 
 In the following example, after the Web component loads the "www.example.com" page, developers can use the `loadUrl` interface to change the displayed page to "www.example1.com".
 
@@ -134,7 +134,7 @@ To reference local CSS style files when loading local HTML files, use the follow
 
 Example of loading local page files under the sandbox path:
 
-1. Obtain the sandbox path through the singleton object `GlobalContext`. File system access permissions ([fileAccess](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-fileaccessbool)) must be enabled in the application.
+1. Obtain the sandbox path through the singleton object `GlobalContext`. File system access permissions ([fileAccess](../../../reference/source_en/arkui-cj/cj-web-web.md#func-fileaccessbool)) must be enabled in the application.
 
     <!-- compile -->
 

@@ -10,7 +10,7 @@ Common events are categorized by their trigger types, including touch screen eve
 
 - [Focus Events](./cj-common-events-focus-event.md): The ability to control component focus through the above methods and the corresponding events.
 
-- [Drag Events](../../../API_Reference/source_en/arkui-cj/cj-universal-event-drag.md): Initiated by touch screen events or keyboard/mouse events, including long-press-and-drag operations with fingers/stylus on components and mouse dragging.
+- [Drag Events](../../../reference/source_en/arkui-cj/cj-universal-event-drag.md): Initiated by touch screen events or keyboard/mouse events, including long-press-and-drag operations with fingers/stylus on components and mouse dragging.
 
 - [Event Distribution](./cj-common-events-distribute.md): Describes the hit collection process of the response chain for touch-related events (excluding key and focus events).
 

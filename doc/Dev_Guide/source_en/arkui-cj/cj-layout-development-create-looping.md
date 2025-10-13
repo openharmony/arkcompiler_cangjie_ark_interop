@@ -1,6 +1,6 @@
 # Creating a Swiper
 
-The [Swiper](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md) component provides the capability to display content in a swipeable carousel. As a container component, Swiper can cycle through multiple child components when they are added. This feature is commonly used to showcase recommended content on application homepages.
+The [Swiper](../../../reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md) component provides the capability to display content in a swipeable carousel. As a container component, Swiper can cycle through multiple child components when they are added. This feature is commonly used to showcase recommended content on application homepages.
 
 For complex page scenarios, Swiper's preloading mechanism can be utilized to construct and layout components during the main thread's idle time, optimizing the sliding experience.
 
@@ -264,7 +264,7 @@ The `vertical` property controls swipe direction:
 
 ## Multi-item Display
 
-The [displayCount](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md#func-displaycountint32) property enables showing multiple child components per page.
+The [displayCount](../../../reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md#func-displaycountint32) property enables showing multiple child components per page.
 
  <!-- run -->
 

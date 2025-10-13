@@ -84,7 +84,7 @@ The popup provides lifecycle functions to notify users of its lifecycle state. T
 
 List selection popups are suitable for presenting multiple action options, particularly when only an action list needs to be displayed without other content.
 
-List selection popups are implemented via the [`show`](../../../API_Reference/source_en/arkui-cj/cj-dialog-actionsheet.md#static-func-showactionsheetoptions) interface in `ActionSheet`.
+List selection popups are implemented via the [`show`](../../../reference/source_en/arkui-cj/cj-dialog-actionsheet.md#static-func-showactionsheetoptions) interface in `ActionSheet`.
 
 This example defines the popup's style and animation effects by configuring interfaces such as `width`, `height`, and `transition`.
 

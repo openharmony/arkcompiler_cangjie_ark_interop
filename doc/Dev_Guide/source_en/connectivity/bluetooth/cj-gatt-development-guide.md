@@ -13,7 +13,7 @@ Main scenarios include:
 
 ## Interface Description
 
-For complete Cangjie API documentation and sample code, please refer to: [GATT Interface](../../../../API_Reference/source_en/ConnectivityKit/cj-apis-bluetooth-ble.md).
+For complete Cangjie API documentation and sample code, please refer to: [GATT Interface](../../../../reference/source_en/ConnectivityKit/cj-apis-bluetooth-ble.md).
 
 Detailed interface descriptions are shown in the following table.
 
@@ -332,7 +332,7 @@ Detailed interface descriptions are shown in the following table.
     let gattClientManager = GattClientManager()
     ```
 
-8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
+8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
 
 ### Server-Side Operations on Services and Notifying Clients
 
@@ -613,5 +613,5 @@ Detailed interface descriptions are shown in the following table.
     }
     ```
 
-8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../API_Reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
+8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
 ```

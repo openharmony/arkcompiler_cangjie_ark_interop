@@ -4,7 +4,7 @@ The first two sections introduced LocalStorage and AppStorage, both of which are
 
 PersistentStorage is an optional singleton object in an application. Its purpose is to persistently store selected AppStorage properties, ensuring these properties retain their values when the application restarts, matching their state at application shutdown.
 
-PersistentStorage provides the capability to persist state variables, but it's important to note that both persistence and UI read-back functionality depend on AppStorage. Before reading this documentation, it is recommended to review: [AppStorage](cj-appstorage.md) and [PersistentStorage API Documentation](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-appstatemanagement.md#persistentstorage持久化存储ui状态).
+PersistentStorage provides the capability to persist state variables, but it's important to note that both persistence and UI read-back functionality depend on AppStorage. Before reading this documentation, it is recommended to review: [AppStorage](cj-appstorage.md) and [PersistentStorage API Documentation](../../../../reference/source_en/arkui-cj/cj-state-rendering-appstatemanagement.md#persistentstorage持久化存储ui状态).
 
 ## Overview
 

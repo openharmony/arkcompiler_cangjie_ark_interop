@@ -1,6 +1,6 @@
 # Rich Text Editor (RichEditor)
 
-RichEditor is a component that supports mixed text-image layout and interactive text editing, typically used for responding to user input operations involving mixed content, such as comment sections that allow both text and images. For specific usage, please refer to [RichEditor](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md).
+RichEditor is a component that supports mixed text-image layout and interactive text editing, typically used for responding to user input operations involving mixed content, such as comment sections that allow both text and images. For specific usage, please refer to [RichEditor](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md).
 
 ## Creating a RichEditor Component Without Attribute String Construction
 
@@ -39,7 +39,7 @@ class EntryView {
 
 ### Configuring Custom Selection Menu
 
-Use [bindSelectionMenu](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-bindselectionmenuricheditorspantype-custombuilder-responsetype-selectionmenuoptions) to set a custom selection menu.
+Use [bindSelectionMenu](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-bindselectionmenuricheditorspantype-custombuilder-responsetype-selectionmenuoptions) to set a custom selection menu.
 
 The component comes with a default text selection menu that includes copy, cut, and select-all functions. Users can employ this property to define custom menus, such as translating English text, bolding fonts, and other rich menu functionalities.
 
@@ -96,7 +96,7 @@ class EntryView {
 
 ### Adding a Callback Triggered After Component Initialization
 
-Use [onReady](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onreadyvoidcallback) to add a callback triggered after component initialization.
+Use [onReady](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onreadyvoidcallback) to add a callback triggered after component initialization.
 
 This callback can effectively display rich content, including text, images, and emojis, after component initialization. For example, when using the RichEditor component to display news, this callback can trigger fetching text-image data from a server. The retrieved data can then be populated into the component, ensuring the complete news content is quickly rendered on the page after initialization.
 
@@ -131,7 +131,7 @@ class EntryView {
 
 ### Adding a Callback Triggered When Component Content is Selected
 
-Use [onSelect](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onselectcallbackricheditorselectionunit) to add a callback triggered when component content is selected.
+Use [onSelect](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onselectcallbackricheditorselectionunit) to add a callback triggered when component content is selected.
 
 This callback can enhance operational experience after text selection. For example, after selecting text, the callback can trigger a pop-up menu for modifying text styles or analyze and process the selected text to provide input suggestions, thereby improving text editing efficiency and convenience.
 
@@ -178,7 +178,7 @@ class EntryView {
 
 ### Adding Callbacks Triggered Before and After Text-Image Changes
 
-Use [onDidChange](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-ondidchangeondidchangecallback) to add a callback triggered after text-image changes. This callback is suitable for content saving and synchronization. For example, after a user completes content editing, this callback can automatically save the latest content locally or synchronize it to a server. It is also useful for content state updates and rendering. For instance, in a to-do list application, after a user edits a to-do description in rich text format, this callback can update the display style of the to-do item in the list.
+Use [onDidChange](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-ondidchangeondidchangecallback) to add a callback triggered after text-image changes. This callback is suitable for content saving and synchronization. For example, after a user completes content editing, this callback can automatically save the latest content locally or synchronize it to a server. It is also useful for content state updates and rendering. For instance, in a to-do list application, after a user edits a to-do description in rich text format, this callback can update the display style of the to-do item in the list.
 
 <!-- run -->
 
@@ -219,7 +219,7 @@ class EntryView {
 
 ### Adding Callbacks Triggered Before and After Input Method Content Entry
 
-Before input method content entry, use [aboutToIMEInput](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-abouttoimeinputcallbackricheditorinsertvaluebool) to trigger a callback. After input method content entry is completed, use [onIMEInputComplete](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onimeinputcompletecallbackricheditortextspanresultunit) to trigger a callback.
+Before input method content entry, use [aboutToIMEInput](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-abouttoimeinputcallbackricheditorinsertvaluebool) to trigger a callback. After input method content entry is completed, use [onIMEInputComplete](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onimeinputcompletecallbackricheditortextspanresultunit) to trigger a callback.
 
 These callback mechanisms are suitable for intelligent input assistance. For example, before a user starts entering text, the callback can provide word suggestions. After the user completes input, the callback can perform automated error correction or format conversion.
 
@@ -264,7 +264,7 @@ class EntryView {
 
 ### Adding a Callback Triggered Before Pasting is Completed
 
-Use [onPaste](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onpastepasteeventcallback) to add a callback triggered before pasting is completed.
+Use [onPaste](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-onpastepasteeventcallback) to add a callback triggered before pasting is completed.
 
 This callback is suitable for content format processing. For example, when a user copies text containing HTML tags, the callback can include code to convert it into a format supported by the RichEditor component, stripping unnecessary tags or retaining only plain text.
 
@@ -306,7 +306,7 @@ class EntryView {
 
 ## Adding Text Content
 
-In addition to directly entering content within the component, you can also use [addTextSpan](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-addtextspanresourcestr-richeditortextspanoptions) to add text content.
+In addition to directly entering content within the component, you can also use [addTextSpan](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-addtextspanresourcestr-richeditortextspanoptions) to add text content.
 
 This interface enables diverse text styling, such as creating mixed-style text.
 
@@ -347,7 +347,7 @@ class EntryView {
 
 ## Adding Image Content
 
-Use [addImageSpan](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-addimagespanstring-richeditorimagespanoptions) to add image content.
+Use [addImageSpan](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md#func-addimagespanstring-richeditorimagespanoptions) to add image content.
 
 This interface can enrich content and enhance visual presentation, such as adding images to news articles or data visualization graphics to documents.
 

@@ -25,23 +25,23 @@ The Basic Services Kit equips developers with various foundational capabilities 
 Categorized by usage scenarios, this Kit primarily includes the following capabilities:  
 
 - **Data File Handling:**  
-  - [Compression](../../../API_Reference/source_en/AbilityKit/cj-apis-bundle_manager.md): Provides file compression and decompression capabilities.  
-  - [Upload/Download](../../../API_Reference/source_en/BasicServicesKit/cj-apis-request-agent.md): Offers foundational capabilities for file upload/download and background transfer proxying.  
+  - [Compression](../../../reference/source_en/AbilityKit/cj-apis-bundle_manager.md): Provides file compression and decompression capabilities.  
+  - [Upload/Download](../../../reference/source_en/BasicServicesKit/cj-apis-request-agent.md): Offers foundational capabilities for file upload/download and background transfer proxying.  
 
 - **Inter-Process/Inter-Thread Communication:**  
-  - [Common Events](../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md): Enables inter-process communication, including subscribing to, publishing, and unsubscribing from common events. For development guidelines, refer to [Common Event Overview](./common-event/cj-common-event-overview.md).  
+  - [Common Events](../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md): Enables inter-process communication, including subscribing to, publishing, and unsubscribing from common events. For development guidelines, refer to [Common Event Overview](./common-event/cj-common-event-overview.md).  
 
 - **Device Management:**  
-  - [Device Information](../../../API_Reference/source_en/BasicServicesKit/cj-apis-device_info.md): Provides the ability to query product information, such as device type, brand name, product series, and version number.  
-  - [Settings Data Items](../../../API_Reference/source_en/BasicServicesKit/cj-apis-settings.md): Enables querying system settings, such as whether airplane mode or touch browsing is enabled.  
-  - [Battery Information Query](../../../API_Reference/source_en/BasicServicesKit/cj-apis-battery_info.md): Provides the ability to query battery-related information.  
+  - [Device Information](../../../reference/source_en/BasicServicesKit/cj-apis-device_info.md): Provides the ability to query product information, such as device type, brand name, product series, and version number.  
+  - [Settings Data Items](../../../reference/source_en/BasicServicesKit/cj-apis-settings.md): Enables querying system settings, such as whether airplane mode or touch browsing is enabled.  
+  - [Battery Information Query](../../../reference/source_en/BasicServicesKit/cj-apis-battery_info.md): Provides the ability to query battery-related information.  
 
 - **Others:**  
-  - [Common Callbacks](../../../API_Reference/source_en/BasicServicesKit/cj-apis-base.md): Defines common callback types for Cangjie interfaces, including public callbacks and error messages during interface invocation.  
-  - [Time and Time Zone](../../../API_Reference/source_en/BasicServicesKit/cj-apis-system_date_time.md): Provides the ability to retrieve system time and time zone information.  
+  - [Common Callbacks](../../../reference/source_en/BasicServicesKit/cj-apis-base.md): Defines common callback types for Cangjie interfaces, including public callbacks and error messages during interface invocation.  
+  - [Time and Time Zone](../../../reference/source_en/BasicServicesKit/cj-apis-system_date_time.md): Provides the ability to retrieve system time and time zone information.  
 
 ## Relationship with Other Kits  
 
-- **[Ability Kit](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md):** Inter-process communication in the Ability Kit relies on the Common Events capability provided by this Kit.  
+- **[Ability Kit](../../../reference/source_en/AbilityKit/cj-apis-app-ability-ui_ability.md):** Inter-process communication in the Ability Kit relies on the Common Events capability provided by this Kit.  
 
-- **[Core File Kit](../../../API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md):** Unlike the Core File Kit, which primarily focuses on file access and management (e.g., application file sharing, data backup/restore), this Kit is used for scenarios involving file compression, upload/download, and printing.
+- **[Core File Kit](../../../reference/source_en/CoreFileKit/cj-apis-file_fs.md):** Unlike the Core File Kit, which primarily focuses on file access and management (e.g., application file sharing, data backup/restore), this Kit is used for scenarios involving file compression, upload/download, and printing.

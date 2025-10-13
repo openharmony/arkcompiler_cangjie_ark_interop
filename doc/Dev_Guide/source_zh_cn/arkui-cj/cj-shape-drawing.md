@@ -1,6 +1,6 @@
 # 绘制几何图形 (Shape)
 
-绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。具体用法请参考[Shape](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-shape.md)。
+绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。具体用法请参考[Shape](../../../reference/source_zh_cn/arkui-cj/cj-graphic-drawing-shape.md)。
 
 ## 创建绘制组件
 
@@ -22,7 +22,7 @@
   }
   ```
 
-- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-circle.md)（圆形）、[Ellipse](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-ellipse.md)（椭圆形）、[Line](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-line.md)（直线）、[Path](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-path.md)（路径）、[Rect](../../../API_Reference/source_zh_cn/arkui-cj/cj-graphic-drawing-rect.md)（矩形）。以Circle的接口调用为例：
+- 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle](../../../reference/source_zh_cn/arkui-cj/cj-graphic-drawing-circle.md)（圆形）、[Ellipse](../../../reference/source_zh_cn/arkui-cj/cj-graphic-drawing-ellipse.md)（椭圆形）、[Line](../../../reference/source_zh_cn/arkui-cj/cj-graphic-drawing-line.md)（直线）、[Path](../../../reference/source_zh_cn/arkui-cj/cj-graphic-drawing-path.md)（路径）、[Rect](../../../reference/source_zh_cn/arkui-cj/cj-graphic-drawing-rect.md)（矩形）。以Circle的接口调用为例：
 
   ```cangjie
   Circle()

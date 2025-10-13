@@ -4,15 +4,15 @@ For corresponding algorithm specifications, please refer to [Symmetric Key Encry
 
 ## Encryption
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with SM4 algorithm and 128-bit key length.
+1. Call [createSymKeyGenerator](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with SM4 algorithm and 128-bit key length.
 
     For guidance on generating SM4 symmetric keys, developers can refer to the example below, combined with [Symmetric Key Generation and Conversion Specifications: SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4) and [Random Symmetric Key Generation](./cj-crypto-generate-sym-key-randomly.md). Note that reference documents may have parameter differences from the current example, so please pay attention when reading.
 
-2. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring), specifying the string parameter 'SM4_128|GCM|PKCS7', to create a Cipher instance with SM4_128 symmetric key type, GCM block mode, and PKCS7 padding mode for encryption operations.
+2. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring), specifying the string parameter 'SM4_128|GCM|PKCS7', to create a Cipher instance with SM4_128 symmetric key type, GCM block mode, and PKCS7 padding mode for encryption operations.
 
-3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to encryption (CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey) and GCM mode parameters (GcmParamsSpec), and initialize the encryption Cipher instance.
+3. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to encryption (CryptoMode.ENCRYPT_MODE), specify the encryption key (SymKey) and GCM mode parameters (GcmParamsSpec), and initialize the encryption Cipher instance.
 
-4. Set the data input size to 20 bytes per call and repeatedly call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update data (plaintext).
+4. Set the data input size to 20 bytes per call and repeatedly call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update data (plaintext).
 
     - There is currently no limit on the length of a single update. Developers can decide how to call update based on the data volume.
     - It is recommended that developers check if the update result is an empty array each time and concatenate the data when the result is not empty to form the complete ciphertext. This is because update results may vary under different specifications.
@@ -21,23 +21,23 @@ For corresponding algorithm specifications, please refer to [Symmetric Key Encry
 
         - For stream encryption modes (e.g., CTR and OFB), the ciphertext length is usually equal to the plaintext length.
 
-5. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
+5. Call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
 
     Since data has already been passed via update, pass None for data here.
 
-6. Read [GcmParamsSpec](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#struct-gcmparamsspec).authTag as the authentication information for decryption.
+6. Read [GcmParamsSpec](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#struct-gcmparamsspec).authTag as the authentication information for decryption.
 
     In GCM mode, the last 16 bytes of the encrypted data must be extracted as the authentication information for decryption initialization. In this example, authTag is exactly 16 bytes.
 
 ## Decryption
 
-1. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring), specifying the string parameter 'SM4_128|GCM|PKCS7', to create a Cipher instance with SM4_128 symmetric key type, GCM block mode, and PKCS7 padding mode for decryption operations.
+1. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring), specifying the string parameter 'SM4_128|GCM|PKCS7', to create a Cipher instance with SM4_128 symmetric key type, GCM block mode, and PKCS7 padding mode for decryption operations.
 
-2. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to decryption (CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey) and GCM mode parameters (GcmParamsSpec), and initialize the decryption Cipher instance.
+2. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec), set the mode to decryption (CryptoMode.DECRYPT_MODE), specify the decryption key (SymKey) and GCM mode parameters (GcmParamsSpec), and initialize the decryption Cipher instance.
 
-3. Set the data input size to 20 bytes per call and repeatedly call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update data (ciphertext).
+3. Set the data input size to 20 bytes per call and repeatedly call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update data (ciphertext).
 
-4. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
+4. Call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
 
 ## Example
 

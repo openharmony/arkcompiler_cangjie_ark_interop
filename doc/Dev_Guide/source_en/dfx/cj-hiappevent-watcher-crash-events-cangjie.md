@@ -2,7 +2,7 @@
 
 ## Interface Description
 
-For detailed API usage instructions (parameter constraints, value ranges, etc.), please refer to the [Application Event Tracking API Documentation](../../../API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hiappevent.md).
+For detailed API usage instructions (parameter constraints, value ranges, etc.), please refer to the [Application Event Tracking API Documentation](../../../reference/source_en/PerformanceAnalysisKit/cj-apis-hiappevent.md).
 
 > **Note:**
 >
@@ -85,7 +85,7 @@ This example demonstrates development steps by subscribing to crash events trigg
 
 If the application actively catches crash exceptions, HiAppEvent will callback before app termination in these scenarios:
 
-Scenario 1: Exception handling doesn't actively terminate the app (e.g., using [errorManger.on](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-error_manager.md#static-func-onErrorManagerEvent-errorobserver) to catch CjError, or registering NativeCrash signal handlers without termination).
+Scenario 1: Exception handling doesn't actively terminate the app (e.g., using [errorManger.on](../../../reference/source_en/AbilityKit/cj-apis-app-ability-error_manager.md#static-func-onErrorManagerEvent-errorobserver) to catch CjError, or registering NativeCrash signal handlers without termination).
 
 Scenario 2: Exception handling takes too long, delaying app termination.
 

@@ -1,10 +1,10 @@
 # Video Playback (Video)
 
-The Video component is used to play video files and control their playback state, commonly employed for short video lists and in-app video pages. It automatically plays when fully displayed, pauses upon user click on the video area while showing a progress bar that allows seeking to specific positions. For detailed usage, refer to [Video](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md).
+The Video component is used to play video files and control their playback state, commonly employed for short video lists and in-app video pages. It automatically plays when fully displayed, pauses upon user click on the video area while showing a progress bar that allows seeking to specific positions. For detailed usage, refer to [Video](../../../reference/source_en/arkui-cj/cj-image-video-video.md).
 
 ## Creating a Video Component
 
-The Video component is created through API calls. For interface invocation forms, see [Creating a Video Component](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#创建组件).
+The Video component is created through API calls. For interface invocation forms, see [Creating a Video Component](../../../reference/source_en/arkui-cj/cj-image-video-video.md#创建组件).
 
 ## Loading Video Resources
 
@@ -74,7 +74,7 @@ class VideoPlayer {
 
 ## Adding Properties
 
-Video component [properties](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#组件属性) primarily configure playback behavior, such as muting, displaying control bars, etc.
+Video component [properties](../../../reference/source_en/arkui-cj/cj-image-video-video.md#组件属性) primarily configure playback behavior, such as muting, displaying control bars, etc.
 
 ```cangjie
 @Component
@@ -96,7 +96,7 @@ class VideoPlayer {
 
 ## Event Invocation
 
-Video component callback events include playback start, pause/end, failure, stop, preparation, and progress bar operations. It also supports general events like click and touch. For details, see [Event Description](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#组件事件).
+Video component callback events include playback start, pause/end, failure, stop, preparation, and progress bar operations. It also supports general events like click and touch. For details, see [Event Description](../../../reference/source_en/arkui-cj/cj-image-video-video.md#组件事件).
 
 ```cangjie
 @Component
@@ -124,7 +124,7 @@ class VideoPlayer {
 
 ## Video Controller Usage
 
-The Video controller primarily manages video states including play, pause, stop, and seeking. For details, see [VideoController Usage](../../../API_Reference/source_en/arkui-cj/cj-image-video-video.md#class-videocontroller).
+The Video controller primarily manages video states including play, pause, stop, and seeking. For details, see [VideoController Usage](../../../reference/source_en/arkui-cj/cj-image-video-video.md#class-videocontroller).
 
 - Default Controller
 

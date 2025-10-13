@@ -1,12 +1,12 @@
 # Button
 
-Button is a button component typically used to respond to user click actions. Its types include capsule button, circular button, and regular button. When used as a container, Button can incorporate child components to create buttons containing elements such as text and images. For specific usage, please refer to [Button](../../../API_Reference/source_en/arkui-cj/cj-button-picker-button.md).
+Button is a button component typically used to respond to user click actions. Its types include capsule button, circular button, and regular button. When used as a container, Button can incorporate child components to create buttons containing elements such as text and images. For specific usage, please refer to [Button](../../../reference/source_en/arkui-cj/cj-button-picker-button.md).
 
 ## Creating a Button
 
 Buttons are created by calling interfaces, which can be done in two forms:
 
-- Creating a button without child components using label and [ButtonOptions](../../../API_Reference/source_en/arkui-cj/cj-button-picker-button.md#class-buttonoptions). Examples include shape and stateEffect in ButtonOptions.
+- Creating a button without child components using label and [ButtonOptions](../../../reference/source_en/arkui-cj/cj-button-picker-button.md#class-buttonoptions). Examples include shape and stateEffect in ButtonOptions.
 
   ```cangjie
   init(label: String, options: ButtonOptions)
@@ -24,7 +24,7 @@ Buttons are created by calling interfaces, which can be done in two forms:
 
   ![Button](figures/Button.png)
 
-- Creating a button with child components using [ButtonOptions](../../../API_Reference/source_en/arkui-cj/cj-button-picker-button.md#class-buttonoptions). Examples include shape and stateEffect in ButtonOptions.
+- Creating a button with child components using [ButtonOptions](../../../reference/source_en/arkui-cj/cj-button-picker-button.md#class-buttonoptions). Examples include shape and stateEffect in ButtonOptions.
 
   ```cangjie
   init(options: ButtonOptions, content: () -> Unit)

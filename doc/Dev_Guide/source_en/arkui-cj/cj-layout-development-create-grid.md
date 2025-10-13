@@ -4,7 +4,7 @@
 
 A grid layout consists of cells divided by "rows" and "columns," enabling diverse layouts by specifying the cells where "items" are placed. Grid layouts excel at evenly distributing page space and controlling child component proportions, making them a crucial adaptive layout solution. Common use cases include 9-grid image displays, calendars, calculators, etc.
 
-ArkUI provides the [Grid](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-grid.md) container component and its child component [GridItem](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-griditem.md) for constructing grid layouts. Grid sets layout parameters, while GridItem defines child component characteristics. The Grid component supports generating child components through [conditional rendering](./rendering_control/cj-rendering-control-ifelse.md), [loop rendering](./rendering_control/cj-rendering-control-foreach.md), and [lazy loading](./rendering_control/cj-rendering-control-lazyforeach.md).
+ArkUI provides the [Grid](../../../reference/source_en/arkui-cj/cj-scroll-swipe-grid.md) container component and its child component [GridItem](../../../reference/source_en/arkui-cj/cj-scroll-swipe-griditem.md) for constructing grid layouts. Grid sets layout parameters, while GridItem defines child component characteristics. The Grid component supports generating child components through [conditional rendering](./rendering_control/cj-rendering-control-ifelse.md), [loop rendering](./rendering_control/cj-rendering-control-foreach.md), and [lazy loading](./rendering_control/cj-rendering-control-lazyforeach.md).
 
 ## Layout and Constraints
 
@@ -59,7 +59,7 @@ Grid() {
 
 > **Note:**
 >
-> When `rowsTemplate` or `columnsTemplate` are set, Grid's `layoutDirection` and `cellLength` properties become ineffective. Refer to [Grid Properties](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-grid.md#组件属性) for details.
+> When `rowsTemplate` or `columnsTemplate` are set, Grid's `layoutDirection` and `cellLength` properties become ineffective. Refer to [Grid Properties](../../../reference/source_en/arkui-cj/cj-scroll-swipe-grid.md#组件属性) for details.
 
 ## Displaying Data in Grid Layouts
 
@@ -189,7 +189,7 @@ Similar to "back to top" in news lists, scroll control is useful for grid featur
 
 ![GridItem7](figures/GridItem7.gif)
 
-Initialize Grid with a [Scroller](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md#scroll) object for scroll control. Use [scrollPage](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md#func-scrollpagebool) for pagination:
+Initialize Grid with a [Scroller](../../../reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md#scroll) object for scroll control. Use [scrollPage](../../../reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md#func-scrollpagebool) for pagination:
 
 ```cangjie
 var scroller: Scroller = Scroller()

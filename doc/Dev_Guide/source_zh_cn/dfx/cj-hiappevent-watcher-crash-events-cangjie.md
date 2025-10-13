@@ -2,7 +2,7 @@
 
 ## 接口说明
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参见[应用事件打点API文档](../../../API_Reference/source_zh_cn/PerformanceAnalysisKit/cj-apis-hiappevent.md)。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参见[应用事件打点API文档](../../../reference/source_zh_cn/PerformanceAnalysisKit/cj-apis-hiappevent.md)。
 
 > **说明：**
 >
@@ -85,7 +85,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 若应用主动捕获崩溃异常，如下两种场景，HiAppEvent事件将会在应用退出前回调。
 
-场景1：异常处理中未主动退出，应用崩溃后不退出。例如采用[errorManger.on](../../../API_Reference/source_zh_cn/AbilityKit/cj-apis-app-ability-error_manager.md#static-func-onErrorManagerEvent-errorobserver)捕获CjError，或主动注册NativeCrash信号处理函数但未退出。
+场景1：异常处理中未主动退出，应用崩溃后不退出。例如采用[errorManger.on](../../../reference/source_zh_cn/AbilityKit/cj-apis-app-ability-error_manager.md#static-func-onErrorManagerEvent-errorobserver)捕获CjError，或主动注册NativeCrash信号处理函数但未退出。
 
 场景2：异常处理耗时过久，应用退出时机延后。
 

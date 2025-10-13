@@ -1,12 +1,12 @@
 # Basic Custom Dialog (CustomDialog) (Not Recommended)
 
-CustomDialog is a customizable popup dialog that can be used for advertisements, prize notifications, warnings, software updates, and other user interaction response operations. Developers can display custom dialogs using the CustomDialogController class. For specific usage, please refer to [Custom Dialog](../../../API_Reference/source_en/arkui-cj/cj-dialog-customdialog.md).
+CustomDialog is a customizable popup dialog that can be used for advertisements, prize notifications, warnings, software updates, and other user interaction response operations. Developers can display custom dialogs using the CustomDialogController class. For specific usage, please refer to [Custom Dialog](../../../reference/source_en/arkui-cj/cj-dialog-customdialog.md).
 
 > **Note:**
 >
 > By default, ArkUI dialogs are non-page-level popups. During page routing navigation, if the developer does not call the close method to dismiss them, the dialog will not automatically close.
 
-The CustomDialog can be configured as either modal or non-modal by setting [isModal](../../../API_Reference/source_en/arkui-cj/cj-dialog-customdialog.md#var-ismodal). When isModal is true, the dialog is modal. When isModal is false, the dialog is non-modal.
+The CustomDialog can be configured as either modal or non-modal by setting [isModal](../../../reference/source_en/arkui-cj/cj-dialog-customdialog.md#var-ismodal). When isModal is true, the dialog is modal. When isModal is false, the dialog is non-modal.
 
 ## Creating a Custom Dialog
 

@@ -2,9 +2,9 @@
 
 The Popup attribute can be bound to a component to display a popup bubble prompt, configuring the popup content, interaction logic, and display state. It is primarily used for scenarios such as screen recording and informational popup reminders.  
 
-There are two types of popups: one is the system-provided popup [PopupOptions](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-popup.md#struct-popupoptions), and the other is a customizable popup [CustomPopupOptions](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-popup.md#struct-custompopupoptions). Among them, `PopupOptions` configures buttons via `primaryButton` and `secondaryButton` to create a popup with buttons, while `CustomPopupOptions` uses the `builder` to define a custom popup.  
+There are two types of popups: one is the system-provided popup [PopupOptions](../../../reference/source_en/arkui-cj/cj-universal-attribute-popup.md#struct-popupoptions), and the other is a customizable popup [CustomPopupOptions](../../../reference/source_en/arkui-cj/cj-universal-attribute-popup.md#struct-custompopupoptions). Among them, `PopupOptions` configures buttons via `primaryButton` and `secondaryButton` to create a popup with buttons, while `CustomPopupOptions` uses the `builder` to define a custom popup.  
 
-The popup can be configured as a modal or non-modal window using the [mask](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-popup.md#var-mask-1) property. When `mask` is set to `true` or a color value, the popup behaves as a modal window; when `mask` is `false`, it acts as a non-modal window.  
+The popup can be configured as a modal or non-modal window using the [mask](../../../reference/source_en/arkui-cj/cj-universal-attribute-popup.md#var-mask-1) property. When `mask` is set to `true` or a color value, the popup behaves as a modal window; when `mask` is `false`, it acts as a non-modal window.  
 
 ## Text Popup  
 

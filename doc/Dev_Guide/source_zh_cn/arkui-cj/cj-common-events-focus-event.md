@@ -67,7 +67,7 @@
 
 - focusOnTouch
 
-    详情请参见[focusOnTouch](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-focus.md#func-focusontouchbool)，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
+    详情请参见[focusOnTouch](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-focus.md#func-focusontouchbool)，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
 
 #### 被动走焦
 
@@ -211,13 +211,13 @@ public func focusable(isFocusable: Bool): This
 public func enabled(value: Bool): This
 ```
 
-设置组件可交互性属性[enabled](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-enable.md#func-enabledbool)为`false`，则组件不可交互，无法获焦。
+设置组件可交互性属性[enabled](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-enable.md#func-enabledbool)为`false`，则组件不可交互，无法获焦。
 
 ```cangjie
 public func visibility(value: Visibility): This
 ```
 
-设置组件可见性属性[visibility](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-visibility.md#func-visibilityvisibility)为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
+设置组件可见性属性[visibility](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-visibility.md#func-visibilityvisibility)为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
 
 ```cangjie
 public func focusOnTouch(isFocusOnTouch: Bool): This
@@ -524,7 +524,7 @@ class EntryView {
 
 > **说明：**
 >
-> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-key.md)不会被同步触发。
+> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../../../reference/source_zh_cn/arkui-cj/cj-universal-event-key.md)不会被同步触发。
 > - 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
 > - 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
 > - 获焦组件响应点击事件（`onClick`），与焦点激活态无关。
@@ -571,68 +571,68 @@ class EntryView {
 
 | 基础组件                                     | 是否有获焦能力 | focusable默认值 |
 | :---------------------------------------- | :------- | :------------ |
-| [AlphabetIndexer](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-alphabetindexer.md) | 是       | true         |
-| [Blank](../../../API_Reference/source_zh_cn/arkui-cj/cj-blank-divider-blank.md) | 否       | false        |
-| [Button](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md) | 是       | true         |
-| [Checkbox](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-checkbox.md) | 是       | true         |
-| [CheckboxGroup](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-checkboxgroup.md) | 是       | true         |
-| [DataPanel](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-datapanel.md) | 是       | false        |
-| [DatePicker](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-datepicker.md) | 是       | true         |
-| [Divider](../../../API_Reference/source_zh_cn/arkui-cj/cj-blank-divider-divider.md) | 是       | false        |
-| [Gauge](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-gauge.md) | 是       | false        |
-| [Image](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-image.md) | 是       | false        |
-| [ImageSpan](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-imagespan.md)                 | 否       | false        |
-| [LoadingProgress](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-loadingprogress.md) | 是       | true        |
-| [Navigation](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md) | 是       | true         |
-| [PatternLock](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-patternlock.md) | 是       | true        |
-| [Progress](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-progress.md) | 是       | true        |
-| [QRCode](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-qrcode.md) | 是       | true        |
-| [Radio](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-radio.md) | 是       | true         |
-| [Rating](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-rating.md) | 是       | true         |
-| [RichEditor](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md) | 是       | true         |
-| [RichText](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-richtext.md) | 否       | false        |
-| [ScrollBar](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scrollbar.md) | 否       | false        |
-| [Search](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-search.md) | 是       | true         |
-| [Select](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-select.md) | 是       | true         |
-| [Slider](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-slider.md) | 是       | true         |
-| [Span](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-span.md) | 否       | false        |
-| [Stepper](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-stepper.md) | 是       | true         |
-| [StepperItem](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-stepperitem.md) | 是       | true         |
-| [Text](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-text.md) | 是       | false        |
-| [TextArea](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textarea.md) | 否       | false         |
-| [TextClock](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-textclock.md) | 否       | false        |
-| [TextInput](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textinput.md) | 是       | true         |
-| [TextPicker](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-textpicker.md) | 是       | true         |
-| [TextTimer](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-texttimer.md) | 否       | false        |
-| [Toggle](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-toggle.md) | 是       | true         |
+| [AlphabetIndexer](../../../reference/source_zh_cn/arkui-cj/cj-information-display-alphabetindexer.md) | 是       | true         |
+| [Blank](../../../reference/source_zh_cn/arkui-cj/cj-blank-divider-blank.md) | 否       | false        |
+| [Button](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-button.md) | 是       | true         |
+| [Checkbox](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-checkbox.md) | 是       | true         |
+| [CheckboxGroup](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-checkboxgroup.md) | 是       | true         |
+| [DataPanel](../../../reference/source_zh_cn/arkui-cj/cj-information-display-datapanel.md) | 是       | false        |
+| [DatePicker](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-datepicker.md) | 是       | true         |
+| [Divider](../../../reference/source_zh_cn/arkui-cj/cj-blank-divider-divider.md) | 是       | false        |
+| [Gauge](../../../reference/source_zh_cn/arkui-cj/cj-information-display-gauge.md) | 是       | false        |
+| [Image](../../../reference/source_zh_cn/arkui-cj/cj-image-video-image.md) | 是       | false        |
+| [ImageSpan](../../../reference/source_zh_cn/arkui-cj/cj-text-input-imagespan.md)                 | 否       | false        |
+| [LoadingProgress](../../../reference/source_zh_cn/arkui-cj/cj-information-display-loadingprogress.md) | 是       | true        |
+| [Navigation](../../../reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md) | 是       | true         |
+| [PatternLock](../../../reference/source_zh_cn/arkui-cj/cj-information-display-patternlock.md) | 是       | true        |
+| [Progress](../../../reference/source_zh_cn/arkui-cj/cj-information-display-progress.md) | 是       | true        |
+| [QRCode](../../../reference/source_zh_cn/arkui-cj/cj-information-display-qrcode.md) | 是       | true        |
+| [Radio](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-radio.md) | 是       | true         |
+| [Rating](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-rating.md) | 是       | true         |
+| [RichEditor](../../../reference/source_zh_cn/arkui-cj/cj-text-input-richeditor.md) | 是       | true         |
+| [RichText](../../../reference/source_zh_cn/arkui-cj/cj-text-input-richtext.md) | 否       | false        |
+| [ScrollBar](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scrollbar.md) | 否       | false        |
+| [Search](../../../reference/source_zh_cn/arkui-cj/cj-text-input-search.md) | 是       | true         |
+| [Select](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-select.md) | 是       | true         |
+| [Slider](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-slider.md) | 是       | true         |
+| [Span](../../../reference/source_zh_cn/arkui-cj/cj-text-input-span.md) | 否       | false        |
+| [Stepper](../../../reference/source_zh_cn/arkui-cj/cj-navigation-switching-stepper.md) | 是       | true         |
+| [StepperItem](../../../reference/source_zh_cn/arkui-cj/cj-navigation-switching-stepperitem.md) | 是       | true         |
+| [Text](../../../reference/source_zh_cn/arkui-cj/cj-text-input-text.md) | 是       | false        |
+| [TextArea](../../../reference/source_zh_cn/arkui-cj/cj-text-input-textarea.md) | 否       | false         |
+| [TextClock](../../../reference/source_zh_cn/arkui-cj/cj-information-display-textclock.md) | 否       | false        |
+| [TextInput](../../../reference/source_zh_cn/arkui-cj/cj-text-input-textinput.md) | 是       | true         |
+| [TextPicker](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-textpicker.md) | 是       | true         |
+| [TextTimer](../../../reference/source_zh_cn/arkui-cj/cj-information-display-texttimer.md) | 否       | false        |
+| [Toggle](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-toggle.md) | 是       | true         |
 
 容器组件获焦能力如下表所示：
 
 | 容器组件                                     | 是否可获焦 | focusable默认值 |
 | :---------------------------------------- | :------- | :------------ |
-| [Badge](../../../API_Reference/source_zh_cn/arkui-cj/cj-information-display-badge.md) | 否     | false        |
-| [Column](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-column.md) | 是     | true         |
-| [Flex](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-flex.md) | 是     | true         |
-| [GridCol](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-gridcol.md) | 是     | true         |
-| [GridRow](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-gridrow.md) | 是     | true         |
-| [Grid](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md) | 是     | true         |
-| [GridItem](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-griditem.md) | 是     | true         |
-| [List](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-list.md) | 是     | true         |
-| [ListItem](../../../API_Reference/source_zh_cn/arkui-cj//cj-scroll-swipe-listitem.md) | 是     | true         |
-| [ListItemGroup](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-listgroup.md) | 是     | true         |
-| [Navigator](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md) | 是     | true         |
-| [Refresh](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-refresh.md) | 是     | true        |
-| [RelativeContainer](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-relativecontainer.md) | 否     | false         |
-| [Row](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-row.md) | 是    | true         |
-| [RowSplit](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-rowsplit.md) | 是     | true         |
-| [Scroll](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scroll.md) | 是     | true         |
-| [SideBarContainer](../../../API_Reference/source_zh_cn/arkui-cj/cj-grid-layout-sidebar.md) | 是     | true         |
-| [Stack](../../../API_Reference/source_zh_cn/arkui-cj/cj-row-column-stack-stack.md) | 是     | true         |
-| [Swiper](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-swiper.md) | 是     | true         |
-| [Tabs](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-tabs.md) | 是     | true         |
+| [Badge](../../../reference/source_zh_cn/arkui-cj/cj-information-display-badge.md) | 否     | false        |
+| [Column](../../../reference/source_zh_cn/arkui-cj/cj-row-column-stack-column.md) | 是     | true         |
+| [Flex](../../../reference/source_zh_cn/arkui-cj/cj-row-column-stack-flex.md) | 是     | true         |
+| [GridCol](../../../reference/source_zh_cn/arkui-cj/cj-grid-layout-gridcol.md) | 是     | true         |
+| [GridRow](../../../reference/source_zh_cn/arkui-cj/cj-grid-layout-gridrow.md) | 是     | true         |
+| [Grid](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md) | 是     | true         |
+| [GridItem](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-griditem.md) | 是     | true         |
+| [List](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-list.md) | 是     | true         |
+| [ListItem](../../../reference/source_zh_cn/arkui-cj//cj-scroll-swipe-listitem.md) | 是     | true         |
+| [ListItemGroup](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-listgroup.md) | 是     | true         |
+| [Navigator](../../../reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md) | 是     | true         |
+| [Refresh](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-refresh.md) | 是     | true        |
+| [RelativeContainer](../../../reference/source_zh_cn/arkui-cj/cj-row-column-stack-relativecontainer.md) | 否     | false         |
+| [Row](../../../reference/source_zh_cn/arkui-cj/cj-row-column-stack-row.md) | 是    | true         |
+| [RowSplit](../../../reference/source_zh_cn/arkui-cj/cj-grid-layout-rowsplit.md) | 是     | true         |
+| [Scroll](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scroll.md) | 是     | true         |
+| [SideBarContainer](../../../reference/source_zh_cn/arkui-cj/cj-grid-layout-sidebar.md) | 是     | true         |
+| [Stack](../../../reference/source_zh_cn/arkui-cj/cj-row-column-stack-stack.md) | 是     | true         |
+| [Swiper](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-swiper.md) | 是     | true         |
+| [Tabs](../../../reference/source_zh_cn/arkui-cj/cj-navigation-switching-tabs.md) | 是     | true         |
 
 媒体组件获焦能力如下表所示：
 
 | 媒体组件                                     | 是否可获焦 | focusable默认值 |
 | :---------------------------------------- | :------- | :------------ |
-| [Video](../../../API_Reference/source_zh_cn/arkui-cj/cj-image-video-video.md) | 是     | true         |
+| [Video](../../../reference/source_zh_cn/arkui-cj/cj-image-video-video.md) | 是     | true         |

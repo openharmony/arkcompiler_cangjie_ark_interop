@@ -22,4 +22,4 @@ For example, in Arabic, the singular and plural rules are as follows:
 
 ## Development Steps  
 
-For specific usage of the interface, please refer to the API documentation for [getPluralStringValue](../../../API_Reference/source_en/LocalizationKit/cj-apis-resource_manager.md#func-getpluralstringvalueappresource-int64).
+For specific usage of the interface, please refer to the API documentation for [getPluralStringValue](../../../reference/source_en/LocalizationKit/cj-apis-resource_manager.md#func-getpluralstringvalueappresource-int64).

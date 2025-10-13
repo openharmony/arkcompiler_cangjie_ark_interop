@@ -29,11 +29,11 @@ The random number generation algorithm uses OpenSSL's `RAND_priv_bytes` interfac
 
 ## Development Steps
 
-1. Call [`createRandom`](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createrandom) to create a random number instance.
+1. Call [`createRandom`](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createrandom) to create a random number instance.
 
-2. (Optional) Set `DataBlob` data and call [`setSeed`](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-setseeddatablob) to seed the random number generator pool.
+2. (Optional) Set `DataBlob` data and call [`setSeed`](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-setseeddatablob) to seed the random number generator pool.
 
-3. Specify the byte length and call [`generateRandom`](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-generaterandomint32) to generate a secure random number.
+3. Specify the byte length and call [`generateRandom`](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-generaterandomint32) to generate a secure random number.
 
    The specified byte length must be within the range of 1 to `INT_MAX`.
 

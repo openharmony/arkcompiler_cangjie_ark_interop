@@ -18,7 +18,7 @@ Below is a comparison of different implementation approaches:
 
 ## Modifying Original Components Without Creating New Ones
 
-This method doesn't create new containers but triggers [transition](../../../API_Reference/source_en/arkui-cj/cj-animation-transition.md#func-transition) by adding or removing components from existing containers, combined with component [property animations](./cj-attribute-animation-apis.md) to achieve the one-shot effect.
+This method doesn't create new containers but triggers [transition](../../../reference/source_en/arkui-cj/cj-animation-transition.md#func-transition) by adding or removing components from existing containers, combined with component [property animations](./cj-attribute-animation-apis.md) to achieve the one-shot effect.
 
 For scenarios where the same container expands while sibling components disappear or appear, the one-shot effect can be achieved by applying property animations to the container's width, height, and position changes before and after expansion, while configuring appear/disappear transition animations for sibling components. The basic steps are:
 
@@ -178,7 +178,7 @@ class Post{
 
 ## Using geometryTransition for Shared Element Transition
 
-[geometryTransition](../../../API_Reference/source_en/arkui-cj/cj-animation-geometrytransition.md) is used for implicit shared element transitions within components, providing smooth context inheritance during view state switching.
+[geometryTransition](../../../reference/source_en/arkui-cj/cj-animation-geometrytransition.md) is used for implicit shared element transitions within components, providing smooth context inheritance during view state switching.
 
 To use geometryTransition, bind two components that need the one-shot effect with the same ID through the geometryTransition interface. When one component disappears while another appears, the system will automatically add the one-shot transition effect between them.
 

@@ -12,13 +12,13 @@ Grid layout is a universal auxiliary positioning tool that provides valuable ref
 
 4. **Automatic wrapping and responsiveness**: The grid system automatically handles line breaks and adapts to one-to-many layouts. When elements exceed row/column capacity, they automatically wrap while maintaining responsive behavior across devices for flexible, adaptive page structures.
 
-[GridRow](../../../API_Reference/source_en/arkui-cj/cj-grid-layout-gridrow.md) serves as the grid container component and must be used in conjunction with the grid item component [GridCol](../../../API_Reference/source_en/arkui-cj/cj-grid-layout-gridcol.md) in grid layout scenarios.
+[GridRow](../../../reference/source_en/arkui-cj/cj-grid-layout-gridrow.md) serves as the grid container component and must be used in conjunction with the grid item component [GridCol](../../../reference/source_en/arkui-cj/cj-grid-layout-gridcol.md) in grid layout scenarios.
 
 ## Grid Container GridRow
 
 ### Grid System Breakpoints
 
-The grid system uses device horizontal width ([screen density pixel value](../../../API_Reference/source_en/arkui-cj/cj-common-pixelunits.md), unit: vp) as breakpoint criteria, defining device width types through a comprehensive breakpoint rule system. Developers can implement different layout effects across breakpoint ranges.
+The grid system uses device horizontal width ([screen density pixel value](../../../reference/source_en/arkui-cj/cj-common-pixelunits.md), unit: vp) as breakpoint criteria, defining device width types through a comprehensive breakpoint rule system. Developers can implement different layout effects across breakpoint ranges.
 
 Default breakpoints categorize device widths into four types (xs, sm, md, lg) with the following ranges:
 

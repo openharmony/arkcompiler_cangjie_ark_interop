@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-完整的仓颉 API 说明以及实例代码请参见：[GATT 接口](../../../../API_Reference/source_zh_cn/ConnectivityKit/cj-apis-bluetooth-ble.md)。
+完整的仓颉 API 说明以及实例代码请参见：[GATT 接口](../../../../reference/source_zh_cn/ConnectivityKit/cj-apis-bluetooth-ble.md)。
 
 具体接口说明如下表。
 
@@ -337,7 +337,7 @@
     let gattClientManager = GattClientManager()
     ```
 
-8. 错误码请参见[蓝牙服务子系统错误码](../../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md)。
+8. 错误码请参见[蓝牙服务子系统错误码](../../../../reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md)。
 
 ### server端操作services和通知客户端信息
 
@@ -618,4 +618,4 @@
     }
     ```
 
-8. 错误码请参见[蓝牙服务子系统错误码](../../../../API_Reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md)。
+8. 错误码请参见[蓝牙服务子系统错误码](../../../../reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md)。

@@ -1,6 +1,6 @@
 # Appearance/Disappearance Transition
 
-[transition](../../../API_Reference/source_en/arkui-cj/cj-animation-transition.md#func-transition) is a fundamental component transition interface used to implement animation effects when a component appears or disappears. By combining [TransitionEffect objects](../../../API_Reference/source_en/arkui-cj/cj-animation-transition.md#class-transitioneffect), various effects can be defined.
+[transition](../../../reference/source_en/arkui-cj/cj-animation-transition.md#func-transition) is a fundamental component transition interface used to implement animation effects when a component appears or disappears. By combining [TransitionEffect objects](../../../reference/source_en/arkui-cj/cj-animation-transition.md#class-transitioneffect), various effects can be defined.
 
 **Table 1** Transition Effect Interfaces
 
@@ -12,7 +12,7 @@
 | translate | Creates a transition effect by setting component translation. | On appearance: from the value set by the translate interface to the default value 0; on disappearance: from the default value 0 to the value set by the translate interface. |
 | rotate | Creates a transition effect by setting component rotation. | On appearance: from the value set by the rotate interface to the default value 0; on disappearance: from the default value 0 to the value set by the rotate interface. |
 | opacity | Creates a transition effect by setting opacity parameters. | On appearance: from the value set by opacity to the default opacity 1; on disappearance: from the default opacity 1 to the value set by opacity. |
-| move | Creates an effect of appearing from or disappearing to a window edge via [TransitionEdge](../../../API_Reference/source_en/arkui-cj/cj-animation-transition.md#enum-transitionedge). | On appearance: slides in from the TransitionEdge direction; on disappearance: slides out to the TransitionEdge direction. |
+| move | Creates an effect of appearing from or disappearing to a window edge via [TransitionEdge](../../../reference/source_en/arkui-cj/cj-animation-transition.md#enum-transitionedge). | On appearance: slides in from the TransitionEdge direction; on disappearance: slides out to the TransitionEdge direction. |
 | asymmetric | Combines asymmetric appearance and disappearance transition effects using this method.<br/>- appear: appearance transition effect.<br/>- disappear: disappearance transition effect. | On appearance: uses the TransitionEffect set by appear; on disappearance: uses the TransitionEffect set by disappear. |
 | combine | Combines other TransitionEffects. | Combines other TransitionEffects to take effect together. |
 | animation | Defines animation parameters for transition effects:<br/>- If not defined, follows the animation parameters of animateTo.<br/>- Does not support configuring animation parameters via the component's animation interface.<br/>- The onFinish of animation in TransitionEffect does not take effect. | Execution order is top-down; the animation of the above TransitionEffect also applies to the below TransitionEffect. |
@@ -57,7 +57,7 @@
                     ))))
     ```
 
-2. Apply the transition effect to the component via the [transition](../../../API_Reference/source_en/arkui-cj/cj-animation-transition.md#func-transition) interface.
+2. Apply the transition effect to the component via the [transition](../../../reference/source_en/arkui-cj/cj-animation-transition.md#func-transition) interface.
 
     ```cangjie
     Text("test")

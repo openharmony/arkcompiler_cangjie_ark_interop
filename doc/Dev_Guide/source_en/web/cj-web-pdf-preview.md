@@ -1,6 +1,6 @@
 # PDF Document Preview Capability Using Web Components
 
-Web components provide the ability to preview PDFs within web pages. Applications can load PDF documents by passing PDF files through the [src](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#web) parameter interface of Web components. Depending on the source of the PDF document, there are three common scenarios: loading network PDF documents, loading local PDF documents, and loading in-app resource PDF documents.
+Web components provide the ability to preview PDFs within web pages. Applications can load PDF documents by passing PDF files through the [src](../../../reference/source_en/arkui-cj/cj-web-web.md#web) parameter interface of Web components. Depending on the source of the PDF document, there are three common scenarios: loading network PDF documents, loading local PDF documents, and loading in-app resource PDF documents.
 
 During the PDF document preview loading process, if network document retrieval is involved, please configure network access permissions in module.json5. For adding methods, refer to [Declaring Permissions in Configuration Files](../security/AccessToken/cj-declare-permissions.md).
 
@@ -43,7 +43,7 @@ class EntryView {
 }
 ```
 
-In the above example, since the PDF preview page persists the sidebar navigation panel's expanded/collapsed state using `window.localStorage` based on user operations, the Document Object Model storage [domStorageAccess](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-domstorageaccessbool) permission must be enabled:
+In the above example, since the PDF preview page persists the sidebar navigation panel's expanded/collapsed state using `window.localStorage` based on user operations, the Document Object Model storage [domStorageAccess](../../../reference/source_en/arkui-cj/cj-web-web.md#func-domstorageaccessbool) permission must be enabled:
 
 <!-- compile -->
 
@@ -51,7 +51,7 @@ In the above example, since the PDF preview page persists the sidebar navigation
 Web().domStorageAccess(true)
 ```
 
-When creating the Web component, specify the default PDF document to load. The first parameter variable src of the [Web component](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#web) cannot be dynamically changed via state variables (e.g., @State).
+When creating the Web component, specify the default PDF document to load. The first parameter variable src of the [Web component](../../../reference/source_en/arkui-cj/cj-web-web.md#web) cannot be dynamically changed via state variables (e.g., @State).
 
 Three PDF document loading preview scenarios are included:
 
@@ -64,7 +64,7 @@ Three PDF document loading preview scenarios are included:
         .domStorageAccess(true)
     ```
 
-- Preview loading app sandbox PDF file, requires enabling file system access [fileAccess](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-fileaccessbool) permission.
+- Preview loading app sandbox PDF file, requires enabling file system access [fileAccess](../../../reference/source_en/arkui-cj/cj-web-web.md#func-fileaccessbool) permission.
 
     1. Get context
 

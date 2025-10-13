@@ -10,13 +10,13 @@ Example codes for both approaches are provided below.
 
 ### Digest Algorithm (Single Pass)
 
-1. Call [createMd](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createmdstring), specify the MD5 digest algorithm, and generate a digest instance (Md).
+1. Call [createMd](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createmdstring), specify the MD5 digest algorithm, and generate a digest instance (Md).
 
-2. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-2), pass the custom message, and perform digest update calculation. There is no limit on the length of a single update.
+2. Call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-2), pass the custom message, and perform digest update calculation. There is no limit on the length of a single update.
 
-3. Call [digest](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-digest) to obtain the digest calculation result.
+3. Call [digest](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-digest) to obtain the digest calculation result.
 
-4. Call [getMdLength](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getmdlength) to get the digest calculation length in bytes.
+4. Call [getMdLength](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getmdlength) to get the digest calculation length in bytes.
 
 ### Example: Single Pass Data Input to Obtain Digest Result
 
@@ -41,13 +41,13 @@ func doMd() {
 
 ### Segmented Digest Algorithm
 
-1. Call [createMd](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createmdstring), specify the MD5 digest algorithm, and generate a digest instance (Md).
+1. Call [createMd](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createmdstring), specify the MD5 digest algorithm, and generate a digest instance (Md).
 
-2. Pass the custom message, set the single-pass data volume to 20 bytes, and call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-2) multiple times to perform segmented digest update calculations.
+2. Pass the custom message, set the single-pass data volume to 20 bytes, and call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob-2) multiple times to perform segmented digest update calculations.
 
-3. Call [digest](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-digest) to obtain the digest calculation result.
+3. Call [digest](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-digest) to obtain the digest calculation result.
 
-4. Call [getMdLength](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getmdlength) to get the digest calculation length in bytes.
+4. Call [getMdLength](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-getmdlength) to get the digest calculation length in bytes.
 
 ### Example: Segmented Data Input to Obtain Digest Result
 

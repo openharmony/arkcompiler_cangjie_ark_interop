@@ -11,7 +11,7 @@ The HTTP data request functionality is primarily provided by the `http` module.
 Using this feature requires the `ohos.permission.INTERNET` permission.  
 For permission application, refer to [Declaring Permissions](../security/AccessToken/cj-declare-permissions.md).
 
-The involved interfaces are listed in the table below. For detailed interface descriptions, refer to the [API Documentation](../../../API_Reference/source_en/NetworkKit/cj-apis-net-http.md).
+The involved interfaces are listed in the table below. For detailed interface descriptions, refer to the [API Documentation](../../../reference/source_en/NetworkKit/cj-apis-net-http.md).
 
 | Interface Name            | Description                                            |
 | ------------------------- | ----------------------------------------------------- |

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Linear Layout (LinearLayout) is the most commonly used layout in development, constructed through linear containers [Row](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-row.md) and [Column](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-column.md). Linear layout serves as the foundation for other layouts, with its child elements arranged sequentially along a linear direction (horizontal and vertical). The arrangement direction of a linear layout is determined by the selected container component: child elements within a Column container are arranged vertically, while those within a Row container are arranged horizontally. Depending on the desired arrangement direction, developers can choose to use either Row or Column containers to create a linear layout.
+Linear Layout (LinearLayout) is the most commonly used layout in development, constructed through linear containers [Row](../../../reference/source_en/arkui-cj/cj-row-column-stack-row.md) and [Column](../../../reference/source_en/arkui-cj/cj-row-column-stack-column.md). Linear layout serves as the foundation for other layouts, with its child elements arranged sequentially along a linear direction (horizontal and vertical). The arrangement direction of a linear layout is determined by the selected container component: child elements within a Column container are arranged vertically, while those within a Row container are arranged horizontally. Depending on the desired arrangement direction, developers can choose to use either Row or Column containers to create a linear layout.
 
 **Figure 1** Illustration of Child Element Arrangement in a Column Container
 
@@ -88,7 +88,7 @@ class EntryView {
 
 ## Alignment of Child Elements Along the Cross Axis
 
-Within a layout container, the `alignItems` property can be used to set the alignment of child elements along the cross axis (perpendicular to the arrangement direction). This behavior remains consistent across screens of different sizes. For a vertical cross axis, the alignment is specified using the [VerticalAlign](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-verticalalign) type; for a horizontal cross axis, the [HorizontalAlign](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-horizontalalign) type is used.
+Within a layout container, the `alignItems` property can be used to set the alignment of child elements along the cross axis (perpendicular to the arrangement direction). This behavior remains consistent across screens of different sizes. For a vertical cross axis, the alignment is specified using the [VerticalAlign](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-verticalalign) type; for a horizontal cross axis, the [HorizontalAlign](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-horizontalalign) type is used.
 
 The `alignSelf` property controls the alignment of a single child element along the container's cross axis and takes precedence over the `alignItems` property. If `alignSelf` is set, it overrides `alignItems` for that specific child element.
 
@@ -608,7 +608,7 @@ Within a layout container, the `justifyContent` property can be used to set the 
 
 ## Adaptive Stretching
 
-In linear layouts, the [Blank](../../../API_Reference/source_en/arkui-cj/cj-blank-divider-blank.md) component is commonly used to automatically fill blank space along the main axis of the container, achieving an adaptive stretching effect. When Row and Column serve as containers, simply setting width and height as percentages will create an adaptive effect when screen dimensions change.
+In linear layouts, the [Blank](../../../reference/source_en/arkui-cj/cj-blank-divider-blank.md) component is commonly used to automatically fill blank space along the main axis of the container, achieving an adaptive stretching effect. When Row and Column serve as containers, simply setting width and height as percentages will create an adaptive effect when screen dimensions change.
 
 <!-- run -->
 

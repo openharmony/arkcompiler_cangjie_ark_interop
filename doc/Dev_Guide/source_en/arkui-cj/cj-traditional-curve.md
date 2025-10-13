@@ -2,7 +2,7 @@
 
 Traditional curves are based on mathematical formulas, creating animation curves with shapes that align with developers' expectations. Represented by cubic Bézier curves, these curves can be adjusted by modifying their control points to achieve effects like ease-in and ease-out. For the same traditional curve, since it lacks physical meaning, its shape remains unchanged regardless of user interactions, resulting in a lack of the natural and dynamic feel of physical animations. It is recommended to prioritize using physical curves for animations and reserve traditional curves for rare, necessary scenarios as supplementary options.
 
-ArkUI provides traditional curve interfaces such as Bézier curves and step curves. Developers can refer to [Interpolation Calculation](../../../API_Reference/source_en/arkui-cj/cj-apis-curves.md) for details.
+ArkUI provides traditional curve interfaces such as Bézier curves and step curves. Developers can refer to [Interpolation Calculation](../../../reference/source_en/arkui-cj/cj-apis-curves.md) for details.
 
 Examples and effects of traditional curves are as follows:
 

@@ -27,7 +27,7 @@
 
 ## 接口说明
 
-上述场景涉及的常用接口如下表所示。更多API说明请参见[API参考](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-window.md)。
+上述场景涉及的常用接口如下表所示。更多API说明请参见[API参考](../../../reference/source_zh_cn/arkui-cj/cj-apis-window.md)。
 
 | 实例名         | 接口名                                                       | 描述                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -87,7 +87,7 @@ class MainAbility <: UIAbility {
 开发者可以按需创建应用子窗口，如弹窗等，并对其进行属性设置等操作。
 
 > **说明：**  
-> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[overlay](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-overlay.md)能力实现。  
+> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[overlay](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-overlay.md)能力实现。  
 > - 移动设备（手机）场景下子窗不能超出处于悬浮窗、分屏状态的主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。

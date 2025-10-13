@@ -6,8 +6,8 @@ Blur can be used to convey depth in the interface space and distinguish hierarch
 
 | API                                                          | Description                                         |
 | :------------------------------------------------------------ | :-------------------------------------------- |
-| [backdropBlur](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-background.md#func-backdropblurfloat64) | Adds a background blur effect to the current component, with the input parameter as the blur radius. |
-| [blur](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-imageeffect.md#func-blurfloat64) | Adds a content blur effect to the current component, with the input parameter as the blur radius. |
+| [backdropBlur](../../../reference/source_en/arkui-cj/cj-universal-attribute-background.md#func-backdropblurfloat64) | Adds a background blur effect to the current component, with the input parameter as the blur radius. |
+| [blur](../../../reference/source_en/arkui-cj/cj-universal-attribute-imageeffect.md#func-blurfloat64) | Adds a content blur effect to the current component, with the input parameter as the blur radius. |
 
 > **Note:**
 >

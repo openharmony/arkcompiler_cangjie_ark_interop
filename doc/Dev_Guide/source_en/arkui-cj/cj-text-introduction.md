@@ -6,6 +6,6 @@ Developers can select appropriate text components for page development based on 
 
 | Text Component Name | Application Scenario |  
 | :-------- | :-------- |  
-| Text ([Text](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md)/[Span](../../../API_Reference/source_en/arkui-cj/cj-text-input-span.md)) | Primarily used for displaying static text. Developers can use the Text component in conjunction with the Span component to create text nodes. |  
-| Text Input ([TextInput](../../../API_Reference/source_en/arkui-cj/cj-text-input-textinput.md)/[TextArea](../../../API_Reference/source_en/arkui-cj/cj-text-input-textarea.md)) | When entering plain text in a single-line input field (TextInput) or multi-line input field (TextArea), this text component should be prioritized. |  
-| Rich Text ([RichEditor](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md)) | When there is a need to insert images or custom icons within an editor, this text component should be prioritized. |
+| Text ([Text](../../../reference/source_en/arkui-cj/cj-text-input-text.md)/[Span](../../../reference/source_en/arkui-cj/cj-text-input-span.md)) | Primarily used for displaying static text. Developers can use the Text component in conjunction with the Span component to create text nodes. |  
+| Text Input ([TextInput](../../../reference/source_en/arkui-cj/cj-text-input-textinput.md)/[TextArea](../../../reference/source_en/arkui-cj/cj-text-input-textarea.md)) | When entering plain text in a single-line input field (TextInput) or multi-line input field (TextArea), this text component should be prioritized. |  
+| Rich Text ([RichEditor](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md)) | When there is a need to insert images or custom icons within an editor, this text component should be prioritized. |

@@ -10,7 +10,7 @@ Used when a business needs to obtain the public key of an asymmetrically stored 
 
 1. Specify the key alias `keyAlias`, with a maximum length of 128 bytes.
 
-2. Call the interface [`exportKeyItem`](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-exportkeyitemstring-huksoptions), passing the parameters `keyAlias` and `options`. `options` is a reserved parameter and can currently be left empty.
+2. Call the interface [`exportKeyItem`](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-exportkeyitemstring-huksoptions), passing the parameters `keyAlias` and `options`. `options` is a reserved parameter and can currently be left empty.
 
 3. The return value is of type `Bytes`, encapsulated in the standard DER format of X.509 specification. For details, refer to [Public Key Material Format](./cj-huks-concepts.md#public-key-material-format).
 

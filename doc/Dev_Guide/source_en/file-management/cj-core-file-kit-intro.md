@@ -47,7 +47,7 @@ Common usage scenarios for Core File Kit include:
 
 ### Application File Access Framework
 
-The Application File Access Framework is implemented through basic file operation interfaces ([ohos.file_fs](../../../API_Reference/source_en/CoreFileKit/cj-apis-file_fs.md)). Developers do not need to understand the internal implementation. For details, refer to [Interface Description](./cj-app-file-access.md#interface-description).
+The Application File Access Framework is implemented through basic file operation interfaces ([ohos.file_fs](../../../reference/source_en/CoreFileKit/cj-apis-file_fs.md)). Developers do not need to understand the internal implementation. For details, refer to [Interface Description](./cj-app-file-access.md#interface-description).
 
 ### User File Access Framework
 

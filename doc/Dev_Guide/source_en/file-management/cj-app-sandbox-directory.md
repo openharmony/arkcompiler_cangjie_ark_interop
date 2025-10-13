@@ -66,7 +66,7 @@ Here, we primarily introduce the application file directory, as shown in the dia
    >
    > Unless otherwise required, applications should store data in the `el2` encrypted directory to maximize data security. However, for certain scenarios where application files need to be accessible before the user's first authentication (e.g., clocks, alarms, wallpapers), these files must be stored in the device-level encrypted area (`el1`).
    >
-   > Developers can monitor the [COMMON_EVENT_USER_UNLOCKED](../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#static-const-common_event_user_unlocked) event to detect when the user completes the first authentication.
+   > Developers can monitor the [COMMON_EVENT_USER_UNLOCKED](../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#static-const-common_event_user_unlocked) event to detect when the user completes the first authentication.
 
 4. **Fourth- and fifth-level directories:**
     - The `ApplicationContext` can retrieve the application file paths for the `distributedfiles` directory or subdirectories under `base` such as `files`, `cache`, `preferences`, and `temp`. Application-wide information can be stored in these directories.
@@ -76,7 +76,7 @@ Here, we primarily introduce the application file directory, as shown in the dia
 
    | Directory Name      | Context Property Name | Type               | Description |
    | ------------------- | --------------------- | ------------------ | ----------- |
-   | `bundle`           | `bundleCodeDir`       | Installation File Path | Directory where the HAP resource package of the installed App resides; cleaned upon application uninstallation.<br>Do not concatenate paths to access resource files. Use the [Resource Management API](../../../API_Reference/source_en/LocalizationKit/cj-apis-resource_manager.md) instead.<br>Can store application code resource data, including installed HAP resource packages, reusable library files, and plugin resources. Data stored here can be used for dynamic loading. |
+   | `bundle`           | `bundleCodeDir`       | Installation File Path | Directory where the HAP resource package of the installed App resides; cleaned upon application uninstallation.<br>Do not concatenate paths to access resource files. Use the [Resource Management API](../../../reference/source_en/LocalizationKit/cj-apis-resource_manager.md) instead.<br>Can store application code resource data, including installed HAP resource packages, reusable library files, and plugin resources. Data stored here can be used for dynamic loading. |
    | `base`             | N/A                   | Local Device File Path | Directory for storing persistent data on the local device, with subdirectories like `files/`, `cache/`, `temp/`, and `haps/`; cleaned upon application uninstallation. |
    | `database`         | `databaseDir`         | Database Path | Directory for storing files managed by the distributed database service under `el2` encryption; cleaned upon application uninstallation.<br>Only for storing private database data, such as database files. Suitable for distributed database-related files. |
    | `distributedfiles` | `distributedFilesDir` | Distributed File Path | Directory for storing distributed files under `el2` encryption. Files placed here can be directly accessed across devices in a distributed manner; cleaned upon application uninstallation.<br>For storing data in distributed scenarios, such as multi-device shared files, backups, and group collaboration files. |

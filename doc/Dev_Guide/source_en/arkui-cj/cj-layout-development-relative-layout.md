@@ -38,7 +38,7 @@ Specifies which boundary of the current component aligns with the anchor point. 
 
 Anchor points define the positional dependencies of child elements relative to their parent or sibling elements. Specifically, child elements can anchor their positions to the RelativeContainer, guidelines, barriers, or other child elements.
 
-To precisely define anchor points, child elements of RelativeContainer must have unique component identifiers (id) for specifying anchor information. The parent RelativeContainer's identifier defaults to `__container__`, while other child elements' identifiers are set via the [id](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-componentid.md) attribute.
+To precisely define anchor points, child elements of RelativeContainer must have unique component identifiers (id) for specifying anchor information. The parent RelativeContainer's identifier defaults to `__container__`, while other child elements' identifiers are set via the [id](../../../reference/source_en/arkui-cj/cj-universal-attribute-componentid.md) attribute.
 
 > **Note:**
 >
@@ -229,7 +229,7 @@ To precisely define anchor points, child elements of RelativeContainer must have
 
 ### Setting Alignment Relative to Anchor Points
 
-After setting anchor points, use the [alignRules](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#func-alignrulesalignruleoption) attribute to define alignment positions relative to the anchor points.
+After setting anchor points, use the [alignRules](../../../reference/source_en/arkui-cj/cj-universal-attribute-location.md#func-alignrulesalignruleoption) attribute to define alignment positions relative to the anchor points.
 
 - **Horizontal Alignment**: Positions can be set as `HorizontalAlign.Start`, `HorizontalAlign.Center`, or `HorizontalAlign.End`.
 
@@ -241,7 +241,7 @@ After setting anchor points, use the [alignRules](../../../API_Reference/source_
 
 ### Child Component Position Offset
 
-After relative alignment, child components may still not be in their target positions. Developers can apply additional offsets using the `offset` property. When a component adjusted by `offset` serves as an anchor point, the alignment position is based on its pre-offset position. It is recommended to use [bias](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#class-bias) for additional offsets.
+After relative alignment, child components may still not be in their target positions. Developers can apply additional offsets using the `offset` property. When a component adjusted by `offset` serves as an anchor point, the alignment position is based on its pre-offset position. It is recommended to use [bias](../../../reference/source_en/arkui-cj/cj-universal-attribute-location.md#class-bias) for additional offsets.
 
  <!-- run -->
 
@@ -467,7 +467,7 @@ class EntryView {
 
 ![Simplify-Component-Layout](figures/simplify-component-layout-image3.png)## Component Sizing
 
-When both frontend-defined child component dimensions and relative layout rules coexist, the rendering size of child components is determined based on constraint rules. The size set by the child component itself takes precedence over the alignment anchor dimensions in relative layout rules. Therefore, to achieve strict alignment between child components and anchors, only use `alignRules` and avoid using [size settings](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-size.md).
+When both frontend-defined child component dimensions and relative layout rules coexist, the rendering size of child components is determined based on constraint rules. The size set by the child component itself takes precedence over the alignment anchor dimensions in relative layout rules. Therefore, to achieve strict alignment between child components and anchors, only use `alignRules` and avoid using [size settings](../../../reference/source_en/arkui-cj/cj-universal-attribute-size.md).
 
 > **Note:**
 >
@@ -594,9 +594,9 @@ class EntryView {
 
 Chain formation relies on inter-component relationships. Taking the simplest horizontal chain composed of components A and B as an example, the dependency relationship is: Anchor1 <-- ComponentA <--> ComponentB --> Anchor2. This means A has a left anchor, B has a right anchor, while A's right anchor aligns with B's `HorizontalAlign.Start`, and B's left anchor aligns with A's `HorizontalAlign.End`.
 
-- The chain's direction and format are declared in the chain head component's [chainMode](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle) interface. The `bias` properties of chain elements become invalid, while the chain head's `bias` property serves as the chain's overall bias. The chain head refers to the first component in the chain that satisfies chain formation rules (horizontally starting from the left, or right in RTL languages; vertically starting from the top).
+- The chain's direction and format are declared in the chain head component's [chainMode](../../../reference/source_en/arkui-cj/cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle) interface. The `bias` properties of chain elements become invalid, while the chain head's `bias` property serves as the chain's overall bias. The chain head refers to the first component in the chain that satisfies chain formation rules (horizontally starting from the left, or right in RTL languages; vertically starting from the top).
 
-- If the combined size of all chain elements exceeds the anchor constraints, the excess portion will be evenly distributed on both sides of the chain. In [Packed](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#packed) chains, the distribution of excess space can be adjusted via [bias](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-location.md#class-bias).
+- If the combined size of all chain elements exceeds the anchor constraints, the excess portion will be evenly distributed on both sides of the chain. In [Packed](../../../reference/source_en/arkui-cj/cj-universal-attribute-location.md#packed) chains, the distribution of excess space can be adjusted via [bias](../../../reference/source_en/arkui-cj/cj-universal-attribute-location.md#class-bias).
 
  <!-- run -->
 

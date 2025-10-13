@@ -16,7 +16,7 @@ Taking HKDF256 key as an example, complete key derivation. For specific scenario
 
     - If the business does not set a specific value for TAG, it means that keys derived from this key can either be managed by HUKS or returned to the caller for management. The business can later choose how to protect the keys during subsequent derivations.
 
-3. Call [generateKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For details, see [Key Generation](./cj-huks-key-generation-overview.md).
+3. Call [generateKeyItem](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For details, see [Key Generation](./cj-huks-key-generation-overview.md).
 
 In addition, developers can also refer to [Key Import](./cj-huks-key-import-overview.md) to import existing keys.
 
@@ -36,15 +36,15 @@ In addition, developers can also refer to [Key Import](./cj-huks-key-import-over
 
     The TAG value specified during derivation must not conflict with the TAG value specified during generation. The table only lists valid specification methods.
 
-2. Call [initSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
+2. Call [initSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
 
-3. Call [updateSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandle-huksoptions) to update the key session.
+3. Call [updateSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandle-huksoptions) to update the key session.
 
-4. Call [finishSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions) to end the key session and complete the derivation.
+4. Call [finishSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions) to end the key session and complete the derivation.
 
 ### Delete Key
 
-When a key is no longer needed, call [deleteKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) to delete it. For details, see [Key Deletion](./cj-huks-delete-key.md).
+When a key is no longer needed, call [deleteKeyItem](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) to delete it. For details, see [Key Deletion](./cj-huks-delete-key.md).
 
 ## Development Example
 

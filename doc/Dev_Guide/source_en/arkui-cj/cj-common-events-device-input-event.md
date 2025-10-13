@@ -97,9 +97,9 @@ When the mouse moves from inside the Button to outside the Button, the callback 
 public func onMouse(callback: (MouseEvent)->Unit): This
 ```
 
-Mouse event callback. Whenever the mouse pointer performs an action (MouseAction) within a component bound to this API, the event callback is triggered. The parameter is a [MouseEvent](../../../API_Reference/source_en/arkui-cj/cj-universal-event-mouse.md#class-mouseevent) object, representing the mouse event that triggered this action. This event supports custom bubbling settings and defaults to parent-child bubbling. It is commonly used for developer-defined mouse behavior logic.
+Mouse event callback. Whenever the mouse pointer performs an action (MouseAction) within a component bound to this API, the event callback is triggered. The parameter is a [MouseEvent](../../../reference/source_en/arkui-cj/cj-universal-event-mouse.md#class-mouseevent) object, representing the mouse event that triggered this action. This event supports custom bubbling settings and defaults to parent-child bubbling. It is commonly used for developer-defined mouse behavior logic.
 
-Developers can obtain the coordinates (screenX/screenY/x/y), button ([MouseButton](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-mousebutton)), action ([MouseAction](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-mouseaction)), timestamp (timestamp), interactive component area ([EventTarget](../../../API_Reference/source_en/arkui-cj/cj-universal-event-click.md#class-eventtarget)), and event source ([SourceType](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-sourcetype)) from the MouseEvent object in the callback.
+Developers can obtain the coordinates (screenX/screenY/x/y), button ([MouseButton](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-mousebutton)), action ([MouseAction](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-mouseaction)), timestamp (timestamp), interactive component area ([EventTarget](../../../reference/source_en/arkui-cj/cj-universal-event-click.md#class-eventtarget)), and event source ([SourceType](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-sourcetype)) from the MouseEvent object in the callback.
 
 > **Note:**
 >
@@ -169,7 +169,7 @@ class EntryView {
 public func onKeyEvent(callback: (KeyEvent)->Unit): This
 ```
 
-When the component bound to this method is in a focused state, key events from an external keyboard will trigger this method. The callback parameter is [KeyEvent](../../../API_Reference/source_en/arkui-cj/cj-universal-event-key.md#class-keyevent), from which the current key event's key action ([KeyType](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-keytype)), key text (keyText), event source device type ([KeySource](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-keysource)), event source device ID (deviceId), meta key press state (metaKey), and timestamp (timestamp) can be obtained.
+When the component bound to this method is in a focused state, key events from an external keyboard will trigger this method. The callback parameter is [KeyEvent](../../../reference/source_en/arkui-cj/cj-universal-event-key.md#class-keyevent), from which the current key event's key action ([KeyType](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-keytype)), key text (keyText), event source device type ([KeySource](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-keysource)), event source device ID (deviceId), meta key press state (metaKey), and timestamp (timestamp) can be obtained.
 
  <!-- run -->
 

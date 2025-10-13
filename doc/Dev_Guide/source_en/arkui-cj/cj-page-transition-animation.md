@@ -2,7 +2,7 @@
 
 For better transition effects, it is recommended to use [Modal Transition](./cj-modal-transition.md).
 
-When navigating between two pages where one disappears and another appears, you can configure custom page transition effects by setting page transition parameters for each page. [Page transition](../../../API_Reference/source_en/arkui-cj/cj-animation-pagetransition.md) effects are defined in the pageTransition function, using [PageTransitionEnter](../../../API_Reference/source_en/arkui-cj/cj-animation-pagetransition.md#class-pagetransitionenter) and [PageTransitionExit](../../../API_Reference/source_en/arkui-cj/cj-animation-pagetransition.md#class-pagetransitionexit) to specify animation effects for page entry and exit.
+When navigating between two pages where one disappears and another appears, you can configure custom page transition effects by setting page transition parameters for each page. [Page transition](../../../reference/source_en/arkui-cj/cj-animation-pagetransition.md) effects are defined in the pageTransition function, using [PageTransitionEnter](../../../reference/source_en/arkui-cj/cj-animation-pagetransition.md#class-pagetransitionenter) and [PageTransitionExit](../../../reference/source_en/arkui-cj/cj-animation-pagetransition.md#class-pagetransitionexit) to specify animation effects for page entry and exit.
 
 The pageTransition function is:
 
@@ -139,7 +139,7 @@ protected func pageTransition(): Unit {
 
 ## Example Scenarios
 
-Below are examples demonstrating all four transition types using [router.pushUrl](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#static-func-pushurlstring-string-optionint32---unit).
+Below are examples demonstrating all four transition types using [router.pushUrl](../../../reference/source_en/arkui-cj/cj-apis-router.md#static-func-pushurlstring-string-optionint32---unit).
 
  <!-- run -->
 

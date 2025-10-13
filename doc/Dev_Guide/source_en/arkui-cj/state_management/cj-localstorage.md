@@ -4,7 +4,7 @@ LocalStorage is a page-level UI state storage mechanism. The parameters received
 
 Before reading this document, developers are advised to have a basic understanding of state management frameworks. It is recommended to first read: [State Management Overview](cj-state-management-overview.md).
 
-LocalStorage also provides API interfaces, enabling developers to manually trigger CRUD operations for Storage keys outside custom components. It is recommended to read alongside the [LocalStorage API Documentation](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-appstatemanagement.md#localstorage页面级ui状态储存).
+LocalStorage also provides API interfaces, enabling developers to manually trigger CRUD operations for Storage keys outside custom components. It is recommended to read alongside the [LocalStorage API Documentation](../../../../reference/source_en/arkui-cj/cj-state-rendering-appstatemanagement.md#localstorage页面级ui状态储存).
 
 ## Overview
 

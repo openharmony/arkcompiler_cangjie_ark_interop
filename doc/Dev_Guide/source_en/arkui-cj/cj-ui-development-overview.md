@@ -66,7 +66,7 @@ When developing applications with the UI development framework, the following pr
 | Use Dialogs | Introduces application scenarios and usage methods for dialogs. | - [Dialogs](cj-dialog-overview.md)<br/>- [Popup Dialogs](cj-dialog-base-overview.md)<br> - [Menu Control](./cj-popup-and-menu-components-menu.md)<br/>- [Global Custom Dialogs Independent of UI Components](cj-uicontext-custom-dialog.md)<br/>- [Fixed-Style Dialogs](cj-fixes-style-dialog.md)<br/>- [Tooltips](cj-popup-and-menu-components-popup.md)<br> - [Modal Page Binding](./cj-modal-overview.md)<br> - [Instant Feedback](./cj-create-toast.md)|
 | Display Graphics| Introduces how to display images, draw custom geometric shapes, and use canvases for custom graphics.| - [Geometric Shapes](cj-shape-drawing.md)<br/>- [Canvas](cj-drawing-customization-on-canvas.md) |
 | Use Animation| Introduces typical scenarios for component and page animations.| - [Animation](cj-animation.md)<br>- [Property Animation](cj-attribute-animation-overview.md)<br>- [Implementing Property Animation](cj-attribute-animation-apis.md)<br>- [Transition Animation](cj-transition-overview.md)<br>- [Enter/Exit Transition](cj-enter-exit-transition.md)<br>- [Modal Transition](cj-modal-transition.md)<br>- [Component Animation](cj-component-animation.md)<br>- [Animation Curves](cj-curve-overview.md)<br>- [Traditional Curves](cj-traditional-curve.md)<br>- [Animation Smoothing](cj-animation-smoothing.md)<br>- [Blur](cj-blur-effect.md)<br>- [Shadow](cj-shadow-effect.md)<br>- [Color](cj-color-effect.md)<br> - [Frame Animation](cj-animator.md)|
-|Bind Events| Introduces basic event concepts and how to use general and gesture events.| - [Interaction Events](cj-event-overview.md)<br/>- [Event Distribution](cj-common-events-distribute.md)<br/>-&nbsp;[Touch Events](cj-common-events-touch-screen-event.md)<br/>- [Keyboard/Mouse Events](cj-common-events-device-input-event.md)<br/>- [Focus Events](cj-common-events-focus-event.md)<br/>- [Drag Events](../../../API_Reference/source_en/arkui-cj/cj-universal-event-drag.md)|
+|Bind Events| Introduces basic event concepts and how to use general and gesture events.| - [Interaction Events](cj-event-overview.md)<br/>- [Event Distribution](cj-common-events-distribute.md)<br/>-&nbsp;[Touch Events](cj-common-events-touch-screen-event.md)<br/>- [Keyboard/Mouse Events](cj-common-events-device-input-event.md)<br/>- [Focus Events](cj-common-events-focus-event.md)<br/>- [Drag Events](../../../reference/source_en/arkui-cj/cj-universal-event-drag.md)|
 |Use Mirroring Capabilities|Introduces basic concepts and usage of mirroring capabilities.| - [Using Mirroring Capabilities](./cj-mirroring-display.md)|
 |Support Aging-Friendly Design|Introduces scenarios and methods for aging-friendly design.| - Support Aging-Friendly Design |
 |Theme Settings|Introduces application-level and page-level theme setting capabilities.| - [Dark/Light Theme Adaptation](./cj-ui-dark-light-color-adaptation.md)|
@@ -75,7 +75,7 @@ When developing applications with the UI development framework, the following pr
 
 - **Default Units**
 
-  Length parameters default to vp (virtual pixels), meaning parameters of type Int32 and [Length](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#interface-length) types (Int64, Float64) are in vp.
+  Length parameters default to vp (virtual pixels), meaning parameters of type Int32 and [Length](../../../reference/source_en/arkui-cj/cj-common-types.md#interface-length) types (Int64, Float64) are in vp.
 
 - **Invalid Value Handling**
 
