@@ -42,7 +42,7 @@ The commonly used interfaces involved in the above scenarios are listed in the t
 
 ## Setting Up the Main Application Window
 
-In the `Stage` model, the main application window is created and its lifecycle is maintained by the `UIAbility`. In the `onWindowStageCreate` callback of the `UIAbility`, the main application window can be obtained via `WindowStage`, allowing for operations like property setting. Attributes of the main application window, such as `maxWindowWidth`, can also be set in the application configuration file. For details, refer to [abilities tag in the module.json5 configuration file](../../../Dev_Guide/source_en/cj-start/basic-knowledge/module-configuration-file.md#abilities-tag).
+In the `Stage` model, the main application window is created and its lifecycle is maintained by the `UIAbility`. In the `onWindowStageCreate` callback of the `UIAbility`, the main application window can be obtained via `WindowStage`, allowing for operations like property setting. Attributes of the main application window, such as `maxWindowWidth`, can also be set in the application configuration file. For details, refer to [abilities tag in the module.json5 configuration file](../../../application-dev/source_en/cj-start/basic-knowledge/module-configuration-file.md#abilities-tag).
 
 ### Development Steps
 
@@ -284,7 +284,7 @@ A floating window can create a window that always stays in the foreground on top
 
 ### Development Steps
 
-**Prerequisite:** Creating a window of type `WindowType.TypeFloat` (i.e., a floating window) requires applying for the `ohos.permission.SYSTEM_FLOAT_WINDOW` permission. For configuration methods, please refer to [How system_basic level applications apply for permissions](../../../Dev_Guide/source_en/security/AccessToken/cj-determine-application-mode.md#how-system_basic-level-applications-apply-for-permissions).
+**Prerequisite:** Creating a window of type `WindowType.TypeFloat` (i.e., a floating window) requires applying for the `ohos.permission.SYSTEM_FLOAT_WINDOW` permission. For configuration methods, please refer to [How system_basic level applications apply for permissions](../../../application-dev/source_en/security/AccessToken/cj-determine-application-mode.md#how-system_basic-level-applications-apply-for-permissions).
 
 1.  Create a floating window.
     Use the `createWindow` interface to create a window of the floating type.

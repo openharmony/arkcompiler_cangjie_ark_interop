@@ -5,7 +5,7 @@ A single item container within a grid container.
 > **NOTE:**
 >
 > - Only supported as a child component of the [Grid](./cj-scroll-swipe-grid.md) component.
-> - When GridItem is used with [LazyForEach](cj-state-rendering-lazyforeach.md), GridItem's child components are created when the GridItem is created. When used with [if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or when the parent component is Grid, GridItem's child components are created during GridItem layout.
+> - When GridItem is used with [LazyForEach](cj-state-rendering-lazyforeach.md), GridItem's child components are created when the GridItem is created. When used with [if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or when the parent component is Grid, GridItem's child components are created during GridItem layout.
 
 ## Import Module
 

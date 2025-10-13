@@ -14,7 +14,7 @@ Can contain child components.
 
 > **Note:**
 >
-> - Child component types: System components and custom components. Rendering control types are not supported ([if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
+> - Child component types: System components and custom components. Rendering control types are not supported ([if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
 > - Number of child components: Must and only contain 2 child components.
 > - When the number of child components is abnormal: For 3 or more child components, the first and second will be displayed. For 1 child component, the sidebar will be displayed, and the content area will be blank.
 

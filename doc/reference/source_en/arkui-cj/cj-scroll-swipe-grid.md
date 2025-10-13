@@ -10,7 +10,7 @@ import kit.ArkUI.*
 
 ## Child Components
 
-Only supports [GridItem](cj-scroll-swipe-griditem.md) child components, including rendering control types ([if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
+Only supports [GridItem](cj-scroll-swipe-griditem.md) child components, including rendering control types ([if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
 
 > **Note:**
 >
@@ -18,7 +18,7 @@ Only supports [GridItem](cj-scroll-swipe-griditem.md) child components, includin
 >   - Increments sequentially based on the order of child components.
 >   - In if/else statements, only child components within the condition-true branch participate in index calculation; those in the false branch are excluded.
 >   - ForEach/LazyForEach statements calculate indices for all expanded child nodes.
->   - After changes occur in [if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or [LazyForEach](cj-state-rendering-lazyforeach.md), child node indices are updated.
+>   - After changes occur in [if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or [LazyForEach](cj-state-rendering-lazyforeach.md), child node indices are updated.
 >   - Child components with visibility set to Hidden or None still participate in index calculation.
 >   - Child components with visibility set to None are not displayed but still occupy their corresponding grid cells.
 >   - Child components with position attributes set will occupy their corresponding grid cells and display at an offset position relative to the top-left corner of the Grid. These components do not scroll with their grid cells and disappear when the cells scroll out of the Grid's display area.

@@ -52,7 +52,7 @@ Permission does not exist.
 
 **Resolution**
 
-Check input parameters and correct them to valid values. [Permission List](../../../Dev_Guide/source_en/security/AccessToken/cj-app-permissions.md#application-permission-list).
+Check input parameters and correct them to valid values. [Permission List](../../../application-dev/source_en/security/AccessToken/cj-app-permissions.md#application-permission-list).
 
 ## 12100004 Interface Not Used in Conjunction
 

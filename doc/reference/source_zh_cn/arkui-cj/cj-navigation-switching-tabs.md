@@ -10,7 +10,7 @@ import kit.ArkUI.*
 
 ## 子组件
 
-不支持自定义组件作为子组件，仅可包含子组件[TabContent](#class-tabcontent)，以及渲染控制类型[if/else](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)和[ForEach](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)，并且if/else和ForEach下也仅支持TabContent，不支持自定义组件。
+不支持自定义组件作为子组件，仅可包含子组件[TabContent](#class-tabcontent)，以及渲染控制类型[if/else](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)和[ForEach](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)，并且if/else和ForEach下也仅支持TabContent，不支持自定义组件。
 
 > **说明：**
 >

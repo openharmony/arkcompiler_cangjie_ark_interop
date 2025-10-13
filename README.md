@@ -52,7 +52,7 @@ arkcompiler/cangjie_ark_interop
 |   ├── utf16string        # UTF16 string processing class provided by Cangjie interoperability library
 ├── doc                    # Cangjie documentation, including API reference, application development guide, Cangjie programming language user manual
 |   ├── reference      # Cangjie API reference
-|   ├── Dev_Guide          # Cangjie development guide
+|   ├── application-dev          # Cangjie development guide
 |   ├── User_Manual        # Cangjie user manual
 ├── figures                # Images required for this README
 ├── test                   # Cangjie interoperability test cases

@@ -1,6 +1,6 @@
 # Disabled Control
 
-Determines whether a component is interactive. When interactive, it responds to [click events](./cj-universal-event-click.md#), [touch events](./cj-universal-event-touch.md), [drag events](./cj-universal-event-drag.md), [key events](./cj-universal-event-key.md), [focus events](../../../Dev_Guide/source_en/arkui-cj/cj-common-events-focus-event.md), [mouse events](./cj-universal-event-mouse.md), and [gesture events](./cj-universal-gesture-bind.md).
+Determines whether a component is interactive. When interactive, it responds to [click events](./cj-universal-event-click.md#), [touch events](./cj-universal-event-touch.md), [drag events](./cj-universal-event-drag.md), [key events](./cj-universal-event-key.md), [focus events](../../../application-dev/source_en/arkui-cj/cj-common-events-focus-event.md), [mouse events](./cj-universal-event-mouse.md), and [gesture events](./cj-universal-gesture-bind.md).
 
 > **Note:**
 >

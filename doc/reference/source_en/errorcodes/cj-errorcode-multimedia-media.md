@@ -115,7 +115,7 @@ Unsupported file or format.
 
 The current format or specification is not supported. Switch to a supported format.
 
-For supported specifications, refer to the relevant module's specifications in the [Media Kit Introduction](../../../Dev_Guide/source_en/media/media/cj-media-kit-intro.md) based on the actual module functionality used.
+For supported specifications, refer to the relevant module's specifications in the [Media Kit Introduction](../../../application-dev/source_en/media/media/cj-media-kit-intro.md) based on the actual module functionality used.
 
 ## 5400107 Audio Focus Conflict
 

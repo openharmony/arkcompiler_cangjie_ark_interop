@@ -85,7 +85,7 @@ public func customKeyboard(value: CustomBuilder, supportAvoidance!: Bool = false
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|自定义键盘。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|value|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|自定义键盘。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 |supportAvoidance|Bool|否|false|**命名参数。** 自定义键盘是否支持避让功能。|
 
 ### func enableKeyboardOnFocus(Bool)

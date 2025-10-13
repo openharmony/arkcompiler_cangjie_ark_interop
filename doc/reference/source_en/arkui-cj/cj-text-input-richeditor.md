@@ -103,7 +103,7 @@ public func bindSelectionMenu(
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | spantype | [RichEditorSpanType](#enum-richeditorspantype) | No | RichEditorSpanType.Text | **Named parameter.** Specifies the type of the selection menu. |
-| content | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Specifies the content of the selection menu. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
+| content | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Specifies the content of the selection menu. Use with [@Builder](../../../application-dev/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
 | responseType | [ResponseType](./cj-common-types.md#enum-responsetype) | No | ResponseType.LongPress | **Named parameter.** Specifies the response type of the selection menu. |
 | options | [SelectionMenuOptions](#class-selectionmenuoptions) | Yes | - | **Named parameter.** Specifies the options of the selection menu. |
 
@@ -141,7 +141,7 @@ public func customKeyboard(value!: CustomBuilder): This
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| value | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Custom keyboard for the rich text editor. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
+| value | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | **Named parameter.** Custom keyboard for the rich text editor. Use with [@Builder](../../../application-dev/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
 
 ## Component Events
 

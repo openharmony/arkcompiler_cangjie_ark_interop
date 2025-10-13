@@ -48,7 +48,7 @@
 
 ## 设置应用主窗口
 
-在`Stage`模型下，应用主窗口由`UIAbility`创建并维护生命周期。在`UIAbility`的`onWindowStageCreate`回调中，通过`WindowStage`获取应用主窗口，即可对其进行属性设置等操作。还可以在应用配置文件中设置应用主窗口的属性，如最大窗口宽度maxWindowWidth等，详见[module.json5配置文件中的abilities标签](../../../Dev_Guide/source_zh_cn/cj-start/basic-knowledge/module-configuration-file.md#abilities标签)。
+在`Stage`模型下，应用主窗口由`UIAbility`创建并维护生命周期。在`UIAbility`的`onWindowStageCreate`回调中，通过`WindowStage`获取应用主窗口，即可对其进行属性设置等操作。还可以在应用配置文件中设置应用主窗口的属性，如最大窗口宽度maxWindowWidth等，详见[module.json5配置文件中的abilities标签](../../../application-dev/source_zh_cn/cj-start/basic-knowledge/module-configuration-file.md#abilities标签)。
 
 ### 开发步骤
 
@@ -305,7 +305,7 @@ class MainAbility <: UIAbility {
 
 ### 开发步骤
 
-**前提条件：** 创建`WindowType.TypeFloat`即悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-determine-application-mode.md#system_basic等级应用申请权限的方式)。
+**前提条件：** 创建`WindowType.TypeFloat`即悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../../../application-dev/source_zh_cn/security/AccessToken/cj-determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 1. 创建悬浮窗。
 

@@ -4,10 +4,10 @@ Bind a popup menu to a component. The popup menu displays menu items in a vertic
 
 > **NOTE:**
 >
-> - `bindMenu` and `bindContextMenu` cannot be used within `CustomBuilder` to pop up menus. For multi-level menus, use the [Menu](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) component.
+> - `bindMenu` and `bindContextMenu` cannot be used within `CustomBuilder` to pop up menus. For multi-level menus, use the [Menu](../../../application-dev/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) component.
 > - The text content of a popup menu does not support long-press selection.
 > - If a component is a draggable node and `bindContextMenu` is bound without specifying `preview`, the menu popup will display a floating drag preview, and the menu options will not avoid the preview. Developers can address this by setting `preview` or configuring the target node as a non-draggable node.
-> - The menu supports long-press (500ms) to pop up submenus and follows finger movement during press state.<br> a. Only supported when using the [Menu](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) component with subcomponents containing [MenuItem](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) or [MenuItemGroup](../../../Dev_Guide/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu).<br> b. Only supported when [MenuPreviewMode](../BasicServicesKit/cj-apis-base.md#enum-menupreviewmode) is set to `NONE`.
+> - The menu supports long-press (500ms) to pop up submenus and follows finger movement during press state.<br> a. Only supported when using the [Menu](../../../application-dev/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) component with subcomponents containing [MenuItem](../../../application-dev/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu) or [MenuItemGroup](../../../application-dev/source_en/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu).<br> b. Only supported when [MenuPreviewMode](../BasicServicesKit/cj-apis-base.md#enum-menupreviewmode) is set to `NONE`.
 
 ## Import Module
 
