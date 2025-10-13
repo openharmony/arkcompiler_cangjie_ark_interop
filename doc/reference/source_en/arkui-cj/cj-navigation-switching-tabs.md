@@ -10,7 +10,7 @@ import kit.ArkUI.*
 
 ## Child Components
 
-Custom components are not supported as child components. Only [TabContent](#class-tabcontent) child components are allowed, along with rendering control types [if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md) and [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md). Additionally, only TabContent is supported under if/else and ForEach, not custom components.
+Custom components are not supported as child components. Only [TabContent](#class-tabcontent) child components are allowed, along with rendering control types [if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md) and [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md). Additionally, only TabContent is supported under if/else and ForEach, not custom components.
 
 > **Note:**
 >

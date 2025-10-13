@@ -26,7 +26,7 @@ public init(name!: String = "", group!: String = "", indicatorBuilder!: ?CustomB
 |:---|:---|:---|:---|:---|
 | name | String | No | "" | **Named parameter.** The name of the checkbox. |
 | group | String | No | "" | **Named parameter.** Specifies the name of the group to which the checkbox belongs (i.e., the name of the [CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup)).<br/>**Note:**<br/>This parameter is irrelevant when not used with the [CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup) component. |
-| indicatorBuilder | ?[CustomBuilder](./cj-common-types.md#type-custombuilder) | No | None | **Named parameter.** Configures the selected style of the checkbox as a custom UI description. The custom UI description is center-aligned with the Checkbox component. When set to None, it defaults to the unset state of indicatorBuilder. Use in conjunction with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
+| indicatorBuilder | ?[CustomBuilder](./cj-common-types.md#type-custombuilder) | No | None | **Named parameter.** Configures the selected style of the checkbox as a custom UI description. The custom UI description is center-aligned with the Checkbox component. When set to None, it defaults to the unset state of indicatorBuilder. Use in conjunction with [@Builder](../../../application-dev/source_en/arkui-cj/paradigm/cj-macro-builder.md) and the bind method. |
 
 ## Common Attributes/Common Events
 

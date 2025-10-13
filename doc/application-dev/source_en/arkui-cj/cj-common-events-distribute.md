@@ -63,7 +63,7 @@ Components with [disable control](../../../reference/source_en/arkui-cj/cj-unive
 
 ### Security Components
 
-The current impact of security components on touch testing is as follows: If a component's [z-order](../../../Dev_Guide/source_en/arkui-cj/cj-layout-development-stack-layout.md#z序控制) is higher than that of a security component and it covers the security component, the security component's event will directly return to the parent node to continue touch testing.
+The current impact of security components on touch testing is as follows: If a component's [z-order](../../../application-dev/source_en/arkui-cj/cj-layout-development-stack-layout.md#z序控制) is higher than that of a security component and it covers the security component, the security component's event will directly return to the parent node to continue touch testing.
 
 ## Event Response Chain Collection
 

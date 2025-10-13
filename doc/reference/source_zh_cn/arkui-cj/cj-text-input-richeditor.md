@@ -107,7 +107,7 @@ public func bindSelectionMenu(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |spantype|[RichEditorSpanType](#enum-richeditorspantype)|否|RichEditorSpanType.Text| **命名参数。** 指定选择菜单的类型。|
-|content|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-| **命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|content|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-| **命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 |responseType|[ResponseType](./cj-common-types.md#enum-responsetype)|否|ResponseType.LongPress| **命名参数。** 指定选择菜单的响应类型。|
 |options|[SelectionMenuOptions](#class-selectionmenuoptions)|是|-| **命名参数。** 指定选择菜单的选项。|
 
@@ -147,7 +147,7 @@ public func customKeyboard(value!: CustomBuilder): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-| **命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|value|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-| **命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 
 ## 组件事件
 

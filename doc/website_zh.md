@@ -1,481 +1,481 @@
 # OpenHarmony应用开发文档（仓颉）
 
 - 入门
-    - [应用开发导读](Dev_Guide/source_zh_cn/cj-start/start/cj-start-application-development-overview.md)
+    - [应用开发导读](application-dev/source_zh_cn/cj-start/start/cj-start-application-development-overview.md)
     - 快速入门
-        - [开发准备](Dev_Guide/source_zh_cn/cj-start/start/quick-start/cj-quick-start-preparations.md)
-        - [构建第一个仓颉应用](Dev_Guide/source_zh_cn/cj-start/start/quick-start/cj-quick-start-first-cangjie-app.md)
-        - [构建第一个仓颉与ArkTS混合应用](Dev_Guide/source_zh_cn/cj-start/start/quick-start/cj-quick-start-first-cangjie-hybrid-app.md)
-        - [在已有ArkTS工程中增量使用仓颉](Dev_Guide/source_zh_cn/cj-start/start/quick-start/cj-quick-start-first-cangjie-hybrid-module.md)
-        - [仓颉调用ArkTS三方模块](Dev_Guide/source_zh_cn/cj-start/start/quick-start/cj-quick-start-dts2cj-plugin-usage.md)
-        - [仓颉调用模块内cpp文件](Dev_Guide/source_zh_cn/cj-start/start/quick-start/cj-quick-start-cangjie-module-cpp.md)
-    - [在ArkTS应用中使用仓颉模块](Dev_Guide/source_zh_cn/cj-start/arkts-cj/cj-cangjie-in-arkts.md)
-    - [在仓颉应用中使用ArkTS的API](Dev_Guide/source_zh_cn/cj-start/arkts-cj/cj-arktsapi-in-cangjie.md)
+        - [开发准备](application-dev/source_zh_cn/cj-start/start/quick-start/cj-quick-start-preparations.md)
+        - [构建第一个仓颉应用](application-dev/source_zh_cn/cj-start/start/quick-start/cj-quick-start-first-cangjie-app.md)
+        - [构建第一个仓颉与ArkTS混合应用](application-dev/source_zh_cn/cj-start/start/quick-start/cj-quick-start-first-cangjie-hybrid-app.md)
+        - [在已有ArkTS工程中增量使用仓颉](application-dev/source_zh_cn/cj-start/start/quick-start/cj-quick-start-first-cangjie-hybrid-module.md)
+        - [仓颉调用ArkTS三方模块](application-dev/source_zh_cn/cj-start/start/quick-start/cj-quick-start-dts2cj-plugin-usage.md)
+        - [仓颉调用模块内cpp文件](application-dev/source_zh_cn/cj-start/start/quick-start/cj-quick-start-cangjie-module-cpp.md)
+    - [在ArkTS应用中使用仓颉模块](application-dev/source_zh_cn/cj-start/arkts-cj/cj-cangjie-in-arkts.md)
+    - [在仓颉应用中使用ArkTS的API](application-dev/source_zh_cn/cj-start/arkts-cj/cj-arktsapi-in-cangjie.md)
     - 开发基础知识
         - 应用程序包基础知识
-            - [应用程序包概述](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/application-package-overview.md)
+            - [应用程序包概述](application-dev/source_zh_cn/cj-start/basic-knowledge/application-package-overview.md)
         - 应用程序包结构
-            - [Stage模型应用程序包结构](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/application-package-structure-stage.md)
+            - [Stage模型应用程序包结构](application-dev/source_zh_cn/cj-start/basic-knowledge/application-package-structure-stage.md)
         - 应用程序包开发与使用
-            - [HAP](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/hap-package.md)
-            - [HAR](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/har-package.md)
+            - [HAP](application-dev/source_zh_cn/cj-start/basic-knowledge/hap-package.md)
+            - [HAR](application-dev/source_zh_cn/cj-start/basic-knowledge/har-package.md)
         - 应用程序包安装卸载与更新
-            - [应用安装卸载与更新开发指导](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/application-package-install-uninstall.md)
-            - [应用安装与更新一致性校验](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/multi_module_installation_update_consistency_verification.md)
+            - [应用安装卸载与更新开发指导](application-dev/source_zh_cn/cj-start/basic-knowledge/application-package-install-uninstall.md)
+            - [应用安装与更新一致性校验](application-dev/source_zh_cn/cj-start/basic-knowledge/multi_module_installation_update_consistency_verification.md)
         - 应用配置文件（Stage模型）
-            - [应用配置文件概述（Stage模型）](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/application-configuration-file-overview-stage.md)
-            - [app.json5配置文件](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/app-configuration-file.md)
-            - [module.json5配置文件](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/module-configuration-file.md)
-        - [应用程序包常见问题](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/common_problem_of_application.md)
-        - [应用程序包术语](Dev_Guide/source_zh_cn/cj-start/basic-knowledge/application-package-glossary.md)
-    - [资源分类与访问](Dev_Guide/source_zh_cn/cj-start/start/ide-resource-categories-and-access.md)
+            - [应用配置文件概述（Stage模型）](application-dev/source_zh_cn/cj-start/basic-knowledge/application-configuration-file-overview-stage.md)
+            - [app.json5配置文件](application-dev/source_zh_cn/cj-start/basic-knowledge/app-configuration-file.md)
+            - [module.json5配置文件](application-dev/source_zh_cn/cj-start/basic-knowledge/module-configuration-file.md)
+        - [应用程序包常见问题](application-dev/source_zh_cn/cj-start/basic-knowledge/common_problem_of_application.md)
+        - [应用程序包术语](application-dev/source_zh_cn/cj-start/basic-knowledge/application-package-glossary.md)
+    - [资源分类与访问](application-dev/source_zh_cn/cj-start/start/ide-resource-categories-and-access.md)
 
 - 开发
     - 应用框架
         - Ability Kit（程序框架服务）
-            - [Ability Kit简介](Dev_Guide/source_zh_cn/application-models/cj-abilitykit-overview.md)
-            - [应用模型](Dev_Guide/source_zh_cn/application-models/cj-application-models.md)
+            - [Ability Kit简介](application-dev/source_zh_cn/application-models/cj-abilitykit-overview.md)
+            - [应用模型](application-dev/source_zh_cn/application-models/cj-application-models.md)
             - Stage模型开发指导
                 - Stage模型应用组件
-                    - [应用/组件级配置](Dev_Guide/source_zh_cn/application-models/cj-application-component-configuration-stage.md)
+                    - [应用/组件级配置](application-dev/source_zh_cn/application-models/cj-application-component-configuration-stage.md)
                     - UIAbility组件
-                        - [UIAbility组件概述](Dev_Guide/source_zh_cn/application-models/cj-uiability-overview.md)
-                        - [UIAbility组件生命周期](Dev_Guide/source_zh_cn/application-models/cj-uiability-lifecycle.md)
-                        - [UIAbility组件启动模式](Dev_Guide/source_zh_cn/application-models/cj-uiability-launch-type.md)
-                        - [UIAbility组件基本用法](Dev_Guide/source_zh_cn/application-models/cj-uiability-usage.md)
-                        - [启动应用内的UIAbility组件](Dev_Guide/source_zh_cn/application-models/cj-uiability-intra-device-interaction.md)
+                        - [UIAbility组件概述](application-dev/source_zh_cn/application-models/cj-uiability-overview.md)
+                        - [UIAbility组件生命周期](application-dev/source_zh_cn/application-models/cj-uiability-lifecycle.md)
+                        - [UIAbility组件启动模式](application-dev/source_zh_cn/application-models/cj-uiability-launch-type.md)
+                        - [UIAbility组件基本用法](application-dev/source_zh_cn/application-models/cj-uiability-usage.md)
+                        - [启动应用内的UIAbility组件](application-dev/source_zh_cn/application-models/cj-uiability-intra-device-interaction.md)
                     - 信息传递载体Want
-                        - [Want概述](Dev_Guide/source_zh_cn/application-models/cj-want-overview.md)
-                        - [显式Want与隐式Want匹配规则](Dev_Guide/source_zh_cn/application-models/cj-explicit-implicit-want-mappings.md)
-                        - [常见action与entities（不推荐使用）](Dev_Guide/source_zh_cn/application-models/cj-actions-entities.md)
+                        - [Want概述](application-dev/source_zh_cn/application-models/cj-want-overview.md)
+                        - [显式Want与隐式Want匹配规则](application-dev/source_zh_cn/application-models/cj-explicit-implicit-want-mappings.md)
+                        - [常见action与entities（不推荐使用）](application-dev/source_zh_cn/application-models/cj-actions-entities.md)
                 - 应用间跳转
                     - 拉起指定类型的应用
-                        - [拉起文件处理类应用（startAbility）](Dev_Guide/source_zh_cn/application-models/cj-file-processing-apps-startup.md)
-                - [Stage模型应用配置文件](Dev_Guide/source_zh_cn/application-models/cj-config-file-stage.md)
+                        - [拉起文件处理类应用（startAbility）](application-dev/source_zh_cn/application-models/cj-file-processing-apps-startup.md)
+                - [Stage模型应用配置文件](application-dev/source_zh_cn/application-models/cj-config-file-stage.md)
         - ArkData（方舟数据管理）
-            - [ArkData简介](Dev_Guide/source_zh_cn/database/cj-data-mgmt-overview.md)
+            - [ArkData简介](application-dev/source_zh_cn/database/cj-data-mgmt-overview.md)
             - 应用数据持久化
-                - [应用数据持久化概述](Dev_Guide/source_zh_cn/database/cj-app-data-persistence-overview.md)
-                - [通过用户首选项实现数据持久化](Dev_Guide/source_zh_cn/database/cj-data-persistence-by-preferences.md)
-                - [通过键值型数据库实现数据持久化](Dev_Guide/source_zh_cn/database/cj-data-persistence-by-kv-store.md)
-                - [通过关系型数据库实现数据持久化](Dev_Guide/source_zh_cn/database/cj-data-persistence-by-rdb-store.md)
+                - [应用数据持久化概述](application-dev/source_zh_cn/database/cj-app-data-persistence-overview.md)
+                - [通过用户首选项实现数据持久化](application-dev/source_zh_cn/database/cj-data-persistence-by-preferences.md)
+                - [通过键值型数据库实现数据持久化](application-dev/source_zh_cn/database/cj-data-persistence-by-kv-store.md)
+                - [通过关系型数据库实现数据持久化](application-dev/source_zh_cn/database/cj-data-persistence-by-rdb-store.md)
             - 同应用跨设备数据同步（分布式）
-                - [同应用跨设备数据同步概述](Dev_Guide/source_zh_cn/database/cj-sync-app-data-across-devices-overview.md)
-                - [关系型数据库跨设备数据同步](Dev_Guide/source_zh_cn/database/cj-data-sync-of-rdb-store.md)
+                - [同应用跨设备数据同步概述](application-dev/source_zh_cn/database/cj-sync-app-data-across-devices-overview.md)
+                - [关系型数据库跨设备数据同步](application-dev/source_zh_cn/database/cj-data-sync-of-rdb-store.md)
             - 数据可靠性与安全性
-                - [数据可靠性与安全性概述](Dev_Guide/source_zh_cn/database/cj-data-reliability-security-overview.md)
-                - [数据库备份与恢复](Dev_Guide/source_zh_cn/database/cj-data-backup-and-restore.md)
-                - [数据库加密](Dev_Guide/source_zh_cn/database/cj-data-encryption.md)
-                - [基于设备分类和数据分级的访问控制](Dev_Guide/source_zh_cn/database/cj-access-control-by-device-and-data-level.md)
+                - [数据可靠性与安全性概述](application-dev/source_zh_cn/database/cj-data-reliability-security-overview.md)
+                - [数据库备份与恢复](application-dev/source_zh_cn/database/cj-data-backup-and-restore.md)
+                - [数据库加密](application-dev/source_zh_cn/database/cj-data-encryption.md)
+                - [基于设备分类和数据分级的访问控制](application-dev/source_zh_cn/database/cj-access-control-by-device-and-data-level.md)
         - ArkUI（方舟UI框架）
-            - [ArkUI简介](Dev_Guide/source_zh_cn/arkui-cj/cj-overview.md)
+            - [ArkUI简介](application-dev/source_zh_cn/arkui-cj/cj-overview.md)
             - UI开发（仓颉声明式开发范式）
-                - [UI开发（仓颉声明式开发范式）概述](Dev_Guide/source_zh_cn/arkui-cj/cj-ui-development-overview.md)
+                - [UI开发（仓颉声明式开发范式）概述](application-dev/source_zh_cn/arkui-cj/cj-ui-development-overview.md)
                 - 学习UI范式基本语法
-                    - [基本语法概述](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-basic-syntax-overview.md)
-                    - [声明式UI描述](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-declarative-ui-description.md)
+                    - [基本语法概述](application-dev/source_zh_cn/arkui-cj/paradigm/cj-basic-syntax-overview.md)
+                    - [声明式UI描述](application-dev/source_zh_cn/arkui-cj/paradigm/cj-declarative-ui-description.md)
                     - 自定义组件
-                        - [创建自定义组件](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-create-custom-components.md)
-                        - [页面和自定义组件声明周期](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-page-custom-components-lifecycle.md)
-                        - [自定义组件成员属性访问限定符使用限制](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-custom-components-access-restrictions.md)
-                    - [@Builder宏：自定义构建函数](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)
-                    - [@BuilderParam宏：引用@Builder函数](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builderparam.md)
-                    - [@Reusable宏：组件复用](Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-reusable.md)
+                        - [创建自定义组件](application-dev/source_zh_cn/arkui-cj/paradigm/cj-create-custom-components.md)
+                        - [页面和自定义组件声明周期](application-dev/source_zh_cn/arkui-cj/paradigm/cj-page-custom-components-lifecycle.md)
+                        - [自定义组件成员属性访问限定符使用限制](application-dev/source_zh_cn/arkui-cj/paradigm/cj-custom-components-access-restrictions.md)
+                    - [@Builder宏：自定义构建函数](application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)
+                    - [@BuilderParam宏：引用@Builder函数](application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builderparam.md)
+                    - [@Reusable宏：组件复用](application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-reusable.md)
                 - 学习UI范式状态管理
-                    - [状态管理概](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-state-management-overview.md)
+                    - [状态管理概](application-dev/source_zh_cn/arkui-cj/state_management/cj-state-management-overview.md)
                     - 状态管理（V1）
                         - 管理组件拥有的状态
-                            - [@State宏：组件内状态](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-macro-state.md)
-                            - [@Prop宏：父子单向同步](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-macro-prop.md)
-                            - [@Link宏：父子双向同步](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-macro-link.md)
-                            - [@Provide宏和@Consume宏：与后代组件双向同步](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-macro-provide-and-consume.md)
-                            - [@Observed宏和@Publish宏：嵌套类对象属性变化](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-macro-observed-and-publish.md)
+                            - [@State宏：组件内状态](application-dev/source_zh_cn/arkui-cj/state_management/cj-macro-state.md)
+                            - [@Prop宏：父子单向同步](application-dev/source_zh_cn/arkui-cj/state_management/cj-macro-prop.md)
+                            - [@Link宏：父子双向同步](application-dev/source_zh_cn/arkui-cj/state_management/cj-macro-link.md)
+                            - [@Provide宏和@Consume宏：与后代组件双向同步](application-dev/source_zh_cn/arkui-cj/state_management/cj-macro-provide-and-consume.md)
+                            - [@Observed宏和@Publish宏：嵌套类对象属性变化](application-dev/source_zh_cn/arkui-cj/state_management/cj-macro-observed-and-publish.md)
                         - 管理应用拥有的状态
-                            - [管理应用拥有的状态概述](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-application-state-management-overview.md)
-                            - [LocalStorage：页面级UI状态存储](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-localstorage.md)
-                            - [AppStorage：应用全局的UI状态存储](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-appstorage.md)
-                            - [PersistentStorage：持久化存储UI状态](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-persiststorage.md)
-                            - [Environment：设备环境查询](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-environment.md)
+                            - [管理应用拥有的状态概述](application-dev/source_zh_cn/arkui-cj/state_management/cj-application-state-management-overview.md)
+                            - [LocalStorage：页面级UI状态存储](application-dev/source_zh_cn/arkui-cj/state_management/cj-localstorage.md)
+                            - [AppStorage：应用全局的UI状态存储](application-dev/source_zh_cn/arkui-cj/state_management/cj-appstorage.md)
+                            - [PersistentStorage：持久化存储UI状态](application-dev/source_zh_cn/arkui-cj/state_management/cj-persiststorage.md)
+                            - [Environment：设备环境查询](application-dev/source_zh_cn/arkui-cj/state_management/cj-environment.md)
                         - 其他状态管理
-                            - [其他状态管理概述](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-other-state-mgmt-functions-overview.md)
-                            - [@Watch宏：状态变量更改通知](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-macro-watch.md)
-                        - [MVVM模式](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-mvvm.md)
-                        - [状态管理优秀实践](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-state-management-best-practices.md)
-                        - [状态管理合理使用开发指导](Dev_Guide/source_zh_cn/arkui-cj/state_management/cj-properly-use-state-management-to-develope.md)
+                            - [其他状态管理概述](application-dev/source_zh_cn/arkui-cj/state_management/cj-other-state-mgmt-functions-overview.md)
+                            - [@Watch宏：状态变量更改通知](application-dev/source_zh_cn/arkui-cj/state_management/cj-macro-watch.md)
+                        - [MVVM模式](application-dev/source_zh_cn/arkui-cj/state_management/cj-mvvm.md)
+                        - [状态管理优秀实践](application-dev/source_zh_cn/arkui-cj/state_management/cj-state-management-best-practices.md)
+                        - [状态管理合理使用开发指导](application-dev/source_zh_cn/arkui-cj/state_management/cj-properly-use-state-management-to-develope.md)
                 - 学习UI范式渲染控制
-                    - [渲染控制概述](Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-overview.md)
-                    - [if/else：条件渲染](Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)
-                    - [ForEach：循环渲染](Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)
-                    - [LazyForEach：数据懒加载](Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-lazyforeach.md)
+                    - [渲染控制概述](application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-overview.md)
+                    - [if/else：条件渲染](application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)
+                    - [ForEach：循环渲染](application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)
+                    - [LazyForEach：数据懒加载](application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-lazyforeach.md)
                 - 开发布局
-                    - [布局概述](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-overview.md)
+                    - [布局概述](application-dev/source_zh_cn/arkui-cj/cj-layout-development-overview.md)
                     - 构建布局
-                        - [线性布局（Row/Column）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-linear.md)
-                        - [层叠布局（Stack）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-stack-layout.md)
-                        - [弹性布局（Flex）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-flex-layout.md)
-                        - [相对布局（RelativeContainer）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-relative-layout.md)
-                        - [栅格布局（GridRow/GridCol）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-grid-layout.md)
-                        - [创建列表（List）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-create-list.md)
-                        - [创建网格（Grid/GridItem）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-create-grid.md)
-                        - [创建轮播（Swiper）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-create-looping.md)
-                        - [选项卡（Tabs）](Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-tabs.md)
+                        - [线性布局（Row/Column）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-linear.md)
+                        - [层叠布局（Stack）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-stack-layout.md)
+                        - [弹性布局（Flex）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-flex-layout.md)
+                        - [相对布局（RelativeContainer）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-relative-layout.md)
+                        - [栅格布局（GridRow/GridCol）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-grid-layout.md)
+                        - [创建列表（List）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-create-list.md)
+                        - [创建网格（Grid/GridItem）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-create-grid.md)
+                        - [创建轮播（Swiper）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-create-looping.md)
+                        - [选项卡（Tabs）](application-dev/source_zh_cn/arkui-cj/cj-layout-development-tabs.md)
                     <!--RP2--><!--RP2End-->
                 - 添加组件
-                    - [按钮（Button）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-button.md)
-                    - [单选框（Radio）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-radio-button.md)
-                    - [切换按钮（Toggle）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-switch.md)
-                    - [进度条（Progress）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-progress-indicator.md)
-                    - [显示图片（Image）](Dev_Guide/source_zh_cn/arkui-cj/cj-graphics-display.md)
-                    - [视频播放（Video）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-video-player.md)
+                    - [按钮（Button）](application-dev/source_zh_cn/arkui-cj/cj-common-components-button.md)
+                    - [单选框（Radio）](application-dev/source_zh_cn/arkui-cj/cj-common-components-radio-button.md)
+                    - [切换按钮（Toggle）](application-dev/source_zh_cn/arkui-cj/cj-common-components-switch.md)
+                    - [进度条（Progress）](application-dev/source_zh_cn/arkui-cj/cj-common-components-progress-indicator.md)
+                    - [显示图片（Image）](application-dev/source_zh_cn/arkui-cj/cj-graphics-display.md)
+                    - [视频播放（Video）](application-dev/source_zh_cn/arkui-cj/cj-common-components-video-player.md)
                 - 设置组件导航和页面路由
-                    - [组件导航和页面路由概述](Dev_Guide/source_zh_cn/arkui-cj/cj-navigation-introduction.md)
+                    - [组件导航和页面路由概述](application-dev/source_zh_cn/arkui-cj/cj-navigation-introduction.md)
                 - 使用文本
-                    - [文本概述](Dev_Guide/source_zh_cn/arkui-cj/cj-text-introduction.md)
-                    - [文本显示（Text/Span）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-text-display.md)
-                    - [文本输入（TextInput/TextArea）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-text-input.md)
-                    - [富文本（RichEditor）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-richeditor.md)
+                    - [文本概述](application-dev/source_zh_cn/arkui-cj/cj-text-introduction.md)
+                    - [文本显示（Text/Span）](application-dev/source_zh_cn/arkui-cj/cj-common-components-text-display.md)
+                    - [文本输入（TextInput/TextArea）](application-dev/source_zh_cn/arkui-cj/cj-common-components-text-input.md)
+                    - [富文本（RichEditor）](application-dev/source_zh_cn/arkui-cj/cj-common-components-richeditor.md)
                 - 使用弹窗
-                    - [弹窗概述](Dev_Guide/source_zh_cn/arkui-cj/cj-dialog-overview.md)
+                    - [弹窗概述](application-dev/source_zh_cn/arkui-cj/cj-dialog-overview.md)
                     - 使用弹出框（Dialog）
-                        - [弹出框概述](Dev_Guide/source_zh_cn/arkui-cj/cj-dialog-base-overview.md)
-                        - [不依赖UI组件的全局自定义弹出框（openCustomDialog）](Dev_Guide/source_zh_cn/arkui-cj/cj-uicontext-custom-dialog.md)
-                        - [基础自定义弹出框（CustomDialog）（不推荐）](Dev_Guide/source_zh_cn/arkui-cj/cj-common-components-custom-dialog.md)
-                        - [固定样式弹出框](Dev_Guide/source_zh_cn/arkui-cj/cj-fixes-style-dialog.md)
-                    - [菜单控制（Menu）](Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md)
-                    - [气泡提示（Popup）](Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-popup.md)
+                        - [弹出框概述](application-dev/source_zh_cn/arkui-cj/cj-dialog-base-overview.md)
+                        - [不依赖UI组件的全局自定义弹出框（openCustomDialog）](application-dev/source_zh_cn/arkui-cj/cj-uicontext-custom-dialog.md)
+                        - [基础自定义弹出框（CustomDialog）（不推荐）](application-dev/source_zh_cn/arkui-cj/cj-common-components-custom-dialog.md)
+                        - [固定样式弹出框](application-dev/source_zh_cn/arkui-cj/cj-fixes-style-dialog.md)
+                    - [菜单控制（Menu）](application-dev/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md)
+                    - [气泡提示（Popup）](application-dev/source_zh_cn/arkui-cj/cj-popup-and-menu-components-popup.md)
                     - 绑定模态页面
-                        - [绑定模态页面概述](Dev_Guide/source_zh_cn/arkui-cj/cj-modal-overview.md)
-                        - [绑定半模态页面（bindSheet）](Dev_Guide/source_zh_cn/arkui-cj/cj-sheet-page.md)
-                        - [绑定全模态页面（bindContentCover）](Dev_Guide/source_zh_cn/arkui-cj/cj-contentcover-page.md)
-                    - [即时反馈（Toast）](Dev_Guide/source_zh_cn/arkui-cj/cj-create-toast.md)
+                        - [绑定模态页面概述](application-dev/source_zh_cn/arkui-cj/cj-modal-overview.md)
+                        - [绑定半模态页面（bindSheet）](application-dev/source_zh_cn/arkui-cj/cj-sheet-page.md)
+                        - [绑定全模态页面（bindContentCover）](application-dev/source_zh_cn/arkui-cj/cj-contentcover-page.md)
+                    - [即时反馈（Toast）](application-dev/source_zh_cn/arkui-cj/cj-create-toast.md)
                 - 显示图形
-                    - [绘制几何图形（Shape）](Dev_Guide/source_zh_cn/arkui-cj/cj-shape-drawing.md)
-                    - [使用画布绘制自定义图形（Canvas）](Dev_Guide/source_zh_cn/arkui-cj/cj-drawing-customization-on-canvas.md)
+                    - [绘制几何图形（Shape）](application-dev/source_zh_cn/arkui-cj/cj-shape-drawing.md)
+                    - [使用画布绘制自定义图形（Canvas）](application-dev/source_zh_cn/arkui-cj/cj-drawing-customization-on-canvas.md)
                 - 使用动画
-                    - [动画概述](Dev_Guide/source_zh_cn/arkui-cj/cj-animation.md)
+                    - [动画概述](application-dev/source_zh_cn/arkui-cj/cj-animation.md)
                     - 属性动画
-                        - [属性动画概述](Dev_Guide/source_zh_cn/arkui-cj/cj-attribute-animation-overview.md)
-                        - [实现属性动画](Dev_Guide/source_zh_cn/arkui-cj/cj-attribute-animation-apis.md)
+                        - [属性动画概述](application-dev/source_zh_cn/arkui-cj/cj-attribute-animation-overview.md)
+                        - [实现属性动画](application-dev/source_zh_cn/arkui-cj/cj-attribute-animation-apis.md)
                     - 转场动画
-                        - [转场动画概述](Dev_Guide/source_zh_cn/arkui-cj/cj-transition-overview.md)
-                        - [出现/消失转场](Dev_Guide/source_zh_cn/arkui-cj/cj-enter-exit-transition.md)
-                        - [模态转场](Dev_Guide/source_zh_cn/arkui-cj/cj-modal-transition.md)
-                        - [共享元素转场（一镜到底）](Dev_Guide/source_zh_cn/arkui-cj/cj-shared-element-transition.md)
-                        - [旋转屏动画](Dev_Guide/source_zh_cn/arkui-cj/cj-rotation-transition-animation.md)
-                        - [页面路由（不推荐）](Dev_Guide/source_zh_cn/arkui-cj/cj-page-routing.md)
-                        - [页面转场动画（不推荐）](Dev_Guide/source_zh_cn/arkui-cj/cj-page-transition-animation.md)
-                    - [组件动画](Dev_Guide/source_zh_cn/arkui-cj/cj-component-animation.md)
+                        - [转场动画概述](application-dev/source_zh_cn/arkui-cj/cj-transition-overview.md)
+                        - [出现/消失转场](application-dev/source_zh_cn/arkui-cj/cj-enter-exit-transition.md)
+                        - [模态转场](application-dev/source_zh_cn/arkui-cj/cj-modal-transition.md)
+                        - [共享元素转场（一镜到底）](application-dev/source_zh_cn/arkui-cj/cj-shared-element-transition.md)
+                        - [旋转屏动画](application-dev/source_zh_cn/arkui-cj/cj-rotation-transition-animation.md)
+                        - [页面路由（不推荐）](application-dev/source_zh_cn/arkui-cj/cj-page-routing.md)
+                        - [页面转场动画（不推荐）](application-dev/source_zh_cn/arkui-cj/cj-page-transition-animation.md)
+                    - [组件动画](application-dev/source_zh_cn/arkui-cj/cj-component-animation.md)
                     - 动画曲线
-                        - [动画曲线概述](Dev_Guide/source_zh_cn/arkui-cj/cj-curve-overview.md)
-                        - [传统曲线](Dev_Guide/source_zh_cn/arkui-cj/cj-traditional-curve.md)
-                        - [弹簧曲线](Dev_Guide/source_zh_cn/arkui-cj/cj-spring-curve.md)
-                    - [动画衔接](Dev_Guide/source_zh_cn/arkui-cj/cj-animation-smoothing.md)
+                        - [动画曲线概述](application-dev/source_zh_cn/arkui-cj/cj-curve-overview.md)
+                        - [传统曲线](application-dev/source_zh_cn/arkui-cj/cj-traditional-curve.md)
+                        - [弹簧曲线](application-dev/source_zh_cn/arkui-cj/cj-spring-curve.md)
+                    - [动画衔接](application-dev/source_zh_cn/arkui-cj/cj-animation-smoothing.md)
                     - 动画效果
-                        - [模糊](Dev_Guide/source_zh_cn/arkui-cj/cj-blur-effect.md)
-                        - [阴影](Dev_Guide/source_zh_cn/arkui-cj/cj-shadow-effect.md)
-                        - [色彩](Dev_Guide/source_zh_cn/arkui-cj/cj-color-effect.md)
-                    - [帧动画（ohos.animator）](Dev_Guide/source_zh_cn/arkui-cj/cj-animator.md)
+                        - [模糊](application-dev/source_zh_cn/arkui-cj/cj-blur-effect.md)
+                        - [阴影](application-dev/source_zh_cn/arkui-cj/cj-shadow-effect.md)
+                        - [色彩](application-dev/source_zh_cn/arkui-cj/cj-color-effect.md)
+                    - [帧动画（ohos.animator）](application-dev/source_zh_cn/arkui-cj/cj-animator.md)
                 - 支持交互事件
-                    - [交互事件概述](Dev_Guide/source_zh_cn/arkui-cj/cj-event-overview.md)
+                    - [交互事件概述](application-dev/source_zh_cn/arkui-cj/cj-event-overview.md)
                     - 使用通用事件
-                        - [事件分发](Dev_Guide/source_zh_cn/arkui-cj/cj-common-events-distribute.md)
-                        - [触屏事件](Dev_Guide/source_zh_cn/arkui-cj/cj-common-events-touch-screen-event.md)
-                        - [键鼠事件](Dev_Guide/source_zh_cn/arkui-cj/cj-common-events-device-input-event.md)
-                        - [焦点事件](Dev_Guide/source_zh_cn/arkui-cj/cj-common-events-focus-event.md)
-                - [使用镜像能力](Dev_Guide/source_zh_cn/arkui-cj/cj-mirroring-display.md)
+                        - [事件分发](application-dev/source_zh_cn/arkui-cj/cj-common-events-distribute.md)
+                        - [触屏事件](application-dev/source_zh_cn/arkui-cj/cj-common-events-touch-screen-event.md)
+                        - [键鼠事件](application-dev/source_zh_cn/arkui-cj/cj-common-events-device-input-event.md)
+                        - [焦点事件](application-dev/source_zh_cn/arkui-cj/cj-common-events-focus-event.md)
+                - [使用镜像能力](application-dev/source_zh_cn/arkui-cj/cj-mirroring-display.md)
                 <!--RP1--><!--RP1End-->
                 - 主题设置
-                    - [应用深浅色适配](Dev_Guide/source_zh_cn/arkui-cj/cj-ui-dark-light-color-adaptation.md)
+                    - [应用深浅色适配](application-dev/source_zh_cn/arkui-cj/cj-ui-dark-light-color-adaptation.md)
         - 窗口管理
-            - [管理应用窗口](Dev_Guide/source_zh_cn/windowmanager/application-window-stage.md)
+            - [管理应用窗口](application-dev/source_zh_cn/windowmanager/application-window-stage.md)
         - 屏幕管理
-            - [使用Display实现屏幕属性获取及状态监听](Dev_Guide/source_zh_cn/displaymanager/screenProperty-guideline.md)
+            - [使用Display实现屏幕属性获取及状态监听](application-dev/source_zh_cn/displaymanager/screenProperty-guideline.md)
         - ArkWeb（方舟Web）
-            - [ArkWeb简介](Dev_Guide/source_zh_cn/web/cj-web-component-overview.md)
+            - [ArkWeb简介](application-dev/source_zh_cn/web/cj-web-component-overview.md)
             - 设置基本属性和事件
-                - [User-Agent开发指导](Dev_Guide/source_zh_cn/web/cj-web-default-userAgent.md)
-                - [设置深色模式](Dev_Guide/source_zh_cn/web/cj-web-set-dark-mode.md)
+                - [User-Agent开发指导](application-dev/source_zh_cn/web/cj-web-default-userAgent.md)
+                - [设置深色模式](application-dev/source_zh_cn/web/cj-web-set-dark-mode.md)
             - 管理网页交互
-                - [Web组件嵌套滚动](Dev_Guide/source_zh_cn/web/cj-web-nested-scrolling.md)
-                - [Web页面显示内容滚动](Dev_Guide/source_zh_cn/web/cj-web-content-scrolling.md)
+                - [Web组件嵌套滚动](application-dev/source_zh_cn/web/cj-web-nested-scrolling.md)
+                - [Web页面显示内容滚动](application-dev/source_zh_cn/web/cj-web-content-scrolling.md)
             - 管理Web组件的网络安全与隐私
-                - [坚盾守护模式](Dev_Guide/source_zh_cn/web/cj-web-secure-shield-mode.md)
+                - [坚盾守护模式](application-dev/source_zh_cn/web/cj-web-secure-shield-mode.md)
             - 管理网页加载与浏览记录
-                - [使用Web组件加载页面](Dev_Guide/source_zh_cn/web/cj-web-page-loading-with-web-components.md)
+                - [使用Web组件加载页面](application-dev/source_zh_cn/web/cj-web-page-loading-with-web-components.md)
             - 处理网页内容
-                - [使用Web组件的PDF文档预览能力](Dev_Guide/source_zh_cn/web/cj-web-pdf-preview.md)
-                - [网页中安全区域计算和避让适配](Dev_Guide/source_zh_cn/web/cj-web-safe-area-insets.md)
+                - [使用Web组件的PDF文档预览能力](application-dev/source_zh_cn/web/cj-web-pdf-preview.md)
+                - [网页中安全区域计算和避让适配](application-dev/source_zh_cn/web/cj-web-safe-area-insets.md)
             - Web调试维测
-                - [使用DevTools工具调试前端页面](Dev_Guide/source_zh_cn/web/cj-web-debugging-with-devtools.md)
-                - [使用crashpad收集Web组件崩溃信息](Dev_Guide/source_zh_cn/web/cj-web-crashpad.md)
+                - [使用DevTools工具调试前端页面](application-dev/source_zh_cn/web/cj-web-debugging-with-devtools.md)
+                - [使用crashpad收集Web组件崩溃信息](application-dev/source_zh_cn/web/cj-web-crashpad.md)
         - Core File Kit（文件基础服务）
-            - [Core File Kit简介](Dev_Guide/source_zh_cn/file-management/cj-core-file-kit-intro.md)
+            - [Core File Kit简介](application-dev/source_zh_cn/file-management/cj-core-file-kit-intro.md)
             - 应用文件
-                - [应用文件概述](Dev_Guide/source_zh_cn/file-management/cj-app-file-overview.md)
-                - [应用沙箱目录](Dev_Guide/source_zh_cn/file-management/cj-app-sandbox-directory.md)
+                - [应用文件概述](application-dev/source_zh_cn/file-management/cj-app-file-overview.md)
+                - [应用沙箱目录](application-dev/source_zh_cn/file-management/cj-app-sandbox-directory.md)
                 - 应用文件访问与管理
-                    - [应用文件访问(Dev_Guide/source_zh_cn/仓颉)](Dev_Guide/source_zh_cn/file-management/cj-app-file-access.md)
-                - [应用文件分享](Dev_Guide/source_zh_cn/file-management/cj-share-app-file.md)
+                    - [应用文件访问(application-dev/source_zh_cn/仓颉)](application-dev/source_zh_cn/file-management/cj-app-file-access.md)
+                - [应用文件分享](application-dev/source_zh_cn/file-management/cj-share-app-file.md)
             <!--Del-->
-            - [向应用沙箱推送文件](Dev_Guide/source_zh_cn/file-management/cj-send-file-to-app-sandbox.md)
+            - [向应用沙箱推送文件](application-dev/source_zh_cn/file-management/cj-send-file-to-app-sandbox.md)
             <!--DelEnd-->
             - 用户文件
-                - [用户文件概述](Dev_Guide/source_zh_cn/file-management/cj-user-file-overview.md)
+                - [用户文件概述](application-dev/source_zh_cn/file-management/cj-user-file-overview.md)
         - IPC Kit（进程间通信服务）
-            - [IPC Kit简介](Dev_Guide/source_zh_cn/ipc/cj-ipc-rpc-overview.md)
-            - [IPC与RPC通信开发指导](Dev_Guide/source_zh_cn/ipc/cj-ipc-rpc-guidelines.md)
+            - [IPC Kit简介](application-dev/source_zh_cn/ipc/cj-ipc-rpc-overview.md)
+            - [IPC与RPC通信开发指导](application-dev/source_zh_cn/ipc/cj-ipc-rpc-guidelines.md)
         - Localization Kit（本地化开发服务）
-            - [Localization Kit简介](Dev_Guide/source_zh_cn/internationalization/cj-i18n-l10n.md)
+            - [Localization Kit简介](application-dev/source_zh_cn/internationalization/cj-i18n-l10n.md)
             - 应用国际化
-                - [国际化界面设计](Dev_Guide/source_zh_cn/internationalization/cj-i18n-ui-design.md)
-                - [设置日历和历法](Dev_Guide/source_zh_cn/internationalization/cj-i18n-calendar.md)
+                - [国际化界面设计](application-dev/source_zh_cn/internationalization/cj-i18n-ui-design.md)
+                - [设置日历和历法](application-dev/source_zh_cn/internationalization/cj-i18n-calendar.md)
                 - 时区与夏令时国际化
-                    - [夏令时跳变](Dev_Guide/source_zh_cn/internationalization/cj-i18n-dst-transition.md)
+                    - [夏令时跳变](application-dev/source_zh_cn/internationalization/cj-i18n-dst-transition.md)
                 - 本地化名称
-                    - [本地化时区名称](Dev_Guide/source_zh_cn/internationalization/cj-i18n-time-zone-display.md)
+                    - [本地化时区名称](application-dev/source_zh_cn/internationalization/cj-i18n-time-zone-display.md)
             - 应用本地化
                 - 提升可翻译性
-                    - [提供翻译场景](Dev_Guide/source_zh_cn/internationalization/cj-l10n-translation-scene.md)
-                    - [支持单复数](Dev_Guide/source_zh_cn/internationalization/cj-l10n-singular-plural.md)
+                    - [提供翻译场景](application-dev/source_zh_cn/internationalization/cj-l10n-translation-scene.md)
+                    - [支持单复数](application-dev/source_zh_cn/internationalization/cj-l10n-singular-plural.md)
             - 本地化测试
-                - [语言测试](Dev_Guide/source_zh_cn/internationalization/cj-linguistic-testing.md)
+                - [语言测试](application-dev/source_zh_cn/internationalization/cj-linguistic-testing.md)
     - 系统
         - 安全
             - 程序访问控制
-                - [访问控制概述](Dev_Guide/source_zh_cn/security/AccessToken/cj-access-token-overview.md)
+                - [访问控制概述](application-dev/source_zh_cn/security/AccessToken/cj-access-token-overview.md)
                 - 应用权限管控
-                    - [应用权限管控概述](Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permission-mgmt-overview.md)
+                    - [应用权限管控概述](application-dev/source_zh_cn/security/AccessToken/cj-app-permission-mgmt-overview.md)
                     - 申请应用权限
-                        - [选择申请权限的方式](Dev_Guide/source_zh_cn/security/AccessToken/cj-determine-application-mode.md)
-                        - [声明权限](Dev_Guide/source_zh_cn/security/AccessToken/cj-declare-permissions.md)
-                        - [向用户申请授权](Dev_Guide/source_zh_cn/security/AccessToken/cj-request-user-authorization.md)
-                        - [向用户申请单次授权](Dev_Guide/source_zh_cn/security/AccessToken/cj-one-time-authorization.md)
+                        - [选择申请权限的方式](application-dev/source_zh_cn/security/AccessToken/cj-determine-application-mode.md)
+                        - [声明权限](application-dev/source_zh_cn/security/AccessToken/cj-declare-permissions.md)
+                        - [向用户申请授权](application-dev/source_zh_cn/security/AccessToken/cj-request-user-authorization.md)
+                        - [向用户申请单次授权](application-dev/source_zh_cn/security/AccessToken/cj-one-time-authorization.md)
                         <!--Del-->
-                        - [申请使用受限权限](Dev_Guide/source_zh_cn/security/AccessToken/cj-declare-permissions-in-acl.md)
+                        - [申请使用受限权限](application-dev/source_zh_cn/security/AccessToken/cj-declare-permissions-in-acl.md)
                         <!--DelEnd-->
-                    - [应用权限列表](Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md)
-                        - [开放权限（系统授权）](Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-all.md)
-                        - [开放权限（用户授权）](Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-all-user.md)
-                        - [受限开放权限](Dev_Guide/source_zh_cn/security/AccessToken/cj-restricted-permissions.md)
+                    - [应用权限列表](application-dev/source_zh_cn/security/AccessToken/cj-app-permissions.md)
+                        - [开放权限（系统授权）](application-dev/source_zh_cn/security/AccessToken/cj-permissions-for-all.md)
+                        - [开放权限（用户授权）](application-dev/source_zh_cn/security/AccessToken/cj-permissions-for-all-user.md)
+                        - [受限开放权限](application-dev/source_zh_cn/security/AccessToken/cj-restricted-permissions.md)
                         <!--Del-->
-                        - [可ACL申请的系统应用可用权限（系统授权）](Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-system-apps.md)
-                        - [不可ACL申请的系统应用可用权限（系统授权）](Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-system-apps-no-acl.md)
-                        - [系统应用可用权限（用户授权）](Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-system-apps-user.md)
+                        - [可ACL申请的系统应用可用权限（系统授权）](application-dev/source_zh_cn/security/AccessToken/cj-permissions-for-system-apps.md)
+                        - [不可ACL申请的系统应用可用权限（系统授权）](application-dev/source_zh_cn/security/AccessToken/cj-permissions-for-system-apps-no-acl.md)
+                        - [系统应用可用权限（用户授权）](application-dev/source_zh_cn/security/AccessToken/cj-permissions-for-system-apps-user.md)
                         <!--DelEnd-->
-                        - [企业类应用可用权限](Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-enterprise-apps.md)
-                        - [仅对MDM应用开放](Dev_Guide/source_zh_cn/security/AccessToken/cj-permissions-for-mdm-apps.md)
-                    - [应用权限组列表](Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permission-group-list.md)
+                        - [企业类应用可用权限](application-dev/source_zh_cn/security/AccessToken/cj-permissions-for-enterprise-apps.md)
+                        - [仅对MDM应用开放](application-dev/source_zh_cn/security/AccessToken/cj-permissions-for-mdm-apps.md)
+                    - [应用权限组列表](application-dev/source_zh_cn/security/AccessToken/cj-app-permission-group-list.md)
             - Crypto Architecture Kit（加解密算法框架服务）
-                - [Crypto Architecture Kit简介](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-architecture-kit-intro.md)
+                - [Crypto Architecture Kit简介](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-architecture-kit-intro.md)
                 - 密钥生成和转换
-                    - [密钥生成与转换介绍](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-key-generation-conversion-overview.md)
+                    - [密钥生成与转换介绍](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-key-generation-conversion-overview.md)
                     - 密钥生成和转换规格
-                        - [对称密钥生成和转换规格](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md)
+                        - [对称密钥生成和转换规格](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md)
                     - 密钥生成和转换开发指导
-                        - [随机生成对称密钥（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-sym-key-randomly.md)
-                        - [指定二进制数据转换对称密钥（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-convert-binary-data-to-sym-key.md)
+                        - [随机生成对称密钥（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-sym-key-randomly.md)
+                        - [指定二进制数据转换对称密钥（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-convert-binary-data-to-sym-key.md)
                 - 加解密
-                    - [加解密介绍](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-encryption-decryption-overview.md)
+                    - [加解密介绍](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-encryption-decryption-overview.md)
                     - 加解密算法规格
-                        - [对称密钥加解密算法规格](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md)
-                        - [非对称密钥加解密算法规格](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md)
-                        - [分段加解密说明](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-encrypt-decrypt-by-segment.md)
+                        - [对称密钥加解密算法规格](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md)
+                        - [非对称密钥加解密算法规格](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md)
+                        - [分段加解密说明](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-encrypt-decrypt-by-segment.md)
                     - 加解密开发指导
-                        - [使用AES对称密钥（GCM模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-gcm.md)
-                        - [使用AES对称密钥（CCM模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-ccm.md)
-                        - [使用AES对称密钥（CBC模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-cbc.md)
-                        - [使用AES对称密钥（ECB模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-ecb.md)
-                        - [使用AES对称密钥（GCM模式）分段加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)
-                        - [使用3DES对称密钥（ECB模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-3des-sym-encrypt-decrypt-ecb.md)
-                        - [使用SM4对称密钥（ECB模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-ecb.md)
-                        - [使用SM4对称密钥（CBC模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-cbc.md)
-                        - [使用SM4对称密钥（GCM模式）加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-gcm.md)
-                        - [使用SM4对称密钥（GCM模式）分段加解密（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)
+                        - [使用AES对称密钥（GCM模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-gcm.md)
+                        - [使用AES对称密钥（CCM模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-ccm.md)
+                        - [使用AES对称密钥（CBC模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-cbc.md)
+                        - [使用AES对称密钥（ECB模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-ecb.md)
+                        - [使用AES对称密钥（GCM模式）分段加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)
+                        - [使用3DES对称密钥（ECB模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-3des-sym-encrypt-decrypt-ecb.md)
+                        - [使用SM4对称密钥（ECB模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-ecb.md)
+                        - [使用SM4对称密钥（CBC模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-cbc.md)
+                        - [使用SM4对称密钥（GCM模式）加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-gcm.md)
+                        - [使用SM4对称密钥（GCM模式）分段加解密（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)
                 - 消息摘要计算
-                    - [消息摘要计算介绍及算法规格](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-message-digest-overview.md)
+                    - [消息摘要计算介绍及算法规格](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-message-digest-overview.md)
                     - 消息摘要计算开发指导
-                        - [消息摘要计算SHA256（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-message-digest.md)
-                        - [消息摘要计算MD5（仓颉）](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-message-digest-md5.md)
-                - [消息认证码计算](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-compute-mac.md)
-                - [安全随机数生成](Dev_Guide/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-random-number.md)
+                        - [消息摘要计算SHA256（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-message-digest.md)
+                        - [消息摘要计算MD5（仓颉）](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-message-digest-md5.md)
+                - [消息认证码计算](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-compute-mac.md)
+                - [安全随机数生成](application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-generate-random-number.md)
             - Universal Keystore Kit（密钥管理服务）
-                - [Universal Keystore Kit简介](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-overview.md)
-                - [通用密钥库基础概念](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-concepts.md)
+                - [Universal Keystore Kit简介](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-overview.md)
+                - [通用密钥库基础概念](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-concepts.md)
                 - 密钥生成/导入
                     - 密钥生成
-                        - [密钥生成介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-generation-overview.md)
+                        - [密钥生成介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-generation-overview.md)
                         - 开发指导
-                            - [生成密钥（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-generation.md)
+                            - [生成密钥（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-generation.md)
                     - 密钥导入
-                        - [密钥导入介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-import-overview.md)
+                        - [密钥导入介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-import-overview.md)
                         - 开发指导
-                            - [明文导入密钥（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-import-key-in-plaintext.md)
-                            - [加密导入密钥（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-import-wrapped-key.md)
+                            - [明文导入密钥（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-import-key-in-plaintext.md)
+                            - [加密导入密钥（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-import-wrapped-key.md)
                 - 密钥使用
-                    - [密钥使用介绍及通用流程](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-use-overview.md)
+                    - [密钥使用介绍及通用流程](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-use-overview.md)
                     - 加密/解密
-                        - [加密/解密介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-encryption-decryption-overview.md)
+                        - [加密/解密介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-encryption-decryption-overview.md)
                         - 开发指导
-                            - [加解密（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-encryption-decryption.md)
+                            - [加解密（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-encryption-decryption.md)
                     - 签名/验签
-                        - [签名/验签介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-signing-signature-verification-overview.md)
+                        - [签名/验签介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-signing-signature-verification-overview.md)
                         - 开发指导
-                            - [签名/验签（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-signing-signature-verification.md)
+                            - [签名/验签（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-signing-signature-verification.md)
                     - 密钥协商
-                        - [密钥协商介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-agreement-overview.md)
+                        - [密钥协商介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-agreement-overview.md)
                         - 开发指导
-                            - [密钥协商（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-agreement.md)
+                            - [密钥协商（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-agreement.md)
                     - 密钥派生
-                        - [密钥派生介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-derivation-overview.md)
+                        - [密钥派生介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-derivation-overview.md)
                         - 开发指导
-                            - [密钥派生（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-derivation.md)
+                            - [密钥派生（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-derivation.md)
                     - HMAC
-                        - [HMAC介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-hmac-overview.md)
+                        - [HMAC介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-hmac-overview.md)
                         - 开发指导
-                            - [HMAC（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-hmac.md)
+                            - [HMAC（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-hmac.md)
                 - 密钥删除
-                    - [密钥删除（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-delete-key.md)
+                    - [密钥删除（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-delete-key.md)
                 - 密钥证明
-                    - [密钥证明介绍及算法规格](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-attestation-overview.md)
+                    - [密钥证明介绍及算法规格](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-attestation-overview.md)
                     - 开发指导
-                        - [匿名密钥证明（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-anon-attestation.md)
+                        - [匿名密钥证明（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-anon-attestation.md)
                         <!--Del-->
-                        - [非匿名密钥证明(Dev_Guide/source_zh_cn/仓颉)](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-attestation-arkts.md)
+                        - [非匿名密钥证明(application-dev/source_zh_cn/仓颉)](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-key-attestation-arkts.md)
                         <!--DelEnd-->
                 - 其他操作
                     - 查询密钥是否存在
-                        - [查询密钥是否存在（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-check-key.md)
+                        - [查询密钥是否存在（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-check-key.md)
                     - 获取密钥属性
-                        - [获取密钥属性（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-obtain-key-properties.md)
+                        - [获取密钥属性（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-obtain-key-properties.md)
                     - 密钥导出
-                        - [密钥导出（仓颉）](Dev_Guide/source_zh_cn/security/UniversalKeystoreKit/cj-huks-export-key.md)
+                        - [密钥导出（仓颉）](application-dev/source_zh_cn/security/UniversalKeystoreKit/cj-huks-export-key.md)
         - 网络
             - Connectivity Kit（短距通信服务）
-                - [Connectivity Kit简介](Dev_Guide/source_zh_cn/connectivity/cj-connectivity-kit-intro.md)
+                - [Connectivity Kit简介](application-dev/source_zh_cn/connectivity/cj-connectivity-kit-intro.md)
                 - 蓝牙
-                    - [蓝牙服务开发概述](Dev_Guide/source_zh_cn/connectivity/bluetooth/cj-bluetooth-overview.md)
-                    - [广播与扫描](Dev_Guide/source_zh_cn/connectivity/bluetooth/cj-ble-development-guide.md)
-                    - [通用属性协议](Dev_Guide/source_zh_cn/connectivity/bluetooth/cj-gatt-development-guide.md)
+                    - [蓝牙服务开发概述](application-dev/source_zh_cn/connectivity/bluetooth/cj-bluetooth-overview.md)
+                    - [广播与扫描](application-dev/source_zh_cn/connectivity/bluetooth/cj-ble-development-guide.md)
+                    - [通用属性协议](application-dev/source_zh_cn/connectivity/bluetooth/cj-gatt-development-guide.md)
             - Network Kit（网络服务）
-                - [Network Kit简介](Dev_Guide/source_zh_cn/network/cj-net-mgmt-overview.md)
+                - [Network Kit简介](application-dev/source_zh_cn/network/cj-net-mgmt-overview.md)
                 - Network Kit数据传输能力
-                    - [HTTP数据请求](Dev_Guide/source_zh_cn/network/cj-http-request.md)
+                    - [HTTP数据请求](application-dev/source_zh_cn/network/cj-http-request.md)
                 - Network Kit网络管理能力
-                    - [网络连接管理](Dev_Guide/source_zh_cn/network/cj-net-connection-manager.md)
+                    - [网络连接管理](application-dev/source_zh_cn/network/cj-net-connection-manager.md)
             - Telephony Kit（蜂窝通信服务）
-                - [拨打电话](Dev_Guide/source_zh_cn/telephony/cj-telephony-call.md)
+                - [拨打电话](application-dev/source_zh_cn/telephony/cj-telephony-call.md)
         - 基础功能
             - Basic Services Kit（基础服务）
-                - [Basic Services Kit简介](Dev_Guide/source_zh_cn/basic-services/cj-basic-services-kit-overview.md)
+                - [Basic Services Kit简介](application-dev/source_zh_cn/basic-services/cj-basic-services-kit-overview.md)
                 - 进程线程通信
                     - 使用公共事件进行进程间通信
-                        - [公共事件简介](Dev_Guide/source_zh_cn/basic-services/common-event/cj-common-event-overview.md)
-                        - [动态订阅公共事件](Dev_Guide/source_zh_cn/basic-services/common-event/cj-common-event-subscription.md)
-                        - [取消动态订阅公共事件](Dev_Guide/source_zh_cn/basic-services/common-event/cj-common-event-unsubscription.md)
-                        - [发布公共事件](Dev_Guide/source_zh_cn/basic-services/common-event/cj-common-event-publish.md)
+                        - [公共事件简介](application-dev/source_zh_cn/basic-services/common-event/cj-common-event-overview.md)
+                        - [动态订阅公共事件](application-dev/source_zh_cn/basic-services/common-event/cj-common-event-subscription.md)
+                        - [取消动态订阅公共事件](application-dev/source_zh_cn/basic-services/common-event/cj-common-event-unsubscription.md)
+                        - [发布公共事件](application-dev/source_zh_cn/basic-services/common-event/cj-common-event-publish.md)
                 - 上传下载
-                    - [应用文件上传下载](Dev_Guide/source_zh_cn/basic-services/request/cj-app-file-upload-download.md)
+                    - [应用文件上传下载](application-dev/source_zh_cn/basic-services/request/cj-app-file-upload-download.md)
         - 硬件
             - Sensor Service Kit（传感器服务）
-                - [Sensor Service Kit开发简介](Dev_Guide/source_zh_cn/device/sensor/cj-sensorservice-kit-intro.md)
+                - [Sensor Service Kit开发简介](application-dev/source_zh_cn/device/sensor/cj-sensorservice-kit-intro.md)
                 - 传感器
-                    - [传感器开发概述](Dev_Guide/source_zh_cn/device/sensor/cj-sensor-overview.md)
-                    - [传感器开发指导（仓颉）](Dev_Guide/source_zh_cn/device/sensor/cj-sensor-guidelines.md)
+                    - [传感器开发概述](application-dev/source_zh_cn/device/sensor/cj-sensor-overview.md)
+                    - [传感器开发指导（仓颉）](application-dev/source_zh_cn/device/sensor/cj-sensor-guidelines.md)
         - 调测调优
             - Performance Analysis Kit（性能分析服务）
-                - [Performance Analysis Kit简介](Dev_Guide/source_zh_cn/dfx/cj-performance-analysis-kit-overview.md)
+                - [Performance Analysis Kit简介](application-dev/source_zh_cn/dfx/cj-performance-analysis-kit-overview.md)
                 - HiLog使用指导
-                    - [使用HiLog打印日志（仓颉）](Dev_Guide/source_zh_cn/dfx/cj-hilog-guidelines.md)
+                    - [使用HiLog打印日志（仓颉）](application-dev/source_zh_cn/dfx/cj-hilog-guidelines.md)
                 - HiAppEvent使用指导
-                    - [HiAppEvent介绍](Dev_Guide/source_zh_cn/dfx/cj-hiappevent-intro.md)
+                    - [HiAppEvent介绍](application-dev/source_zh_cn/dfx/cj-hiappevent-intro.md)
                     - 事件订阅
                         - 应用事件
-                            - [订阅应用事件（仓颉）](Dev_Guide/source_zh_cn/dfx/cj-hiappevent-watcher-app-events.md)
+                            - [订阅应用事件（仓颉）](application-dev/source_zh_cn/dfx/cj-hiappevent-watcher-app-events.md)
                         - 系统事件
                             - 崩溃事件
-                                - [崩溃事件介绍](Dev_Guide/source_zh_cn/dfx/cj-hiappevent-watcher-crash-events.md)
-                                - [订阅崩溃事件（仓颉）](Dev_Guide/source_zh_cn/dfx/cj-hiappevent-watcher-crash-events-cangjie.md)
+                                - [崩溃事件介绍](application-dev/source_zh_cn/dfx/cj-hiappevent-watcher-crash-events.md)
+                                - [订阅崩溃事件（仓颉）](application-dev/source_zh_cn/dfx/cj-hiappevent-watcher-crash-events-cangjie.md)
                             - appfreeze事件
-                                - [appfreeze事件介绍](Dev_Guide/source_zh_cn/dfx/cj-hiappevent-watcher-freeze-events.md)
-                                - [订阅appfreeze事件（仓颉）](Dev_Guide/source_zh_cn/dfx/cj-hiappevent-watcher-freeze-events-cangjie.md)
+                                - [appfreeze事件介绍](application-dev/source_zh_cn/dfx/cj-hiappevent-watcher-freeze-events.md)
+                                - [订阅appfreeze事件（仓颉）](application-dev/source_zh_cn/dfx/cj-hiappevent-watcher-freeze-events-cangjie.md)
                     <!--Del-->
-                    - [事件上报](Dev_Guide/source_zh_cn/dfx/cj-hiappevent-event-reporting.md)
+                    - [事件上报](application-dev/source_zh_cn/dfx/cj-hiappevent-event-reporting.md)
                     <!--DelEnd-->
                 - HiTraceMeter使用指导
-                    - [查看HiTraceMeter日志](Dev_Guide/source_zh_cn/dfx/cj-hitracemeter-view.md)
+                    - [查看HiTraceMeter日志](application-dev/source_zh_cn/dfx/cj-hitracemeter-view.md)
                 - 错误管理
-                    - [错误管理开发指导](Dev_Guide/source_zh_cn/dfx/cj-errormanager-guidelines.md)
+                    - [错误管理开发指导](application-dev/source_zh_cn/dfx/cj-errormanager-guidelines.md)
                 - 故障分析
-                    - [分析Cangjie Crash（进程崩溃）](Dev_Guide/source_zh_cn/dfx/cj-cangjiecrash-guidelines.md)
-                    - [分析AppFreeze（应用无响应）](Dev_Guide/source_zh_cn/dfx/cj-appfreeze-guidelines.md)
+                    - [分析Cangjie Crash（进程崩溃）](application-dev/source_zh_cn/dfx/cj-cangjiecrash-guidelines.md)
+                    - [分析AppFreeze（应用无响应）](application-dev/source_zh_cn/dfx/cj-appfreeze-guidelines.md)
                 - 命令行工具<!--perform-command-line-utilities-->
-                    - [hdc](Dev_Guide/source_zh_cn/tools/cj-hdc.md)
-                    - [hilog](Dev_Guide/source_zh_cn/tools/cj-hilog.md)
-                    - [hidumper](Dev_Guide/source_zh_cn/tools/cj-hidumper.md)
-                    - [hitrace](Dev_Guide/source_zh_cn/tools/cj-hitrace.md)
-                    - [hiperf](Dev_Guide/source_zh_cn/tools/cj-hiperf.md)
+                    - [hdc](application-dev/source_zh_cn/tools/cj-hdc.md)
+                    - [hilog](application-dev/source_zh_cn/tools/cj-hilog.md)
+                    - [hidumper](application-dev/source_zh_cn/tools/cj-hidumper.md)
+                    - [hitrace](application-dev/source_zh_cn/tools/cj-hitrace.md)
+                    - [hiperf](application-dev/source_zh_cn/tools/cj-hiperf.md)
             - Test Kit（应用测试服务）
-                - [Test Kit简介](Dev_Guide/source_zh_cn/application-test/cj-test-kit-overview.md)
-                - [自动化测试框架使用指导](Dev_Guide/source_zh_cn/application-test/cj-arkxtest-guidelines.md)
+                - [Test Kit简介](application-dev/source_zh_cn/application-test/cj-test-kit-overview.md)
+                - [自动化测试框架使用指导](application-dev/source_zh_cn/application-test/cj-arkxtest-guidelines.md)
             - 调试命令
-                - [aa工具](Dev_Guide/source_zh_cn/tools/cj-aa-tool.md)
-                - [bm工具](Dev_Guide/source_zh_cn/tools/cj-bm-tool.md)
+                - [aa工具](application-dev/source_zh_cn/tools/cj-aa-tool.md)
+                - [bm工具](application-dev/source_zh_cn/tools/cj-bm-tool.md)
                 - 打包拆包工具
-                    - [打包工具](Dev_Guide/source_zh_cn/tools/cj-packing-tool.md)
-                    - [拆包工具](Dev_Guide/source_zh_cn/tools/cj-unpacking-tool.md)
-                - [扫描工具](Dev_Guide/source_zh_cn/tools/cj-app-check-tool.md)
-                - [cem工具](Dev_Guide/source_zh_cn/tools/cj-cem-tool.md)
-                - [anm工具](Dev_Guide/source_zh_cn/tools/cj-anm-tool.md)
-                - [restool工具](Dev_Guide/source_zh_cn/tools/cj-restool.md)
-                - [param工具](Dev_Guide/source_zh_cn/tools/cj-param-tool.md)
-                - [power-shell工具](Dev_Guide/source_zh_cn/tools/cj-power-shell.md)
-                - [atm工具](Dev_Guide/source_zh_cn/tools/cj-atm-tool.md)
+                    - [打包工具](application-dev/source_zh_cn/tools/cj-packing-tool.md)
+                    - [拆包工具](application-dev/source_zh_cn/tools/cj-unpacking-tool.md)
+                - [扫描工具](application-dev/source_zh_cn/tools/cj-app-check-tool.md)
+                - [cem工具](application-dev/source_zh_cn/tools/cj-cem-tool.md)
+                - [anm工具](application-dev/source_zh_cn/tools/cj-anm-tool.md)
+                - [restool工具](application-dev/source_zh_cn/tools/cj-restool.md)
+                - [param工具](application-dev/source_zh_cn/tools/cj-param-tool.md)
+                - [power-shell工具](application-dev/source_zh_cn/tools/cj-power-shell.md)
+                - [atm工具](application-dev/source_zh_cn/tools/cj-atm-tool.md)
                 <!--Del-->
-                - [acm工具](Dev_Guide/source_zh_cn/tools/cj-acm-tool.md)
+                - [acm工具](application-dev/source_zh_cn/tools/cj-acm-tool.md)
                 <!--DelEnd-->
                 - 命令行工具
-                    - [toybox](Dev_Guide/source_zh_cn/tools/cj-toybox.md)
-                    - [mediatool工具](Dev_Guide/source_zh_cn/tools/cj-mediatool.md)
-                    - [devicedebug工具](Dev_Guide/source_zh_cn/tools/cj-devicedebug-tool.md)
+                    - [toybox](application-dev/source_zh_cn/tools/cj-toybox.md)
+                    - [mediatool工具](application-dev/source_zh_cn/tools/cj-mediatool.md)
+                    - [devicedebug工具](application-dev/source_zh_cn/tools/cj-devicedebug-tool.md)
     - 媒体
         - Camera Kit（相机服务）
-            - [Camera Kit简介](Dev_Guide/source_zh_cn/media/camera/cj-camera-overview.md)
-            - [开发准备](Dev_Guide/source_zh_cn/media/camera/cj-camera-preparation.md)
+            - [Camera Kit简介](application-dev/source_zh_cn/media/camera/cj-camera-overview.md)
+            - [开发准备](application-dev/source_zh_cn/media/camera/cj-camera-preparation.md)
             - 相机开发指导
-                - [相机管理](Dev_Guide/source_zh_cn/media/camera/cj-camera-device-management.md)
-                - [设备输入](Dev_Guide/source_zh_cn/media/camera/cj-camera-device-input.md)
-                - [会话管理](Dev_Guide/source_zh_cn/media/camera/cj-camera-session-management.md)
-                - [预览](Dev_Guide/source_zh_cn/media/camera/cj-camera-preview.md)
-                - [手电筒使用](Dev_Guide/source_zh_cn/media/camera/cj-camera-torch-use.md)
-                - [相机启动恢复实践（仓颉）](Dev_Guide/source_zh_cn/media/camera/cj-camera-background-recovery.md)
+                - [相机管理](application-dev/source_zh_cn/media/camera/cj-camera-device-management.md)
+                - [设备输入](application-dev/source_zh_cn/media/camera/cj-camera-device-input.md)
+                - [会话管理](application-dev/source_zh_cn/media/camera/cj-camera-session-management.md)
+                - [预览](application-dev/source_zh_cn/media/camera/cj-camera-preview.md)
+                - [手电筒使用](application-dev/source_zh_cn/media/camera/cj-camera-torch-use.md)
+                - [相机启动恢复实践（仓颉）](application-dev/source_zh_cn/media/camera/cj-camera-background-recovery.md)
         - Image Kit（图片处理服务）
-            - [Image Kit简介](Dev_Guide/source_zh_cn/media/image/cj-image-overview.md)
+            - [Image Kit简介](application-dev/source_zh_cn/media/image/cj-image-overview.md)
             - 图片开发指导
-                - [使用ImageSource完成图片解码](Dev_Guide/source_zh_cn/media/image/cj-image-decoding.md)
-                - [使用PixelMap完成图像变换](Dev_Guide/source_zh_cn/media/image/cj-image-transformation.md)
-                - [使用PixelMap完成位图操作](Dev_Guide/source_zh_cn/media/image/cj-image-pixelmap-operation.md)
-                - [使用ImagePacker完成图片编码](Dev_Guide/source_zh_cn/media/image/cj-image-encoding.md)
-                - [编辑图片EXIF信息](Dev_Guide/source_zh_cn/media/image/cj-image-tool.md)
+                - [使用ImageSource完成图片解码](application-dev/source_zh_cn/media/image/cj-image-decoding.md)
+                - [使用PixelMap完成图像变换](application-dev/source_zh_cn/media/image/cj-image-transformation.md)
+                - [使用PixelMap完成位图操作](application-dev/source_zh_cn/media/image/cj-image-pixelmap-operation.md)
+                - [使用ImagePacker完成图片编码](application-dev/source_zh_cn/media/image/cj-image-encoding.md)
+                - [编辑图片EXIF信息](application-dev/source_zh_cn/media/image/cj-image-tool.md)
         - Media Kit（媒体服务）
-            - [Media Kit简介](Dev_Guide/source_zh_cn/media/media/cj-media-kit-intro.md)
+            - [Media Kit简介](application-dev/source_zh_cn/media/media/cj-media-kit-intro.md)
             - 媒体开发指导
                 - 媒体信息查询
-                    - [使用AVImageGenerator提取视频指定时间图像（仓颉）](Dev_Guide/source_zh_cn/media/media/cj-avimagegenerator.md)
-                - [AVCodec支持的格式](Dev_Guide/source_zh_cn/media/media/cj-avcodec-support-formats.md)
+                    - [使用AVImageGenerator提取视频指定时间图像（仓颉）](application-dev/source_zh_cn/media/media/cj-avimagegenerator.md)
+                - [AVCodec支持的格式](application-dev/source_zh_cn/media/media/cj-avcodec-support-formats.md)
         - Media Library Kit（媒体文件管理服务）
             - 受限开放能力
-                - [系统相册资源使用指导](Dev_Guide/source_zh_cn/media/medialibrary/cj-photoAccessHelper-systemAlbum-guidelines.md)
+                - [系统相册资源使用指导](application-dev/source_zh_cn/media/medialibrary/cj-photoAccessHelper-systemAlbum-guidelines.md)
     - 图形
         - ArkGraphics 2D（方舟2D图形服务）
-            - [ArkGraphics 2D简介](Dev_Guide/source_zh_cn/graphics/cj-arkgraphics2D-introduction.md)
+            - [ArkGraphics 2D简介](application-dev/source_zh_cn/graphics/cj-arkgraphics2D-introduction.md)
             - 使用可变帧率能力定制不同内容的绘制帧率
-                - [可变帧率简介](Dev_Guide/source_zh_cn/graphics/cj-displaysync-overview.md)
-                - [请求动画绘制帧率](Dev_Guide/source_zh_cn/graphics/cj-displaysync-animation.md)
+                - [可变帧率简介](application-dev/source_zh_cn/graphics/cj-displaysync-overview.md)
+                - [请求动画绘制帧率](application-dev/source_zh_cn/graphics/cj-displaysync-animation.md)
     - 应用服务
         - Location Kit（位置服务）
-            - [Location Kit简介](Dev_Guide/source_zh_cn/location/cj-location-kit-intro.md)
-            - [申请位置权限开发指导](Dev_Guide/source_zh_cn/location/cj-location-permission-guidelines.md)
-            - [获取设备的位置信息开发指导](Dev_Guide/source_zh_cn/location/cj-location-guidelines.md)
+            - [Location Kit简介](application-dev/source_zh_cn/location/cj-location-kit-intro.md)
+            - [申请位置权限开发指导](application-dev/source_zh_cn/location/cj-location-permission-guidelines.md)
+            - [获取设备的位置信息开发指导](application-dev/source_zh_cn/location/cj-location-guidelines.md)
 
 - API参考
     - API参考概述

@@ -30,7 +30,7 @@ public init(child!: () -> Unit = {=>})
 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
-| child | ()->Unit | No | { => } | **Named parameter.** Custom UI description. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
+| child | ()->Unit | No | { => } | **Named parameter.** Custom UI description. Use with [@Builder](../../../application-dev/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
 
 ### init(ResourceStr, ResourceStr, ResourceStr, ResourceStr, Option\<() -> Unit>)
 
@@ -53,7 +53,7 @@ public init(startIcon!: ResourceStr, content!: ResourceStr, endIcon!: ResourceSt
 | content | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | **Named parameter.** Content information of the item. |
 | endIcon | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | **Named parameter.** Path of the icon displayed on the right side of the item. |
 | labelInfo | [ResourceStr](./cj-common-types.md#interface-resourcestr) | Yes | - | **Named parameter.** Defines the end label information, such as shortcuts like Ctrl+C. |
-| builder | Option\<()->Unit> | No | None | **Named parameter.** Custom UI description. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
+| builder | Option\<()->Unit> | No | None | **Named parameter.** Custom UI description. Use with [@Builder](../../../application-dev/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
 
 ## Common Attributes/Events
 

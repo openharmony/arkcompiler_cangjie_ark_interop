@@ -4,7 +4,7 @@ When switching routes, you can customize the transition effects for page entry a
 
 > **Note:**
 >
-> For better transition effects, it is recommended to use the Navigation component and [Modal Transition](../../../Dev_Guide/source_en/arkui-cj/cj-modal-transition.md).
+> For better transition effects, it is recommended to use the Navigation component and [Modal Transition](../../../application-dev/source_en/arkui-cj/cj-modal-transition.md).
 
 ## Import Module
 

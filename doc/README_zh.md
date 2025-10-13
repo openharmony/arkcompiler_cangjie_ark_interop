@@ -24,7 +24,7 @@
 .
 └── docs
     ├── API_Refenrence           // 该目录存放仓颉应用API参考
-    ├── Dev_Guide                // 该目录存放仓颉编程语言应用开发指南
+    ├── application-dev                // 该目录存放仓颉编程语言应用开发指南
     └── User_Manual              // 该目录存放仓颉编程语言用户指南
 ```
 

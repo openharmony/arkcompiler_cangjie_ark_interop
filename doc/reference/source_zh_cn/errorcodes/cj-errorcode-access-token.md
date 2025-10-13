@@ -52,7 +52,7 @@ Permission does not exist.
 
 **处理步骤**
 
-检查入参，修正参数值为有效值。[权限列表](../../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)。
+检查入参，修正参数值为有效值。[权限列表](../../../application-dev/source_zh_cn/security/AccessToken/cj-app-permissions.md#应用权限列表)。
 
 ## 12100004 接口未配套使用
 

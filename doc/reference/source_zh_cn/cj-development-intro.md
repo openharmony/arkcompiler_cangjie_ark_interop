@@ -124,9 +124,9 @@ Openharmony-仓颉 SDK提供的开放能力（接口）需要在导入声明后�
 
 ## 权限说明
 
-默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考[应用权限管控概述](../../Dev_Guide/source_zh_cn/security/AccessToken/cj-app-permission-mgmt-overview.md)。
+默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考[应用权限管控概述](../../application-dev/source_zh_cn/security/AccessToken/cj-app-permission-mgmt-overview.md)。
 
-当调用接口访问这些资源时，需要申请对应的权限。申请方式可参考[访问控制开发指导](../../Dev_Guide/source_zh_cn/security/AccessToken/cj-determine-application-mode.md)。
+当调用接口访问这些资源时，需要申请对应的权限。申请方式可参考[访问控制开发指导](../../application-dev/source_zh_cn/security/AccessToken/cj-determine-application-mode.md)。
 
 - 如果应用需要具备某个权限才能调用该接口，会在具体的接口描述中说明：**需要权限：** ohos.permission.xxxx
 - 如果应用不需要任何权限即可调用该接口，则不做特殊说明。

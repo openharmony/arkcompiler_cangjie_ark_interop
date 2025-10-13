@@ -79,8 +79,8 @@ public func swipeAction(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|[CustomBuilder](./cj-common-types.md#type-custombuilder)|否|{ => }| **命名参数。** ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
-|end|[CustomBuilder](./cj-common-types.md#type-custombuilder)|否|{ => }| **命名参数。** ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|start|[CustomBuilder](./cj-common-types.md#type-custombuilder)|否|{ => }| **命名参数。** ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|end|[CustomBuilder](./cj-common-types.md#type-custombuilder)|否|{ => }| **命名参数。** ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 |edgeEffect|[SwipeEdgeEffect](./cj-common-types.md#enum-swipeedgeeffect)|否|SwipeEdgeEffect.Spring| **命名参数。** 滑动效果。|
 |onOffsetChange|(Float64)->Unit|否|{ _: Float64 => }| **命名参数。** 滑动操作偏移量更改时调用。<br/> **说明：**<br/>当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列方向为“水平”时）位置发生变化触发，以vp为单位。|
 

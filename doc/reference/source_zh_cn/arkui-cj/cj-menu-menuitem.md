@@ -30,7 +30,7 @@ public init(child!: () -> Unit = {=>})
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|child|()->Unit|否|{ => }|**命名参数。** 自定义UI描述。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|child|()->Unit|否|{ => }|**命名参数。** 自定义UI描述。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 
 ### init(ResourceStr, ResourceStr, ResourceStr, ResourceStr, Option\<() -> Unit>)
 
@@ -53,7 +53,7 @@ public init(startIcon!: ResourceStr, content!: ResourceStr, endIcon!: ResourceSt
 |content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** item的内容信息。|
 |endIcon|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-| **命名参数。** item中显示在右侧的图标信息路径。              |
 |labelInfo|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 定义结束标签信息，如快捷方式Ctrl+C等。|
-|builder|Option\<()->Unit>|否|None|**命名参数。** 自定义UI描述。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|builder|Option\<()->Unit>|否|None|**命名参数。** 自定义UI描述。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 
 ## 通用属性/通用事件
 

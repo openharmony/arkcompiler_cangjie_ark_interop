@@ -26,7 +26,7 @@ public func createCipher(transformation: String): Cipher
 **Description:** Obtains the corresponding [Cipher](#class-cipher) instance by specifying the algorithm name.
 
 <!-- For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../cj-development-intro.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications). -->
-For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications).
+For supported specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#Symmetric-Key-Encryption/Decryption-Algorithm-Specifications) and [Asymmetric Key Encryption/Decryption Algorithm Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#Asymmetric-Key-Encryption/Decryption-Algorithm-Specifications).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -200,7 +200,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator
 
 **Description:** Obtains the corresponding symmetric key generator instance by specifying the algorithm name string.
 
-For supported specifications, see [Symmetric Key Generation and Conversion Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md).
+For supported specifications, see [Symmetric Key Generation and Conversion Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md).
 
 **System Capability:** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -210,7 +210,7 @@ For supported specifications, see [Symmetric Key Generation and Conversion Speci
 
 | Name    | Type   | Mandatory | Default | Description                                                                 |
 | :------ | :----- | :-------- | :------ | :-------------------------------------------------------------------------- |
-| algName | String | Yes       | -       | Algorithm name of the symmetric key generator to be generated. For details about the value, see the "String Parameters" section in [Symmetric Key Generation and Conversion Specifications](../../../../Dev_Guide/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md). |
+| algName | String | Yes       | -       | Algorithm name of the symmetric key generator to be generated. For details about the value, see the "String Parameters" section in [Symmetric Key Generation and Conversion Specifications](../../../../application-dev/source_en/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md). |
 
 **Return Value:**
 

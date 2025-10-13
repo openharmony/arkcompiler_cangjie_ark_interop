@@ -85,7 +85,7 @@ public func customKeyboard(value: CustomBuilder, supportAvoidance!: Bool = false
 
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| value | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | Custom keyboard. Use with [@Builder](../../../Dev_Guide/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
+| value | [CustomBuilder](./cj-common-types.md#type-custombuilder) | Yes | - | Custom keyboard. Use with [@Builder](../../../application-dev/source_en/arkui-cj/paradigm/cj-macro-builder.md) and bind method. |
 | supportAvoidance | Bool | No | false | **Named parameter.** Whether the custom keyboard supports avoidance functionality. |
 
 ### func enableKeyboardOnFocus(Bool)

@@ -67,4 +67,4 @@ The current system supports both dark and light display modes. To provide users 
 
 3. **Web Component Adaptation**  
 
-    The Web component supports dark mode configuration for frontend pages. Refer to [Web Component Dark Mode](../../../Dev_Guide/source_en/web/cj-web-set-dark-mode.md) for configuration details.
+    The Web component supports dark mode configuration for frontend pages. Refer to [Web Component Dark Mode](../../../application-dev/source_en/web/cj-web-set-dark-mode.md) for configuration details.

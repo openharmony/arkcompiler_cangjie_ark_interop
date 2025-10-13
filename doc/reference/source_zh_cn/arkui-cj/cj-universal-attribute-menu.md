@@ -4,10 +4,10 @@
 
 > **说明：**
 >
-> - CustomBuilder里不支持再使用bindMenu、bindContextMenu弹出菜单。多级菜单可使用[Menu](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)组件。
+> - CustomBuilder里不支持再使用bindMenu、bindContextMenu弹出菜单。多级菜单可使用[Menu](../../../application-dev/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)组件。
 > - 弹出菜单的文本内容不支持长按选中。
 > - 若组件是可拖动节点，绑定bindContextMenu未指定preview时，菜单弹出会浮起拖拽预览图且菜单选项和预览图不会发生避让。对此，开发者可根据使用场景设置preview或者将目标节点设置成不可拖动节点。
-> - 菜单支持长按500ms弹出子菜单，支持按压态跟随手指移动。<br> a.仅支持使用[Menu](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)组件且子组件包含[MenuItem](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)或[MenuItemGroup](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)的场景。<br> b.仅支持[MenuPreviewMode](../BasicServicesKit/cj-apis-base.md#enum-menupreviewmode)为NONE的菜单。
+> - 菜单支持长按500ms弹出子菜单，支持按压态跟随手指移动。<br> a.仅支持使用[Menu](../../../application-dev/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)组件且子组件包含[MenuItem](../../../application-dev/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)或[MenuItemGroup](../../../application-dev/source_zh_cn/arkui-cj/cj-popup-and-menu-components-menu.md#菜单控制menu)的场景。<br> b.仅支持[MenuPreviewMode](../BasicServicesKit/cj-apis-base.md#enum-menupreviewmode)为NONE的菜单。
 
 ## 导入模块
 

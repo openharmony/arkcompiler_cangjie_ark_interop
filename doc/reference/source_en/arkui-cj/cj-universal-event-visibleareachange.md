@@ -24,7 +24,7 @@ public func onVisibleAreaChange(raitos: Array<Float64>, event: (Bool, Float64) -
 > **Notes:**
 >
 > - Only provides the ratio of the relative clipped area of the node itself to all ancestor nodes (up to the window boundary) and its own area, as well as the trend of change.
-> - Does not support calculation of occlusion by sibling components or occlusion by sibling nodes of all ancestors, such as [Stack](../../../Dev_Guide/source_en/arkui-cj/cj-layout-development-stack-layout.md#层叠布局-stack), [Z-Order Control](../../../Dev_Guide/source_en/arkui-cj/cj-layout-development-stack-layout.md#z序控制), etc.
+> - Does not support calculation of occlusion by sibling components or occlusion by sibling nodes of all ancestors, such as [Stack](../../../application-dev/source_en/arkui-cj/cj-layout-development-stack-layout.md#层叠布局-stack), [Z-Order Control](../../../application-dev/source_en/arkui-cj/cj-layout-development-stack-layout.md#z序控制), etc.
 > - Does not support visible area change calculation for non-mounted nodes. For example, preloaded nodes or custom nodes mounted via the [overlay](./cj-universal-attribute-overlay.md#func-overlaystring-alignment-contentoffset) capability.
 
 ## Example Code

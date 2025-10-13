@@ -4,7 +4,7 @@ A container component that contains a series of list items with the same width. 
 
 ## Subcomponents
 
-Only supports [ListItem](./cj-scroll-swipe-listitem.md) and [ListItemGroup](./cj-scroll-swipe-listgroup.md) subcomponents. Supports rendering control types ([if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](./cj-state-rendering-lazyforeach.md)).
+Only supports [ListItem](./cj-scroll-swipe-listitem.md) and [ListItemGroup](./cj-scroll-swipe-listgroup.md) subcomponents. Supports rendering control types ([if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](./cj-state-rendering-lazyforeach.md)).
 
 > **Note:**
 >
@@ -13,7 +13,7 @@ Only supports [ListItem](./cj-scroll-swipe-listitem.md) and [ListItemGroup](./cj
 > * Increments sequentially according to the order of subcomponents.
 > * In if/else statements, only subcomponents within the branch where the condition is met will participate in index calculation; subcomponents in branches where the condition is not met will not be calculated.
 > * In ForEach/LazyForEach statements, all expanded subnode indices will be calculated.
-> * After changes occur in [if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or [LazyForEach](./cj-state-rendering-lazyforeach.md), subnode indices will be updated.
+> * After changes occur in [if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), or [LazyForEach](./cj-state-rendering-lazyforeach.md), subnode indices will be updated.
 > * ListItemGroup is calculated as a whole with one index value; ListItems within ListItemGroup are not calculated.
 > * Subcomponents with visibility set to Hidden or None will still be calculated in the index.
 

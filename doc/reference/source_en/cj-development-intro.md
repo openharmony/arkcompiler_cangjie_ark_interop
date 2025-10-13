@@ -124,9 +124,9 @@ The Cangjie samples in each Kit are not complete programs but rather key code sn
 
 ## Permission Instructions
 
-By default, applications can only access limited system resources. However, in certain cases, applications may need to access additional system or other applications' data (including user personal data) or functionalities to extend their capabilities. For details, refer to the [Application Permission Management Overview](../../Dev_Guide/source_en/security/AccessToken/cj-app-permission-mgmt-overview.md).
+By default, applications can only access limited system resources. However, in certain cases, applications may need to access additional system or other applications' data (including user personal data) or functionalities to extend their capabilities. For details, refer to the [Application Permission Management Overview](../../application-dev/source_en/security/AccessToken/cj-app-permission-mgmt-overview.md).
 
-When calling interfaces to access these resources, corresponding permissions must be requested. The request method can be found in the [Access Control Development Guide](../../Dev_Guide/source_en/security/AccessToken/cj-determine-application-mode.md).
+When calling interfaces to access these resources, corresponding permissions must be requested. The request method can be found in the [Access Control Development Guide](../../application-dev/source_en/security/AccessToken/cj-determine-application-mode.md).
 
 - If an application requires a specific permission to call an interface, it will be indicated in the interface description: **Required Permission:** ohos.permission.xxxx.
 - If no permission is required to call the interface, no special note will be made.

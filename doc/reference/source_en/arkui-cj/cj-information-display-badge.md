@@ -14,7 +14,7 @@ Supports a single subcomponent.
 
 > **Note:**
 >
-> Subcomponent types: System components and custom components, including rendering control types ([if/else](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../Dev_Guide/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
+> Subcomponent types: System components and custom components, including rendering control types ([if/else](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-ifelse.md), [ForEach](../../../application-dev/source_en/arkui-cj/rendering_control/cj-rendering-control-foreach.md), [LazyForEach](cj-state-rendering-lazyforeach.md)).
 
 ## Creating Components
 

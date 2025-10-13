@@ -88,7 +88,7 @@ public func checkAccessToken(tokenID: UInt32, permissionName: Permissions): Gran
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | tokenID | UInt32 | Yes | - | Identity of the target application to be verified. Can be obtained through the application's [ApplicationInfo](cj-apis-bundle_manager.md#class-applicationinfo). |
-| permissionName | [Permissions](#type-permissions) | Yes | - | Name of the permission to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
+| permissionName | [Permissions](#type-permissions) | Yes | - | Name of the permission to be verified. Valid permission names can be queried in the [Application Permission List](../../../../application-dev/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
 
 **Return Value:**
 
@@ -139,7 +139,7 @@ If the user denies the authorization, the dialog box cannot be displayed again. 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | context | [UIAbilityContext](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-uiabilitycontext) | Yes | - | Context of the <!--RP1-->UIAbility<!--RP1End--> requesting the permission. |
-| permissionList | Array\<[Permissions](#type-permissions)> | Yes | - | Names of the permissions to be verified. Valid permission names can be queried in the [Application Permission List](../../../../Dev_Guide/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
+| permissionList | Array\<[Permissions](#type-permissions)> | Yes | - | Names of the permissions to be verified. Valid permission names can be queried in the [Application Permission List](../../../../application-dev/source_en/security/AccessToken/cj-app-permissions.md#Application-Permission-List). |
 | requestCallback | AsyncCallback\<[PermissionRequestResult](cj-apis-sercurity-permission_request_result.md#class-permissionrequestresultarraystring-arrayint32-arraybool)> | Yes | - | Callback function that returns whether the interface call was successful. |
 
 **Exceptions:**

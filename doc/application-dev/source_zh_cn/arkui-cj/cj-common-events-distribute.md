@@ -68,7 +68,7 @@
 
 ### 安全组件
 
-安全组件当前对触摸测试影响：如果有组件的[z序](../../../Dev_Guide/source_zh_cn/arkui-cj/cj-layout-development-stack-layout.md#z序控制)比安全组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
+安全组件当前对触摸测试影响：如果有组件的[z序](../../../application-dev/source_zh_cn/arkui-cj/cj-layout-development-stack-layout.md#z序控制)比安全组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
 
 ## 事件响应链的收集
 
