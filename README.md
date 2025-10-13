@@ -24,10 +24,10 @@ Interface Layer:
 
 Framework Layer:
 
-- Module Loading: Provides the ability to load Cangjie modules on the ArkTS side. For detailed loading methods, please refer to [Loading Cangjie Modules in ArkTS](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/arkts_import_cangjie.md).
+- Module Loading: Provides the ability to load Cangjie modules on the ArkTS side. For detailed loading methods, please refer to [Loading Cangjie Modules in ArkTS](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_en/FFI/cangjie-arkts/arkts_import_cangjie.md).
 - Runtime Management: Provides the ability to create ArkTS runtime.
 - Cross-language Function Calls: In the Cangjie calling ArkTS scenario, ArkTS functions are called through C language interoperability with ArkTS runtime interfaces; in the ArkTS calling Cangjie scenario, Cangjie functions are registered to ArkTS runtime through interoperability interfaces, and then ArkTS runtime calls Cangjie functions through C language interoperability.
-- Cross-language Type Conversion: The interoperability library mainly provides the following main types: JSUndefined, JSNull, JSBoolean, JSNumber, JSString, JSObject, JSArray, JSFunction, JSBigInt, etc., and provides interfaces to achieve mutual conversion between ArkTS types and Cangjie types. For the mapped Cangjie types, please refer to [Type Mapping](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md#%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84).
+- Cross-language Type Conversion: The interoperability library mainly provides the following main types: JSUndefined, JSNull, JSBoolean, JSNumber, JSString, JSObject, JSArray, JSFunction, JSBigInt, etc., and provides interfaces to achieve mutual conversion between ArkTS types and Cangjie types. For the mapped Cangjie types, please refer to [Type Mapping](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_en/FFI/cangjie-arkts/interoperability_macro.md#%E7%B1%BB%E5%9E%8B%E6%98%A0%E5%B0%84).
 - Cross-language Exception Handling: In the Cangjie calling ArkTS scenario, when exceptions occur in ArkTS code but are not caught, the exception will be converted to a Cangjie exception and propagated to the Cangjie side; in the ArkTS calling Cangjie scenario, when exceptions occur in Cangjie code but are not caught, the exception will be converted to a JS exception and propagated to the ArkTS side.
 - Cross-language Reference Management: Provides a safe reference mechanism. On the Cangjie side, Cangjie objects are used to map ArkTS runtime objects, ensuring that these ArkTS objects will not be garbage collected during cross-language calls.
 - Cross-language Thread Coordination: Since Cangjie provides user-mode threads and the runtime schedules Cangjie threads to execute on system threads, Cangjie does not bind to specific system threads for execution by default. However, Cangjie-ArkTS interoperability logic requires running on the system thread bound to the ArkTS runtime, so the interoperability library provides interfaces to switch to ArkTS thread execution.
@@ -53,7 +53,7 @@ arkcompiler/cangjie_ark_interop
 ├── doc                    # Cangjie documentation, including API reference, application development guide, Cangjie programming language user manual
 |   ├── reference      # Cangjie API reference
 |   ├── application-dev          # Cangjie development guide
-|   ├── User_Manual        # Cangjie user manual
+|   ├── cj-user-manual        # Cangjie user manual
 ├── figures                # Images required for this README
 ├── test                   # Cangjie interoperability test cases
 ```
@@ -64,15 +64,15 @@ In OpenHarmony application development, there is a demand for hybrid development
 
 - Scenario 1: When developing with ArkTS, calling code modules developed in Cangjie through cross-language interoperability to leverage Cangjie's high performance and high concurrency advantages, improving application performance experience;
 
-For detailed examples, please refer to: [ArkTS Calling Cangjie](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/method_of_ArkTS_calling_cangjie.md)
+For detailed examples, please refer to: [ArkTS Calling Cangjie](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_en/FFI/cangjie-arkts/method_of_ArkTS_calling_cangjie.md)
 
 - Scenario 2: When developing with Cangjie, calling ArkTS libraries through cross-language interoperability to reuse the rich ArkTS library ecosystem;
 
-For detailed examples, please refer to: [Using ArkTS Modules in Cangjie Applications](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
+For detailed examples, please refer to: [Using ArkTS Modules in Cangjie Applications](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_en/FFI/cangjie-arkts/using_arkts_module.md)
 
-At the same time, to address the development complexity brought by interoperability, Cangjie provides the declarative interoperability macro ark_interop_macro, which allows developers to use the macro "@Interop[ArkTS]" to annotate functions or types in Cangjie code that need to be exported for ArkTS use. During the compilation stage, it automatically generates interoperability "glue layer" code and ArkTS interface declarations, reducing the complexity of developers writing interoperability code manually. For detailed examples, please refer to: [Cangjie-ArkTS Declarative Interoperability Macro](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md).
+At the same time, to address the development complexity brought by interoperability, Cangjie provides the declarative interoperability macro ark_interop_macro, which allows developers to use the macro "@Interop[ArkTS]" to annotate functions or types in Cangjie code that need to be exported for ArkTS use. During the compilation stage, it automatically generates interoperability "glue layer" code and ArkTS interface declarations, reducing the complexity of developers writing interoperability code manually. For detailed examples, please refer to: [Cangjie-ArkTS Declarative Interoperability Macro](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_en/FFI/cangjie-arkts/interoperability_macro.md).
 
-For interoperability related APIs, please see [API Documentation](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/reference/source_en/arkinterop/cj-apis-ark_interop.md), and for related guidance, please see [User manual](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/cangjie_arkts_overview.md)
+For interoperability related APIs, please see [API Documentation](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/reference/source_en/arkinterop/cj-apis-ark_interop.md), and for related guidance, please see [User manual](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/cj-user-manual/source_en/FFI/cangjie-arkts/cangjie_arkts_overview.md)
 
 ## Constraints
 

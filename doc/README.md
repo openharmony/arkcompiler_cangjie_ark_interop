@@ -25,7 +25,7 @@ The repository directory is as follows:
 └── docs
     ├── reference                      // This directory stores the Cangjie application API reference
     ├── application-dev                          // This directory stores the Cangjie programming language application development guide
-    └── User_Manual                        // This directory stores the Cangjie programming language user guide
+    └── cj-user-manual                        // This directory stores the Cangjie programming language user guide
 ```
 
 ## License
