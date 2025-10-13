@@ -1,4 +1,4 @@
-## 一、仓颉特征及支持场景
+# 一、仓颉特征及支持场景
 
 仓颉定位为面向OpenHarmony应用开发的现代编程语言，是一款静态类型、静态编译的编程语言，通过现代语言特性的集成、全方位的编译优化和运行时实现、以及开箱即用的工具链支持，为OpenHarmony应用开发者打造友好开发体验和卓越程序性能。
 
@@ -28,11 +28,11 @@
 | 知识社交类场景<br>比如力扣 | 个人信息模块，个人信息显示与编辑，包括姓名、头像等； |  Core File Kit（文件基础服务）、Image Kit（图片处理服务）等|
 | 新兴AI类场景<br>比如纳米AI，Kimi | 对话界面，类似于即时通讯，支持用户文字输入、文件上传等功能，以及显示<br>AI回复内容，以及AI与用户的实时交互； | ArkUI（方舟UI框架）、 Core File Kit（文件基础服务）、Network Kit（网络服务）等|
 
-## 二、支持的能力
+# 二、支持的能力
 
 以下是仓颉面向OpenHarmony提供的相关能力，详细描述可参考[仓颉开发文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc)。
 
-### 1. ArkUI
+## 1. ArkUI
 
 仓颉版ArkUI框架提供了基于仓颉语言的声明式开发范式（简称“声明式开发范式”），适用于不同的应用场景及技术背景。它是一套开发极简、高性能、支持跨设备的UI开发框架，提供了构建应用UI所必需的能力，主要包括：
 
@@ -44,7 +44,7 @@
 - 交互事件：交互事件是UI和用户交互的必要元素。方舟开发框架提供了多种交互事件，除了触摸事件、鼠标事件、键盘按键事件、焦点事件等通用事件外，还包括基于通用事件进行进一步识别的手势事件。
 - 自定义能力：自定义能力是UI开发框架提供给开发者对UI界面进行开发和定制化的能力。包括：自定义组合、自定义扩展。
 
-### 2. API
+## 2. API
 
 仓颉API是为了支撑OpenHarmony应用使用仓颉语言开发而提供的一系列的API，并提供了详实的资料文档和样例代码。目前仓颉API近覆盖了部分OpenHarmony SDK开放能力。随着时间的推移，会逐步覆盖更多的开放能力。
 仓颉API本次随OpenHarmony 6.x版本首次向应用开放，并将在后续版本中持续丰富API能力，目标是为仓颉应用提供全量的OpenHarmony系统能力。本次仓颉版API将优先提供安全、高性能、可并发和基础运行所需的能力，涉及5大类别，22个Kit：
@@ -86,7 +86,7 @@
 
 当前仓颉暂不支持的API，用户可通过仓颉->ArkTS和仓颉->C跨语言互操作的方式调用ArkTS API或者NDK API。
 
-### 3. 与ArkTS互操作
+## 3. 与ArkTS互操作
 
 在OpenHarmony应用开发中，存在使用仓颉与ArkTS混合开发的诉求，例如以下场景：
 
@@ -105,7 +105,7 @@
 
 同时针对互操作带来的开发复杂度，仓颉提供声明式互操作宏 **ark_interop_macro**，使开发者可以使用宏“@Interop[ArkTS]”标注仓颉代码中需要导出给ArkTS使用的函数或类型，在编译阶段自动生成互操作“胶水层”代码及 ArkTS 接口声明，减少开发者手写互操作代码的复杂度。
 
-#### 典型场景一：ArkTS调用仓颉
+### 典型场景一：ArkTS调用仓颉
 
 针对场景一的诉求，可使用互操作库，在仓颉侧实现可被互操作调用的接口，示例如下：
 
@@ -154,7 +154,7 @@ public func addNumber(a: Float64, b: Float64): Float64 {
 }
 ```
 
-#### 典型场景二：仓颉调用ArkTS
+### 典型场景二：仓颉调用ArkTS
 
 针对场景二的诉求，可使用互操作库，加载ArkTS模块，并调用接口，示例如下：
 
@@ -174,7 +174,7 @@ func callInterop(x: Float64, y: Float64): Float64 {
 }
 ```
 
-### 4. IDE 功能
+## 4. IDE 功能
 
 提供DevEco Studio仓颉开发插件，支持使用仓颉进行OpenHarmony应用的开发(纯仓颉应用、仓颉+ArkTS混合应用)，支持开发仓颉的静态库，提供基础的工程管理、编译构建、语言服务、调试服务等应用开发能力，暂不支持动态库、UI预览、静态检查、性能调优、测试服务功能。
 开发者在下载安装DevEco Studio后，获取并安装仓颉开发插件至对应版本的DevEco Studio，下载对应OpenHarmony SDK，进行仓颉OpenHarmony应用开发。 仓颉开发的特性全貌将主要有以下方面：
@@ -220,7 +220,6 @@ func callInterop(x: Float64, y: Float64): Float64 {
   
   - **AppScope > app.json5**：应用的全局配置信息。
   - **entry**：应用模块，编译构建生成一个HAP。
-    
     - **src > main > cangjie**：用于存放仓颉源码。
     - **src > main > resources**：用于存放应用所用到的资源文件，如图形、多媒体、字符串、布局文件等。
     - **src > main > module.json5**：Stage 模块配置文件，主要包含HAP的配置信息、应用在具体设备上的配置信息以及应用的全局配置信息。
@@ -230,7 +229,6 @@ func callInterop(x: Float64, y: Float64): Float64 {
     - **oh-package.json5**：描述三方包的包名、版本、入口文件（类型声明文件）和依赖项等信息。
     - **src > ohosTest**：存放仓颉测试源码，用于仓颉仪器测试。
   - **hvigor**：用于存放当前工程使用的 hvigor。
-    
     - **hvigor-config.json5**：指定工程全局使用的 hvigor 以及 hvigor 参数配置。
   - **oh_modules**：用于存放三方库依赖信息，包含应用/服务所依赖的第三方库文件。
   - **build-profile.json5**：应用级配置信息，包括签名、产品配置等。
@@ -283,7 +281,6 @@ func callInterop(x: Float64, y: Float64): Float64 {
   
   - **AppScope > app.json5**：应用的全局配置信息。
   - **entry**：应用模块，编译构建生成一个HAP。
-    
     - **src > main > cangjie > loader**：提供加载仓颉so的方法声明，帮助ArkTS调用仓颉中注册的方法。
     - **src > main > cangjie**：用于存放仓颉源码。
     - **src > main > ets**：用于存放ArkTS源码。
@@ -294,7 +291,6 @@ func callInterop(x: Float64, y: Float64): Float64 {
     - **cjpm.toml**：仓颉的包管理配置文件。
     - **oh-package.json5**：描述三方包的包名、版本、入口文件（类型声明文件）和依赖项等信息。
   - **hvigor**：用于存放当前工程使用的 hvigor。
-    
     - **hvigor-config.json5**：指定工程全局使用的 hvigor 以及 hvigor 参数配置。
   - **oh_modules**：用于存放三方库依赖信息，包含应用/服务所依赖的第三方库文件。
   - **build-profile.json5**：应用级配置信息，包括签名、产品配置等。
@@ -304,7 +300,6 @@ func callInterop(x: Float64, y: Float64): Float64 {
   **创建仓颉工程**
   
   1. 通过如下两种方式，打开工程创建向导界面。
-     
      - 如果当前未打开任何工程，可以在DevEco Studio的欢迎页，选择**Create Project**开始创建一个新工程。
      - 如果已经打开了工程，可以在菜单栏选择**File > New > Create Project**来创建一个新工程。
   2. 根据工程创建向导，选择 **[Cangjie] Empty Ability** 模板。
@@ -319,7 +314,6 @@ func callInterop(x: Float64, y: Float64): Float64 {
      - **Bundle name**：标识应用的包名，用于标识应用的唯一性。
        
        应用包名要求：
-       
        - 必须为以点号（.）分隔的字符串，且至少包含三段，每段中仅允许使用英文字母、数字、下划线（_），如“com.example.myapplication ”。
        - 首段以英文字母开头，非首段以数字或英文字母开头，每一段以数字或者英文字母结尾，如“com.01example.myapplication”。
        - 不允许多个点号（.）连续出现，如“com.example..myapplication ”。
@@ -345,11 +339,13 @@ func callInterop(x: Float64, y: Float64): Float64 {
   在工程界面，右键选择 **entry > New > Cangjie(Interop)** 使能仓颉与ArkTS混合模块。工程同步完成后，原有的ArkTS模块变为仓颉与ArkTS混合模块。
   
   ![image](./figures/capability/startEnableCangjie.png)
+
 - 代码编辑：代码高亮、代码补全、语法诊断、悬浮提示、定义跳转、引用查找、格式化等编码辅助能力，包括元编程相关的编码辅助能力。
   
   例如，代码补全：
   
   ![image](./figures/capability/funcCom.png)
+
 - 编译构建：支持编译仓颉的HAP/APP、支持编译仓颉的HAR/HSP、支持推送仓颉HAP包至OpenHarmony设备运行能力。
 - 代码调试：支持仓颉HAP在手机的调试能力，包括断点能力、单步调试、调试信息（线程、堆栈、变量等）可视化查看能力。
   
@@ -361,7 +357,7 @@ func callInterop(x: Float64, y: Float64): Float64 {
   
   ![image](./figures/capability/debugInfo.png)
 
-## 三、下一步演进
+# 三、下一步演进
 
 仓颉始未来将持续深耕高效开发、高性能、强安全等领域，持续提升高效开发体验，提供默认高性能和强安全能力；在跨平台领域持续完善和探索，为OpenHarmony应用开发者提供一码三端编程能力，并将仓颉打造为OpenHarmony生态应用开发的首选静态编程语言。仓颉未来演进方向如下：
 
@@ -369,5 +365,3 @@ func callInterop(x: Float64, y: Float64): Float64 {
 * 强安全：通过安全宏、FFI安全检查增强编译阶段安全能力；通过前向控制流完整性技术增强运行阶段安全能力；通过数据流分析技术增强应用级别的安全能力构建。
 * 跨平台：构建基于静态编译至机器码的跨OS平台执行能力，允许开发者实现“同构开发、异构运行”的跨OS平台代码共享，完善跨OS平台的线下和线上调优工具链，优化跨OS平台的调试体验，优化跨平台框架持续提升OpenHarmony应用跨OS平台代码占比，持续探索仓颉与Java/OC/Swift/Kotlin互通。
 * 完善商用能力：以提升开发者体验为目标，将围绕OpenHarmony仓颉 API、IDE开发工具、资料文档等方面，持续建设语言能力。
-
-
