@@ -1,12 +1,12 @@
 # 按钮 (Button)
 
-Button是按钮组件，通常用于响应用户的点击操作，其类型包括胶囊按钮、圆形按钮、普通按钮。Button做为容器使用时可以通过添加子组件实现包含文字、图片等元素的按钮。具体用法请参见[Button](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md)。
+Button是按钮组件，通常用于响应用户的点击操作，其类型包括胶囊按钮、圆形按钮、普通按钮。Button做为容器使用时可以通过添加子组件实现包含文字、图片等元素的按钮。具体用法请参见[Button](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-button.md)。
 
 ## 创建按钮
 
 Button通过调用接口来创建，接口调用有以下两种形式：
 
-- 通过label和[ButtonOptions](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#class-buttonoptions)创建不包含子组件的按钮。以ButtonOptions中的shape和stateEffect为例。
+- 通过label和[ButtonOptions](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#class-buttonoptions)创建不包含子组件的按钮。以ButtonOptions中的shape和stateEffect为例。
 
   ```cangjie
   init(label: String, options: ButtonOptions)
@@ -24,7 +24,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
   ![Button](figures/Button.png)
 
-- 通过[ButtonOptions](../../../API_Reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#class-buttonoptions)创建包含子组件的按钮。以ButtonOptions中的shape和stateEffect为例。
+- 通过[ButtonOptions](../../../reference/source_zh_cn/arkui-cj/cj-button-picker-button.md#class-buttonoptions)创建包含子组件的按钮。以ButtonOptions中的shape和stateEffect为例。
 
   ```cangjie
   init(options: ButtonOptions, content: () -> Unit)

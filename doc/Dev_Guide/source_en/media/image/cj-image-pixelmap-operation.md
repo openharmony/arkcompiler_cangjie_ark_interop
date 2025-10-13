@@ -8,7 +8,7 @@ As shown in the following diagram, pixel data from a specified rectangular regio
 
 ## Development Procedure
 
-For detailed information about bitmap operation-related APIs, please refer to the [API Reference](../../../../API_Reference/source_en/ImageKit/cj-apis-image.md#class-pixelmap).
+For detailed information about bitmap operation-related APIs, please refer to the [API Reference](../../../../reference/source_en/ImageKit/cj-apis-image.md#class-pixelmap).
 
 1. Complete [image decoding](./cj-image-decoding.md) to obtain the PixelMap bitmap object.
 

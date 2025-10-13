@@ -33,7 +33,7 @@ User-Agent (UA) is a special string containing key information such as device ty
 > **Note:**
 >
 > - Currently, there are two spaces before the ArkWeb field in the default User-Agent.
-> - The presence of the "Mobile" field in the User-Agent determines whether the `viewport` attribute in the frontend HTML page's meta tag is enabled. When the "Mobile" field is absent, the `viewport` attribute in the meta tag is disabled by default. This can be overridden by explicitly setting the [metaViewport](../../../API_Reference/source_en/arkui-cj/cj-web-web.md#func-metaviewportbool) attribute to `true`.
+> - The presence of the "Mobile" field in the User-Agent determines whether the `viewport` attribute in the frontend HTML page's meta tag is enabled. When the "Mobile" field is absent, the `viewport` attribute in the meta tag is disabled by default. This can be overridden by explicitly setting the [metaViewport](../../../reference/source_en/arkui-cj/cj-web-web.md#func-metaviewportbool) attribute to `true`.
 > - It is recommended to identify OpenHarmony devices using the `OpenHarmony` keyword and the device type using `DeviceType` to adapt page displays for different devices (the `ArkWeb` keyword indicates the Web engine used by the device, while the `OpenHarmony` keyword indicates the operating system. Therefore, it is recommended to use the `OpenHarmony` keyword to identify OpenHarmony devices).
 
 ## Custom User-Agent Structure

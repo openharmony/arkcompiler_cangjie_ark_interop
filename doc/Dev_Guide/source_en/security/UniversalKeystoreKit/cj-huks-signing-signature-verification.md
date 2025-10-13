@@ -24,7 +24,7 @@ For specific scenario descriptions and supported algorithm specifications, pleas
 
 2. Initialize the key property set.
 
-3. Call [generateKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For details, see [Key Generation](./cj-huks-key-generation-overview.md).
+3. Call [generateKeyItem](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For details, see [Key Generation](./cj-huks-key-generation-overview.md).
 
 Alternatively, developers can reference [Key Import](./cj-huks-key-import-overview.md) to import existing keys.
 
@@ -34,11 +34,11 @@ Alternatively, developers can reference [Key Import](./cj-huks-key-import-overvi
 
 2. Specify the plaintext data to be signed.
 
-3. Obtain the attribute parameter HuksOptions, which includes two fields: properties and inData. Pass the plaintext data to inData and the [algorithm parameter configuration](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) to properties.
+3. Obtain the attribute parameter HuksOptions, which includes two fields: properties and inData. Pass the plaintext data to inData and the [algorithm parameter configuration](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) to properties.
 
-4. Call [initSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
+4. Call [initSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
 
-5. Call [finishSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions) to end the key session and obtain the signature.
+5. Call [finishSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions) to end the key session and obtain the signature.
 
 ### Verification
 
@@ -46,17 +46,17 @@ Alternatively, developers can reference [Key Import](./cj-huks-key-import-overvi
 
 2. Obtain the signature to be verified.
 
-3. Obtain the attribute parameter HuksOptions, which includes two fields: properties and inData. Pass the signature to inData and the [algorithm parameter configuration](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) to properties.
+3. Obtain the attribute parameter HuksOptions, which includes two fields: properties and inData. Pass the signature to inData and the [algorithm parameter configuration](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam) to properties.
 
-4. Call [initSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
+4. Call [initSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
 
-5. Call [updateSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandle-huksoptions) to update the key session.
+5. Call [updateSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-updatesessionhukshandle-huksoptions) to update the key session.
 
-6. Call [finishSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions) to end the key session and verify the signature.
+6. Call [finishSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandle-huksoptions) to end the key session and verify the signature.
 
 ### Key Deletion
 
-When a key is no longer needed, call [deleteKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) to delete it. For details, see [Key Deletion](./cj-huks-delete-key.md).
+When a key is no longer needed, call [deleteKeyItem](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) to delete it. For details, see [Key Deletion](./cj-huks-delete-key.md).
 
 ## Development Examples
 

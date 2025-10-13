@@ -6,7 +6,7 @@ In multilingual environments, users from different regions may refer to time zon
 
 ## Development Steps
 
-For detailed usage and instructions of the API, refer to the [getDisplayName](../../../API_Reference/source_en/LocalizationKit/cj-apis-i18n.md#func-getdisplaynamestring) API documentation.
+For detailed usage and instructions of the API, refer to the [getDisplayName](../../../reference/source_en/LocalizationKit/cj-apis-i18n.md#func-getdisplaynamestring) API documentation.
 
 1. Import the module.
 

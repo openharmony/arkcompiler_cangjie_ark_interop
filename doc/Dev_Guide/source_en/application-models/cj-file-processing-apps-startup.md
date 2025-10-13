@@ -12,7 +12,7 @@ Figure 1 Visual Demonstration
 
 ## Implementation Steps
 
-**Table 1** Description of [Want](../../../API_Reference/source_en/AbilityKit/cj-apis-ability.md#class-want) Parameters in startAbility Requests
+**Table 1** Description of [Want](../../../reference/source_en/AbilityKit/cj-apis-ability.md#class-want) Parameters in startAbility Requests
 
 | Parameter Name | Type   | Required | Description                                                                                                                                                                                   |
 |----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -21,7 +21,7 @@ Figure 1 Visual Demonstration
 | parameters     | String | No       | Custom parameters defined by the system and assigned by developers as needed. For file-opening scenarios, see Table 2.                                                                       |
 | flags          | UInt32 | No       | Processing method. For file-opening scenarios, see Table 3.                                                                                                                                  |
 
-**Table 2** Description of [parameters](../../../API_Reference/source_en/AbilityKit/cj-apis-ability.md#enum-params)  
+**Table 2** Description of [parameters](../../../reference/source_en/AbilityKit/cj-apis-ability.md#enum-params)  
 
 | Parameter Name                              | Type    | Description                                                                                                                                                                |
 |---------------------------------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -29,7 +29,7 @@ Figure 1 Visual Demonstration
 | ohos.ability.params.showDefaultPicker       | Bool    | Whether to force-display a selection dialog for file-opening methods. Default is `false`.<br/>- `false`: The system decides whether to directly launch the file-opening app or display a dialog based on policies or default app settings.<br/>- `true`: Always display the dialog.                      |
 | showCaller                                  | Bool    | Whether the caller itself should participate in the matching process as a target application. Default is `false`.<br/>- `false`: Does not participate.<br/>- `true`: Participates.                                                      |
 
-**Table 3** Description of [flags](../../../API_Reference/source_en/AbilityKit/cj-apis-ability.md#enum-flags)  
+**Table 3** Description of [flags](../../../reference/source_en/AbilityKit/cj-apis-ability.md#enum-flags)  
 
 | Parameter Name                       | Value       | Description                       |
 |--------------------------------------|-------------|-----------------------------------|

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Stack Layout (StackLayout) is used to reserve an area on the screen to display elements within components, providing a layout where elements can overlap. The Stack Layout achieves fixed positioning and layering through the [Stack](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-stack.md) container component. Child elements within the container are pushed onto the stack in sequence, with each subsequent child element covering the previous one. Child elements can be stacked and their positions can be set.
+The Stack Layout (StackLayout) is used to reserve an area on the screen to display elements within components, providing a layout where elements can overlap. The Stack Layout achieves fixed positioning and layering through the [Stack](../../../reference/source_en/arkui-cj/cj-row-column-stack-stack.md) container component. Child elements within the container are pushed onto the stack in sequence, with each subsequent child element covering the previous one. Child elements can be stacked and their positions can be set.
 
 The Stack Layout offers strong capabilities for page layering and position positioning, making it suitable for scenarios such as advertisements and card stacking effects.
 
@@ -55,7 +55,7 @@ class EntryView {
 
 ## Alignment
 
-The Stack component achieves relative movement of positions through the [alignContent parameter](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-stack.md#func-aligncontentalignment). As shown in Figure 2, nine alignment methods are supported.
+The Stack component achieves relative movement of positions through the [alignContent parameter](../../../reference/source_en/arkui-cj/cj-row-column-stack-stack.md#func-aligncontentalignment). As shown in Figure 2, nine alignment methods are supported.
 
 **Figure 2** Alignment of Elements Within the Stack Container  
 
@@ -98,7 +98,7 @@ class EntryView {
 
 ## Z-Order Control
 
-The display hierarchy of sibling components within the Stack container can be altered using the zIndex property of [Z-Order Control](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-zorder.md). A higher zIndex value means a higher display hierarchy, meaning components with larger zIndex values will overlay those with smaller zIndex values.
+The display hierarchy of sibling components within the Stack container can be altered using the zIndex property of [Z-Order Control](../../../reference/source_en/arkui-cj/cj-universal-attribute-zorder.md). A higher zIndex value means a higher display hierarchy, meaning components with larger zIndex values will overlay those with smaller zIndex values.
 
 In a Stack Layout, if a subsequent child element's dimensions are larger than those of a preceding child element, the preceding child element will be completely hidden.
 

@@ -30,13 +30,13 @@ This section explains how to complete steps 3 and 4.
 
 - Before performing any operation that requires a target permission, the application must verify whether it already has that permission.
 
-  To check if the user has granted a specific permission to your application, use the [checkAccessToken()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-checkaccesstokenuint32-permissions) function. This method returns either [PERMISSION_GRANTED](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) or [PERMISSION_DENIED](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus). Refer to the example below for details.
+  To check if the user has granted a specific permission to your application, use the [checkAccessToken()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-checkaccesstokenuint32-permissions) function. This method returns either [PERMISSION_GRANTED](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus) or [PERMISSION_DENIED](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#enum-grantstatus). Refer to the example below for details.
 
-- Before accessing any interface protected by a target permission, you must use the [requestPermissionsFromUser()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) interface to request the corresponding permission.
+- Before accessing any interface protected by a target permission, you must use the [requestPermissionsFromUser()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) interface to request the corresponding permission.
 
   Users may revoke previously granted permissions via system settings, so the authorization state should not be persisted.
 
-- When requesting permissions in the `onWindowStageCreate()` callback, ensure the asynchronous interfaces `loadContent()`/`setUIContent()` have completed execution, or call [requestPermissionsFromUser()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) within their callbacks. Otherwise, `requestPermissionsFromUser` will fail if called before Content loading is complete.
+- When requesting permissions in the `onWindowStageCreate()` callback, ensure the asynchronous interfaces `loadContent()`/`setUIContent()` have completed execution, or call [requestPermissionsFromUser()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) within their callbacks. Otherwise, `requestPermissionsFromUser` will fail if called before Content loading is complete.
   <!--RP1--><!--RP1End-->
 
 ## Development Steps
@@ -53,7 +53,7 @@ The following example demonstrates how to request location permissions.
 
 2. Verify current authorization status.
 
-    Before requesting permissions, check whether the application has already been granted the permissions. Use the [checkAccessToken()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-checkaccesstokenuint32-permissions) method to verify the current authorization status. If permissions are already granted, proceed with the target operation. Otherwise, proceed to the next step: requesting user authorization.
+    Before requesting permissions, check whether the application has already been granted the permissions. Use the [checkAccessToken()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-checkaccesstokenuint32-permissions) method to verify the current authorization status. If permissions are already granted, proceed with the target operation. Otherwise, proceed to the next step: requesting user authorization.
 
     <!-- compile -->
 
@@ -94,11 +94,11 @@ The following example demonstrates how to request location permissions.
 
 3. Dynamically request user authorization.
 
-    Dynamic permission requests involve prompting the user for authorization during runtime. Use the [requestPermissionsFromUser()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) method, which accepts a list of permissions (e.g., location, calendar, camera, microphone). The user can choose to grant or deny the permissions.
+    Dynamic permission requests involve prompting the user for authorization during runtime. Use the [requestPermissionsFromUser()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) method, which accepts a list of permissions (e.g., location, calendar, camera, microphone). The user can choose to grant or deny the permissions.
 
-    You can call [requestPermissionsFromUser()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) in the `onWindowStageCreate()` callback of an Ability to request permissions dynamically or trigger the request via UI interactions based on business needs.
+    You can call [requestPermissionsFromUser()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) in the `onWindowStageCreate()` callback of an Ability to request permissions dynamically or trigger the request via UI interactions based on business needs.
 
-    When requesting permissions in the `onWindowStageCreate()` callback, ensure `loadContent()`/`setUIContent()` has completed execution, or call [requestPermissionsFromUser()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) within their callbacks. Otherwise, the call will fail if made before Content loading is complete.
+    When requesting permissions in the `onWindowStageCreate()` callback, ensure `loadContent()`/`setUIContent()` has completed execution, or call [requestPermissionsFromUser()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult) within their callbacks. Otherwise, the call will fail if made before Content loading is complete.
 
     <!--RP1--><!--RP1End-->
 
@@ -248,7 +248,7 @@ The following example demonstrates how to request location permissions.
 
 4. Handle authorization results.
 
-    After calling [requestPermissionsFromUser()](../../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult), the application awaits the user's decision. If granted, proceed with the target operation. If denied, notify the user that authorization is required for current functionality and guide them to the system "Settings" app to enable the permissions.
+    After calling [requestPermissionsFromUser()](../../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestpermissionsfromuseruiabilitycontext-arraypermissions-asynccallbackexpermissionrequestresult), the application awaits the user's decision. If granted, proceed with the target operation. If denied, notify the user that authorization is required for current functionality and guide them to the system "Settings" app to enable the permissions.
     <!--RP3-->
 
     Path: Settings > Privacy > Permission Management > Apps > Target App<!--RP3End-->

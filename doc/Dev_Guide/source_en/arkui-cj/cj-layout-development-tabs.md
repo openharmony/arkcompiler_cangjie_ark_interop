@@ -1,6 +1,6 @@
 # Tabs
 
-When a page contains a large amount of information, categorizing the content helps users focus on the currently displayed information and improves space utilization. The [Tabs](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-tabs.md) component enables quick switching between views within a single page, enhancing information retrieval efficiency while streamlining the amount of information users receive at once.
+When a page contains a large amount of information, categorizing the content helps users focus on the currently displayed information and improves space utilization. The [Tabs](../../../reference/source_en/arkui-cj/cj-navigation-switching-tabs.md) component enables quick switching between views within a single page, enhancing information retrieval efficiency while streamlining the amount of information users receive at once.
 
 ## Basic Layout
 

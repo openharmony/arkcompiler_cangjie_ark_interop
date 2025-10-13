@@ -2,7 +2,7 @@
 
 ## Introduction
 
-restool is an application engineering resource compilation tool that creates resource indexes and parses resources by compiling resource files. Developers can access corresponding resources by calling the [Resource Management Interface](../../../API_Reference/source_en/LocalizationKit/cj-apis-resource_manager.md). The restool tool is located in the toolchains subdirectory of the SDK installation directory.
+restool is an application engineering resource compilation tool that creates resource indexes and parses resources by compiling resource files. Developers can access corresponding resources by calling the [Resource Management Interface](../../../reference/source_en/LocalizationKit/cj-apis-resource_manager.md). The restool tool is located in the toolchains subdirectory of the SDK installation directory.
 
 ## Parameter Description
 

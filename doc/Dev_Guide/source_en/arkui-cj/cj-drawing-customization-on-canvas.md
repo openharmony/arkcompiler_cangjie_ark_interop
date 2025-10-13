@@ -4,7 +4,7 @@ Canvas provides a canvas component for custom graphic rendering. Developers can 
 
 ## Drawing Custom Graphics with Canvas Component
 
-- Use the [CanvasRenderingContext2D](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md) object to draw on the Canvas.
+- Use the [CanvasRenderingContext2D](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md) object to draw on the Canvas.
 
      <!-- run -->
 
@@ -159,11 +159,11 @@ After calling the Canvas component's lifecycle interface `onReady()`, developers
 
 ## Common Methods of Canvas Component
 
-The `OffscreenCanvasRenderingContext2D` and `CanvasRenderingContext2D` objects provide numerous properties and methods for drawing text, graphics, pixel manipulation, etc., forming the core of the Canvas component. Common interfaces include [fill](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-fill) (fills a closed path), [clip](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-clip) (sets the current path as a clipping path), [stroke](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-stroke) (performs stroke operations), etc. Additionally, properties like [fillStyle](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-fillstylecanvasgradient) (specifies fill color), [globalAlpha](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-globalalphafloat64) (sets transparency), and [strokeStyle](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-strokestylecanvasgradient) (sets stroke color) modify rendering styles. Below are some common use cases:
+The `OffscreenCanvasRenderingContext2D` and `CanvasRenderingContext2D` objects provide numerous properties and methods for drawing text, graphics, pixel manipulation, etc., forming the core of the Canvas component. Common interfaces include [fill](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-fill) (fills a closed path), [clip](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-clip) (sets the current path as a clipping path), [stroke](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-stroke) (performs stroke operations), etc. Additionally, properties like [fillStyle](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-fillstylecanvasgradient) (specifies fill color), [globalAlpha](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-globalalphafloat64) (sets transparency), and [strokeStyle](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-strokestylecanvasgradient) (sets stroke color) modify rendering styles. Below are some common use cases:
 
 - Basic Shape Drawing.
 
-  Use interfaces like [arc](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-arcfloat64-float64-float64-float64-float64-bool) (draws an arc), [ellipse](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-ellipsefloat64-float64-float64-float64-float64-float64-float64-bool) (draws an ellipse), and [rect](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-rectfloat64-float64-float64-float64) (creates a rectangular path) to draw basic shapes.
+  Use interfaces like [arc](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-arcfloat64-float64-float64-float64-float64-bool) (draws an arc), [ellipse](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-ellipsefloat64-float64-float64-float64-float64-float64-float64-bool) (draws an ellipse), and [rect](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-rectfloat64-float64-float64-float64) (creates a rectangular path) to draw basic shapes.
 
      <!-- run -->
 
@@ -210,7 +210,7 @@ The `OffscreenCanvasRenderingContext2D` and `CanvasRenderingContext2D` objects p
 
 - Text Drawing.
 
-  Use interfaces like [fillText](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-filltextstring-float64-float64) (fills text) and [strokeText](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-stroketextstring-float64-float64) (strokes text) for text rendering. The example sets the font to a bold 50-pixel "sans-serif" and uses `fillText` to draw "Hello World!" at (50, 100). It then sets `strokeStyle` to red, `lineWidth` to 0.7, and the same font to stroke the text outline at (50, 120).
+  Use interfaces like [fillText](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-filltextstring-float64-float64) (fills text) and [strokeText](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-stroketextstring-float64-float64) (strokes text) for text rendering. The example sets the font to a bold 50-pixel "sans-serif" and uses `fillText` to draw "Hello World!" at (50, 100). It then sets `strokeStyle` to red, `lineWidth` to 0.7, and the same font to stroke the text outline at (50, 120).
 
      <!-- run -->
 
@@ -253,7 +253,7 @@ The `OffscreenCanvasRenderingContext2D` and `CanvasRenderingContext2D` objects p
 
 - Other Methods.
 
-  Canvas also provides other methods. Gradient-related methods include [createLinearGradient](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-createlineargradientfloat64-float64-float64-float64) (creates a linear gradient) and [createRadialGradient](../../../API_Reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-createradialgradientfloat64-float64-float64-float64-float64-float64) (creates a radial gradient).
+  Canvas also provides other methods. Gradient-related methods include [createLinearGradient](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-createlineargradientfloat64-float64-float64-float64) (creates a linear gradient) and [createRadialGradient](../../../reference/source_en/arkui-cj/cj-canvas-drawing-canvasrenderingcontext2d.md#func-createradialgradientfloat64-float64-float64-float64-float64-float64) (creates a radial gradient).
 
      <!-- run -->
 

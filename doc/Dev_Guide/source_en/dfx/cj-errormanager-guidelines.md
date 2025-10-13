@@ -8,7 +8,7 @@ After using the `errormanager` interface to monitor exceptions and errors, the a
 
 ## Interface Description
 
-The application error management interface is provided by the [errorManager](../../../API_Reference/source_en/AbilityKit/cj-apis-app-ability-error_manager.md#class-errormanager) module. Developers can import it as needed. For details, refer to the [Development Example](#Development Example).
+The application error management interface is provided by the [errorManager](../../../reference/source_en/AbilityKit/cj-apis-app-ability-error_manager.md#class-errormanager) module. Developers can import it as needed. For details, refer to the [Development Example](#Development Example).
 
 **Error Management Interface Functionality:**
 

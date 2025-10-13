@@ -10,7 +10,7 @@ Using AES 128, RSA 2048, and SM2 as examples, this document demonstrates encrypt
 
 2. Initialize the key property set.
 
-3. Call [generateKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For details, refer to [Key Generation](./cj-huks-key-generation-overview.md).
+3. Call [generateKeyItem](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-generatekeyitemstring-huksoptions) to generate the key. For details, refer to [Key Generation](./cj-huks-key-generation-overview.md).
 
 Alternatively, developers can import existing keys by referring to [Key Import](./cj-huks-key-import-overview.md).
 
@@ -20,7 +20,7 @@ Alternatively, developers can import existing keys by referring to [Key Import](
 
 2. Obtain the data to be encrypted.
 
-3. Configure the encryption [algorithm parameters](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam).
+3. Configure the encryption [algorithm parameters](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam).
 
     Multiple examples are provided in the documentation. When using different algorithms, ensure the corresponding parameters are configured:
 
@@ -31,9 +31,9 @@ Alternatively, developers can import existing keys by referring to [Key Import](
 
     For detailed specifications, refer to [Encryption/Decryption Introduction and Algorithm Specifications](./cj-huks-encryption-decryption-overview.md).
 
-4. Call [initSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
+4. Call [initSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
 
-5. Call [finishSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes) to complete the key session and obtain the encrypted ciphertext.
+5. Call [finishSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes) to complete the key session and obtain the encrypted ciphertext.
 
 ### Decryption
 
@@ -41,7 +41,7 @@ Alternatively, developers can import existing keys by referring to [Key Import](
 
 2. Obtain the ciphertext to be decrypted.
 
-3. Configure the decryption [algorithm parameters](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam).
+3. Configure the decryption [algorithm parameters](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksparam).
 
     Multiple examples are provided in the documentation. When using different algorithms, ensure the corresponding parameters are configured:
 
@@ -50,13 +50,13 @@ Alternatively, developers can import existing keys by referring to [Key Import](
 
     For detailed specifications, refer to [Encryption/Decryption Introduction and Algorithm Specifications](./cj-huks-encryption-decryption-overview.md).
 
-4. Call [initSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
+4. Call [initSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-initsessionstring-huksoptions) to initialize the key session and obtain the session handle.
 
-5. Call [finishSession](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes) to complete the key session and obtain the decrypted data.
+5. Call [finishSession](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-finishsessionhukshandleid-huksoptions-bytes) to complete the key session and obtain the decrypted data.
 
 ### Delete Key
 
-When a key is no longer needed, call [deleteKeyItem](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) to delete it. For details, refer to [Key Deletion](./cj-huks-delete-key.md).
+When a key is no longer needed, call [deleteKeyItem](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-deletekeyitemstring-huksoptions) to delete it. For details, refer to [Key Deletion](./cj-huks-delete-key.md).
 
 ## Development Examples
 

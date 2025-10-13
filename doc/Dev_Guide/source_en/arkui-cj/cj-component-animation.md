@@ -1,6 +1,6 @@
 # Component Animation
 
-ArkUI provides components with general-purpose attribute animation and transition animation capabilities, while also offering default animation effects for certain components. For example, the sliding animation of [List](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md) and the click animation of [Button](../../../API_Reference/source_en/arkui-cj/cj-button-picker-button.md#button) are built-in default animation effects. Based on these default component animations, developers can further customize the animation effects of child components within container components using attribute animation and transition animation.
+ArkUI provides components with general-purpose attribute animation and transition animation capabilities, while also offering default animation effects for certain components. For example, the sliding animation of [List](../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md) and the click animation of [Button](../../../reference/source_en/arkui-cj/cj-button-picker-button.md#button) are built-in default animation effects. Based on these default component animations, developers can further customize the animation effects of child components within container components using attribute animation and transition animation.
 
 ## Using Default Component Animations
 
@@ -12,7 +12,7 @@ Default component animations serve the following purposes:
 
 - Reducing developer workload. For example, list scrolling components come with built-in sliding animations that developers can directly utilize.
 
-For more effects, refer to [Component Documentation](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-flex.md).
+For more effects, refer to [Component Documentation](../../../reference/source_en/arkui-cj/cj-row-column-stack-flex.md).
 
 Example code:
 
@@ -44,7 +44,7 @@ class EntryView {
 
 ## Creating Customized Component Animations
 
-Certain components support customizing animation effects for child Items through [attribute animation](./cj-attribute-animation-overview.md) and [transition animation](./cj-transition-overview.md), enabling tailored animation effects. For example, the [Scroll](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md) component allows customization of animation effects for each child component during scrolling.
+Certain components support customizing animation effects for child Items through [attribute animation](./cj-attribute-animation-overview.md) and [transition animation](./cj-transition-overview.md), enabling tailored animation effects. For example, the [Scroll](../../../reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md) component allows customization of animation effects for each child component during scrolling.
 
 - Achieve various effects by modifying the affine properties of each Scroll child component during scrolling or clicking operations.
 

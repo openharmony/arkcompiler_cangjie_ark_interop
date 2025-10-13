@@ -1,6 +1,6 @@
 # 文本输入 (TextInput/TextArea)
 
-TextInput、TextArea是输入框组件，通常用于响应用户的输入操作，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参见[TextInput](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textinput.md)、[TextArea](../../../API_Reference/source_zh_cn/arkui-cj/cj-text-input-textarea.md)。
+TextInput、TextArea是输入框组件，通常用于响应用户的输入操作，比如评论区的输入、聊天框的输入、表格的输入等，也可以结合其它组件构建功能页面，例如登录注册页面。具体用法请参见[TextInput](../../../reference/source_zh_cn/arkui-cj/cj-text-input-textinput.md)、[TextArea](../../../reference/source_zh_cn/arkui-cj/cj-text-input-textarea.md)。
 
 ## 创建输入框
 
@@ -89,7 +89,7 @@ TextArea( text: '这是一段文本，用来展示选中菜单')
 
 ## 键盘避让
 
-键盘抬起后，具有滚动能力的容器组件在横竖屏切换时，才会生效键盘避让，若希望无滚动能力的容器组件也生效键盘避让，建议在组件外嵌套一层具有滚动能力的容器组件，比如[Scroll](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scroll.md)、[List](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-list.md)、[Grid](../../../API_Reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md)。
+键盘抬起后，具有滚动能力的容器组件在横竖屏切换时，才会生效键盘避让，若希望无滚动能力的容器组件也生效键盘避让，建议在组件外嵌套一层具有滚动能力的容器组件，比如[Scroll](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-scroll.md)、[List](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-list.md)、[Grid](../../../reference/source_zh_cn/arkui-cj/cj-scroll-swipe-grid.md)。
 
 ```cangjie
 package ohos_app_cangjie_entry

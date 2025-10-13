@@ -29,11 +29,11 @@
 
 ## 开发步骤
 
-1. 调用[createRandom](../../../../API_Reference/source_zh_cn/CryptoArchitectureKit/cj-apis-crypto.md#func-createrandom)，生成随机数实例。
+1. 调用[createRandom](../../../../reference/source_zh_cn/CryptoArchitectureKit/cj-apis-crypto.md#func-createrandom)，生成随机数实例。
 
-2. (可选)设置DataBlob数据，调用[setSeed](../../../../API_Reference/source_zh_cn/CryptoArchitectureKit/cj-apis-crypto.md#func-setseeddatablob)，为随机数生成池设置种子。
+2. (可选)设置DataBlob数据，调用[setSeed](../../../../reference/source_zh_cn/CryptoArchitectureKit/cj-apis-crypto.md#func-setseeddatablob)，为随机数生成池设置种子。
 
-3. 设置指定字节长度，调用[generateRandom](../../../../API_Reference/source_zh_cn/CryptoArchitectureKit/cj-apis-crypto.md#func-generaterandomint32)，生成安全随机数。
+3. 设置指定字节长度，调用[generateRandom](../../../../reference/source_zh_cn/CryptoArchitectureKit/cj-apis-crypto.md#func-generaterandomint32)，生成安全随机数。
 
    指定字节长度范围为1~INT_MAX。
 

@@ -51,7 +51,7 @@ arkcompiler/cangjie_ark_interop
 |   ├── labels             # Cangjie public capabilities, providing api level labels
 |   ├── utf16string        # UTF16 string processing class provided by Cangjie interoperability library
 ├── doc                    # Cangjie documentation, including API reference, application development guide, Cangjie programming language user manual
-|   ├── API_Reference      # Cangjie API reference
+|   ├── reference      # Cangjie API reference
 |   ├── Dev_Guide          # Cangjie development guide
 |   ├── User_Manual        # Cangjie user manual
 ├── figures                # Images required for this README
@@ -72,7 +72,7 @@ For detailed examples, please refer to: [Using ArkTS Modules in Cangjie Applicat
 
 At the same time, to address the development complexity brought by interoperability, Cangjie provides the declarative interoperability macro ark_interop_macro, which allows developers to use the macro "@Interop[ArkTS]" to annotate functions or types in Cangjie code that need to be exported for ArkTS use. During the compilation stage, it automatically generates interoperability "glue layer" code and ArkTS interface declarations, reducing the complexity of developers writing interoperability code manually. For detailed examples, please refer to: [Cangjie-ArkTS Declarative Interoperability Macro](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/interoperability_macro.md).
 
-For interoperability related APIs, please see [API Documentation](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/arkinterop/cj-apis-ark_interop.md), and for related guidance, please see [User manual](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/cangjie_arkts_overview.md)
+For interoperability related APIs, please see [API Documentation](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/reference/source_en/arkinterop/cj-apis-ark_interop.md), and for related guidance, please see [User manual](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/User_Manual/source_en/FFI/cangjie-arkts/cangjie_arkts_overview.md)
 
 ## Constraints
 

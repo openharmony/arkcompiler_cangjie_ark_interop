@@ -1,6 +1,6 @@
 # Radio Button (Radio)
 
-The Radio button is a component typically used to provide interactive selection options, where only one option within the same group can be selected. For specific usage, please refer to [Radio](../../../API_Reference/source_en/arkui-cj/cj-button-picker-radio.md).
+The Radio button is a component typically used to provide interactive selection options, where only one option within the same group can be selected. For specific usage, please refer to [Radio](../../../reference/source_en/arkui-cj/cj-button-picker-radio.md).
 
 ## Creating a Radio Button
 
@@ -32,7 +32,7 @@ Radio(value: 'Radio2', group: 'radioGroup')
 
 ## Adding Events
 
-In addition to supporting [Universal Events](../../../API_Reference/source_en/arkui-cj/cj-universal-event-click.md), Radio buttons can trigger certain operations upon selection. You can bind the `onChange` event to respond to custom behaviors after selection.
+In addition to supporting [Universal Events](../../../reference/source_en/arkui-cj/cj-universal-event-click.md), Radio buttons can trigger certain operations upon selection. You can bind the `onChange` event to respond to custom behaviors after selection.
 
 ```cangjie
 Radio(value: 'Radio1', group: 'radioGroup')

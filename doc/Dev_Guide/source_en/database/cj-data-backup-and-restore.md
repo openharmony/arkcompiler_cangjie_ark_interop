@@ -17,7 +17,7 @@ For key-value databases:
 - Recovery is implemented via the `restore` interface 
 - Backup deletion is implemented via the `deletebackup` interface
 
-For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../API_Reference/source_en/ArkData/cj-apis-distributed_kv_store.md).
+For specific interfaces and functionalities, refer to [Distributed Key-Value Database](../../../reference/source_en/ArkData/cj-apis-distributed_kv_store.md).
 
 1. Create a database.
 
@@ -148,7 +148,7 @@ Relational databases support two backup methods:
 
 ### Manual Backup
 
-Manual backup is implemented by calling the [backup](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md#func-backupstring) interface. Example:
+Manual backup is implemented by calling the [backup](../../../reference/source_en/ArkData/cj-apis-relational_store.md#func-backupstring) interface. Example:
 
 <!-- compile -->
 

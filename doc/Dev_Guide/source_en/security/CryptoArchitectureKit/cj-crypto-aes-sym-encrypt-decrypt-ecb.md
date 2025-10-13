@@ -4,23 +4,23 @@ For corresponding algorithm specifications, please refer to [Symmetric Key Encry
 
 ## Encryption
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with AES as the key algorithm and a key length of 128 bits.
+1. Call [createSymKeyGenerator](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with AES as the key algorithm and a key length of 128 bits.
 
    For guidance on generating an AES symmetric key, developers can refer to the example below, along with [Symmetric Key Generation and Conversion Specifications: AES](./cj-crypto-sym-key-generation-conversion-spec.md#aes) and [Random Symmetric Key Generation](./cj-crypto-generate-sym-key-randomly.md). Note that there may be differences in input parameters between the reference documents and the current example, so please pay attention when reading.
 
-2. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|ECB|PKCS7' to create a Cipher instance with AES128 as the symmetric key type, ECB as the block mode, and PKCS7 as the padding mode, which will be used to perform encryption operations.
+2. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|ECB|PKCS7' to create a Cipher instance with AES128 as the symmetric key type, ECB as the block mode, and PKCS7 as the padding mode, which will be used to perform encryption operations.
 
-3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.EncryptMode), specify the encryption key (SymKey), and initialize the encryption Cipher instance. No additional parameters are required for ECB mode.
+3. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.EncryptMode), specify the encryption key (SymKey), and initialize the encryption Cipher instance. No additional parameters are required for ECB mode.
 
-4. If the content to be encrypted is short, you can skip calling `update` and directly call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
+4. If the content to be encrypted is short, you can skip calling `update` and directly call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
 
 ## Decryption
 
-1. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|ECB|PKCS7' to create a Cipher instance with AES128 as the symmetric key type, ECB as the block mode, and PKCS7 as the padding mode, which will be used to perform decryption operations.
+1. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'AES128|ECB|PKCS7' to create a Cipher instance with AES128 as the symmetric key type, ECB as the block mode, and PKCS7 as the padding mode, which will be used to perform decryption operations.
 
-2. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DecryptMode), specify the decryption key (SymKey), and initialize the decryption Cipher instance. No additional parameters are required for ECB mode.
+2. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DecryptMode), specify the decryption key (SymKey), and initialize the decryption Cipher instance. No additional parameters are required for ECB mode.
 
-3. If the content to be decrypted is short, you can skip calling `update` and directly call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
+3. If the content to be decrypted is short, you can skip calling `update` and directly call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
 
 ## Example
 

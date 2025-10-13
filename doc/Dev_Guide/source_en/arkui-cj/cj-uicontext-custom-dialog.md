@@ -1,6 +1,6 @@
 # UI Component-Independent Global Custom Dialog (openCustomDialog)
 
-The [CustomDialogController](../../../API_Reference/source_en/arkui-cj/cj-dialog-customdialog.md#class-customdialogcontroller) has several limitations in usage, as it does not support dynamic creation or dynamic updates.
+The [CustomDialogController](../../../reference/source_en/arkui-cj/cj-dialog-customdialog.md#class-customdialogcontroller) has several limitations in usage, as it does not support dynamic creation or dynamic updates.
 
 > **Note:**
 >

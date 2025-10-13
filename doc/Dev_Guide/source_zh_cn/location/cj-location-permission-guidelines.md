@@ -2,7 +2,7 @@
 
 ## 场景概述
 
-应用在使用[Location Kit](../../../API_Reference/source_zh_cn/LocationKit/cj-apis-geo_location_manager.md)系统能力前，需要检查是否已经获取用户授权访问设备位置信息。如未获得授权，可以向用户申请需要的位置权限。
+应用在使用[Location Kit](../../../reference/source_zh_cn/LocationKit/cj-apis-geo_location_manager.md)系统能力前，需要检查是否已经获取用户授权访问设备位置信息。如未获得授权，可以向用户申请需要的位置权限。
 
 系统提供的定位权限有：
 
@@ -12,7 +12,7 @@
 
 - ohos.permission.LOCATION_IN_BACKGROUND：用于应用切换到后台仍然需要获取定位信息的场景。
 
-Location Kit接口对权限的要求请参见：[Location Kit](../../../API_Reference/source_zh_cn/LocationKit/cj-apis-geo_location_manager.md)。
+Location Kit接口对权限的要求请参见：[Location Kit](../../../reference/source_zh_cn/LocationKit/cj-apis-geo_location_manager.md)。
 
 ## 开发步骤
 

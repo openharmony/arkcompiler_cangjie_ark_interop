@@ -1,12 +1,12 @@
 # LazyForEach: Lazy Data Loading
 
-For API parameter descriptions, see: [LazyForEach API Parameters](../../../../API_Reference/source_en/arkui-cj/cj-state-rendering-lazyforeach.md).
+For API parameter descriptions, see: [LazyForEach API Parameters](../../../../reference/source_en/arkui-cj/cj-state-rendering-lazyforeach.md).
 
 LazyForEach iterates through a provided data source on demand and creates corresponding components during each iteration. When used within a scrollable container, the framework creates components on demand based on the visible area of the container. When components scroll out of the visible area, the framework destroys and recycles them to reduce memory usage.
 
 ## Usage Restrictions
 
-- LazyForEach must be used within container components. Only [List](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md), [Grid](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-grid.md), and [Swiper](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md) components support lazy data loading (configurable via the `cachedCount` property, which loads only the visible portion and a small buffer of adjacent data). Other components still load all data at once.
+- LazyForEach must be used within container components. Only [List](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md), [Grid](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-grid.md), and [Swiper](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md) components support lazy data loading (configurable via the `cachedCount` property, which loads only the visible portion and a small buffer of adjacent data). Other components still load all data at once.
 - LazyForEach relies on generated key values to determine whether to refresh child components. If the key values remain unchanged, LazyForEach cannot trigger the refresh of corresponding child components.
 - When using LazyForEach within a container component, only one LazyForEach is allowed. For example, in a List, it is not recommended to include ListItem, ForEach, and LazyForEach simultaneously, nor is it recommended to include multiple LazyForEach instances.
 - During each iteration, LazyForEach must create exactly one child component; that is, the child component generator function of LazyForEach must have exactly one root component.

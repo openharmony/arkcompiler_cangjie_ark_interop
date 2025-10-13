@@ -4,7 +4,7 @@
 
 > **说明：**
 >
-> [组件导航 (Navigation)](../../../API_Reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。
+> [组件导航 (Navigation)](../../../reference/source_zh_cn/arkui-cj/cj-navigation-switching-navigation.md)具有更强的功能和自定义能力，推荐使用该组件作为应用的路由框架。
 
 ## 页面跳转
 
@@ -14,15 +14,15 @@
 
 ![页面跳转](./figures/page-router.gif)
 
-Router模块提供了两种跳转模式，分别是[Router.pushUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-pushurl)和[Router.replaceUrl](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-replaceurl)。这两种模式决定了目标页面是否会替换当前页。
+Router模块提供了两种跳转模式，分别是[Router.pushUrl](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-pushurl)和[Router.replaceUrl](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-replaceurl)。这两种模式决定了目标页面是否会替换当前页。
 
-- Router.pushUrl：目标页面不会替换当前页，而是压入页面栈。这样可以保留当前页的状态，并且可以通过返回键或者调用[Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)方法返回到当前页。
+- Router.pushUrl：目标页面不会替换当前页，而是压入页面栈。这样可以保留当前页的状态，并且可以通过返回键或者调用[Router.back](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)方法返回到当前页。
 
 - Router.replaceUrl：目标页面会替换当前页，并销毁当前页。这样可以释放当前页的资源，并且无法返回到当前页。
 
 > **说明：**
 >
-> 页面栈的最大容量为32个页面。如果超过这个限制，可以调用[Router.clear](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-clear)方法清空历史页面栈，释放内存空间。
+> 页面栈的最大容量为32个页面。如果超过这个限制，可以调用[Router.clear](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-clear)方法清空历史页面栈，释放内存空间。
 
 同时，Router模块提供了两种实例模式，分别是Standard和Single。这两种模式决定了目标url是否会对应多个实例。
 
@@ -100,7 +100,7 @@ func onJumpClick() {
 }
 ```
 
-在目标页面中，可以通过调用Router模块的[getParams](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-getParams)方法来获取传递过来的参数。例如:
+在目标页面中，可以通过调用Router模块的[getParams](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-getParams)方法来获取传递过来的参数。例如:
 
 ```cangjie
 import kit.ArkUI.Router
@@ -222,7 +222,7 @@ class EntryView {
 
 ### 系统默认询问框
 
-为了实现这个功能，可以使用页面路由Router模块提供的两个方法：[Router.showAlertBeforeBackPage](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage)和[Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)来实现这个功能。
+为了实现这个功能，可以使用页面路由Router模块提供的两个方法：[Router.showAlertBeforeBackPage](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage)和[Router.back](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)来实现这个功能。
 
 在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
 
@@ -230,7 +230,7 @@ class EntryView {
 import kit.ArkUI.Router
 ```
 
-如果想要在目标界面开启页面返回询问框，需要在调用[Router.back](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)方法之前，通过调用[Router.showAlertBeforeBackPage](../../../API_Reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage)方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
+如果想要在目标界面开启页面返回询问框，需要在调用[Router.back](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-back)方法之前，通过调用[Router.showAlertBeforeBackPage](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage)方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
 
 ```cangjie
 func onBackClick() {

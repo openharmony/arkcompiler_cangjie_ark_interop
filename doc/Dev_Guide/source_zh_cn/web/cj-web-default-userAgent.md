@@ -33,7 +33,7 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 > **说明：**
 >
 > - 当前默认User-Agent的ArkWeb字段前有两个空格。
-> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置[metaViewport](../../../API_Reference/source_zh_cn/arkui-cj/cj-web-web.md#func-metaviewportbool)属性为true覆盖关闭状态。
+> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置[metaViewport](../../../reference/source_zh_cn/arkui-cj/cj-web-web.md#func-metaviewportbool)属性为true覆盖关闭状态。
 > - 建议通过OpenHarmony关键字识别是否为OpenHarmony设备，同时通过DeviceType识别设备类型，以适配不同设备的页面显示（ArkWeb关键字表示设备使用的Web内核，OpenHarmony关键字表示设备使用的操作系统，因此推荐通过OpenHarmony关键字识别是否为OpenHarmony设备）。
 
 ## 自定义User-Agent结构

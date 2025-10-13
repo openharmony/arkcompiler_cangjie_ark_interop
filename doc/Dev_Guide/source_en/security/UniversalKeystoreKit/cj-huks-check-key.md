@@ -6,9 +6,9 @@ HUKS provides interfaces for applications to check whether a specified key exist
 
 1. Specify the key alias `keyAlias`. The maximum length of a key alias is 128 bytes.
 
-2. Initialize the key property set. This is used to specify the [key property TAG](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions) during the query. When querying a single key, the TAG field can be empty.
+2. Initialize the key property set. This is used to specify the [key property TAG](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#class-huksoptions) during the query. When querying a single key, the TAG field can be empty.
 
-3. Call the [isKeyItemExist](../../../../API_Reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-iskeyitemexiststring-huksoptions) interface to check whether the key exists.
+3. Call the [isKeyItemExist](../../../../reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md#func-iskeyitemexiststring-huksoptions) interface to check whether the key exists.
 
 ## Example
 

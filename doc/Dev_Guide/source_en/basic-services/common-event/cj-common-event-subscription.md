@@ -14,12 +14,12 @@ Subscribing to certain system public events requires [requesting permissions](..
 
 ## Interface Description
 
-For detailed interfaces, refer to the [API Documentation](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md).
+For detailed interfaces, refer to the [API Documentation](../../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md).
 
 | Interface Name | Description |
 | -------- | -------- |
-| createSubscriber(subscribeInfo:&nbsp;[CommonEventSubscribeInfo](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo)): [CommonEventSubscriber](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscriber)| Creates a subscriber object. |
-| subscribe(subscriber:&nbsp;[CommonEventSubscriber](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscriber),&nbsp;callback: ([CommonEventData](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventdata)) -> Unit): Unit | Subscribes to a public event. |
+| createSubscriber(subscribeInfo:&nbsp;[CommonEventSubscribeInfo](../../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo)): [CommonEventSubscriber](../../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscriber)| Creates a subscriber object. |
+| subscribe(subscriber:&nbsp;[CommonEventSubscriber](../../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscriber),&nbsp;callback: ([CommonEventData](../../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventdata)) -> Unit): Unit | Subscribes to a public event. |
 
 ## Development Steps
 
@@ -31,7 +31,7 @@ For detailed interfaces, refer to the [API Documentation](../../../../API_Refere
    import kit.BasicServicesKit.*
    ```
 
-2. Create subscriber information. For detailed data types and parameters of subscriber information, refer to the [CommonEventSubscribeInfo](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo) documentation.
+2. Create subscriber information. For detailed data types and parameters of subscriber information, refer to the [CommonEventSubscribeInfo](../../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#class-commoneventsubscribeinfo) documentation.
 
    <!-- compile -->
 
@@ -53,7 +53,7 @@ For detailed interfaces, refer to the [API Documentation](../../../../API_Refere
    subscriber = CommonEventManager.createSubscriber(subscribeInfo)
    ```
 
-4. Create a subscription callback function, which will be triggered when an event is received. The callback function returns `data`, which contains the public event name, data carried by the publisher, and other information. For detailed parameters and data types of public event data, refer to the [CommonEventData](../../../../API_Reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventdata) documentation.
+4. Create a subscription callback function, which will be triggered when an event is received. The callback function returns `data`, which contains the public event name, data carried by the publisher, and other information. For detailed parameters and data types of public event data, refer to the [CommonEventData](../../../../reference/source_en/BasicServicesKit/cj-apis-common_event_manager.md#struct-commoneventdata) documentation.
 
    <!-- compile -->
 

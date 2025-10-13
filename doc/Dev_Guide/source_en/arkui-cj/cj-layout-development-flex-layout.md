@@ -2,7 +2,7 @@
 
 ## Overview
 
-Flex layout ([Flex](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-flex.md)) provides a more efficient way to arrange, align, and distribute remaining space among child elements within a container. It is commonly used for evenly distributing navigation bars in page headers, constructing page frameworks, and arranging multi-line data.
+Flex layout ([Flex](../../../reference/source_en/arkui-cj/cj-row-column-stack-flex.md)) provides a more efficient way to arrange, align, and distribute remaining space among child elements within a container. It is commonly used for evenly distributing navigation bars in page headers, constructing page frameworks, and arranging multi-line data.
 
 By default, a container has a main axis and a cross axis. Child elements are arranged along the main axis by default. The size of a child element along the main axis is called the main axis size, and the size along the cross axis is called the cross axis size.
 
@@ -728,7 +728,7 @@ The `alignItems` parameter of the Flex component can be used to set the cross-ax
 
 ### Child Element Cross-Axis Alignment
 
-The [`alignSelf`](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-alignselfitemalign) attribute of child elements can also set their alignment format along the parent container's cross-axis, overriding the `alignItems` configuration in the Flex layout container. As shown in the following example:
+The [`alignSelf`](../../../reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-alignselfitemalign) attribute of child elements can also set their alignment format along the parent container's cross-axis, overriding the `alignItems` configuration in the Flex layout container. As shown in the following example:
 
  <!-- run -->
 
@@ -779,7 +779,7 @@ In the above example, the `alignItems` in the Flex container sets the cross-axis
 
 ### Content Alignment
 
-The [`alignContent`](../../../API_Reference/source_en/arkui-cj/cj-row-column-stack-flex.md#var-aligncontent) parameter can be used to set the alignment of child element rows within the remaining space of the cross-axis. This only takes effect in multi-line Flex layouts. Optional values include:
+The [`alignContent`](../../../reference/source_en/arkui-cj/cj-row-column-stack-flex.md#var-aligncontent) parameter can be used to set the alignment of child element rows within the remaining space of the cross-axis. This only takes effect in multi-line Flex layouts. Optional values include:
 
 - `FlexAlign.Start`: Aligns child element rows to the start of the cross-axis.
 
@@ -1047,7 +1047,7 @@ The [`alignContent`](../../../API_Reference/source_en/arkui-cj/cj-row-column-sta
 
 When the size of the flex layout parent component is too small, the following properties of child elements can be set to determine their proportion within the parent container, achieving an adaptive layout.
 
-- [flexBasis](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexbasislength): Sets the base size of the child element along the main axis of the parent container. If this property is set, the space occupied by the child element will be the value specified by this property. If not set, the space will be determined by the width/height value.
+- [flexBasis](../../../reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexbasislength): Sets the base size of the child element along the main axis of the parent container. If this property is set, the space occupied by the child element will be the value specified by this property. If not set, the space will be determined by the width/height value.
 
     <!-- run -->
 
@@ -1092,7 +1092,7 @@ When the size of the flex layout parent component is too small, the following pr
 
     ![Flex26](figures/Flex26.png)
 
-- [flexGrow](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexgrowfloat64): Sets the proportion of the parent container's remaining space allocated to the component with this property. Used to distribute the remaining space of the parent component.
+- [flexGrow](../../../reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexgrowfloat64): Sets the proportion of the parent container's remaining space allocated to the component with this property. Used to distribute the remaining space of the parent component.
 
     <!-- run -->
 
@@ -1136,7 +1136,7 @@ When the size of the flex layout parent component is too small, the following pr
 
     The first and second elements distribute the remaining 100.vp in a 2:3 ratio. The first element's width becomes 100.vp + (100.vp * 2/5) = 140.vp, and the second element's width becomes 100.vp + (100.vp * 3/5) = 160.vp.
 
-- [flexShrink](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64): Sets the compression ratio of child elements when the parent container has insufficient space.
+- [flexShrink](../../../reference/source_en/arkui-cj/cj-universal-attribute-flexlayout.md#func-flexshrinkfloat64): Sets the compression ratio of child elements when the parent container has insufficient space.
 
     <!-- run -->
 

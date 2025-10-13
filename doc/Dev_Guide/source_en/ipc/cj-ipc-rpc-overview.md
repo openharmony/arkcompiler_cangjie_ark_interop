@@ -30,7 +30,7 @@ Typically, the Stub registers system capabilities (System Ability) with the Syst
 
 ## Constraints and Limitations
 
-- For cross-process communication on a single device, the maximum data transfer size is approximately 1MB. For larger data volumes, use [Anonymous Shared Memory](../../../API_Reference/source_en/IPCKit/cj-apis-rpc.md#class-ashmem).
+- For cross-process communication on a single device, the maximum data transfer size is approximately 1MB. For larger data volumes, use [Anonymous Shared Memory](../../../reference/source_en/IPCKit/cj-apis-rpc.md#class-ashmem).
 
 - Death notifications for anonymous Stub objects (those not registered with SAMgr) are not supported in RPC.
 

@@ -1,6 +1,6 @@
 # Text Display (Text/Span)
 
-Text is a text component typically used to display user views, such as the textual content of articles. It supports binding custom text selection menus, allowing users to choose different functions as needed. Additionally, it can extend custom menus to enrich available options and further enhance the user experience. Span is used to render inline text. For specific usage, please refer to the documentation for the [Text](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md) and [Span](../../../API_Reference/source_en/arkui-cj/cj-text-input-span.md) components.
+Text is a text component typically used to display user views, such as the textual content of articles. It supports binding custom text selection menus, allowing users to choose different functions as needed. Additionally, it can extend custom menus to enrich available options and further enhance the user experience. Span is used to render inline text. For specific usage, please refer to the documentation for the [Text](../../../reference/source_en/arkui-cj/cj-text-input-text.md) and [Span](../../../reference/source_en/arkui-cj/cj-text-input-span.md) components.
 
 ## Creating Text
 
@@ -42,7 +42,7 @@ Text can be created in the following two ways:
 
 ## Adding Child Components
 
-[Span](../../../API_Reference/source_en/arkui-cj/cj-text-input-span.md) can only be displayed as a child component of [Text](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md) and [RichEditor](../../../API_Reference/source_en/arkui-cj/cj-text-input-richeditor.md) components to render text content. Multiple Spans can be added within a single Text to display a segment of information, such as product manuals or agreements.
+[Span](../../../reference/source_en/arkui-cj/cj-text-input-span.md) can only be displayed as a child component of [Text](../../../reference/source_en/arkui-cj/cj-text-input-text.md) and [RichEditor](../../../reference/source_en/arkui-cj/cj-text-input-richeditor.md) components to render text content. Multiple Spans can be added within a single Text to display a segment of information, such as product manuals or agreements.
 
 - Creating Span.
 
@@ -75,7 +75,7 @@ Text can be created in the following two ways:
 
 - Setting text decoration line and color.
 
-  Use [decoration](../../../API_Reference/source_en/arkui-cj/cj-text-input-span.md#func-decorationtextdecorationtype-resourcecolor) to set the text decoration line and color.
+  Use [decoration](../../../reference/source_en/arkui-cj/cj-text-input-span.md#func-decorationtextdecorationtype-resourcecolor) to set the text decoration line and color.
 
      <!-- run -->
 
@@ -111,7 +111,7 @@ Text can be created in the following two ways:
 
   ![Textdisply3](figures/Textdisply3.png)
 
-- Use [textCase](../../../API_Reference/source_en/arkui-cj/cj-text-input-span.md#func-textcasetextcase) to set text to always remain uppercase or lowercase.
+- Use [textCase](../../../reference/source_en/arkui-cj/cj-text-input-span.md#func-textcasetextcase) to set text to always remain uppercase or lowercase.
 
      <!-- run -->
 
@@ -144,7 +144,7 @@ Text can be created in the following two ways:
 
 - Adding events.
 
-  Since the Span component has no size information, it only supports adding click events [onClick](../../../API_Reference/source_en/arkui-cj/cj-universal-event-click.md#func-onclickclickevent---unit).
+  Since the Span component has no size information, it only supports adding click events [onClick](../../../reference/source_en/arkui-cj/cj-universal-event-click.md#func-onclickclickevent---unit).
 
      <!-- run -->
 
@@ -176,7 +176,7 @@ Text can be created in the following two ways:
 
 ## Customizing Text Styles
 
-- Use the [textAlign](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#textaligntextalign) property to set text alignment.
+- Use the [textAlign](../../../reference/source_en/arkui-cj/cj-text-input-text.md#textaligntextalign) property to set text alignment.
 
      <!-- run -->
 
@@ -216,7 +216,7 @@ Text can be created in the following two ways:
 
   ![Textdisply5](figures/Textdisply5.png)
 
-- Use the [textOverflow](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#textoverflowtextoverflow) property to handle text overflow. `textOverflow` must be used with [maxLines](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#maxlinesint32) (by default, text wraps automatically).
+- Use the [textOverflow](../../../reference/source_en/arkui-cj/cj-text-input-text.md#textoverflowtextoverflow) property to handle text overflow. `textOverflow` must be used with [maxLines](../../../reference/source_en/arkui-cj/cj-text-input-text.md#maxlinesint32) (by default, text wraps automatically).
 
      <!-- run -->
 
@@ -255,7 +255,7 @@ Text can be created in the following two ways:
 
   ![Textdisply6](figures/Textdisply6.gif)
 
-- Use the [lineHeight](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#func-lineheightlength) property to set text line height.
+- Use the [lineHeight](../../../reference/source_en/arkui-cj/cj-text-input-text.md#func-lineheightlength) property to set text line height.
 
      <!-- run -->
 
@@ -285,7 +285,7 @@ Text can be created in the following two ways:
 
   ![Textdisply7](figures/Textdisply7.png)
 
-- Use the [decoration](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#decorationtextdecorationtype-color-textdecorationstyle) property to set text decoration line style and color.
+- Use the [decoration](../../../reference/source_en/arkui-cj/cj-text-input-text.md#decorationtextdecorationtype-color-textdecorationstyle) property to set text decoration line style and color.
 
      <!-- run -->
 
@@ -328,7 +328,7 @@ Text can be created in the following two ways:
 
   ![Textdisply8](figures/Textdisply8.png)
 
-- Use the [baselineOffset](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#baselineoffsetlength) property to set the baseline offset of text.
+- Use the [baselineOffset](../../../reference/source_en/arkui-cj/cj-text-input-text.md#baselineoffsetlength) property to set the baseline offset of text.
 
      <!-- run -->
 
@@ -374,9 +374,9 @@ Text can be created in the following two ways:
 
   ![Textdisply9](figures/Textdisply9.png)
 
-- Use [minFontSize](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#minfontsizelength) and [maxFontSize](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#maxfontsizelength) for adaptive font sizing.
+- Use [minFontSize](../../../reference/source_en/arkui-cj/cj-text-input-text.md#minfontsizelength) and [maxFontSize](../../../reference/source_en/arkui-cj/cj-text-input-text.md#maxfontsizelength) for adaptive font sizing.
 
-  `minFontSize` sets the minimum display font size for text, while `maxFontSize` sets the maximum display font size. Both properties must be set simultaneously to take effect and must be used with the [maxLines](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#maxlinesint32) property or layout size constraints. Setting either property alone will not produce any effect.
+  `minFontSize` sets the minimum display font size for text, while `maxFontSize` sets the maximum display font size. Both properties must be set simultaneously to take effect and must be used with the [maxLines](../../../reference/source_en/arkui-cj/cj-text-input-text.md#maxlinesint32) property or layout size constraints. Setting either property alone will not produce any effect.
 
      <!-- run -->
 
@@ -433,7 +433,7 @@ Text can be created in the following two ways:
 
   ![Textdisply11](figures/Textdisply11.png)
 
-- Use the [textCase](../../../API_Reference/source_en/arkui-cj/cj-text-input-text.md#textcasetextcase) property to set text case.
+- Use the [textCase](../../../reference/source_en/arkui-cj/cj-text-input-text.md#textcasetextcase) property to set text case.
 
      <!-- run -->
 
@@ -476,7 +476,7 @@ Text can be created in the following two ways:
 
   ![Textdisply12](figures/Textdisply12.png)## Adding Events
 
-The Text component can add universal events, and can bind events such as [onClick](../../../API_Reference/source_en/arkui-cj/cj-universal-event-click.md#func-onclickclickevent---unit) and [onTouch](../../../API_Reference/source_en/arkui-cj/cj-universal-event-touch.md#func-ontouchtouchevent-unit) to respond to operations.
+The Text component can add universal events, and can bind events such as [onClick](../../../reference/source_en/arkui-cj/cj-universal-event-click.md#func-onclickclickevent---unit) and [onTouch](../../../reference/source_en/arkui-cj/cj-universal-event-touch.md#func-ontouchtouchevent-unit) to respond to operations.
 
  <!-- run -->
 

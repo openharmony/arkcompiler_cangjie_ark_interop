@@ -4,7 +4,7 @@ Image processing involves operations on PixelMap, such as retrieving image infor
 
 ## Development Steps
 
-For detailed API descriptions related to image transformations, refer to the [API Reference](../../../../API_Reference/source_en/ImageKit/cj-apis-image.md#class-pixelmap).
+For detailed API descriptions related to image transformations, refer to the [API Reference](../../../../reference/source_en/ImageKit/cj-apis-image.md#class-pixelmap).
 
 1. Complete [image decoding](./cj-image-decoding.md) to obtain a PixelMap object.
 

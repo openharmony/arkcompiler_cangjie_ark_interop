@@ -3814,7 +3814,7 @@ Uint8Array(Array<UInt8>)
 public type Assets = Array<Asset>
 ```
 
-**Function:** [Assets](#type-assets) is a type alias for [Array\<Asset>](../../../../User_Manual/source_en/basic_data_type/array.md#array).
+**Function:** [Assets](#type-assets) is a type alias for Array\<Asset>.
 
 ## type ValuesBucket
 
@@ -3822,4 +3822,4 @@ public type Assets = Array<Asset>
 public type ValuesBucket = Map<String, ValueType>
 ```
 
-**Function:** [ValuesBucket](#type-valuesbucket) is a type alias for [Map\<String,ValueType>](../../../../User_Manual/source_en/generic/generic_class.md#泛型类).
+**Function:** [ValuesBucket](#type-valuesbucket) is a type alias for Map\<String,ValueType>.

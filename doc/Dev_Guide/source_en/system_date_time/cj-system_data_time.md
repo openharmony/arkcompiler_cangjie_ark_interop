@@ -4,7 +4,7 @@
 
 When an application needs to obtain system time, time zone information, or system runtime, the system_date_time module can be used. For example: obtaining the current timestamp, obtaining the system time zone, obtaining the device running time, etc.
 
-For detailed API introduction, please refer to[SystemDateTime API](../../../API_Reference/source_en/BasicServicesKit/cj-apis-system_date_time.md)。
+For detailed API introduction, please refer to[SystemDateTime API](../../../reference/source_en/BasicServicesKit/cj-apis-system_date_time.md)。
 
 ## Interface Description
 

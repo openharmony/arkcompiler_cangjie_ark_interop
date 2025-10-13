@@ -4,7 +4,7 @@ During application development, you can output log information at critical code 
 
 ## Interface Description
 
-HiLog defines five log levels: DEBUG, INFO, WARN, ERROR, and FATAL, and provides corresponding methods to output logs at different levels. The interfaces are shown in the table below. For detailed descriptions, refer to the [API Reference](../../../API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hilog.md).
+HiLog defines five log levels: DEBUG, INFO, WARN, ERROR, and FATAL, and provides corresponding methods to output logs at different levels. The interfaces are shown in the table below. For detailed descriptions, refer to the [API Reference](../../../reference/source_en/PerformanceAnalysisKit/cj-apis-hilog.md).
 
 | Interface Name | Description |
 | -------- | -------- |
@@ -27,7 +27,7 @@ HiLog defines five log levels: DEBUG, INFO, WARN, ERROR, and FATAL, and provides
 
 - **tag**: Specifies the log identifier, which can be any string. It is recommended to identify the calling class or business behavior. The tag can be up to 31 bytes; exceeding this limit will truncate the tag. Chinese characters are not recommended as they may cause garbled text or alignment issues.
 
-- **level**: Specifies the log level. For possible values, see [LogLevel](../../../API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hilog.md#enum-loglevel).
+- **level**: Specifies the log level. For possible values, see [LogLevel](../../../reference/source_en/PerformanceAnalysisKit/cj-apis-hilog.md#enum-loglevel).
 
 - **format**: A format string for formatted log output.
 

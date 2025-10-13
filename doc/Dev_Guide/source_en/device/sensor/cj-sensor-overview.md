@@ -2,7 +2,7 @@
 
 ## Sensor Types
 
-System sensors are device abstractions that allow applications to access underlying hardware sensors. By utilizing the [Sensor interface](../../../../API_Reference/source_en/SensorServiceKit/cj-apis-sensor.md), developers can query device sensors, subscribe to sensor data, and develop various applications with customized algorithms based on sensor data, such as compasses, fitness trackers, and games.
+System sensors are device abstractions that allow applications to access underlying hardware sensors. By utilizing the [Sensor interface](../../../../reference/source_en/SensorServiceKit/cj-apis-sensor.md), developers can query device sensors, subscribe to sensor data, and develop various applications with customized algorithms based on sensor data, such as compasses, fitness trackers, and games.
 
 | Sensor Type                  | Description               | Notes                                                         | Primary Applications                                   |
 | --------------------------- | ------------------ | ------------------------------------------------------------ | ------------------------------------------ |

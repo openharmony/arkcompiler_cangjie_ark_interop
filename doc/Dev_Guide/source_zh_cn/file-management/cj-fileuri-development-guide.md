@@ -14,7 +14,7 @@ FileUri模块提供统一资源标志符（Uniform Resource Identifier，URI）�
 
 ## 接口说明
 
-完整的仓颉 API 说明以及实例代码请参见：[FileUri 接口](../../API_Reference/source_zh_cn/CoreFileKit/cj-apis-file_fileuri.md)。
+完整的仓颉 API 说明以及实例代码请参见：[FileUri 接口](../../reference/source_zh_cn/CoreFileKit/cj-apis-file_fileuri.md)。
 
 具体接口说明如下表。
 

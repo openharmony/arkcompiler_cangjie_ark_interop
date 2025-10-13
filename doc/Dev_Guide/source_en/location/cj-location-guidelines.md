@@ -8,19 +8,19 @@ For applications with location-sensitive business logic, it is recommended to ob
 
 ## Interface Description
 
-The following interfaces are used to obtain device location information. For detailed descriptions, refer to: [Location Kit](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md).
+The following interfaces are used to obtain device location information. For detailed descriptions, refer to: [Location Kit](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md).
 
 This module's capabilities only support the WGS-84 coordinate system.
 
 | Interface Name | Function Description |
 | -------- | -------- |
-| [on(CallbackType, LocationRequest, Callback1Argument\<Location>)](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-oncallbacktype-locationrequest-callback1argumentlocation) | Subscribes to location changes and initiates a location request. |
-| [off(CallbackType, Callback1Argument\<Location>)](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-offcallbacktype-callback1argumentlocation) | Unsubscribes from location changes and removes the corresponding location request. |
-| [getCurrentLocation()](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getcurrentlocation) | Retrieves the current location. |
-| [getCurrentLocation(CurrentLocationRequest)](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getcurrentlocationcurrentlocationrequest) | Retrieves the current location. |
-| [getCurrentLocation(SingleLocationRequest)](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getcurrentlocationsinglelocationrequest) | Retrieves the current location. |
-| [getLastLocation()](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getlastlocation) | Retrieves the most recent location result. |
-| [isLocationEnabled()](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-islocationenabled) | Checks whether the location service is enabled. |
+| [on(CallbackType, LocationRequest, Callback1Argument\<Location>)](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-oncallbacktype-locationrequest-callback1argumentlocation) | Subscribes to location changes and initiates a location request. |
+| [off(CallbackType, Callback1Argument\<Location>)](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-offcallbacktype-callback1argumentlocation) | Unsubscribes from location changes and removes the corresponding location request. |
+| [getCurrentLocation()](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getcurrentlocation) | Retrieves the current location. |
+| [getCurrentLocation(CurrentLocationRequest)](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getcurrentlocationcurrentlocationrequest) | Retrieves the current location. |
+| [getCurrentLocation(SingleLocationRequest)](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getcurrentlocationsinglelocationrequest) | Retrieves the current location. |
+| [getLastLocation()](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-getlastlocation) | Retrieves the most recent location result. |
+| [isLocationEnabled()](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#static-func-islocationenabled) | Checks whether the location service is enabled. |
 
 ## Development Steps
 
@@ -49,7 +49,7 @@ This module's capabilities only support the WGS-84 coordinate system.
     }
     ```
 
-    If the location service is not enabled, you can prompt the user to enable it by launching a global settings dialog. For details, refer to [Launching the Global Settings Dialog](../../../API_Reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestglobalswitchcontext-switchtype-asynccallbackbool).
+    If the location service is not enabled, you can prompt the user to enable it by launching a global settings dialog. For details, refer to [Launching the Global Settings Dialog](../../../reference/source_en/AbilityKit/cj-apis-ability_access_ctrl.md#func-requestglobalswitchcontext-switchtype-asynccallbackbool).
 
 4. Single-time retrieval of the current device location. Commonly used for scenarios such as checking the current location, check-ins, or service recommendations.
     - Method 1: Retrieve the most recent cached location.<br/>
@@ -72,7 +72,7 @@ This module's capabilities only support the WGS-84 coordinate system.
 
     - Method 2: Retrieve the current location.<br/>
 
-        First, instantiate a [SingleLocationRequest](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#class-singlelocationrequest) object to specify the type of location service and the timeout for single-time location retrieval.<br/>
+        First, instantiate a [SingleLocationRequest](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#class-singlelocationrequest) object to specify the type of location service and the timeout for single-time location retrieval.<br/>
 
         - Set `LocatingPriority`:<br/>
             For high-accuracy requirements, set `LocatingPriority` to `PRIORITY_ACCURACY` to return the most accurate result within a period.<br/>
@@ -104,9 +104,9 @@ This module's capabilities only support the WGS-84 coordinate system.
     Third-party map SDKs can be used for coordinate conversion.<!--DelEnd-->
 
 5. Continuous location tracking. Commonly used for navigation, activity tracking, or travel scenarios.</br>
-    First, instantiate a [ContinuousLocationRequest](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#class-continuouslocationrequest) object to specify the type of location service and the frequency of location updates.<br/>
+    First, instantiate a [ContinuousLocationRequest](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#class-continuouslocationrequest) object to specify the type of location service and the frequency of location updates.<br/>
     - Set `locationScenario`:<br/>
-        The `locationScenario` parameter should align with the application's use case. For enum values, refer to [UserActivityScenario](../../../API_Reference/source_en/LocationKit/cj-apis-geo_location_manager.md#enum-useractivityscenario). For example, use `NAVIGATION` for map navigation to ensure continuous location updates indoors and outdoors.</br>
+        The `locationScenario` parameter should align with the application's use case. For enum values, refer to [UserActivityScenario](../../../reference/source_en/LocationKit/cj-apis-geo_location_manager.md#enum-useractivityscenario). For example, use `NAVIGATION` for map navigation to ensure continuous location updates indoors and outdoors.</br>
     - Set `interval`:<br/>
         Specifies the time interval (in seconds) for location updates. The default is 1 second. If no specific interval is required, this field can be omitted.
 

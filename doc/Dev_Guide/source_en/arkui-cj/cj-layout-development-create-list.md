@@ -4,7 +4,7 @@
 
 A list is a complex container that automatically provides scrolling functionality when the number of list items exceeds the screen size. It is suitable for presenting homogeneous data types or datasets, such as images and text. Displaying data collections in lists is a common requirement in many applications (e.g., contact lists, music playlists, shopping lists, etc.).
 
-Using lists enables efficient and structured display of scrollable information. By linearly arranging child components—[ListItemGroup](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-listgroup.md) or [ListItem](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-listitem.md)—vertically or horizontally within the [List](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md) component, individual views for rows or columns can be provided. Alternatively, [loop rendering](./rendering_control/cj-rendering-control-foreach.md) can iterate over a set of rows or columns, or a combination of single views and ForEach structures can be used to build a list. The List component supports rendering control methods such as conditional rendering, loop rendering, and lazy loading to generate child components.
+Using lists enables efficient and structured display of scrollable information. By linearly arranging child components—[ListItemGroup](../../../reference/source_en/arkui-cj/cj-scroll-swipe-listgroup.md) or [ListItem](../../../reference/source_en/arkui-cj/cj-scroll-swipe-listitem.md)—vertically or horizontally within the [List](../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md) component, individual views for rows or columns can be provided. Alternatively, [loop rendering](./rendering_control/cj-rendering-control-foreach.md) can iterate over a set of rows or columns, or a combination of single views and ForEach structures can be used to build a list. The List component supports rendering control methods such as conditional rendering, loop rendering, and lazy loading to generate child components.
 
 ## Layout and Constraints
 
@@ -89,7 +89,7 @@ List() {
 
 The cross axis layout of the List component can be configured using the lanes and alignListItem properties. The lanes property determines the number of list items arranged along the cross axis, while alignListItem sets the alignment of child components along the cross axis.
 
-The lanes property is typically used to adaptively build lists with varying numbers of rows or columns across different device sizes, enabling "write once, deploy anywhere" scenarios. For details on declaring the lanes property, see [Declaration Method](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md#func-lanesint32). For a vertical list, setting lanes to 2 creates a two-column vertical list, as shown in the right image of Figure 2. The default value of lanes is 1, meaning a vertical list defaults to a single column.
+The lanes property is typically used to adaptively build lists with varying numbers of rows or columns across different device sizes, enabling "write once, deploy anywhere" scenarios. For details on declaring the lanes property, see [Declaration Method](../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md#func-lanesint32). For a vertical list, setting lanes to 2 creates a two-column vertical list, as shown in the right image of Figure 2. The default value of lanes is 1, meaning a vertical list defaults to a single column.
 
 ```cangjie
 List() {
@@ -291,7 +291,7 @@ When the height (or width) of list items exceeds the screen height (or width), t
 
 ![List9](figures/List9.gif)
 
-The scrollBar property of the List component controls the display of the scrollbar. The scrollBar property takes a value of type [BarState](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-barstate). When set to BarState.Auto, the scrollbar appears on demand. In this case, touching the scrollbar area displays the control, allowing users to drag it up or down to quickly browse content. The scrollbar thickens during dragging and disappears automatically after 2 seconds of inactivity.
+The scrollBar property of the List component controls the display of the scrollbar. The scrollBar property takes a value of type [BarState](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-barstate). When set to BarState.Auto, the scrollbar appears on demand. In this case, touching the scrollbar area displays the control, allowing users to drag it up or down to quickly browse content. The scrollbar thickens during dragging and disappears automatically after 2 seconds of inactivity.
 
 ```cangjie
 List() {
@@ -427,7 +427,7 @@ Controlling scroll position is a common requirement in practical applications. F
 
 ![List12](figures/List12.gif)
 
-During the initialization of the List component, a [Scroller](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md) object can be bound via the `scroller` parameter to control list scrolling. For example, when a user clicks the "Return to Top" button at the bottom of a news app, the `scrollToIndex` method of the Scroller object can be used to scroll the list to a specified item index.
+During the initialization of the List component, a [Scroller](../../../reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md) object can be bound via the `scroller` parameter to control list scrolling. For example, when a user clicks the "Return to Top" button at the bottom of a news app, the `scrollToIndex` method of the Scroller object can be used to scroll the list to a specified item index.
 
 First, create a Scroller object named `listScroller`.
 
@@ -462,7 +462,7 @@ Beyond letter indexing, combining scrollable lists with multi-level categorizati
 
 ![List13](figures/List13.gif)
 
-As shown in Figure 14, when the contact list scrolls from "A" to "B," the sidebar index should synchronously update from highlighting "A" to "B." This can be achieved by listening to the `onScrollIndex` event of the List component. The sidebar index should use the [AlphabetIndexer](../../../API_Reference/source_en/arkui-cj/cj-information-display-alphabetindexer.md) component.
+As shown in Figure 14, when the contact list scrolls from "A" to "B," the sidebar index should synchronously update from highlighting "A" to "B." This can be achieved by listening to the `onScrollIndex` event of the List component. The sidebar index should use the [AlphabetIndexer](../../../reference/source_en/arkui-cj/cj-information-display-alphabetindexer.md) component.
 
 During list scrolling, the `selectedIndex` for the letter index is recalculated based on the current scroll position `firstIndex`. Since the `selected` property of the AlphabetIndexer component sets the selected index, changes to `selectedIndex` trigger a re-render of the AlphabetIndexer, highlighting the corresponding letter.
 
@@ -549,7 +549,7 @@ Badges are a non-intrusive and intuitive way to display notifications or draw at
 
 ![List15](figures/List15.png)
 
-The [Badge](../../../API_Reference/source_en/arkui-cj/cj-information-display-badge.md) component can be used within `ListItem` to add badges. Badges are container components that attach to other components for informational marking.
+The [Badge](../../../reference/source_en/arkui-cj/cj-information-display-badge.md) component can be used within `ListItem` to add badges. Badges are container components that attach to other components for informational marking.
 
 To add a badge to the top-right corner of an avatar in a messaging list, wrap the avatar `Image` component inside a `Badge`. The `count` and `position` parameters set the number of messages and badge position, while `style` customizes the badge appearance.
 
@@ -567,7 +567,7 @@ ListItem(){
 
 ## Pull-to-Refresh and Load-More
 
-Pull-to-refresh and load-more functionality is ubiquitous in mobile apps, such as refreshing news content. Both operations work by responding to [touch events](../../../API_Reference/source_en/arkui-cj/cj-universal-event-touch.md), displaying a refresh or load view at the top or bottom, and hiding it after completion.
+Pull-to-refresh and load-more functionality is ubiquitous in mobile apps, such as refreshing news content. Both operations work by responding to [touch events](../../../reference/source_en/arkui-cj/cj-universal-event-touch.md), displaying a refresh or load view at the top or bottom, and hiding it after completion.
 
 Pull-to-refresh involves three steps:
 
@@ -577,7 +577,7 @@ Pull-to-refresh involves three steps:
 
 > **Note:**
 >
-> For pull-to-refresh, use the [Refresh](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-refresh.md) component.
+> For pull-to-refresh, use the [Refresh](../../../reference/source_en/arkui-cj/cj-scroll-swipe-refresh.md) component.
 
 ## Editing Lists
 

@@ -14,7 +14,7 @@ Cangjie provides the capability for rendering control. Conditional rendering all
 
 - The build function within each branch must adhere to build function rules and create one or more components. Empty build functions that cannot create components will result in syntax errors.
 
-- Certain container components impose restrictions on the types or quantities of child components. When using conditional rendering statements within these components, these restrictions also apply to components created within the conditional rendering statements. For example, the [Grid](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-grid.md) container component only supports [GridItem](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-griditem.md) components as children. When using conditional rendering statements within a Grid, only GridItem components are allowed within those statements.
+- Certain container components impose restrictions on the types or quantities of child components. When using conditional rendering statements within these components, these restrictions also apply to components created within the conditional rendering statements. For example, the [Grid](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-grid.md) container component only supports [GridItem](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-griditem.md) components as children. When using conditional rendering statements within a Grid, only GridItem components are allowed within those statements.
 
 ## Update Mechanism
 

@@ -4,13 +4,13 @@ The flashlight mode is activated by operating the terminal to enable the flashli
 
 When using the camera application and operating the flashlight function, the following scenarios apply:
 
-- When using the rear camera with the flash mode [FlashMode](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#enum-flashmode) set to off, the flashlight function cannot be enabled.
+- When using the rear camera with the flash mode [FlashMode](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#enum-flashmode) set to off, the flashlight function cannot be enabled.
 - When using the front camera, the flashlight can be normally enabled and maintained in a constant on state.
 - When switching from the front camera to the rear camera, if the flashlight was originally in an on state, it will be automatically turned off.
 
 ## Development Steps
 
-For detailed API specifications, refer to the [Camera API Reference](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md).
+For detailed API specifications, refer to the [Camera API Reference](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md).
 
 1. Import the camera interface, which provides camera-related properties and methods. The import method is as follows:
 
@@ -23,7 +23,7 @@ For detailed API specifications, refer to the [Camera API Reference](../../../..
     import ohos.business_exception.BusinessException
     ```
 
-2. Use the [isTorchSupported](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-istorchsupported) method in the [CameraManager](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to check whether the current device supports the flashlight function.
+2. Use the [isTorchSupported](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-istorchsupported) method in the [CameraManager](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to check whether the current device supports the flashlight function.
 
     <!-- compile -->
 
@@ -35,7 +35,7 @@ For detailed API specifications, refer to the [Camera API Reference](../../../..
     }
     ```
 
-3. Use the [isTorchModeSupported](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-istorchmodesupportedtorchmode) method in the [CameraManager](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to check whether the specified flashlight mode [TorchMode](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#enum-torchmode) is supported.
+3. Use the [isTorchModeSupported](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-istorchmodesupportedtorchmode) method in the [CameraManager](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to check whether the specified flashlight mode [TorchMode](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#enum-torchmode) is supported.
 
     <!-- compile -->
 
@@ -45,11 +45,11 @@ For detailed API specifications, refer to the [Camera API Reference](../../../..
     }
     ```
 
-4. Use the [setTorchMode](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-settorchmodetorchmode) method in the [CameraManager](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to set the flashlight mode for the current device. Additionally, use the [getTorchMode](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method in the [CameraManager](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to retrieve the current flashlight mode.
+4. Use the [setTorchMode](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-settorchmodetorchmode) method in the [CameraManager](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to set the flashlight mode for the current device. Additionally, use the [getTorchMode](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method in the [CameraManager](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-cameramanager) class to retrieve the current flashlight mode.
 
     > **Note:**
     >
-    > Before using the [getTorchMode](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method, you must first register a listener for flashlight state changes. Refer to [State Monitoring](#状态监听).
+    > Before using the [getTorchMode](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-gettorchmode) method, you must first register a listener for flashlight state changes. Refer to [State Monitoring](#状态监听).
 
     <!-- compile -->
 
@@ -65,7 +65,7 @@ For detailed API specifications, refer to the [Camera API Reference](../../../..
 
 During camera application development, you can monitor the flashlight state at any time, including flashlight on, flashlight off, flashlight unavailable, and flashlight restored to available. When the flashlight state changes, the flashlight mode changes can be obtained through a callback function.
 
-Register the TorchStatusChange event and return the monitoring result through a callback. The callback returns the TorchStatusInfo parameter. For specific details of the parameter, refer to the camera manager callback interface instance [TorchStatusInfo](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-torchstatusinfo).
+Register the TorchStatusChange event and return the monitoring result through a callback. The callback returns the TorchStatusInfo parameter. For specific details of the parameter, refer to the camera manager callback interface instance [TorchStatusInfo](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#class-torchstatusinfo).
 
 <!-- compile -->
 

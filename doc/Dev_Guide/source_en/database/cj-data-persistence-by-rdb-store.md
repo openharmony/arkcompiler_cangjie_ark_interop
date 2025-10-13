@@ -34,7 +34,7 @@ Relational databases offer universal operation interfaces to applications, with 
 
 ## API Description
 
-The following are key APIs for relational database persistence. For more APIs and usage details, refer to [Relational Database](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md).
+The following are key APIs for relational database persistence. For more APIs and usage details, refer to [Relational Database](../../../reference/source_en/ArkData/cj-apis-relational_store.md).
 
 | API Name | Description |
 | -------- | -------- |
@@ -117,7 +117,7 @@ During relational database operations or storage, unexpected exceptions (error c
     >
     > - Databases created by applications are context-dependent. Even with identical names, different application contexts will create separate databases (e.g., each Ability has its own context).
     > - When an application first accesses a database (via getRdbStore), corresponding database files are created in the application sandbox. Temporary files with -wal and -shm extensions may appear in the same directory during use. To move database files elsewhere, these temporary files must also be moved. Uninstalling the application removes all associated database and temporary files.
-    > - For detailed error codes, see [Universal Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-data-rdb.md).
+    > - For detailed error codes, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md) and [Relational Database Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-data-rdb.md).
 
 2. After obtaining RdbStore, use insert() to add data. Example:
 
@@ -221,7 +221,7 @@ During relational database operations or storage, unexpected exceptions (error c
 
 6. Restore data from backup. Two methods are supported: restoring manual backups and restoring automatic backups (system apps only). See [Relational Database Restoration](cj-data-backup-and-restore.md#关系型数据库数据恢复).
 
-    Example using [restore](../../../API_Reference/source_en/ArkData/cj-apis-relational_store.md#func-restorestring) for manual backups:
+    Example using [restore](../../../reference/source_en/ArkData/cj-apis-relational_store.md#func-restorestring) for manual backups:
 
     <!-- compile -->
 

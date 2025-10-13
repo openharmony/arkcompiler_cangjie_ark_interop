@@ -44,7 +44,7 @@ The layout transition rotation animation applies size and position transitions t
 
 ## Opacity Transition Rotation Animation  
 
-The opacity transition rotation animation activates during screen orientation changes. When the window performs a rotation animation, it adds a default opacity transition to components that appear or disappear during rotation, achieving graceful component appearance and disappearance. This feature listens for window rotation events and switches component view effects within the event. If the root nodes of the disappearing and appearing views are not configured with transition effects, a default opacity transition (i.e., [TransitionEffect](../../../API_Reference/source_en/arkui-cj/cj-animation-transition.md#class-transitioneffect).OPACITY) is automatically applied, creating fade-out and fade-in effects.  
+The opacity transition rotation animation activates during screen orientation changes. When the window performs a rotation animation, it adds a default opacity transition to components that appear or disappear during rotation, achieving graceful component appearance and disappearance. This feature listens for window rotation events and switches component view effects within the event. If the root nodes of the disappearing and appearing views are not configured with transition effects, a default opacity transition (i.e., [TransitionEffect](../../../reference/source_en/arkui-cj/cj-animation-transition.md#class-transitioneffect).OPACITY) is automatically applied, creating fade-out and fade-in effects.  
 
  <!-- run -example1 -->  
 

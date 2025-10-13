@@ -1,6 +1,6 @@
 # ForEach: Loop Rendering
 
-The ForEach interface performs loop rendering based on array-type data and must be used in conjunction with container components. The components returned by the interface should be child components allowed within the parent container component of ForEach. For example, the ListItem component requires that the parent container component of ForEach must be a [List component](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md).
+The ForEach interface performs loop rendering based on array-type data and must be used in conjunction with container components. The components returned by the interface should be child components allowed within the parent container component of ForEach. For example, the ListItem component requires that the parent container component of ForEach must be a [List component](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md).
 
 ## Key Generation Rules
 
@@ -360,7 +360,7 @@ In this example, the ArticleCard component, as a child component of the ArticleL
 - Avoid including the data item index `index` in the final key generation rules to prevent [Unexpected Rendering Results](#unexpected-rendering-results) and [Reduced Rendering Performance](#reduced-rendering-performance). If the business indeed requires the use of `index`, such as when the list needs conditional rendering based on `index`, developers must accept the performance overhead caused by ForEach recreating components after changing the data source.
 - Basic data type items do not have a unique ID attribute. If the basic data type itself is used as the key value, it must be ensured that the array items are not duplicated. Therefore, for scenarios where the data source may change, it is recommended to convert the basic data type array into an object data type array with a unique ID attribute and then use the unique ID attribute as the key value.
 - Regarding the above restrictions, the significance of the `index` parameter is: `index` is the developer's final means to ensure key uniqueness; when modifying data items, since the `item` parameter in `itemGenerator` is immutable, the `index` must be used to modify the data source, thereby triggering UI re-rendering.
-- When ForEach is used within the following container components [List](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md), [Grid](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-grid.md), [Swiper](../../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md), it should not be mixed with LazyForEach. For example, in the case of List, it is not recommended to include both ForEach and LazyForEach.
+- When ForEach is used within the following container components [List](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md), [Grid](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-grid.md), [Swiper](../../../../reference/source_en/arkui-cj/cj-scroll-swipe-swiper.md), it should not be mixed with LazyForEach. For example, in the case of List, it is not recommended to include both ForEach and LazyForEach.
 - For array items of object data types, it is not recommended to replace old array items with new ones that have identical content.
 
 ## Non-Recommended Cases

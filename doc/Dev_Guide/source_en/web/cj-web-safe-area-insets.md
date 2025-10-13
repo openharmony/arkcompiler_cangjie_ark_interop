@@ -14,7 +14,7 @@ The Web component provides the capability to calculate and adapt to safe areas u
 
 ### Enabling Immersive Effects for the Web Component
 
-Developers can enable immersive effects using [expandSafeArea](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-expandsafearea.md#func-expandsafeareaarraysafeareatype-arraysafeareaedge).
+Developers can enable immersive effects using [expandSafeArea](../../../reference/source_en/arkui-cj/cj-universal-attribute-expandsafearea.md#func-expandsafeareaarraysafeareatype-arraysafeareaedge).
 
 <!-- compile -->
 

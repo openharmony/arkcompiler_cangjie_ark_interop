@@ -2,17 +2,17 @@
 
 ## Scenario Description
 
-[Display](../../../API_Reference/source_en/arkui-cj/cj-apis-display.md) screen properties provide basic capabilities for managing device screens, such as obtaining information about the default display device, getting information about all display devices, and additionally listening for the plugging and unplugging of display devices. Applications can adapt their UI display based on corresponding screen information, screen status changes, screen folding status, etc.
+[Display](../../../reference/source_en/arkui-cj/cj-apis-display.md) screen properties provide basic capabilities for managing device screens, such as obtaining information about the default display device, getting information about all display devices, and additionally listening for the plugging and unplugging of display devices. Applications can adapt their UI display based on corresponding screen information, screen status changes, screen folding status, etc.
 
 Common usage scenarios for screen properties include the following:
 
-- Querying screen information: Includes screen resolution, physical pixel density, logical pixel density, refresh rate, screen size, screen rotation direction, screen rotation angle, etc. For details, refer to [Display Properties](../../../API_Reference/source_en/arkui-cj/cj-apis-display.md).
+- Querying screen information: Includes screen resolution, physical pixel density, logical pixel density, refresh rate, screen size, screen rotation direction, screen rotation angle, etc. For details, refer to [Display Properties](../../../reference/source_en/arkui-cj/cj-apis-display.md).
 - Monitoring screen status changes, including screen rotation changes, screen resolution changes, screen refresh rate changes, etc.
 - Querying whether the current device is a foldable device, while supporting listening for changes in the folding status (expanded/folded).
 
 ## Interface Description
 
-The commonly used interfaces for screen properties are listed in the table below. For more features, interface descriptions, and usage, please refer to [@ohos.display (Screen Properties)](../../../API_Reference/source_en/arkui-cj/cj-apis-display.md).
+The commonly used interfaces for screen properties are listed in the table below. For more features, interface descriptions, and usage, please refer to [@ohos.display (Screen Properties)](../../../reference/source_en/arkui-cj/cj-apis-display.md).
 
 | Interface                                                                 | Description                                                                                  |
 | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |

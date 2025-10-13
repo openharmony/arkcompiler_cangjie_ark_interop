@@ -97,9 +97,9 @@ class EntryView {
 public func onMouse(callback: (MouseEvent)->Unit): This
 ```
 
-鼠标事件回调。绑定该API的组件每当鼠标指针在该组件内产生行为（MouseAction）时，触发事件回调，参数为[MouseEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-mouse.md#class-mouseevent)对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
+鼠标事件回调。绑定该API的组件每当鼠标指针在该组件内产生行为（MouseAction）时，触发事件回调，参数为[MouseEvent](../../../reference/source_zh_cn/arkui-cj/cj-universal-event-mouse.md#class-mouseevent)对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
 
-开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（screenX/screenY/x/y）、按键（[MouseButton](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mousebutton)）、行为（[MouseAction](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mouseaction)）、时间戳（timestamp）、交互组件的区域（[EventTarget](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-click.md#class-eventtarget)）、事件来源（[SourceType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-sourcetype)）等。
+开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（screenX/screenY/x/y）、按键（[MouseButton](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mousebutton)）、行为（[MouseAction](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-mouseaction)）、时间戳（timestamp）、交互组件的区域（[EventTarget](../../../reference/source_zh_cn/arkui-cj/cj-universal-event-click.md#class-eventtarget)）、事件来源（[SourceType](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-sourcetype)）等。
 
 > **说明：**
 >
@@ -169,7 +169,7 @@ class EntryView {
 public func onKeyEvent(callback: (KeyEvent)->Unit): This
 ```
 
-当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#class-keyevent)，可由该参数获得当前按键事件的按键行为（[KeyType](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keytype)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../../../API_Reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）。
+当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../../../reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#class-keyevent)，可由该参数获得当前按键事件的按键行为（[KeyType](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keytype)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）。
 
  <!-- run -->
 

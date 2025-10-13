@@ -1,6 +1,6 @@
 # Displaying Images (Image)
 
-Developers often need to display images in applications, such as icons in buttons, network images, or local images. To display images in an application, the Image component must be used. The Image component supports multiple image formats, including PNG, JPG, BMP, SVG, GIF, and HEIF. For specific usage, refer to the [Image](../../../API_Reference/source_en/arkui-cj/cj-image-video-image.md) component.
+Developers often need to display images in applications, such as icons in buttons, network images, or local images. To display images in an application, the Image component must be used. The Image component supports multiple image formats, including PNG, JPG, BMP, SVG, GIF, and HEIF. For specific usage, refer to the [Image](../../../reference/source_en/arkui-cj/cj-image-video-image.md) component.
 
 The Image component is created by calling an interface, which is invoked as follows:
 
@@ -68,7 +68,7 @@ Archived image data sources can be categorized into local resources, network res
 
 ## Displaying Vector Graphics
 
-The Image component can display vector graphics (SVG format images). For SVG tag documentation, refer to the [SVG Description](../../../API_Reference/source_en/ImageKit/cj-apis-image.md#svg标签说明).
+The Image component can display vector graphics (SVG format images). For SVG tag documentation, refer to the [SVG Description](../../../reference/source_en/ImageKit/cj-apis-image.md#svg标签说明).
 
 SVG format images can use the `fillColor` property to change the drawing color.
 
@@ -112,7 +112,7 @@ An example of the project file path is shown below:
 
 ## Adding Attributes
 
-Setting attributes for the Image component allows for more flexible image display and custom effects. Below are examples of commonly used attributes. For a complete list of attributes, refer to [Image](../../../API_Reference/source_en/arkui-cj/cj-image-video-image.md).
+Setting attributes for the Image component allows for more flexible image display and custom effects. Below are examples of commonly used attributes. For a complete list of attributes, refer to [Image](../../../reference/source_en/arkui-cj/cj-image-video-image.md).
 
 ### Setting Image Scaling Type
 
@@ -259,7 +259,7 @@ class EntryView {
 
 ### Setting Image Repeat Style
 
-Use the `objectRepeat` property to set the image repeat style. For repeat styles, refer to the [ImageRepeat](../../../API_Reference/source_en/arkui-cj/cj-common-types.md#enum-imagerepeat) enumeration.
+Use the `objectRepeat` property to set the image repeat style. For repeat styles, refer to the [ImageRepeat](../../../reference/source_en/arkui-cj/cj-common-types.md#enum-imagerepeat) enumeration.
 
  <!-- run -->
 

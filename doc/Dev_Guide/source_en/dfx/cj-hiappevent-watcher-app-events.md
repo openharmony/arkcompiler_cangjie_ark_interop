@@ -4,7 +4,7 @@ HiAppEvent provides interfaces for subscribing to application events to retrieve
 
 ## Interface Description
 
-For detailed usage instructions of the API interfaces (parameter usage restrictions, specific value ranges, etc.), please refer to the [Application Event Logging API Documentation](../../../API_Reference/source_en/PerformanceAnalysisKit/cj-apis-hiappevent.md).
+For detailed usage instructions of the API interfaces (parameter usage restrictions, specific value ranges, etc.), please refer to the [Application Event Logging API Documentation](../../../reference/source_en/PerformanceAnalysisKit/cj-apis-hiappevent.md).
 
 **Logging Interface Functionality:**
 

@@ -1,6 +1,6 @@
 # Text Input (TextInput/TextArea)
 
-TextInput and TextArea are input field components, typically used to respond to user input operations such as comment section inputs, chat box inputs, form inputs, etc. They can also be combined with other components to build functional pages, such as login/registration pages. For specific usage, please refer to [TextInput](../../../API_Reference/source_en/arkui-cj/cj-text-input-textinput.md) and [TextArea](../../../API_Reference/source_en/arkui-cj/cj-text-input-textarea.md).
+TextInput and TextArea are input field components, typically used to respond to user input operations such as comment section inputs, chat box inputs, form inputs, etc. They can also be combined with other components to build functional pages, such as login/registration pages. For specific usage, please refer to [TextInput](../../../reference/source_en/arkui-cj/cj-text-input-textinput.md) and [TextArea](../../../reference/source_en/arkui-cj/cj-text-input-textarea.md).
 
 ## Creating Input Fields
 
@@ -89,7 +89,7 @@ TextArea(text: 'This is a piece of text to demonstrate the selection menu')
 
 ## Keyboard Avoidance
 
-After the keyboard is raised, keyboard avoidance will only take effect for container components with scrolling capabilities during screen orientation changes. If you want keyboard avoidance to work for container components without scrolling capabilities, it is recommended to nest them within a container component that has scrolling capabilities, such as [Scroll](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md), [List](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-list.md), or [Grid](../../../API_Reference/source_en/arkui-cj/cj-scroll-swipe-grid.md).
+After the keyboard is raised, keyboard avoidance will only take effect for container components with scrolling capabilities during screen orientation changes. If you want keyboard avoidance to work for container components without scrolling capabilities, it is recommended to nest them within a container component that has scrolling capabilities, such as [Scroll](../../../reference/source_en/arkui-cj/cj-scroll-swipe-scroll.md), [List](../../../reference/source_en/arkui-cj/cj-scroll-swipe-list.md), or [Grid](../../../reference/source_en/arkui-cj/cj-scroll-swipe-grid.md).
 
 ```cangjie
 package ohos_app_cangjie_entry

@@ -6,7 +6,7 @@ For each algorithm, the supported encryption modes will be introduced in their r
 
 ## AES
 
-The algorithm library currently provides seven common encryption modes for [AES](./cj-crypto-sym-key-generation-conversion-spec.md#aes) encryption/decryption: ECB, CBC, OFB, CFB, CTR, GCM, and CCM. Different encryption modes require different encryption/decryption parameters. For details, refer to [ParamsSpec](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
+The algorithm library currently provides seven common encryption modes for [AES](./cj-crypto-sym-key-generation-conversion-spec.md#aes) encryption/decryption: ECB, CBC, OFB, CFB, CTR, GCM, and CCM. Different encryption modes require different encryption/decryption parameters. For details, refer to [ParamsSpec](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
 
 Since AES is a block cipher algorithm, the block length is 128 bits. In practical applications, the last block of plaintext may be less than 128 bits (16 bytes). In such cases, data padding can be performed using different [padding modes](#padding-modes).
 
@@ -44,7 +44,7 @@ Currently, AES encryption/decryption can be performed using string parameters. T
 
 The [3DES](./cj-crypto-sym-key-generation-conversion-spec.md#3des) algorithm performs three DES encryption or decryption operations on plaintext/ciphertext data to obtain the corresponding ciphertext or plaintext.
 
-The algorithm library currently provides four common encryption modes for 3DES encryption/decryption: ECB, CBC, OFB, and CFB. Different encryption modes require different encryption/decryption parameters. For details, refer to [ParamsSpec](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
+The algorithm library currently provides four common encryption modes for 3DES encryption/decryption: ECB, CBC, OFB, and CFB. Different encryption modes require different encryption/decryption parameters. For details, refer to [ParamsSpec](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
 
 Since DES is a block cipher algorithm, the block length is 64 bits. In practical applications, the last block of plaintext may be less than 64 bits (8 bytes). In such cases, data padding can be performed using different [padding modes](#padding-modes).
 
@@ -76,7 +76,7 @@ Currently, 3DES encryption/decryption can be performed using string parameters. 
 
 ## SM4
 
-The algorithm library currently provides seven common encryption modes for [SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4) encryption/decryption: ECB, CBC, CTR, OFB, CFB, CFB128, and GCM. Different encryption modes require different encryption/decryption parameters. For details, refer to [ParamsSpec](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
+The algorithm library currently provides seven common encryption modes for [SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4) encryption/decryption: ECB, CBC, CTR, OFB, CFB, CFB128, and GCM. Different encryption modes require different encryption/decryption parameters. For details, refer to [ParamsSpec](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#interface-paramsspec).
 
 Since SM4 is a block cipher algorithm, the block length is 128 bits. In practical applications, the last block of plaintext may be less than 128 bits (16 bytes). In such cases, data padding can be performed using different [padding modes](#padding-modes).
 

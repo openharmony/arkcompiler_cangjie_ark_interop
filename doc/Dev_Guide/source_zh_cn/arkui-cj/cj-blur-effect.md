@@ -6,8 +6,8 @@
 
 | 接口                                                         | 说明                                         |
 | :------------------------------------------------------------ | :-------------------------------------------- |
-| [backdropBlur](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-background.md#func-backdropblurfloat64) | 为当前组件添加背景模糊效果，入参为模糊半径。 |
-| [blur](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-imageeffect.md#func-blurfloat64) | 为当前组件添加内容模糊效果，入参为模糊半径。 |
+| [backdropBlur](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-background.md#func-backdropblurfloat64) | 为当前组件添加背景模糊效果，入参为模糊半径。 |
+| [blur](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-imageeffect.md#func-blurfloat64) | 为当前组件添加内容模糊效果，入参为模糊半径。 |
 
 > **说明：**
 >

@@ -14,7 +14,7 @@ Web组件提供了利用W3C CSS进行安全区域计算并避让适配的能力�
 
 ### 开启Web组件沉浸式效果
 
-开发者可以通过[expandSafeArea](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-expandsafearea.md#func-expandsafeareaarraysafeareatype-arraysafeareaedge)来开启沉浸式效果。
+开发者可以通过[expandSafeArea](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-expandsafearea.md#func-expandsafeareaarraysafeareatype-arraysafeareaedge)来开启沉浸式效果。
 
 <!-- compile -->
 

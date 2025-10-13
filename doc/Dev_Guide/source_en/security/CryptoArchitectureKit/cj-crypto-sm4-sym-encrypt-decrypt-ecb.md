@@ -4,34 +4,34 @@ For corresponding algorithm specifications, please refer to [Symmetric Key Encry
 
 ## Encryption
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with SM4 as the key algorithm and 128-bit key length.
+1. Call [createSymKeyGenerator](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with SM4 as the key algorithm and 128-bit key length.
 
     For guidance on generating an SM4 symmetric key, developers can refer to the example below and consult [Symmetric Key Generation and Conversion Specifications: SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4) and [Random Symmetric Key Generation](./cj-crypto-generate-sym-key-randomly.md). Note that reference documents may have parameter differences from the current example—please pay attention to these distinctions when reading.
 
-2. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance configured for SM4_128 symmetric key type, ECB block mode, and PKCS7 padding mode, which will be used to perform encryption.
+2. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance configured for SM4_128 symmetric key type, ECB block mode, and PKCS7 padding mode, which will be used to perform encryption.
 
-3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.EncryptMode), specify the encryption key (SymKey), and initialize the encryption Cipher instance.
+3. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.EncryptMode), specify the encryption key (SymKey), and initialize the encryption Cipher instance.
 
     ECB mode has no encryption parameters, so pass None directly.
 
-4. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (plaintext).
+4. Call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (plaintext).
 
     - For small data volumes, you can directly call doFinal after initialization.
     - For large data volumes, you can call update multiple times to perform segmented encryption/decryption.
 
-5. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
+5. Call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
 
     Since the data has already been passed via update, pass None here for data.
 
 ## Decryption
 
-1. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance configured for SM4_128 symmetric key type, ECB block mode, and PKCS7 padding mode, which will be used to perform decryption.
+1. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|ECB|PKCS7' to create a Cipher instance configured for SM4_128 symmetric key type, ECB block mode, and PKCS7 padding mode, which will be used to perform decryption.
 
-2. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DecryptMode), specify the decryption key (SymKey), and initialize the decryption Cipher instance. ECB mode has no encryption parameters, so pass None directly.
+2. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DecryptMode), specify the decryption key (SymKey), and initialize the decryption Cipher instance. ECB mode has no encryption parameters, so pass None directly.
 
-3. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (ciphertext).
+3. Call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (ciphertext).
 
-4. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
+4. Call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
 
 ## Example
 

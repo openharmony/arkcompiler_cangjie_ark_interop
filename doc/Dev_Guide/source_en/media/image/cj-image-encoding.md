@@ -4,7 +4,7 @@ Image encoding refers to the process of encoding a PixelMap into archived images
 
 ## Development Procedure
 
-For detailed information about image encoding APIs, refer to: [Image Encoding Interface Documentation](../../../../API_Reference/source_en/ImageKit/cj-apis-image.md#class-imagepacker).
+For detailed information about image encoding APIs, refer to: [Image Encoding Interface Documentation](../../../../reference/source_en/ImageKit/cj-apis-image.md#class-imagepacker).
 
 ### Encoding Images into File Streams
 

@@ -1,6 +1,6 @@
 # Drawing Geometric Shapes (Shape)
 
-The drawing component is used to create graphics on a page. The Shape component serves as the parent component for all drawing components, describing common properties supported by all drawing components. For specific usage, please refer to [Shape](../../../API_Reference/source_en/arkui-cj/cj-graphic-drawing-shape.md).
+The drawing component is used to create graphics on a page. The Shape component serves as the parent component for all drawing components, describing common properties supported by all drawing components. For specific usage, please refer to [Shape](../../../reference/source_en/arkui-cj/cj-graphic-drawing-shape.md).
 
 ## Creating Drawing Components
 
@@ -22,7 +22,7 @@ Drawing components can be created in the following two forms:
   }
   ```
 
-- Drawing components can be used independently to draw specified shapes on a page. There are 7 drawing types: [Circle](../../../API_Reference/source_en/arkui-cj/cj-graphic-drawing-circle.md), [Ellipse](../../../API_Reference/source_en/arkui-cj/cj-graphic-drawing-ellipse.md), [Line](../../../API_Reference/source_en/arkui-cj/cj-graphic-drawing-line.md), [Path](../../../API_Reference/source_en/arkui-cj/cj-graphic-drawing-path.md), and [Rect](../../../API_Reference/source_en/arkui-cj/cj-graphic-drawing-rect.md). Using Circle as an example:
+- Drawing components can be used independently to draw specified shapes on a page. There are 7 drawing types: [Circle](../../../reference/source_en/arkui-cj/cj-graphic-drawing-circle.md), [Ellipse](../../../reference/source_en/arkui-cj/cj-graphic-drawing-ellipse.md), [Line](../../../reference/source_en/arkui-cj/cj-graphic-drawing-line.md), [Path](../../../reference/source_en/arkui-cj/cj-graphic-drawing-path.md), and [Rect](../../../reference/source_en/arkui-cj/cj-graphic-drawing-rect.md). Using Circle as an example:
 
   ```cangjie
   Circle()

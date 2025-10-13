@@ -1,6 +1,6 @@
 # Progress Bar (Progress)
 
-Progress is a display component that shows the current progress of a target operation. For specific usage, please refer to [Progress](../../../API_Reference/source_en/arkui-cj/cj-information-display-progress.md).
+Progress is a display component that shows the current progress of a target operation. For specific usage, please refer to [Progress](../../../reference/source_en/arkui-cj/cj-information-display-progress.md).
 
 ## Creating a Progress Bar
 

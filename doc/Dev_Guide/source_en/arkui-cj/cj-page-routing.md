@@ -4,7 +4,7 @@ Page routing refers to navigating between different pages and passing data withi
 
 > **Note:**
 >
-> The [Navigation component](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) offers more powerful features and customization capabilities. It is recommended to use this component as the routing framework for applications.
+> The [Navigation component](../../../reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) offers more powerful features and customization capabilities. It is recommended to use this component as the routing framework for applications.
 
 ## Page Navigation
 
@@ -14,15 +14,15 @@ Page navigation is a crucial part of the development process. When using an appl
 
 ![Page Navigation](./figures/page-router.gif)
 
-The Router module provides two navigation modes: [Router.pushUrl](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-pushurl) and [Router.replaceUrl](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-replaceurl). These modes determine whether the target page will replace the current page.
+The Router module provides two navigation modes: [Router.pushUrl](../../../reference/source_en/arkui-cj/cj-apis-router.md#func-pushurl) and [Router.replaceUrl](../../../reference/source_en/arkui-cj/cj-apis-router.md#func-replaceurl). These modes determine whether the target page will replace the current page.
 
-- **Router.pushUrl**: The target page does not replace the current page but is pushed onto the page stack. This preserves the current page's state, allowing users to return to it via the back button or by calling the [Router.back](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-back) method.
+- **Router.pushUrl**: The target page does not replace the current page but is pushed onto the page stack. This preserves the current page's state, allowing users to return to it via the back button or by calling the [Router.back](../../../reference/source_en/arkui-cj/cj-apis-router.md#func-back) method.
 
 - **Router.replaceUrl**: The target page replaces the current page, and the current page is destroyed. This releases the current page's resources, making it impossible to return to it.
 
 > **Note:**
 >
-> The maximum capacity of the page stack is 32 pages. If this limit is exceeded, you can call the [Router.clear](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-clear) method to clear the historical page stack and free up memory space.
+> The maximum capacity of the page stack is 32 pages. If this limit is exceeded, you can call the [Router.clear](../../../reference/source_en/arkui-cj/cj-apis-router.md#func-clear) method to clear the historical page stack and free up memory space.
 
 Additionally, the Router module provides two instance modes: Standard and Single. These modes determine whether the target URL can correspond to multiple instances.
 
@@ -100,7 +100,7 @@ func onJumpClick() {
 }
 ```
 
-In the target page, you can retrieve the passed parameters by calling the Router module's [getParams](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-getParams) method. For example:
+In the target page, you can retrieve the passed parameters by calling the Router module's [getParams](../../../reference/source_en/arkui-cj/cj-apis-router.md#func-getParams) method. For example:
 
 ```cangjie
 import kit.ArkUI.Router
@@ -222,7 +222,7 @@ This document introduces how to implement this functionality using [System Defau
 
 ### System Default Confirmation Dialog
 
-To achieve this, use the Router module's [Router.showAlertBeforeBackPage](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage) and [Router.back](../../../API_Reference/source_en/arkui-cj/cj-apis-router.md#func-back) methods.
+To achieve this, use the Router module's [Router.showAlertBeforeBackPage](../../../reference/source_en/arkui-cj/cj-apis-router.md#func-showAlertBeforeBackPage) and [Router.back](../../../reference/source_en/arkui-cj/cj-apis-router.md#func-back) methods.
 
 Before using Router-related functionalities, import the Router module in your code.
 

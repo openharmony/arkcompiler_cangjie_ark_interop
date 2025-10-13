@@ -7,7 +7,7 @@ Within a session, the following functionalities can be achieved:
 - Configure camera input and output streams. The camera must complete input and output stream configuration before shooting.
   Configuring the input stream involves adding device input, which for users means selecting a specific camera device for shooting. Configuring the output stream determines the form in which data will be output. When an application needs to implement photo capture, the output stream should be configured as a preview stream and a photo capture stream. The preview stream data will be displayed on the XComponent, while the photo capture stream data will be saved to the album via the ImageReceiver interface.
 
-- Add configurations such as flash and focus adjustment. For specific supported configurations and interface descriptions, refer to the [Camera API Reference](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md).
+- Add configurations such as flash and focus adjustment. For specific supported configurations and interface descriptions, refer to the [Camera API Reference](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md).
 
 - Session switching control. Applications can switch camera modes by removing and adding output streams. For example, if the current session's output stream is a photo capture stream, the application can remove the photo capture stream and add a video stream as the output stream, thereby switching from photo capture to video recording.
 
@@ -26,7 +26,7 @@ After completing session configuration, the application can submit and start the
 
     ```
 
-2. Call the [createSession](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-createsessionscenemode) method in the cameraManager class to create a session.
+2. Call the [createSession](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-createsessionscenemode) method in the cameraManager class to create a session.
 
     <!-- compile -->
 
@@ -37,7 +37,7 @@ After completing session configuration, the application can submit and start the
     }
     ```
 
-3. Call the [beginConfig](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-beginconfig) method in the PhotoSession class to configure the session.
+3. Call the [beginConfig](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-beginconfig) method in the PhotoSession class to configure the session.
 
     <!-- compile -->
 
@@ -52,9 +52,9 @@ After completing session configuration, the application can submit and start the
 
     ```
 
-4. Enable the session. Add camera input and output streams to the session. Call [addInput](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-addinputcamerainput) to add the camera input stream and [addOutput](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-addoutputcameraoutput) to add the camera output stream. The following example code demonstrates adding a preview stream (previewOutput) and a photo capture stream (photoOutput), meaning the current mode supports both photo capture and preview.
+4. Enable the session. Add camera input and output streams to the session. Call [addInput](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-addinputcamerainput) to add the camera input stream and [addOutput](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-addoutputcameraoutput) to add the camera output stream. The following example code demonstrates adding a preview stream (previewOutput) and a photo capture stream (photoOutput), meaning the current mode supports both photo capture and preview.
 
-    Call the [commitConfig](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-commitconfig) and [start](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-start) methods in the PhotoSession class to submit the configuration and start the session.
+    Call the [commitConfig](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-commitconfig) and [start](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-start) methods in the PhotoSession class to submit the configuration and start the session.
 
     <!-- compile -->
 
@@ -89,7 +89,7 @@ After completing session configuration, the application can submit and start the
     }
     ```
 
-5. Session control. Call the [stop](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-stop) method in the PhotoSession class to stop the current session. Call [removeOutput](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-removeoutputcameraoutput) and [addOutput](../../../../API_Reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-addoutputcameraoutput) to achieve session switching control. The following example code demonstrates removing the photo capture stream (photoOutput) and adding a video stream (videoOutput), thereby switching from photo capture to video recording.
+5. Session control. Call the [stop](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-stop) method in the PhotoSession class to stop the current session. Call [removeOutput](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-removeoutputcameraoutput) and [addOutput](../../../../reference/source_en/CameraKit/cj-apis-multimedia-camera.md#func-addoutputcameraoutput) to achieve session switching control. The following example code demonstrates removing the photo capture stream (photoOutput) and adding a video stream (videoOutput), thereby switching from photo capture to video recording.
 
     <!-- compile -->
 

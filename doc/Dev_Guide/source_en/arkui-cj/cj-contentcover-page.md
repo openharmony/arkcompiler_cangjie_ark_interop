@@ -1,12 +1,12 @@
 # Binding Full-Screen Modal Page (bindContentCover)
 
-[Full-screen modal page (bindContentCover)](../../../API_Reference/source_en/arkui-cj/cj-universal-attribute-bindcontentcover.md#func-bindcontentcoverboolunitcontentcoveroptions) is a popup interaction page in full-screen modal form that completely covers the underlying parent view. It is suitable for scenarios such as viewing large images or full-screen document review.
+[Full-screen modal page (bindContentCover)](../../../reference/source_en/arkui-cj/cj-universal-attribute-bindcontentcover.md#func-bindcontentcoverboolunitcontentcoveroptions) is a popup interaction page in full-screen modal form that completely covers the underlying parent view. It is suitable for scenarios such as viewing large images or full-screen document review.
 
 ## Usage Constraints
 
 The full-screen modal page is essentially a popup component, with its interaction layer defaulting to the top level within the application.
 
-During [Navigation](../../../API_Reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) transitions, newly pushed pages cannot surpass the full-screen modal in hierarchy and will still appear beneath the modal page. For such scenarios, it is recommended to migrate the modal page content to the transition page. For example, in the aforementioned case, NavDestination can be used to replace the invoked modal page, with the newly pushed page hierarchy remaining below the full-screen modal.
+During [Navigation](../../../reference/source_en/arkui-cj/cj-navigation-switching-navigation.md) transitions, newly pushed pages cannot surpass the full-screen modal in hierarchy and will still appear beneath the modal page. For such scenarios, it is recommended to migrate the modal page content to the transition page. For example, in the aforementioned case, NavDestination can be used to replace the invoked modal page, with the newly pushed page hierarchy remaining below the full-screen modal.
 
 ## Lifecycle
 

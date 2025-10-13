@@ -4,32 +4,32 @@ For the corresponding algorithm specifications, please refer to [Symmetric Key E
 
 ## Encryption
 
-1. Call [createSymKeyGenerator](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with SM4 as the key algorithm and a key length of 128 bits.
+1. Call [createSymKeyGenerator](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createsymkeygeneratorstring) to generate a symmetric key (SymKey) with SM4 as the key algorithm and a key length of 128 bits.
 
     For guidance on generating an SM4 symmetric key, developers can refer to the example below, combined with [Symmetric Key Generation and Conversion Specifications: SM4](./cj-crypto-sym-key-generation-conversion-spec.md#sm4) and [Random Symmetric Key Generation](./cj-crypto-generate-sym-key-randomly.md). Note that there may be parameter differences between the reference documents and the current example, so please pay attention to these distinctions when reading.
 
-2. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|CBC|PKCS7' to create a Cipher instance for encryption operations, specifying SM4_128 as the symmetric key type, CBC as the block mode, and PKCS7 as the padding mode.
+2. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|CBC|PKCS7' to create a Cipher instance for encryption operations, specifying SM4_128 as the symmetric key type, CBC as the block mode, and PKCS7 as the padding mode.
 
-3. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.EncryptMode), specify the encryption key (SymKey), and provide the encryption parameters (IvParamsSpec) corresponding to CBC mode, thereby initializing the encryption Cipher instance.
+3. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to encryption (CryptoMode.EncryptMode), specify the encryption key (SymKey), and provide the encryption parameters (IvParamsSpec) corresponding to CBC mode, thereby initializing the encryption Cipher instance.
 
-4. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (plaintext).
+4. Call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (plaintext).
 
     - For small amounts of data, you can directly call doFinal after init.
     - For large amounts of data, you can call update multiple times, i.e., perform segmented encryption/decryption.
 
-5. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
+5. Call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the encrypted data.
 
     Since the data has already been passed via update, pass None for the data parameter here.
 
 ## Decryption
 
-1. Call [createCipher](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|CBC|PKCS7' to create a Cipher instance for decryption operations, specifying SM4_128 as the symmetric key type, CBC as the block mode, and PKCS7 as the padding mode.
+1. Call [createCipher](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-createcipherstring) with the string parameter 'SM4_128|CBC|PKCS7' to create a Cipher instance for decryption operations, specifying SM4_128 as the symmetric key type, CBC as the block mode, and PKCS7 as the padding mode.
 
-2. Call [init](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DecryptMode), specify the decryption key (SymKey), and provide the decryption parameters (IvParamsSpec) corresponding to CBC mode, thereby initializing the decryption Cipher instance.
+2. Call [init](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-initcryptomode-key-paramsspec) to set the mode to decryption (CryptoMode.DecryptMode), specify the decryption key (SymKey), and provide the decryption parameters (IvParamsSpec) corresponding to CBC mode, thereby initializing the decryption Cipher instance.
 
-3. Call [update](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (ciphertext).
+3. Call [update](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-updatedatablob) to update the data (ciphertext).
 
-4. Call [doFinal](../../../../API_Reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
+4. Call [doFinal](../../../../reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md#func-dofinaldatablob) to obtain the decrypted data.
 
 ## Example
 

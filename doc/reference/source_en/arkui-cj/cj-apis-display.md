@@ -28,7 +28,7 @@ public func getAllDisplays(): Array<Display>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -71,7 +71,7 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -111,7 +111,7 @@ public func getDefaultDisplaySync(): Display
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -297,7 +297,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStat
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -346,7 +346,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisp
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-universal.md) and [Screen Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md) and [Screen Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -396,7 +396,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatu
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -442,7 +442,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDispl
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -800,7 +800,7 @@ public func getCutoutInfo(): CutoutInfo
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Display Error Codes](../../../API_Reference/source_en/errorcodes/cj-errorcode-display.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Display Error Codes](../../../reference/source_en/errorcodes/cj-errorcode-display.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

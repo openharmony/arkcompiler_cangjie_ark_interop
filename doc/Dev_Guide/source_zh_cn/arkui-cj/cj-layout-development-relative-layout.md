@@ -38,7 +38,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 锚点设置涉及子元素相对于其父元素或兄弟元素的位置依赖关系。具体而言，子元素可以将其位置锚定到相对布局容器（RelativeContainer）、辅助线（guideline）、屏障（barrier）或其他子元素上。
 
-为了准确定义锚点，RelativeContainer的子元素必须拥有唯一的组件标识（id），用于指定锚点信息。父元素RelativeContainer的标识默认为“\__container__”，其他子元素的组件标识（id）则通过[id](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-componentid.md)属性设置。
+为了准确定义锚点，RelativeContainer的子元素必须拥有唯一的组件标识（id），用于指定锚点信息。父元素RelativeContainer的标识默认为“\__container__”，其他子元素的组件标识（id）则通过[id](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-componentid.md)属性设置。
 
 > **说明:**
 >
@@ -229,7 +229,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ### 设置相对于锚点的对齐位置
 
-设置了锚点之后，可以通过[alignRules](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#func-alignrulesalignruleoption)属性设置相对于锚点的对齐位置。
+设置了锚点之后，可以通过[alignRules](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#func-alignrulesalignruleoption)属性设置相对于锚点的对齐位置。
 
 在水平方向上，对齐位置可以设置为HorizontalAlign.Start、HorizontalAlign.Center、HorizontalAlign.End。
 
@@ -241,7 +241,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ### 子组件位置偏移
 
-子组件经过相对位置对齐后，位置可能还不是目标位置，开发者可根据需要进行额外偏移设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。建议使用[bias](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#class-bias)来设置额外偏移。
+子组件经过相对位置对齐后，位置可能还不是目标位置，开发者可根据需要进行额外偏移设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。建议使用[bias](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#class-bias)来设置额外偏移。
 
  <!-- run -->
 
@@ -469,7 +469,7 @@ class EntryView {
 
 ## 组件尺寸
 
-当同时存在前端页面设置的子组件尺寸和相对布局规则时，子组件的绘制尺寸依据约束规则确定。子组件自身设置的尺寸优先级高于相对布局规则中的对齐锚点尺寸。因此，若要使子组件与锚点严格对齐，应仅使用alignRules，避免使用[尺寸设置](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-size.md)。
+当同时存在前端页面设置的子组件尺寸和相对布局规则时，子组件的绘制尺寸依据约束规则确定。子组件自身设置的尺寸优先级高于相对布局规则中的对齐锚点尺寸。因此，若要使子组件与锚点严格对齐，应仅使用alignRules，避免使用[尺寸设置](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-size.md)。
 
 > **说明:**
 >
@@ -596,9 +596,9 @@ class EntryView {
 
 链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 \<-- 组件A \<---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的HorizontalAlign.Start对齐，B的left锚点与A的HorizontalAlign.End对齐。
 
-- 链的方向和格式在链头组件的[chainMode](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在竖直方向上，从上边开始）。
+- 链的方向和格式在链头组件的[chainMode](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#func-chainmodeaxis-chainstyle)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在竖直方向上，从上边开始）。
 
-- 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[Packed](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#packed)链中，可以通过[bias](../../../API_Reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#class-bias)设置超出部分的分布。
+- 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[Packed](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#packed)链中，可以通过[bias](../../../reference/source_zh_cn/arkui-cj/cj-universal-attribute-location.md#class-bias)设置超出部分的分布。
 
  <!-- run -->
 
