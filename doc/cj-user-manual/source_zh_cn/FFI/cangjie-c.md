@@ -255,6 +255,52 @@ main() {
 
 `@CallingConv` 只能用于修饰 `foreign` 块、单个 `foreign` 函数和顶层作用域中的 `CFunc` 函数。当 `@CallingConv` 修饰 `foreign` 块时，会为 `foreign` 块中的每个函数分别加上相同的 `@CallingConv` 修饰。
 
+## 使用说明
+
+- 操作系统线程局部变量使用约束
+
+  仓颉和 C 语言互操作时，使用操作系统线程的局部变量存在风险，说明如下：
+
+  1. 线程局部变量包括 C 语言提供的 `thread_local` 定义的变量和使用 `pthread_key_create` 创建的变量。
+  2. 仓颉具备仓颉线程调度能力，支持仓颉线程的切换和恢复，仓颉线程被调度到哪个操作系统线程是随机的，从而在仓颉线程上调用其他语言的线程局部变量是有风险的。
+
+  如下示例中，仓颉调用 C 语言的线程局部变量存在风险：
+
+  ```c
+  // C language logic using thread_local
+  static thread_local int64_t count = 0;
+  int64_t getCount() {
+      count++;
+      return count;
+  }
+  ```
+
+  ```cangjie
+  foreign func getCount(): Int64
+  // Cangjie invokes the preceding C language logic
+  spawn {
+      let r1 = unsafe { getCount() }  // r1 equals 1
+      sleep(Duration.second * 10)
+      let r2 = unsafe { getCount() }  // r2 may not be equal to 2
+  }
+  ```
+
+- 线程绑定使用约束
+
+  仓颉调用 C 语言执行互操作逻辑时，仓颉线程调度到哪个操作系统线程是随机的，线程优先级和线程亲和性等与线程绑定的行为不建议使用。
+
+- 同步原语使用说明
+
+  仓颉调用 C 语言执行互操作逻辑时，当前这个仓颉线程会等待互操作逻辑执行结束，不建议在其他语言中出现可能导致长时间等待的阻塞性行为。
+
+- 对进程 fork 场景的支持说明
+
+  仓颉调用 C 语言执行互操作逻辑时，如果在 C 语言中以 `fork()` 方式创建子进程，子进程中不支持执行仓颉逻辑。同一进程中其他操作系统线程不受影响。
+
+- 进程退出时的说明
+
+  仓颉调用 C 语言执行互操作逻辑时，如果在 C 语言中退出进程，进程内共享的资源已经释放，可能导致非法访问等错误。
+
 ## 类型映射
 
 ### 基础类型

@@ -33,7 +33,6 @@ public macro dprint(input: Tokens): Tokens {
 在解释每行代码之前，先测试这个宏可以达到预期的效果。首先，在当前目录下创建一个 `define` 文件夹，并在 `define` 文件夹中创建 `dprint.cj` 文件，将以上内容复制到 `dprint.cj` 文件中。另外在当前目录下创建 `main.cj`，包含以下测试代码：
 
 <!-- verify -macro12 -->
-<!-- cfg="--debug-macro" -->
 
 ```cangjie
 import define.*
