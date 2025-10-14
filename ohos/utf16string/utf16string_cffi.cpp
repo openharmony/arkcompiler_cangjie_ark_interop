@@ -76,6 +76,9 @@ CJUtf16StringArray CJUtf16StringSplit(CJUtf16StringHandle handle, CJUtf16StringH
 {
     auto result = handle->Split(seperator, limit);
     auto values = new Utf16StringHandle[result.size()];
+    if (!values) {
+        return {};
+    }
     for (uint32_t i = 0; i < result.size(); i++) {
         values[i] = result[i];
     }
