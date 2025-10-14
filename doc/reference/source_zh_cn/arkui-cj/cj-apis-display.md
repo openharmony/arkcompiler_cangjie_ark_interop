@@ -28,7 +28,7 @@ public func getAllDisplays(): Array<Display>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -71,7 +71,7 @@ public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -111,7 +111,7 @@ public func getDefaultDisplaySync(): Display
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -297,7 +297,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStat
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -311,7 +311,7 @@ import ohos.display.*
 class TestCallback <: Callback1Argument<FoldStatus> {
     public init() {}
     public open func invoke(value: FoldStatus): Unit {
-        Hilog.info(0, "AppLogCj", 
+        Hilog.info(0, "AppLogCj",
             "Display fold status changed, current fold status: " + match (value) {
                 case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
                 case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
@@ -346,7 +346,7 @@ public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisp
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)和[屏幕错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)和[屏幕错误码](./cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -360,7 +360,7 @@ import ohos.display.*
 class TestCallback <: Callback1Argument<FoldDisplayMode> {
     public init() {}
     public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "AppLogCj", 
+        Hilog.info(0, "AppLogCj",
             "Display fold status changed, current fold status: " + match (value) {
                 case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
                 case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
@@ -396,7 +396,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatu
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -444,7 +444,7 @@ public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDispl
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -458,7 +458,7 @@ import ohos.display.*
 class TestCallback <: Callback1Argument<FoldDisplayMode> {
     public init() {}
     public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "AppLogCj", 
+        Hilog.info(0, "AppLogCj",
             "Display fold status changed, current fold status: " + match (value) {
                 case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
                 case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
@@ -802,7 +802,7 @@ public func getCutoutInfo(): CutoutInfo
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](../../../reference/source_zh_cn/errorcodes/cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

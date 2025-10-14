@@ -141,7 +141,7 @@ Detailed API descriptions are shown in the following table.
     let bleAdvertisingManager = BleAdvertisingManager()
     ```
 
-7. For error codes, refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
+7. For error codes, refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/ConnectivityKit/cj-errorcode-bluetooth_manager.md).
 
 ### Starting/Stopping Scanning
 
@@ -358,7 +358,6 @@ Detailed API descriptions are shown in the following table.
     }
 
     let bleScanManager = BleScanManager()
-```
+    ```
 
-8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md).
-```
+8. For error codes, please refer to [Bluetooth Service Subsystem Error Codes](../../../../reference/source_en/ConnectivityKit/cj-errorcode-bluetooth_manager.md).

@@ -15,7 +15,7 @@ API sample code usage instructions:
 - If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above sample projects and configuration templates, please refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For the above sample projects and configuration templates, please refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## class ImageReceiver
 
@@ -66,7 +66,7 @@ public func on(eventType: ReceiveType, callback: Callback0Argument): Unit
 | Name      | Type                                                                 | Mandatory | Default | Description                                                                 |
 | :-------- | :------------------------------------------------------------------- | :-------- | :------ | :-------------------------------------------------------------------------- |
 | eventType | [ReceiveType](../ImageKit/cj-apis-image.md#enum-receivetype)         | Yes       | -       | The type of registered event, fixed as 'imageArrival', triggered when receiving an image. |
-| callback  | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes       | -       | The callback function. If the registration event is triggered successfully, err is undefined; otherwise, it is an error object. |
+| callback  | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes       | -       | The callback function. If the registration event is triggered successfully, err is undefined; otherwise, it is an error object. |
 
 ### func readLatestImage()
 
@@ -88,7 +88,7 @@ public func readLatestImage(): Image
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../ImageKit/cj-errorcode-image.md).
 
   | Error Code ID | Error Message                          |
   | :----------- | :------------------------------------- |
@@ -114,7 +114,7 @@ public func readNextImage(): Image
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../../errorcodes/cj-errorcode-image.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Image Error Codes](../ImageKit/cj-errorcode-image.md).
 
   | Error Code ID | Error Message                          |
   | :----------- | :------------------------------------- |

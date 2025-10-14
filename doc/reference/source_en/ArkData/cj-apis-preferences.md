@@ -18,7 +18,7 @@ API sample code usage instructions:
 - If the sample requires obtaining [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 - A valid [dataGroupId](#var-datagroupid) must be obtained from the application market.
 
-For details about the sample project and configuration template, see [Cangjie Sample Code Guide](../../cj-development-intro.md#Cangjie-Sample-Code-Guide).
+For details about the sample project and configuration template, see [Cangjie Sample Code Guide](../cj-development-intro.md#Cangjie-Sample-Code-Guide).
 
 ## const MAX_KEY_LENGTH
 
@@ -800,7 +800,7 @@ public func off(event: PreferencesEvent, callback: ?Callback1Argument<String> = 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | event | [PreferencesEvent](#enum-preferencesevent) | Yes | - | Event type, indicating unsubscription from data changes or inter-process data changes. |
-| callback | ?[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String> | No | None | Callback function to be unsubscribed. If not specified, all callbacks are unsubscribed. <br> String: Type of the changed key. |
+| callback | ?[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String> | No | None | Callback function to be unsubscribed. If not specified, all callbacks are unsubscribed. <br> String: Type of the changed key. |
 
 **Exceptions:**
 
@@ -860,7 +860,7 @@ public func on(event: PreferencesEvent, callback: Callback1Argument<String>): Un
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | event | [PreferencesEvent](#enum-preferencesevent) | Yes | - | Event type. <br> PreferencesChange: Subscribes to data changes. When the value of the subscribed key changes, the callback is triggered after the flush method is executed. <br> PreferencesMultiProcessChange: Subscribes to inter-process data changes. When multiple processes hold the same preferences file, the callback is triggered after the flush method is executed when the value of the subscribed key changes in any process. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String> | Yes | - | Callback function. <br> String: Type of the changed key. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<String> | Yes | - | Callback function. <br> String: Type of the changed key. |
 
 **Example:**
 

@@ -15,7 +15,7 @@ API sample code usage instructions:
 - If the first line of sample code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#仓颉示例代码说明).
 
 ## class CommonEventManager
 
@@ -98,7 +98,7 @@ public static func publish(event: String, options!: CommonEventPublishData =  Co
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](../../../source_en/errorcodes/cj-errorcode-common_event_service.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](./cj-errorcode-common_event_service.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -148,11 +148,11 @@ public static func subscribe(subscriber: CommonEventSubscriber, callback: AsyncC
 | Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | subscriber | [CommonEventSubscriber](cj-apis-common_event_subscriber.md#class-commoneventsubscriber) | Yes | - | Indicates the subscriber object. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)> | Yes | - | Indicates the callback function for receiving common event data. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[CommonEventData](cj-apis-common_event_data.md#class-commoneventdata)> | Yes | - | Indicates the callback function for receiving common event data. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](../../../source_en/errorcodes/cj-errorcode-common_event_service.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](./cj-errorcode-common_event_service.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -181,7 +181,7 @@ public static func unsubscribe(subscriber: CommonEventSubscriber): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](../../../source_en/errorcodes/cj-errorcode-common_event_service.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [Event Error Codes](./cj-errorcode-common_event_service.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -1,4 +1,5 @@
 # Ability Kit（程序框架服务）（Beta特性）
+
 - 仓颉API
     - [ohos.app.ability.ui_ability](cj-apis-app-ability-ui_ability.md)
     - [ohos.app.ability.want](cj-apis-app-ability-want.md)
@@ -21,7 +22,7 @@
     - [ohos.security.skill](cj-apis-skill.md)
     - [ohos.app.ability.error_manager](cj-apis-app-ability-error_manager.md)
 - 错误码
-    - [元能力子系统错误码](../errorcodes/cj-errorcode-ability.md)
-    - [包管理子系统通用错误码](../errorcodes/cj-errorcode-bundle.md)
-    - [访问控制错误码](../errorcodes/cj-errorcode-access-token.md)
-    - [锁屏敏感数据管理错误码](../errorcodes/cj-errorcode-screen_lock_file_manager.md)
+    - [元能力子系统错误码](cj-errorcode-ability.md)
+    - [包管理子系统通用错误码](cj-errorcode-bundle.md)
+    - [访问控制错误码](cj-errorcode-access-token.md)
+    - [锁屏敏感数据管理错误码](cj-errorcode-screen_lock_file_manager.md)

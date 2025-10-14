@@ -44,7 +44,7 @@ public func createWindow(config: Configuration): Window
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -85,7 +85,7 @@ public func findWindow(name: String): Window
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -117,7 +117,7 @@ public func getLastWindow(ctx: BaseContext): Window
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -154,7 +154,7 @@ public func shiftAppWindowFocus(sourceWindowId: Int32, targetWindowId: Int32): U
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -962,7 +962,7 @@ public func destroyWindow(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1000,7 +1000,7 @@ public func getWindowAvoidArea(areaType: AvoidAreaType): AvoidArea
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1027,7 +1027,7 @@ public func getWindowColorSpace(): ColorSpace
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1053,7 +1053,7 @@ public func getWindowProperties(): WindowProperties
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1079,7 +1079,7 @@ public func isWindowShowing(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1105,7 +1105,7 @@ public func isWindowSupportWideGamut(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1135,7 +1135,7 @@ public func minimize(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1169,7 +1169,7 @@ public func moveWindowTo(x: Int32, y: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1196,7 +1196,7 @@ public func off(callbackType: WindowCallbackType, callback: Callback1Argument<UI
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1222,7 +1222,7 @@ public func off(callbackType: WindowCallbackType): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1249,7 +1249,7 @@ public func on(callbackType: WindowCallbackType, callback: Callback1Argument<UIn
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1273,7 +1273,7 @@ public func resetAspectRatio(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1309,7 +1309,7 @@ public func resize(width: UInt32, height: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1340,7 +1340,7 @@ public func setAspectRatio(ratio: Float64): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1369,7 +1369,7 @@ public func setPreferredOrientation(orientation: Orientation): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1400,7 +1400,7 @@ public func setWindowBackgroundColor(color: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../errorcodes/cj-errorcode-universal.md) and [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1431,7 +1431,7 @@ public func setWindowBrightness(brightness: Float32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1457,7 +1457,7 @@ public func setWindowColorSpace(colorSpace: ColorSpace): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1483,7 +1483,7 @@ public func setWindowFocusable(isFocusable: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1513,7 +1513,7 @@ public func setWindowKeepScreenOn(isKeepScreenOn: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1544,7 +1544,7 @@ public func setWindowLayoutFullScreen(isLayoutFullScreen: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1572,7 +1572,7 @@ public func setWindowPrivacyMode(isPrivacyMode: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1604,7 +1604,7 @@ public func setWindowSystemBarEnable(names: Array<SystemBarType>): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1636,7 +1636,7 @@ public func setWindowSystemBarProperties(systemBarProperties: SystemBarPropertie
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1662,7 +1662,7 @@ public func setWindowTouchable(isTouchable: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1686,7 +1686,7 @@ public func showWindow(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1712,7 +1712,7 @@ public func snapshot(): PixelMap
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1894,7 +1894,7 @@ public func createSubWindow(name: String): Window
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1920,7 +1920,7 @@ public func getMainWindow(): Window
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1946,7 +1946,7 @@ public func getSubWindow(): Array<Window>
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Window Error Codes](../errorcodes/cj-errorcode-window.md).
+- BusinessException: Error codes are listed below. For details, see [Window Error Codes](./cj-errorcode-window.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -3,4 +3,4 @@
 - 仓颉API
     - [ohos.geo_location_manager (位置服务)](cj-apis-geo_location_manager.md)
 - 错误码
-    - [位置服务错误码](../errorcodes/cj-errorcode-geo_location_manager.md)
+    - [位置服务错误码](cj-errorcode-geo_location_manager.md)

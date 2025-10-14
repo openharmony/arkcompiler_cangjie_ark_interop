@@ -113,7 +113,7 @@
     let bleAdvertisingManager = BleAdvertisingManager()
     ```
 
-7. 错误码请参见[蓝牙服务子系统错误码](../../../../reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md)。
+7. 错误码请参见[蓝牙服务子系统错误码](../../../../reference/source_zh_cn/ConnectivityKit/cj-errorcode-bluetooth_manager.md)。
 
 ### 开启、关闭扫描
 
@@ -332,4 +332,4 @@
     let bleScanManager = BleScanManager()
     ```
 
-8. 错误码请参见[蓝牙服务子系统错误码](../../../../reference/source_zh_cn/errorcodes/cj-errorcode-bluetooth_manager.md)。
+8. 错误码请参见[蓝牙服务子系统错误码](../../../../reference/source_zh_cn/ConnectivityKit/cj-errorcode-bluetooth_manager.md)。

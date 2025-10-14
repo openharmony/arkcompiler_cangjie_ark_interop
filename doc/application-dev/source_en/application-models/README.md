@@ -1,4 +1,5 @@
-# Application Framework(Beta Feature)
+# Application Framework (Beta Feature)
+
 - [Ability Kit Introduction](cj-abilitykit-overview.md)
 - [Application Models](cj-application-models.md)
 - Stage Model Development Guide

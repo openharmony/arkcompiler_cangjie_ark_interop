@@ -481,7 +481,7 @@
             - [Smartphones](reference/source_en/cj-phone-syscap-list.md)
             - [Tablets](reference/source_en/cj-tablet-syscap-list.md)
         - [API Tag-based Management](reference/source_en/cj-ifavailable.md)
-        - [Universal Error Codes](reference/source_en/errorcodes/cj-errorcode-universal.md)
+        - [Universal Error Codes](reference/source_en/cj-errorcode-universal.md)
     - Application Framework
         - Ability Kit (Application Framework Services)
             - Cangjie APIs
@@ -506,10 +506,10 @@
                 - [ohos.security.skill](reference/source_en/AbilityKit/cj-apis-skill.md)
                 - [ohos.app.ability.error_manager](reference/source_en/AbilityKit/cj-apis-app-ability-error_manager.md)
             - Error Codes
-                - [Ability Subsystem Error Codes](reference/source_en/errorcodes/cj-errorcode-ability.md)
-                - [Bundle Management Subsystem Universal Error Codes](reference/source_en/errorcodes/cj-errorcode-bundle.md)
-                - [Access Control Error Codes](reference/source_en/errorcodes/cj-errorcode-access-token.md)
-                - [Screen Lock Sensitive Data Management Error Codes](reference/source_en/errorcodes/cj-errorcode-screen_lock_file_manager.md)
+                - [Ability Subsystem Error Codes](reference/source_en/AbilityKit/cj-errorcode-ability.md)
+                - [Bundle Management Subsystem Universal Error Codes](reference/source_en/AbilityKit/cj-errorcode-bundle.md)
+                - [Access Control Error Codes](reference/source_en/AbilityKit/cj-errorcode-access-token.md)
+                - [Screen Lock Sensitive Data Management Error Codes](reference/source_en/AbilityKit/cj-errorcode-screen_lock_file_manager.md)
         - ArkData (Ark Data Management)
             - Cangjie APIs
                 - [ohos.data_share_predicates (Data Share Predicates)](reference/source_en/ArkData/cj-apis-data_share_predicates.md)
@@ -518,9 +518,9 @@
                 - [ohos.relational_store (Relational Database)](reference/source_en/ArkData/cj-apis-relational_store.md)
                 - [ohos.values_bucket (Data Set)](reference/source_en/ArkData/cj-apis-values_bucket.md)
             - Error Codes
-                - [Relational Database Error Codes](reference/source_en/errorcodes/cj-errorcode-data-rdb.md)
-                - [Distributed Key-Value Database Error Codes](reference/source_en/errorcodes/cj-errorcode-distributed_kv_store.md)
-                - [User Preferences Error Codes](reference/source_en/errorcodes/cj-errorcode-preferences.md)
+                - [Relational Database Error Codes](reference/source_en/ArkData/cj-errorcode-data-rdb.md)
+                - [Distributed Key-Value Database Error Codes](reference/source_en/ArkData/cj-errorcode-distributed_kv_store.md)
+                - [User Preferences Error Codes](reference/source_en/ArkData/cj-errorcode-preferences.md)
         - ArkUI (Ark UI Framework)
             - Cangjie APIs
                 - UI Interface
@@ -688,26 +688,26 @@
                 - [Framework Interfaces](reference/source_en/arkui-cj/cj-ui-framework.md)
             - Error Codes
                 - UI Interface
-                    - [Animation Error Codes](reference/source_en/errorcodes/cj-errorcode-animator.md)
+                    - [Animation Error Codes](reference/source_en/arkui-cj/cj-errorcode-animator.md)
                 - Graphics
-                    - [Screen Error Codes](reference/source_en/errorcodes/cj-errorcode-display.md)
-                    - [Window Error Codes](reference/source_en/errorcodes/cj-errorcode-window.md)
+                    - [Screen Error Codes](reference/source_en/arkui-cj/cj-errorcode-display.md)
+                    - [Window Error Codes](reference/source_en/arkui-cj/cj-errorcode-window.md)
         - ArkWeb
             - Cangjie API
                 - [ohos.webview (Webview)](reference/source_en/ArkWeb/cj-apis-webview.md)
             - Error Codes
-                - [Webview Error Codes](reference/source_en/errorcodes/cj-errorcode-webview.md)
+                - [Webview Error Codes](reference/source_en/ArkWeb/cj-errorcode-webview.md)
         - Core File Kit
             - Cangjie API
                 - [ohos.file_fileuri (File URI)](reference/source_en/CoreFileKit/cj-apis-file_fileuri.md)
                 - [ohos.file_fs (File Management)](reference/source_en/CoreFileKit/cj-apis-file_fs.md)
             - Error Codes
-                - [File Management Error Codes](reference/source_en/errorcodes/cj-errorcode-filemanagement.md)
+                - [File Management Error Codes](reference/source_en/CoreFileKit/cj-errorcode-filemanagement.md)
         - IPC Kit
             - Cangjie API
                 - [ohos.rpc (RPC Communication)](reference/source_en/IPCKit/cj-apis-rpc.md)
             - Error Codes
-                - [IPC Error Codes](reference/source_en/errorcodes/cj-errorcode-rpc.md)
+                - [IPC Error Codes](reference/source_en/IPCKit/cj-errorcode-rpc.md)
         - Localization Kit
             - Cangjie API
                 - [ohos.i18n (Internationalization-I18n)](reference/source_en/LocalizationKit/cj-apis-i18n.md)
@@ -715,20 +715,20 @@
                 - [ohos.raw_file_descriptor](reference/source_en/LocalizationKit/cj-apis-raw_file_descriptor.md)
                 - [ohos.resource](reference/source_en/LocalizationKit/cj-apis-resource.md)
             - Error Codes
-                - [I18n Error Codes](reference/source_en/errorcodes/cj-errorcode-i18n.md)
-                - [Resource Management Error Codes](reference/source_en/errorcodes/cj-errorcode-resource-manager.md)
+                - [I18n Error Codes](reference/source_en/LocalizationKit/cj-errorcode-i18n.md)
+                - [Resource Management Error Codes](reference/source_en/LocalizationKit/cj-errorcode-resource-manager.md)
     - System
         - Security
             - Crypto Architecture Kit
                 - Cangjie API
                     - [ohos.crypto (Cryptography Algorithm Framework)](reference/source_en/CryptoArchitectureKit/cj-apis-crypto.md)
                 - Error Codes
-                    - [Crypto Framework Error Codes](reference/source_en/errorcodes/cj-errorcode-crypto.md)
+                    - [Crypto Framework Error Codes](reference/source_en/CryptoArchitectureKit/cj-errorcode-crypto.md)
             - Universal Keystore Kit
                 - Cangjie API
                     - [ohos.security_huks (Universal Keystore System)](reference/source_en/UniversalKeystoreKit/cj-apis-security_huks.md)
                 - Error Codes
-                    - [HUKS Error Codes](reference/source_en/errorcodes/cj-errorcode-huks.md)
+                    - [HUKS Error Codes](reference/source_en/UniversalKeystoreKit/cj-errorcode-huks.md)
         - Network
             - Connectivity Kit
                 - Cangjie API
@@ -739,17 +739,17 @@
                     - [ohos.bluetooth.hfp (Bluetooth HFP Module)](reference/source_en/ConnectivityKit/cj-apis-bluetooth-hfp.md)
                     - [ohos.wifi_manager (WLAN)](reference/source_en/ConnectivityKit/cj-apis-wifi_manager.md)
                 - Error Codes
-                    - [Bluetooth Service Subsystem Error Codes](reference/source_en/errorcodes/cj-errorcode-bluetooth_manager.md)
-                    - [WIFI Error Codes](reference/source_en/errorcodes/cj-errorcode-wifi-manager.md)
-                    - [NFC Error Codes](reference/source_en/errorcodes/cj-errorcode-nfc.md)
-                    - [SE (Secure Element) Error Codes](reference/source_en/errorcodes/cj-errorcode-secure_element.md)
+                    - [Bluetooth Service Subsystem Error Codes](reference/source_en/ConnectivityKit/cj-errorcode-bluetooth_manager.md)
+                    - [WIFI Error Codes](reference/source_en/ConnectivityKit/cj-errorcode-wifi-manager.md)
+                    - [NFC Error Codes](reference/source_en/ConnectivityKit/cj-errorcode-nfc.md)
+                    - [SE (Secure Element) Error Codes](reference/source_en/ConnectivityKit/cj-errorcode-secure_element.md)
             - Network Kit
                 - Cangjie API
                     - [ohos.net.connection (Network Connection Management)](reference/source_en/NetworkKit/cj-apis-net-connection.md)
                     - [ohos.net.http (Data Request)](reference/source_en/NetworkKit/cj-apis-net-http.md)
                 - Error Codes
-                    - [HTTP Error Codes](reference/source_en/errorcodes/cj-errorcode-net-http.md)
-                    - [Network Connection Management Error Codes](reference/source_en/errorcodes/cj-errorcode-net-connection.md)
+                    - [HTTP Error Codes](reference/source_en/NetworkKit/cj-errorcode-net-http.md)
+                    - [Network Connection Management Error Codes](reference/source_en/NetworkKit/cj-errorcode-net-connection.md)
         - Basic Features
             - Basic Services Kit
                 - Cangjie API
@@ -770,17 +770,17 @@
                         - [ohos.common_event_publish_data](reference/source_en/BasicServicesKit/cj-apis-common_event_publish_data.md)
                         - [ohos.value_type](reference/source_en/BasicServicesKit/cj-apis-value_type.md)
                 - Error Codes
-                    - [Upload/Download Error Codes](reference/source_en/errorcodes/cj-errorcode-request.md)
-    - [Time and Timezone Error Codes](reference/source_en/errorcodes/cj-errorcode-time.md)
-    - [Event Error Codes](reference/source_en/errorcodes/cj-errorcode-common_event_service.md)
-    - [System Power Management Error Codes](reference/source_en/errorcodes/cj-errorcode-power.md)
-    - [Account Management Error Codes](reference/source_en/errorcodes/cj-errorcode-basic-account.md)
+                    - [Upload/Download Error Codes](reference/source_en/BasicServicesKit/cj-errorcode-request.md)
+                    - [Time and Timezone Error Codes](reference/source_en/BasicServicesKit/cj-errorcode-time.md)
+                    - [Event Error Codes](reference/source_en/BasicServicesKit/cj-errorcode-common_event_service.md)
+                    - [System Power Management Error Codes](reference/source_en/BasicServicesKit/cj-errorcode-power.md)
+                    - [Account Management Error Codes](reference/source_en/BasicServicesKit/cj-errorcode-basic-account.md)
         - Hardware
             - Sensor Service Kit
                 - Cangjie API
                     - [ohos.sensor (Sensors)](reference/source_en/SensorServiceKit/cj-apis-sensor.md)
                 - Error Codes
-                    - [Sensor Error Codes](reference/source_en/errorcodes/cj-errorcode-sensor.md)
+                    - [Sensor Error Codes](reference/source_en/SensorServiceKit/cj-errorcode-sensor.md)
             - Telephony Kit
                 - Cangjie API
                     - [ohos.telephony.call](reference/source_en/TelephonyKit/cj-apis-telephony-call.md)
@@ -791,31 +791,31 @@
                     - [ohos.hilog (HiLog Logging)](reference/source_en/PerformanceAnalysisKit/cj-apis-hilog.md)
                     - [ohos.hi_tracemeter (Performance Tracing)](reference/source_en/PerformanceAnalysisKit/cj-apis-hi_tracemeter.md)
                 - Error Codes
-                    - [Application Event Logging Error Codes](reference/source_en/errorcodes/cj-errorcode-hiappevent.md)
-                    - [Hidebug CpuUsage Error Codes](reference/source_en/errorcodes/cj-errorcode-hidebug-cpuusage.md)
+                    - [Application Event Logging Error Codes](reference/source_en/PerformanceAnalysisKit/cj-errorcode-hiappevent.md)
+                    - [Hidebug CpuUsage Error Codes](reference/source_en/PerformanceAnalysisKit/cj-errorcode-hidebug-cpuusage.md)
             - Test Kit
                 - Cangjie API
                     - [ohos.ability_delegator_registry (AbilityDelegatorRegistry)](reference/source_en/TestKit/cj-apis-ability_delegator_registry.md)
                     - [ohos.ui_test (UI Testing)](reference/source_en/TestKit/cj-apis-ui_test.md)
                 - Error Codes
-                    - [UITest Error Codes](reference/source_en/errorcodes/cj-errorcode-uitest.md)
+                    - [UITest Error Codes](reference/source_en/TestKit/cj-errorcode-uitest.md)
     - Media
         - Camera Kit
             - Cangjie API
                 - [ohos.multimedia.camera (Camera Management)](reference/source_en/CameraKit/cj-apis-multimedia-camera.md)
             - Error Codes
-                - [Camera Error Codes](reference/source_en/errorcodes/cj-errorcode-multimedia-camera.md)
+                - [Camera Error Codes](reference/source_en/CameraKit/cj-errorcode-multimedia-camera.md)
         - Image Kit
             - Cangjie API
                 - [ohos.multimedia.image (Image Processing)](reference/source_en/ImageKit/cj-apis-image.md)
             - Error Codes
-                - [Image Error Codes](reference/source_en/errorcodes/cj-errorcode-image.md)
+                - [Image Error Codes](reference/source_en/ImageKit/cj-errorcode-image.md)
         - Media Kit
             - Cangjie API
                 - [ohos.multimedia.media (Media Services)](reference/source_en/MediaKit/cj-apis-multimedia_media.md)
                 - [ohos.multimedia.image](reference/source_en/MediaKit/cj-apis-multimedia-image.md)
             - Error Codes
-                - [Media Error Codes](reference/source_en/errorcodes/cj-errorcode-multimedia-media.md)
+                - [Media Error Codes](reference/source_en/MediaKit/cj-errorcode-multimedia-media.md)
         - Media Library Kit
             - Cangjie API
                 - [ohos.file.photo_access_helper (Photo Album Management Module)](reference/source_en/MediaLibraryKit/cj-apis-file-photo_access_helper)
@@ -824,17 +824,17 @@
             - Cangjie API
                 - [ohos.color_manager (Color Management)](reference/source_en/ArkGraphics2D/cj-apis-color_manager.md)
             - Error Codes
-                - [Color Management Error Codes](reference/source_en/errorcodes/cj-errorcode-colorspace-manager.md)
+                - [Color Management Error Codes](reference/source_en/ArkGraphics2D/cj-errorcode-colorspace-manager.md)
     - Application Services
         - Location Kit
             - Cangjie API
                 - [ohos.geo_location_manager (Location Services)](reference/source_en/LocationKit/cj-apis-geo_location_manager.md)
             - Error Codes
-                - [Location Services Error Codes](reference/source_en/errorcodes/cj-errorcode-geo_location_manager.md)
+                - [Location Services Error Codes](reference/source_en/LocationKit/cj-errorcode-geo_location_manager.md)
     - Cangjie and ArkTS Interoperability Library
         - [ohos.ark_interop (ArkTS Interoperability Library)](reference/source_en/arkinterop/cj-apis-ark_interop.md)
             - Error Codes
-                - [ArkTS Interoperability Library Error Codes](reference/source_en/errorcodes/cj-errorcode-ark_interop.md)
+                - [ArkTS Interoperability Library Error Codes](reference/source_en/arkinterop/cj-errorcode-ark_interop.md)
         - [ohos.ark_interop_helper (ArkTS Interoperability Common Utility Functions)](reference/source_en/arkinterop/cj-apis-ark_interop_helper.md)
         - [ohos.business_exception (Common Exception Information)](reference/source_en/arkinterop/cj-api-business_exception.md)
         - [ohos.callback_invoke (Common Callback Information)](reference/source_en/arkinterop/cj-api-callback_invoke.md)

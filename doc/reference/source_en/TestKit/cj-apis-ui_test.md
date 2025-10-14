@@ -22,7 +22,7 @@ API example code usage instructions:
 - If the first line of the example code has a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details on the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#cangjie-example-code-instructions).
+For details on the example project and configuration template mentioned above, refer to [Cangjie Example Code Instructions](../cj-development-intro.md#cangjie-example-code-instructions).
 
 ## Running Tests
 
@@ -67,7 +67,7 @@ public func clearText(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -117,7 +117,7 @@ public func dragTo(target: Component): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -144,7 +144,7 @@ public func getBounds(): Rect
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -170,7 +170,7 @@ public func getBoundsCenter(): Point
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -196,7 +196,7 @@ public func getDescription(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -294,7 +294,7 @@ public func isCheckable(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -320,7 +320,7 @@ public func isChecked(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -400,7 +400,7 @@ public func isLongClickable(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -474,7 +474,7 @@ public func pinchIn(scale: Float32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -501,7 +501,7 @@ public func pinchOut(scale: Float32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -534,7 +534,7 @@ public func scrollSearch(on: On): ?Component
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -561,7 +561,7 @@ public func scrollToBottom(speed!: Int64 = 600): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -588,7 +588,7 @@ public func scrollToTop(speed!: Int64 = 600): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes## class Driver
+- BusinessException: Corresponding error codes are listed in the table below. For details, refer to [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes## class Driver
 
 ```cangjie
 public class Driver {}
@@ -620,7 +620,7 @@ public static func create(): Driver
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](./cj-errorcode-uitest.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -659,7 +659,7 @@ public func assertComponentExist(on: On): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -706,7 +706,7 @@ public func click(x: Int32, y: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -778,7 +778,7 @@ public func delayMs(duration: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -819,7 +819,7 @@ public func doubleClick(x: Int32, y: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -869,7 +869,7 @@ public func drag(
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -953,7 +953,7 @@ public func findComponents(on: On): ?Array<Component>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -999,7 +999,7 @@ public func findWindow(filter: WindowFilter): ?UiWindow
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1040,7 +1040,7 @@ public func fling(from: Point, to: Point, stepLen: Int32, speed: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1081,7 +1081,7 @@ public func fling(direction: UiDirection, speed: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1224,7 +1224,7 @@ public func injectMultiPointerAction(pointers: PointerMatrix, speed!: Int32 = 60
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1273,7 +1273,7 @@ public func inputText(p: Point, text: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1321,7 +1321,7 @@ public func longClick(x: Int32, y: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1364,7 +1364,7 @@ public func mouseClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key2!: In
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1407,7 +1407,7 @@ public func mouseDoubleClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1447,7 +1447,7 @@ public func mouseDrag(from: Point, to: Point, speed!: Int32 = 600): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1490,7 +1490,7 @@ public func mouseLongClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key2!
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1530,7 +1530,7 @@ public func mouseMoveTo(p: Point): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1572,7 +1572,7 @@ public func mouseMoveWithTrack(from: Point, to: Point, speed!: Int32 = 600): Uni
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1617,7 +1617,7 @@ public func mouseScroll(p: Point, down: Bool, d: Int32, key1!: Int32 = 0, key2!:
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1714,7 +1714,7 @@ public func screenCap(savePath: String): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1761,7 +1761,7 @@ public func screenCapture(savePath: String, rect!: Rect = Rect(0,0,0,0))): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1801,7 +1801,7 @@ public func setDisplayRotation(rotation: DisplayRotation): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1841,7 +1841,7 @@ public func setDisplayRotationEnabled(enabled: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1891,7 +1891,7 @@ public func swipe(
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1933,7 +1933,7 @@ public func triggerCombineKeys(key0: Int32, key1: Int32, key2!: Int32 = 0): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](../../errorcodes/cj-errorcode-uitest.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest Error Codes](./cj-errorcode-uitest.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2031,7 +2031,7 @@ public func checkable(b!: Bool = true): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2085,7 +2085,7 @@ public func checked(b!: Bool = true): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2186,7 +2186,7 @@ public func description(val: String, pattern!: MatchPattern = MatchPattern.Equal
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2240,7 +2240,7 @@ public func enabled(b!: Bool = true): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2294,7 +2294,7 @@ public func focused(b!: Bool = true): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2348,7 +2348,7 @@ public func id(id: String): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2400,7 +2400,7 @@ public func inWindow(bundleName: String): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2454,7 +2454,7 @@ public func isAfter(on: On): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2509,7 +2509,7 @@ public func isBefore(on: On): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2564,7 +2564,7 @@ public func longClickable(b!: Bool = true): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2618,7 +2618,7 @@ public func onType(tp: String): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2672,7 +2672,7 @@ public func scrollable(b!: Bool = true): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2726,7 +2726,7 @@ public func selected(b!: Bool = true): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2827,7 +2827,7 @@ public func within(on: On): On
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2978,7 +2978,7 @@ public static func create(fingers: Int32, steps: Int32): PointerMatrix
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3019,7 +3019,7 @@ public func setPoint(finger: Int32, step: Int32, point: Point): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3262,7 +3262,7 @@ public func once(onceType: OnceType, callback: Callback<UIElementInfo>): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3292,7 +3292,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3331,7 +3331,7 @@ public func focus(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3372,7 +3372,7 @@ public func getBounds(): Rect
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3413,7 +3413,7 @@ public func getBundleName(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3454,7 +3454,7 @@ public func getTitle(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3495,7 +3495,7 @@ public func getWindowMode(): WindowMode
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3536,7 +3536,7 @@ public func isActive(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3577,7 +3577,7 @@ public func isFocused(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3614,7 +3614,7 @@ public func maximize(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3653,7 +3653,7 @@ public func minimize(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3699,7 +3699,7 @@ public func moveTo(x: Int32, y: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3744,7 +3744,7 @@ public func resize(wide: Int32, height: Int32, direction: ResizeDirection): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3784,7 +3784,7 @@ public func resume(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3823,7 +3823,7 @@ public func split(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](../../errorcodes/cj-errorcode-uitest.md) and [universal error codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [uitest error codes](./cj-errorcode-uitest.md) and [universal error codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -3,4 +3,4 @@
 - Cangjie API
     - [ohos.crypto (Cryptography Algorithm Framework)](cj-apis-crypto.md)
 - Error Codes
-    - [Crypto Framework Error Codes](../errorcodes/cj-errorcode-crypto.md)
+    - [Crypto Framework Error Codes](cj-errorcode-crypto.md)

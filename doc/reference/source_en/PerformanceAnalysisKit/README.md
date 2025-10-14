@@ -5,6 +5,6 @@
     - [ohos.hilog (HiLog Logging)](cj-apis-hilog.md)
     - [ohos.hi_tracemeter (Performance Tracing)](cj-apis-hi_tracemeter.md)
 - Error Codes
-    - [Application Event Logging Error Codes](../errorcodes/cj-errorcode-hiappevent.md)
-    - [Hidebug CpuUsage Error Codes](../errorcodes/cj-errorcode-hidebug-cpuusage.md)
+    - [Application Event Logging Error Codes](cj-errorcode-hiappevent.md)
+    - [Hidebug CpuUsage Error Codes](cj-errorcode-hidebug-cpuusage.md)
     

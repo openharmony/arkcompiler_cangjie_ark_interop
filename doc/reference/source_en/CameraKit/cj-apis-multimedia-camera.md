@@ -21,7 +21,7 @@ API sample code usage instructions:
 - If the sample code has a "// index.cj" comment on the first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#仓颉示例代码说明).
 
 ## func getCameraManager(UIAbilityContext)
 
@@ -49,7 +49,7 @@ public func getCameraManager(context: UIAbilityContext): CameraManager
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -112,7 +112,7 @@ func getExposureMode(): ExposureMode
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -157,7 +157,7 @@ func getExposureValue(): Float64
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -200,7 +200,7 @@ func getMeteringPoint(): Point
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -242,7 +242,7 @@ func setExposureBias(exposureBias: Float64): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -287,7 +287,7 @@ func setExposureMode(aeMode: ExposureMode): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -332,7 +332,7 @@ func setMeteringPoint(point: Point): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -392,7 +392,7 @@ func getExposureBiasRange(): Array<Float64>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -441,7 +441,7 @@ func isExposureModeSupported(aeMode: ExposureMode): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -494,7 +494,7 @@ func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -563,7 +563,7 @@ func getActiveColorSpace(): ColorSpace
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -628,7 +628,7 @@ Table 2: Photo Mode
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -689,7 +689,7 @@ func getSupportedColorSpaces(): Array<ColorSpace>
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -751,7 +751,7 @@ func getFlashMode(): FlashMode
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -799,7 +799,7 @@ Before setting, check:
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -858,7 +858,7 @@ func hasFlash(): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -908,7 +908,7 @@ func isFlashModeSupported(flashMode: FlashMode): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes as listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -971,7 +971,7 @@ func getFocalLength(): Float64
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1015,7 +1015,7 @@ func getFocusMode(): FocusMode
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1059,7 +1059,7 @@ func getFocusPoint(): Point
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1104,7 +1104,7 @@ Before setting, check whether the device supports the specified focus mode using
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1150,7 +1150,7 @@ This coordinate system is based on the horizontal device orientation with the ch
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1214,7 +1214,7 @@ func isFocusModeSupported(afMode: FocusMode): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1283,7 +1283,7 @@ func addInput(cameraInput: CameraInput): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1328,7 +1328,7 @@ func addOutput(cameraOutput: CameraOutput): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1367,7 +1367,7 @@ func beginConfig(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1493,7 +1493,7 @@ func commitConfig(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1529,7 +1529,7 @@ func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1572,7 +1572,7 @@ This method must be called between [`beginConfig`](#func-beginconfig) and [`comm
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1617,7 +1617,7 @@ func removeOutput(cameraOutput: CameraOutput): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1664,7 +1664,7 @@ func start(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1701,7 +1701,7 @@ func stop(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1761,7 +1761,7 @@ func getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1805,7 +1805,7 @@ func setVideoStabilizationMode(mode: VideoStabilizationMode): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1867,7 +1867,7 @@ func isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1932,7 +1932,7 @@ func getZoomRatio(): Float64
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2050,7 +2050,7 @@ func setZoomRatio(zoomRatio: Float64): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2108,7 +2108,7 @@ func getZoomRatioRange(): Array<Float64>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2255,7 +2255,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2295,11 +2295,11 @@ public func off(eventType: CameraEvents, camera: CameraDevice, callback: Callbac
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Event to listen for. |
 | camera | [CameraDevice](#class-cameradevice) | Yes | - | CameraDevice object. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2343,7 +2343,7 @@ public func off(eventType: CameraEvents, camera: CameraDevice): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2388,11 +2388,11 @@ public func on(eventType: CameraEvents, camera: CameraDevice, callback: Callback
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Event to listen for. Must be CameraError. Can be listened to after successful creation of CameraInput object. Triggered when camera device encounters errors (e.g., device unavailable or conflicts), returning corresponding error messages. |
 | camera | [CameraDevice](#class-cameradevice) | Yes | - | CameraDevice object. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to obtain results. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to obtain results. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2446,7 +2446,7 @@ public func open(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2497,7 +2497,7 @@ public func open(isSecureEnabled: Bool): UInt64
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2562,7 +2562,7 @@ public func createCameraInput(camera: CameraDevice): CameraInput
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2617,7 +2617,7 @@ public func createCameraInput(position: CameraPosition, cameraType: CameraType):
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2667,7 +2667,7 @@ public func createPhotoOutput(?Profile = None): PhotoOutput
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2720,7 +2720,7 @@ public func createPreviewOutput(profile: Profile, surfaceId: String): PreviewOut
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2773,7 +2773,7 @@ public func createPreviewOutput(surfaceId: String): PreviewOutput
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2826,7 +2826,7 @@ public func createSession(mode: SceneMode): Session
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2877,7 +2877,7 @@ public func createVideoOutput(profile: VideoProfile, surfaceId: String): VideoOu
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2930,7 +2930,7 @@ public func createVideoOutput(surfaceId: String): VideoOutput
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3224,11 +3224,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CameraStatu
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 |eventType|[CameraEvents](#enum-cameraevents)|Yes|-| The event to unregister, must be `CameraStatus`. Can be monitored after successfully obtaining the `CameraManager` object. Currently, only device open/close events trigger this event and return corresponding information. |
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|Yes|-| The callback function. |
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|Yes|-| The callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3266,11 +3266,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FoldStatusI
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 |eventType|[CameraEvents](#enum-cameraevents)|Yes|-| The event to unregister, must be `FoldStatusChange`. Indicates a change in the fold status of a foldable device. |
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|Yes|-| The callback function. |
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|Yes|-| The callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3308,11 +3308,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<TorchStatus
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 |eventType|[CameraEvents](#enum-cameraevents)|Yes|-| The event to unregister, must be `TorchStatusChange`. Can be monitored after successfully obtaining the `CameraManager` object. Currently, only torch on/off, torch unavailable, and torch restored events trigger this event and return corresponding information. |
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|Yes|-| The callback function. |
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|Yes|-| The callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3353,7 +3353,7 @@ public func off(eventType: CameraEvents): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3395,11 +3395,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CameraStatus
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 |eventType|[CameraEvents](#enum-cameraevents)|Yes|-| The event to register, must be `CameraStatus`. Can be monitored after successfully obtaining the `CameraManager` object. Currently, only device open/close events trigger this event and return corresponding information. |
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|Yes|-| The callback function to receive camera status change information. |
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CameraStatusInfo](#class-camerastatusinfo)>|Yes|-| The callback function to receive camera status change information. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3458,11 +3458,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FoldStatusIn
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 |eventType|[CameraEvents](#enum-cameraevents)|Yes|-| The event to register, must be `FoldStatusChange`. Indicates a change in the fold status of a foldable device. |
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|Yes|-| The callback function. Returns fold status information of the device. |
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatusInfo](#class-foldstatusinfo)>|Yes|-| The callback function. Returns fold status information of the device. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3521,11 +3521,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<TorchStatusI
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 |eventType|[CameraEvents](#enum-cameraevents)|Yes|-| The event to register, must be `TorchStatusChange`. Can be monitored after successfully obtaining the `CameraManager` object. Currently, only torch on/off, torch unavailable, and torch restored events trigger this event and return corresponding information. |
-|callback|[Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|Yes|-| The callback function to receive torch status change information. |
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[TorchStatusInfo](#class-torchstatusinfo)>|Yes|-| The callback function to receive torch status change information. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3583,7 +3583,7 @@ public func setTorchMode(mode: TorchMode): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4220,7 +4220,7 @@ public func capture(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4265,7 +4265,7 @@ public func capture(setting: PhotoCaptureSetting): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4311,7 +4311,7 @@ public func enableMirror(enabled: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4358,7 +4358,7 @@ public func enableMovingPhoto(enabled: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4405,7 +4405,7 @@ public func getActiveProfile(): Profile
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4459,7 +4459,7 @@ public func getPhotoRotation(deviceDegree: Int32): ImageRotation
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4539,7 +4539,7 @@ public func isMirrorSupported(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4584,7 +4584,7 @@ public func isMovingPhotoSupported(): Bool
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4626,11 +4626,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureStar
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be CaptureStartWithInfo. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)> | Yes | - | Callback function for handling [CaptureStartInfo](#class-capturestartinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)> | Yes | - | Callback function for handling [CaptureStartInfo](#class-capturestartinfo). |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4672,11 +4672,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be FrameShutter. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)> | Yes | - | Callback function for handling [FrameShutterInfo](#class-frameshutterinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)> | Yes | - | Callback function for handling [FrameShutterInfo](#class-frameshutterinfo). |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4718,11 +4718,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<CaptureEndI
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be CaptureEnd. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)> | Yes | - | Callback function for handling [CaptureEndInfo](#class-captureendinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)> | Yes | - | Callback function for handling [CaptureEndInfo](#class-captureendinfo). |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4764,11 +4764,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FrameShutte
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be FrameShutterEnd. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)> | Yes | - | Callback function for handling [FrameShutterEndInfo](#class-frameshutterendinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)> | Yes | - | Callback function for handling [FrameShutterEndInfo](#class-frameshutterendinfo). |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4810,11 +4810,11 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be one of [CaptureReady, CameraError]. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4856,11 +4856,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<Float64>): 
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be EstimatedCaptureDuration. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Float64> | Yes | - | Callback function for obtaining estimated capture duration (in milliseconds). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Float64> | Yes | - | Callback function for obtaining estimated capture duration (in milliseconds). |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4903,7 +4903,7 @@ public func off(eventType: CameraEvents): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -4949,11 +4949,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureStart
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be CaptureStartWithInfo. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)> | Yes | - | Callback function to handle [CaptureStartInfo](#class-capturestartinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureStartInfo](#class-capturestartinfo)> | Yes | - | Callback function to handle [CaptureStartInfo](#class-capturestartinfo). |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5016,11 +5016,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be FrameShutter. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)> | Yes | - | Callback function to handle [FrameShutterInfo](#class-frameshutterinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterInfo](#class-frameshutterinfo)> | Yes | - | Callback function to handle [FrameShutterInfo](#class-frameshutterinfo). |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5083,11 +5083,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<CaptureEndIn
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be CaptureEnd. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)> | Yes | - | Callback function to handle [CaptureEndInfo](#class-captureendinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CaptureEndInfo](#class-captureendinfo)> | Yes | - | Callback function to handle [CaptureEndInfo](#class-captureendinfo). |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5150,11 +5150,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FrameShutter
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be FrameShutterEnd. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)> | Yes | - | Callback function to handle [FrameShutterEndInfo](#class-frameshutterendinfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FrameShutterEndInfo](#class-frameshutterendinfo)> | Yes | - | Callback function to handle [FrameShutterEndInfo](#class-frameshutterendinfo). |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5217,11 +5217,11 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be one of [CaptureReady, CameraError]. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5284,11 +5284,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<Float64>): U
 | Parameter | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be EstimatedCaptureDuration. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Float64> | Yes | - | Callback function to obtain the estimated photo capture duration (in milliseconds). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Float64> | Yes | - | Callback function to obtain the estimated photo capture duration (in milliseconds). |
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5344,7 +5344,7 @@ public func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5388,7 +5388,7 @@ public func setMovingPhotoVideoCodecType(codecType: VideoCodecType): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5442,7 +5442,7 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5482,7 +5482,7 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be CameraError. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function for handling [BusinessException](../../arkinterop/cj-api-business_exception.md#class-businessexception). |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function for handling [BusinessException](../arkinterop/cj-api-business_exception.md#class-businessexception). |
 
 **Example:**
 
@@ -5517,7 +5517,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be FocusStateChange. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function for handling [FocusState](#enum-focusstate). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function for handling [FocusState](#enum-focusstate). |
 
 **Example:**
 
@@ -5552,7 +5552,7 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomI
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be SmoothZoomInfoAvailable. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function for handling [SmoothZoomInfo](#class-smoothzoominfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function for handling [SmoothZoomInfo](#class-smoothzoominfo). |
 
 **Example:**
 
@@ -5590,7 +5590,7 @@ public func off(eventType: CameraEvents): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5633,7 +5633,7 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be CameraError. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function for handling [BusinessException](../../arkinterop/cj-api-business_exception.md#class-businessexception). |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function for handling [BusinessException](../arkinterop/cj-api-business_exception.md#class-businessexception). |
 
 **Example:**
 
@@ -5687,7 +5687,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FocusState>)
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be FocusStateChange. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function for obtaining the current focus state. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function for obtaining the current focus state. |
 
 **Example:**
 
@@ -5741,7 +5741,7 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomIn
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for, must be SmoothZoomInfoAvailable. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function for handling [SmoothZoomInfo](#class-smoothzoominfo). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function for handling [SmoothZoomInfo](#class-smoothzoominfo). |
 
 **Example:**
 
@@ -5798,7 +5798,7 @@ public func preconfig(
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5921,7 +5921,7 @@ public func getActiveFrameRate(): FrameRateRange
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -5971,7 +5971,7 @@ public func getActiveProfile(): Profile
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6021,7 +6021,7 @@ public func getPreviewRotation(displayRotation: Int32): ImageRotation
 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
-| displayRotation | Int32 | Yes | - | The screen rotation angle of the display device, obtained via [getDefaultDisplaySync](../../arkui-cj/cj-apis-display.md#func-getdefaultdisplaysync). |
+| displayRotation | Int32 | Yes | - | The screen rotation angle of the display device, obtained via [getDefaultDisplaySync](../arkui-cj/cj-apis-display.md#func-getdefaultdisplaysync). |
 
 **Return Value:**
 
@@ -6031,7 +6031,7 @@ public func getPreviewRotation(displayRotation: Int32): ImageRotation
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6082,7 +6082,7 @@ public func getSupportedFrameRates(): Array<FrameRateRange>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6129,11 +6129,11 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for. Must be one of [FrameStart, FrameEnd, CameraError]. Otherwise, a 401 parameter error is thrown. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | The callback function. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | The callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6184,7 +6184,7 @@ public func off(eventType: CameraEvents): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6236,11 +6236,11 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | The event to listen for. Must be one of [FrameStart, FrameEnd, CameraError]. Otherwise, a 401 parameter error is thrown. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | The callback function. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | The callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6302,7 +6302,7 @@ public func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6357,7 +6357,7 @@ public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6671,7 +6671,7 @@ public func getActiveFrameRate(): FrameRateRange
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6721,7 +6721,7 @@ public func getActiveProfile(): VideoProfile
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6771,7 +6771,7 @@ public func getSupportedFrameRates(): Array<FrameRateRange>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6829,7 +6829,7 @@ public func getVideoRotation(deviceDegree: Int32): ImageRotation
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6877,11 +6877,11 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Event type to unregister, must be one of [FrameStart, FrameEnd, CameraError]. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to be removed. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to be removed. |
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6932,7 +6932,7 @@ public func off(eventType: CameraEvents): Unit
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -6984,11 +6984,11 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Event type to listen for, must be one of [FrameStart, FrameEnd, CameraError]. Can be registered after `videoOutput` is successfully created. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. No information is captured during normal operation; error information is captured when an error occurs. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function. No information is captured during normal operation; error information is captured when an error occurs. |
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7050,7 +7050,7 @@ public func release(): Unit
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7105,7 +7105,7 @@ public func setFrameRate(minFps: Int32, maxFps: Int32): Unit
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7150,7 +7150,7 @@ public func start(): Unit
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7195,7 +7195,7 @@ public func stop(): Unit
 
 **Exceptions:**
 
-- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- **BusinessException:** Corresponding error codes are listed below. For details, refer to [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7310,7 +7310,7 @@ public func canPreconfig(preconfigType: PreconfigType, preconfigRatio!: Preconfi
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7349,11 +7349,11 @@ public func off(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be CameraError. This interface can be listened to after the session is successfully created. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to cancel the corresponding callback. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to cancel the corresponding callback. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7393,11 +7393,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<FocusState>
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be FocusStateChange. This interface can be listened to after the session is successfully created. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function to cancel the corresponding callback. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function to cancel the corresponding callback. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7437,11 +7437,11 @@ public func off(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomI
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be SmoothZoomInfoAvailable. This interface can be listened to after the session is successfully created. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function to cancel the corresponding callback. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function to cancel the corresponding callback. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7484,7 +7484,7 @@ public func off(eventType: CameraEvents): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7528,11 +7528,11 @@ public func on(eventType: CameraEvents, callback: Callback0Argument): Unit
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be CameraError. This interface can be listened to after the session is successfully created. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to obtain error information. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function to obtain error information. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7591,11 +7591,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<FocusState>)
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be FocusStateChange. This interface can be listened to after the session is successfully created. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function to obtain focus state change information. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FocusState](#enum-focusstate)> | Yes | - | Callback function to obtain focus state change information. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7654,11 +7654,11 @@ public func on(eventType: CameraEvents, callback: Callback1Argument<SmoothZoomIn
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [CameraEvents](#enum-cameraevents) | Yes | - | Listening event, must be SmoothZoomInfoAvailable. This interface can be listened to after the session is successfully created. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function to obtain smooth zoom state change information. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[SmoothZoomInfo](#class-smoothzoominfo)> | Yes | - | Callback function to obtain smooth zoom state change information. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -7720,7 +7720,7 @@ public func preconfig(
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](../../errorcodes/cj-errorcode-multimedia-camera.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Camera Error Codes](./cj-errorcode-multimedia-camera.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

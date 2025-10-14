@@ -15,7 +15,7 @@ API sample code usage instructions:
 - If the sample code begins with a "// index.cj" comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, configuration must be done in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example projects and configuration templates mentioned above, refer to [Cangjie Sample Code Description](../../cj-development-intro.md#仓颉示例代码说明).
+For details about the example projects and configuration templates mentioned above, refer to [Cangjie Sample Code Description](../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## class AppEventFilter
 
@@ -391,7 +391,7 @@ public func setSize(size: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes as shown below. Refer to [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes as shown below. Refer to [Application Event Logging Error Codes](./cj-errorcode-hiappevent.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -824,7 +824,7 @@ public static func addWatcher(watcher: Watcher): Option<AppEventPackageHolder>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Application Event Logging Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Application Event Logging Error Codes](./cj-errorcode-hiappevent.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1112,7 +1112,7 @@ public static func removeWatcher(watcher: Watcher): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes as follows, see [Application Event Error Codes](../../errorcodes/cj-errorcode-hiappevent.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes as follows, see [Application Event Error Codes](./cj-errorcode-hiappevent.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
