@@ -1,4 +1,4 @@
-# OpenHarmony Cangjie Documentation
+# OpenHarmony Cangjie Documentation (Beta Feature)
 
 Cangjie programming language is a general-purpose programming language for full-scene application development, balancing development efficiency and runtime performance while providing a good programming experience.
 

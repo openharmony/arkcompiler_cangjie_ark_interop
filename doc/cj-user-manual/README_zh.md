@@ -1,4 +1,4 @@
-# 用户指南
+# 用户指南（Beta特性）
 
 - [初识仓颉语言](source_zh_cn/first_understanding/basic.md)
 - 基本概念
