@@ -19,7 +19,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](./../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func createA2dpSrcProfile()
 
@@ -96,7 +96,7 @@ public func getConnectedDevices(): Array<String>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](./cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -155,7 +155,7 @@ public func getConnectionState(deviceId: String): ProfileConnectionState
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](./cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -215,7 +215,7 @@ public func getPlayingState(deviceId: String): PlayingState
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[蓝牙服务子系统错误码](../../errorcodes/cj-errorcode-bluetooth_manager.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[蓝牙服务子系统错误码](./cj-errorcode-bluetooth_manager.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -266,11 +266,11 @@ public func off(eventType: ProfileCallbackType, callback: CallbackObject): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |eventType|[ProfileCallbackType](cj-apis-bluetooth-base_profile.md#enum-profilecallbacktype)|是|-|回调事件类型。|
-|callback|[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|是|-|回调事件。|
+|callback|[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject)|是|-|回调事件。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -331,7 +331,7 @@ public func off(eventType: ProfileCallbackType): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -393,7 +393,7 @@ public func on(eventType: ProfileCallbackType, callback: Callback1Argument<State
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

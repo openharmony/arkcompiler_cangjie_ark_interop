@@ -17,7 +17,7 @@ API sample code usage instructions:
 - If the first line of sample code contains a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For details about the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## func abortSession(HuksHandleId, HuksOptions)
 
@@ -41,7 +41,7 @@ public func abortSession(handle: HuksHandleId, options: HuksOptions): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -81,7 +81,7 @@ public func anonAttestKeyItem(keyAlias: String, options: HuksOptions): Array<Str
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -120,7 +120,7 @@ public func deleteKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -160,7 +160,7 @@ public func exportKeyItem(keyAlias: String, _: HuksOptions): Bytes
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -205,7 +205,7 @@ public func finishSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -246,7 +246,7 @@ public func generateKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -291,7 +291,7 @@ public func getKeyItemProperties(keyAlias: String, _: HuksOptions): Array<HuksPa
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -329,7 +329,7 @@ public func importKeyItem(keyAlias: String, options: HuksOptions): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -370,7 +370,7 @@ public func importWrappedKeyItem(keyAlias: String, wrappingKeyAlias: String, opt
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -416,7 +416,7 @@ public func initSession(keyAlias: String, options: HuksOptions): HuksSessionHand
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode## func isKeyItemExist(String, HuksOptions)
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [HUKS Error Codes](./cj-errorcode## func isKeyItemExist(String, HuksOptions)
 
 ```cangjie
 public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool
@@ -443,7 +443,7 @@ public func isKeyItemExist(keyAlias: String, options: HuksOptions): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the following table. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -485,7 +485,7 @@ public func updateSession(handle: HuksHandleId, options: HuksOptions, token!: By
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the following table. For details, see [HUKS Error Codes](../../errorcodes/cj-errorcode-huks.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the following table. For details, see [HUKS Error Codes](./cj-errorcode-huks.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

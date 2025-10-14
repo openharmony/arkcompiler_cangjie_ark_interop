@@ -22,7 +22,7 @@ API示例代码使用说明：
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## 运行测试
 
@@ -67,7 +67,7 @@ public func clearText(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -117,7 +117,7 @@ public func dragTo(target: Component): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -144,7 +144,7 @@ public func getBounds(): Rect
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -170,7 +170,7 @@ public func getBoundsCenter(): Point
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -196,7 +196,7 @@ public func getDescription(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -294,7 +294,7 @@ public func isCheckable(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -320,7 +320,7 @@ public func isChecked(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -400,7 +400,7 @@ public func isLongClickable(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -474,7 +474,7 @@ public func pinchIn(scale: Float32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -501,7 +501,7 @@ public func pinchOut(scale: Float32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -534,7 +534,7 @@ public func scrollSearch(on: On): ?Component
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -561,7 +561,7 @@ public func scrollToBottom(speed!: Int64 = 600): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -588,7 +588,7 @@ public func scrollToTop(speed!: Int64 = 600): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -627,7 +627,7 @@ public static func create(): Driver
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -666,7 +666,7 @@ public func assertComponentExist(on: On): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -713,7 +713,7 @@ public func click(x: Int32, y: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -785,7 +785,7 @@ public func delayMs(duration: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -826,7 +826,7 @@ public func doubleClick(x: Int32, y: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -876,7 +876,7 @@ public func drag(
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -960,7 +960,7 @@ public func findComponents(on: On): ?Array<Component>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1006,7 +1006,7 @@ public func findWindow(filter: WindowFilter): ?UiWindow
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1049,7 +1049,7 @@ public func fling(from: Point, to: Point, stepLen: Int32, speed: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1090,7 +1090,7 @@ public func fling(direction: UiDirection, speed: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1233,7 +1233,7 @@ public func injectMultiPointerAction(pointers: PointerMatrix, speed!: Int32 = 60
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1282,7 +1282,7 @@ public func inputText(p: Point, text: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1330,7 +1330,7 @@ public func longClick(x: Int32, y: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1373,7 +1373,7 @@ public func mouseClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key2!: In
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1416,7 +1416,7 @@ public func mouseDoubleClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1458,7 +1458,7 @@ public func mouseDrag(from: Point, to: Point, speed!: Int32 = 600): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1501,7 +1501,7 @@ public func mouseLongClick(p: Point, btnId: MouseButton, key1!: Int32 = 0, key2!
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1541,7 +1541,7 @@ public func mouseMoveTo(p: Point): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1583,7 +1583,7 @@ public func mouseMoveWithTrack(from: Point, to: Point, speed!: Int32 = 600): Uni
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1628,7 +1628,7 @@ public func mouseScroll(p: Point, down: Bool, d: Int32, key1!: Int32 = 0, key2!:
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1725,7 +1725,7 @@ public func screenCap(savePath: String): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1772,7 +1772,7 @@ public func screenCapture(savePath: String, rect!: Rect = Rect(0,0,0,0)): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1812,7 +1812,7 @@ public func setDisplayRotation(rotation: DisplayRotation): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1852,7 +1852,7 @@ public func setDisplayRotationEnabled(enabled: Bool): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1902,7 +1902,7 @@ public func swipe(
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1944,7 +1944,7 @@ public func triggerCombineKeys(key0: Int32, key1: Int32, key2!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1984,7 +1984,7 @@ public func triggerKey(keyCode: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2031,7 +2031,7 @@ public func waitForComponent(on: On, time: Int32): ?Component
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2078,7 +2078,7 @@ public func waitForIdle(idleTime: Int32, timeout: Int32): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2184,7 +2184,7 @@ public func checkable(b!: Bool = true): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2238,7 +2238,7 @@ public func checked(b!: Bool = true): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2339,7 +2339,7 @@ public func description(val: String, pattern!: MatchPattern = MatchPattern.Equal
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2393,7 +2393,7 @@ public func enabled(b!: Bool = true): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2447,7 +2447,7 @@ public func focused(b!: Bool = true): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2501,7 +2501,7 @@ public func id(id: String): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2555,7 +2555,7 @@ public func inWindow(bundleName: String): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2609,7 +2609,7 @@ public func isAfter(on: On): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2664,7 +2664,7 @@ public func isBefore(on: On): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2719,7 +2719,7 @@ public func longClickable(b!: Bool = true): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2773,7 +2773,7 @@ public func onType(tp: String): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2827,7 +2827,7 @@ public func scrollable(b!: Bool = true): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2881,7 +2881,7 @@ public func selected(b!: Bool = true): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2982,7 +2982,7 @@ public func within(on: On): On
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3135,7 +3135,7 @@ public static func create(fingers: Int32, steps: Int32): PointerMatrix
 
 **异常：**
 
-- BusinessException：对应错误码如下表，[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3176,7 +3176,7 @@ public func setPoint(finger: Int32, step: Int32, point: Point): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3419,7 +3419,7 @@ public func once(onceType: OnceType, callback: Callback<UIElementInfo>): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3451,7 +3451,7 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3490,7 +3490,7 @@ public func focus(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3531,7 +3531,7 @@ public func getBounds(): Rect
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3572,7 +3572,7 @@ public func getBundleName(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3613,7 +3613,7 @@ public func getTitle(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3654,7 +3654,7 @@ public func getWindowMode(): WindowMode
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3695,7 +3695,7 @@ public func isActive(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3736,7 +3736,7 @@ public func isFocused(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3773,7 +3773,7 @@ public func maximize(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3812,7 +3812,7 @@ public func minimize(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3858,7 +3858,7 @@ public func moveTo(x: Int32, y: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3903,7 +3903,7 @@ public func resize(wide: Int32, height: Int32, direction: ResizeDirection): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3943,7 +3943,7 @@ public func resume(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3982,7 +3982,7 @@ public func split(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[uitest错误码](../../errorcodes/cj-errorcode-uitest.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[uitest错误码](./cj-errorcode-uitest.md)和[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

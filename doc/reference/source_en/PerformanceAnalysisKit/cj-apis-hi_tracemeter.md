@@ -23,7 +23,7 @@ API sample code usage instructions:
 - If the first line of sample code contains a `// index.cj` comment, it indicates the example can be compiled and run in the "index.cj" file of a Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#cangjie-sample-code-instructions).
+For details about the sample project and configuration template, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#cangjie-sample-code-instructions).
 
 ## class HiTraceMeter
 

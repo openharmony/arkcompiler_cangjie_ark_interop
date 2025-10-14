@@ -23,7 +23,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func getSensorList()
 
@@ -45,7 +45,7 @@ public func getSensorList(): Array<Sensor>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[传感器错误码](./cj-errorcode-sensor.md)和[通用错误码](../cj-errorcode-universal.md)。
   
   | 错误码ID    | 错误信息                                                                                                                                   |
   |:-------- |:-------------------------------------------------------------------------------------------------------------------------------------- |
@@ -97,7 +97,7 @@ public func getSingleSensor(sensorType: SensorId): Sensor
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[传感器错误码](../../errorcodes/cj-errorcode-sensor.md)和[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[传感器错误码](./cj-errorcode-sensor.md)和[通用错误码](../cj-errorcode-universal.md)。
   
   | 错误码ID    | 错误信息                                                                                                                                   |
   |:-------- |:-------------------------------------------------------------------------------------------------------------------------------------- |
@@ -139,7 +139,7 @@ public func off(sensorType: SensorId, callback!: ?CallbackObject = None): Unit
 | 参数名        | 类型                                                                                 | 必填  | 默认值  | 说明                                          |
 |:---------- |:---------------------------------------------------------------------------------- |:--- |:---- |:------------------------------------------- |
 | sensorType | [SensorId](#enum-sensorid)                                                         | 是   | -    | 传感器类型。                                      |
-| callback   | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | 否   | None | **命名参数。** 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。 |
+| callback   | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | 否   | None | **命名参数。** 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。 |
 
 **示例：**
 
@@ -192,7 +192,7 @@ public func on<T>(sensorType: SensorId, callback: Callback1Argument<T>, option!:
 | 参数名        | 类型                                                                                          | 必填  | 默认值  | 说明                                  |
 |:---------- |:------------------------------------------------------------------------------------------- |:--- |:---- |:----------------------------------- |
 | sensorType | [SensorId](#enum-sensorid)                                                                  | 是   | -    | 传感器类型。                              |
-| callback   | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | 是   | -    | 回调函数。                               |
+| callback   | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | 是   | -    | 回调函数。                               |
 | option     | ?[Options](#class-options)                                                                  | 否   | None | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
 
 **示例：**
@@ -240,7 +240,7 @@ public func once<T>(sensorType: SensorId, callback: Callback1Argument<T>): Unit 
 | 参数名        | 类型                                                                                          | 必填  | 默认值 | 说明                                |
 |:---------- |:------------------------------------------------------------------------------------------- |:--- |:--- |:--------------------------------- |
 | sensorType | [SensorId](#enum-sensorid)                                                                  | 是   | -   | 传感器类型。                            |
-| callback   | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | 是   | -   | 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。 |
+| callback   | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<T> | 是   | -   | 回调函数，异步上报的传感器数据，每种传感器类型对应的数据类型不同。 |
 
 **示例：**
 

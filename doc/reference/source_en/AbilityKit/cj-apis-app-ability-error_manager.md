@@ -23,7 +23,7 @@ API sample code usage instructions:
 - If the sample code has a "// index.cj" comment in the first line, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](./cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above sample project and configuration template, please refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For the above sample project and configuration template, please refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## class ErrorManager
 
@@ -58,7 +58,7 @@ public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](../../../source_en/errorcodes/cj-errorcode-ability.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](./cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -92,7 +92,7 @@ public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): In
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](../../../source_en/errorcodes/cj-errorcode-ability.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Ability Subsystem Error Codes](./cj-errorcode-ability.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -27,7 +27,7 @@ API示例代码使用说明：
 - 若示例代码首行有"// index.cj"注释，表示该示例可在仓颉模板工程的"index.cj"文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的"main_ability.cj"文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func deleteRdbStore(UIAbilityContext, String)
 
@@ -51,7 +51,7 @@ public func deleteRdbStore(context: UIAbilityContext, name: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -100,7 +100,7 @@ public func deleteRdbStore(context: UIAbilityContext, config: StoreConfig): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -157,7 +157,7 @@ public func getRdbStore(context: UIAbilityContext, config: StoreConfig): RdbStor
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -564,7 +564,7 @@ public func `in`(field: String, value: Array<ValueType>): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -686,7 +686,7 @@ public func beginsWith(field: String, value: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -735,7 +735,7 @@ public func between(field: String, low: ValueType, high: ValueType): RdbPredicat
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -783,7 +783,7 @@ public func contains(field: String, value: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -903,7 +903,7 @@ public func endsWith(field: String, value: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -951,7 +951,7 @@ public func equalTo(field: String, value: ValueType): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -999,7 +999,7 @@ public func glob(field: String, value: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1047,7 +1047,7 @@ public func greaterThan(field: String, value: ValueType): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1095,7 +1095,7 @@ public func greaterThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1142,7 +1142,7 @@ public func groupBy(fields: Array<String>): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1220,7 +1220,7 @@ public func isNotNull(field: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1266,7 +1266,7 @@ public func isNull(field: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1313,7 +1313,7 @@ public func lessThan(field: String, value: ValueType): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1361,7 +1361,7 @@ public func lessThanOrEqualTo(field: String, value: ValueType): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1409,7 +1409,7 @@ public func like(field: String, value: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1456,7 +1456,7 @@ public func limitAs(value: Int32): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1506,7 +1506,7 @@ public func notBetween(field: String, low: ValueType, high: ValueType): RdbPredi
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1554,7 +1554,7 @@ public func notEqualTo(field: String, value: ValueType): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1602,7 +1602,7 @@ public func notIn(field: String, value: Array<ValueType>): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1649,7 +1649,7 @@ public func offsetAs(rowOffset: Int32): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1733,7 +1733,7 @@ public func orderByAsc(field: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1779,7 +1779,7 @@ public func orderByDesc(field: String): RdbPredicates
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1831,7 +1831,7 @@ public func backup(destName: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1896,7 +1896,7 @@ public func batchInsert(table: String, values: Array<ValuesBucket>): Int64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1962,7 +1962,7 @@ public func beginTransaction(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2021,7 +2021,7 @@ public func commit(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2092,7 +2092,7 @@ public func delete(predicates: RdbPredicates): Int64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2154,7 +2154,7 @@ public func emit(event: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2210,7 +2210,7 @@ public func executeSql(sql: String, bindArgs!: Array<ValueType> = []): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2279,7 +2279,7 @@ public func insert(table: String, values: ValuesBucket,
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2347,11 +2347,11 @@ public func off(event: String, interProcess: Bool, observer!: ?Callback0Argument
 |:---|:---|:---|:---|:---|
 |event|String|是|-|取消订阅事件名称。|
 |interProcess|Bool|是|-|指定是进程间还是本进程取消订阅。true：进程间。false：本进程。|
-|observer|?[Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument)|否|None|取消指定监听回调对象。|
+|observer|?[Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument)|否|None|取消指定监听回调对象。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2404,11 +2404,11 @@ public func on(event: String, interProcess: Bool, observer: Callback0Argument): 
 |:---|:---|:---|:---|:---|
 |event|String|是|-|订阅事件名称。|
 |interProcess|Bool|是|-|指定是进程间还是本进程订阅。<br/> true：进程间。<br/> false：本进程。|
-|observer|[Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument)|是|-|回调函数对象。|
+|observer|[Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument)|是|-|回调函数对象。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2470,7 +2470,7 @@ public func query(predicates: RdbPredicates, columns!: Array<String> = []): Resu
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2529,7 +2529,7 @@ public func querySql(sql: String, bindArgs!: Array<ValueType> = []): ResultSet
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2578,7 +2578,7 @@ public func restore(srcName: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2631,7 +2631,7 @@ public func rollBack(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2713,7 +2713,7 @@ public func update(values: ValuesBucket, predicates: RdbPredicates,
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2930,7 +2930,7 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2979,7 +2979,7 @@ public func getAsset(columnIndex: Int32): Asset
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3046,7 +3046,7 @@ public func getAssets(columnIndex: Int32): Assets
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3113,7 +3113,7 @@ public func getBlob(columnIndex: Int32): Array<UInt8>
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3180,7 +3180,7 @@ public func getColumnIndex(columnName: String): Int32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3250,7 +3250,7 @@ public func getColumnName(columnIndex: Int32): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3319,7 +3319,7 @@ public func getDouble(columnIndex: Int32): Float64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3386,7 +3386,7 @@ public func getLong(columnIndex: Int32): Int64
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3447,7 +3447,7 @@ public func getRow(): ValuesBucket
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3513,7 +3513,7 @@ public func getString(columnIndex: Int32): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3648,7 +3648,7 @@ public func goToLastRow(): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3822,7 +3822,7 @@ public func isColumnNull(columnIndex: Int32): Bool
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[关系型数据库错误码](../../errorcodes/cj-errorcode-data-rdb.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../cj-errorcode-universal.md)和[关系型数据库错误码](./cj-errorcode-data-rdb.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -5161,7 +5161,7 @@ Uint8Array(Array<UInt8>)
 public type Assets = Array<Asset>
 ```
 
-**功能：** [Assets](#type-assets)是Array\<Asset>类型的别名。
+**功能：** [Assets](#type-assets)是[Array\<Asset>](../../../../cj-user-manual/source_zh_cn/basic_data_type/array.md#array)类型的别名。
 
 ## type ValuesBucket
 
@@ -5169,4 +5169,4 @@ public type Assets = Array<Asset>
 public type ValuesBucket = Map<String, ValueType>
 ```
 
-**功能：** [ValuesBucket](#type-valuesbucket)是Map\<String,ValueType>类型的别名。
+**功能：** [ValuesBucket](#type-valuesbucket)是[Map\<String,ValueType>](../../../../cj-user-manual/source_zh_cn/generic/generic_class.md#泛型类)类型的别名。

@@ -24,7 +24,7 @@ API sample code usage instructions:
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it must be configured in the "main_ability.cj" file of the Cangjie template project.
 - The path to the current application sandbox can be obtained via UIAbilityContext.[filesDir](../AbilityKit/cj-apis-app-ability-ui_ability.md#prop-filesdir).
 
-For details on the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For details on the sample project and configuration template mentioned above, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#仓颉示例代码说明).
 
 ## func createAVImageGenerator()
 
@@ -46,7 +46,7 @@ public func createAVImageGenerator(): AVImageGenerator
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](../../errorcodes/cj-errorcode-multimedia-media.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](./cj-errorcode-multimedia-media.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -223,7 +223,7 @@ public func fetchFrameByTime(timeUs: Int64, options: AVImageQueryOptions, param:
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](../../errorcodes/cj-errorcode-multimedia-media.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](./cj-errorcode-multimedia-media.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -264,7 +264,7 @@ public func release(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](../../errorcodes/cj-errorcode-multimedia-media.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Media Error Codes](./cj-errorcode-multimedia-media.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

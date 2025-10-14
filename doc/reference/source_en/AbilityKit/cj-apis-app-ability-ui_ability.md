@@ -23,7 +23,7 @@ API sample code usage instructions:
 - If the first line of sample code has a "// index.cj" comment, it indicates the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](./cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## func createAbilityStageContextFromJSValue(JSContext, JSValue)
 
@@ -41,8 +41,8 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
 
 **Return Value:**
 
@@ -56,7 +56,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext
 ```
 
-**Function:** Converts from [JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue) to [ApplicationContext](#class-applicationcontext) type.
+**Function:** Converts from [JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue) to [ApplicationContext](#class-applicationcontext) type.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -66,8 +66,8 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
 
 **Return Value:**
 
@@ -81,7 +81,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context
 ```
 
-**Function:** Converts from [JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue) to [Context](./cj-apis-app-ability-ui_ability.md#class-context) type.
+**Function:** Converts from [JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue) to [Context](./cj-apis-app-ability-ui_ability.md#class-context) type.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -91,8 +91,8 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
 
 **Return Value:**
 
@@ -106,7 +106,7 @@ public func createContextFromJSValue(context: JSContext, input: JSValue): Contex
 public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext
 ```
 
-**Function:** Converts from [JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue) to [UIAbilityContext](#class-uiabilitycontext) type.
+**Function:** Converts from [JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue) to [UIAbilityContext](#class-uiabilitycontext) type.
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -116,8 +116,8 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
-|input|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
+|input|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|Yes|-|ArkTS unified type.|
 
 **Return Value:**
 
@@ -133,7 +133,7 @@ public interface SystemObjectInteropTypeToJS {
 }
 ```
 
-**Function:** System object-specific extension interface for interoperability with [JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue).
+**Function:** System object-specific extension interface for interoperability with [JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -145,7 +145,7 @@ public interface SystemObjectInteropTypeToJS {
 func toJSValue(context: JSContext): JSValue
 ```
 
-**Function:** Converts a Cangjie object to [JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue).
+**Function:** Converts a Cangjie object to [JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue).
 
 **System Capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -155,13 +155,13 @@ func toJSValue(context: JSContext): JSValue
 
 |Parameter|Type|Required|Default|Description|
 |:---|:---|:---|:---|:---|
-|context|[JSContext](../../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
+|context|[JSContext](../arkinterop/cj-apis-ark_interop.md#class-jscontext)|Yes|-|ArkTS interoperability context.|
 
 **Return Value:**
 
 |Type|Description|
 |:----|:----|
-|[JSValue](../../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|ArkTS unified type.|
+|[JSValue](../arkinterop/cj-apis-ark_interop.md#struct-jsvalue)|ArkTS unified type.|
 
 ## class Ability
 
@@ -530,7 +530,7 @@ public func isTerminating(): Bool
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -553,11 +553,11 @@ public func requestDialogService(want: Want, result: AsyncCallback<RequestResult
 |Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|Yes|-|Want information of the target ServiceExtensionAbility to start.|
-|result|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[RequestResult](./cj-apis-app-ability-dialog_request.md#class-requestresult)>|Yes|-|Callback for returning the result.|
+|result|[AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[RequestResult](./cj-apis-app-ability-dialog_request.md#class-requestresult)>|Yes|-|Callback for returning the result.|
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -600,7 +600,7 @@ public func startAbility(want: Want, options!: ?StartOptions = None): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -653,11 +653,11 @@ public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityRes
 |Parameter|Type|Mandatory|Default Value|Description|
 |:---|:---|:---|:---|:---|
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|Yes|-|Want information of the Ability to start.|
-|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[AbilityResult](./cj-apis-ability-ability_result.md#class-abilityresult)>|Yes|-|Callback function for the execution result.|
+|callback|[AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[AbilityResult](./cj-apis-ability-ability_result.md#class-abilityresult)>|Yes|-|Callback function for the execution result.|
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -707,11 +707,11 @@ public func startAbilityForResult(want: Want, options: StartOptions, callback: A
 |:---|:---|:---|:---|:---|
 |want|[Want](./cj-apis-app-ability-want.md#class-want)|Yes|-|Want information of the Ability to start.|
 |options|StartOptions|Yes|-|Parameters carried when starting the Ability.|
-|callback|[AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<AbilityResult>|Yes|-|Callback function for the execution result.|
+|callback|[AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<AbilityResult>|Yes|-|Callback function for the execution result.|
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -755,7 +755,7 @@ public func terminateSelf(): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -783,7 +783,7 @@ public func terminateSelfWithResult(parameter: AbilityResult): Unit
 
 **Exceptions:**
 
-- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: The error codes are as follows. For details, see [Universal Error Code Documentation](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

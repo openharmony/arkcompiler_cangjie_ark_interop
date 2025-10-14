@@ -15,7 +15,7 @@ API example code usage instructions:
 - If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../../cj-development-intro.md#Cangjie-Example-Code-Description).
+For details about the example project and configuration template mentioned above, refer to [Cangjie Example Code Description](../cj-development-intro.md#Cangjie-Example-Code-Description).
 
 ## interface Parcelable
 
@@ -187,7 +187,7 @@ public static func create(name: String, size: Int32): Ashmem
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -220,7 +220,7 @@ public static func create(ashmem: Ashmem): Ashmem
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -273,7 +273,7 @@ public func mapReadWriteAshmem(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -295,7 +295,7 @@ public func mapReadonlyAshmem(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -322,7 +322,7 @@ public func mapTypedAshmem(mapType: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -357,7 +357,7 @@ public func readDataFromAshmem(size: Int64, offset: Int64): Array<Byte>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -385,7 +385,7 @@ public func setProtectionType(protectionType: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -428,7 +428,7 @@ public func writeDataToAshmem(buf: Array<Byte>, size: Int64, offset: Int64): Uni
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -465,7 +465,7 @@ public static func closeFileDescriptor(fd: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: For detailed error codes, refer to [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -491,7 +491,7 @@ public static func create(): MessageSequence
 
 **Exceptions:**
 
-- BusinessException: For error codes, see the table below. For details, refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: For error codes, see the table below. For details, refer to [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -523,7 +523,7 @@ public static func dupFileDescriptor(fd: Int32): Int32
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: For detailed error codes, refer to [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -694,7 +694,7 @@ public func readAshmem(): Ashmem
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: For detailed error codes, refer to [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -721,7 +721,7 @@ public func readBoolean(): Bool
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: For detailed error codes, refer to [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -747,7 +747,7 @@ public func readBooleanArray(): Array<Bool>
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: For detailed error codes, refer to [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -773,7 +773,7 @@ public func readByte(): Int8
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: For detailed error codes, refer to [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -799,7 +799,7 @@ public func readByteArray(): Array<Int8>
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: For detailed error codes, refer to [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :--- | :--- |
@@ -825,7 +825,7 @@ public func readChar(): UInt8
 
 **Exceptions:**
 
-- BusinessException: For detailed error codes, refer to [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: For detailed error codes, refer to [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -850,7 +850,7 @@ public func readCharArray(): Array<UInt8>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -877,7 +877,7 @@ public func readDouble(): Float64
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -904,7 +904,7 @@ public func readDoubleArray(): Array<Float64>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -925,7 +925,7 @@ public func readException(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -952,7 +952,7 @@ public func readFileDescriptor(): Int32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -979,7 +979,7 @@ public func readFloat(): Float32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1006,7 +1006,7 @@ public func readFloatArray(): Array<Float32>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1033,7 +1033,7 @@ public func readInt(): Int32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1060,7 +1060,7 @@ public func readIntArray(): Array<Int32>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1087,7 +1087,7 @@ public func readInterfaceToken(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1114,7 +1114,7 @@ public func readLong(): Int64
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1141,7 +1141,7 @@ public func readLongArray(): Array<Int64>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1168,7 +1168,7 @@ public func readParcelable<T>(dataIn: T): Unit where T <: Parcelable
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1197,7 +1197,7 @@ public func readParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: P
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1232,7 +1232,7 @@ public func readRawDataBuffer(size: Int64): Array<Byte>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1258,7 +1258,7 @@ public func readShort(): Int16
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1285,7 +1285,7 @@ public func readShortArray(): Array<Int16>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1312,7 +1312,7 @@ public func readString(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1339,7 +1339,7 @@ public func readStringArray(): Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1366,7 +1366,7 @@ public func readUInt16Array(): Array<UInt16>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1394,7 +1394,7 @@ public func readUInt32Array(): Array<UInt32>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1422,7 +1422,7 @@ public func readUInt64Array(): Array<UInt64>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1450,7 +1450,7 @@ public func readUInt8Array(): Array<UInt8>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1491,7 +1491,7 @@ public func rewindRead(pos: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1518,7 +1518,7 @@ public func rewindWrite(pos: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1545,7 +1545,7 @@ public func setCapacity(size: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1573,7 +1573,7 @@ public func setSize(size: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1600,7 +1600,7 @@ public func writeAshmem(ashmem: Ashmem): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1628,7 +1628,7 @@ public func writeBoolean(val: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1656,7 +1656,7 @@ public func writeBooleanArray(booleanArray: Array<Bool>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1682,7 +1682,7 @@ public func writeByte(val: Int8): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1710,7 +1710,7 @@ public func writeByteArray(byteArray: Array<Int8>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1738,7 +1738,7 @@ public func writeChar(val: UInt8): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1766,7 +1766,7 @@ public func writeCharArray(charArray: Array<UInt8>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1794,7 +1794,7 @@ public func writeDouble(val: Float64): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1822,7 +1822,7 @@ public func writeDoubleArray(doubleArray: Array<Float64>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1850,7 +1850,7 @@ public func writeFileDescriptor(fd: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1878,7 +1878,7 @@ public func writeFloat(val: Float32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1906,7 +1906,7 @@ public func writeFloatArray(floatArray: Array<Float32>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1934,7 +1934,7 @@ public func writeInt(val: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1962,7 +1962,7 @@ public func writeIntArray(intArray: Array<Int32>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1990,7 +1990,7 @@ public func writeInterfaceToken(token: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2018,7 +2018,7 @@ public func writeLong(val: Int64): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2046,7 +2046,7 @@ public func writeLongArray(longArray: Array<Int64>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2068,7 +2068,7 @@ public func writeNoException(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2093,7 +2093,7 @@ public func writeParcelable<T>(val: T): Unit where T <: Parcelable
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2121,7 +2121,7 @@ public func writeParcelableArray<T>(parcelableArray: Array<T>): Unit where T <: 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2150,7 +2150,7 @@ public func writeRawDataBuffer(rawData: Array<Byte>, size: Int64): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2178,7 +2178,7 @@ public func writeShort(val: Int16): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2206,7 +2206,7 @@ public func writeShortArray(shortArray: Array<Int16>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2234,7 +2234,7 @@ public func writeString(val: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2262,7 +2262,7 @@ public func writeStringArray(stringArray: Array<String>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2290,7 +2290,7 @@ public func writeUInt16Array(buf: Array<UInt16>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2318,7 +2318,7 @@ public func writeUInt32Array(buf: Array<UInt32>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2346,7 +2346,7 @@ public func writeUInt64Array(buf: Array<UInt64>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2374,7 +2374,7 @@ public func writeUInt8Array(buf: Array<UInt8>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](../../errorcodes/cj-errorcode-rpc.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [RPC Error Codes](./cj-errorcode-rpc.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

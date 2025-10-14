@@ -16,7 +16,7 @@ API示例代码使用说明：
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 - 获取当前应用沙箱所在路径可通过UIAbilityContext.[filesDir](../AbilityKit/cj-apis-app-ability-ui_ability.md#prop-filesdir)获取。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## class ConflictFiles
 
@@ -145,7 +145,7 @@ public func getParent(): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -191,7 +191,7 @@ public func tryLock(exclusive!: Bool = false): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -233,7 +233,7 @@ public func unlock(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -302,7 +302,7 @@ public static func access(path: String, mode!: AccessModeType = AccessModeType.E
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -364,7 +364,7 @@ public static func close(file: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -410,7 +410,7 @@ public static func close(file: File): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -458,7 +458,7 @@ public static func copyDir(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -519,7 +519,7 @@ public static func copyFile(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -579,7 +579,7 @@ public static func copyFile(src: String, dest: Int32, mode!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -640,7 +640,7 @@ public static func copyFile(src: Int32, dest: String, mode!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -701,7 +701,7 @@ public static func copyFile(src: Int32, dest: Int32, mode!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -770,7 +770,7 @@ public static func createRandomAccessFile(file: String, mode!: Int64 = OpenMode.
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -849,7 +849,7 @@ public static func createRandomAccessFile(file: File, mode!: Int64 = OpenMode.RE
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -926,7 +926,7 @@ public static func createStream(path: String, mode: String): Stream
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1000,7 +1000,7 @@ public static func dup(fd: Int32): File
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1052,7 +1052,7 @@ public static func fdatasync(fd: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1107,7 +1107,7 @@ public static func fdopenStream(fd: Int32, mode: String): Stream
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1176,7 +1176,7 @@ public static func fsync(fd: Int32): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1231,7 +1231,7 @@ public static func listFile(path: String, options!: ListFileOptions = ListFileOp
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1288,7 +1288,7 @@ public static func lseek(fd: Int32, offset: Int64, whence!: WhenceType = SeekSet
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1342,7 +1342,7 @@ public static func lstat(path: String): Stat
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1391,7 +1391,7 @@ public static func mkdir(path: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1446,7 +1446,7 @@ public static func mkdir(path: String, recursion: Bool): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1506,7 +1506,7 @@ public static func mkdtemp(prefix: String): String
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1561,7 +1561,7 @@ public static func moveDir(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1623,7 +1623,7 @@ public static func moveFile(src: String, dest: String, mode!: Int32 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1691,7 +1691,7 @@ public static func open(path: String, mode!: Int64 = OpenMode.READ_ONLY): File
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1768,7 +1768,7 @@ public static func read(fd: Int32, buffer: Array<Byte>, options!: ReadOptions = 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1827,7 +1827,7 @@ public static func readLines(filePath: String, options!: Options = Options()): R
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1893,7 +1893,7 @@ public static func readText(filePath: String, options!: ReadTextOptions = ReadTe
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1947,7 +1947,7 @@ public static func rename(oldPath: String, newPath: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2006,7 +2006,7 @@ public static func rmdir(path: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2063,7 +2063,7 @@ public static func stat(file: Int32): Stat
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2122,7 +2122,7 @@ public static func stat(file: String): Stat
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2175,7 +2175,7 @@ public static func truncate(file: String, len!: Int64 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2232,7 +2232,7 @@ public static func truncate(file: Int32, len!: Int64 = 0): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2289,7 +2289,7 @@ public static func unlink(path: String): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2344,7 +2344,7 @@ public static func utimes(path: String, mtime: Float64): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2401,7 +2401,7 @@ public static func write(fd: Int32, buffer: Array<Byte>, options!: WriteOptions 
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2463,7 +2463,7 @@ public static func write(fd: Int32, buffer: String, options!: WriteOptions = Wri
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -2652,7 +2652,7 @@ public init(
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3066,7 +3066,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3164,7 +3164,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3226,7 +3226,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3367,7 +3367,7 @@ public func next(): ReaderIteratorResult
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -3959,7 +3959,7 @@ public func close(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4000,7 +4000,7 @@ public func flush(): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4061,7 +4061,7 @@ public func read(buffer: Array<Byte>, options!: ReadOptions = ReadOptions()): In
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4121,7 +4121,7 @@ public func write(buffer: String, options!: WriteOptions = WriteOptions()): Int6
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -4183,7 +4183,7 @@ public func write(buffer: Array<Byte>, options!: WriteOptions = WriteOptions()):
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[文件管理错误码](../../errorcodes/cj-errorcode-filemanagement.md)。
+- BusinessException：对应错误码如下表，详见[文件管理错误码](./cj-errorcode-filemanagement.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

@@ -20,7 +20,7 @@ API sample code usage instructions:
 - If the sample requires obtaining the [Context](./../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 - Please replace XX:XX:XX:XX:XX:XX or other addresses in the sample code with your actual address.
 
-For the above sample project and configuration template, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For the above sample project and configuration template, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#仓颉示例代码说明).
 
 ## func createGattClientDevice(String)
 
@@ -48,7 +48,7 @@ public func createGattClientDevice(deviceId: String): GattClientDevice
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -126,11 +126,11 @@ public func off(eventType: BluetoothBleCallbackType, callback!: ?CallbackObject 
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleCallbackType](#enum-bluetoothblecallbacktype) | Yes | - | Callback event. |
-| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** Indicates unsubscribing from BLE events. If this parameter is not provided, all callbacks corresponding to the type will be unsubscribed. |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** Indicates unsubscribing from BLE events. If this parameter is not provided, all callbacks corresponding to the type will be unsubscribed. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -189,11 +189,11 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleCallbackType](#enum-bluetoothblecallbacktype) | Yes | - | Set to AdvertisingStateChange, indicating the advertising state event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[AdvertisingStateChangeInfo](#class-advertisingstatechangeinfo)> | Yes | - | Indicates the callback function parameter, which is the advertising state. The callback function is created by the user and registered via this interface. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[AdvertisingStateChangeInfo](#class-advertisingstatechangeinfo)> | Yes | - | Indicates the callback function parameter, which is the advertising state. The callback function is created by the user and registered via this interface. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -249,11 +249,11 @@ public func on(eventType: BluetoothBleCallbackType, callback: Callback1Argument<
 | Parameter | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleCallbackType](#enum-bluetoothblecallbacktype) | Yes | - | Set to BleDeviceFind, indicating the BLE device discovery event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<[ScanResult](#class-scanresult)>> | Yes | - | Indicates the callback function parameter, which is the collection of discovered devices. The callback function is created by the user and registered via this interface. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Array\<[ScanResult](#class-scanresult)>> | Yes | - | Indicates the callback function parameter, which is the collection of discovered devices. The callback function is created by the user and registered via this interface. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -316,7 +316,7 @@ public func startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -355,7 +355,7 @@ public func startAdvertising(advertisingParams: AdvertisingParams): UInt32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -389,7 +389,7 @@ public func startBLESScan(filters: Array<ScanFilter>, options!: ?ScanOptions = N
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. Refer to [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -449,7 +449,7 @@ public func stopAdvertising(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -481,7 +481,7 @@ public func stopAdvertising(advertisingId: UInt32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -508,7 +508,7 @@ public func stopBLESscan(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are shown in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1753,7 +1753,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1800,7 +1800,7 @@ public func connect(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1847,7 +1847,7 @@ public func disconnect(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1900,7 +1900,7 @@ public func getDeviceName(): String
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1950,11 +1950,11 @@ public func getRssiValue(callback: AsyncCallback<Int32>): Unit
 
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<Int32> | Yes | - | Returns the signal strength in dBm via the registered callback function. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<Int32> | Yes | - | Returns the signal strength in dBm via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2008,11 +2008,11 @@ public func getServices(callback: AsyncCallback<Array<GattService>>): Unit
 
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<Array\<[GattService](#class-gattservice)>> | Yes | - | Performs service discovery on the client side. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<Array\<[GattService](#class-gattservice)>> | Yes | - | Performs service discovery on the client side. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2068,11 +2068,11 @@ public func off(eventType: BluetoothBleGattClientDeviceCallbackType, callback!: 
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | eventType | [BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype) | Yes | - | The characteristic value change event. |
-| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** Unsubscribes from Bluetooth Low Energy (BLE) device events on the client side. If this parameter is not provided, all callbacks corresponding to the type will be unsubscribed. |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** Unsubscribes from Bluetooth Low Energy (BLE) device events on the client side. If this parameter is not provided, all callbacks corresponding to the type will be unsubscribed. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2134,11 +2134,11 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 | Parameter | Type | Required | Default Value | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | eventType | [BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype) | Yes | - | Must be set to ClientBleMtuChange, indicating the MTU state change event. Incorrect values will prevent callback registration. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[BLECharacteristic](#class-blecharacteristic)> | Yes | - | Returns the MTU byte count value via the registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[BLECharacteristic](#class-blecharacteristic)> | Yes | - | Returns the MTU byte count value via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2198,11 +2198,11 @@ public func on(
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype) | Yes | - | Set to BleConnectionStateChange, indicating connection state change event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[BLEConnectionChangeState](#class-bleconnectionchangestate)> | Yes | - | Returns MTU byte count value, obtained via registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[BLEConnectionChangeState](#class-bleconnectionchangestate)> | Yes | - | Returns MTU byte count value, obtained via registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2264,11 +2264,11 @@ public func on(eventType: BluetoothBleGattClientDeviceCallbackType, callback: Ca
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattClientDeviceCallbackType](#enum-bluetoothblegattclientdevicecallbacktype) | Yes | - | Must be set to ClientBleMtuChange, indicating MTU state change event. Incorrect setting will cause callback registration failure. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32> | Yes | - | Returns MTU byte count value, obtained via registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32> | Yes | - | Returns MTU byte count value, obtained via registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2328,11 +2328,11 @@ public func readCharacteristicValue(
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | characteristic | [BLECharacteristic](#class-blecharacteristic) | Yes | - | Characteristic to be read. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[BLECharacteristic](#class-blecharacteristic)> | Yes | - | Client reads characteristic value, obtained via registered callback function. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[BLECharacteristic](#class-blecharacteristic)> | Yes | - | Client reads characteristic value, obtained via registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2418,11 +2418,11 @@ public func readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallba
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | descriptor | [BLEDescriptor](#class-bledescriptor) | Yes | - | Descriptor to be read. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[BLEDescriptor](#class-bledescriptor)> | Yes | - | Client reads descriptor, obtained via registered callback function. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<[BLEDescriptor](#class-bledescriptor)> | Yes | - | Client reads descriptor, obtained via registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2504,7 +2504,7 @@ public func setBLEMtuSize(mtu: Int32): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -2554,11 +2554,11 @@ public func setCharacteristicChangeIndication(characteristic: BLECharacteristic,
 |:---|:---|:---|:---|:---|
 | characteristic | [BLECharacteristic](#class-blecharacteristic) | Yes | - | Binary value and other parameters corresponding to Bluetooth device characteristic. |
 | enable | Bool | Yes | - | Write type of Bluetooth device characteristic. |
-| callback | [AsyncCallback](../../arkinterop/cj-api-business_exception.md#type-asynccallback)\<Unit> | Yes | - | Callback function. |
+| callback | [AsyncCallback](../arkinterop/cj-api-business_exception.md#type-asynccallback)\<Unit> | Yes | - | Callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3009,7 +3009,7 @@ public func addService(service: GattService): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3091,7 +3091,7 @@ public func close(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3144,7 +3144,7 @@ public func notifyCharacteristicChanged(deviceId: String, notifyCharacteristic: 
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3202,11 +3202,11 @@ public func off(eventType: BluetoothBleGattServerCallbackType, callback!: ?Callb
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype) | Yes | - | The callback event. |
-| callback | ?[CallbackObject](../../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** Indicates unsubscribing from BLE events. If this parameter is not provided, all callbacks corresponding to the type will be unsubscribed. |
+| callback | ?[CallbackObject](../arkinterop/cj-api-callback_invoke.md#class-callbackobject) | No | None | **Named parameter.** Indicates unsubscribing from BLE events. If this parameter is not provided, all callbacks corresponding to the type will be unsubscribed. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3263,11 +3263,11 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype) | Yes | - | Set to CharacteristicRead, indicating characteristic read request events. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CharacteristicReadRequest](#class-characteristicreadrequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CharacteristicReadRequest](#class-characteristicreadrequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3340,11 +3340,11 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype) | Yes | - | Set to CharacteristicWrite, indicating characteristic write request events. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CharacteristicWriteRequest](#class-characteristicwriterequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[CharacteristicWriteRequest](#class-characteristicwriterequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3424,11 +3424,11 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype) | Yes | - | Set to DescriptorRead, indicating descriptor read request events. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DescriptorReadRequest](#class-descriptorreadrequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DescriptorReadRequest](#class-descriptorreadrequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3499,11 +3499,11 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype) | Yes | - | Set to `DescriptorWrite`, indicating a descriptor write request event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DescriptorWriteRequest](#class-descriptorwriterequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[DescriptorWriteRequest](#class-descriptorwriterequest)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3580,11 +3580,11 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype) | Yes | - | Set to `ConnectionStateChange`, indicating a BLE connection state change event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[BLEConnectionChangeState](#class-bleconnectionchangestate)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[BLEConnectionChangeState](#class-bleconnectionchangestate)> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3641,11 +3641,11 @@ public func on(eventType: BluetoothBleGattServerCallbackType, callback: Callback
 | Parameter Name | Type | Required | Default Value | Description |
 |:---|:---|:---|:---|:---|
 | eventType | [BluetoothBleGattServerCallbackType](#enum-bluetoothblegattservercallbacktype) | Yes | - | Must be set to `BLE_MTU_CHANGE`, indicating an MTU state change event. Incorrect settings will prevent callback registration. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<Int32> | Yes | - | Returns the MTU byte count value, obtained via the registered callback function. |
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3704,7 +3704,7 @@ public func removeService(serviceUuid: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -3758,7 +3758,7 @@ public func sendResponse(serverResponse: ServerResponse): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](../../errorcodes/cj-errorcode-bluetooth_manager.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Bluetooth Service Subsystem Error Codes](./cj-errorcode-bluetooth_manager.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

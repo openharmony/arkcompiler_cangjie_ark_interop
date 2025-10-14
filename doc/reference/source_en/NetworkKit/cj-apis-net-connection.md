@@ -2,7 +2,7 @@
 
 Network connection management provides fundamental capabilities for managing networks, including obtaining the default active data network, retrieving a list of all active data networks, enabling/disabling airplane mode, and obtaining network capability information, among others.
 
-For detailed error code descriptions in this section, please refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md).
+For detailed error code descriptions in this section, please refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md).
 
 ## Import Module
 
@@ -23,7 +23,7 @@ API example code usage instructions:
 - If the first line of example code contains a "// index.cj" comment, it indicates that the example can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the example requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the aforementioned example projects and configuration templates, please refer to [Cangjie Example Code Instructions](../../cj-development-intro.md#仓颉示例代码说明).
+For the aforementioned example projects and configuration templates, please refer to [Cangjie Example Code Instructions](../cj-development-intro.md#仓颉示例代码说明).
 
 ## func createNetConnection(?NetSpecifier, UInt32)
 
@@ -96,7 +96,7 @@ public func getAddressesByName(host: String): Array<NetAddress>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -141,7 +141,7 @@ public func getAllNets(): Array<NetHandle>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -183,7 +183,7 @@ public func getAppNet(): NetHandle
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -232,7 +232,7 @@ public func getConnectionProperties(netHandle: NetHandle): ConnectionProperties
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -282,7 +282,7 @@ public func getDefaultHttpProxy(): HttpProxy
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -331,7 +331,7 @@ public func getDefaultNet(): NetHandle
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -381,7 +381,7 @@ public func getNetCapabilities(netHandle: NetHandle): NetCapabilities
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, refer to [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -431,7 +431,7 @@ public func hasDefaultNet(): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -475,7 +475,7 @@ public func isDefaultNetMetered(): Bool
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -519,7 +519,7 @@ public func reportNetConnected(netHandle: NetHandle): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -565,7 +565,7 @@ public func reportNetDisconnected(netHandle: NetHandle): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -611,7 +611,7 @@ public func setAppNet(netHandle: NetHandle): Unit
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed in the table below. For details, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1257,7 +1257,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetHandle>
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | event | [NetConnectionEvent](#enum-netconnectionevent) | Yes | - | Network connection event type, only supports NetAvailable and NetLost events. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetHandle](#class-nethandle)> | Yes | - | Callback function, returns data network handle. |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetHandle](#class-nethandle)> | Yes | - | Callback function, returns data network handle. |
 
 **Exceptions:**
 
@@ -1286,7 +1286,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetBlockSt
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | event | [NetConnectionEvent](#enum-netconnectionevent) | Yes | - | Network connection event type, only supports NetBlockStatusChange event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetBlockStatusInfo](#class-netblockstatusinfo)> | Yes | - | Callback function, returns data network handle (netHandle) and network blocking status (blocked). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetBlockStatusInfo](#class-netblockstatusinfo)> | Yes | - | Callback function, returns data network handle (netHandle) and network blocking status (blocked). |
 
 **Exceptions:**
 
@@ -1315,7 +1315,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetCapabil
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | event | [NetConnectionEvent](#enum-netconnectionevent) | Yes | - | Network connection event type, only supports NetCapabilitiesChange event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetCapabilityInfo](#class-netcapabilityinfo)> | Yes | - | Callback function, returns data network handle (netHandle) and network capability information (netCap). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetCapabilityInfo](#class-netcapabilityinfo)> | Yes | - | Callback function, returns data network handle (netHandle) and network capability information (netCap). |
 
 **Exceptions:**
 
@@ -1344,7 +1344,7 @@ public func on(event: NetConnectionEvent, callback: Callback1Argument<NetConnect
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | event | [NetConnectionEvent](#enum-netconnectionevent) | Yes | - | Network connection event type, only supports NetConnectionPropertiesChange event. |
-| callback | [Callback1Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetConnectionPropertyInfo](#class-netconnectionpropertyinfo)> | Yes | - | Callback function, returns data network handle (netHandle) and network connection information (connectionProperties). |
+| callback | [Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[NetConnectionPropertyInfo](#class-netconnectionpropertyinfo)> | Yes | - | Callback function, returns data network handle (netHandle) and network connection information (connectionProperties). |
 
 **Exceptions:**
 
@@ -1373,7 +1373,7 @@ public func on(event: NetConnectionEvent, callback: Callback0Argument): Unit
 | Name | Type | Required | Default | Description |
 |:---|:---|:---|:---|:---|
 | event | [NetConnectionEvent](#enum-netconnectionevent) | Yes | - | Network connection event type, only supports NetUnavailable event. |
-| callback | [Callback0Argument](../../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function, no return result. |
+| callback | [Callback0Argument](../arkinterop/cj-api-callback_invoke.md#class-callback0argument) | Yes | - | Callback function, no return result. |
 
 **Exceptions:**
 
@@ -1399,7 +1399,7 @@ public func register(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1438,7 +1438,7 @@ public func unregister(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1565,7 +1565,7 @@ public func getAddressByName(host: String): NetAddress
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1618,7 +1618,7 @@ public func getAddressesByName(host: String): Array<NetAddress>
 
 **Exceptions:**
 
-- BusinessException: Error codes are listed below. For details, see [Network Connection Management Error Codes](../../errorcodes/cj-errorcode-net-connection.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Error codes are listed below. For details, see [Network Connection Management Error Codes](./cj-errorcode-net-connection.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |

@@ -15,7 +15,7 @@ API示例代码使用说明：
 - 若示例代码首行有“// index.cj”注释，表示该示例可在仓颉模板工程的“index.cj”文件中编译运行。
 - 若示例需获取[Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context)应用上下文，需在仓颉模板工程中的“main_ability.cj”文件中进行配置。
 
-上述示例工程及配置模板详见[仓颉示例代码说明](../../cj-development-intro.md#仓颉示例代码说明)。
+上述示例工程及配置模板详见[仓颉示例代码说明](../cj-development-intro.md#仓颉示例代码说明)。
 
 ## func createCipher(String)
 
@@ -25,8 +25,8 @@ public func createCipher(transformation: String): Cipher
 
 **功能：** 通过指定算法名称，获取相应的[Cipher](#class-cipher)实例。
 
-<!-- 支持的规格详见[对称密钥加解密算法规格](../../cj-development-intro.md#对称密钥加解密算法规格)和[非对称密钥加解密算法规格](../../cj-development-intro.md#非对称密钥加解密算法规格)。 -->
-支持的规格详见[对称密钥加解密算法规格](../../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#对称密钥加解密算法规格)和[非对称密钥加解密算法规格](../../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#非对称密钥加解密算法规格)。
+<!-- 支持的规格详见[对称密钥加解密算法规格](../cj-development-intro.md#对称密钥加解密算法规格)和[非对称密钥加解密算法规格](../cj-development-intro.md#非对称密钥加解密算法规格)。 -->
+支持的规格详见[对称密钥加解密算法规格](../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-encrypt-decrypt-spec.md#对称密钥加解密算法规格)和[非对称密钥加解密算法规格](../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-asym-encrypt-decrypt-spec.md#非对称密钥加解密算法规格)。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -46,7 +46,7 @@ public func createCipher(transformation: String): Cipher
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -93,7 +93,7 @@ public func createMac(algName: String): Mac
 
 **异常：**
 
-- BusinessException：对应错误码的详细介绍请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码的详细介绍请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   |错误码ID|错误信息|
   |:---|:---|
@@ -137,7 +137,7 @@ public func createMd(algName: String): Md
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -175,7 +175,7 @@ public func createRandom(): Random
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -200,7 +200,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator
 
 **功能：** 通过指定算法名称的字符串，获取相应的对称密钥生成器实例。
 
-支持的规格详见[对称密钥生成和转换规格](../../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md)。
+支持的规格详见[对称密钥生成和转换规格](../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md)。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
 
@@ -210,7 +210,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|algName|String|是|-|待生成对称密钥生成器的算法名称。具体取值详见[对称密钥生成和转换规格](../../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md)一节中的“字符串参数”。|
+|algName|String|是|-|待生成对称密钥生成器的算法名称。具体取值详见[对称密钥生成和转换规格](../../../application-dev/source_zh_cn/security/CryptoArchitectureKit/cj-crypto-sym-key-generation-conversion-spec.md)一节中的“字符串参数”。|
 
 **返回值：**
 
@@ -220,7 +220,7 @@ public func createSymKeyGenerator(algName: String): SymKeyGenerator
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -419,7 +419,7 @@ public func initialize(opMode: CryptoMode, key: Key, params: ?ParamsSpec): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -492,7 +492,7 @@ public func doFinal(data: ?DataBlob): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -562,7 +562,7 @@ public func update(data: DataBlob): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -810,7 +810,7 @@ public func digest(): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -852,7 +852,7 @@ public func getMdLength(): UInt32
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -891,7 +891,7 @@ public func update(input: DataBlob): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -966,7 +966,7 @@ public func generateRandom(len: Int32): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1007,7 +1007,7 @@ public func setSeed(seed: DataBlob): Unit
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1126,7 +1126,7 @@ public func getEncoded(): DataBlob
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1212,7 +1212,7 @@ public func convertKey(key: DataBlob): SymKey
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[通用错误码](../../errorcodes/cj-errorcode-universal.md)和[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[通用错误码](../cj-errorcode-universal.md)和[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |
@@ -1259,7 +1259,7 @@ public func generateSymKey(): SymKey
 
 **异常：**
 
-- BusinessException：对应错误码如下表，请参见[crypto framework错误码](../../errorcodes/cj-errorcode-crypto.md)。
+- BusinessException：对应错误码如下表，请参见[crypto framework错误码](./cj-errorcode-crypto.md)。
 
   | 错误码ID | 错误信息 |
   | :---- | :--- |

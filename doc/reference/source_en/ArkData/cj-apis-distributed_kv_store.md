@@ -27,7 +27,7 @@ API sample code usage guidelines:
 - If the first line of the sample code has a "// index.cj" comment, it indicates that the sample can be compiled and run in the "index.cj" file of the Cangjie template project.
 - If the sample requires obtaining the [Context](../AbilityKit/cj-apis-app-ability-ui_ability.md#class-context) application context, it needs to be configured in the "main_ability.cj" file of the Cangjie template project.
 
-For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
+For the above sample projects and configuration templates, refer to [Cangjie Sample Code Instructions](../cj-development-intro.md#Cangjie-Sample-Code-Instructions).
 
 ## class Constants
 
@@ -181,7 +181,7 @@ public func get(key: String): ValueType
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -217,7 +217,7 @@ public func getEntries(keyPrefix: String): Array<Entry>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -252,7 +252,7 @@ public func getEntries(query: Query): Array<Entry>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -287,7 +287,7 @@ public func getResultSet(keyPrefix: String): KVStoreResultSet
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -323,7 +323,7 @@ public func getResultSet(query: Query): KVStoreResultSet
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -359,7 +359,7 @@ public func getResultSize(query: Query): Int32
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed in the table below. For details, see [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed in the table below. For details, see [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -598,7 +598,7 @@ public func closeKVStore(appId: String, storeId: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -625,7 +625,7 @@ public func deleteKVStore(appId: String, storeId: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -658,7 +658,7 @@ public func getAllKVStoreId(appId: String): Array<String>
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -691,7 +691,7 @@ public func getKVStore<T>(storeId: String, options: Options): T where T <: Singl
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. For details, see [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Database Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1105,7 +1105,7 @@ public open func backup(file: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1126,7 +1126,7 @@ public open func commit(): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1152,7 +1152,7 @@ public open func delete(key: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1181,7 +1181,7 @@ public open func deleteBatch(keys: Array<String>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1210,7 +1210,7 @@ public open func enableSync(enabled: Bool): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1242,7 +1242,7 @@ public open func get(key: String): ValueType
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md) and [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. See [Universal Error Codes](../cj-errorcode-universal.md) and [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1272,7 +1272,7 @@ public open func put(key: String, value: ValueType): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md) and [Universal Error Codes](../../errorcodes/cj-errorcode-universal.md).
+- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md) and [Universal Error Codes](../cj-errorcode-universal.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1301,7 +1301,7 @@ public open func putBatch(entries: Array<Entry>): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md).
+- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md).
 
   | Error Code ID | Error Message |
   | :---- | :--- |
@@ -1329,7 +1329,7 @@ public open func restore(file: String): Unit
 
 **Exceptions:**
 
-- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](../../errorcodes/cj-errorcode-distributed_kv_store.md) and## enum SecurityLevel
+- BusinessException: Corresponding error codes are listed below. See [Distributed Key-Value Store Error Codes](./cj-errorcode-distributed_kv_store.md) and## enum SecurityLevel
 
 ```cangjie
 public enum SecurityLevel {
