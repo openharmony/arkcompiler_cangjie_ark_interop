@@ -151,6 +151,7 @@ class MyAbilityStage <: AbilityStage {
         let ctx = createContextFromJSValue(JjsContext, input)
     }
 }
+```
 
 ## func createUIAbilityContextFromJSValue(JSContext, JSValue)
 
@@ -193,6 +194,7 @@ class MyUIAbility <: UIAbility {
         let ctx = createContextFromJSValue(JjsContext, input)
     }
 }
+```
 
 ## interface SystemObjectInteropTypeToJS
 
@@ -275,6 +277,7 @@ class MyUIAbility <: UIAbility {
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
     }
 }
+```
 
 ## class AbilityStageContext
 
@@ -321,6 +324,7 @@ class MyAbilityStage <: AbilityStage {
         let info = this.context.currentHapModuleInfo
     }
 }
+```
 
 ## class ApplicationContext
 
@@ -381,6 +385,7 @@ class MyUIAbility <: UIAbility {
         let info = this.context.applicationInfo
     }
 }
+```
 
 ### prop area
 
@@ -409,6 +414,7 @@ class MyUIAbility <: UIAbility {
         let area = this.context.area
     }
 }
+```
 
 ### prop filesDir
 
@@ -437,6 +443,7 @@ class MyUIAbility <: UIAbility {
         let filesDir = this.context.filesDir
     }
 }
+```
 
 ### prop resourceManager
 
@@ -465,6 +472,7 @@ class MyUIAbility <: UIAbility {
         let resourceManager = this.context.resourceManager
     }
 }
+```
 
 ## class UIAbility
 
@@ -513,6 +521,7 @@ class MyUIAbility <: UIAbility {
         let context = this.context
     }
 }
+```
 
 ### prop lastRequestWant
 
@@ -541,6 +550,7 @@ class MyUIAbility <: UIAbility {
         let lastRequestWant = this.lastRequestWant
     }
 }
+```
 
 ### prop launchWant
 
@@ -569,6 +579,7 @@ class MyUIAbility <: UIAbility {
         let launchWant = this.launchWant
     }
 }
+```
 
 ### func onBackground()
 
@@ -593,6 +604,7 @@ class MyUIAbility <: UIAbility {
         let launchWant = this.launchWant
     }
 }
+```
 
 ### func onCreate(Want, LaunchParam)
 
@@ -624,6 +636,7 @@ class MyUIAbility <: UIAbility {
         let launchWant = this.launchWant
     }
 }
+```
 
 ### func onDestroy()
 
@@ -647,6 +660,7 @@ class MyUIAbility <: UIAbility {
     public override func onDestroy(): Unit {
     }
 }
+```
 
 ### func onForeground()
 
@@ -670,6 +684,7 @@ class MyUIAbility <: UIAbility {
     public override func onForeground(): Unit {
     }
 }
+```
 
 ### func onNewWant(Want, LaunchParam)
 
@@ -700,6 +715,7 @@ class MyUIAbility <: UIAbility {
     public override func onNewWant(want: Want, launchParam: LaunchParam): Unit {
     }
 }
+```
 
 ### func onWindowStageCreate(WindowStage)
 
@@ -729,6 +745,7 @@ class MyUIAbility <: UIAbility {
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
     }
 }
+```
 
 ### func onWindowStageDestroy()
 
@@ -752,6 +769,7 @@ class MyUIAbility <: UIAbility {
     public override func onWindowStageDestroy(): Unit {
     }
 }
+```
 
 ## class UIAbilityContext
 
@@ -806,6 +824,7 @@ class MyUIAbility <: UIAbility {
         let isTerminating = this.context.isTerminating()
     }
 }
+```
 
 ### func requestDialogService(Want, AsyncCallback\<RequestResult>)
 
@@ -861,6 +880,7 @@ class MyUIAbility <: UIAbility {
         this.context.requestDialogService(Want(), (err: ?BusinessException, data: ?RequestResult) => {})
     }
 }
+```
 
 ### func startAbility(Want, ?StartOptions)
 
@@ -930,6 +950,7 @@ class MyUIAbility <: UIAbility {
           this.context.startAbility(Want(bundleName: "com.example.cangjieinsight", abilityName: "testAbility"))
     }
 }
+```
 
 ### func startAbilityForResult(Want, AsyncCallback\<AbilityResult>)
 
@@ -997,6 +1018,7 @@ class MyUIAbility <: UIAbility {
               (err: ?BusinessException, data: ?AbilityResult) => {})
     }
 }
+```
 
 ### func startAbilityForResult(Want, StartOptions, AsyncCallback\<AbilityResult>)
 
@@ -1063,6 +1085,7 @@ class MyUIAbility <: UIAbility {
               (err: ?BusinessException, data: ?AbilityResult) => {})
     }
 }
+```
 
 ### func terminateSelf()
 
@@ -1097,6 +1120,7 @@ class MyUIAbility <: UIAbility {
           this.context.terminateSelf()
     }
 }
+```
 
 ### func terminateSelfWithResult(AbilityResult)
 
@@ -1138,3 +1162,4 @@ class MyUIAbility <: UIAbility {
           this.context.terminateSelfWithResult(AbilityResult(0))
     }
 }
+```
