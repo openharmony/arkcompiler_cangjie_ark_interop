@@ -1,4 +1,4 @@
-# 应用开发
+# 应用开发（Beta特性）
 
 - 入门
     - [应用开发导读](source_zh_cn/cj-start/start/cj-start-application-development-overview.md)
