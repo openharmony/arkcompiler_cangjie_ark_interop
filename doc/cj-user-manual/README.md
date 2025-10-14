@@ -1,4 +1,4 @@
-# User Manual
+# User Manual (Beta Feature)
 
 - [First Look at Cangjie Language](source_en/first_understanding/basic.md)
 - Basic Concepts
