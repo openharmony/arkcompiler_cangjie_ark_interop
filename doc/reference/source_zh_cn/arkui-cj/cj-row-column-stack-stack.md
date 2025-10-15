@@ -14,25 +14,24 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Alignment, () -> Unit)
+### init(?Alignment, () -> Unit)
 
 ```cangjie
-
-public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit = {=>})
+public init(alignContent!: ?Alignment = None, child!: () -> Unit = {=>})
 ```
 
-**功能：** 创建一个包含子组件的Stack容器，子组件对齐方式是alignContent。
+**功能：** 创建一个包含子组件的Stack容器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|alignContent|[Alignment](cj-common-types.md#enum-alignment)|否|Alignment.Center|设置子组件在容器内的对齐方式。<br> 初始值：Alignment.Center|
-|child|()->Unit|否|{ => }|声明容器内的子组件。|
+|alignContent|?Alignment|否|None| **命名参数。** 设置子组件在容器内的对齐方式。<br>初始值：Alignment.Center。|
+|child|() -> Unit|否|{=>}| **命名参数。** 声明容器内的子组件。|
 
 ## 通用属性/通用事件
 
@@ -42,24 +41,23 @@ public init(alignContent!: Alignment = Alignment.Center, child!: () -> Unit = {=
 
 ## 组件属性
 
-### func alignContent(Alignment)
+### func alignContent(?Alignment)
 
 ```cangjie
-
-public func alignContent(value: Alignment): This
+public func alignContent(value: ?Alignment): This
 ```
 
 **功能：** 设置所有子组件在容器内的对齐方式。该属性与[通用属性align](cj-universal-attribute-location.md#func-alignalignment)同时设置时，后设置的属性生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Alignment](cj-common-types.md#enum-alignment)|是|-|所有子组件在容器内的对齐方式。 <br> 初始值：Alignment.Center|
+|value|?Alignment|是|-|所有子组件在容器内的对齐方式。<br>初始值：Alignment.Center。|
 
 ## 示例代码
 

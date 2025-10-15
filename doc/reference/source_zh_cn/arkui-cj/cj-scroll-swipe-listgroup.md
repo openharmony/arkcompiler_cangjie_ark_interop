@@ -23,14 +23,14 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(CustomBuilder, CustomBuilder, Length, ListItemGroupStyle, () -> Unit)
+### init(?CustomBuilder, ?CustomBuilder, ?Length, ?ListItemGroupStyle, () -> Unit)
 
 ```cangjie
 public init(
-    header!: CustomBuilder = {=>},
-    footer!: CustomBuilder = {=>},
-    space!: Length = 0.vp,
-    style!: ListItemGroupStyle = ListItemGroupStyle.None,
+    header!: ?CustomBuilder = None,
+    footer!: ?CustomBuilder = None,
+    space!: ?Length = None,
+    style!: ?ListItemGroupStyle = Option.None,
     child!: () -> Unit
 )
 ```
@@ -39,17 +39,17 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
-| 参数名    | 类型                                                                    | 必填  | 默认值                     | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|:------ |:--------------------------------------------------------------------- |:--- |:----------------------- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| header | [CustomBuilder](./cj-common-types.md#type-custombuilder) | 否   | { => }                  | **命名参数。** 设置ListItemGroup头部组件。<br/>**说明：**<br/>可以放单个子组件或不放子组件。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。                                                                                                                                                                                                                                                                                        |
-| footer | [CustomBuilder](./cj-common-types.md#type-custombuilder) | 否   | { => }                  | **命名参数。** 设置ListItemGroup尾部组件。<br/>**说明：**<br/>可以放单个子组件或不放子组件。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。                                                                                                                                                                                                                                                                                        |
-| space  | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp                    | **命名参数。** 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。<br/>初始值：0。<br/>单位：vp。<br/>**说明：**<br/>设置为负数或者大于等于List内容区长度时，按初始值显示。                                                                                                                                                                                                                                                                                   |
-| style  | [ListItemGroupStyle](#enum-listitemgroupstyle)                        | 否   | ListItemGroupStyle.None | **命名参数。** 设置List组件卡片样式。<br/>初始值：ListItemGroupStyle.NONE<br/>设置为ListItemGroupStyle.NONE时无样式。设置为ListItemGroupStyle.CARD时，建议配合ListItem的ListItemStyle.CARD同时使用，显示默认卡片样式。<br/>卡片样式下，ListItemGroup初始规格：左右外边距12.vp，上下左右内边距4.vp。<br/>卡片样式下，为卡片内的列表选项提供了默认的focus、hover、press、selected和disable样式。<br/>**说明：**<br/>当前卡片模式下，使用默认Axis.Vertical排列方向，如果listDirection属性设置为Axis.Horizontal，会导致显示混乱；List属性alignListItem默认为ListItemAlign.Center，居中对齐显示。 |
-| child  | ()->Unit                                                              | 是   | -                       | 声明容器子组件。                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 参数名    | 类型              | 必填  | 默认值        | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|:------ |:--------------- |:--- |:---------- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| header | ?CustomBuilder  | 否   | None       | **命名参数。** 设置ListItemGroup头部组件。                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| footer | ?CustomBuilder  | 否   | None       | **命名参数。** 设置ListItemGroup尾部组件。                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| space  | ?Length         | 否   | None       | **命名参数。** 列表项间距。只作用于ListItem与ListItem之间，不作用于header与ListItem、footer与ListItem之间。                                                                                                                                                                                                                                                                                                                                                   |
+| style  | ?ListItemGroupStyle | 否   | Option.None | **命名参数。** 设置List组件卡片样式。                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| child  | ()->Unit        | 是   | -          | 声明容器子组件。                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 ## 通用属性/通用事件
 
@@ -63,23 +63,6 @@ public init(
 
 ## 组件属性
 
-### func divider(Option\<ListDividerOptions>)
-
-```cangjie
-public func divider(value: Option<ListDividerOptions>): This
-```
-
-**功能：** 用于设置ListItem分割线样式，默认无分割线。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-| 参数名   | 类型                                                                                                               | 必填  | 默认值 | 说明     |
-|:----- |:---------------------------------------------------------------------------------------------------------------- |:--- |:--- |:------ |
-| value |Option<ListDividerOptions> | 是   | -   | 分割线样式。 |
 
 ## 基础类型定义
 
@@ -87,15 +70,15 @@ public func divider(value: Option<ListDividerOptions>): This
 
 ```cangjie
 public class ListDividerOptions {
-    public var strokeWidth: Length
-    public var color: ResourceColor = Color(0X08000000)
-    public var startMargin: Length = 0.vp
-    public var endMargin: Length = 0.vp
+    public var strokeWidth: ?Length
+    public var color: ?ResourceColor
+    public var startMargin: ?Length
+    public var endMargin: ?Length
     public init(
-        strokeWidth!: Length,
-        color!: ResourceColor = Color.Black,
-        startMargin!: Length = 0.vp,
-        endMargin!: Length = 0.vp
+        strokeWidth!: ?Length,
+        color!: ?ResourceColor = None,
+        startMargin!: ?Length = None,
+        endMargin!: ?Length = None
     )
 }
 ```
@@ -104,80 +87,82 @@ public class ListDividerOptions {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** 无
 
 #### var color
 
 ```cangjie
-public var color: ResourceColor = Color(0X08000000)
+public var color: ?ResourceColor
 ```
 
 **功能：** 设置分割线的颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** ?ResourceColor
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var endMargin
 
 ```cangjie
-public var endMargin: Length = 0.vp
+public var endMargin: ?Length
 ```
 
 **功能：** 设置分割线距离列表侧边结束端的距离。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?Length
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var startMargin
 
 ```cangjie
-public var startMargin: Length = 0.vp
+public var startMargin: ?Length
 ```
 
 **功能：** 设置分割线距离列表侧边起始端的距离。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?Length
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var strokeWidth
 
 ```cangjie
-public var strokeWidth: Length
+public var strokeWidth: ?Length
 ```
 
 **功能：** 设置分割线的线宽。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?Length
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Length, ResourceColor, Length, Length)
+#### init(?Length, ?ResourceColor, ?Length, ?Length)
 
 ```cangjie
 public init(
-    strokeWidth!: Length,
-    color!: ResourceColor = Color.Black,
-    startMargin!: Length = 0.vp,
-    endMargin!: Length = 0.vp
+    strokeWidth!: ?Length,
+    color!: ?ResourceColor = None,
+    startMargin!: ?Length = None,
+    endMargin!: ?Length = None
 )
 ```
 
@@ -185,21 +170,21 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
-| 参数名         | 类型                                                                    | 必填  | 默认值         | 说明               |
-|:----------- |:--------------------------------------------------------------------- |:--- |:----------- |:---------------- |
-| strokeWidth | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 是   | -           | 分割线的线宽。          |
-| color       | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | 否   | Color.Black | 分割线的颜色。          |
-| startMargin | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp        | 分割线距离列表侧边起始端的距离。 |
-| endMargin   | [Length](../BasicServicesKit/cj-apis-base.md#interface-length)        | 否   | 0.vp        | 分割线距离列表侧边结束端的距离。 |
+| 参数名         | 类型            | 必填  | 默认值 | 说明               |
+|:----------- |:------------- |:--- |:--- |:---------------- |
+| strokeWidth | ?Length       | 是   | -   | 分割线的线宽。          |
+| color       | ?ResourceColor | 否   | None | 分割线的颜色。          |
+| startMargin | ?Length       | 否   | None | 分割线距离列表侧边起始端的距离。 |
+| endMargin   | ?Length       | 否   | None | 分割线距离列表侧边结束端的距离。 |
 
 ### enum ListItemGroupStyle
 
 ```cangjie
-public enum ListItemGroupStyle {
+public enum ListItemGroupStyle <: Equatable<ListItemGroupStyle> {
     | None
     | Card
     | ...
@@ -210,7 +195,9 @@ public enum ListItemGroupStyle {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** Equatable\<ListItemGroupStyle>
 
 #### Card
 
@@ -222,7 +209,7 @@ Card
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### None
 
@@ -234,7 +221,48 @@ None
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### operator func !=(ListItemGroupStyle)
+
+```cangjie
+public operator func !=(other: ListItemGroupStyle): Bool
+```
+
+**功能：** 比较两个枚举值是否不相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ListItemGroupStyle](#enum-ListItemGroupStyle)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等则返回true，否则返回false。|
+
+#### operator func ==(ListItemGroupStyle)
+
+```cangjie
+public operator func ==(other: ListItemGroupStyle): Bool
+```
+
+**功能：** 比较两个枚举值是否相等。
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ListItemGroupStyle](#enum-ListItemGroupStyle)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等则返回true，否则返回false。|
+
 
 ## 示例代码
 

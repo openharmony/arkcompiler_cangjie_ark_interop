@@ -14,24 +14,24 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(RefreshOptions, () -> Unit)
+### init(?RefreshOptions, () -> Unit)
 
 ```cangjie
-public init(value: RefreshOptions, child: () -> Unit)
+public init(value: ?RefreshOptions, child: () -> Unit)
 ```
 
 **功能：** 创建refresh组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[RefreshOptions](#class-refreshoptions)|是|-|设置组件刷新时的参数。|
-|child|()->Unit|是|-|声明容器子组件。|
+|value|?RefreshOptions|否|-|设置组件刷新时的参数。|
+|child|() -> Unit|是|-|声明容器子组件。|
 
 ## 通用属性/通用事件
 
@@ -39,43 +39,45 @@ public init(value: RefreshOptions, child: () -> Unit)
 
 通用事件：全部支持。
 
+
+
 ## 组件事件
 
-### func onRefreshing(() -> Unit)
+### func onStateChange(?(RefreshStatus) -> Unit)
 
 ```cangjie
-public func onRefreshing(callback: () -> Unit): This
-```
-
-**功能：** 进入刷新状态时触发回调。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|进入刷新状态时触发回调。|
-
-### func onStateChange((RefreshStatus) -> Unit)
-
-```cangjie
-public func onStateChange(callback: (RefreshStatus) -> Unit): This
+public func onStateChange(callback: ?(RefreshStatus) -> Unit): This
 ```
 
 **功能：** 设置刷新状态变更时，触发回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|([RefreshStatus](./cj-common-types.md#enum-refreshstatus))->Unit|是|-|刷新状态。|
+|callback|?(RefreshStatus)-> Unit|是|-|刷新状态。|
+
+### func onRefreshing(?() -> Unit)
+
+```cangjie
+public func onRefreshing(callback: ?() -> Unit): This
+```
+
+**功能：** 进入刷新状态时触发回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?()->Unit|是|-|进入刷新状态时触发回调。|
 
 ## 基础类型定义
 
@@ -83,10 +85,10 @@ public func onStateChange(callback: (RefreshStatus) -> Unit): This
 
 ```cangjie
 public class RefreshOptions {
-    public var refreshing: Bool
-    public var changeEvent:(Bool) -> Unit
-    public init(refreshing!: Bool)
-    public init(refreshing!: (Bool, (Bool) -> Unit))
+    public var refreshing: ?Bool
+    public var changeEvent: ?(Bool) -> Unit
+    public init(refreshing!: ?Bool)
+    public init(refreshing!: ?Bindable<Bool>)
 }
 ```
 
@@ -94,75 +96,80 @@ public class RefreshOptions {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### var changeEvent
+**父类型：**
 
-```cangjie
-public var changeEvent:(Bool) -> Unit
-```
-
-**功能：** 配合 @Binder 宏使用，用于refreshing属性的双向绑定。
-
-**类型：** (Bool)->Unit
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+无
 
 #### var refreshing
 
 ```cangjie
-public var refreshing: Bool
+public var refreshing: ?Bool
 ```
 
 **功能：** 当前组件是否正在刷新。
 
-**类型：** Bool
+**类型：** ?Bool
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Bool)
+#### var changeEvent
 
 ```cangjie
-public init(refreshing!: Bool)
+public var changeEvent: ?(Bool) -> Unit
+```
+
+**功能：** 配合 @Binder 宏使用，用于refreshing属性的双向绑定。
+
+**类型：** ?(Bool) -> Unit
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?Bool)
+
+```cangjie
+public init(refreshing!: ?Bool)
 ```
 
 **功能：** 创建一个 RefreshOptions 对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|refreshing|Bool|是|-| **命名参数。** 标识刷新组件当前是否正在刷新。|
+|refreshing|?Bool|是|-| **命名参数。** 标识刷新组件当前是否正在刷新。|
 
-#### init((Bool,(Bool) -> Unit))
+#### init(?Bindable\<Bool>)
 
 ```cangjie
-public init(refreshing!: (Bool, (Bool) -> Unit))
+public init(refreshing!: ?Bindable<Bool>)
 ```
 
-**功能：** 根据刷新状态创建一个 RefreshOptions 对象
+**功能：** 根据刷新状态创建一个 RefreshOptions 对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|refreshing|(Bool,(Bool)->Unit)|是|-| **命名参数。** 标识刷新组件当前是否正在刷新。|
+|refreshing|?Bindable\<Bool>|否|-| **命名参数。** 标识刷新组件当前是否正在刷新。|
+
 
 ## 示例代码
 
@@ -188,104 +195,69 @@ class MyDataSource <: IDataSource<Int64> {
         return data_[index]
     }
 
-    public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func registerDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = listener
     }
 
-    public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = None
     }
-
-    public func totalCount(): Int64 {
-        return data_.size
+    
+    public func refresh(): Unit {
+        data_.clear()
+        let now = Date.now()
+        for (_, index) in data_.indices() {
+            data_.insertAt(0, now + index)
+        }
+        match (listenerOp) {
+            case Some(listener) => listener.onDataReloaded()
+            case None => ()
+        }
     }
 }
 
 @Entry
 @Component
 class EntryView {
-    @State
-    var isRefreshing: Bool = false
-    let myDataSource: MyDataSource = MyDataSource(ArrayList<Int64>(10, {i => i}))
-    @State
-    var status: String = "Inactive"
-    @State
-    var onRefreshStatus: String = "noRefresh"
-    @State
-    var ratio: Float64 = 1.0
-    @State
-    var maxRefreshingHeight: Float64 = 100.0
-
+    @State @Bind var refreshing: Bool = false
+    let data_ = ArrayList<Int64>()
+    let dataSrc: MyDataSource
+    
+    public init() {
+        for (index in 0..10) {
+            data_.pushBack(Date.now() + index)
+        }
+        dataSrc = MyDataSource(data_)
+    }
+    
     func build() {
         Column() {
-            Text(status)
-                .size(width: 50.percent, height: 50.vp)
-                .borderWidth(1)
-                .borderColor(Color.Black)
-                .backgroundColor(0xFFFFFF)
-                .borderRadius(15)
-                .textAlign(TextAlign.Center)
-                .fontSize(30)
-                .margin(top: 20.vp)
-                .id("StatusText")
-            Text(onRefreshStatus)
-                .size(width: 50.percent, height: 50.vp)
-                .borderWidth(1)
-                .borderColor(Color.Black)
-                .backgroundColor(0xFFFFFF)
-                .borderRadius(15)
-                .textAlign(TextAlign.Center)
-                .fontSize(30)
-                .margin(top: 20.vp)
-                .id("OnRefreshText")
-
-            Refresh(RefreshOptions(refreshing: @Binder(isRefreshing))) {
-                Column {
-                    LazyForEach(
-                        myDataSource,
-                        itemGeneratorFunc: {
-                            element: Int64, index: Int64 => Text(element.toString())
-                                .size(width: 50.percent, height: 50.vp)
-                                .borderWidth(1)
-                                .borderColor(Color.Black)
-                                .backgroundColor(0xFFFFFF)
-                                .borderRadius(15)
+            Refresh(value: RefreshOptions(refreshing: $refreshing), {
+                Scroll() {
+                    LazyForEach(this.dataSrc, itemGeneratorFunc: {item: Int64, _: Int64 =>
+                        Column() {
+                            Text("${Date(item).toLocaleString()}")
+                                .fontSize(20)
+                                .width(100.percent)
+                                .height(50)
                                 .textAlign(TextAlign.Center)
-                                .fontSize(30)
-                                .margin(top: 20.vp)
                         }
-                    )
-                }.width(100.percent).backgroundColor(0x89CFF0)
-            }
-                .width(100.percent)
-                .height(100.percent)
-                .id("refresh")
-                .onRefreshing(
-                    {
-                        =>
-                        onRefreshStatus = "Refresh"
-                        Timer.once(2000 * Duration.millisecond) {
-                            => launch {
-                                this.isRefreshing = false
-                                onRefreshStatus = "NoRefresh"
-                            }
-                        }
-                    }
-                )
-                .onStateChange({
-                    refreshStatus: RefreshStatus =>
-                        var status = match (refreshStatus) {
-                            case Inactive => "Inactive"
-                            case Drag => "Drag"
-                            case OverDrag => "OverDrag"
-                            case Refresh => "Refresh"
-                            case Done => "Done"
-                            case _ => ""
-                        }
-                })
-                .backgroundColor(0x89CFF0)
-            }
-
+                        .backgroundColor(0xFFFFFF)
+                        .margin(5)
+                        .borderRadius(5)
+                    })
+                }
+                .edgeEffect(EdgeEffect.Spring)
+            })
+            .onRefreshing({=>
+                TaskRunner.delay({=>
+                    this.dataSrc.refresh()
+                    this.refreshing = false
+                }, 2000)
+            })
+        }
+        .padding(10)
+        .backgroundColor(0xDCDCDC)
     }
 }
 ```

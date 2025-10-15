@@ -1,6 +1,6 @@
 # 布局约束
 
-通过组件的宽高比和显示优先级约束组件显示效果。
+通过约束组件的尺寸、对齐方式等来控制组件在布局中的表现。
 
 ## 导入模块
 
@@ -8,39 +8,267 @@
 import kit.ArkUI.*
 ```
 
-## func aspectRatio(Float64)
+## func constraintSize(?Length, ?Length, ?Length, ?Length)
 
 ```cangjie
-public func aspectRatio(value: Float64): This
+func constraintSize(minWidth!: ?Length = None, maxWidth!: ?Length = None, minHeight!: ?Length = None, maxHeight!: ?Length = None): T
 ```
 
-**功能：** 指定当前组件的宽高比。
+**功能：** 设置组件约束尺寸。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Float64|是|-|宽高比值。|
+|minWidth|?Length|否|None|**命名参数** 组件最小宽度 (初始值: 0.vp)|
+|maxWidth|?Length|否|None|**命名参数** 组件最大宽度 (初始值: Infinity)|
+|minHeight|?Length|否|None|**命名参数** 组件最小高度 (初始值: 0.vp)|
+|maxHeight|?Length|否|None|**命名参数** 组件最大高度 (初始值: Infinity)|
 
-## func displayPriority(Int32)
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+
+## func align(?Alignment)
 
 ```cangjie
-public func displayPriority(value: Int32): This
+func align(value: ?Alignment): T
 ```
 
-**功能：** 设置当前组件在布局容器中显示的优先级。
+**功能：** 设置组件在父容器中的对齐方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|当前组件在布局容器中显示的优先级。<br> 初始值：1。 <br> **说明：** <br> 仅在[Row](./cj-row-column-stack-row.md#row)/[Column](./cj-row-column-stack-column.md#column)/[Flex(单行)](./cj-row-column-stack-flex.md#flex)容器组件中生效。<br>小数点后的数字不作优先级区分，即区间为[x, x + 1)内的数字视为相同优先级。例如：1.0与1.9为同一优先级。子组件的displayPriority均不大于1时，优先级没有区别。当子组件的displayPriority大于1时，displayPriority数值越大，优先级越高。若父容器空间不足，隐藏低优先级子组件。若某一优先级的子组件被隐藏，则优先级更低的子组件也都被隐藏。|
+|value|?Alignment|是|-|对齐方式|
 
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+
+## func direction(?Direction)
+
+```cangjie
+func direction(value: ?Direction): T
+```
+
+**功能：** 设置组件的布局方向。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Direction|是|-|布局方向|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+
+## func alignRules(?AlignRuleOptions)
+
+```cangjie
+func alignRules(value: ?AlignRuleOptions): T
+```
+
+**功能：** 设置组件的对齐规则。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?AlignRuleOptions|是|-|对齐规则选项|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+## 示例代码
+
+### 示例1（设置组件宽高比）
+
+通过aspectRatio设置不同的宽高比。
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.UIKit.*
+import ohos.state_macro_manage.*
+
+var children = ["1", "2", "3", "4", "5", "6"]
+
+@Entry
+@Component
+class EntryView {
+    func build(): Unit {
+        Column(20) {
+            Text("using container: row")
+                .fontSize(14)
+                .fontColor(0xCCCCCC)
+                .width(100.percent)
+            Row(10) {
+                ForEach(
+                    children,
+                    itemGeneratorFunc: {
+                        item: String, _: Int64 =>
+                        // 组件宽度 = 组件高度*1.5 = 90
+                        Text(item)
+                            .backgroundColor(0xbbb2cb)
+                            .fontSize(20)
+                            .aspectRatio(1.5)
+                            .height(60)
+                        // 组件高度 = 组件宽度/1.5 = 60/1.5 = 40
+                        Text(item)
+                            .backgroundColor(0xbbb2cb)
+                            .fontSize(20)
+                            .aspectRatio(1.5)
+                            .width(60)
+                    }
+                )
+            }
+            .size(width: 100.percent, height: 100.vp)
+            .backgroundColor(0xd2cab3)
+            .clip(true)
+
+            // grid子元素width/height=3/2
+            Text("using container: grid")
+                .fontSize(14)
+                .fontColor(0xCCCCCC)
+                .width(100.percent)
+            Grid() {
+                ForEach(
+                    children,
+                    itemGeneratorFunc: {
+                        item: String, _: Int64 => GridItem() {
+                            Text(item)
+                                .backgroundColor(0xbbb2cb)
+                                .fontSize(40)
+                                .width(100.percent)
+                                .aspectRatio(1.5)
+                        }
+                    }
+                )
+            }
+            .columnsTemplate("1fr 1fr 1fr")
+            .columnsGap(10)
+            .rowsGap(10)
+            .size(width: 100.percent, height: 165.vp)
+            .backgroundColor(0xd2cab3)
+        }
+        .padding(10)
+    }
+}
+```
+
+![uni_constraints](figures/uni_constraints.png)
+
+### 示例2（设置组件显示优先级）
+
+使用displayPriority给子组件绑定显示优先级。
+
+<!-- run -->
+
+```cangjie
+package ohos_app_cangjie_entry
+import kit.UIKit.*
+import ohos.state_macro_manage.*
+
+class ContainerInfo {
+    var label: String
+    var size: Length
+    public init(label!: String, size!: Length) {
+        this.label = label
+        this.size = size
+    }
+}
+
+class ChildInfo {
+    var text: String
+    var priority: Int32
+    public init(text!: String, priority!: Int32) {
+        this.text = text
+        this.priority = priority
+    }
+}
+
+@Entry
+@Component
+class EntryView {
+    private let container: Array<ContainerInfo> = [
+        ContainerInfo( label: 'Big container', size: 100.percent ),
+        ContainerInfo( label: 'Middle container', size: 60.percent ),
+        ContainerInfo( label: 'Small container', size: 30.percent )
+    ]
+    private let children: Array<ChildInfo> = [
+        ChildInfo( text: '1\n(priority:2)', priority: 2 ),
+        ChildInfo( text: '2\n(priority:1)', priority: 1 ),
+        ChildInfo( text: '3\n(priority:3)', priority: 3 ),
+        ChildInfo( text: '4\n(priority:1)', priority: 1 ),
+        ChildInfo( text: '5\n(priority:2)', priority: 2 )
+    ]
+
+    @State var currentIndex: Int64 = 0;
+
+    func build(): Unit {
+        Column(10) {
+            // 切换父级容器大小
+            Button(this.container[this.currentIndex].label)
+                .backgroundColor(0x317aff)
+                .onClick({ =>
+                    this.currentIndex = (this.currentIndex + 1) % this.container.size
+                })
+            // 通过变量设置Flex父容器宽度
+            Flex(FlexParams(justifyContent: FlexAlign.SpaceBetween)) {
+                ForEach(
+                    this.children, itemGeneratorFunc:
+                    {
+                        item: ChildInfo, idx: Int64 =>
+                            // 使用displayPriority给子组件绑定显示优先级
+                            Text(item.text)
+                                .width(50)
+                                .height(60)
+                                .fontSize(10)
+                                .textAlign(TextAlign.Center)
+                                .backgroundColor(0xbbb2cb)
+                                .displayPriority(item.priority)
+                    }
+                 )
+             }
+            .width(this.container[this.currentIndex].size)
+            .backgroundColor(0xd2cab3)
+        }
+        .width(100.percent)
+        .margin( top: 50 )
+    }
+}
+```
+
+![uni_constraints](figures/uni_constraints2.gif)
