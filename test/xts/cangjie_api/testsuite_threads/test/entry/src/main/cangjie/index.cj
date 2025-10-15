@@ -30,7 +30,7 @@ import ohos.arkui.state_macro_manage.Entry
 import ohos.arkui.state_macro_manage.Component
 import ohos.arkui.state_macro_manage.State
 import ohos.arkui.state_macro_manage.r
-import ohos.base.Main
+import ohos.base.UIThread
 
 
 @Entry
@@ -42,39 +42,39 @@ class EntryView {
     func build() {
         Row {
             Column {
-               Text("onClick spawn(Main)")
+               Text("onClick spawn(UIThread)")
                     .onClick {
-                       evt => spawn(Main) {
-                           createJSRuntimeAndCheck("onClick spawn(Main)")
-                      }  
+                       evt => spawn(UIThread) {
+                           createJSRuntimeAndCheck("onClick spawn(UIThread)")
+                      }
                   }
                   .fontSize(40)
                   .height(80)
-                Text("onClick spawn spawn(Main)")
+                Text("onClick spawn spawn(UIThread)")
                     .onClick {
                        evt => spawn {
-                        spawn(Main) {
-                           createJSRuntimeAndCheck("onClick spawn spawn(Main)")
+                        spawn(UIThread) {
+                           createJSRuntimeAndCheck("onClick spawn spawn(UIThread)")
                         }
                     }
                 }
                 .fontSize(40)
                 .height(80)
-                Text("onClick spawn(Main) spawn")
+                Text("onClick spawn(UIThread) spawn")
                     .onClick {
-                       evt => spawn(Main) {
+                       evt => spawn(UIThread) {
                         spawn {
-                           createJSRuntimeAndCheck("onClick spawn(Main) spawn")
+                           createJSRuntimeAndCheck("onClick spawn(UIThread) spawn")
                         }
                     }
                 }
                 .fontSize(40)
                 .height(80)
-                Text("onClick spawn(Main) spawn(Main)")
+                Text("onClick spawn(UIThread) spawn(UIThread)")
                     .onClick {
-                       evt => spawn(Main) {
-                        spawn(Main) {
-                           createJSRuntimeAndCheck("onClick spawn(Main) spawn(Main)")
+                       evt => spawn(UIThread) {
+                        spawn(UIThread) {
+                           createJSRuntimeAndCheck("onClick spawn(UIThread) spawn(UIThread)")
                         }
                     }
                 }

@@ -19,7 +19,7 @@ package ohos.ark_interop_helper
 
 import std.collection.concurrent.ConcurrentHashMap
 import ohos.business_exception.BusinessException
-import ohos.base.Main
+import ohos.base.UIThread
 import ohos.hilog.Hilog
 import std.sync.Mutex
 import ohos.ark_interop.*
@@ -66,7 +66,7 @@ protected func getMainContext(): JSContext {
     if (curTid == mainThreadId) {
         initJs()
     } else {
-        let f = spawn (Main) {
+        let f = spawn (UIThread) {
             initJs()
         }
         f.get()
@@ -77,7 +77,7 @@ protected func checkThreadAndCall<T>(ctx: JSContext, f: (JSContext) -> T): T {
     if (ctx.isInBindThread()) {
         f(ctx)
     } else {
-        let fut = spawn (Main) {
+        let fut = spawn (UIThread) {
             f(ctx)
         }
         fut.get()

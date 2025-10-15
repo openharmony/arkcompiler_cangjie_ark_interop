@@ -29,38 +29,38 @@ class TestThreads {
     /*
     * @tc.number    : Sub_Cangjie_arkts_interop_TestThreads_0100
     * @tc.name      : onWindowStageCreate_spawnMain
-    * @tc.desc      : waits for an event with the name "onWindowStageCreate spawn(Main)" to occur and then executes the provided closure.
+    * @tc.desc      : waits for an event with the name "onWindowStageCreate spawn(UIThread)" to occur and then executes the provided closure.
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
     @TestCase
     func onWindowStageCreate_spawnMain(): Unit {
-        waitForEventWithName("onWindowStageCreate spawn(Main)") {_ =>}
+        waitForEventWithName("onWindowStageCreate spawn(UIThread)") {_ =>}
     }
     /*
     * @tc.number    : Sub_Cangjie_arkts_interop_TestThreads_0200
     * @tc.name      : onWindowStageCreate_spawn_spawnMain
-    * @tc.desc      : waits for an event with the name "onWindowStageCreate spawn(Main)" to occur and then executes the provided closure.
+    * @tc.desc      : waits for an event with the name "onWindowStageCreate spawn(UIThread)" to occur and then executes the provided closure.
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
     @TestCase
     func onWindowStageCreate_spawn_spawnMain(): Unit {
-        waitForEventWithName("onWindowStageCreate spawn spawn(Main)") {_ =>}
+        waitForEventWithName("onWindowStageCreate spawn spawn(UIThread)") {_ =>}
     }
     /*
     * @tc.number    : Sub_Cangjie_arkts_interop_TestThreads_0300
     * @tc.name      : onWindowStageCreate_spawnMain_spawnMain
-    * @tc.desc      : waits for an event with the name "onWindowStageCreate spawn(Main)" to occur and then executes the provided closure.
+    * @tc.desc      : waits for an event with the name "onWindowStageCreate spawn(UIThread)" to occur and then executes the provided closure.
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
     @TestCase
     func onWindowStageCreate_spawnMain_spawnMain(): Unit {
-        waitForEventWithName("onWindowStageCreate spawn(Main) spawn(Main)") {_ =>}
+        waitForEventWithName("onWindowStageCreate spawn(UIThread) spawn(UIThread)") {_ =>}
     }
     /*
     * @tc.number    : Sub_Cangjie_arkts_interop_TestThreads_0400
@@ -73,9 +73,9 @@ class TestThreads {
     @TestCase
     func onClick_spawnMain_spawnMain(): Unit {
         click(at: Screen
-            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(Main) spawn(Main)")
+            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(UIThread) spawn(UIThread)")
             .centerPoint)
-        waitForEventWithName("onClick spawn(Main) spawn(Main)") {_ =>}
+        waitForEventWithName("onClick spawn(UIThread) spawn(UIThread)") {_ =>}
     }
     /*
     * @tc.number    : Sub_Cangjie_arkts_interop_TestThreads_0500
@@ -88,9 +88,9 @@ class TestThreads {
     @TestCase
     func onClick_spawnMain(): Unit {
         click(at: Screen
-            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(Main)")
+            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(UIThread)")
             .centerPoint)
-        waitForEventWithName("onClick spawn(Main)") {_ =>}
+        waitForEventWithName("onClick spawn(UIThread)") {_ =>}
     }
     /*
     * @tc.number    : Sub_Cangjie_arkts_interop_TestThreads_0600
@@ -103,8 +103,8 @@ class TestThreads {
     @TestCase
     func onClick_spawn_spawnMain(): Unit {
         click(at: Screen
-            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn spawn(Main)")
+            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn spawn(UIThread)")
             .centerPoint)
-        waitForEventWithName("onClick spawn spawn(Main)") {_ =>}
+        waitForEventWithName("onClick spawn spawn(UIThread)") {_ =>}
     }
 }
