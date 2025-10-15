@@ -39,23 +39,23 @@ class MainAbility <: Ability {
         //        spawn {
         //            createJSRuntimeAndCheck("onWindowStageCreate spawn")
         //        }
-        spawn (Main) {
-            createJSRuntimeAndCheck("onWindowStageCreate spawn(Main)")
+        spawn (UIThread) {
+            createJSRuntimeAndCheck("onWindowStageCreate spawn(UIThread)")
         }
         spawn {
-            spawn (Main) {
-                createJSRuntimeAndCheck("onWindowStageCreate spawn spawn(Main)")
+            spawn (UIThread) {
+                createJSRuntimeAndCheck("onWindowStageCreate spawn spawn(UIThread)")
             }
         }
-        spawn (Main) {
+        spawn (UIThread) {
             //            spawn {
-            //                createJSRuntimeAndCheck("onWindowStageCreate spawn(Main) spawn")
+            //                createJSRuntimeAndCheck("onWindowStageCreate spawn(UIThread) spawn")
             //            }
         }
 
-        spawn (Main) {
-            spawn (Main) {
-                createJSRuntimeAndCheck("onWindowStageCreate spawn(Main) spawn(Main)")
+        spawn (UIThread) {
+            spawn (UIThread) {
+                createJSRuntimeAndCheck("onWindowStageCreate spawn(UIThread) spawn(UIThread)")
             }
         }
         //        spawn {
