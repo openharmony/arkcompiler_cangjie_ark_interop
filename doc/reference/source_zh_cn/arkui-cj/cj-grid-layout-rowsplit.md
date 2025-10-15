@@ -28,13 +28,13 @@ public init(child: () -> Unit)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|child|()->Unit|是|-|声明容器内的子组件。|
+|child|() -> Unit|是|-|声明容器内的子组件。|
 
 ## 通用属性/通用事件
 
@@ -44,28 +44,29 @@ public init(child: () -> Unit)
 
 ## 组件属性
 
-### func resizeable(Bool)
+### func resizeable(?Bool)
 
 ```cangjie
-public func resizeable(value: Bool): This
+public func resizeable(value: ?Bool): This
 ```
 
 **功能：** 设置分割线是否可拖拽。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|分割线是否可拖拽。<br>初始值：false。|
+|value|?Bool|否|-|分割线是否可拖拽。<br>初始值：false。|
 
 > **说明：**
 >
 > - RowSplit的分割线可以改变左右两边子组件的宽度，子组件可改变宽度的范围取决于子组件的最大最小宽度。
 > - 支持[clip](../arkui-cj/cj-universal-attribute-shapclip.md#func-clipbool)、[margin](../arkui-cj/cj-universal-attribute-size.md#func-marginlength)等通用属性，clip不设置的时候默认值为true。
+
 
 ## 示例代码
 
@@ -97,6 +98,7 @@ class EntryView {
                     .width(10.percent)
                     .height(100)
                     .backgroundColor(0xD2B48C)
+                    .textAlign(TextAlign.Center)
                     .textAlign(TextAlign.Center)
                 Text("3")
                     .width(10.percent)

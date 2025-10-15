@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```cangjie
-import kit.ArkUI.*
+import ohos.arkui.component.menu
 ```
 
 ## 子组件
@@ -18,7 +18,7 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(() -> Unit = {=>})
+### init(() -> Unit)
 
 ```cangjie
 public init(child!: () -> Unit = {=>})
@@ -32,13 +32,13 @@ public init(child!: () -> Unit = {=>})
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|child|()->Unit|是|-|声明容器内的子组件。|
+|child|() -> Unit|否|{=>}|声明容器内的子组件。|
 
 ## 通用属性/通用事件
 
@@ -48,14 +48,14 @@ public init(child!: () -> Unit = {=>})
 
 ## 组件属性
 
-### func font(Length, FontWeight, String, FontStyle)
+### func font(?Length, ?FontWeight, ?ResourceStr, ?FontStyle)
 
 ```cangjie
 public func font(
-    size!: Length = 16.vp,
-    weight!: FontWeight = FontWeight.Normal,
-    family!: String = "HarmonyOS Sans",
-    style!: FontStyle = FontStyle.Normal
+    size!: ?Length = None,
+    weight!: ?FontWeight = None,
+    family!: ?ResourceStr = None,
+    style!: ?FontStyle = None
 ): This
 ```
 
@@ -63,39 +63,57 @@ public func font(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
-|weight|FontWeight|否|FontWeight.Normal|**命名参数。** 设置文本的字体粗细。|
-|family|String|否|"HarmonyOS Sans"|**命名参数。** 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体和[注册自定义字体](https://gitcode.com/Cangjie/cangjie-ohos-docs/blob/main/docs/reference/source_zh_cn/arkui-cj/cj-apis-font.md)。|
-|style|FontStyle|否|FontStyle.Normal|**命名参数。** 设置文本的字体样式。|
+|size|?Length|否|None|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。初始值：16.vp。|
+|weight|?FontWeight|否|None|**命名参数。** 设置文本的字体粗细。初始值：FontWeight.Normal。|
+|family|?ResourceStr|否|None|**命名参数。** 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-apis-uicontext-font.md)。初始值："HarmonyOS Sans"。|
+|style|?FontStyle|否|None|**命名参数。** 设置文本的字体样式。初始值：FontStyle.Normal。|
 
-### func fontColor(ResourceColor)
+### func fontColor(?ResourceColor)
 
 ```cangjie
-public func fontColor(value: ResourceColor): This
+public func fontColor(value: ?ResourceColor): This
 ```
 
 **功能：** 统一设置Menu中所有文本的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|Menu中所有文本的颜色。<br/>初始值：0xE5000000|
+|value|?ResourceColor|是|-|Menu中所有文本的颜色。初始值：0x99000000。|
 
-### func radius(Length)
+### func radius(?BorderRadiuses)
 
 ```cangjie
-public func radius(value: Length): This
+public func radius(value: ?BorderRadiuses): This
+```
+
+**功能：** 设置Menu边框圆角半径。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?BorderRadiuses|是|-|Menu边框圆角半径。|
+
+### func radius(?Length)
+
+```cangjie
+public func radius(value: ?Length): This
 ```
 
 **功能：**设置Menu边框圆角半径。
@@ -106,31 +124,13 @@ public func radius(value: Length): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|        | Menu边框圆角半径。<br/>初始值：20.vp。 |
-
-### func radius(BorderRadiuses)
-
-```cangjie
-public func radius(value: BorderRadiuses): This
-```
-
-**功能：** 设置Menu边框圆角半径。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|是|-|Menu边框圆角半径。|
+|value|?Length|是|-|Menu边框圆角半径。|
 
 ## 示例代码
 
@@ -142,7 +142,8 @@ public func radius(value: BorderRadiuses): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component
@@ -216,4 +217,4 @@ class EntryView {
 }
 ```
 
-!menu
+![menu](./figures/menu.gif)

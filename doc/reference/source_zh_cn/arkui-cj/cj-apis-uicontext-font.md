@@ -1,6 +1,6 @@
-# ohos.font（自定义字体）
+# Class（Font）
 
-本模块提供注册自定义字体。
+注册自定义字体的信息。
 
 ## 导入模块
 
@@ -14,11 +14,11 @@ import kit.ArkUI.*
 public class Font {}
 ```
 
-**功能：** 该类提供了一些注册和获取自定义字体的全局方法。
+**功能：** 字体类，提供字体注册、获取系统字体列表和根据字体名称获取字体信息等功能。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getFontByName(String)
 
@@ -26,23 +26,30 @@ public class Font {}
 public func getFontByName(fontName: String): ?FontInfo
 ```
 
-**功能：** 根据传入的系统字体名称获取系统字体的相关信息。
+**功能：** 根据字体名称获取字体详细信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fontName|String|是|-|系统的字体名。|
+|fontName|String|是|-|字体名称。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|?[FontInfo](#class-fontinfo)|字体的详细信息。|
+|?[FontInfo](#class-fontinfo)|返回字体信息，如果找不到对应字体则返回None。|
+
+**示例：**
+
+```cangjie
+let font = Font()
+let fontInfo = font.getFontByName("Arial")
+```
 
 ### func getSystemFontList()
 
@@ -50,17 +57,24 @@ public func getFontByName(fontName: String): ?FontInfo
 public func getSystemFontList(): Array<String>
 ```
 
-**功能：** 获取系统字体列表。
+**功能：** 获取系统支持的字体列表。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Array\<String>|系统字体列表。|
+|Array\<String>|系统字体名称列表。|
+
+**示例：**
+
+```cangjie
+let font = Font()
+let fontList = font.getSystemFontList()
+```
 
 ### func registerFont(ResourceStr, ResourceStr)
 
@@ -72,37 +86,53 @@ public func registerFont(familyName!: ResourceStr, familySrc!: ResourceStr): Uni
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|familyName|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 设置注册字体的名称。|
-|familySrc|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 设置注册字体文件的路径。|
+|familyName|ResourceStr|是|-| **命名参数。** 字体名称。|
+|familySrc|ResourceStr|是|-| **命名参数。** 字体资源路径。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  |错误码|说明|
+  |:----|:----|
+  |401|Invalid input parameter|
+  |100001|Internal error.|
+
+**示例：**
+
+```cangjie
+let font = Font()
+font.registerFont(familyName: "MyFont", familySrc: "/font/MyFont.ttf")
+```
 
 ## class FontInfo
 
 ```cangjie
 public class FontInfo {
-    public var path: String
-    public var postScriptName: String
-    public var fullName: String
     public var family: String
-    public var subfamily: String
-    public var weight: UInt32
-    public var width: UInt32
+    public var fullName: String
     public var italic: Bool
     public var monoSpace: Bool
+    public var path: String
+    public var postScriptName: String
+    public var subfamily: String
     public var symbolic: Bool
+    public var weight: UInt32
+    public var width: UInt32
 }
 ```
 
-**功能：** 字体信息类型。
+**功能：** 字体的详细信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var family
 
@@ -110,7 +140,7 @@ public class FontInfo {
 public var family: String
 ```
 
-**功能：** 描述系统字体的字体家族。
+**功能：** 字体家族。
 
 **类型：** String
 
@@ -118,7 +148,7 @@ public var family: String
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var fullName
 
@@ -126,7 +156,7 @@ public var family: String
 public var fullName: String
 ```
 
-**功能：** 表示系统字体的名称。
+**功能：** 字体完整名称。
 
 **类型：** String
 
@@ -134,7 +164,7 @@ public var fullName: String
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var italic
 
@@ -142,7 +172,7 @@ public var fullName: String
 public var italic: Bool
 ```
 
-**功能：** 表示系统字体是否倾斜。
+**功能：** 是否为斜体。
 
 **类型：** Bool
 
@@ -150,7 +180,7 @@ public var italic: Bool
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var monoSpace
 
@@ -158,7 +188,7 @@ public var italic: Bool
 public var monoSpace: Bool
 ```
 
-**功能：** 表示系统字体是否紧凑。
+**功能：** 是否为等宽字体。
 
 **类型：** Bool
 
@@ -166,7 +196,7 @@ public var monoSpace: Bool
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var path
 
@@ -174,7 +204,7 @@ public var monoSpace: Bool
 public var path: String
 ```
 
-**功能：** 描述系统字体的文件路径。
+**功能：** 字体文件路径。
 
 **类型：** String
 
@@ -182,7 +212,7 @@ public var path: String
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var postScriptName
 
@@ -190,7 +220,7 @@ public var path: String
 public var postScriptName: String
 ```
 
-**功能：** 表示系统字体的postScript名称。
+**功能：** PostScript名称。
 
 **类型：** String
 
@@ -198,7 +228,7 @@ public var postScriptName: String
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var subfamily
 
@@ -206,7 +236,7 @@ public var postScriptName: String
 public var subfamily: String
 ```
 
-**功能：** 表示系统字体的子字体家族。
+**功能：** 字体子族名称。
 
 **类型：** String
 
@@ -214,7 +244,7 @@ public var subfamily: String
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var symbolic
 
@@ -222,7 +252,7 @@ public var subfamily: String
 public var symbolic: Bool
 ```
 
-**功能：** 表示系统字体是否支持符号字体。
+**功能：** 是否支持符号字体。
 
 **类型：** Bool
 
@@ -230,7 +260,7 @@ public var symbolic: Bool
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var weight
 
@@ -238,7 +268,7 @@ public var symbolic: Bool
 public var weight: UInt32
 ```
 
-**功能：** 当weight>0时表示此字体集只包含所指定weight的字体，当weight=0时，表示此字体集包含所有字体。
+**功能：** 字体粗细。
 
 **类型：** UInt32
 
@@ -246,7 +276,7 @@ public var weight: UInt32
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var width
 
@@ -254,7 +284,7 @@ public var weight: UInt32
 public var width: UInt32
 ```
 
-**功能：** 表示系统字体的宽度，单位px。
+**功能：** 字体宽度。
 
 **类型：** UInt32
 
@@ -262,7 +292,7 @@ public var width: UInt32
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## 示例代码
 
@@ -275,7 +305,8 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component
@@ -309,7 +340,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 
 @Entry
 @Component
@@ -318,15 +349,17 @@ class EntryView {
         Row {
             Column {
                 Button("HelloWorld")
-                .onClick {evt =>
+                .onClick({evt =>
                     let list = getUIContext().getFont().getSystemFontList()
                     Hilog.info(0, "AppLogCj", "${list.size}")
-                }
+                })
             }.width(100.percent)
         }.height(100.percent)
     }
 }
 ```
+
+![font2](figures/uicontextFont.png)
 
 ### 示例3（获取字体详细信息）
 
@@ -337,7 +370,7 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 
 @Entry
 @Component
@@ -346,7 +379,7 @@ class EntryView {
         Row {
             Column {
                 Button("HelloWorld")
-                .onClick {evt =>
+                .onClick({evt =>
                     let info = getUIContext().getFont().getFontByName("HarmonyOS Sans Italic")
                     match (info) {
                         case Some(v) =>
@@ -362,10 +395,11 @@ class EntryView {
                             Hilog.info(0, "AppLogCj", "${v.symbolic}")
                         case None => Hilog.error(0, "AppLogCj", "None")
                     }
-                }
+                })
             }.width(100.percent)
         }.height(100.percent)
     }
 }
 ```
 
+![font2](figures/uicontextFont2.png)

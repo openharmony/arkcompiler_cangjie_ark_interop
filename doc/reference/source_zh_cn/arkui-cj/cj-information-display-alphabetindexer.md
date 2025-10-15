@@ -14,24 +14,24 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Array\<String>, UInt32)
+### init(Array\<String>, ?UInt32)
 
 ```cangjie
-public init(arrayValue!: Array<String>, selected!: UInt32)
+public init(arrayValue!: Array<String>, selected!: ?UInt32)
 ```
 
-**功能：** 创建一个AlphaIndexer组件。
+**功能：** 创建一个AlphabetIndexer组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |arrayValue|Array\<String>|是|-|**命名参数。** 字符串数组，每个字符串代表一个索引项。|
-|selected|UInt32|是|-|**命名参数。** 初始选中项索引值，若超出索引值范围，则取默认值0。|
+|selected|?UInt32|否|-|**命名参数。** 初始选中项索引值，若超出索引值范围，则取默认值0。初始值: 0|
 
 ## 通用属性/通用事件
 
@@ -47,229 +47,50 @@ public init(arrayValue!: Array<String>, selected!: UInt32)
 
 ## 组件属性
 
-### func alignStyle(IndexerAlign)
+### func alignStyle(?IndexerAlign)
 
 ```cangjie
-public func alignStyle(value: IndexerAlign): This
+public func alignStyle(value: ?IndexerAlign): This
 ```
 
 **功能：** 设置字母索引条弹框的对齐样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[IndexerAlign](#enum-indexeralign)|是|IndexerAlign.END|字母索引条弹框的对齐样式，支持索引条显示在弹窗左侧和右侧。|
+|value|?IndexerAlign|否|-|字母索引条弹框的对齐样式，支持索引条显示在弹窗左侧和右侧。初始值: IndexerAlign.Right|
 
-### func color(ResourceColor)
+### func color(?ResourceColor)
 
 ```cangjie
-public func color(value: ResourceColor): This
+public func color(value: ?ResourceColor): This
 ```
 
 **功能：** 设置未选中项文本颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|未选中项文本颜色。<br>初始值：0x99182431。|
+|value|?ResourceColor|否|-|未选中项文本颜色。初始值: Color(0x99182431)|
 
-### func font(Length, FontWeight, ResourceStr, FontStyle)
+### func font(?Length, ?FontWeight, ?ResourceStr, ?FontStyle)
 
 ```cangjie
 public func font(
-    size!: Length = 10.vp,
-    weight!: FontWeight = FontWeight.Normal,
-    family!: ResourceStr = "HarmonyOS Sans",
-    style!: FontStyle = FontStyle.Normal
-): This
-```
-
-**功能：**设置选中项文字样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
-|weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
-|family|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
-|style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
-
-### func itemSize(Length)
-
-```cangjie
-public func itemSize(size: Length): This
-```
-
-**功能：** 设置索引项区域大小。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。<br>初始值：16.vp。<br>单位：vp。|
-
-### func popupBackground(ResourceColor)
-
-```cangjie
-public func popupBackground(value: ResourceColor): This
-```
-
-**功能：** 设置提示弹窗背景颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗背景颜色。<br>初始值：0x66808080。|
-
-### func popupColor(ResourceColor)
-
-```cangjie
-public func popupColor(value: ResourceColor): This
-```
-
-**功能：** 设置提示弹窗一级索引项文本颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|提示弹窗一级索引项文本颜色。<br>初始值：0xFF007DFF。|
-
-### func popupFont(Length, FontWeight, ResourceStr, FontStyle)
-
-```cangjie
-public func popupFont(
-    size!: Length = 24.vp,
-    weight!: FontWeight = FontWeight.Normal,
-    family!: ResourceStr = "HarmonyOS Sans",
-    style!: FontStyle = FontStyle.Normal
-): This
-```
-
-**功能：** 设置提示弹窗字体样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|24.vp|**命名参数。** 选中项文字大小。|
-|weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
-|family|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
-|style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
-
-### func popupPosition(Length, Length)
-
-```cangjie
-public func popupPosition(x!: Length = 60.vp, y!: Length = 48.vp): This
-```
-
-**功能：** 设置弹出窗口相对于索引器条上边框中点的位置。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|60.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
-|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|48.vp|**命名参数。** 弹出窗口相对于索引器条上边框中点的位置。|
-
-### func selected(Int32)
-
-```cangjie
-public func selected(index: Int32): This
-```
-
-**功能：** 设置选中项索引值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|index|Int32|是|-|选中项索引值。<br/>初始值：0。|
-
-### func selectedBackgroundColor(ResourceColor)
-
-```cangjie
-public func selectedBackgroundColor(value: ResourceColor): This
-```
-
-**功能：** 设置选中项背景颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项背景颜色。<br>初始值：0x1A007DFF。|
-
-### func selectedColor(ResourceColor)
-
-```cangjie
-public func selectedColor(value: ResourceColor): This
-```
-
-**功能：** 设置选中项文字颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|选中项文字颜色。<br>初始值：0xFF007DFF。|
-
-### func selectedFont(Length, FontWeight, ResourceStr, FontStyle)
-
-```cangjie
-public func selectedFont(
-    size!: Length = 10.vp,
-    weight!: FontWeight = FontWeight.Normal,
-    family!: ResourceStr = "HarmonyOS Sans",
-    style!: FontStyle = FontStyle.Normal
+    size!: ?Length = None,
+    weight!: ?FontWeight = None,
+    family!: ?ResourceStr = None,
+    style!: ?FontStyle = None
 ): This
 ```
 
@@ -277,154 +98,307 @@ public func selectedFont(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 选中项文字大小。|
-|weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 选中项文字字体粗细。|
-|family|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|"HarmonyOS Sans"|**命名参数。** 选中项文字字体家族。|
-|style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 选中项文字样式。|
+|size|?Length|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
+|weight|?FontWeight|否|None|**命名参数。** 选中文字字体粗细。初始值: FontWeight.Normal|
+|family|?ResourceStr|否|None|**命名参数。** 选中文字字体家族。初始值: "HarmonyOS Sans"|
+|style|?FontStyle|否|None|**命名参数。** 选中文字样式。初始值: FontStyle.Normal|
 
-### func usingPopup(Bool)
+### func itemSize(?Length)
 
 ```cangjie
-public func usingPopup(value: Bool): This
+public func itemSize(size: ?Length): This
+```
+
+**功能：** 设置索引项区域大小。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|?Length|否|-|索引项区域大小，索引项区域为正方形，即正方形边长。<br>不支持设置为百分比。初始值: 16.vp|
+
+### func popupBackground(?ResourceColor)
+
+```cangjie
+public func popupBackground(value: ?ResourceColor): This
+```
+
+**功能：** 设置提示弹窗背景颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?ResourceColor|否|-|提示弹窗背景颜色。初始值: Color(0x66808080)|
+
+### func popupColor(?ResourceColor)
+
+```cangjie
+public func popupColor(value: ?ResourceColor): This
+```
+
+**功能：** 设置提示弹窗一级索引项文本颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?ResourceColor|否|-|提示弹窗一级索引项文本颜色。初始值: Color(0xFF007DFF)|
+
+### func popupFont(?Length, ?FontWeight, ?ResourceStr, ?FontStyle)
+
+```cangjie
+public func popupFont(
+    size!: ?Length = None,
+    weight!: ?FontWeight = None,
+    family!: ?ResourceStr = None,
+    style!: ?FontStyle = None
+): This
+```
+
+**功能：** 设置提示弹窗字体样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|?Length|否|None|**命名参数。** 提示弹窗文字大小。初始值: 24.vp|
+|weight|?FontWeight|否|None|**命名参数。** 提示弹窗文字字体粗细。初始值: FontWeight.Normal|
+|family|?ResourceStr|否|None|**命名参数。** 提示弹窗文字字体家族。初始值: "HarmonyOS Sans"|
+|style|?FontStyle|否|None|**命名参数。** 提示弹窗文字样式。初始值: FontStyle.Normal|
+
+### func popupPosition(?Length, ?Length)
+
+```cangjie
+public func popupPosition(x!: ?Length = None, y!: ?Length = None): This
+```
+
+**功能：** 设置弹出窗口相对于索引器条上边框中点的位置。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|x|?Length|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的x坐标。初始值: 60.vp|
+|y|?Length|否|None|**命名参数。** 弹出窗口相对于索引器条上边框中点的y坐标。初始值: 48.vp|
+
+### func selected(?Int32)
+
+```cangjie
+public func selected(index: ?Int32): This
+```
+
+**功能：** 设置选中项索引值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|index|?Int32|否|-|选中项索引值。初始值: 0|
+
+### func selectedBackgroundColor(?ResourceColor)
+
+```cangjie
+public func selectedBackgroundColor(value: ?ResourceColor): This
+```
+
+**功能：** 设置选中项背景颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?ResourceColor|否|-|选中项背景颜色。初始值: Color(0x1A007DFF)|
+
+### func selectedColor(?ResourceColor)
+
+```cangjie
+public func selectedColor(value: ?ResourceColor): This
+```
+
+**功能：** 设置选中项文字颜色。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?ResourceColor|否|-|选中项文字颜色。初始值: Color(0xFF007DFF)|
+
+### func selectedFont(?Length, ?FontWeight, ?ResourceStr, ?FontStyle)
+
+```cangjie
+public func selectedFont(
+    size!: ?Length = None,
+    weight!: ?FontWeight = None,
+    family!: ?ResourceStr = None,
+    style!: ?FontStyle = None
+): This
+```
+
+**功能：** 设置选中项文字样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|?Length|否|None|**命名参数。** 选中项文字大小。初始值: 10.vp|
+|weight|?FontWeight|否|None|**命名参数。** 选中项文字字体粗细。初始值: FontWeight.Normal|
+|family|?ResourceStr|否|None|**命名参数。** 选中项文字字体家族。初始值: "HarmonyOS Sans"|
+|style|?FontStyle|否|None|**命名参数。** 选中项文字样式。初始值: FontStyle.Normal|
+
+### func usingPopup(?Bool)
+
+```cangjie
+public func usingPopup(value: ?Bool): This
 ```
 
 **功能：** 设置是否使用提示弹窗。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否使用提示弹窗。<br/>初始值：false。|
+|value|?Bool|否|-|是否使用提示弹窗。<br/>初始值: false|
 
 ## 组件事件
 
-### func onPopupSelect(OnAlphabetIndexerPopupSelectCallback)
+### func onPopupSelect(?OnAlphabetIndexerPopupSelectCallback)
 
 ```cangjie
-public func onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback): This
+public func onPopupSelect(callback: ?OnAlphabetIndexerPopupSelectCallback): This
 ```
 
 **功能：** 字母索引提示弹窗字符串列表选中触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnAlphabetIndexerPopupSelectCallback](./cj-common-types.md#class-onalphabetindexerpopupselectcallback)|是|-|回调函数，字母索引提示弹窗字符串列表选中时触发。|
+|callback|?OnAlphabetIndexerPopupSelectCallback|否|-|回调函数，字母索引提示弹窗字符串列表选中时触发。初始值: { _: Int64 => }|
 
-### func onRequestPopupData(OnAlphabetIndexerRequestPopupDataCallback)
+### func onRequestPopupData(?OnAlphabetIndexerRequestPopupDataCallback)
 
 ```cangjie
-public func onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback): This
+public func onRequestPopupData(callback: ?OnAlphabetIndexerRequestPopupDataCallback): This
 ```
 
 **功能：** 选中字母索引后触发该事件，请求索引提示弹窗显示内容。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnAlphabetIndexerRequestPopupDataCallback](./cj-common-types.md#class-onalphabetindexerrequestpopupdatacallback)|是|-|回调函数，当前选中索引触发。<br>返回值：索引对应的字符串数组，此字符串数组在弹窗中竖排显示，字符串列表最多显示5个，超出部分可以滑动显示。|
+|callback|?OnAlphabetIndexerRequestPopupDataCallback|否|-|回调函数，当前选中索引触发。<br>返回值：索引对应的字符串数组，此字符串数组在弹窗中竖排显示，字符串列表最多显示5个，超出部分可以滑动显示。初始值: { _: Int64 => Array<String>() }|
 
-### func onSelect(OnAlphabetIndexerSelectCallback)
+### func onSelect(?OnAlphabetIndexerSelectCallback)
 
 ```cangjie
-public func onSelect(callback: OnAlphabetIndexerSelectCallback): This
+public func onSelect(callback: ?OnAlphabetIndexerSelectCallback): This
 ```
 
 **功能：** 索引条选中触发该事件，返回值为当前选中索引。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnAlphabetIndexerSelectCallback](./cj-common-types.md#class-onalphabetindexerselectcallback)|是|-|回调函数，索引条选中时触发。|
+|callback|?OnAlphabetIndexerSelectCallback|否|-|回调函数，索引条选中时触发。初始值: { _: Int64 => }|
 
 ## 基础类型定义
 
-### enum IndexerAlign
+### type OnAlphabetIndexerSelectCallback
 
 ```cangjie
-public enum IndexerAlign <: Equatable<IndexerAlign> {
-    | Left
-    | Right
-    | ...
-}
+public type OnAlphabetIndexerSelectCallback = (Int64) -> Unit
 ```
 
-**功能：** 索引器对齐方式。
+**功能：** 索引项被选中时触发的事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-**父类型：**
-
-- Equatable\<IndexerAlign>
-
-#### Left
+### type OnAlphabetIndexerRequestPopupDataCallback
 
 ```cangjie
-Left
+public type OnAlphabetIndexerRequestPopupDataCallback = (Int64) -> Array<String>
 ```
 
-**功能：** 左对齐。
+**功能：** usingPopup设置值为true，索引项被选中时触发的事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### Right
+### type OnAlphabetIndexerPopupSelectCallback
 
 ```cangjie
-Right
+public type OnAlphabetIndexerPopupSelectCallback = (Int64) -> Unit
 ```
 
-**功能：** 右对齐。
+**功能：** 提示弹窗二级索引项被选中时触发的事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取参数值,返回解锁结果是否复用对应的整数值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|当前枚举所表示的值。|
+**起始版本：** 22
 
 ## 示例代码
 
@@ -435,7 +409,7 @@ public func getValue(): Int32
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -515,7 +489,7 @@ class EntryView {
                             .selectedFont(size: 16.vp, weight: FontWeight.Bolder) // 选中项字体样式
                             .popupFont(size: 30.vp, weight: FontWeight.Bolder) // 弹出框内容的字体样式
                             .itemSize(28) // 每一项的尺寸大小
-                            .alignStyle(IndexerAlign.Right) // 弹出框在索引条左侧弹出
+                            .alignStyle(IndexerAlign.Right) // 弹出框在索引条右侧弹出
                             .popupBackground(0xCCCCCC) // 设置提示弹窗首个索引项背板颜色
                             .selectedColor(0x00FF00)
                             .onSelect({index: Int64 => Hilog.info(0, "AppLogCj", this.value[index] + " Selected!");})

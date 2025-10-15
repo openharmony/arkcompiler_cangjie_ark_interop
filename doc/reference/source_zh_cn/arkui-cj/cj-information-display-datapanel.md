@@ -14,25 +14,25 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Array\<Float64>, Float64, DataPanelType)
+### init(Array\<Float64>, ?Float64, ?DataPanelType)
 
 ```cangjie
-public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPanelType = DataPanelType.Circle)
+public init(values!: Array<Float64>, max!: ?Float64 = None, panelType!: ?DataPanelType = None)
 ```
 
 **功能：** 创建一个数据面板组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |values|Array\<Float64>|是|-|**命名参数。** 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。|
-|max|Float64|否|100.0|**命名参数。** \- max大于0，表示数据的最大值。 <br> \- max小于等于0，max等于value数组各项的和，按比例显示。|
-|panelType|[DataPanelType](./cj-information-display-datapanel.md#enum-datapaneltype)|否|DataPanelType.Circle|**命名参数。** 数据面板的类型（不支持动态修改）。|
+|max|?Float64|否|None|**命名参数。** 初始值: 100.0 \- max大于0，表示数据的最大值。 <br> \- max小于等于0，max等于value数组各项的和，按比例显示。|
+|panelType|?DataPanelType|否|None|**命名参数。** 初始值: DataPanelType.Circle 数据面板的类型（不支持动态修改）。|
 
 ## 通用属性/通用事件
 
@@ -42,10 +42,10 @@ public init(values!: Array<Float64>, max!: Float64 = 100.0, panelType!: DataPane
 
 ## 组件属性
 
-### func closeEffect(Bool)
+### func closeEffect(?Bool)
 
 ```cangjie
-public func closeEffect(value: Bool): This
+public func closeEffect(value: ?Bool): This
 ```
 
 **功能：** 设置关闭数据占比图表旋转动效和投影效果。
@@ -56,18 +56,18 @@ public func closeEffect(value: Bool): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|关闭数据占比图表旋转动效和投影效果。<br>初始值：false，false表示关闭数据占比图表旋转动效和投影效果，true表示开启数据占比图表旋转动效和投影效果。|
+|value|?Bool|是|-|关闭数据占比图表旋转动效和投影效果。初始值: true<br>false表示关闭数据占比图表旋转动效和投影效果，true表示开启数据占比图表旋转动效和投影效果。|
 
-### func strokeWidth(Length)
+### func strokeWidth(?Length)
 
 ```cangjie
-public func strokeWidth(value: Length): This
+public func strokeWidth(value: ?Length): This
 ```
 
 **功能：** 根据Length设置圆环粗细。
@@ -78,67 +78,67 @@ public func strokeWidth(value: Length): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆环粗细。<br>初始值：24.vp。<br>单位：vp。<br>设置小于0的值时，按默认值显示。|
+|value|?Length|是|-|圆环粗细。初始值: 24.vp<br>单位：vp。<br>设置小于0的值时，按默认值显示。|
 
-### func trackBackgroundColor(ResourceColor)
+### func trackBackgroundColor(?ResourceColor)
 
 ```cangjie
-public func trackBackgroundColor(value: ResourceColor): This
+public func trackBackgroundColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置底板颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|底板颜色。<br>初始值：0x08182431。|
+|value|?ResourceColor|是|-|底板颜色。初始值: 0x08182431|
 
-### func trackShadow(DataPanelShadowOptions)
+### func trackShadow(?DataPanelShadowOptions)
 
 ```cangjie
-public func trackShadow(value: DataPanelShadowOptions): This
+public func trackShadow(value: ?DataPanelShadowOptions): This
 ```
 
 **功能：** 设置投影样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[DataPanelShadowOptions](#class-datapanelshadowoptions)|是|-|投影样式。<br>不设置时，默认不开启投影。|
+|value|?DataPanelShadowOptions|是|-|投影样式。<br>不设置时，默认不开启投影。|
 
-### func valueColors(Array\<LinearGradient>)
+### func valueColors(?Array\<LinearGradient>)
 
 ```cangjie
-public func valueColors(value: Array<LinearGradient>): This
+public func valueColors(value: ?Array<LinearGradient>): This
 ```
 
 **功能：** 设置各数据段颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[LinearGradient](#class-lineargradient)>|是|-|各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。|
+|value|?Array\<[LinearGradient](#class-lineargradient)>|是|-|各数据段颜色，ResourceColor为纯色，LinearGradient为渐变色。|
 
 ## 基础类型定义
 
@@ -156,7 +156,7 @@ public class ColorStop {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var color
 
@@ -166,13 +166,13 @@ public var color: ResourceColor
 
 **功能：** 颜色值。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var offset
 
@@ -182,13 +182,13 @@ public var offset: Length
 
 **功能：** 渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init(ResourceColor, Length)
 
@@ -200,21 +200,21 @@ public init(color: ResourceColor, offset: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|颜色值。|
-|offset|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|颜色值。|
+|offset|[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|渐变色断点（0~1之间的比例值，若数据值小于0则置为0，若数据值大于1则置为1）。|
 
 ### class DataPanelShadowOptions
 
 ```cangjie
 public class DataPanelShadowOptions <: MultiShadowOptions {
-    public var colors: Array<LinearGradient>
-    public init(radius!: Length = 20.vp, colors!: Array<LinearGradient> = [], offsetX!: Length = 5.vp, offsetY!: Length = 5.vp)
+    public var colors: ?Array<LinearGradient>
+    public init(radius!: ?Length = None, colors!: ?Array<LinearGradient> = None, offsetX!: ?Length = None, offsetY!: ?Length = None)
 }
 ```
 
@@ -222,7 +222,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
@@ -231,7 +231,7 @@ public class DataPanelShadowOptions <: MultiShadowOptions {
 #### var colors
 
 ```cangjie
-public var colors: Array<LinearGradient>
+public var colors: ?Array<LinearGradient>
 ```
 
 **功能：** 各数据段投影的颜色。
@@ -241,34 +241,34 @@ public var colors: Array<LinearGradient>
 > - 若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。
 > - 若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。
 
-**类型：** Array\<[LinearGradient](#class-lineargradient)>
+**类型：** ?Array\<[LinearGradient](#class-lineargradient)>
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Length, Array\<LinearGradient>, Length, Length)
+#### init(?Length, ?Array\<LinearGradient>, ?Length, ?Length)
 
 ```cangjie
-public init(radius!: Length = 20.vp, colors!: Array<LinearGradient> = [], offsetX!: Length = 5.vp, offsetY!: Length = 5.vp)
+public init(radius!: ?Length = None, colors!: ?Array<LinearGradient> = None, offsetX!: ?Length = None, offsetY!: ?Length = None)
 ```
 
-**功能：** 创建ataPanelShadowOptions对象。
+**功能：** 创建DataPanelShadowOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|radius|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|20.vp|**命名参数。** 投影模糊半径。|
-|colors|Array\<[LinearGradient](#class-lineargradient)>|否|[]|**命名参数。** 各数据段投影的颜色。<br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。|
-|offsetX|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|5.vp|**命名参数。** X轴的偏移量。|
-|offsetY|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|5.vp|**命名参数。** Y轴的偏移量。|
+|radius|?Length|否|None|**命名参数。** 初始值: 20.vp 投影模糊半径。|
+|colors|?Array\<[LinearGradient](#class-lineargradient)>|否|None|**命名参数。** 初始值: [] 各数据段投影的颜色。<br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。|
+|offsetX|?Length|否|None|**命名参数。** 初始值: 5.vp X轴的偏移量。|
+|offsetY|?Length|否|None|**命名参数。** 初始值: 5.vp Y轴的偏移量。|
 
 ### class LinearGradient
 
@@ -283,9 +283,9 @@ public class LinearGradient {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Array\<ColorStop>)
+#### init(Array\<ColorStop)
 
 ```cangjie
 public init(colorStops: Array<ColorStop>)
@@ -295,7 +295,7 @@ public init(colorStops: Array<ColorStop>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -313,161 +313,14 @@ public init(color: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|单一渐变颜色。|
+|color|[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|单一渐变颜色。|
 
-## class MultiShadowOptions
-
-```cangjie
-public open class MultiShadowOptions {
-    public var radius: Length = 20.vp
-    public var offsetX: Length = 5.vp
-    public var offsetY: Length = 5.vp
-}
-```
-
-**功能：** 多阴影选项。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var offsetX
-
-```cangjie
-public var offsetX: Length = 5.vp
-```
-
-**功能：** 设置阴影的水平偏移量。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var offsetY
-
-```cangjie
-public var offsetY: Length = 5.vp
-```
-
-**功能：** 设置阴影的垂直偏移量。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var radius
-
-```cangjie
-public var radius: Length = 20.vp
-```
-
-**功能：** 设置阴影的模糊半径。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-## enum DataPanelType
-
-```cangjie
-public enum DataPanelType <: Equatable<DataPanelType> {
-    | Circle
-    | Line
-    | ...
-}
-```
-
-**功能：** 数据面板类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<DataPanelType>
-
-### Circle
-
-```cangjie
-Circle
-```
-
-**功能：** 环形数据面板。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### Line
-
-```cangjie
-Line
-```
-
-**功能：** 线型数据面板。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### func !=(DataPanelType)
-
-```cangjie
-public operator func !=(other: DataPanelType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[DataPanelType](#enum-datapaneltype)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-### func ==(DataPanelType)
-
-```cangjie
-public operator func ==(other: DataPanelType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[DataPanelType](#enum-datapaneltype)|是|-|比较的枚举值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
 
 ## 示例代码
 
@@ -540,6 +393,8 @@ class EntryView {
     }
 }
 ```
+
+![dataPanel](./figures/dataPanel.png)
 
 ### 示例2（设置渐变色和阴影）
 

@@ -14,134 +14,122 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Length, Length)
+### init(?Length, ?Length)
 
 ```cangjie
-public init(width!: Length = 0.vp, height!: Length = 0.vp)
+public init(width!: ?Length = None, height!: ?Length = None)
 ```
 
 **功能：** 绘制一个宽度为width，高度为height的矩形。异常值按照初始值处理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 矩形宽度，取值范围≥0。|
-|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 矩形高度，取值范围≥0。|
+|width|?Length|否|None|**命名参数。** 矩形宽度，取值范围≥0。初始值：0。默认单位：vp。|
+|height|?Length|否|None|**命名参数。** 矩形高度，取值范围≥0。初始值：0。默认单位：vp。|
 
 ## 通用属性/通用事件
 
-通用属性：支持通用属性。
+通用属性：除了支持通用属性外，还支持[图形绘制通用属性](./cj-graphic-drawing-common.md)。
 
 通用事件：全部支持。
 
 ## 组件属性
 
-### func initial()
+### func radiusWidth(?Length)
 
 ```cangjie
-public override func initial()
-```
-
-**功能：** 覆盖父类的 initial 方法，用于初始化逻辑。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### func radius(Length)
-
-```cangjie
-public func radius(value: Length): This
-```
-
-**功能：** 设置圆角半径大小，取值范围≥0。异常值按照初始值处理。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径大小。<br>初始值：0。<br>默认单位：vp。|
-
-### func radius(Array\<Length>)
-
-```cangjie
-public func radius(value: Array<Length>): This
-```
-
-**功能：** 设置圆角半径大小，取值范围≥0。异常值按照初始值处理。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|左上、右上、右下、左下圆角半径大小。<br>初始值：0。<br>默认单位：vp。|
-
-### func radius(Array\<(Length,Length)>)
-
-```cangjie
-public func radius(radiusArray: Array<(Length, Length)>): This
-```
-
-**功能：** 设置圆角半径大小，取值范围≥0。异常值按照初始值处理。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|radiusArray|Array\<([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))>|是|-|左上、右上、右下、左下圆角宽、高大小。<br>初始值：0。<br>默认单位：vp。|
-
-### func radiusHeight(Length)
-
-```cangjie
-public func radiusHeight(value: Length): This
-```
-
-**功能：** 设置圆角的高度，仅设置高时宽高一致。异常值按照初始值处理。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置圆角的高度。<br>初始值：0。<br>默认单位：vp。|
-
-### func radiusWidth(Length)
-
-```cangjie
-public func radiusWidth(value: Length): This
+public func radiusWidth(value: ?Length): This
 ```
 
 **功能：** 设置圆角的宽度，仅设置宽时宽高一致。异常值按照初始值处理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角的宽度。<br>初始值：0。<br>默认单位：vp。|
+|value|?Length|是|-|圆角的宽度。初始值：0。默认单位：vp。|
+
+### func radiusHeight(?Length)
+
+```cangjie
+public func radiusHeight(value: ?Length): This
+```
+
+**功能：** 设置圆角的高度，仅设置高时宽高一致。异常值按照初始值处理。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Length|是|-|设置圆角的高度。初始值：0。默认单位：vp。|
+
+### func radius(?Length)
+
+```cangjie
+public func radius(value: ?Length): This
+```
+
+**功能：** 设置圆角半径大小，取值范围≥0。异常值按照初始值处理。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Length|是|-|圆角半径大小。初始值：0。默认单位：vp。|
+
+### func radius(?Array\<Length>)
+
+```cangjie
+public func radius(value: ?Array<Length>): This
+```
+
+**功能：** 设置圆角半径大小，取值范围≥0。异常值按照初始值处理。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Array\<Length>|是|-|左上、右上、右下、左下圆角半径大小。<br>初始值：0。<br>默认单位：vp。|
+
+### func radius(?Array\<(Length, Length)>)
+
+```cangjie
+public func radius(radiusArray: ?Array<(Length, Length)>): This
+```
+
+**功能：** 设置圆角半径大小，取值范围≥0。异常值按照初始值处理。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|radiusArray|?Array\<(Length, Length)>|是|-|左上、右上、右下、左下圆角宽、高大小。<br>初始值：0。<br>默认单位：vp。|
 
 ## 示例代码
 

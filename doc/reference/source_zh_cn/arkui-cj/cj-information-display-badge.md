@@ -14,53 +14,53 @@ import kit.ArkUI.*
 
 > **说明：**
 >
-> 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)）。
+> 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../Dev_Guide/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](cj-state-rendering-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)）。
 
 ## 创建组件
 
-### init(Int32, BadgeStyle, BadgePosition, Int32, () -> Unit)
+### init(Int32, ?BadgeStyle, ?BadgePosition, ?Int32, () -> Unit)
 
 ```cangjie
-public init(count!: Int32, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop,
-    maxCount!: Int32 = 99, child!: () -> Unit)
+public init(count!: Int32, style!: ?BadgeStyle, position!: ?BadgePosition = None,
+    maxCount!: ?Int32 = None, child!: () -> Unit)
 ```
 
 **功能：** 根据数字创建标记组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|count|Int32|是|-| **命名参数。** 设置提醒消息数。小于等于0时不显示信息标记。|
-|style|[BadgeStyle](#class-badgestyle)|是|-| **命名参数。** Badge组件可设置的样式，支持设置文本颜色、尺寸、圆点颜色和尺寸。|
-|position|[BadgePosition](#enum-badgeposition)|否|BadgePosition.RightTop| **命名参数。** 提示点显示位置。|
-|maxCount|Int32|否|99| **命名参数。** 最大消息数，超过最大消息时仅显示 maxCount+。|
-|child|()->Unit|是|-|容器的子组件。|
+|count|Int32|是|-|**命名参数。** 设置提醒消息数。小于等于0时不显示信息标记。|
+|style|?BadgeStyle|是|-|**命名参数。** Badge组件可设置的样式，支持设置文本颜色、尺寸、圆点颜色和尺寸。|
+|position|?BadgePosition|否|None|**命名参数。** 提示点显示位置。初始值：BadgePosition.RightTop|
+|maxCount|?Int32|否|None|**命名参数。** 最大消息数，超过最大消息时仅显示 maxCount+。初始值：99|
+|child|() -> Unit|是|-|容器的子组件。|
 
-### init(String, BadgeStyle, BadgePosition, () -> Unit)
+### init(String, ?BadgeStyle, ?BadgePosition, () -> Unit)
 
 ```cangjie
-public init(value!: String, style!: BadgeStyle, position!: BadgePosition = BadgePosition.RightTop, child!: () -> Unit)
+public init(value!: String, style!: ?BadgeStyle, position!: ?BadgePosition = None, child!: () -> Unit)
 ```
 
-**功能：** 根据数字创建标记组件。
+**功能：** 根据字符串创建标记组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|String|是|-|数字标记组件参数。|
-|style|[BadgeStyle](#class-badgestyle)|是|-| **命名参数。** Badge组件可设置的样式，支持设置文本颜色、尺寸、圆点颜色和尺寸。|
-|position|[BadgePosition](#enum-badgeposition)|否|BadgePosition.RightTop| **命名参数。** 提示点显示位置。|
-|child|()->Unit|是|-|容器的子组件。|
+|value|String|是|-|**命名参数。** 文本标记组件参数。|
+|style|?BadgeStyle|是|-|**命名参数。** Badge组件可设置的样式，支持设置文本颜色、尺寸、圆点颜色和尺寸。|
+|position|?BadgePosition|否|None|**命名参数。** 提示点显示位置。初始值：BadgePosition.RightTop|
+|child|() -> Unit|是|-|容器的子组件。|
 
 ## 通用属性/通用事件
 
@@ -74,16 +74,16 @@ public init(value!: String, style!: BadgeStyle, position!: BadgePosition = Badge
 
 ```cangjie
 public class BadgeStyle {
-    public var color: ResourceColor
-    public var fontSize: Length
-    public var badgeSize: Length
-    public var badgeColor: ResourceColor
-    public var fontWeight: FontWeight
-    public var borderColor: ResourceColor
-    public var borderWidth: Length
-    public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badgeSize!: Length = 16.vp,
-        badgeColor!: ResourceColor = Color.Red, fontWeight!: FontWeight = FontWeight.Normal,
-        borderColor!: ResourceColor = Color.Red, borderWidth!: Length = 1.vp)
+    public var color: ?ResourceColor
+    public var fontSize: ?Length
+    public var badgeSize: ?Length
+    public var badgeColor: ?ResourceColor
+    public var fontWeight: ?FontWeight
+    public var borderColor: ?ResourceColor
+    public var borderWidth: ?Length
+    public init(color!: ?ResourceColor = None, fontSize!: ?Length = None, badgeSize!: ?Length = None,
+        badgeColor!: ?ResourceColor = None, fontWeight!: ?FontWeight = None,
+        borderColor!: ?ResourceColor = None, borderWidth!: ?Length = None)
 }
 ```
 
@@ -91,161 +91,166 @@ public class BadgeStyle {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var badgeColor
 
 ```cangjie
-public var badgeColor: ResourceColor
+public var badgeColor: ?ResourceColor
 ```
 
 **功能：** badge的颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var badgeSize
 
 ```cangjie
-public var badgeSize: Length
+public var badgeSize: ?Length
 ```
 
 **功能：** badge的大小，单位为vp。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var borderColor
 
 ```cangjie
-public var borderColor: ResourceColor
+public var borderColor: ?ResourceColor
 ```
 
 **功能：** 底板描边颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var borderWidth
 
 ```cangjie
-public var borderWidth: Length
+public var borderWidth: ?Length
 ```
 
 **功能：** 底板描边粗细。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var color
 
 ```cangjie
-public var color: ResourceColor
+public var color: ?ResourceColor
 ```
 
 **功能：** 文本颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var fontSize
 
 ```cangjie
-public var fontSize: Length
+public var fontSize: ?Length
 ```
 
 **功能：** 文本大小，单位为fp。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var fontWeight
 
 ```cangjie
-public var fontWeight: FontWeight
+public var fontWeight: ?FontWeight
 ```
 
 **功能：** 设置文本的字体粗细。
 
-**类型：** [FontWeight](./cj-common-types.md#enum-fontweight)
+**类型：** ?[FontWeight](./cj-common-types.md#enum-fontweight)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(ResourceColor, Length, Length, ResourceColor, FontWeight, ResourceColor, Length)
+#### init(?ResourceColor, ?Length, ?Length, ?ResourceColor, ?FontWeight, ?ResourceColor, ?Length)
 
 ```cangjie
-public init(color!: ResourceColor = Color.White, fontSize!: Length = 10.fp, badgeSize!: Length = 16.vp,
-    badgeColor!: ResourceColor = Color.Red, fontWeight!: FontWeight = FontWeight.Normal,
-    borderColor!: ResourceColor = Color.Red, borderWidth!: Length = 1.vp)
+public init(color!: ?ResourceColor = None, fontSize!: ?Length = None, badgeSize!: ?Length = None,
+    badgeColor!: ?ResourceColor = None, fontWeight!: ?FontWeight = None,
+    borderColor!: ?ResourceColor = None, borderWidth!: ?Length = None)
 ```
 
 **功能：** 创建一个BadgeStyle对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.White|**命名参数。** 文本颜色。|
-|fontSize|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.fp|**命名参数。** 文本大小。<br>单位：fp。|
-|badgeSize|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|**命名参数。** badge的大小。<br>单位：fp。|
-|badgeColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Red|**命名参数。** badge的颜色。|
-|fontWeight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|**命名参数。** 设置文本的字体粗细。|
-|borderColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Red|**命名参数。** 底板描边颜色。|
-|borderWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|1.vp|**命名参数。** 底板描边粗细。<br>单位：vp。|
+|color|?ResourceColor|否|None|**命名参数。** 文本颜色。初始值：Color.White|
+|fontSize|?Length|否|None|**命名参数。** 文本大小。初始值：10.fp|
+|badgeSize|?Length|否|None|**命名参数。** badge的大小。初始值：16.vp|
+|badgeColor|?ResourceColor|否|None|**命名参数。** badge的颜色。初始值：Color.Red|
+|fontWeight|?FontWeight|否|None|**命名参数。** 设置文本的字体粗细。初始值：FontWeight.Normal|
+|borderColor|?ResourceColor|否|None|**命名参数。** 底板描边颜色。初始值：Color.Red|
+|borderWidth|?Length|否|None|**命名参数。** 底板描边粗细。初始值：1.vp|
 
 ### enum BadgePosition
 
 ```cangjie
-public enum BadgePosition {
+public enum BadgePosition <: Equatable<BadgePosition> {
     | RightTop
     | Right
     | Left
+    | ...
 }
 ```
 
-**功能：** 圆点显示位置。
+**功能：** 定义badge位置属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：**
+
+- Equatable\<BadgePosition>
 
 #### Left
 
@@ -253,11 +258,11 @@ public enum BadgePosition {
 Left
 ```
 
-**功能：** 圆点显示在左侧纵向居中。
+**功能：** badge显示在父组件的左侧纵向居中。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### Right
 
@@ -265,11 +270,11 @@ Left
 Right
 ```
 
-**功能：**  圆点显示在右侧纵向居中。
+**功能：** badge显示在父组件的右侧纵向居中。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### RightTop
 
@@ -277,31 +282,59 @@ Right
 RightTop
 ```
 
-**功能：** 圆点显示在右上角。
+**功能：** badge显示在父组件的右上角。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### func ==(BadgePosition)
+#### operator func !=(BadgePosition)
 
 ```cangjie
-public operator func ==(other: BadgePosition): Bool
+public operator func !=(other: BadgePosition): Bool
 ```
 
-**功能：** 判断两个BadgePosition是否相等
+**功能：** 比较两个枚举值是否不相等。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|BadgePosition|是|-|另一个枚举值。|
+|other|[BadgePosition](#enum-badgeposition)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
+|Bool|如果两个枚举值不相等则返回true，否则返回false。|
+
+#### operator func ==(BadgePosition)
+
+```cangjie
+public operator func ==(other: BadgePosition): Bool
+```
+
+**功能：** 比较两个枚举值是否相等。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[BadgePosition](#enum-badgeposition)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等则返回true，否则返回false。|
 
 ## 示例代码
 
@@ -421,9 +454,9 @@ class EntryView {
                 .width(100)
                 .height(50)
             Button("count 0")
-                .onClick{ evt =>  this.badgeCount =0;}
+                .onClick({ evt =>  this.badgeCount =0;})
             Button("count 1")
-                .onClick{ evt =>  this.badgeCount =1;}
+                .onClick({ evt =>  this.badgeCount =1;})
         }.margin(10)
     }
 }

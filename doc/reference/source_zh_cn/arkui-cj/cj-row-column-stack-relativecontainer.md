@@ -6,6 +6,12 @@
 >
 > 相对布局容器内的子组件的margin含义不同于通用属性的[margin](cj-universal-attribute-size.md#func-marginlength)，其含义为到该方向上的锚点的距离。若该方向上没有锚点，则该方向的margin不生效。
 
+## 导入模块
+
+```cangjie
+import kit.ArkUI.*
+```
+
 ## 子组件
 
 支持多个子组件。
@@ -15,7 +21,6 @@
 ### init(() -> Unit)
 
 ```cangjie
-
 public init(child!: () -> Unit = {=>})
 ```
 
@@ -23,13 +28,13 @@ public init(child!: () -> Unit = {=>})
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|child|()->Unit|否|{ => }|声明容器子组件。|
+|child|() -> Unit|否|{=>}|**命名参数。** 声明容器子组件。|
 
 ## 通用属性/通用事件
 
@@ -39,43 +44,41 @@ public init(child!: () -> Unit = {=>})
 
 ## 组件属性
 
-### func barrier(Array\<BarrierStyle>)
+### func barrier(?Array\<BarrierStyle>)
 
 ```cangjie
-
-public func barrier(value: Array<BarrierStyle>): This
+public func barrier(value: ?Array<BarrierStyle>): This
 ```
 
 **功能：** 设置RelativeContainer容器内的屏障，Array中每个项目即为一条barrier。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[BarrierStyle](#class-barrierstyle)>|是|-|RelativeContainer容器内的屏障。|
+|value|?Array\<[BarrierStyle](#class-barrierstyle)>|是|-|RelativeContainer容器内的屏障。初始值：[]。|
 
-### func guideLine(Array\<GuideLineStyle>)
+### func guideLine(?Array\<GuideLineStyle>)
 
 ```cangjie
-
-public func guideLine(value: Array<GuideLineStyle>): This
+public func guideLine(value: ?Array<GuideLineStyle>): This
 ```
 
 **功能：** 设置RelativeContainer容器内的辅助线，Array中每个项目即为一条guideline。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[GuideLineStyle](#class-guidelinestyle)>|是|-|RelativeContainer容器内的辅助线。|
+|value|?Array\<[GuideLineStyle](#class-guidelinestyle)>|是|-|RelativeContainer容器内的辅助线。初始值：[]。|
 
 ## 基础类型定义
 
@@ -83,11 +86,10 @@ public func guideLine(value: Array<GuideLineStyle>): This
 
 ```cangjie
 public class BarrierStyle {
-    public var id: String
-    public var direction: BarrierDirection
-    public var referencedId: Array<String>
-
-    public init(id: String, direction: BarrierDirection, referencedId: Array<String>)
+    public var id: ?String
+    public var direction: ?BarrierDirection
+    public var referencedId: ?Array<String>
+    public init(id: ?String, direction: ?BarrierDirection, referencedId: ?Array<String>)
 }
 ```
 
@@ -95,84 +97,82 @@ public class BarrierStyle {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var direction
-
-```cangjie
-public var direction: BarrierDirection
-```
-
-**功能：** 指定barrier的方向。垂直方向（TOP，BOTTOM）的barrier仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的barrier仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。
-
-**类型：** [BarrierDirection](cj-common-types.md#enum-barrierdirection)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var id
 
 ```cangjie
-public var id: String
+public var id: ?String
 ```
 
 **功能：** barrier的id，必须是唯一的并且不可与容器内组件重名。
 
-**类型：** String
+**类型：** ?String
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### var direction
+
+```cangjie
+public var direction: ?BarrierDirection
+```
+
+**功能：** 指定barrier的方向。垂直方向（TOP，BOTTOM）的barrier仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的barrier仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。
+
+**类型：** ?BarrierDirection
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 #### var referencedId
 
 ```cangjie
-public var referencedId: Array<String>
+public var referencedId: ?Array<String>
 ```
 
 **功能：** 指定生成barrier所依赖的组件。
 
-**类型：** Array\<String>
+**类型：** ?Array\<String>
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(String, BarrierDirection, Array\<String>)
+#### init(?String, ?BarrierDirection, ?Array\<String>)
 
 ```cangjie
-
-public init(id: String, direction: BarrierDirection, referencedId: Array<String>)
+public init(id: ?String, direction: ?BarrierDirection, referencedId: ?Array<String>)
 ```
 
 **功能：** 创建一个BarrierStyle类型的对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|id|String|是|-|barrier的id，必须是唯一的并且不可与容器内组件重名。|
-|direction|[BarrierDirection](./cj-common-types.md#enum-barrierdirection)|是|-|指定barrier的方向。<br> 垂直方向（TOP，BOTTOM）的barrier仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的barrier仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。<br> 初始值：BarrierDirection.LEFT|
-|referencedId|Array\<String>|是|-|指定生成barrier所依赖的组件。|
+|id|?String|是|-|barrier的id，必须是唯一的并且不可与容器内组件重名。初始值：""。|
+|direction|?[BarrierDirection](cj-common-types.md#enum-barrierdirection)|是|-|指定barrier的方向。垂直方向（TOP，BOTTOM）的barrier仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的barrier仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。初始值：BarrierDirection.LEFT。|
+|referencedId|?Array\<String>|是|-|指定生成barrier所依赖的组件。初始值：[]。|
 
 ### class GuideLinePosition
 
 ```cangjie
 public class GuideLinePosition {
-    public var start:?Length = None
-    public var end:?Length = None
-
+    public var start: ?Length
+    public var end: ?Length
     public init(start!: ?Length = None, end!: ?Length = None)
 }
 ```
@@ -181,44 +181,43 @@ public class GuideLinePosition {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var end
-
-```cangjie
-public var end:?Length = None
-```
-
-**功能：** guideline距离容器右侧或者底部的距离。
-
-**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var start
 
 ```cangjie
-public var start:?Length = None
+public var start: ?Length
 ```
 
 **功能：** guideline距离容器左侧或者顶部的距离。
 
-**类型：** ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?Length
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### var end
+
+```cangjie
+public var end: ?Length
+```
+
+**功能：** guideline距离容器右侧或者底部的距离。
+
+**类型：** ?Length
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 #### init(?Length, ?Length)
 
 ```cangjie
-
 public init(start!: ?Length = None, end!: ?Length = None)
 ```
 
@@ -226,24 +225,23 @@ public init(start!: ?Length = None, end!: ?Length = None)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器左侧或者顶部的距离。|
-|end|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** guideline距离容器右侧或者底部的距离。|
+|start|?Length|否|None|**命名参数。** guideline距离容器左侧或者顶部的距离。|
+|end|?Length|否|None|**命名参数。** guideline距离容器右侧或者底部的距离。|
 
 ### class GuideLineStyle
 
 ```cangjie
 public class GuideLineStyle {
-    public var id: String
-    public var direction: Axis
-    public var position: GuideLinePosition
-
-    public init(id: String, direction: Axis, position: GuideLinePosition)
+    public var id: ?String
+    public var direction: ?Axis
+    public var position: ?GuideLinePosition
+    public init(id: ?String, direction: ?Axis, position: ?GuideLinePosition)
 }
 ```
 
@@ -251,76 +249,75 @@ public class GuideLineStyle {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var direction
-
-```cangjie
-public var direction: Axis
-```
-
-**功能：** 指定guideline的方向。垂直方向的guideline仅能作为组件水平方向的锚点，作为垂直方向的锚点时值为0；水平方向的guideline仅能作为组件垂直方向的锚点，作为水平方向的锚点时值为0。
-
-**类型：** [Axis](cj-common-types.md#enum-axis)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var id
 
 ```cangjie
-public var id: String
+public var id: ?String
 ```
 
 **功能：** guideline的id，必须是唯一的并且不可与容器内组件重名。
 
-**类型：** String
+**类型：** ?String
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### var direction
+
+```cangjie
+public var direction: ?Axis
+```
+
+**功能：** 指定guideline的方向。垂直方向的guideline仅能作为组件水平方向的锚点，作为垂直方向的锚点时值为0；水平方向的guideline仅能作为组件垂直方向的锚点，作为水平方向的锚点时值为0。
+
+**类型：** ?Axis
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 #### var position
 
 ```cangjie
-public var position: GuideLinePosition
+public var position: ?GuideLinePosition
 ```
 
 **功能：** 指定guideline的位置。当未声明或声明异常值（如undefined）时，guideline的位置默认为start: 0。start和 end两种声明方式选择一种即可。若同时声明，仅start生效。若容器在某个方向的size被声明为"auto"，则该方向上guideline的位置只能使用start方式声明（不允许使用百分比）。
 
-**类型：** [GuideLinePosition](#class-guidelineposition)
+**类型：** ?GuideLinePosition
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(String, Axis, GuideLinePosition)
+#### init(?String, ?Axis, ?GuideLinePosition)
 
 ```cangjie
-
-public init(id: String, direction: Axis, position: GuideLinePosition)
+public init(id: ?String, direction: ?Axis, position: ?GuideLinePosition)
 ```
 
 **功能：** 创建一个GuideLineStyle类型的对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|id|String|是|-|guideline的id，必须是唯一的并且不可与容器内组件重名。|
-|direction|[Axis](./cj-common-types.md#enum-axis)|是|-|指定guideline的方向。<br>垂直方向的guideline仅能作为组件水平方向的锚点，作为垂直方向的锚点时值为0；水平方向的guideline仅能作为组件垂直方向的锚点，作为水平方向的锚点时值为0。<br> 初始值：Axis.Vertical|
-|position|[GuideLinePosition](#class-guidelineposition)|是|-|指定guideline的位置。当未声明或声明异常值时，guideline的位置初始值为start: 0。start和end两种声明方式选择一种即可。若同时声明，仅start生效。<br> 初始值：{start: 0}|
+|id|?String|是|-|guideline的id，必须是唯一的并且不可与容器内组件重名。初始值：""。|
+|direction|?[Axis](cj-common-types.md#enum-axis)|是|-|指定guideline的方向。垂直方向的guideline仅能作为组件水平方向的锚点，作为垂直方向的锚点时值为0；水平方向的guideline仅能作为组件垂直方向的锚点，作为水平方向的锚点时值为0。初始值：Axis.Vertical。|
+|position|?[GuideLinePosition](#class-guidelineposition)|是|-|指定guideline的位置。当未声明或声明异常值时，guideline的位置初始值为start: 0。start和end两种声明方式选择一种即可。若同时声明，仅start生效。初始值：{start: 0}。|
 
 ## 示例代码
 
@@ -345,7 +342,7 @@ class EntryView {
                 Row().width(100).height(100)
                 .backgroundColor(0xff3333)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("__container__", VerticalAlign.Top),
                         left: HorizontalAlignment("__container__", HorizontalAlign.Start)
                     )
@@ -353,7 +350,7 @@ class EntryView {
                 Row().width(100).height(100)
                 .backgroundColor(0xFFCC00)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("__container__", VerticalAlign.Top),
                         right: HorizontalAlignment("__container__", HorizontalAlign.End)
                     )
@@ -361,7 +358,7 @@ class EntryView {
                 Row().height(100)
                 .backgroundColor(0xFF6633)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row1", VerticalAlign.Bottom),
                         left: HorizontalAlignment("row1", HorizontalAlign.End),
                         right: HorizontalAlignment("row2", HorizontalAlign.Start)
@@ -370,7 +367,7 @@ class EntryView {
                 Row()
                 .backgroundColor(0xFF9966)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row3", VerticalAlign.Bottom),
                         bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
                         left: HorizontalAlignment("__container__", HorizontalAlign.Start),
@@ -380,7 +377,7 @@ class EntryView {
                 Row()
                 .backgroundColor(0xff3333)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row3", VerticalAlign.Bottom),
                         bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
                         left: HorizontalAlignment("row2", HorizontalAlign.Start),
@@ -396,7 +393,7 @@ class EntryView {
 }
 ```
 
-![relativecontainer1](figures/relativecontainer1.jpg)
+![relativecontainer1](figures/relativecontainer1.png)
 
 ### 示例2（子组件设置外边距）
 
@@ -419,7 +416,7 @@ class EntryView {
                 Row().width(100).height(100)
                 .backgroundColor(0xff3333)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("__container__", VerticalAlign.Top),
                         left: HorizontalAlignment("__container__", HorizontalAlign.Start)
                     )
@@ -428,7 +425,7 @@ class EntryView {
                 Row().width(100).height(100)
                 .backgroundColor(0xFFCC00)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row1", VerticalAlign.Top),
                         left: HorizontalAlignment("row1", HorizontalAlign.End)
                     )
@@ -436,7 +433,7 @@ class EntryView {
                 Row().height(100).width(100)
                 .backgroundColor(0xFF6633)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row1", VerticalAlign.Bottom),
                         left: HorizontalAlignment("row1", HorizontalAlign.Start)
                     )
@@ -444,7 +441,7 @@ class EntryView {
                 Row().width(100).height(100)
                 .backgroundColor(0xFF9966)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row2", VerticalAlign.Bottom),
                         left: HorizontalAlignment("row3", HorizontalAlign.End),
                     )
@@ -459,7 +456,7 @@ class EntryView {
 }
 ```
 
-![relativecontainer2](figures/relativecontainer2.jpg)
+![relativecontainer2](figures/relativecontainer2.png)
 
 ### 示例3（设置偏移）
 
@@ -480,7 +477,7 @@ class EntryView {
         Row() {
             RelativeContainer() {
                 Row().width(100).height(100).backgroundColor(0xff3333).alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("__container__", VerticalAlign.Top),
                         bottom: VerticalAlignment("__container__", VerticalAlign.Bottom),
                         left: HorizontalAlignment("__container__", HorizontalAlign.Start),
@@ -497,7 +494,7 @@ class EntryView {
 }
 ```
 
-![relativecontainer4](figures/relativecontainer3.jpg)
+![relativecontainer4](figures/relativecontainer3.png)
 
 ### 示例4（设置辅助线）
 
@@ -518,7 +515,7 @@ class EntryView {
         Row() {
             RelativeContainer() {
                 Row().width(100).height(100).backgroundColor(0xff3333).alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("guideline2", VerticalAlign.Top),
                         left: HorizontalAlignment("guideline1", HorizontalAlign.End),
                     )
@@ -532,7 +529,7 @@ class EntryView {
 }
 ```
 
-![relativecontainer5](figures/relativecontainer4.jpg)
+![relativecontainer5](figures/relativecontainer4.png)
 
 ### 示例5（设置屏障）
 
@@ -559,7 +556,7 @@ class EntryView {
                 Row().width(100).height(100)
                 .backgroundColor(0xFFCC00)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row1", VerticalAlign.Bottom),
                         middle: HorizontalAlignment("row1", HorizontalAlign.End)
                     )
@@ -568,7 +565,7 @@ class EntryView {
                 Row().height(100).width(100)
                 .backgroundColor(0xFF6633)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("row1", VerticalAlign.Top),
                         left: HorizontalAlignment("barrier1", HorizontalAlign.End)
                     )
@@ -577,7 +574,7 @@ class EntryView {
                 Row().width(50).height(50)
                 .backgroundColor(0xFF9966)
                 .alignRules(
-                    AlignRuleOption(
+                    AlignRuleOptions(
                         top: VerticalAlignment("barrier2", VerticalAlign.Bottom),
                         left: HorizontalAlignment("row1", HorizontalAlign.Start),
                     )
@@ -593,4 +590,4 @@ class EntryView {
 }
 ```
 
-![relativecontainer6](figures/relativecontainer5.jpg)
+![relativecontainer6](figures/relativecontainer5.png)

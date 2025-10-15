@@ -10,22 +10,22 @@ import kit.ArkUI.*
 
 ## 子组件
 
-不支持自定义组件作为子组件，仅可包含子组件[TabContent](#class-tabcontent)，以及渲染控制类型[if/else](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)和[ForEach](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)，并且if/else和ForEach下也仅支持TabContent，不支持自定义组件。
+不支持自定义组件作为子组件，仅可包含子组件[TabContent](./cj-navigation-switching-tabcontent.md)，以及渲染控制类型[if/else](../../../Dev_Guide/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)和[ForEach](cj-state-rendering-foreach.md)，并且if/else和ForEach下也仅支持TabContent，不支持自定义组件。
 
 > **说明：**
 >
 > - Tabs子组件的visibility属性设置为None，或者visibility属性设置为Hidden时，对应子组件不显示，但依然会在视窗内占位。
-> - Tabs子组件TabContent显示之后不会销毁，若需要页面懒加载和释放，请参见[示例2](#示例2页面懒加载和释放)。
+> - Tabs子组件TabContent显示之后不会销毁，若需要页面懒加载和释放，请参见[示例12](#示例12页面懒加载和释放)。
 
 ## 创建组件
 
-### init(BarPosition, TabsController, Int32, () -> Unit)
+### init(?BarPosition, ?TabsController, ?Int32, () -> Unit)
 
 ```cangjie
 public init(
-    barPosition!: BarPosition = BarPosition.Start,
-    controller!: TabsController = TabsController(),
-    index!: Int32 = -1,
+    barPosition!: ?BarPosition = None,
+    controller!: ?TabsController = None,
+    index!: ?Int32 = None,
     child!: () -> Unit = {=>}
 )
 ```
@@ -34,16 +34,16 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|barPosition|[BarPosition](#enum-barposition)|否|BarPosition.Start|设置Tabs的页签位置。<br/>初始值: BarPosition.Start|
-|controller|[TabsController](#class-tabscontroller)|否|TabsController()|设置Tabs控制器。<br/>初始值：TabsController()|
-|index|Int32|否|- 1|设置当前显示页签的索引。<br/>初始值：0<br/>**说明：**<br/>设置为小于0的值时按初始值显示。可选值为[0, TabContent子节点数量-1]。直接修改index跳页时，切换动效不生效。 使用TabController的changeIndex时，默认生效切换动效，可以设置animationDuration为0关闭动画。|
-|child|()->Unit|否|{ => }|声明容器内的子组件。<br/>初始值：{ => }。|
+|barPosition|?[BarPosition](#enum-barposition)|否|None|**命名参数** 设置Tabs的页签位置。<br> 初始值: BarPosition.Start|
+|controller|?[TabsController](#class-tabscontroller)|否|None|**命名参数** 设置Tabs控制器。<br> 初始值：TabsController()|
+|index|?Int32|否|None|**命名参数** 设置当前显示页签的索引。<br> 初始值：0 <br> **说明：**<br> 设置为小于0的值时按初始值显示。可选值为[0, TabContent子节点数量-1]。直接修改index跳页时，切换动效不生效。 使用TabController的changeIndex时，默认生效切换动效，可以设置animationDuration为0关闭动画。|
+|child|()->Unit|否|{=>}|**命名参数** 声明容器内的子组件。|
 
 ## 通用属性/通用事件
 
@@ -53,253 +53,135 @@ public init(
 
 ## 组件属性
 
-### func animationDuration(Float32)
+### func animationDuration(?Float32)
 
 ```cangjie
-public func animationDuration(value: Float32): This
+public func animationDuration(value: ?Float32): This
 ```
 
-**功能：** 设置点击TabBar页签和调用TabsController的changeIndex接口切换TabContent的动画时长。
+**功能：** 设置Tabs的动画时长。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Float32|是|-|点击TabBar页签和调用TabsController的changeIndex接口切换TabContent的动画时长。<br/>初始值：不设置该属性或设置为异常值，且设置TabBar为BottomTabBarStyle样式时，初始值为0。设置TabBar为其他样式时，初始值为300。<br/>单位：ms<br/>取值范围：[0, +∞)。|
+|value|?Float32|是|-|动画时长，单位为毫秒。初始值：-1.0。|
 
-### func barHeight(Length)
+### func barHeight(?Length)
 
 ```cangjie
-public func barHeight(value: Length): This
+public func barHeight(value: ?Length): This
 ```
 
-**功能：** 设置TabBar的高度值。设置为小于0或大于Tabs高度值时，按初始值显示。
+**功能：** 设置Tabs页签栏的高度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|TabBar 的高度值。<br/>初始值：<br/>未设置带样式的TabBar且vertical属性为false时，初始值为56.vp。<br/>未设置带样式的TabBar且vertical属性为true时，初始值为Tabs的高度。<br/>设置[SubTabBarStyle](./cj-common-types.md#enum-subtabbarstyle)样式且vertical属性为false时，初始值为56.vp。<br/>设置SubTabBarStyle样式且vertical属性为true时，初始值为Tabs的高度。<br/>设置[BottomTabBarStyle](./cj-common-types.md#enum-bottomtabbarstyle)样式且vertical属性为true时，初始值为Tabs的高度。<br/>设置BottomTabBarStyle样式且vertical属性为false时，初始值为48.vp。|
+|value|?[Length](../cj-common-types.md#interface-length)|是|-|页签栏高度。当页签栏为水平方向时，该参数为页签栏的高；当页签栏为垂直方向时，该参数为页签栏的宽。|
 
-### func barMode(BarMode)
+### func barMode(?BarMode)
 
 ```cangjie
-public func barMode(value: BarMode): This
+public func barMode(value: ?BarMode): This
 ```
 
-**功能：** 设置TabBar布局模式。
+**功能：** 设置Tabs页签栏的布局模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[BarMode](./cj-common-types.md#enum-barmode)|是|-|布局模式。|
+|value|?[BarMode](#enum-barmode)|是|-|页签栏布局模式。初始值：BarMode.Fixed。|
 
-### func barWidth(Length)
+### func barWidth(?Length)
 
 ```cangjie
-public func barWidth(value: Length): This
+public func barWidth(value: ?Length): This
 ```
 
-**功能：** 设置TabBar的宽度值。设置为小于0或大于Tabs宽度值时，按初始值显示。
+**功能：** 设置Tabs页签栏的宽度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|TabBar 的宽度值。<br/>初始值：<br/>未设置[SubTabBarStyle](./cj-navigation-switching-tabs.md#class-subtabbarstyle)和[BottomTabBarStyle](./cj-navigation-switching-tabs.md#class-bottomtabbarstyle)的TabBar且vertical属性为false时，初始值为Tabs的宽度。<br/>未设置SubTabBarStyle和BottomTabBarStyle的TabBar且vertical属性为true时，初始值为56.vp。<br/>设置SubTabBarStyle样式且vertical属性为false时，初始值为Tabs的宽度。<br/>设置SubTabBarStyle样式且vertical属性为true时，初始值为56.vp。<br/>设置BottomTabBarStyle样式且vertical属性为true时，初始值为96.vp。<br/>设置BottomTabBarStyle样式且vertical属性为false时，初始值为Tabs的宽度。|
+|value|?[Length](../cj-common-types.md#interface-length)|是|-|页签栏宽度。当页签栏为水平方向时，该参数为页签栏的宽；当页签栏为垂直方向时，该参数为页签栏的高。|
 
-### func scrollable(Bool)
+### func scrollable(?Bool)
 
 ```cangjie
-public func scrollable(value: Bool): This
+public func scrollable(value: ?Bool): This
 ```
 
-**功能：** 设置是否可以通过滑动页面进行页面切换。
+**功能：** 设置Tabs是否可滚动。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否可以通过滑动页面进行页面切换。<br/>初始值：true，可以通过滑动页面进行页面切换。为false时不可滑动切换页面。|
+|value|?Bool|是|-|是否可滚动。初始值：true。|
 
-### func vertical(Bool)
+### func vertical(?Bool)
 
 ```cangjie
-public func vertical(value: Bool): This
+public func vertical(value: ?Bool): This
 ```
 
-**功能：** 设置是否为纵向Tab。
+**功能：** 设置Tabs页签栏的排列方向。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否为纵向Tab。<br/>初始值：false，横向Tabs，为true时纵向Tabs。<br/>尽量保持每一个页面中的子组件尺寸大小一致，避免滑动页面时出现页面切换动画跳动现象。|
+|value|?Bool|是|-|页签栏是否垂直排列。初始值：false。|
 
 ## 组件事件
 
-### func onChange(Callback\<Int32,Unit>)
+### func onChange(?Callback\<Int32, Unit>)
 
 ```cangjie
-public func onChange(event: Callback<Int32, Unit>): This
+public func onChange(event: ?Callback<Int32, Unit>): This
 ```
 
-**功能：** Tab页签切换后触发的事件。
-
-满足以下任一条件，即可触发该事件：
-
-1、滑动页面进行页面切换时，组件滑动动画结束后触发。<br>
-
-2、通过[控制器](#class-tabscontroller)调用[changeIndex](#func-changeindexint32)接口，Tab页签切换后触发。<br>
-
-3、动态修改[状态变量](./cj-state-rendering-appstatemanagement.md)构造的index属性值，Tab页签切换后触发。<br>
-
-4、点击TabBar页签，Tab页签切换后触发。
-
-> **说明：**
->
-> 使用自定义页签时，在onChange事件中，联动可能会导致滑动页面切换后才执行页签联动，引起自定义页签切换效果延迟。
+**功能：** 页签切换时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<Int32,Unit>|是|-|Tab页签切换事件回调。<br/>参数：<br/>当前显示的index索引，索引从0开始计算。|
+|event|?Callback\<Int32, Unit>|是|-|页签索引改变时触发的回调函数。初始值：{ _ => }。|
 
 ## 基础类型定义
-
-### class TabContent
-
-```cangjie
-public class TabContent <: ContainerBase {
-    public init(child: () -> Unit)
-    public init()
-}
-```
-
-**功能：**仅在Tabs中使用，对应一个切换页签的内容视图。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- [ContainerBase](./cj-ui-framework.md#containerbase)
-
-#### init(() -> Unit)
-
-```cangjie
-public init(child: () -> Unit)
-```
-
-**功能：** 创建一个包含子组件的TabContent容器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|child|()->Unit|是|-|声明容器内的子组件。|
-
-#### init()
-
-```cangjie
-public init()
-```
-
-**功能：** 创建一个不包含子组件的TabContent容器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func tabBar(ResourceStr)
-
-```cangjie
-public func tabBar(content: ResourceStr): This
-```
-
-**功能：** 设置TabBar上显示内容。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|TabBar上显示内容。|
-
-#### func tabBar(ResourceStr, ResourceStr)
-
-```cangjie
-public func tabBar(icon!: ResourceStr = "", text!: ResourceStr = ""): This
-```
-
-**功能：** 设置TabBar上显示内容。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|icon|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** TabBar上显示的图标。<br/>**说明：** 如果icon采用svg格式图源，则要求svg图源删除其自有宽高属性值。如采用带有自有宽高属性的svg图源，icon大小则是svg本身内置的宽高属性值大小。|
-|text|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** TabBar上显示的文字内容。|
-
-#### func tabBar(CustomBuilder)
-
-```cangjie
-public func tabBar(content: CustomBuilder): This
-```
-
-**功能：** 设置TabBar上显示内容。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|content|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|TabBar上显示内容。<br/>CustomBuilder： 构造器，内部可以传入组件|
 
 ### class TabsController
 
@@ -309,11 +191,11 @@ public class TabsController {
 }
 ```
 
-**功能：** Tabs组件的控制器，用于控制Tabs组件进行页签切换。不支持一个TabsController控制多个Tabs组件。
+**功能：** Tabs控制器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init()
 
@@ -321,197 +203,29 @@ public class TabsController {
 public init()
 ```
 
-**功能：** 创建一个tabs控制器。
+**功能：** 构造Tabs控制器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### func changeIndex(Int32)
+#### func changeIndex(?Int32)
 
 ```cangjie
-public func changeIndex(value: Int32): Unit
+public func changeIndex(value: ?Int32): Unit
 ```
 
-**功能：** 控制Tabs切换到指定页签。
+**功能：** 切换到指定索引的页签。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|页签在Tabs里的索引值，索引值从0开始。<br/>**说明：**<br/>设置小于0或大于最大数量的值时，取初始值0。|
-
-### enum BarMode
-
-```cangjie
-public enum BarMode <: Equatable<BarMode> {
-    | Fixed
-    | Scrollable
-    | ...
-}
-```
-
-**功能：** TabBar布局模式枚举
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<BarMode>
-
-#### Fixed
-
-```cangjie
-Fixed
-```
-
-**功能：** 所有TabBar均分屏幕宽度，TabBar不可滚动。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Scrollable
-
-```cangjie
-Scrollable
-```
-
-**功能：** 所有TabBar按照自身尺寸布局，TabBar可滚动。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(BarMode)
-
-```cangjie
-public operator func !=(other: BarMode): Bool
-```
-
-**功能：** 比较两个BarMode是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[BarMode](#enum-barmode)|是|-|待比较的另一个BarMode值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个BarMode不相等则返回true，否则返回false|
-
-#### func ==(BarMode)
-
-```cangjie
-public operator func ==(other: BarMode): Bool
-```
-
-**功能：** 比较两个BarMode是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[BarMode](#enum-barmode)|是|-|待比较的另一个BarMode值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个BarMode相等则返回true，否则返回false|
-
-### enum BarPosition
-
-```cangjie
-public enum BarPosition <: Equatable<BarPosition> {
-    | Start
-    | End
-    | ...
-}
-```
-
-**功能：** 设置TabBar的布局位置。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<BarPosition>
-
-#### End
-
-```cangjie
-End
-```
-
-**功能：** 位于尾部。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Start
-
-```cangjie
-Start
-```
-
-**功能：** 位于首部。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(BarPosition)
-
-```cangjie
-public operator func !=(other: BarPosition): Bool
-```
-
-**功能：** 比较两个BarPosition是否不相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[BarPosition](#enum-barposition)|是|-|待比较的另一个BarPosition值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个BarPosition不相等则返回true，否则返回false|
-
-#### func ==(BarPosition)
-
-```cangjie
-public operator func ==(other: BarPosition): Bool
-```
-
-**功能：** 比较两个BarPosition是否相等
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[BarPosition](#enum-barposition)|是|-|待比较的另一个BarPosition值|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|如果两个BarPosition相等则返回true，否则返回false|
+|value|?Int32|是|-|要切换到的页签索引。初始值：0。|
 
 ## 示例代码
 
@@ -623,7 +337,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 import std.collection.*
 import ohos.arkui.state_macro_manage.*
 
@@ -638,10 +352,10 @@ class MyDataSource <: IDataSource<String> {
     return this.list[index]
   }
 
-  public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+  public func registerDataChangeListener(listener: DataChangeListener): Unit {
   }
 
-  public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+  public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
   }
 }
 

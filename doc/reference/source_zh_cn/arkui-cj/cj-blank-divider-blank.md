@@ -14,10 +14,10 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Length)
+### init(?Length)
 
 ```cangjie
-public init(min!: Length = 0.vp)
+public init(min!: ?Length = None)
 ```
 
 **功能：** 创建一个 Blank 组件。
@@ -30,13 +30,13 @@ public init(min!: Length = 0.vp)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|min|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 空白填充组件在容器主轴上的最小大小。不指定像素单位时，默认单位vp。不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。|
+|min|?Length|否|None|**命名参数。** 空白填充组件在容器主轴上的最小大小。不指定像素单位时，默认单位vp。不支持设置百分比。负值使用初始值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。初始值：0.vp|
 
 ## 通用属性/通用事件
 
@@ -46,23 +46,23 @@ public init(min!: Length = 0.vp)
 
 ## 组件属性
 
-### func color(ResourceColor)
+### func color(?ResourceColor)
 
 ```cangjie
-public func color(value: ResourceColor): This
+public func color(value: ?ResourceColor): This
 ```
 
 **功能：** 设置当前空白填充的填充颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|空白填充的填充颜色。<br/>初始值：Color.TRANSPARENT|
+|value|?ResourceColor|是|-|空白填充的填充颜色。|
 
 ## 示例代码
 
@@ -128,5 +128,4 @@ class EntryView {
 }
 ```
 
-![blank2](./figures/blank2.png)
-
+![blank2](./figures/blank2.gif)

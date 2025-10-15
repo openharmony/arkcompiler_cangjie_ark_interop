@@ -1,6 +1,6 @@
 # Grid
 
-网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
+网格容器，由"行"和"列"分割的单元格所组成，通过指定"项目"所在的单元格做出各种各样的布局。
 
 ## 导入模块
 
@@ -10,7 +10,7 @@ import kit.ArkUI.*
 
 ## 子组件
 
-仅支持[GridItem](cj-scroll-swipe-griditem.md)子组件，支持渲染控制类型（[if/else](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)）。
+仅支持[GridItem](cj-scroll-swipe-griditem.md)子组件，支持渲染控制类型（[if/else](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)）。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@ import kit.ArkUI.*
 > - 按子组件的顺序依次递增。
 > - if/else语句中，只有条件成立分支内的子组件会参与索引值计算，条件不成立分支内的子组件不计算索引值。
 > - ForEach/LazyForEach语句中，会计算展开所有子节点索引值。
-> - [if/else](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)发生变化以后，会更新子节点索引值。
+> - [if/else](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)发生变化以后，会更新子节点索引值。
 > - Grid子组件的visibility属性设置为Hidden或None时依然会计算索引值。
 > - Grid子组件的visibility属性设置为None时不显示，但依然会占用子组件对应的网格。
 > - Grid子组件设置position属性，会占用子组件对应的网格，子组件将显示在相对Grid左上角偏移position的位置。该子组件不会随其对应网格滚动，在对应网格滑出Grid显示范围外后不显示。
@@ -26,7 +26,7 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Option\<Scroller>, <() -> Unit>)
+### init(Option\<Scroller>, () -> Unit)
 
 ```cangjie
 public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>})
@@ -36,27 +36,27 @@ public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>}
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|scroller|Option<[Scroller](./cj-scroll-swipe-scroll.md#class-scroller)>|否|Option.None|可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
-|child|Option<()->Unit>|否|Option.None|网格容器的子组件。|
+|scroller|Option\<Scroller>|否|Option.None| **命名参数。** 可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
+|child|() -> Unit|否|{=>}| **命名参数。** 网格容器的子组件。|
 
 ## 通用属性/通用事件
 
-通用属性：支持通用属性。
+通用属性：全部支持。
 
 通用事件：全部支持。
 
 ## 组件属性
 
-### func cachedCount(Int32)
+### func cachedCount(?Int32)
 
 ```cangjie
-public func cachedCount(count: Int32): This
+public func cachedCount(value: ?Int32): This
 ```
 
 **功能：** 设置预加载的GridItem的数量，只在[LazyForEach](cj-state-rendering-lazyforeach.md)中生效。
@@ -67,18 +67,18 @@ public func cachedCount(count: Int32): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|count|Int32|是|-|预加载的GridItem的数量。<br>初始值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。 <br> 取值范围：[0, +∞)，设置为小于0的值时，按1处理。|
+|value|?Int32|是|-|预加载的GridItem的数量。初始值:  1|
 
-### func cachedCount(Int32, Bool)
+### func cachedCount(?Int32, ?Bool)
 
 ```cangjie
-public func cachedCount(count: Int32, show: Bool): This
+public func cachedCount(count: ?Int32, show: ?Bool): This
 ```
 
 **功能：** 设置预加载的GridItem数量，并配置是否显示预加载节点。
@@ -87,42 +87,42 @@ public func cachedCount(count: Int32, show: Bool): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|count|Int32|是|-|预加载的GridItem的数量。<br>初始值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。<br> 取值范围：[0, +∞)，设置为小于0的值时，按1处理。|
-|show|Bool|是|-|被预加载的GridItem是否需要显示。<br>初始值：false，不显示预加载的GridItem。|
+|count|?Int32|是|-|预加载的GridItem的数量。初始值:  1|
+|show|?Bool|是|-|被预加载的GridItem是否需要显示。初始值:  false|
 
-### func columnsGap(Length)
+### func columnsGap(?Length)
 
 ```cangjie
-public func columnsGap(value: Length): This
+public func columnsGap(value: ?Length): This
 ```
 
-**功能：** 设置列与列的间距。设置为小于0的值时，按初始值显示。
+**功能：** 设置列与列的间距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|列与列的间距。<br> 初始值：0 <br> 取值范围：[0, +∞)|
+|value|?Length|是|-|列与列的间距。初始值:  0.vp|
 
-### func columnsTemplate(String)
+### func columnsTemplate(?String)
 
 ```cangjie
-public func columnsTemplate(value: String): This
+public func columnsTemplate(value: ?String): This
 ```
 
 **功能：** 设置当前网格布局列的数量、固定列宽或最小列宽值，不设置时默认1列。
 
-例如,&nbsp;'1fr&nbsp;1fr&nbsp;2fr'&nbsp;是将父组件分3列，将父组件允许的宽分为4等份，第一列占1份，第二列占1份，第三列占2份。
+例如, '1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第一列占1份，第二列占1份，第三列占2份。
 
 columnsTemplate('repeat(auto-fit, track-size)')是设置最小列宽值为track-size，自动计算列数和实际列宽。
 
@@ -130,7 +130,7 @@ columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track
 
 columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap为最小列间距，自动计算列数和实际列间距。
 
-其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
+其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。
 auto-stretch模式只支持track-size为一个有效列宽值，并且track-size只支持px、vp和有效数字，不支持%。
 
 使用效果可以参考[示例3](#示例代码)。
@@ -139,36 +139,36 @@ auto-stretch模式只支持track-size为一个有效列宽值，并且track-size
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|String|是|-|当前网格布局列的数量或最小列宽值。|
+|value|?String|是|-|当前网格布局列的数量或最小列宽值。初始值:  "1fr"|
 
-### func rowsGap(Length)
+### func rowsGap(?Length)
 
 ```cangjie
-public func rowsGap(value: Length): This
+public func rowsGap(value: ?Length): This
 ```
 
-**功能：** 设置行与行的间距。设置为小于0的值时，按初始值显示。
+**功能：** 设置行与行的间距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|用于设置行与行的间距。<br> 初始值：0 <br> 取值范围：[0, +∞)|
+|value|?Length|是|-|用于设置行与行的间距。初始值:  0.vp|
 
-### func rowsTemplate(String)
+### func rowsTemplate(?String)
 
 ```cangjie
-public func rowsTemplate(value: String): This
+public func rowsTemplate(value: ?String): This
 ```
 
 **功能：** 设置当前网格布局行的数量、固定行高或最小行高值，不设置时默认1行。
@@ -199,6 +199,7 @@ Grid组件根据rowsTemplate、columnsTemplate属性的设置情况，可分为�
 
     - 元素按照设置的方向进行排布，超出Grid显示区域后，Grid可通过滚动的方式展示。
     - 如果设置了columnsTemplate，Grid滚动方向为垂直方向，主轴方向为垂直方向，交叉轴方向为水平方向。
+
     - 如果设置了rowsTemplate，Grid滚动方向为水平方向，主轴方向为水平方向，交叉轴方向为垂直方向。
     - 网格交叉轴方向尺寸根据Grid自身内容区域交叉轴尺寸减去交叉轴方向所有Gap后按所占比重分配。
     - 网格主轴方向尺寸取当前网格交叉轴方向所有GridItem高度最大值。
@@ -211,13 +212,13 @@ Grid组件根据rowsTemplate、columnsTemplate属性的设置情况，可分为�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|String|是|-|当前网格布局行的数量或最小行高值。|
+|value|?String|是|-|当前网格布局行的数量或最小行高值。初始值:  "1fr"|
 
 ## 示例代码
 

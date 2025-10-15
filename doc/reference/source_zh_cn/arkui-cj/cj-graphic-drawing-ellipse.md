@@ -14,44 +14,30 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Length, Length)
+### init(?Length, ?Length)
 
 ```cangjie
-public init(width!: Length = 0.vp, height!: Length = 0.vp)
+public init(width!: ?Length = None, height!: ?Length = None)
 ```
 
 **功能：** 绘制一个宽度为width，高度为height的椭圆。异常值按照初始值处理。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 宽度，取值范围≥0。|
-|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 高度，取值范围≥0。|
+|width|?Length|否|None|**命名参数。** 宽度，取值范围≥0。初始值: 0.vp|
+|height|?Length|否|None|**命名参数。** 高度，取值范围≥0。初始值: 0.vp|
 
 ## 通用属性/通用事件
 
 通用属性：全部支持。
 
 通用事件：全部支持。
-
-## 组件属性
-
-### func initial()
-
-```cangjie
-public override func initial()
-```
-
-**功能：** 绘制一个宽度为0，高度为0的椭圆。需要设置[width](./cj-universal-attribute-size.md#func-widthlength)或[height](./cj-universal-attribute-size.md#func-heightlength)属性参数不为0才能显示出来。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
 
 ## 示例代码
 

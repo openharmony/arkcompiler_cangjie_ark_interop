@@ -1,6 +1,6 @@
 # 尺寸设置
 
-设置组件的宽高、边距。
+设置组件的宽度、高度、尺寸、内边距、外边距等尺寸相关属性。
 
 ## 导入模块
 
@@ -8,180 +8,387 @@
 import kit.ArkUI.*
 ```
 
-## func constraintSize(Length, Length, Length, Length)
+## func width(Option\<Length>)
 
 ```cangjie
-public func constraintSize(minWidth!: Length = 0.vp, maxWidth!: Length = (Float64.Inf).vp,
-    minHeight!: Length = 0.vp, maxHeight!: Length = (Float64.Inf).vp): This
+func width(value: Option<Length>): T
 ```
 
-**功能：** 设置组件的尺寸约束。
+**功能：** 设置组件的宽度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|minWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|最小宽度。|
-|maxWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|(Float64.Inf).vp|最大宽度。|
-|minHeight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|最小高度。|
-|maxHeight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|(Float64.Inf).vp|最大高度。|
+|value|Option\<Length>|是|-|组件的宽度|
 
-## func height(Option\<Length>)
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func height(?Length)
 
 ```cangjie
-public func height(value: Option<Length>): This
+func height(value: Option<Length>): T
 ```
 
-**功能：** 设置组件自身的高度，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会画出父组件的范围。
+**功能：** 设置组件的高度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件高度。</br>单位：vp。|
+|value|Option\<Length>|是|-|组件的高度|
 
-## func layoutWeight(Int32)
+**返回值：**
 
-```cangjie
-public func layoutWeight(value: Int32): This
-```
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
 
-**功能：** 设置组件的布局权重。
+**异常：**
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
 
-**起始版本：** 21
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
 
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|Int32|是|-|父容器尺寸确定时，设置了layoutWeight属性的子元素与兄弟元素占主轴尺寸按照权重进行分配，忽略元素本身尺寸设置，表示自适应占满剩余空间。</br>**说明：** 仅在[Row](./cj-common-types.md#row)/[Column](./cj-common-types.md#column)/[Flex](./cj-row-column-stack-flex.md#flex)布局中生效。可选值为大于等于0的数字，或者可以转换为数字的字符串。如果容器中有子元素设置了layoutWeight属性，且设置的属性值大于0，则所有子元素不会再基于flexShrink和flexGrow布局。|
-
-## func margin(Length)
+## func size(?Length, ?Length)
 
 ```cangjie
-public func margin(value: Length): This
-```
-
-**功能：** 设置组件的外边距。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的外边距，四个方向内边距同时生效。<br/> 单位：vp|
-
-## func margin(Length, Length, Length, Length)
-
-```cangjie
-public func margin(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): This
-```
-
-**功能：** 设置组件的四个方向外边距。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|top|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  上内边距，组件顶部距组件外元素的尺寸。|
-|right|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  右内边距，组件右边界距组件外元素的尺寸。|
-|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  下内边距，组件底部距组件外元素的尺寸。|
-|left|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。**  左内边距，组件左边界距组件外元素的尺寸。|
-
-## func padding(Length)
-
-```cangjie
-public func padding(value: Length): This
-```
-
-**功能：** 设置组件的内边距。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的内边距，四个方向内边距同时生效。<br/> 单位：vp。|
-
-## func padding(Length, Length, Length, Length)
-
-```cangjie
-public func padding(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp): This
-```
-
-**功能：** 设置组件的四个方向内边距。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|top|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 上内边距，组件内元素距组件顶部的尺寸。</br>初始值： 0.vp。|
-|right|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 右内边距，组件内元素距组件右边界的尺寸。</br>初始值： 0.vp。|
-|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 下内边距，组件内元素距组件底部的尺寸。</br>初始值： 0.vp。|
-|left|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 左内边距，组件内元素距组件左边界的尺寸。</br>初始值： 0.vp。|
-
-> **说明：**
->
-> padding设置百分比时，上下左右内边距均以父容器的width作为基础值。
-
-## func size(Length, Length)
-
-```cangjie
-public func size(width!: Length, height!: Length): This
+func size(width!: ?Length, height!: ?Length): T
 ```
 
 **功能：** 设置组件的尺寸。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。**  组件宽度。<br/> 单位：vp。|
-|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。**  组件高度。<br/> 单位：vp。|
+|width|?Length|是|-|**命名参数** 组件的宽度|
+|height|?Length|是|-|**命名参数** 组件的高度|
 
-## func width(Option\<Length>)
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func padding(?Length)
 
 ```cangjie
-public func width(value: Option<Length>): This
+func padding(value: ?Length): T
 ```
 
-**功能：** 设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+**功能：** 设置组件的内边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|是|-|组件宽度。<br>默认单位：vp。|
+|value|?Length|是|-|组件的内边距|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func padding(?Length, ?Length, ?Length, ?Length)
+
+```cangjie
+func padding(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
+```
+
+**功能：** 分别设置组件四个方向的内边距。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|top|?Length|是|-|**命名参数** 上内边距|
+|right|?Length|是|-|**命名参数** 右内边距|
+|bottom|?Length|是|-|**命名参数** 下内边距|
+|left|?Length|是|-|**命名参数** 左内边距|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func margin(?Length)
+
+```cangjie
+func margin(value: ?Length): T
+```
+
+**功能：** 设置组件的外边距。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Length|是|-|组件的外边距|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func margin(?Length, ?Length, ?Length, ?Length)
+
+```cangjie
+func margin(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
+```
+
+**功能：** 分别设置组件四个方向的外边距。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|top|?Length|是|-|**命名参数** 上外边距|
+|right|?Length|是|-|**命名参数** 右外边距|
+|bottom|?Length|是|-|**命名参数** 下外边距|
+|left|?Length|是|-|**命名参数** 左外边距|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func layoutWeight(?Int32)
+
+```cangjie
+func layoutWeight(value: ?Int32): T
+```
+
+**功能：** 设置组件的布局权重。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Int32|是|-|组件的布局权重|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func aspectRatio(Float64)
+
+```cangjie
+func aspectRatio(value: Float64): T
+```
+
+**功能：** 设置组件的宽高比。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|Float64|是|-|组件的宽高比|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func displayPriority(?Int32)
+
+```cangjie
+func displayPriority(value: ?Int32): T
+```
+
+**功能：** 设置组件的显示优先级。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Int32|是|-|组件的显示优先级|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func responseRegion(?Rectangle)
+
+```cangjie
+func responseRegion(value: ?Rectangle): T
+```
+
+**功能：** 设置组件的响应区域。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Rectangle|是|-|组件的响应区域|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+  | 错误码ID | 错误信息 |
+  | :---- | :--- |
+  | 100001 | Internal error. |
+
+## func responseRegion(?Array\<Rectangle>)
+
+```cangjie
+func responseRegion(value: ?Array<Rectangle>): T
+```
+
+**功能：** 设置组件的响应区域数组。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Array\<Rectangle>|是|-|组件的响应区域数组|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回通用方法接口类型|
+
 

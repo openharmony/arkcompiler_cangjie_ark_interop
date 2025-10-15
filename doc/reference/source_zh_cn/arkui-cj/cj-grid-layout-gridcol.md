@@ -14,34 +14,34 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Int32, Int32, Int32, () -> Unit)
+### init(?Int32, ?Int32, ?Int32, () -> Unit)
 
 ```cangjie
-public init(span!: Int32 = 1, offset!: Int32 = 0, order!: Int32 = 0, child!: () -> Unit = {=>})
+public init(span!: ?Int32 = None, offset!: ?Int32 = None, order!: ?Int32 = None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建一个栅格布局子组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|span|Int32|否|1|**命名参数。** 栅格子组件占用栅格容器组件([GridRow](./cj-grid-layout-gridrow.md))的列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
-|offset|Int32|否|0| **命名参数。** 栅格子组件相对于前一个栅格子组件偏移的列数。|
-|order|Int32|否|0|**命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。|
-|child|()->Unit|否|{ => }|**命名参数。** GridCol容器的子组件。|
+|span|?Int32|否|None| **命名参数。** 栅格子组件占用栅格容器组件([GridRow](./cj-grid-layout-gridrow.md))的列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。<br>初始值：1|
+|offset|?Int32|否|None| **命名参数。** 栅格子组件相对于前一个栅格子组件偏移的列数。<br>初始值：0|
+|order|?Int32|否|None| **命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br>初始值：0|
+|child|() -> Unit|否|{=>}| **命名参数。** GridCol容器的子组件。|
 
-### init(GridColColumnOption, GridColColumnOption, GridColColumnOption, () -> Unit)
+### init(?GridColOptions, ?GridColOptions, ?GridColOptions, () -> Unit)
 
 ```cangjie
 public init(
-    span!: GridColColumnOption,
-    offset!: GridColColumnOption,
-    order!: GridColColumnOption,
+    span!: ?GridColOptions,
+    offset!: ?GridColOptions,
+    order!: ?GridColOptions,
     child!: () -> Unit = {=>}
 )
 ```
@@ -50,16 +50,16 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|span|[GridColColumnOption](#class-gridcolcolumnoption)|是|-|**命名参数。** 占用列数。|
-|offset|[GridColColumnOption](#class-gridcolcolumnoption)|是|-|**命名参数。** 相对于前一个栅格子组件偏移的列数。|
-|order|[GridColColumnOption](#class-gridcolcolumnoption)|是|-|**命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。|
-|child|()->Unit|否|{ => }|**命名参数。** GridCol 容器的子组件。|
+|span|?GridColOptions|否|None| **命名参数。** 占用列数。<br>初始值：GridColOptions(1)|
+|offset|?GridColOptions|否|None| **命名参数。** 相对于前一个栅格子组件偏移的列数。<br>初始值：GridColOptions(0)|
+|order|?GridColOptions|否|None| **命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br>初始值：GridColOptions(0)|
+|child|() -> Unit|否|{=>}| **命名参数。** GridCol 容器的子组件。|
 
 ## 通用属性/通用事件
 
@@ -69,140 +69,135 @@ public init(
 
 ## 组件属性
 
-### func gridColOffset(Int32)
+### func gridColOffset(?Int32)
 
 ```cangjie
-public func gridColOffset(value: Int32): This
+public func gridColOffset(value: ?Int32): This
 ```
 
 **功能：** 设置相对于前一个栅格子组件偏移的列数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|相对于前一个栅格子组件偏移的列数。<br>取值为大于0的整数，初始值：0。|
+|value|?Int32|否|-|相对于前一个栅格子组件偏移的列数。<br>初始值：12。|
 
-### func gridColOffset(GridColColumnOption)
+### func gridColOffset(?GridColOptions)
 
 ```cangjie
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.ArkUI.ArkUI.Full"
-]
-public func gridColOffset(value: GridColColumnOption): This
+public func gridColOffset(value: ?GridColOptions): This
 ```
 
 **功能：** 设置相对于前一个栅格子组件偏移的列数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[GridColColumnOption](#class-gridcolcolumnoption)|是|-|相对于前一个栅格子组件偏移的列数。|
+|value|?GridColOptions|否|-|相对于前一个栅格子组件偏移的列数。|
 
-### func order(Int32)
+### func order(?Int32)
 
 ```cangjie
-public func order(value: Int32): This
+public func order(value: ?Int32): This
 ```
 
 **功能：** 设置相对于前一个栅格子组件偏移的列数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|相对于前一个栅格子组件偏移的列数。<br>取值为大于0的整数，初始值：0。|
+|value|?Int32|否|-|相对于前一个栅格子组件偏移的列数。<br>初始值：12。|
 
-### func order(GridColColumnOption)
+### func order(?GridColOptions)
 
 ```cangjie
-public func order(value: GridColColumnOption): This
+public func order(value: ?GridColOptions): This
 ```
 
 **功能：** 设置元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[GridColColumnOption](#class-gridcolcolumnoption)|是|-|元素的序号。|
+|value|?GridColOptions|否|-|元素的序号。|
 
-### func span(Int32)
+### func span(?Int32)
 
 ```cangjie
-public func span(value: Int32): This
+public func span(value: ?Int32): This
 ```
 
 **功能：** 设置占用列数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|占用列数。<br>取值为大于0的整数，初始值：0。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
+|value|?Int32|否|-|占用列数。<br>初始值：12。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
 
-### func span(GridColColumnOption)
+### func span(?GridColOptions)
 
 ```cangjie
-public func span(value: GridColColumnOption): This
+public func span(value: ?GridColOptions): This
 ```
 
 **功能：** 设置占用列数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[GridColColumnOption](#class-gridcolcolumnoption)|是|-|占用列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
+|value|?GridColOptions|否|-|占用列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
 
 ## 基础类型定义
 
-### class GridColColumnOption
+### class GridColOptions
 
 ```cangjie
-public class GridColColumnOption {
-    public var xs: Int32
-    public var sm: Int32
-    public var md: Int32 
-    public var lg: Int32
-    public var xl: Int32
-    public var xxl: Int32
+public class GridColOptions {
+    public var xs: ?Int32
+    public var sm: ?Int32
+    public var md: ?Int32
+    public var lg: ?Int32
+    public var xl: ?Int32
+    public var xxl: ?Int32
     public init(
-        xs!: Int32 = 12,
-        sm!: Int32 = 12,
-        md!: Int32 = 12,
-        lg!: Int32 = 12,
-        xl!: Int32 = 12,
-        xxl!: Int32 = 12
+        xs!: ?Int32 = None,
+        sm!: ?Int32 = None,
+        md!: ?Int32 = None,
+        lg!: ?Int32 = None,
+        xl!: ?Int32 = None,
+        xxl!: ?Int32 = None
     )
-    public init(value: Int32)
+    public init(value: ?Int32)
 }
 ```
 
@@ -210,151 +205,153 @@ public class GridColColumnOption {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** 无
 
 #### var lg
 
 ```cangjie
-public var lg: Int32
+public var lg: ?Int32
 ```
 
-**功能：** **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。
+**功能：** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var md
 
 ```cangjie
-public var md: Int32
+public var md: ?Int32
 ```
 
-**功能：** **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。
+**功能：** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var sm
 
 ```cangjie
-public var sm: Int32
+public var sm: ?Int32
 ```
 
-**功能：** **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。
+**功能：** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xl
 
 ```cangjie
-public var xl: Int32
+public var xl: ?Int32
 ```
 
-**功能：** **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。
+**功能：** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xs
 
 ```cangjie
-public var xs: Int32
+public var xs: ?Int32
 ```
 
-**功能：** **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。
+**功能：** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xxl
 
 ```cangjie
-public var xxl: Int32
+public var xxl: ?Int32
 ```
 
-**功能：** **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。
+**功能：** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Int32, Int32, Int32, Int32, Int32, Int32)
+#### init(?Int32, ?Int32, ?Int32, ?Int32, ?Int32, ?Int32)
 
 ```cangjie
 public init(
-    xs!: Int32 = 12,
-    sm!: Int32 = 12,
-    md!: Int32 = 12,
-    lg!: Int32 = 12,
-    xl!: Int32 = 12,
-    xxl!: Int32 = 12
+    xs!: ?Int32 = None,
+    sm!: ?Int32 = None,
+    md!: ?Int32 = None,
+    lg!: ?Int32 = None,
+    xl!: ?Int32 = None,
+    xxl!: ?Int32 = None
 )
 ```
 
-**功能：** 构造一个GridColColumnOption对象。
+**功能：** 构造一个GridColOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xs|Int32|否|12| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。|
-|sm|Int32|否|12| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。|
-|md|Int32|否|12| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。|
-|lg|Int32|否|12| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。|
-|xl|Int32|否|12| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。|
-|xxl|Int32|否|12| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。|
+|xs|?Int32|否|None| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
+|sm|?Int32|否|None| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
+|md|?Int32|否|None| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
+|lg|?Int32|否|None| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
+|xl|?Int32|否|None| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
+|xxl|?Int32|否|None| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
 
-#### init(Int32)
+#### init(?Int32)
 
 ```cangjie
-public init(value: Int32)
+public init(value: ?Int32)
 ```
 
-**功能：** 构造一个GridColColumnOption对象。
+**功能：** 构造一个GridColOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。|
+|value|?Int32|是|-|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
 
 ## 示例代码
 
@@ -379,7 +376,7 @@ class EntryView {
             //GridRow设置中一行有5列
             GridRow(
                 columns: 5,
-                gutter: GutterOption(x: 5.vp, y: 10.vp),
+                gutter: GutterOptions(x: 5.vp, y: 10.vp),
                 breakpoints: BreakPoints(
                     value: [400.vp, 600.vp, 800.vp],
                     reference: BreakpointsReference.WindowSize
@@ -438,7 +435,7 @@ class EntryView {
                         }
                         .borderWidth(2.vp)
                         .borderColor(color)
-                        .span(GridColColumnOption(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
+                        .span(GridColOptions(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
                         .id("my_GridCol")
                     }
                 )
