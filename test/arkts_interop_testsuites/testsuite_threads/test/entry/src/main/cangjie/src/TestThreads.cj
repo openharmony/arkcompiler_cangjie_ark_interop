@@ -31,35 +31,35 @@ class TestThreads {
     }
     @TestCase
     func onWindowStageCreate_spawnMain(): Unit {
-        waitForEventWithName("onWindowStageCreate spawn(Main)") {_ =>}
+        waitForEventWithName("onWindowStageCreate spawn(UIThread)") {_ =>}
     }
     @TestCase
     func onWindowStageCreate_spawn_spawnMain(): Unit {
-        waitForEventWithName("onWindowStageCreate spawn spawn(Main)") {_ =>}
+        waitForEventWithName("onWindowStageCreate spawn spawn(UIThread)") {_ =>}
     }
     @TestCase
     func onWindowStageCreate_spawnMain_spawnMain(): Unit {
-        waitForEventWithName("onWindowStageCreate spawn(Main) spawn(Main)") {_ =>}
+        waitForEventWithName("onWindowStageCreate spawn(UIThread) spawn(UIThread)") {_ =>}
     }
     @TestCase
     func onClick_spawnMain_spawnMain(): Unit {
         click(at: Screen
-            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(Main) spawn(Main)")
+            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(UIThread) spawn(UIThread)")
             .centerPoint)
-        waitForEventWithName("onClick spawn(Main) spawn(Main)") {_ =>}
+        waitForEventWithName("onClick spawn(UIThread) spawn(UIThread)") {_ =>}
     }
     @TestCase
     func onClick_spawnMain(): Unit {
         click(at: Screen
-            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(Main)")
+            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn(UIThread)")
             .centerPoint)
-        waitForEventWithName("onClick spawn(Main)") {_ =>}
+        waitForEventWithName("onClick spawn(UIThread)") {_ =>}
     }
     @TestCase
     func onClick_spawn_spawnMain(): Unit {
         click(at: Screen
-            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn spawn(Main)")
+            .getTheOnlyUiComponentWhoseTextEqualsTo("onClick spawn spawn(UIThread)")
             .centerPoint)
-        waitForEventWithName("onClick spawn spawn(Main)") {_ =>}
+        waitForEventWithName("onClick spawn spawn(UIThread)") {_ =>}
     }
 }

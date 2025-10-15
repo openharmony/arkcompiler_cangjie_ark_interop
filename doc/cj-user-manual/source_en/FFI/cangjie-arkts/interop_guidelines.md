@@ -432,14 +432,14 @@ Assuming this scenario is required by business needs, developers should nullify 
 data.callback()
 data.callback = () = {}
 // ...
-```## In ArkTS Main Thread, Cannot Block and Wait for Execution Results of spawn(Main) in Cangjie Interfaces
+```## In ArkTS Main Thread, Cannot Block and Wait for Execution Results of spawn(UIThread) in Cangjie Interfaces
 
-**【Rule】** In Cangjie interfaces called from the ArkTS main thread, the main thread must not block and wait for the execution results of `spawn(Main)`. Otherwise, it will cause a deadlock and trigger an App Freeze failure.
+**【Rule】** In Cangjie interfaces called from the ArkTS main thread, the main thread must not block and wait for the execution results of `spawn(UIThread)`. Otherwise, it will cause a deadlock and trigger an App Freeze failure.
 
-When calling Cangjie interfaces from the ArkTS main thread, the Cangjie code may use the `spawn(Main)` expression to dispatch an asynchronous task to the main thread. This operation is typically used to return the execution results of the Cangjie interface to the ArkTS side. Developers must ensure that the main thread does not block and wait for the execution results of `spawn(Main)`, as this will cause a deadlock and trigger an App Freeze failure (APP_INPUT_BLOCK). Common blocking behaviors include but are not limited to:
+When calling Cangjie interfaces from the ArkTS main thread, the Cangjie code may use the `spawn(UIThread)` expression to dispatch an asynchronous task to the main thread. This operation is typically used to return the execution results of the Cangjie interface to the ArkTS side. Developers must ensure that the main thread does not block and wait for the execution results of `spawn(UIThread)`, as this will cause a deadlock and trigger an App Freeze failure (APP_INPUT_BLOCK). Common blocking behaviors include but are not limited to:
 
-- Using `future.get()` to wait for the return value of the `spawn(Main)` expression;
-- Using the `lock()` interface of `Mutex` to acquire a lock that will be released in the `spawn(Main)` task.
+- Using `future.get()` to wait for the return value of the `spawn(UIThread)` expression;
+- Using the `lock()` interface of `Mutex` to acquire a lock that will be released in the `spawn(UIThread)` task.
 
 **Incorrect Example:**
 
@@ -448,15 +448,15 @@ Cangjie-side code:
 ```cangjie
 import ohos.ark_interop.*
 import ohos.ark_interop_macro.*
-import ohos.base.Main
+import ohos.base.UIThread
 
 @Interop[ArkTS]
 public func testCJ(): Unit {
     // ...
-    let future = spawn(Main) {
+    let future = spawn(UIThread) {
         // ...
     }
-    future.get() // Error: `spawn(Main)` creates a Cangjie task on the main thread, and `future.get()` waits on the main thread, causing a deadlock
+    future.get() // Error: `spawn(UIThread)` creates a Cangjie task on the main thread, and `future.get()` waits on the main thread, causing a deadlock
     // ...
 }
 ```
@@ -484,7 +484,7 @@ Cangjie threads are user-mode threads, and the runtime schedules Cangjie threads
 - Use `JSContext.isInBindThread()` to determine whether the current thread can execute interoperation interfaces;
 - To switch threads for execution, use:
     - `JSContext.postJSTask { ... }` to create a task that executes on the ArkTS thread;
-    - If ArkTS is deployed on the main thread, developers can use the `spawn(Main)` syntax to schedule the interoperation logic to execute on the main thread.
+    - If ArkTS is deployed on the main thread, developers can use the `spawn(UIThread)` syntax to schedule the interoperation logic to execute on the main thread.
 
 **Incorrect Example:**
 
@@ -569,13 +569,13 @@ let EXPORT_MODULE = JSModule.registerModule {
 }
 ```
 
-**Correct Example (Usage of `spawn(Main)`):**
+**Correct Example (Usage of `spawn(UIThread)`):**
 
 Cangjie code:
 
 ```cangjie
 import ohos.ark_interop.*
-import ohos.base.Main
+import ohos.base.UIThread
 
 func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
     // Get parameter list from JSCallInfo
@@ -592,7 +592,7 @@ func addNumberAsync(context: JSContext, callInfo: JSCallInfo): JSValue {
     spawn {
         // Actual Cangjie function behavior
         let value = a + b
-        spawn(Main) { // Correct: Schedule execution on the ArkTS main thread
+        spawn(UIThread) { // Correct: Schedule execution on the ArkTS main thread
             // Create result
             let result = context.number(value).toJSValue()
             // Call JS callback

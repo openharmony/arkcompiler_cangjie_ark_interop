@@ -53,7 +53,7 @@ class TestLoadWebPage {
     func loadPage() {
         let webViewController = TestLoadWebPage.webViewController
         TestLoadWebPage.isWebPageLoaded.store(false)
-        spawn (Main) {
+        spawn (UIThread) {
             webViewController.loadUrl("https://gitee.com/organizations/openharmony/projects")
         }
         waitFor(Duration.second * 10) {
