@@ -101,14 +101,14 @@ class EntryView{
         Column(){
             Button("parent increase the day by 1")
                 .margin(10)
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = this.selectedDate.addDays(1)
-                }
+                })
             Button("parent update the new date")
                 .margin(10)
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = DateTime.of(year:2023,month:7,dayOfMonth:7)
-                }
+                })
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
@@ -128,14 +128,14 @@ class Child{
     public func build(){
         Column(){
             Button("child increase the day by 1")
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = this.selectedDate.addDays(1)
-                }
+                })
             Button("child update the new date")
                 .margin(10)
-                .onClick{
+                .onClick({ event
                     => this.selectedDate = DateTime.of(year:2023,month:9,dayOfMonth:9)
-                }
+                })
             DatePicker(
                 start: DateTime.of(year:1970,month:1,dayOfMonth:1),
                 end: DateTime.of(year:2100,month:1,dayOfMonth:1),
@@ -195,11 +195,11 @@ class EntryView{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{ evt =>
+            ).onClick({ evt =>
                 if(isAdd == true){ Func1 = returnMinus }
                 else{ Func1 = returnAdd }
                 isAdd = !isAdd
-            }
+            })
             Divider()
             Child()
         }
@@ -229,11 +229,11 @@ class Child{
                 }else{
                     "Switch to add"
                 }
-            ).onClick{ evt =>
+            ).onClick({ evt =>
                 if(isAdd == true){ Func2 = returnMinus }
                 else{ Func2 = returnAdd }
                 isAdd = !isAdd
-            }
+            })
         }
     }
 }
@@ -449,9 +449,9 @@ class ToDoItem {
         Column{
             Text("count(${this.count})")
             Button("count(${this.count}), count + 1")
-                .onClick{
+                .onClick({
                    evt => this.count += 1
-            }
+            })
         }.width(100.percent)
     }
 }
@@ -485,9 +485,9 @@ class EntryView{
     func build(){
         Column{
             Button("count(${this.count}), count + 1")
-                .onClick{
+                .onClick({
                    evt => this.count += 1
-                }
+                })
             ToDoDemo()
         }
     }
@@ -527,31 +527,31 @@ class Child {
                 keyGeneratorFunc: {item: (Int64, String), idx: Int64
                     => "${idx}_${item[0]}" + item[1]
                 })
-            Button("Consume init map").onClick{
+            Button("Consume init map").onClick({
                 evt =>
                     this.message = HashMap<Int64, String>([(0,"a"),(1,"b"),(3,"c")])
                     arr = message.toArray()
-            }
-            Button("Consume set new one").onClick{
+            })
+            Button("Consume set new one").onClick({
                 evt =>
                     this.message.add(4,"d")
                     arr = message.toArray()
-            }
-            Button("Consume clear").onClick{
+            })
+            Button("Consume clear").onClick({
                 evt =>
                     this.message.clear()
                     arr = message.toArray()
-            }
-            Button("Consume replace the first item").onClick{
+            })
+            Button("Consume replace the first item").onClick({
                 evt =>
                     this.message.add(0,"aa")
                     arr = message.toArray()
-            }
-            Button("Consume delete the first item").onClick{
+            })
+            Button("Consume delete the first item").onClick({
                 evt =>
                     this.message.remove(0)
                     arr = message.toArray()
-            }
+            })
         }
     }
 }
@@ -572,11 +572,11 @@ class EntryView {
     func build(){
         Row(){
             Column(){
-                Button("Provide init map").onClick{
+                Button("Provide init map").onClick({
                     evt =>
                         this.message = HashMap<Int64,String>([(0,"a"),(1,"b"),(3,"c"),(4,"d")])
                         arr = message.toArray()
-                }
+                })
                 Child()
             }.width(100.percent)
         }.height(100.percent)
@@ -613,26 +613,26 @@ class Child{
                 Text("${item}").fontSize(30)
                 Divider()
             })
-            Button("Consume init set").onClick{
+            Button("Consume init set").onClick({
                 evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4])
                     this.arr = this.message.toArray()
-            }
-            Button("Consume set new one").onClick{
+            })
+            Button("Consume set new one").onClick({
                 evt =>
                     this.message.add(5)
                     this.arr = this.message.toArray()
-            }
-            Button("Consume clear").onClick{
+            })
+            Button("Consume clear").onClick({
                 evt =>
                     this.message.clear()
                     this.arr = this.message.toArray()
-            }
-            Button("Consume delete the first one").onClick{
+            })
+            Button("Consume delete the first one").onClick({
                 evt =>
                     this.message.remove(0)
                     this.arr = this.message.toArray()
-            }
+            })
         }
     }
 }
@@ -653,11 +653,11 @@ class EntryView{
     func build(){
         Row(){
             Column(){
-                Button("Provide init Set").onClick{
+                Button("Provide init Set").onClick({
                     evt =>
                     this.message = HashSet<Int64>([0,1,2,3,4,5])
                     this.arr = this.message.toArray()
-                }
+                })
                 Child()
             }.width(100.percent)
         }.height(100.percent)

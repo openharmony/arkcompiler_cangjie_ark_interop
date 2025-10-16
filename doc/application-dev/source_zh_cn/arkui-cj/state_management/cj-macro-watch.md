@@ -107,9 +107,9 @@ class EntryView {
   func build() {
     Column() {
       Button("add to basket")
-        .onClick{ e =>
+        .onClick({ e =>
           this.count++
-        }
+        })
       TotalView(count: this.count)
     }
   }
@@ -174,10 +174,11 @@ class EntryView {
     func build() {
         Column(){
             Button("Add to basket")
-                .onClick{ etv =>
+                .onClick({ etv =>
                     var temp = this.shopBasket.clone()
                     temp.add(100.0 * m.nextFloat64())
-                    this.shopBasket = temp }
+                    this.shopBasket = temp
+                })
             BasketViewer(shopBasket : shopBasket)
         }
     }
@@ -223,11 +224,13 @@ class EntryView{
             Text("Total number of fruits: ${this.fruit.toString()}")
                 .fontSize(30)
             Button("Add apples")
-                .onClick{etv=> this.apple++
-                    this.propName = "apple"}
+                .onClick({etv=> this.apple++
+                    this.propName = "apple"
+                })
             Button("Add cabbages")
-                .onClick{etv=> this.cabbage++
-                    this.propName = "cabbages"}
+                .onClick({etv=> this.cabbage++
+                    this.propName = "cabbages"
+                })
 
         }
     }

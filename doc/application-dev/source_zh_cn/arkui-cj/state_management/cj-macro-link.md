@@ -240,7 +240,7 @@ class GreenButton {
             .height(40)
             .backgroundColor(Color.Green)
             .margin(12)
-            .onClick {
+            .onClick({
                 evt => if (this.greenButtonState.width < 700) {
                     // 更新class的属性，变化可以被观察到同步回父组件
                     this.greenButtonState.width += 60
@@ -248,7 +248,7 @@ class GreenButton {
                     // 更新class，变化可以被观察到同步回父组件
                     this.greenButtonState = GreenButtonState(width: 180)
                 }
-            }
+            })
     }
 }
 
@@ -263,11 +263,11 @@ class YellowButton {
             .backgroundColor(Color(0xFFFF00))
             .fontColor(Color.Black)
             .margin(12)
-            .onClick {
+            .onClick({
                 evt =>
                 // 子组件的简单类型可以同步回父组件
                 this.yellowButtonState += 40
-            }
+            })
     }
 }
 
@@ -284,25 +284,25 @@ class EntryView {
                     .width(this.yellowButtonProp)
                     .height(40)
                     .margin(12)
-                    .onClick {
+                    .onClick({
                         evt => if (this.yellowButtonProp < 700) {
                             this.yellowButtonProp = this.yellowButtonProp + 100
                         } else {
                             this.yellowButtonProp = 100
                         }
-                    }
+                    })
                 // class类型从父组件@State向子组件@Link数据同步
                 Button("Parent View: Set GreenButton")
                     .width(this.greenButtonState.width)
                     .height(40)
                     .margin(12)
-                    .onClick {
+                    .onClick({
                         evt => if (this.greenButtonState.width < 700) {
                             this.greenButtonState.width = this.greenButtonState.width + 100
                         } else {
                             this.greenButtonState.width = 100
                         }
-                    }
+                    })
                 // class类型初始化@Link
                 GreenButton(greenButtonState: this.greenButtonState)
                 // 简单类型初始化@Link
@@ -335,16 +335,16 @@ class Child{
             Button("Button 1: push")
                 .margin(12)
                 .size(width: 312, height: 40)
-                .onClick{
+                .onClick({
                     evt => this.items.append(this.items.size + 1)
-                }
+                })
 
             Button("Button 2: replace whole item")
                 .margin(12)
                 .size(width: 312, height:40)
-                .onClick{
+                .onClick({
                     ect => this.items = ObservedArrayList<Int>([100,200,300])
-                }
+                })
         }
     }
 }
@@ -396,9 +396,9 @@ class Child {
             Text(this.memberMessage)
             Text("子组件的sourceNumber：" + this.sourceNumber.toString())
             Button("子组件更改memberMessage")
-              .onClick {
+            .onClick({
                   evt => this.memberMessage = "Hello memberMessage"
-            }
+            })
         }
         .margin(10)
     }
@@ -413,9 +413,9 @@ class EntryView {
             Text("父组件的sourceNumber：" + this.sourceNumber.toString())
             Child(sourceNumber: this.sourceNumber)
             Button("父组件更改sourceNumber")
-              .onClick {
-                  evt => this.sourceNumber++
-            }
+            .onClick({
+                evt => this.sourceNumber++
+            })
         }
     }
 }
@@ -493,7 +493,7 @@ class LinkChild {
     func build() {
         Column() {
             Text("LinkChild testNum ${this.testNum.age}")
-                .onClick({
+            .onClick({
                 evt => this.testNum.age += 1
             })
         }
