@@ -239,7 +239,7 @@ class Child {
   ```cangjie
   func build() {
       //反例：不允许Hilog.info
-      // Hilog.info(0, "AppLogCj","print debug log" )
+      Hilog.info(0, "HilogCj","print debug log" )
   }
   ```
 
@@ -258,18 +258,18 @@ class Child {
 
   ```cangjie
   @Component
-  class EntryView{
-      func doSomeCalculations(){
+  class EntryView {
+      func doSomeCalculations() {
 
       }
-      func calcTextValue():String{
+      func calcTextValue():String {
           return "Hello World"
       }
-      @Builder func doSomeRender(){
+      @Builder func doSomeRender() {
           Text("Hello World")
       }
       func build() {
-          Column(){
+          Column() {
               // 反例：不能调用没有用@Builder装饰的方法
               this.doSomeCalculations()
               // 正例：可以调用
@@ -284,20 +284,20 @@ class Child {
 - 不允许使用match语法，如果需要使用条件判断，请使用[if](../rendering_control/cj-rendering-control-ifelse.md)。示例如下。
 
   ```cangjie
-  func build(){
-      Column(){
+  func build() {
+      Column() {
           // 反例：不允许使用match语法
-          match(expression ){
+          match(expression ) {
               case 0 => Text("...")
               case 1 => Text("...")
               case _ => Text("...")
           }
           // 正例：使用if
-          if(expression == 1){
+          if(expression == 1) {
               Text("...")
-          }else if(expression == 2){
+          } else if(expression == 2) {
               Button("...")
-          }else {
+          } else {
               Text("...")
           }
       }
@@ -308,12 +308,12 @@ class Child {
 
   ```cangjie
   @Component
-  class EntryView{
+  class EntryView {
       @State var textColor : Color = Color(0xFFFF00)
       @State var columnColor : Color  = Color.Green
       @State var count : Int64 = 1
-      func build(){
-          Column(){
+      func build() {
+          Column() {
               // 不允许直接在Text组件内改变count的值
               Text("${this.count++}")
                   .width(50)
@@ -321,7 +321,7 @@ class Child {
                   .fontColor(this.textColor)
                   .onClick({etv=> this.columnColor = Color.Red})
               Button("change textColor")
-                  .onClick({etv=> this.textColor = Color.PINK})
+                  .onClick({etv=> this.textColor = Color.Blue})
           }
           .backgroundColor(this.columnColor)
       }
