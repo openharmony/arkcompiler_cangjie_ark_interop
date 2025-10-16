@@ -14,24 +14,24 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Float64, Bool)
+### init(?Float64, ?Bool)
 
 ```cangjie
-public init(rating!: Float64, indicator!: Bool = false)
+public init(rating!: ?Float64, indicator!: ?Bool = None)
 ```
 
 **功能：** 构造一个在给定范围内选择评分的组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|rating|Float64|是|-| **命名参数。** 设置并接收评分值。<br>初始值：0。<br>取值范围： [0, stars] ，小于0取0，大于stars取最大值stars。|
-|indicator|Bool|否|false| **命名参数。** 设置评分组件作为指示器使用，不可改变评分。<br>初始值：false，可进行评分。<br>**说明：**<br>indicator=true时，默认组件高度height=12.0.vp，组件width=height * stars。indicator=false时，默认组件高度height=28.0.vp，组件width=height * stars。|
+|rating|?Float64|是|-|**命名参数。** 设置并接收评分值。<br>初始值：0.0。<br>**说明**：取值范围： [0, stars] ，小于0取0，大于stars取最大值stars。|
+|indicator|?Bool|否|None|**命名参数。** 设置评分组件作为指示器使用，不可改变评分。<br>初始值：false，可进行评分。<br>**说明**：indicator=true时，默认组件高度height=12.0.vp，组件width=height * stars。indicator=false时，默认组件高度height=28.0.vp，组件width=height * stars。|
 
 ## 通用属性/通用事件
 
@@ -41,10 +41,46 @@ public init(rating!: Float64, indicator!: Bool = false)
 
 ## 组件属性
 
-### func starStyle(ResourceStr, ResourceStr, ResourceStr)
+### func stars(?Int32)
 
 ```cangjie
-public func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, secondaryUri!: ResourceStr = backgroundUri): This
+public func stars(value: ?Int32): This
+```
+
+**功能：** 设置评分总数。设置为小于等于0的值时，按初始值显示。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?Int32|是|-|设置评分总数。<br>初始值：5。|
+
+### func stepSize(?Float64)
+
+```cangjie
+public func stepSize(size: ?Float64): This
+```
+
+**功能：** 设置操作评级的步长。设置为小于等于0.0的值时，按初始值显示。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|?Float64|是|-|操作评级的步长。<br>初始值：0.5。<br>取值范围：（0.0, stars]。|
+
+### func starStyle(?ResourceStr, ?ResourceStr, ?ResourceStr)
+
+```cangjie
+public func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr, secondaryUri!: ?ResourceStr = None): This
 ```
 
 **功能：** 设置评分的样式。该属性所支持的图片类型能力参考[Image](./cj-image-video-image.md#image)组件。支持加载本地图片和网络图片，暂不支持PixelMap类型和Resource资源。
@@ -53,15 +89,15 @@ public func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|backgroundUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。|
-|foregroundUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 选中的星级的图片路径，可由用户自定义或使用系统默认图片。|
-|secondaryUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|backgroundUri|**命名参数。** 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。|
+|backgroundUri|?ResourceStr|是|-|**命名参数。** 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br>初始值：""。|
+|foregroundUri|?ResourceStr|是|-|**命名参数。** 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br>初始值：""。|
+|secondaryUri|?ResourceStr|否|None|**命名参数。** 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br>初始值： 取backgroundUri的值。|
 
 > **说明：**
 >
@@ -74,61 +110,26 @@ public func starStyle(backgroundUri!: ResourceStr, foregroundUri!: ResourceStr, 
 > - backgroundUri或者foregroundUri设置为空字符串时，rating会选择加载系统默认星型图源。
 > - secondaryUri不设置或者设置的值为空字符串时，优先设置为backgroundUri，效果上等同于只设置了foregroundUri、backgroundUri。
 
-### func stars(Int32)
-
-```cangjie
-public func stars(starCount: Int32): This
-```
-
-**功能：** 设置评分总数。设置为小于等于0的值时，按初始值显示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|starCount|Int32|是|-|设置评分总数。<br>初始值：5。|
-
-### func stepSize(Float64)
-
-```cangjie
-public func stepSize(size: Float64): This
-```
-
-**功能：** 设置操作评级的步长。设置为小于0.1的值时，按初始值显示。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|size|Float64|是|-|操作评级的步长。<br>初始值：0.5。<br>取值范围：[0.1, stars] 。|
 
 ## 组件事件
 
-### func onChange((Float64) -> Unit)
+### func onChange(?(Float64) -> Unit)
 
 ```cangjie
-public func onChange(callback: (Float64) -> Unit): This
+public func onChange(callback: ?(Float64) -> Unit): This
 ```
 
 **功能：** 操作评分条的评星发生改变时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(Float64)->Unit|是|-|评分条的评分。|
+|callback|?(Float64)->Unit|是|-|评分条的评分。|
 
 ## 示例代码
 
@@ -143,7 +144,8 @@ package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-internal import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component

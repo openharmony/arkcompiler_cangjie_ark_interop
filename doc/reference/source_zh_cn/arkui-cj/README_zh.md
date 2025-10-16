@@ -3,10 +3,15 @@
 - 仓颉API
     - UI界面
         - [ohos.component_utils（ComponentUtils）](cj-apis-componentutils.md)
+        - [ohos.shape（形状）](cj-apis-shape.md)
         - [ohos.curves（插值计算）](cj-apis-curves.md)
-        - [ohos.font（自定义字体）](cj-apis-font.md)
-        - [ohos.router（页面路由）](cj-apis-router.md)
-        - [ohos.ui_context（UIContext）](cj-apis-arkui-ui_context.md)
+        - ohos.ui_context（UIContext）
+            - [Class（AnimatorResult）](cj-apis-uicontext-animator.md)
+            - [Class（ContextMenuController）](cj-apis-uicontext-contextmenucontroller.md)
+            - [Class（Font）](cj-apis-uicontext-font.md)
+            - [Class（MeasureUtils）](cj-apis-uicontext-measureutils.md)
+            - [Class（PromptAction）](cj-apis-uicontext-promptaction.md)
+            - [Class（UIContext）](cj-apis-uicontext-uicontext.md)
     - 窗口管理
         - [ohos.window（窗口）](cj-apis-window.md)
     - 屏幕管理
@@ -15,9 +20,13 @@
     - 通用事件
         - [点击事件](cj-universal-event-click.md)
         - [触摸事件](cj-universal-event-touch.md)
+        - [挂载卸载事件](cj-universal-event-appear.md)
         - [拖拽事件](cj-universal-event-drag.md)
         - [按键事件](cj-universal-event-key.md)
+        - [焦点事件](cj-universal-event-focus.md)
         - [鼠标事件](cj-universal-event-mouse.md)
+        - [悬浮事件](cj-universal-event-hover.md)
+        - [组件区域变化事件](cj-universal-event-areachange.md)
         - [组件可见区域变化事件](cj-universal-event-visibleareachange.md)
         - [组件快捷键事件](cj-universal-event-keyboardshortcut.md)
     - 通用属性
@@ -42,19 +51,12 @@
         - [组件标识](cj-universal-attribute-componentid.md)
         - [前景色设置](cj-universal-attribute-foregroundcolor.md)
         - [组件内容模糊](cj-universal-attribute-foregroundblurstyle.md)
-        - 触摸交互控制
-            - [触摸热区设置](cj-universal-attribute-touchtarget.md)
         - 模态转场设置
             - [全屏模态转场](cj-universal-attribute-bindcontentcover.md)
             - [半模态转场](cj-universal-attribute-sheettransition.md)
         - [拖拽控制](cj-universal-attribute-dragcontrol.md)
         - [安全区域](cj-universal-attribute-expandsafearea.md)
         - [组件内容填充方式](cj-universal-attribute-renderfit.md)
-    - 手势处理
-        - [绑定手势方法](cj-universal-gesture-bind.md)
-        - [PanGesture](cj-universal-gesture-pangesture.md)
-        - [SwipeGesture](cj-universal-gesture-swipegesture.md)
-        - [组合手势](cj-universal-gesture-groupgesture.md)
     - 行列与堆叠
         - [Flex](cj-row-column-stack-flex.md)
         - [Column](cj-row-column-stack-column.md)
@@ -78,9 +80,11 @@
         - [Refresh](cj-scroll-swipe-refresh.md)
     - 导航与切换
         - [Navigation](cj-navigation-switching-navigation.md)
+        - [NavDestination](cj-navigation-switching-navdestination.md)
         - [Stepper](cj-navigation-switching-stepper.md)
         - [StepperItem](cj-navigation-switching-stepperitem.md)
         - [Tabs](cj-navigation-switching-tabs.md)
+        - [TabContent](cj-navigation-switching-tabcontent.md)
     - 按钮与选择
         - [Button](cj-button-picker-button.md)
         - [Toggle](cj-button-picker-toggle.md)
@@ -101,8 +105,6 @@
         - [Span](cj-text-input-span.md)
         - [ImageSpan](cj-text-input-imagespan.md)
         - [RichText](cj-text-input-richtext.md)
-        - [PromptAction](cj-apis-prompt_action.md)
-        - [AlertDialog](cj-dialog-alertdialog.md)
     - 图片与视频
         - [Image](cj-image-video-image.md)
         - [Video](cj-image-video-video.md)
@@ -129,7 +131,6 @@
         - [ImageBitmap](cj-canvas-drawing-imagebitmap.md)
         - [ImageData](cj-canvas-drawing-imagedata.md)
         - [CanvasPattern](cj-canvas-drawing-canvaspattern.md)
-        - [Recycle](cj-apis-recycle.md)
     - 图形绘制
         - [Circle](cj-graphic-drawing-circle.md)
         - [Ellipse](cj-graphic-drawing-ellipse.md)
@@ -137,31 +138,32 @@
         - [Path](cj-graphic-drawing-path.md)
         - [Rect](cj-graphic-drawing-rect.md)
         - [Shape](cj-graphic-drawing-shape.md)
+        - [图形绘制通用属性](cj-graphic-drawing-common.md)
     - 菜单
         - [Menu](cj-menu-menu.md)
         - [MenuItem](cj-menu-menuitem.md)
         - [MenuItemGroup](cj-menu-menuitemgroup.md)
     - 动画
         - [属性动画（animation）](cj-animation-animation.md)
-        - [动画（animator）](cj-apis-animator.md)
-        - [显式动画（animateTo）](cj-animation-animateto.md)
         - [页面间转场（pageTransition）](cj-animation-pagetransition.md)
         - [组件内转场（transition）](cj-animation-transition.md)
         - [共享元素转场（sharedTransition）](cj-animation-sharedtransition.md)
         - [组件内隐式共享元素转场（geometryTransition）](cj-animation-geometrytransition.md)
-        - [路径动画 (motionPath)](cj-animation-motionpath.md)
     - 弹窗
+        - [警告弹窗（AlertDialog）](cj-dialog-alertdialog.md)
         - [列表选择弹窗（ActionSheet）](cj-dialog-actionsheet.md)
         - [自定义弹窗（CustomDialog）](cj-dialog-customdialog.md)
     - Web
         - [Web](cj-web-web.md)
     - 状态管理与渲染控制
+        - [ForEach](cj-state-rendering-foreach.md)
         - [LazyForEach](cj-state-rendering-lazyforeach.md)
         - [组件级变量的状态管理](cj-state-rendering-componentstatemanagement.md)
         - [应用级变量的状态管理](cj-state-rendering-appstatemanagement.md)
     - 公共定义
         - [基础类型定义](cj-common-types.md)
         - [像素单位](cj-common-pixelunits.md)
+    - [线程控制](cj-appendix-thread.md)
     - [框架接口](cj-ui-framework.md)
 - 错误码
     - UI界面

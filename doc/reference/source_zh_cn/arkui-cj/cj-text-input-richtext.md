@@ -32,24 +32,23 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(ResourceStr)
+### init(?ResourceStr)
 
 ```cangjie
-
-public init(content: ResourceStr)
+public init(content: ?ResourceStr)
 ```
 
 **功能：** 创建RichText组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|HTML格式的字符串。|
+|content|?ResourceStr|是|-|HTML格式的字符串。初始值：""。|
 
 ## 通用属性/通用事件
 
@@ -57,45 +56,44 @@ public init(content: ResourceStr)
 
 通用事件：全部支持。
 
+
 ## 组件事件
 
-### func onComplete(() -> Unit)
+### func onStart(?() -> Unit)
 
 ```cangjie
-
-public func onComplete(callback: () -> Unit): This
-```
-
-**功能：** 网页加载结束时触发事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|回调函数，网页加载结束时触发。|
-
-### func onStart(() -> Unit)
-
-```cangjie
-
-public func onStart(callback: () -> Unit): This
+public func onStart(callback: ?() -> Unit): This
 ```
 
 **功能：** 加载网页时触发事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|回调函数，加载网页时触发。|
+|callback|?() -> Unit|是|-|回调函数，加载网页时触发。初始值：{ => }。|
+
+### func onComplete(?() -> Unit)
+
+```cangjie
+public func onComplete(callback: ?() -> Unit): This
+```
+
+**功能：** 网页加载结束时触发事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?() -> Unit|是|-|回调函数，网页加载结束时触发。初始值：{ => }。|
 
 ## 示例代码
 
@@ -105,7 +103,7 @@ public func onStart(callback: () -> Unit): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.PerformanceAnalysisKit.*
+import ohos.hilog.*
 
 @Entry
 @Component

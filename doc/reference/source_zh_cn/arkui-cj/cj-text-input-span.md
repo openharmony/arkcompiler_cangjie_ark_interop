@@ -1,6 +1,6 @@
 # Span
 
-作为[Text](./cj-text-input-text.md#text)组件的子组件，用于显示行内文本的组件。
+作为[Text](cj-text-input-text.md)组件的子组件，用于显示行内文本的组件。
 
 ## 导入模块
 
@@ -14,23 +14,23 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(ResourceStr)
+### init(?ResourceStr)
 
 ```cangjie
-public init(value: ResourceStr)
+public init(value: ?ResourceStr)
 ```
 
 **功能：** 创建Span组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|ResourceStr|是|-|文本内容。|
+|value|?ResourceStr|是|-|文本内容。<br>初始值：""。|
 
 ## 通用属性/通用事件
 
@@ -38,152 +38,195 @@ public init(value: ResourceStr)
 
 通用事件：全部支持。
 
+> **说明：**
+>
+> 由于Span组件无尺寸信息，因此点击事件返回的ClickEvent对象的target属性无效。
+
 ## 组件属性
 
-### func decoration(TextDecorationType, ResourceColor)
+### func decoration(?TextDecorationType, ?ResourceColor)
 
 ```cangjie
-public func decoration(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black): This
+public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None): This
 ```
 
 **功能：** 设置文本装饰线样式及其颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 文本装饰线颜色。|
+|decorationType|?TextDecorationType|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
+|color|?ResourceColor|否|None| **命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
 
-### func fontColor(ResourceColor)
+### func fontColor(?ResourceColor)
 
 ```cangjie
-public func fontColor(value: ResourceColor): This
+public func fontColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置字体颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
+|value|?ResourceColor|是|-|字体颜色。|
 
-### func fontFamily(ResourceStr)
+### func fontFamily(?ResourceStr)
 
 ```cangjie
-public func fontFamily(value: ResourceStr): This
+public func fontFamily(value: ?ResourceStr): This
 ```
 
 **功能：** 设置字体列表。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。|
+|value|?ResourceStr|是|-|字体列表。<br>初始值："HarmonyOS Sans"。|
 
-### func fontSize(Length)
+### func fontSize(?Length)
 
 ```cangjie
-public func fontSize(value: Length): This
+public func fontSize(value: ?Length): This
 ```
 
 **功能：** 设置字体大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。Length为Int64、Float64类型时，使用fp单位。不支持设置百分比字符串。|
+|value|?Length|是|-|字体大小。|
 
-### func fontStyle(FontStyle)
+### func fontStyle(?FontStyle)
 
 ```cangjie
-public func fontStyle(value: FontStyle): This
+public func fontStyle(value: ?FontStyle): This
 ```
 
 **功能：** 设置字体样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。<br>初始值：FontStyle.Normal。|
+|value|?FontStyle|是|-|字体样式。<br>初始值：FontStyle.Normal。|
 
-### func fontWeight(FontWeight)
+### func fontWeight(?FontWeight)
 
 ```cangjie
-public func fontWeight(value: FontWeight): This
+public func fontWeight(value: ?FontWeight): This
 ```
 
 **功能：** 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细，设置过大可能会在不同字体下有截断。<br>初始值：FontWeight.Normal。|
+|value|?FontWeight|是|-|文本的字体粗细，设置过大可能会在不同字体下有截断。<br>初始值：FontWeight.Normal。|
 
-### func letterSpacing(Length)
+### func letterSpacing(?Length)
 
 ```cangjie
-public func letterSpacing(value: Length): This
+public func letterSpacing(value: ?Length): This
 ```
 
 **功能：** 设置文本字符间距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本字符间距。单位：fp。|
+|value|?Length|是|-|字符间距。|
 
-### func textCase(TextCase)
+### func textCase(?TextCase)
 
 ```cangjie
-public func textCase(value: TextCase): This
+public func textCase(value: ?TextCase): This
 ```
 
 **功能：** 设置文本大小写。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TextCase](./cj-common-types.md#enum-textcase)|是|-|文本大小写。<br>初始值：TextCase.Normal。|
+|value|?TextCase|是|-|文本大小写。<br>初始值：TextCase.Normal。|
+
+## 组件事件
+
+### func onClick(?(ClickEvent) -> Unit)
+
+```cangjie
+public func onClick(event: ?(ClickEvent) -> Unit): This
+```
+
+**功能：** 点击事件回调函数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|event|?(ClickEvent) -> Unit|是|-|点击事件回调函数，点击事件回调。|
+
+## 基础类型定义
+
+### class BaseSpan
+
+```cangjie
+public abstract class BaseSpan <: UINodeBase {}
+```
+
+**功能：** Span组件的基类。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+- UINodeBase
+
 
 ## 示例代码
 

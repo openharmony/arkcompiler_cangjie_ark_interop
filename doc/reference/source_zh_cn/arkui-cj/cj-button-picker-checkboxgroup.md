@@ -5,7 +5,7 @@
 ## 导入模块
 
 ```cangjie
-import kit.UIkit.*
+import kit.ArkUI.*
 ```
 
 ## 子组件
@@ -14,10 +14,10 @@ import kit.UIkit.*
 
 ## 创建组件
 
-### init(String)
+### init(?String)
 
 ```cangjie
-public init(group!: String = "")
+public init(group!: ?String = None)
 ```
 
 **功能：** 创建多选框群组，可以控制群组内的Checkbox全选或者不全选，group值相同的Checkbox和CheckboxGroup为同一群组。
@@ -26,13 +26,13 @@ public init(group!: String = "")
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|group|String|否|""| **命名参数。** 多选框的群组名称。<br/>**说明**：<br/>多个相同群组名称的CheckboxGroup，仅第一个CheckboxGroup生效。|
+|group|?String|否|None| **命名参数。** 多选框的群组名称。|
 
 ## 通用属性/通用事件
 
@@ -42,61 +42,61 @@ public init(group!: String = "")
 
 ## 组件属性
 
-### func selectAll(Bool)
+### func selectAll(?Bool)
 
 ```cangjie
-public func selectAll(value: Bool): This
+public func selectAll(value: ?Bool): This
 ```
 
 **功能：** 设置是否全选。若同组的[Checkbox](./cj-button-picker-checkbox.md#checkbox)显式设置了select属性，则Checkbox的优先级高。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否全选。<br>初始值：false。<br>值为true时，多选框群组都被选中。值为false时，多选框群组都不被选中。|
+|value|?Bool|是|-|是否全选。初始值：false。<br>值为true时，多选框群组都被选中。值为false时，多选框群组都不被选中。|
 
-### func selectedColor(ResourceColor)
+### func selectedColor(?ResourceColor)
 
 ```cangjie
-public func selectedColor(value: ResourceColor): This
+public func selectedColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置被选中或部分选中状态的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|被选中或部分选中状态的颜色。<br/>初始值：<br/>@r(sys.color.ohos_id_color_text_primary_activated)。<br/>异常值按照默认值处理。|
+|value|?ResourceColor|是|-|被选中或部分选中状态的颜色。|
 
 ## 组件事件
 
-### func onChange(OnCheckboxGroupChangeCallback)
+### func onChange(?OnCheckboxGroupChangeCallback)
 
 ```cangjie
-public func onChange(callback: OnCheckboxGroupChangeCallback): This
+public func onChange(callback: ?OnCheckboxGroupChangeCallback): This
 ```
 
 **功能：** CheckboxGroup的选中状态或群组内的Checkbox的选中状态发生变化时，触发回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|OnCheckboxGroupChangeCallback|是|-|多选框群组的信息。|
+|callback|?OnCheckboxGroupChangeCallback|是|-|多选框群组的信息。初始值:  { _ => }|
 
 ## 基础类型定义
 
@@ -117,7 +117,7 @@ public class CheckboxGroupResult {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var name
 
@@ -133,7 +133,7 @@ public var name: Array<String>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var status
 
@@ -149,7 +149,7 @@ public var status: SelectStatus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init(SelectStatus, Array\<String>)
 
@@ -164,7 +164,7 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -173,120 +173,15 @@ public init(
 |status|[SelectStatus](#enum-selectstatus)|是|-|选中状态。|
 |name|Array\<String>|是|-|群组内所有被选中的多选框名称。|
 
-### enum SelectStatus
+### type OnCheckboxGroupChangeCallback
 
 ```cangjie
-public enum SelectStatus <: Equatable<SelectStatus> {
-    | All
-    | Part
-    | None
-    | ...
-}
+public type OnCheckboxGroupChangeCallback = (CheckboxGroupResult) -> Unit
 ```
 
-**功能：** 多选框选择状态类型。
+**功能：** (CheckboxGroupResult) -> Unit 的类型别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<SelectStatus>
-
-#### All
-
-```cangjie
-All
-```
-
-**功能：** 群组多选择框全部选择。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### None
-
-```cangjie
-None
-```
-
-**功能：** 群组多选择框全部没有选择。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Part
-
-```cangjie
-Part
-```
-
-**功能：** 群组多选择框部分选择。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(SelectStatus)
-
-```cangjie
-public operator func !=(other: SelectStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SelectStatus](#enum-selectstatus)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(SelectStatus)
-
-```cangjie
-public operator func ==(other: SelectStatus): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SelectStatus](#enum-selectstatus)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-#### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
+**类型：** ([CheckboxGroupResult](#class-checkboxgroupresult)) -> Unit
 
 ## 示例代码
 
@@ -300,7 +195,7 @@ public func getValue(): Int32
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
@@ -326,9 +221,9 @@ class EntryView {
                 .size(width: 50.vp, height: 50.vp)
                 .selectedColor(0xed6f21)
                 .selectAll(false)
-                .onChange { val =>
+                .onChange({ val =>
                     loggerInfo("checkboxGroup onChange names:" + formatNames(val.name))
-                }
+                })
 
                 Text("Select All").fontSize(50)
             }
@@ -362,7 +257,7 @@ class EntryView {
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 
@@ -388,9 +283,9 @@ class EntryView {
                 .size(width: 50.vp, height: 50.vp)
                 .selectedColor(0xed6f21)
                 .selectAll(true)
-                .onChange { val =>
+                .onChange({ val =>
                     loggerInfo("checkboxGroup1 onChange names:" + formatNames(val.name))
-                }
+                })
 
                 Text("Select All").fontSize(50)
             }

@@ -1,6 +1,6 @@
 # ohos.display（屏幕属性）
 
-屏幕属性提供管理显示设备的一些基础能力，包括获取默认显示设备的信息，获取所有显示设备的信息以及监听显示设备的插拔行为。
+提供屏幕属性相关功能。
 
 ## 导入模块
 
@@ -14,31 +14,32 @@ import kit.ArkUI.*
 public func getAllDisplays(): Array<Display>
 ```
 
-**功能：** 获取当前所有的Display对象。
+**功能：** 获取所有显示屏。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Array\<[Display](#class-display)>|返回当前所有的display对象。|
+|Array\<[Display](#class-display)>|返回所有显示屏的结果。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1400001 | Invalid display or screen. |
-  | 1400003 | This display manager service works abnormally. |
+  |错误码|说明|
+  |:----|:----|
+  |1400001|Invalid display or screen.|
+  |1400003|This display manager service works abnormally.|
 
-**示例:**
+**示例：**
 
 ```cangjie
 import ohos.display.*
+
 func getAllDisplaysExample() {
     try {
         let displayClass: Array<Display> = getAllDisplays()
@@ -46,7 +47,7 @@ func getAllDisplaysExample() {
             println(displayClass[0].name)
         }
     } catch (exception: Exception) {
-        Hilog.error(0, "AppLogCj", exception.toString())
+        AppLog.error(exception.toString())
     }
 }
 ```
@@ -57,27 +58,27 @@ func getAllDisplaysExample() {
 public func getCurrentFoldCreaseRegion(): FoldCreaseRegion
 ```
 
-**功能：** 在当前显示模式下获取折叠折痕区域。
+**功能：** 获取当前显示模式下的折叠 crease 区域。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[FoldCreaseRegion](#class-foldcreaseregion)|FoldCreaseRegion对象，返回设备在当前显示模式下的折叠折痕区域。|
+|[FoldCreaseRegion](#class-foldcreaseregion)|返回当前显示模式下的折叠 crease 区域。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1400003 | This display manager service works abnormally. |
+  |错误码|说明|
+  |:----|:----|
+  |1400003|This display manager service works abnormally.|
 
-**示例:**
+**示例：**
 
 ```cangjie
 import ohos.display.*
@@ -86,7 +87,7 @@ func getCurrentFoldCreaseRegionExample() {
         let region = getCurrentFoldCreaseRegion()
         println(region.displayId)
     } catch (exception: Exception) {
-        Hilog.error(0, "AppLogCj", exception.toString())
+        AppLog.error(exception.toString())
     }
 }
 ```
@@ -97,28 +98,28 @@ func getCurrentFoldCreaseRegionExample() {
 public func getDefaultDisplaySync(): Display
 ```
 
-**功能：** 获取当前默认的Display对象。
+**功能：** 获取默认显示屏。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[Display](#class-display)|返回默认的Display对象。|
+|[Display](#class-display)|返回显示屏的结果。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1400001 | Invalid display or screen. |
-  | 1400003 | This display manager service works abnormally. |
+  |错误码|说明|
+  |:----|:----|
+  |1400001|Invalid display or screen.|
+  |1400003|This display manager service works abnormally.|
 
-**示例:**
+**示例：**
 
 ```cangjie
 import ohos.display.*
@@ -127,7 +128,7 @@ func getDefaultDisplaySyncExample() {
         let displayClass: Display = getDefaultDisplaySync()
         println(displayClass.name)
     } catch (exception: Exception) {
-        Hilog.error(0, "AppLogCj", exception.toString())
+        AppLog.error(exception.toString())
     }
 }
 ```
@@ -138,38 +139,17 @@ func getDefaultDisplaySyncExample() {
 public func getFoldDisplayMode(): FoldDisplayMode
 ```
 
-**功能：** 获取可折叠设备的显示模式。
+**功能：** 获取折叠设备的显示模式。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[FoldDisplayMode](#enum-folddisplaymode)|FoldDisplayMode对象，返回当前可折叠设备的显示模式。|
-
-**示例:**
-
-```cangjie
-import ohos.display.*
-func getFoldDisplayModeExample() {
-    try {
-        let mode = getFoldDisplayMode()
-        match (mode) {
-            case FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN => Hilog.info(0, "AppLogCj", "Unkown mode.")
-            case FoldDisplayMode.FOLD_DISPLAY_MODE_FULL => Hilog.info(0, "AppLogCj", "Full mode.")
-            case FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN => Hilog.info(0, "AppLogCj", "Main mode.")
-            case FoldDisplayMode.FOLD_DISPLAY_MODE_SUB => Hilog.info(0, "AppLogCj", "Sub mode.")
-            case FoldDisplayMode.FOLD_DISPLAY_MODE_COORDINATION => Hilog.info(0, "AppLogCj", "Coordination mode.")
-            case _ => throw Exception("can not get display mode.")
-        }
-    } catch (exception: Exception) {
-        Hilog.error(0, "AppLogCj", exception.toString())
-    }
-}
-```
+|[FoldDisplayMode](#enum-folddisplaymode)|返回折叠设备的显示模式。|
 
 ## func getFoldStatus()
 
@@ -177,37 +157,17 @@ func getFoldDisplayModeExample() {
 public func getFoldStatus(): FoldStatus
 ```
 
-**功能：** 获取可折叠设备的当前折叠状态。
+**功能：** 获取折叠设备的当前折叠状态。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[FoldStatus](#enum-foldstatus)|FoldStatus对象，返回当前可折叠设备的折叠状态。|
-
-**示例:**
-
-```cangjie
-import ohos.display.*
-func getFoldStatusExample() {
-    try {
-        let status = getFoldStatus()
-        match (status) {
-            case FoldStatus.FOLD_STATUS_UNKNOWN => Hilog.info(0, "AppLogCj", "Unkown status.")
-            case FoldStatus.FOLD_STATUS_EXPANDED => Hilog.info(0, "AppLogCj", "Expanded.")
-            case FoldStatus.FOLD_STATUS_FOLDED => Hilog.info(0, "AppLogCj", "Folded.")
-            case FoldStatus.FOLD_STATUS_HALF_FOLDED => Hilog.info(0, "AppLogCj", "Half folded.")
-            case _ => throw Exception("can not get fold status.")
-        }
-    } catch (exception: Exception) {
-        Hilog.error(0, "AppLogCj", exception.toString())
-    }
-}
-```
+|[FoldStatus](#enum-foldstatus)|返回设备的折叠状态。|
 
 ## func isFoldable()
 
@@ -219,37 +179,13 @@ public func isFoldable(): Bool
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|Bool对象，返回当前设备是否可折叠的结果。true表示可折叠，false表示不可折叠。|
-
-**示例:**
-
-```cangjie
-import ohos.display.*
-func isFoldableExample() {
-    try {
-        let displayClass = getDefaultDisplaySync()
-        var ret: Bool = false
-        try {
-            ret = isFoldable()
-        } catch (exception: Exception) {
-            Hilog.error(0, "AppLogCj", exception.toString())
-        }
-        if (ret) {
-            Hilog.info(0, "AppLogCj", "The device is foldable.")
-        } else {
-            Hilog.info(0, "AppLogCj", "The device is not foldable.")
-        }
-    } catch (exception: Exception) {
-        Hilog.error(0, "AppLogCj", exception.toString())
-    }
-}
-```
+|Bool|true表示设备可折叠。|
 
 ## func off(ListenerType)
 
@@ -257,11 +193,11 @@ func isFoldableExample() {
 public func off(listenerType: ListenerType): Unit
 ```
 
-**功能：** 关闭显示设备变化的监听。
+**功能：** 禁用所有显示屏设备变化的监听器。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -269,11 +205,58 @@ public func off(listenerType: ListenerType): Unit
 |:---|:---|:---|:---|:---|
 |listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件类型。|
 
-**示例:**
+## func off(ListenerType, Callback1Argument\<FoldDisplayMode>)
+
+```cangjie
+public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit
+```
+
+**功能：** 取消注册折叠显示模式变化的回调。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|折叠显示模式变化的事件。|
+|callback|Callback1Argument\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|用于返回当前折叠显示模式的回调。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+
+  |错误码|说明|
+  |:----|:----|
+  |401|Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
+  |1400003|This display manager service works abnormally.|
+
+**示例：**
 
 ```cangjie
 import ohos.display.*
-var temp: Unit = off(LISTNER_TYPE_CHANGE)
+class TestCallback <: Callback1Argument<FoldDisplayMode> {
+    public init() {}
+    public open func invoke(value: FoldDisplayMode): Unit {
+        AppLog.info(
+            "Display fold status changed, current fold status: " + match (value) {
+                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"
+                case FoldDisplayModeFull => "FoldDisplayModeFull"
+                case FoldDisplayModeMain => "FoldDisplayModeMain"
+                case FoldDisplayModeSub => "FoldDisplayModeSub"
+                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"
+                case _ => "Failed to get fold display mode."
+            })
+    }
+}
+let testCallback = TestCallback()
+try {
+    var temp: Unit = off(ListenerTypeFoldDisplayModeChange, testCallback)
+} catch (e: BusinessException) {
+    AppLog.error(exception.toString())
+}
 ```
 
 ## func off(ListenerType, Callback1Argument\<FoldStatus>)
@@ -282,145 +265,52 @@ var temp: Unit = off(LISTNER_TYPE_CHANGE)
 public func off(listenerType: ListenerType, callback: Callback1Argument<FoldStatus>): Unit
 ```
 
-**功能：** 关闭折叠设备折叠状态变化的监听。
+**功能：** 取消注册折叠状态变化的回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|折叠状态变化的事件。|
+|callback|Callback1Argument\<[FoldStatus](#enum-foldstatus)>|是|-|用于返回设备当前折叠状态的回调。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-  | 1400003 | This display manager service works abnormally. |
+  |错误码|说明|
+  |:----|:----|
+  |401|Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
+  |1400003|This display manager service works abnormally.|
 
-**示例:**
+**示例：**
 
 ```cangjie
 import ohos.display.*
 class TestCallback <: Callback1Argument<FoldStatus> {
     public init() {}
     public open func invoke(value: FoldStatus): Unit {
-        Hilog.info(0, "AppLogCj",
+        AppLog.info(
             "Display fold status changed, current fold status: " + match (value) {
-                case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
-                case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
-                case FOLD_STATUS_FOLDED => "FOLD_STATUS_FOLDED"
-                case FOLD_STATUS_HALF_FOLDED => "FOLD_STATUS_HALF_FOLDED"
-                case _ => "Failed to get fold status."
-            })
-    }
-}
-let testCallback = TestCallback()
-var temp: Unit = on(LISTNER_TYPE_FOLD_STATUS_CHANGE, testCallback)
-```
-
-## func off(ListenerType, Callback1Argument\<FoldDisplayMode>)
-
-```cangjie
-public func off(listenerType: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit
-```
-
-**功能：** 关闭折叠设备屏幕显示模式变化的监听。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE'，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|需要取消注册的回调函数。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)和[屏幕错误码](./cj-errorcode-display.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-  | 1400003 | This display manager service works abnormally. |
-
-**示例:**
-
-```cangjie
-import ohos.display.*
-class TestCallback <: Callback1Argument<FoldDisplayMode> {
-    public init() {}
-    public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "AppLogCj",
-            "Display fold status changed, current fold status: " + match (value) {
-                case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
-                case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
-                case FOLD_DISPLAY_MODE_MAIN => "FOLD_DISPLAY_MODE_MAIN"
-                case FOLD_DISPLAY_MODE_SUB => "FOLD_DISPLAY_MODE_SUB"
-                case FOLD_DISPLAY_MODE_COORDINATION => "FOLD_DISPLAY_MODE_COORDINATION"
+                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"
+                case FoldDisplayModeFull => "FoldDisplayModeFull"
+                case FoldDisplayModeMain => "FoldDisplayModeMain"
+                case FoldDisplayModeSub => "FoldDisplayModeSub"
+                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"
                 case _ => "Failed to get fold display mode."
             })
     }
 }
 let testCallback = TestCallback()
-var temp: Unit = off(LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE, testCallback)
-```
-
-## func on(ListenerType, Callback1Argument\<FoldStatus>)
-
-```cangjie
-public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatus>): Unit
-```
-
-**功能：** 开启折叠设备折叠状态变化的监听。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_STATUS_CHANGE'，表示折叠设备折叠状态发生变化。|
-|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldStatus](#enum-foldstatus)>|是|-|回调函数。表示折叠设备折叠状态。|
-
-**异常：**
-
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)。
-
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-  | 1400003 | This display manager service works abnormally. |
-
-**示例:**
-
-```cangjie
-import ohos.display.*
-class TestCallback <: Callback1Argument<FoldStatus> {
-    public init(){}
-    public open func invoke(value: FoldStatus): Unit {
-        Hilog.info(0, "AppLogCj", "Display fold status changed, current fold status: " + match(value) {
-            case FOLD_STATUS_UNKNOWN => "FOLD_STATUS_UNKNOWN"
-            case FOLD_STATUS_EXPANDED => "FOLD_STATUS_EXPANDED"
-            case FOLD_STATUS_FOLDED => "FOLD_STATUS_FOLDED"
-            case FOLD_STATUS_HALF_FOLDED => "FOLD_STATUS_HALF_FOLDED"
-            case _ => "Failed to get fold status."
-        })
-    }
+try {
+    var temp: Unit = off(ListenerTypeFoldStatusChange, testCallback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
 }
-let testCallback = TestCallback()
-var temp: Unit = on(LISTNER_TYPE_FOLD_STATUS_CHANGE, testCallback)
 ```
 
 ## func on(ListenerType, Callback1Argument\<FoldDisplayMode>)
@@ -429,48 +319,106 @@ var temp: Unit = on(LISTNER_TYPE_FOLD_STATUS_CHANGE, testCallback)
 public func on(listenerType: ListenerType, callback: Callback1Argument<FoldDisplayMode>): Unit
 ```
 
-**功能：** 开启折叠设备屏幕显示模式变化的监听。
+**功能：** 注册折叠显示模式变化的回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|listenerType|[ListenerType](#enum-listenertype)|是|-|监听事件。固定为'LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE'，表示折叠设备屏幕显示模式。|
-|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|回调函数。表示折叠设备屏幕显示模式。|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|折叠显示模式变化的事件。|
+|callback|Callback1Argument\<[FoldDisplayMode](#enum-folddisplaymode)>|是|-|用于返回当前折叠显示模式的回调。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[通用错误码](../../../reference/source_zh_cn/cj-errorcode-universal.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-  | 1400003 | This display manager service works abnormally. |
+  |错误码|说明|
+  |:----|:----|
+  |401|Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
+  |1400003|This display manager service works abnormally.|
 
-**示例:**
+**示例：**
 
 ```cangjie
 import ohos.display.*
 class TestCallback <: Callback1Argument<FoldDisplayMode> {
     public init() {}
     public open func invoke(value: FoldDisplayMode): Unit {
-        Hilog.info(0, "AppLogCj",
+        AppLog.info(
             "Display fold status changed, current fold status: " + match (value) {
-                case FOLD_DISPLAY_MODE_UNKNOWN => "FOLD_DISPLAY_MODE_UNKNOWN"
-                case FOLD_DISPLAY_MODE_FULL => "FOLD_DISPLAY_MODE_FULL"
-                case FOLD_DISPLAY_MODE_MAIN => "FOLD_DISPLAY_MODE_MAIN"
-                case FOLD_DISPLAY_MODE_SUB => "FOLD_DISPLAY_MODE_SUB"
-                case FOLD_DISPLAY_MODE_COORDINATION => "FOLD_DISPLAY_MODE_COORDINATION"
+                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"
+                case FoldDisplayModeFull => "FoldDisplayModeFull"
+                case FoldDisplayModeMain => "FoldDisplayModeMain"
+                case FoldDisplayModeSub => "FoldDisplayModeSub"
+                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"
                 case _ => "Failed to get fold display mode."
             })
     }
 }
 let testCallback = TestCallback()
-var temp: Unit = on(LISTNER_TYPE_FOLD_DISPLAY_MODE_CHANGE, testCallback)
+try {
+    var temp: Unit = on(ListenerTypeFoldDisplayModeChange, testCallback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
+```
+
+## func on(ListenerType, Callback1Argument\<FoldStatus>)
+
+```cangjie
+public func on(listenerType: ListenerType, callback: Callback1Argument<FoldStatus>): Unit
+```
+
+**功能：** 注册折叠状态变化的回调。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|listenerType|[ListenerType](#enum-listenertype)|是|-|折叠状态变化的事件。|
+|callback|Callback1Argument\<[FoldStatus](#enum-foldstatus)>|是|-|用于返回设备当前折叠状态的回调。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
+
+  |错误码|说明|
+  |:----|:----|
+  |401|Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
+  |1400003|This display manager service works abnormally.|
+
+**示例：**
+
+```cangjie
+import ohos.display.*
+class TestCallback <: Callback1Argument<FoldStatus> {
+    public init() {}
+    public open func invoke(value: FoldStatus): Unit {
+        AppLog.info(
+            "Display fold status changed, current fold status: " + match (value) {
+                case FoldDisplayModeUnknown => "FoldDisplayModeUnknown"
+                case FoldDisplayModeFull => "FoldDisplayModeFull"
+                case FoldDisplayModeMain => "FoldDisplayModeMain"
+                case FoldDisplayModeSub => "FoldDisplayModeSub"
+                case FoldDisplayModeCoordination => "FoldDisplayModeCoordination"
+                case _ => "Failed to get fold display mode."
+            })
+    }
+}
+let testCallback = TestCallback()
+try {
+    var temp: Unit = on(ListenerTypeFoldStatusChange, testCallback)
+} catch (e: BusinessException) {
+    AppLog.error(e.toString())
+}
 ```
 
 ## class CutoutInfo
@@ -480,17 +428,17 @@ public class CutoutInfo {
     public let boundingRects: Array<Rect>
     public let waterfallDisplayAreaRects: WaterfallDisplayAreaRects
     public init(
-        boundingRects!: Array<Rect>,
-        waterfallDisplayAreaRects!: WaterfallDisplayAreaRects
+    boundingRects!: Array<Rect>,
+    waterfallDisplayAreaRects!: WaterfallDisplayAreaRects
     )
 }
 ```
 
-**功能：** 挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。
+**功能：** 显示屏的刘海信息。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let boundingRects
 
@@ -498,7 +446,7 @@ public class CutoutInfo {
 public let boundingRects: Array<Rect>
 ```
 
-**功能：** 设置挖孔、刘海等区域的边界矩形。
+**功能：** 显示屏刘海区域的边界矩形。
 
 **类型：** Array\<[Rect](#class-rect)>
 
@@ -506,7 +454,7 @@ public let boundingRects: Array<Rect>
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let waterfallDisplayAreaRects
 
@@ -514,7 +462,7 @@ public let boundingRects: Array<Rect>
 public let waterfallDisplayAreaRects: WaterfallDisplayAreaRects
 ```
 
-**功能：** 设置瀑布屏曲面部分显示区域。
+**功能：** 瀑布屏各侧弯曲部分的矩形。
 
 **类型：** [WaterfallDisplayAreaRects](#class-waterfalldisplayarearects)
 
@@ -522,9 +470,9 @@ public let waterfallDisplayAreaRects: WaterfallDisplayAreaRects
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
-### init(Array\<Rect>, WaterfallDisplayAreaRects)
+### init(Array<Rect>, WaterfallDisplayAreaRects)
 
 ```cangjie
 public init(
@@ -533,30 +481,31 @@ public init(
 )
 ```
 
-**功能：** 创建一个CutoutInfo类型对象。
+**功能：** CutoutInfo构造函数。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|boundingRects|Array\<[Rect](#class-rect)>|是|-|挖孔、刘海等区域的边界矩形。如果没有挖孔、刘海等区域，数组返回为空。|
-|waterfallDisplayAreaRects|[WaterfallDisplayAreaRects](#class-waterfalldisplayarearects)|是|-|瀑布屏曲面部分显示区域。|
+|boundingRects|Array\<[Rect](#class-rect)>|是|-| **命名参数。** 刘海区域的边界矩形数组。|
+|waterfallDisplayAreaRects|[WaterfallDisplayAreaRects](#class-waterfalldisplayarearects)|是|-| **命名参数。** 瀑布屏各侧弯曲部分的矩形。|
 
 ## class Display
 
 ```cangjie
-public class Display {}
+public class Display {
+}
 ```
 
-**功能：** 设置屏幕实例。描述Display对象的属性和方法。
+**功能：** 定义显示屏的属性。它们不会自动更新。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop alive
 
@@ -564,7 +513,7 @@ public class Display {}
 public prop alive: Bool
 ```
 
-**功能：** 设置显示设备是否启用。true表示设备启用，false表示设备未启用。
+**功能：** 显示屏是否处于活动状态。
 
 **类型：** Bool
 
@@ -572,7 +521,7 @@ public prop alive: Bool
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop densityDPI
 
@@ -580,7 +529,7 @@ public prop alive: Bool
 public prop densityDPI: Float32
 ```
 
-**功能：** 设置显示设备屏幕的物理像素密度，表示每英寸上的像素点数。
+**功能：** 显示屏密度，以像素为单位，是物理像素和逻辑像素之间的缩放系数。低分辨率显示屏的值为1.0。
 
 **类型：** Float32
 
@@ -588,7 +537,7 @@ public prop densityDPI: Float32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop densityPixels
 
@@ -596,7 +545,7 @@ public prop densityDPI: Float32
 public prop densityPixels: Float32
 ```
 
-**功能：** 设置显示设备的逻辑密度，是像素单位无关的缩放系数。
+**功能：** 显示分辨率，即每英寸的像素数。
 
 **类型：** Float32
 
@@ -604,7 +553,7 @@ public prop densityPixels: Float32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop height
 
@@ -612,7 +561,7 @@ public prop densityPixels: Float32
 public prop height: Int32
 ```
 
-**功能：** 显示设备的屏幕高度。
+**功能：** 显示屏高度，以像素为单位。
 
 **类型：** Int32
 
@@ -620,7 +569,7 @@ public prop height: Int32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop id
 
@@ -628,7 +577,7 @@ public prop height: Int32
 public prop id: UInt32
 ```
 
-**功能：** 设置显示设备的id号，该参数应为大于等于0的整数。
+**功能：** 显示屏ID。
 
 **类型：** UInt32
 
@@ -636,7 +585,7 @@ public prop id: UInt32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop name
 
@@ -644,7 +593,7 @@ public prop id: UInt32
 public prop name: String
 ```
 
-**功能：** 设置显示设备的名称。
+**功能：** 显示屏名称。
 
 **类型：** String
 
@@ -652,7 +601,7 @@ public prop name: String
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop orientation
 
@@ -660,7 +609,7 @@ public prop name: String
 public prop orientation: Orientation
 ```
 
-**功能：** 设置屏幕当前显示的方向。
+**功能：** 显示屏方向。
 
 **类型：** [Orientation](#enum-orientation)
 
@@ -668,7 +617,7 @@ public prop orientation: Orientation
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop refreshRate
 
@@ -676,7 +625,7 @@ public prop orientation: Orientation
 public prop refreshRate: UInt32
 ```
 
-**功能：** 设置显示设备的刷新率。
+**功能：** 刷新率，以Hz为单位。
 
 **类型：** UInt32
 
@@ -684,7 +633,7 @@ public prop refreshRate: UInt32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop rotation
 
@@ -692,7 +641,11 @@ public prop refreshRate: UInt32
 public prop rotation: UInt32
 ```
 
-**功能：** 设置显示设备的屏幕顺时针旋转角度。
+**功能：** 显示屏旋转度数的枚举值。
+值0表示显示屏顺时针旋转0°。
+值1表示显示屏顺时针旋转90°。
+值2表示显示屏顺时针旋转180°。
+值3表示显示屏顺时针旋转270°。
 
 **类型：** UInt32
 
@@ -700,7 +653,7 @@ public prop rotation: UInt32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop scaledDensity
 
@@ -708,7 +661,7 @@ public prop rotation: UInt32
 public prop scaledDensity: Float32
 ```
 
-**功能：** 显示设备的显示字体的缩放因子。该参数为浮点数，通常与densityPixels相同。
+**功能：** 显示屏文本缩放密度。
 
 **类型：** Float32
 
@@ -716,7 +669,7 @@ public prop scaledDensity: Float32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop state
 
@@ -724,7 +677,7 @@ public prop scaledDensity: Float32
 public prop state: DisplayState
 ```
 
-**功能：** 设置显示设备的状态。
+**功能：** 显示屏状态。
 
 **类型：** [DisplayState](#enum-displaystate)
 
@@ -732,7 +685,7 @@ public prop state: DisplayState
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop width
 
@@ -740,7 +693,7 @@ public prop state: DisplayState
 public prop width: Int32
 ```
 
-**功能：** 设置显示设备的屏幕宽度。
+**功能：** 显示屏宽度，以像素为单位。
 
 **类型：** Int32
 
@@ -748,7 +701,7 @@ public prop width: Int32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop xDPI
 
@@ -756,7 +709,7 @@ public prop width: Int32
 public prop xDPI: Float32
 ```
 
-**功能：** 设置x方向中每英寸屏幕的确切物理像素值。
+**功能：** x轴上的DPI。
 
 **类型：** Float32
 
@@ -764,7 +717,7 @@ public prop xDPI: Float32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### prop yDPI
 
@@ -772,7 +725,7 @@ public prop xDPI: Float32
 public prop yDPI: Float32
 ```
 
-**功能：** 设置y方向中每英寸屏幕的确切物理像素值。
+**功能：** y轴上的DPI。
 
 **类型：** Float32
 
@@ -780,7 +733,7 @@ public prop yDPI: Float32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### func getCutoutInfo()
 
@@ -788,38 +741,39 @@ public prop yDPI: Float32
 public func getCutoutInfo(): CutoutInfo
 ```
 
-**功能：** 获取挖孔屏、刘海屏、瀑布屏等不可用屏幕区域信息。建议应用布局规避该区域。
+**功能：** 获取显示屏的刘海信息。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|[CutoutInfo](#class-cutoutinfo)|返回描述不可用屏幕区域的CutoutInfo对象。|
+|[CutoutInfo](#class-cutoutinfo)|返回显示屏的刘海信息。|
 
 **异常：**
 
-- BusinessException：对应错误码如下表，详见[屏幕错误码](./cj-errorcode-display.md)。
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)和[窗口错误码](../errorcodes/cj-errorcode-window.md)。
 
-  | 错误码ID | 错误信息 |
-  | :---- | :--- |
-  | 1400001 | Invalid display or screen. |
-  | 1400003 | This display manager service works abnormally. |
+  |错误码|说明|
+  |:----|:----|
+  |1400001|Invalid display or screen.|
+  |1400003|This display manager service works abnormally.|
 
-**示例:**
+**示例：**
 
 ```cangjie
 import ohos.display.*
+
 func getCutoutInfoExample() {
     try {
         let displayClass = getDefaultDisplaySync()
         let cutout = displayClass.getCutoutInfo()
         println(cutout.boundingRects.size)
     } catch (exception: Exception) {
-        Hilog.error(0, "AppLogCj", exception.toString())
+        AppLog.error(exception.toString())
     }
 }
 ```
@@ -828,20 +782,20 @@ func getCutoutInfoExample() {
 
 ```cangjie
 public class FoldCreaseRegion {
-    public let displayId: UInt32
     public let creaseRects: Array<Rect>
+    public let displayId: UInt32
     public init(
-        displayId!: UInt32,
-        creaseRects!: Array<Rect>
+    displayId!: UInt32,
+    creaseRects!: Array<Rect>
     )
 }
 ```
 
-**功能：** 折叠折痕区域。
+**功能：** 折叠 crease 区域。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let creaseRects
 
@@ -849,7 +803,7 @@ public class FoldCreaseRegion {
 public let creaseRects: Array<Rect>
 ```
 
-**功能：** 设置折痕区域。
+**功能：** crease 区域。
 
 **类型：** Array\<[Rect](#class-rect)>
 
@@ -857,7 +811,7 @@ public let creaseRects: Array<Rect>
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let displayId
 
@@ -865,7 +819,7 @@ public let creaseRects: Array<Rect>
 public let displayId: UInt32
 ```
 
-**功能：** 设置显示器ID，用于识别折痕所在的屏幕。
+**功能：** 显示ID，用于标识crease所在的屏幕。
 
 **类型：** UInt32
 
@@ -873,9 +827,9 @@ public let displayId: UInt32
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### init(UInt32, Array\<Rect>)
+### init(UInt32, Array<Rect>)
 
 ```cangjie
 public init(
@@ -884,41 +838,41 @@ public init(
 )
 ```
 
-**功能：** 创建一个FoldCreaseRegion类型的对象。
+**功能：** FoldCreaseRegion构造函数。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|displayId|UInt32|是|-|显示器ID，用于识别折痕所在的屏幕。|
-|creaseRects|Array\<[Rect](#class-rect)>|是|-|折痕区域。|
+|displayId|UInt32|是|-| **命名参数。** 显示屏ID。|
+|creaseRects|Array\<[Rect](#class-rect)>|是|-| **命名参数。** crease区域。|
 
 ## class Rect
 
 ```cangjie
 public class Rect {
+    public var height: UInt32
     public var left: Int32
     public var top: Int32
     public var width: UInt32
-    public var height: UInt32
     public init(
-        left!: Int32,
-        top!: Int32,
-        width!: UInt32,
-        height!: UInt32
+    left!: Int32,
+    top!: Int32,
+    width!: UInt32,
+    height!: UInt32
     )
 }
 ```
 
-**功能：** 矩形区域信息。
+**功能：** 矩形。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var height
 
@@ -926,7 +880,7 @@ public class Rect {
 public var height: UInt32
 ```
 
-**功能：** 设置矩形区域的高度。
+**功能：** 矩形高度，以像素为单位。
 
 **类型：** UInt32
 
@@ -934,7 +888,7 @@ public var height: UInt32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var left
 
@@ -942,7 +896,7 @@ public var height: UInt32
 public var left: Int32
 ```
 
-**功能：** 设置矩形区域的左边界。
+**功能：** 矩形左上顶点的Y轴坐标，以像素为单位。
 
 **类型：** Int32
 
@@ -950,7 +904,7 @@ public var left: Int32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var top
 
@@ -958,7 +912,7 @@ public var left: Int32
 public var top: Int32
 ```
 
-**功能：** 设置矩形区域的上边界。
+**功能：** 矩形左上顶点的Y轴坐标，以像素为单位。
 
 **类型：** Int32
 
@@ -966,7 +920,7 @@ public var top: Int32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### var width
 
@@ -974,7 +928,7 @@ public var top: Int32
 public var width: UInt32
 ```
 
-**功能：** 设置矩形区域的宽度。
+**功能：** 矩形宽度，以像素为单位。
 
 **类型：** UInt32
 
@@ -982,7 +936,7 @@ public var width: UInt32
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Int32, Int32, UInt32, UInt32)
 
@@ -995,43 +949,43 @@ public init(
 )
 ```
 
-**功能：** 创建一个Rect类型的对象。
+**功能：** Rect构造函数。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|left|Int32|是|-|矩形区域的左边界，单位为px，该参数应为整数。|
-|top|Int32|是|-|矩形区域的上边界，单位为px，该参数应为整数。|
-|width|UInt32|是|-|矩形区域的宽度，单位为px，该参数应为整数。|
-|height|UInt32|是|-|矩形区域的高度，单位为px，该参数应为整数。|
+|left|Int32|是|-| **命名参数。** 矩形左边界坐标。|
+|top|Int32|是|-| **命名参数。** 矩形上边界坐标。|
+|width|UInt32|是|-| **命名参数。** 矩形宽度。|
+|height|UInt32|是|-| **命名参数。** 矩形高度。|
 
 ## class WaterfallDisplayAreaRects
 
 ```cangjie
 public class WaterfallDisplayAreaRects {
-    public let left: Rect
-    public let top: Rect
-    public let right: Rect
     public let bottom: Rect
+    public let left: Rect
+    public let right: Rect
+    public let top: Rect
     public init(
-        left!: Rect,
-        top!: Rect,
-        right!: Rect,
-        bottom!: Rect
+    left!: Rect,
+    top!: Rect,
+    right!: Rect,
+    bottom!: Rect
     )
 }
 ```
 
-**功能：** 瀑布屏曲面部分显示区域信息。
+**功能：** 瀑布屏的弯曲区域矩形。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let bottom
 
@@ -1039,7 +993,7 @@ public class WaterfallDisplayAreaRects {
 public let bottom: Rect
 ```
 
-**功能：** 设置瀑布曲面区域底部矩形区域。
+**功能：** 瀑布屏底部弯曲区域的大小。
 
 **类型：** [Rect](#class-rect)
 
@@ -1047,7 +1001,7 @@ public let bottom: Rect
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let left
 
@@ -1055,7 +1009,7 @@ public let bottom: Rect
 public let left: Rect
 ```
 
-**功能：** 设置瀑布曲面区域的左侧矩形区域。
+**功能：** 瀑布屏左侧弯曲区域的大小。
 
 **类型：** [Rect](#class-rect)
 
@@ -1063,7 +1017,7 @@ public let left: Rect
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let right
 
@@ -1071,7 +1025,7 @@ public let left: Rect
 public let right: Rect
 ```
 
-**功能：** 设置瀑布曲面区域右侧矩形区域。
+**功能：** 瀑布屏右侧弯曲区域的大小。
 
 **类型：** [Rect](#class-rect)
 
@@ -1079,7 +1033,7 @@ public let right: Rect
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### let top
 
@@ -1087,7 +1041,7 @@ public let right: Rect
 public let top: Rect
 ```
 
-**功能：** 设置瀑布曲面区域的顶部矩形区域。
+**功能：** 瀑布屏顶部弯曲区域的大小。
 
 **类型：** [Rect](#class-rect)
 
@@ -1095,7 +1049,7 @@ public let top: Rect
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(Rect, Rect, Rect, Rect)
 
@@ -1108,25 +1062,25 @@ public init(
 )
 ```
 
-**功能：** 创建一个WaterfallDisplayAreaRects类型的对象。
+**功能：** WaterfallDisplayAreaRects构造函数。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|left|[Rect](#class-rect)|是|-|瀑布曲面区域的左侧矩形区域。|
-|top|[Rect](#class-rect)|是|-|瀑布曲面区域的顶部矩形区域。|
-|right|[Rect](#class-rect)|是|-|瀑布曲面区域的右侧矩形区域。|
-|bottom|[Rect](#class-rect)|是|-|瀑布曲面区域的底部矩形区域。|
+|left|[Rect](#class-rect)|是|-| **命名参数。** 左侧弯曲区域。|
+|top|[Rect](#class-rect)|是|-| **命名参数。** 顶部弯曲区域。|
+|right|[Rect](#class-rect)|是|-| **命名参数。** 右侧弯曲区域。|
+|bottom|[Rect](#class-rect)|是|-| **命名参数。** 底部弯曲区域。|
 
 ## enum DisplayState
 
 ```cangjie
-public enum DisplayState {
+public enum DisplayState <: Equatable<DisplayState> {
     | StateUnknown
     | StateOff
     | StateOn
@@ -1138,75 +1092,15 @@ public enum DisplayState {
 }
 ```
 
-**功能：** 显示设备的状态类型。
+**功能：** 枚举显示状态。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
 - Equatable\<DisplayState>
-
-### StateDoze
-
-```cangjie
-StateDoze
-```
-
-**功能：** 表示显示设备为低电耗模式。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-### StateDozeSuspend
-
-```cangjie
-StateDozeSuspend
-```
-
-**功能：** 表示显示设备为睡眠模式，CPU为挂起状态。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-### StateOff
-
-```cangjie
-StateOff
-```
-
-**功能：** 表示显示设备状态为关闭。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-### StateOn
-
-```cangjie
-StateOn
-```
-
-**功能：** 表示显示设备状态为开启。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-### StateOnSuspend
-
-```cangjie
-StateOnSuspend
-```
-
-**功能：** 表示显示设备为开启状态，CPU为挂起状态。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
 
 ### StateUnknown
 
@@ -1214,11 +1108,59 @@ StateOnSuspend
 StateUnknown
 ```
 
-**功能：** 表示显示设备状态未知。
+**功能：** 未知状态。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
+
+### StateOff
+
+```cangjie
+StateOff
+```
+
+**功能：** 屏幕关闭。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+### StateOn
+
+```cangjie
+StateOn
+```
+
+**功能：** 屏幕开启。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+### StateDoze
+
+```cangjie
+StateDoze
+```
+
+**功能：** 屏幕打盹，但会针对部分重要系统消息进行更新。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+### StateDozeSuspend
+
+```cangjie
+StateDozeSuspend
+```
+
+**功能：** 屏幕打盹且不更新。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
 
 ### StateVr
 
@@ -1226,56 +1168,76 @@ StateUnknown
 StateVr
 ```
 
-**功能：** 表示显示设备为VR模式。
+**功能：** VR模式。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
-### func !=(DisplayState)
+### StateOnSuspend
+
+```cangjie
+StateOnSuspend
+```
+
+**功能：** 屏幕开启但不更新。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+### operator func !=(DisplayState)
 
 ```cangjie
 public operator func !=(other: DisplayState): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 不等比较运算符。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[DisplayState](#enum-displaystate)|是|-|传入的另一个枚举值|
+|other|DisplayState|是|-|要比较的另一个DisplayState实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否不相等。|
+|Bool|比较结果，不相等时返回true。|
 
-### func ==(DisplayState)
+### operator func ==(DisplayState)
 
 ```cangjie
 public operator func ==(other: DisplayState): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
+**功能：** 相等比较运算符。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[DisplayState](#enum-displaystate)|是|-|传入的另一个枚举值|
+|other|DisplayState|是|-|要比较的另一个DisplayState实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否相等。|
+|Bool|比较结果，相等时返回true。|
 
 ## enum FoldDisplayMode
 
 ```cangjie
-public enum FoldDisplayMode {
+public enum FoldDisplayMode <: Equatable<FoldDisplayMode> {
     | FoldDisplayModeUnknown
     | FoldDisplayModeFull
     | FoldDisplayModeMain
@@ -1285,63 +1247,15 @@ public enum FoldDisplayMode {
 }
 ```
 
-**功能：** 可折叠设备的显示模式类型。
+**功能：** 枚举折叠显示模式。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
 - Equatable\<FoldDisplayMode>
-
-### FoldDisplayModeCoordination
-
-```cangjie
-FoldDisplayModeCoordination
-```
-
-**功能：** 表示设备当前双屏协同显示。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
-
-### FoldDisplayModeFull
-
-```cangjie
-FoldDisplayModeFull
-```
-
-**功能：** 表示设备当前全屏显示。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
-
-### FoldDisplayModeMain
-
-```cangjie
-FoldDisplayModeMain
-```
-
-**功能：** 表示设备当前主屏幕显示。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
-
-### FoldDisplayModeSub
-
-```cangjie
-FoldDisplayModeSub
-```
-
-**功能：** 表示设备当前子屏幕显示。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
 
 ### FoldDisplayModeUnknown
 
@@ -1349,56 +1263,112 @@ FoldDisplayModeSub
 FoldDisplayModeUnknown
 ```
 
-**功能：** 表示设备当前折叠显示模式未知。
+**功能：** 未知显示模式。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### func !=(FoldDisplayMode)
+### FoldDisplayModeFull
+
+```cangjie
+FoldDisplayModeFull
+```
+
+**功能：** 全屏显示模式。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+### FoldDisplayModeMain
+
+```cangjie
+FoldDisplayModeMain
+```
+
+**功能：** 主屏显示模式。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+### FoldDisplayModeSub
+
+```cangjie
+FoldDisplayModeSub
+```
+
+**功能：** 副屏显示模式。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+### FoldDisplayModeCoordination
+
+```cangjie
+FoldDisplayModeCoordination
+```
+
+**功能：** 协同显示模式。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+### operator func !=(FoldDisplayMode)
 
 ```cangjie
 public operator func !=(other: FoldDisplayMode): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 不等比较运算符。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[FoldDisplayMode](#enum-folddisplaymode)|是|-|传入的另一个枚举值|
+|other|FoldDisplayMode|是|-|要比较的另一个FoldDisplayMode实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否不相等。|
+|Bool|比较结果，不相等时返回true。|
 
-### func ==(FoldDisplayMode)
+### operator func ==(FoldDisplayMode)
 
 ```cangjie
 public operator func ==(other: FoldDisplayMode): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
+**功能：** 相等比较运算符。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[FoldDisplayMode](#enum-folddisplaymode)|是|-|传入的另一个枚举值|
+|other|FoldDisplayMode|是|-|要比较的另一个FoldDisplayMode实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否相等。|
+|Bool|比较结果，相等时返回true。|
 
 ## enum FoldStatus
 
 ```cangjie
-public enum FoldStatus {
+public enum FoldStatus <: Equatable<FoldStatus> {
     | FoldStatusUnknown
     | FoldStatusExpanded
     | FoldStatusFolded
@@ -1407,51 +1377,15 @@ public enum FoldStatus {
 }
 ```
 
-**功能：** 当前可折叠设备的折叠状态类型。
+**功能：** 枚举折叠状态。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
 - Equatable\<FoldStatus>
-
-### FoldStatusExpanded
-
-```cangjie
-FoldStatusExpanded
-```
-
-**功能：** 表示设备当前折叠状态为完全展开。如果是双折轴设备，则表示折轴一折叠状态为完全展开，折轴二折叠状态为折叠。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
-
-### FoldStatusFolded
-
-```cangjie
-FoldStatusFolded
-```
-
-**功能：** 表示设备当前折叠状态为折叠。如果是双折轴设备，则表示折轴一折叠状态为折叠，折轴二折叠状态为折叠。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
-
-### FoldStatusHalfFolded
-
-```cangjie
-FoldStatusHalfFolded
-```
-
-**功能：** 表示设备当前折叠状态为半折叠。半折叠指完全展开和折叠之间的状态。如果是双折轴设备，则表示折轴一折叠状态为半折叠，折轴二折叠状态为折叠。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**起始版本：** 21
 
 ### FoldStatusUnknown
 
@@ -1459,218 +1393,270 @@ FoldStatusHalfFolded
 FoldStatusUnknown
 ```
 
-**功能：** 表示设备当前折叠状态未知。
+**功能：** 折叠状态未知。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### func !=(FoldStatus)
+### FoldStatusExpanded
+
+```cangjie
+FoldStatusExpanded
+```
+
+**功能：** 展开状态。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+### FoldStatusFolded
+
+```cangjie
+FoldStatusFolded
+```
+
+**功能：** 折叠状态。对于双折叠轴设备，第一个折叠轴折叠，第二个折叠轴折叠。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+### FoldStatusHalfFolded
+
+```cangjie
+FoldStatusHalfFolded
+```
+
+**功能：** 半折叠状态。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
+
+### operator func !=(FoldStatus)
 
 ```cangjie
 public operator func !=(other: FoldStatus): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 不等比较运算符。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[FoldStatus](#enum-foldstatus)|是|-|传入的另一个枚举值|
+|other|FoldStatus|是|-|要比较的另一个FoldStatus实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否不相等。|
+|Bool|比较结果，不相等时返回true。|
 
-### func ==(FoldStatus)
+### operator func ==(FoldStatus)
 
 ```cangjie
 public operator func ==(other: FoldStatus): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
+**功能：** 相等比较运算符。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[FoldStatus](#enum-foldstatus)|是|-|传入的另一个枚举值|
+|other|FoldStatus|是|-|要比较的另一个FoldStatus实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否相等。|
+|Bool|比较结果，相等时返回true。|
 
 ## enum ListenerType
 
 ```cangjie
-public enum ListenerType {
-    | ListnerTypeAdd
-    | ListnerTypeRemove
-    | ListnerTypeChange
-    | ListnerTypeFoldStatusChange
-    | ListnerTypeFoldAngleChange
-    | ListnerTypeCaptureStatusChange
-    | ListnerTypeFoldDisplayModeChange
-    | ListnerTypeAvailableAreaChange
+public enum ListenerType <: Equatable<ListenerType> {
+    | ListenerTypeAdd
+    | ListenerTypeRemove
+    | ListenerTypeChange
+    | ListenerTypeFoldStatusChange
+    | ListenerTypeFoldAngleChange
+    | ListenerTypeCaptureStatusChange
+    | ListenerTypeFoldDisplayModeChange
+    | ListenerTypeAvailableAreaChange
     | ...
 }
 ```
 
-**功能：** 设置监听事件类型。
+**功能：** 监听事件枚举。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
 - Equatable\<ListenerType>
 
-### ListnerTypeAdd
+### ListenerTypeAdd
 
 ```cangjie
-ListnerTypeAdd
+ListenerTypeAdd
 ```
 
-**功能：** 表示增加显示设备事件。
+**功能：** 添加显示变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### ListnerTypeAvailableAreaChange
+### ListenerTypeRemove
 
 ```cangjie
-ListnerTypeAvailableAreaChange
+ListenerTypeRemove
 ```
 
-**功能：** 表示折叠设备屏幕显示模式发生变化。
+**功能：** 移除显示变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### ListnerTypeCaptureStatusChange
+### ListenerTypeChange
 
 ```cangjie
-ListnerTypeCaptureStatusChange
+ListenerTypeChange
 ```
 
-**功能：** 表示设备截屏、投屏或者录屏状态发生变化。
+**功能：** 显示变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### ListnerTypeChange
+### ListenerTypeFoldStatusChange
 
 ```cangjie
-ListnerTypeChange
+ListenerTypeFoldStatusChange
 ```
 
-**功能：** 表示改变显示设备事件。
+**功能：** 折叠状态变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### ListnerTypeFoldAngleChange
+### ListenerTypeFoldAngleChange
 
 ```cangjie
-ListnerTypeFoldAngleChange
+ListenerTypeFoldAngleChange
 ```
 
-**功能：** 表示折叠设备折叠角度发生变化。
+**功能：** 折叠角度变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### ListnerTypeFoldDisplayModeChange
+### ListenerTypeCaptureStatusChange
 
 ```cangjie
-ListnerTypeFoldDisplayModeChange
+ListenerTypeCaptureStatusChange
 ```
 
-**功能：** 表示折叠设备屏幕显示模式发生变化。
+**功能：** 捕获状态变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### ListnerTypeFoldStatusChange
+### ListenerTypeFoldDisplayModeChange
 
 ```cangjie
-ListnerTypeFoldStatusChange
+ListenerTypeFoldDisplayModeChange
 ```
 
-**功能：** 表示折叠设备折叠状态发生变化。
+**功能：** 折叠显示模式变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### ListnerTypeRemove
+### ListenerTypeAvailableAreaChange
 
 ```cangjie
-ListnerTypeRemove
+ListenerTypeAvailableAreaChange
 ```
 
-**功能：** 表示移除显示设备事件。
+**功能：** 可用区域变化事件类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**起始版本：** 21
+**起始版本：** 22
 
-### func !=(ListenerType)
+### operator func !=(ListenerType)
 
 ```cangjie
 public operator func !=(other: ListenerType): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 不等比较运算符。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[ListenerType](#enum-listenertype)|是|-|传入的另一个枚举值|
+|other|ListenerType|是|-|要比较的另一个ListenerType实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否不相等。|
+|Bool|比较结果，不相等时返回true。|
 
-### func ==(ListenerType)
+### operator func ==(ListenerType)
 
 ```cangjie
 public operator func ==(other: ListenerType): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
+**功能：** 相等比较运算符。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[ListenerType](#enum-listenertype)|是|-|传入的另一个枚举值|
+|other|ListenerType|是|-|要比较的另一个ListenerType实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否相等。|
+|Bool|比较结果，相等时返回true。|
 
 ## enum Orientation
 
 ```cangjie
-public enum Orientation {
+public enum Orientation <: Equatable<Orientation> {
     | Portrait
     | Landscape
     | PortraitInverted
@@ -1679,39 +1665,15 @@ public enum Orientation {
 }
 ```
 
-**功能：** 显示设备当前的显示方向类型。
+**功能：** 枚举屏幕方向。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
 - Equatable\<Orientation>
-
-### Landscape
-
-```cangjie
-Landscape
-```
-
-**功能：** 表示设备当前以横屏方式显示。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
-
-### LandscapeInverted
-
-```cangjie
-LandscapeInverted
-```
-
-**功能：** 表示设备当前以反向横屏方式显示。
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**起始版本：** 21
 
 ### Portrait
 
@@ -1719,11 +1681,23 @@ LandscapeInverted
 Portrait
 ```
 
-**功能：** 表示设备当前以竖屏方式显示。
+**功能：** 竖屏模式。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
+
+### Landscape
+
+```cangjie
+Landscape
+```
+
+**功能：** 横屏模式。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
 
 ### PortraitInverted
 
@@ -1731,48 +1705,68 @@ Portrait
 PortraitInverted
 ```
 
-**功能：** 表示设备当前以反向竖屏方式显示。
+**功能：** 竖屏反向模式。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**起始版本：** 21
+**起始版本：** 22
 
-### func !=(Orientation)
+### LandscapeInverted
+
+```cangjie
+LandscapeInverted
+```
+
+**功能：** 横屏反向模式。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
+
+### operator func !=(Orientation)
 
 ```cangjie
 public operator func !=(other: Orientation): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 不等比较运算符。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[Orientation](#enum-orientation)|是|-|传入的另一个枚举值|
+|other|Orientation|是|-|要比较的另一个Orientation实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否不相等。|
+|Bool|比较结果，不相等时返回true。|
 
-### func ==(Orientation)
+### operator func ==(Orientation)
 
 ```cangjie
 public operator func ==(other: Orientation): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
+**功能：** 相等比较运算符。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[Orientation](#enum-orientation)|是|-|传入的另一个枚举值|
+|other|Orientation|是|-|要比较的另一个Orientation实例。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值是否相等。|
+|Bool|比较结果，相等时返回true。|

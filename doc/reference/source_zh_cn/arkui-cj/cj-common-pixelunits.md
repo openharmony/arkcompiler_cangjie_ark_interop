@@ -25,19 +25,19 @@ public func fp2px(value: Length): Option<Length>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的fp单位的数值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|需转换的fp单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以px为单位的数值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后以px为单位的数值。|
 
 ## func lpx2px(Length)
 
@@ -49,19 +49,19 @@ public func lpx2px(value: Length): Option<Length>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的lpx单位的数值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|需转换的lpx单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以px为单位的数值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后以px为单位的数值。|
 
 ## func px2fp(Length)
 
@@ -73,19 +73,19 @@ public func px2fp(value: Length): Option<Length>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的px单位的数值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|需转换的px单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以fp为单位的数值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后以fp为单位的数值。|
 
 ## func px2lpx(Length)
 
@@ -97,19 +97,19 @@ public func px2lpx(value: Length): Option<Length>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的px单位的数值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|需转换的px单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以lpx为单位的数值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后以lpx为单位的数值。|
 
 ## func px2vp(Length)
 
@@ -121,19 +121,19 @@ public func px2vp(value: Length): Option<Length>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的px单位的数值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|需转换的px单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以vp为单位的数值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后以vp为单位的数值。|
 
 ## func vp2px(Length)
 
@@ -145,17 +145,111 @@ public func vp2px(value: Length): Option<Length>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|需转换的vp单位的数值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|需转换的vp单位的数值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后以px为单位的数值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后以px为单位的数值。|
 
+## 示例代码
+
+<!-- run -->
+
+```cangjie
+
+package ohos_app_cangjie_entry
+
+import kit.ArkUI.*
+import ohos.arkui.state_macro_manage.*
+
+@Entry
+@Component
+class EntryView {
+    @State var isShow: Bool = false
+    func build() {
+        Column() {
+            Flex(wrap: FlexWrap.Wrap) {
+                Column() {
+                    Text("width(180)")
+                        .width(180)
+                        .height(40)
+                        .backgroundColor(0xF9CF93)
+                        .textAlign(TextAlign.Center)
+                        .fontColor(Color.White)
+                        .fontSize(22.vp)
+                }.margin(5)
+
+                Column() {
+                    Text("width('180px')")
+                        .width(180.px)
+                        .height(40)
+                        .backgroundColor(0xF9CF93)
+                        .textAlign(TextAlign.Center)
+                        .fontColor(Color.White)
+                }.margin(5)
+
+                Column() {
+                    Text("width('180vp')")
+                        .width(180.vp)
+                        .height(40)
+                        .backgroundColor(0xF9CF93)
+                        .textAlign(TextAlign.Center)
+                        .fontColor(Color.White)
+                        .fontSize(22.vp)
+                }.margin(5)
+
+                Column() {
+                    Text("width('180lpx') designWidth:720")
+                        .width(180.lpx)
+                        .height(40)
+                        .backgroundColor(0xF9CF93)
+                        .textAlign(TextAlign.Center)
+                        .fontColor(Color.White)
+                        .fontSize(22.vp)
+                }.margin(5)
+
+                Column() {
+                    Text("width(vp2px(180) + 'px')")
+                        .width(getUIContext().vp2px(180.vp) ?? 180.vp)
+                        .height(40)
+                        .backgroundColor(0xF9CF93)
+                        .textAlign(TextAlign.Center)
+                        .fontColor(Color.White)
+                        .fontSize(22.vp)
+                }.margin(5)
+
+                Column() {
+                    Text("fontSize('22fp')")
+                        .width(180)
+                        .height(40)
+                        .backgroundColor(0xF9CF93)
+                        .textAlign(TextAlign.Center)
+                        .fontColor(Color.White)
+                        .fontSize(22.fp)
+                }.margin(5)
+
+                Column() {
+                    Text("width(px2vp(180))")
+                        .width(getUIContext().px2vp(180.px) ?? 180.px )
+                        .height(40)
+                        .backgroundColor(0xF9CF93)
+                        .textAlign(TextAlign.Center)
+                        .fontColor(Color.White)
+                        .fontSize(22.fp)
+                }.margin(5)
+            }.width(100.percent)
+        }
+    }
+}
+
+```
+
+![pixelUnits](./figures/pixelUnits.png)

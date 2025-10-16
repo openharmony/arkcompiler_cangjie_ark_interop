@@ -14,123 +14,106 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Option\<CanvasRenderingContext2D>)
+### init(?CanvasRenderingContext2D)
 
 ```cangjie
-public init(context: Option<CanvasRenderingContext2D>)
+public init(context: ?CanvasRenderingContext2D)
 ```
 
-**功能：** 初始化一个绘制画布组件。
+**功能：** 构造一个Canvas组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|context|Option<CanvasRenderingContext2D>|是|-|不支持多个Canvas共用一个[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)对象，具体描述见[CanvasRenderingContext2D](./cj-canvas-drawing-canvasrenderingcontext2d.md#class-canvasrenderingcontext2d)对象。|
+|context|?CanvasRenderingContext2D|是|-|Canvas上下文对象。|
 
 ## 通用属性/通用事件
 
-通用属性：全部支持。
+通用属性: 全部支持。
 
 通用事件：全部支持。
 
 ## 组件事件
 
-### func onReady(() -> Unit)
+### func onReady(?() -> Unit)
 
 ```cangjie
-public func onReady(callback: () -> Unit): This
+public func onReady(callback: ?() -> Unit): This
 ```
 
-**功能：** Canvas组件初始化完成时或者Canvas组件发生大小变化时的事件回调。
+**功能：** Canvas组件构造完成后的事件通知。此时可以开始绘制Canvas。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|Canvas组件初始化完成时或者Canvas组件发生大小变化时的事件回调。<br>当该事件被触发时画布被清空，该事件之后Canvas组件宽高确定且可获取，可使用Canvas相关API进行绘制。当Canvas组件仅发生位置变化时，只触发[onAreaChange](./cj-ui-framework.md#func-onareachangeareaarea---unit)事件、不触发onReady事件。[onAreaChange](./cj-ui-framework.md#func-onareachangeareaarea---unit)事件在onReady事件后触发。。|
+|callback|?() -> Unit|是|-|事件回调。|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|This|返回当前组件实例。|
 
 ## 基础类型定义
-
-### class CanvasGradient
-
-```cangjie
-public class CanvasGradient {}
-```
-
-**功能：** 渐变对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 12
-
-#### func addColorStop(Float64, ResourceColor)
-
-```cangjie
-public func addColorStop(offset: Float64, color: ResourceColor): Unit
-```
-
-**功能：** 设置渐变断点值，包括偏移和颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 12
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|offset|Float64|是|-|设置渐变点距离起点的位置占总体长度的比例，范围为0到1。设置offset<0或offset>1无渐变效果。|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置渐变的颜色。颜色格式参考[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)中string类型说明。未按格式设置颜色无渐变效果。|
 
 ### class RenderingContextSettings
 
 ```cangjie
 public class RenderingContextSettings {
-    public var antialias: Bool
-    public init(antialias!: Bool = false)
+    public var antialias: ?Bool
+    public init(antialias!: ?Bool = None)
 }
 ```
 
-**功能：** 用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。
+**功能：** 用于创建渲染上下文时设置相关属性的对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
+**起始版本：** 22
 
 #### var antialias
 
 ```cangjie
-public var antialias: Bool
+public var antialias: ?Bool
 ```
 
-**功能：** 表明canvas是否开启抗锯齿。
+**功能：** 表示Canvas是否启用抗锯齿功能，默认值为false。
 
-**类型：** Bool
+**类型：** ?Bool
 
 **读写能力：** 可读写
 
-#### init(Bool)
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?Bool)
 
 ```cangjie
-public init(antialias!: Bool = false)
+public init(antialias!: ?Bool = None)
 ```
 
-**功能：** 用来配置CanvasRenderingContext2D对象的参数，包括是否开启抗锯齿。
+**功能：** 根据抗锯齿参数创建一个RenderingContextSettings对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|antialias|Bool|否|false| **命名参数。** 表明canvas是否开启抗锯齿。初始值：false|
+|antialias|?Bool|否|None|**命名参数。** 是否启用抗锯齿。|
 
 ### class TextMetrics
 
@@ -141,27 +124,11 @@ public class TextMetrics {
 }
 ```
 
-**功能：** 用来描述文本方块的尺寸信息。
+**功能：** 文本的尺寸信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
-
-#### let height
-
-```cangjie
-public let height: Float64
-```
-
-**功能：** 文本方块的高度。
-
-**类型：** Float64
-
-**读写能力：** 只读
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 12
+**起始版本：** 22
 
 #### let width
 
@@ -169,7 +136,7 @@ public let height: Float64
 public let width: Float64
 ```
 
-**功能：** 文本方块的宽度。
+**功能：** 字符串的宽度，类型为double。
 
 **类型：** Float64
 
@@ -177,7 +144,57 @@ public let width: Float64
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
+**起始版本：** 22
+
+#### let height
+
+```cangjie
+public let height: Float64
+```
+
+**功能：** 字符串的高度，类型为double。
+
+**类型：** Float64
+
+**读写能力：** 只读
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+### class CanvasGradient
+
+```cangjie
+public class CanvasGradient {
+    public func addColorStop(offset: Float64, color: ?ResourceColor): Unit
+}
+```
+
+**功能：** 描述渐变的不透明对象，由createLinearGradient()或createRadialGradient()创建。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+
+#### func addColorStop(Float64, ?ResourceColor)
+
+```cangjie
+public func addColorStop(offset: Float64, color: ?ResourceColor): Unit
+```
+
+**功能：** 向渐变中添加由偏移量和颜色定义的断点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|offset|Float64|是|-|0到1之间的值，超出范围会抛出INDEX_SIZE_ERR错误。|
+|color|?ResourceColor|是|-|设置渐变颜色。|
 
 ## 示例代码
 
@@ -211,3 +228,4 @@ class EntryView {
 }
 ```
 
+![canvas](figures/drawingCanvas.png)

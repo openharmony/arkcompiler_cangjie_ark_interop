@@ -10,85 +10,66 @@ import kit.ArkUI.*
 
 ## 子组件
 
-可以包含[Span](./cj-text-input-span.md#span)、[ImageSpan](./cj-text-input-imagespan.md#imagespan)子组件。
+可以包含[Span](./cj-text-input-span.md#span)、[ImageSpan](./cj-text-input-imagespan.md#imagespan)、[SymbolSpan](./cj-text-input-symbolspan.md#symbolspan)子组件。
 
 ## 创建组件
 
-### init(ResourceStr, TextController)
+### init(?ResourceStr, ?TextController, () -> Unit)
 
 ```cangjie
-public init(content: ResourceStr, controller!: TextController = TextController())
+public init(content: ?ResourceStr, controller!: ?TextController = None, child!: () -> Unit = { =>})
 ```
 
-**功能：** 创建Text组件。
+**功能：** 创建一个包含文本内容、控制器和子组件的Text对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容，引入系统资源或者应用资源中的文本。|
-|controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
+|content|?ResourceStr|是|-|文本内容。|
+|controller|?TextController|否|None| **命名参数。** 给组件绑定一个控制器。|
+|child|() -> Unit|否|{=>}| **命名参数。** Text容器的子组件。|
 
-### init(ResourceStr, TextController, () -> Unit)
+### init(?TextController, () -> Unit)
 
 ```cangjie
-public init(content: ResourceStr, controller!: TextController = TextController(), child!: () -> Unit)
+public init(controller!: ?TextController = None, child!: () -> Unit)
 ```
 
-**功能：** 创建Text组件。
+**功能：** 创建一个包含控制器和子组件的Text对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。包含子组件Span且未设置属性字符串时不生效，显示Span内容，并且此时text组件的样式不生效。<br/>初始值：''。|
-|controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
-|child|()->Unit|否|{ =>}|Text的子组件。|
+|controller|?TextController|否|None| **命名参数。** 给组件绑定一个控制器。|
+|child|() -> Unit|否|-| **命名参数。** Text容器的子组件。|
 
-### init(TextController, () -> Unit)
+### init(?TextController)
 
 ```cangjie
-public init(controller!: TextController = TextController(), child!: () -> Unit)
+public init(controller!: ?TextController = None)
 ```
 
-**功能：** 创建Text组件。
+**功能：** 创建一个包含控制器的Text对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
-|child|()->Unit|是|-|Text的子组件。|
-
-### init(TextController)
-
-```cangjie
-public init(controller!: TextController = TextController())
-```
-
-**功能：** 创建Text组件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|controller|[TextController](#class-textcontroller)|否|TextController()|**命名参数。** Text组件的控制器。|
+|controller|?TextController|否|None| **命名参数。** 给组件绑定一个控制器。|
 
 ## 通用属性/通用事件
 
@@ -98,468 +79,280 @@ public init(controller!: TextController = TextController())
 
 ## 组件属性
 
-### func baselineOffset(Length)
+### func baselineOffset(?Length)
 
 ```cangjie
-public func baselineOffset(value: Length): This
+public func baselineOffset(value: ?Length): This
 ```
 
 **功能：** 设置文本基线的偏移量。
 
-> **说明：**
->
-> - 正数内容向上偏移，负数向下偏移。
-> - 设置该值为百分比时，按默认值显示。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本基线的偏移量。设置该值为百分比时，按默认值显示。<br>初始值：0。|
+|value|?Length|是|-|文本基线的偏移量。|
 
-### func decoration(TextDecorationType, ResourceColor, TextDecorationStyle)
+### func decoration(?TextDecorationType, ?ResourceColor, ?TextDecorationStyle)
 
 ```cangjie
-public func decoration(decorationType!: TextDecorationType, color!: ResourceColor,
-    decorationStyle!: TextDecorationStyle = TextDecorationStyle.Solid): This
+public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceColor,
+    decorationStyle!: ?TextDecorationStyle = None): This
 ```
 
-**功能：** 设置文本装饰线样式及其颜色。
+**功能：** 设置文本的装饰线样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|**命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
-|decorationStyle|[TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle)|否|TextDecorationStyle.Solid|**命名参数。** 文本装饰线样式。|
+|decorationType|?TextDecorationType|是|-| **命名参数。** 装饰线类型。|
+|color|?ResourceColor|是|-| **命名参数。** 装饰线颜色。|
+|decorationStyle|?TextDecorationStyle|否|None| **命名参数。** 装饰线样式。|
 
-### func fontColor(ResourceColor)
+### func fontColor(?ResourceColor)
 
 ```cangjie
-public func fontColor(value: ResourceColor): This
+public func fontColor(value: ?ResourceColor): This
 ```
 
-**功能：** 设置字体颜色。
+**功能：** 设置文本的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|使用引入资源的方式设置字体颜色。<br>初始值：'e6182431'。|
+|value|?ResourceColor|是|-|文本的颜色。|
 
-### func fontFamily(ResourceStr)
+### func fontFamily(?ResourceStr)
 
 ```cangjie
-public func fontFamily(value: ResourceStr): This
+public func fontFamily(value: ?ResourceStr): This
 ```
 
-**功能：** 设置字体列表。
+**功能：** 设置文本的字体族。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。|
+|value|?ResourceStr|是|-|文本的字体族。<br>初始值：HarmonyOS Sans。|
 
-### func fontSize(Length)
+### func fontSize(?Length)
 
 ```cangjie
-public func fontSize(value: Length): This
+public func fontSize(value: ?Length): This
 ```
 
-**功能：** 设置字体大小。
+**功能：** 设置文本的字体大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。不支持百分比单位。<br>初始值：16.fp。|
+|value|?Length|是|-|文本的字体大小。<br>初始值：16.fp。|
 
-### func fontStyle(FontStyle)
+### func fontStyle(?FontStyle)
 
 ```cangjie
-public func fontStyle(value: FontStyle): This
+public func fontStyle(value: ?FontStyle): This
 ```
 
-**功能：** 设置字体样式。
+**功能：** 设置文本的字体样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。<br>初始值：FontStyle.Normal。|
+|value|?FontStyle|是|-|文本的字体样式。<br>初始值：FontStyle.Normal。|
 
-### func fontWeight(FontWeight)
+### func fontWeight(?FontWeight)
 
 ```cangjie
-public func fontWeight(value: FontWeight): This
+public func fontWeight(value: ?FontWeight): This
 ```
 
-**功能：** 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
+**功能：** 设置文本的字体粗细。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细。<br>初始值：FontWeight.Normal。|
+|value|?FontWeight|是|-|文本的字体粗细。|
 
-### func lineHeight(Length)
+### func lineHeight(?Length)
 
 ```cangjie
-public func lineHeight(value: Length): This
+public func lineHeight(value: ?Length): This
 ```
 
-**功能：** 根据Length设置文本的文本行高。
+**功能：** 设置文本的行高。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的文本行高，设置值不大于 0 时，不限制文本行高，自适应字体大小。|
+|value|?Length|是|-|文本的行高。<br>初始值：0.px。|
 
-### func lineSpacing(Length)
+### func lineSpacing(?Length)
 
 ```cangjie
-public func lineSpacing(value: Length): This
+public func lineSpacing(value: ?Length): This
 ```
 
-**功能：** 设置文本的行间距，设置值不大于0时，取默认值0。
+**功能：** 设置文本的行间距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的行间距。<br>初始值：0。|
+|value|?Length|是|-|文本的行间距。<br>初始值：0.vp。|
 
-### func maxFontSize(Length)
+### func maxFontSize(?Length)
 
 ```cangjie
-public func maxFontSize(value: Length): This
+public func maxFontSize(value: ?Length): This
 ```
 
-**功能：** 根据Length设置文本最大显示字号。
-
-> **说明：**
->
-> - 需配合[minFontSize](#func-minfontsizelength)以及[maxLines](#func-maxfontsizelength)或布局大小限制使用，单独设置不生效，对子组件和属性字符串不生效。
-> - 自适应字号生效时，fontSize设置不生效。
-> - maxFontSize小于或等于0时，自适应字号不生效，此时按照[fontSize](#func-fontsizelength)属性的值生效，未设置时按照其默认值生效。
+**功能：** 设置文本的最大字体大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本最大显示字号。单位：fp。|
+|value|?Length|是|-|文本的最大字体大小。|
 
-### func maxLines(Int32)
+### func maxLines(?Int32)
 
 ```cangjie
-public func maxLines(value: Int32): This
+public func maxLines(value: ?Int32): This
 ```
 
 **功能：** 设置文本的最大行数。
 
-> **说明：**
->
-> 默认情况下，文本是自动折行的，如果指定此属性，则文本最多不会超过指定的行。如果有多余的文本，可以通过[textOverflow](#func-textoverflowtextoverflow)来指定截断方式。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|文本的最大行数。|
+|value|?Int32|是|-|文本的最大行数。<br>初始值：Int32.Max。|
 
-### func minFontSize(Length)
+### func minFontSize(?Length)
 
 ```cangjie
-public func minFontSize(value: Length): This
+public func minFontSize(value: ?Length): This
 ```
 
-**功能：** 根据Length设置文本最小显示字号。
-
-> **说明：**
->
-> - 需配合[maxFontSize](#func-maxfontsizelength)以及[maxLines](#func-maxlinesint32)或布局大小限制使用，单独设置不生效，对子组件和属性字符串不生效。
-> - 自适应字号生效时，fontSize设置不生效。
-> - minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSize](#func-fontsizelength)属性的值生效，未设置时按照其默认值生效。
+**功能：** 设置文本的最小字体大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本最小显示字号。单位：fp。|
+|value|?Length|是|-|文本的最小字体大小。|
 
-### func textAlign(TextAlign)
+### func textCase(?TextCase)
 
 ```cangjie
-public func textAlign(value: TextAlign): This
+public func textCase(value: ?TextCase): This
 ```
 
-**功能：** 设置文本段落在水平方向的对齐方式。
-
-> **说明：**
->
-> - 文本段落宽度占满Text组件宽度。
-> - 可通过[align](./cj-universal-attribute-location.md#func-alignalignment)属性控制文本段落在垂直方向上的位置，此组件中不可通过align属性控制文本段落在水平方向上的位置，具体效果如下：
-Alignment.TopStart、Alignment.Top、Alignment.TopEnd：内容顶部对其。
-Alignment.Start、Alignment.Center、Alignment.End：内容垂直居中。
-Alignment.BottomStart、Alignment.Bottom、Alignment.BottomEnd：内容底部对齐。
-> - 当textAlign属性设置为TextAlign.JUSTIFY时，需要根据文本内容设置[wordBreak](./cj-common-types.md#enum-wordbreak)属性，且最后一行文本不参与两端对齐，为水平对齐首部效果。
+**功能：** 设置文本的大小写格式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TextAlign](./cj-common-types.md#enum-textalign)|是|-|多行文本的文本对齐方式。<br>初始值：TextAlign.Start。|
+|value|?TextCase|是|-|文本的大小写格式。<br>初始值：TextCase.Normal。|
 
-### func textCase(TextCase)
+### func textAlign(?TextAlign)
 
 ```cangjie
-public func textCase(value: TextCase): This
+public func textAlign(value: ?TextAlign): This
 ```
 
-**功能：** 设置文本大小写。
+**功能：** 设置文本的水平对齐方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TextCase](./cj-common-types.md#enum-textcase)|是|-|文本大小写。<br>初始值：TextCase.Normal。|
+|value|?TextAlign|是|-|文本的水平对齐方式。<br>初始值：TextAlign.Start。|
 
-### func textOverflow(TextOverflow)
+### func textOverflow(?TextOverflow)
 
 ```cangjie
-public func textOverflow(value: TextOverflow): This
+public func textOverflow(value: ?TextOverflow): This
 ```
 
-**功能：** 设置文本超长时的显示方式。
-
-> **说明：**
->
-> - 文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格：\u200B。从API version 11开始，建议优先组合wordBreak属性设置为WordBreak.BREAK_ALL方式实现字母为单位进行截断。
-> - 当overflow设置为TextOverflow.None、TextOverflow.Clip、TextOverflow.Ellipsis时，需配合maxLines使用，单独设置不生效。设置TextOverflow.None与TextOverflow.Clip效果一样。
+**功能：** 设置文本的溢出处理方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TextOverflow](./cj-common-types.md#enum-textoverflow)|是|-|文本超长时的显示方式，需配合maxLines使用，单独设置不生效。<br>初始值：TextOverflow.Clip。|
+|value|?TextOverflow|是|-|文本的溢出处理方式。<br>初始值：TextOverflow.None。|
 
 ## 基础类型定义
-
-### class ShadowOptions
-
-```cangjie
-public class ShadowOptions {
-    public var radius: Float64
-    public var shadowType: ShadowType
-    public var color: ResourceColor
-    public var offsetX: Float64
-    public var offsetY: Float64
-    public var fill: Bool
-    public init(
-        radius!: Float64,
-        shadowType!: ShadowType = ShadowType.Color,
-        color!: ResourceColor = Color.Black,
-        offsetX!: Float64 = 0.0,
-        offsetY!: Float64 = 0.0,
-        fill!: Bool = false
-    )
-}
-```
-
-**功能：** 阴影选项。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var color
-
-```cangjie
-public var color: ResourceColor
-```
-
-**功能：** 设置阴影颜色。
-
-**类型：** [ResourceColor](cj-common-types.md#interface-resourcecolor)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var fill
-
-```cangjie
-public var fill: Bool
-```
-
-**功能：** 设置阴影是否填充。
-
-**类型：** Bool
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var offsetX
-
-```cangjie
-public var offsetX: Float64
-```
-
-**功能：** 设置阴影的水平偏移量。
-
-**类型：** Float64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var offsetY
-
-```cangjie
-public var offsetY: Float64
-```
-
-**功能：** 设置阴影的垂直偏移量。
-
-**类型：** Float64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var radius
-
-```cangjie
-public var radius: Float64
-```
-
-**功能：** 设置阴影的模糊半径。
-
-**类型：** Float64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var shadowType
-
-```cangjie
-public var shadowType: ShadowType
-```
-
-**功能：** 设置阴影类型。
-
-**类型：** [ShadowType](cj-common-types.md#enum-shadowtype)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(Float64, ShadowType, ResourceColor, Float64, Float64, Bool)
-
-```cangjie
-public init(
-    radius!: Float64,
-    shadowType!: ShadowType = ShadowType.Color,
-    color!: ResourceColor = Color.Black,
-    offsetX!: Float64 = 0.0,
-    offsetY!: Float64 = 0.0,
-    fill!: Bool = false
-)
-```
-
-**功能：** 构造一个ShadowOptions对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|radius|Float64|是|-|设置阴影的模糊半径。|
-|shadowType|[ShadowType](cj-common-types.md#enum-shadowtype)|否|ShadowType.Color|设置阴影类型。|
-|color|[ResourceColor](cj-common-types.md#interface-resourcecolor)|否|Color.Black|设置阴影颜色。|
-|offsetX|Float64|否|0.0|设置阴影的水平偏移量。|
-|offsetY|Float64|否|0.0|设置阴影的垂直偏移量。|
-|fill|Bool|否|false|设置阴影是否填充。|
 
 ### class TextController
 
@@ -569,11 +362,11 @@ public class TextController {
 }
 ```
 
-**功能：** Text组件的控制器。
+**功能：** TextController是Text组件的控制器，可以定义该类型的对象并绑定至Text组件，实现对Text组件的控制。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init()
 
@@ -581,11 +374,11 @@ public class TextController {
 public init()
 ```
 
-**功能：** 创建TextController类型的对象。
+**功能：** TextController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func closeSelectionMenu()
 
@@ -593,20 +386,20 @@ public init()
 public func closeSelectionMenu(): Unit
 ```
 
-**功能：** 关闭自定义选择菜单或系统默认选择菜单。
+**功能：** 关闭选择菜单。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## 示例代码
 
 <!--run-->
-
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.state_macro_manage.*
 import ohos.hilog.*
 import ohos.arkui.component.CopyOptions as MyCopyOptions

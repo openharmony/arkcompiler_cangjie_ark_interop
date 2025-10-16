@@ -2,7 +2,7 @@
 
 通过文本显示计时信息并控制其计时器状态的组件。
 
-在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit)处理，可见阈值raitos大于0即视为可见状态。
+在组件不可见时时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./cj-universal-event-visibleareachange.md#func-onvisibleareachangearrayfloat64-bool-float64-unit---unit)处理，可见阈值ratios大于0即视为可见状态。
 
 ## 导入模块
 
@@ -16,26 +16,26 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Bool, Int64, TextTimerController)
+### init(?Bool, ?Int64, ?TextTimerController)
 
 ```cangjie
-public init(isCountDown!: Bool = false, count!: Int64 = 60000,
-    controller!: TextTimerController = TextTimerController())
+public init(isCountDown!: ?Bool = None, count!: ?Int64 = None,
+    controller!: ?TextTimerController = None)
 ```
 
-**功能：** 创建一个TextTimer组件。
+**功能：** 创建一个包含倒计时设置、计时时间和控制器的TextTimer对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|isCountDown|Bool|否|false| **命名参数。**  是否倒计时。值为true时，计时器开启倒计时，例如从30秒 ~ 0秒。值为false时，计时器开始计时，例如从0秒 ~ 30秒。 |
-|count|Int64|否|60000| **命名参数。**  计时器时间（isCountDown为true时生效），单位为毫秒。最长不超过86400000毫秒（24小时）。 0<count<86400000时，count值为计时器初始值。否则，使用默认值为计时器初始值。 |
-|controller|[TextTimerController](#class-texttimercontroller)|否|TextTimerController()| **命名参数。** TextTimer控制器。|
+|isCountDown|?Bool|否|None| **命名参数。** 是否倒计时。<br>初始值：false。|
+|count|?Int64|否|None| **命名参数。** 计时器时间（isCountDown为true时生效），单位为毫秒。<br>初始值：60000。|
+|controller|?TextTimerController|否|None| **命名参数。** TextTimer控制器。|
 
 ## 通用属性/通用事件
 
@@ -45,169 +45,169 @@ public init(isCountDown!: Bool = false, count!: Int64 = 60000,
 
 ## 组件属性
 
-### func fontColor(ResourceColor)
+### func fontColor(?ResourceColor)
 
 ```cangjie
-public func fontColor(value: ResourceColor): This
+public func fontColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置字体颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
+|value|?ResourceColor|是|-|字体颜色。|
 
-### func fontFamily(ResourceStr)
+### func fontFamily(?ResourceStr)
 
 ```cangjie
-public func fontFamily(value: ResourceStr): This
+public func fontFamily(value: ?ResourceStr): This
 ```
 
 **功能：** 设置字体列表。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。<br/>初始字体：'HarmonyOS Sans'。<br/>应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。|
+|value|?ResourceStr|是|-|字体列表。<br>初始字体：'HarmonyOS Sans'。|
 
-### func fontSize(Length)
+### func fontSize(?Length)
 
 ```cangjie
-public func fontSize(value: Length): This
+public func fontSize(value: ?Length): This
 ```
 
 **功能：** 设置字体大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。fontSize为Int64、Float64类型时，使用fp单位。字体初始大小16.fp。不支持设置百分比。|
+|value|?Length|是|-|字体大小。初始值：16.0.fp。|
 
-### func fontStyle(FontStyle)
+### func fontStyle(?FontStyle)
 
 ```cangjie
-public func fontStyle(value: FontStyle): This
+public func fontStyle(value: ?FontStyle): This
 ```
 
 **功能：** 设置字体样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。<br/>初始值：FontStyle.Normal|
+|value|?FontStyle|是|-|字体样式。<br>初始值：FontStyle.Normal。|
 
-### func fontWeight(FontWeight)
+### func fontWeight(?FontWeight)
 
 ```cangjie
-public func fontWeight(value: FontWeight): This
+public func fontWeight(value: ?FontWeight): This
 ```
 
-**功能：** 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
+**功能：** 设置字体粗细。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细。<br/>初始值：FontWeight.Normal|
+|value|?FontWeight|是|-|字体粗细。初始值：FontWeight.Normal|
 
-### func format(String)
+### func format(?String)
 
 ```cangjie
-public func format(value: String): This
+public func format(value: ?String): This
 ```
 
-**功能：** 设置自定义格式，需至少包含一个HH、mm、ss、SS中的关键字。如使用yy、MM、dd等日期格式，则使用默认值。
+**功能：** 设置自定义格式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|String|是|-|自定义格式。<br/>初始值：'HH:mm:ss.SS'|
+|value|?String|是|-|自定义格式。<br>默认值：'HH:mm:ss.SS'。|
 
-### func textShadow(Array\<ShadowOptions>)
+### func textShadow(?Array\<ShadowOptions>)
 
 ```cangjie
-public func textShadow(value: Array<ShadowOptions>): This
+public func textShadow(value: ?Array<ShadowOptions>): This
 ```
 
-**功能：** 设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。不支持fill字段, 不支持智能取色模式。
+**功能：** 设置文本阴影。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[ShadowOptions](./cj-common-types.md#interface-shadowoptions)>|是|-|文字阴影效果。|
+|value|?Array\<ShadowOptions>|是|-|阴影选项数组。|
 
-### func textShadow(ShadowOptions)
+### func textShadow(?ShadowOptions)
 
 ```cangjie
-public func textShadow(value: ShadowOptions): This
+public func textShadow(value: ?ShadowOptions): This
 ```
 
-**功能：** 设置文字阴影效果。
+**功能：** 设置文本阴影。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ShadowOptions](./cj-common-types.md#interface-shadowoptions)|是|-|文字阴影效果。|
+|value|?ShadowOptions|是|-|阴影选项。|
 
 ## 组件事件
 
-### func onTimer((Int64,Int64) -> Unit)
+### func onTimer(?(Int64, Int64) -> Unit)
 
 ```cangjie
-public func onTimer(event: (Int64, Int64) -> Unit): This
+public func onTimer(event: ?(Int64, Int64) -> Unit): This
 ```
 
-**功能：** 时间文本发生变化时触发。锁屏状态和应用后台状态下不会触发该事件。设置高精度的format（SSS、SS）时，回调间隔可能会出现波动。
+**功能：** 时间文本变化时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|(Int64,Int64)->Unit|是|-|第一个Int64类型的参数为Linux时间戳，即自1970年1月1日起经过的时间，单位为设置格式的最小单位。<br/>第二个Int64类型的参数为计时器经过的时间，单位为设置格式的最小单位。 |
+|event|?(Int64, Int64) -> Unit|是|-|时间文本变化时的回调函数。初始值: { _, _ => }。|
 
 ## 基础类型定义
 
@@ -219,11 +219,11 @@ public class TextTimerController {
 }
 ```
 
-**功能：** TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组件仅支持绑定一个控制器，组件创建完成后相关指令才能被调用。
+**功能：** TextTimerController是TextTimer组件的控制器，可以定义该类型的对象并绑定至TextTimer组件，实现对TextTimer组件的控制。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init()
 
@@ -231,11 +231,11 @@ public class TextTimerController {
 public init()
 ```
 
-**功能：** 创建一个TextTimerController对象。
+**功能：** TextTimerController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func pause()
 
@@ -243,11 +243,11 @@ public init()
 public func pause(): Unit
 ```
 
-**功能：** 计时暂停。
+**功能：** 提供计时器的暂停事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func reset()
 
@@ -255,11 +255,11 @@ public func pause(): Unit
 public func reset(): Unit
 ```
 
-**功能：** 重置计时器。
+**功能：** 提供重置计时器的事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func start()
 
@@ -267,11 +267,11 @@ public func reset(): Unit
 public func start(): Unit
 ```
 
-**功能：** 计时开始。
+**功能：** 提供计时器的启动事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## 示例代码
 
@@ -286,7 +286,7 @@ public func start(): Unit
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry
@@ -304,15 +304,15 @@ class EntryView {
                     Hilog.info(0, "AppLogCj", "time has been changed")
                 })
             Row() {
-                Button("start").onClick{ evt =>
+                Button("start").onClick({ evt =>
                   this.textTimerController.start()
-                }
-                Button("pause").onClick{ evt =>
+                })
+                Button("pause").onClick({ evt =>
                   this.textTimerController.pause()
-                }
-                Button("reset").onClick{ evt =>
+                })
+                Button("reset").onClick({ evt =>
                     this.textTimerController.reset()
-                }
+                })
             }
         }
     }
@@ -388,7 +388,7 @@ class EntryView {
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry

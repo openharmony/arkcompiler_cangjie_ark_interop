@@ -14,25 +14,24 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(UInt32, () -> Unit)
+### init(?UInt32, () -> Unit)
 
 ```cangjie
-
-public init(index!: UInt32 = 0, child!: () -> Unit = {=>})
+public init(index!: ?UInt32 = None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 构造一个步骤导航器组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|index|UInt32|否|0|步骤导航器当前显示StepperItem的索引值。<br/>初始值：0。|
-|child|()->Unit|否|{ => }|步骤导航器的子组件。|
+|index|?UInt32|否|None| **命名参数。** 步骤导航器当前显示StepperItem的索引值。<br>初始值：0。|
+|child|() -> Unit|否|{=>}| **命名参数。** 步骤导航器的子组件。|
 
 ## 通用属性/通用事件
 
@@ -42,100 +41,95 @@ public init(index!: UInt32 = 0, child!: () -> Unit = {=>})
 
 ## 组件事件
 
-### func onChange((UInt32,UInt32) -> Unit)
+### func onChange(?(UInt32, UInt32) -> Unit)
 
 ```cangjie
-
-public func onChange(callback: (UInt32, UInt32) -> Unit): This
+public func onChange(callback: ?(UInt32, UInt32) -> Unit): This
 ```
 
 **功能：** 点击当前StepperItem的prevLabel进行步骤切换时触发该事件；或点击当前StepperItem的nextLabel时当前页面不是步骤导航器最后一个StepperItem，并且ItemState属性为Normal时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(UInt32,UInt32)->Unit|是|-|回调函数，切换步骤页面时触发该回调。<br/>第一个参数：切换前的步骤页索引值。<br/>第二个参数：切换后的步骤页（前一页或者下一页）索引值。|
+|callback|?(UInt32, UInt32) -> Unit|是|-|回调函数，切换步骤页面时触发该回调。<br>第一个参数：切换前的步骤页索引值。<br>第二个参数：切换后的步骤页（前一页或者下一页）索引值。<br>初始值：{ _, _ => }。|
 
-### func onFinish(() -> Unit)
+### func onFinish(?() -> Unit)
 
 ```cangjie
-
-public func onFinish(callback: () -> Unit): This
+public func onFinish(callback: ?() -> Unit): This
 ```
 
 **功能：** 步骤导航器最后一个StepperItem的nextLabel被点击时，并且ItemState属性为Normal时，触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|回调函数，当步骤导航器最后一个步骤完成时触发该回调。|
+|callback|?() -> Unit|是|-|回调函数，当步骤导航器最后一个步骤完成时触发该回调。<br>初始值：{ => }。|
 
-### func onNext((UInt32,UInt32) -> Unit)
+### func onNext(?(UInt32, UInt32) -> Unit)
 
 ```cangjie
-
-public func onNext(callback: (UInt32, UInt32) -> Unit): This
+public func onNext(callback: ?(UInt32, UInt32) -> Unit): This
 ```
 
 **功能：** 点击StepperItem的nextLabel切换下一步骤时，当前页面不是步骤导航器最后一个StepperItem，并且ItemState属性为Normal时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(UInt32,UInt32)->Unit|是|-|回调函数，切换下一步骤页面时触发该回调。<br/>第一个参数：当前步骤页索引值。<br/>第二个参数：下一步骤页索引值。|
+|callback|?(UInt32, UInt32) -> Unit|是|-|回调函数，切换下一步骤页面时触发该回调。<br>第一个参数：当前步骤页索引值。<br>第二个参数：下一步骤页索引值。<br>初始值：{ _, _ => }。|
 
-### func onPrevious((UInt32,UInt32) -> Unit)
+### func onPrevious(?(UInt32, UInt32) -> Unit)
 
 ```cangjie
-
-public func onPrevious(callback: (UInt32, UInt32) -> Unit): This
+public func onPrevious(callback: ?(UInt32, UInt32) -> Unit): This
 ```
 
 **功能：** 点击StepperItem的prevLabel切换上一步骤时，触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(UInt32,UInt32)->Unit|是|-|回调函数，切换上一步骤页面时触发该回调。<br/>第一个参数：当前步骤页索引值。<br/>第二个参数：上一步骤页索引值。|
+|callback|?(UInt32, UInt32) -> Unit|是|-|回调函数，切换上一步骤页面时触发该回调。<br>第一个参数：当前步骤页索引值。<br>第二个参数：上一步骤页索引值。<br>初始值：{ _, _ => }。|
 
-### func onSkip(() -> Unit)
+### func onSkip(?() -> Unit)
 
 ```cangjie
-
-public func onSkip(callback: () -> Unit): This
+public func onSkip(callback: ?() -> Unit): This
 ```
 
 **功能：** 当前显示的StepperItem状态为ItemState.Skip时，nextLabel被点击时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|()->Unit|是|-|回调函数，点击切换下一步骤页面时触发该回调。|
+|callback|?() -> Unit|是|-|回调函数，点击切换下一步骤页面时触发该回调。<br>初始值：{ => }。|
 
 ## 示例代码
 
@@ -147,7 +141,18 @@ public func onSkip(callback: () -> Unit): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
+
+extend ItemState {
+    func toString(): String {
+        match (this) {
+            case Normal => "Normal"
+            case Disabled => "Disabled"
+            case Waiting => "Waiting"
+            case _ => "Skip"
+        }
+    }
+}
 
 @Entry
 @Component
@@ -166,7 +171,7 @@ class EntryView {
                       Button("change status")
                         .backgroundColor(0x007dFF)
                         .onClick({ evt =>
-                            if(this.firstState.toString() == ItemState.Skip) {
+                            if(this.firstState.toString() == "Skip") {
                                 this.firstState = ItemState.Normal
                             } else {
                                 this.firstState = ItemState.Skip
@@ -182,7 +187,7 @@ class EntryView {
                       Button("change status")
                         .backgroundColor(0x007dFF)
                         .onClick({ evt =>
-                            if(this.secondState.toString() == ItemState.Disabled) {
+                            if(this.secondState.toString() == "Disabled") {
                                 this.secondState = ItemState.Normal
                             } else {
                                 this.secondState = ItemState.Disabled
@@ -199,7 +204,7 @@ class EntryView {
                       Button("change status")
                         .backgroundColor(0x007dFF)
                         .onClick({ evt =>
-                            if(this.thirdState.toString() == ItemState.Waiting) {
+                            if(this.thirdState.toString() == "Waiting") {
                                 this.thirdState = ItemState.Normal
                             } else {
                                 this.thirdState = ItemState.Waiting

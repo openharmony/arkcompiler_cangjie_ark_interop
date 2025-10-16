@@ -14,24 +14,23 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(RichEditorController)
+### init(?RichEditorController)
 
 ```cangjie
-
-public init(controller: RichEditorController)
+public init(controller: ?RichEditorController)
 ```
 
 **功能：** 创建RichEditor组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|controller|[RichEditorController](#class-richeditorcontroller)|是|-|富文本控制器。|
+|controller|?RichEditorController|是|-|富文本控制器。|
 
 ## 通用属性/通用事件
 
@@ -44,744 +43,240 @@ public init(controller: RichEditorController)
 
 通用事件：全部支持。
 
+
 ## 组件属性
 
-### func aboutToDelete(Callback\<RichEditorDeleteValue,Bool>)
+### func bindSelectionMenu(?RichEditorSpanType, ?CustomBuilder, ?ResponseType, ?SelectionMenuOptions)
 
 ```cangjie
-
-public func aboutToDelete(callback: Callback<RichEditorDeleteValue, Bool>): This
-```
-
-**功能：** 输入法删除内容前，触发事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorDeleteValue](#class-richeditordeletevalue),Bool>|是|-|回调函数，输入法删除内容前触发该回调 。<br>[RichEditorDeleteValue](#class-richeditordeletevalue)：准备删除的内容所在的文本Span信息。<br>true：组件执行删除操作。<br>false：组件不执行删除操作。|
-
-### func aboutToIMEInput(Callback\<RichEditorInsertValue,Bool>)
-
-```cangjie
-
-public func aboutToIMEInput(callback: Callback<RichEditorInsertValue, Bool>): This
-```
-
-**功能：** 输入法输入内容前，触发事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorInsertValue](#class-richeditorinsertvalue),Bool>|是|-|回调函数，输入法输入内容前触发。<br>[RichEditorInsertValue](#class-richeditorinsertvalue)：输入法将要输入内容信息。<br>true：组件执行添加内容操作。<br>false：组件不执行添加内容操作。|
-
-### func bindSelectionMenu(RichEditorSpanType, CustomBuilder, ResponseType, SelectionMenuOptions)
-
-```cangjie
-
 public func bindSelectionMenu(
-    spantype!: RichEditorSpanType = RichEditorSpanType.Text,
-    content!: CustomBuilder,
-    responseType!: ResponseType = ResponseType.LongPress,
-    options!: SelectionMenuOptions
+    spantype!: ?RichEditorSpanType = None,
+    content!: ?CustomBuilder,
+    responseType!: ?ResponseType = None,
+    options!: ?SelectionMenuOptions
 ): This
 ```
 
 **功能：** 设置自定义选择菜单。
 
+> **说明：**
+>
+> 自定义菜单超长时，建议内部嵌套[Scroll](cj-scroll-swipe-scroll.md)组件使用，避免键盘被遮挡。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|spantype|[RichEditorSpanType](#enum-richeditorspantype)|否|RichEditorSpanType.Text| **命名参数。** 指定选择菜单的类型。|
-|content|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-| **命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
-|responseType|[ResponseType](./cj-common-types.md#enum-responsetype)|否|ResponseType.LongPress| **命名参数。** 指定选择菜单的响应类型。|
-|options|[SelectionMenuOptions](#class-selectionmenuoptions)|是|-| **命名参数。** 指定选择菜单的选项。|
+|spantype|?RichEditorSpanType|否|None|**命名参数。** 指定选择菜单的类型。|
+|content|?CustomBuilder|是|-|**命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|responseType|?ResponseType|否|None|**命名参数。** 指定选择菜单的响应类型。|
+|options|?SelectionMenuOptions|是|-|**命名参数。** 指定选择菜单的选项。|
 
-### func copyOptions(CopyOptions)
+### func copyOptions(?CopyOptions)
 
 ```cangjie
-
-public func copyOptions(value: CopyOptions): This
+public func copyOptions(value: ?CopyOptions): This
 ```
 
 **功能：** 设置文本内容支持复制粘贴的能力。
 
+> **说明：**
+>
+> - copyOptions不为CopyOptions.None时，长按组件内容，会弹出文本选择弹框。如果通过bindSelectionMenu等方式自定义文本选择菜单，则会弹出自定义的菜单。
+> - 设置copyOptions为CopyOptions.None，复制、剪切功能不生效。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[CopyOptions](./cj-common-types.md#enum-copyoptions)|是|-|复制粘贴的能力。<br>初始值：CopyOptions.LocalDevice。|
+|value|?CopyOptions|是|-|复制粘贴的能力。初始值：CopyOptions.LocalDevice。|
 
-### func customKeyboard(CustomBuilder)
+### func customKeyboard(?CustomBuilder)
 
 ```cangjie
-
-public func customKeyboard(value!: CustomBuilder): This
+public func customKeyboard(value!: ?CustomBuilder): This
 ```
 
 **功能：** 定义自定义键盘。
 
+> **说明：**
+>
+> - 当设置自定义键盘时，输入框激活后不会打开系统输入法，而是加载指定的自定义组件。
+> - 自定义键盘的高度可以通过自定义组件根节点的height属性设置，宽度不可设置，使用系统默认值。
+> - 自定义键盘采用覆盖原始界面的方式呈现，不会对应用原始界面产生压缩或者上提。
+> - 自定义键盘无法获取焦点，但是会拦截手势事件。
+> - 默认在输入控件失去焦点时，关闭自定义键盘。
+> - 如果设备支持拍摄输入，设置自定义键盘后，该输入框会不支持拍摄输入。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-| **命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|value|?CustomBuilder|是|-|**命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 
 ## 组件事件
 
-### func onDeleteComplete(VoidCallback)
+### func onReady(?VoidCallback)
 
 ```cangjie
-
-public func onDeleteComplete(callback: VoidCallback): This
-```
-
-**功能：** 输入法完成删除后，触发事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，订阅输入法完成删除时触发。|
-
-### func onDidChange(OnDidChangeCallback)
-
-```cangjie
-
-public func onDidChange(callback: OnDidChangeCallback): This
-```
-
-**功能：** 组件执行增删操作后，触发事件。文本实际未发生增删时，不触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|[OnDidChangeCallback](#type-ondidchangecallback)|是|-|回调函数，件执行增删操作后，触发回调。文本实际未发生增删时，不触发该回调。参数：图文变化前后的内容范围。|
-
-### func onIMEInputComplete(Callback\<RichEditorTextSpanResult,Unit>)
-
-```cangjie
-
-public func onIMEInputComplete(callback: Callback<RichEditorTextSpanResult, Unit>): RichEditor
-```
-
-**功能：** 输入法完成输入后，触发事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[RichEditorTextSpanResult](#class-richeditortextspanresult),Unit>|是|-|回调函数，输入法完成输入后触发回调。<br>RichEditorTextSpanResult：输入法完成输入后的文本Span信息。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|[RichEditor](#richeditor)|RichEditor实例。|
-
-### func onPaste(PasteEventCallback)
-
-```cangjie
-
-public func onPaste(callback: PasteEventCallback): This
-```
-
-**功能：** 完成粘贴前，触发事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|PasteEventCallback|是|-|回调函数，完成粘贴前，触发回调。<br>PasteEvent：定义用户粘贴事件。|
-
-### func onReady(VoidCallback)
-
-```cangjie
-
-public func onReady(callback: VoidCallback): This
+public func onReady(callback: ?VoidCallback): This
 ```
 
 **功能：** 富文本组件初始化完成后，触发事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，富文本组件初始化完成后触发回调。|
+|callback|?VoidCallback|是|-|回调函数，富文本组件初始化完成后触发回调。|
 
-### func onSelect(Callback\<RichEditorSelection,Unit>)
+### func aboutToIMEInput(?Callback\<RichEditorInsertValue, Bool>)
 
 ```cangjie
+public func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): This
+```
 
-public func onSelect(callback: Callback<RichEditorSelection, Unit>): This
+**功能：** 输入法输入内容前，触发事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?Callback\<RichEditorInsertValue, Bool>|是|-|回调函数，输入法输入内容前触发。RichEditorInsertValue：输入法将要输入内容信息。true：组件执行添加内容操作。false：组件不执行添加内容操作。|
+
+### func onIMEInputComplete(?Callback\<RichEditorTextSpanResult, Unit>)
+
+```cangjie
+public func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Unit>): RichEditor
+```
+
+**功能：** 输入法完成输入后，触发事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?Callback\<RichEditorTextSpanResult, Unit>|是|-|回调函数，输入法完成输入后触发回调。RichEditorTextSpanResult：输入法完成输入后的文本Span信息。|
+
+### func onDeleteComplete(?VoidCallback)
+
+```cangjie
+public func onDeleteComplete(callback: ?VoidCallback): This
+```
+
+**功能：** 输入法完成删除后，触发事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?VoidCallback|是|-|回调函数，订阅输入法完成删除时触发。|
+
+### func aboutToDelete(?Callback\<RichEditorDeleteValue, Bool>)
+
+```cangjie
+public func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): This
+```
+
+**功能：** 输入法删除内容前，触发事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?Callback\<RichEditorDeleteValue, Bool>|是|-|回调函数，输入法删除内容前触发该回调 。RichEditorDeleteValue：准备删除的内容所在的文本Span信息。true：组件执行删除操作。false：组件不执行删除操作。|
+
+### func onSelect(?Callback\<RichEditorSelection, Unit>)
+
+```cangjie
+public func onSelect(callback: ?Callback<RichEditorSelection, Unit>): This
 ```
 
 **功能：** 鼠标左键双击选中内容时，会触发事件；松开鼠标左键后，会再次触发事件。手指长按选中内容时，会触发事件；松开手指后，会再次触发事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[RichEditorSelection](#class-richeditorselection),Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。<br>用手指选择时，松开手指触发回调。<br>RichEditorSelection：选中的所有Span信息。|
+|callback|?Callback\<RichEditorSelection, Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。用手指选择时，松开手指触发回调。RichEditorSelection：选中的所有Span信息。|
+
+### func onPaste(?PasteEventCallback)
+
+```cangjie
+public func onPaste(callback: ?PasteEventCallback): This
+```
+
+**功能：** 完成粘贴前，触发事件。
+
+> **说明：**
+>
+> 开发者可以通过该方法，覆盖系统默认行为，实现图文的粘贴。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?PasteEventCallback|是|-|回调函数，完成粘贴前，触发回调。PasteEvent：定义用户粘贴事件。|
+
+### func onDidChange(?OnDidChangeCallback)
+
+```cangjie
+public func onDidChange(callback: ?OnDidChangeCallback): This
+```
+
+**功能：** 组件执行增删操作后，触发事件。文本实际未发生增删时，不触发该事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?OnDidChangeCallback|是|-|回调函数，件执行增删操作后，触发回调。文本实际未发生增删时，不触发该回调。参数：图文变化前后的内容范围。|
 
 ## 基础类型定义
-
-### class DecorationStyleResult
-
-```cangjie
-public class DecorationStyleResult {
-    public var decorationType: TextDecorationType
-    public var color: ResourceColor
-
-    public init(
-        decorationType: TextDecorationType,
-        color: ResourceColor
-    )
-}
-```
-
-**功能：** 后端返回的文本装饰线样式信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var color
-
-```cangjie
-public var color: ResourceColor
-```
-
-**功能：** 装饰线颜色。
-
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var decorationType
-
-```cangjie
-public var decorationType: TextDecorationType
-```
-
-**功能：** 装饰线类型。
-
-**类型：** [TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(TextDecorationType, ResourceColor)
-
-```cangjie
-
-public init(
-    decorationType: TextDecorationType,
-    color: ResourceColor
-)
-```
-
-**功能：** 创建文本装饰线样式对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|装饰线类型。|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置文本识别成功后的实体颜色。<br>默认值：'#ff0a59f7'<br>元服务API： 从API version 12开始，该接口支持在元服务中使用。|
-
-### class PasteEvent
-
-```cangjie
-public class PasteEvent {}
-```
-
-**功能：** 定义用户粘贴事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func preventDefault()
-
-```cangjie
-
-public func preventDefault(): Unit
-```
-
-**功能：** 阻止系统默认粘贴事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### class RichEditorDeleteValue
-
-```cangjie
-public class RichEditorDeleteValue {
-    public var offset: Int32
-    public var direction: RichEditorDeleteDirection
-    public var length: Int32
-    public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
-
-    public init(
-        offset: Int32,
-        direction: RichEditorDeleteDirection,
-        length: Int32,
-        richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
-    )
-}
-```
-
-**功能：** 删除操作的信息和被删除内容的信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var direction
-
-```cangjie
-public var direction: RichEditorDeleteDirection
-```
-
-**功能：** 表示删除操作的方向。
-
-**类型：** [RichEditorDeleteDirection](#enum-richeditordeletedirection)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var length
-
-```cangjie
-public var length: Int32
-```
-
-**功能：** 表示删除内容长度。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var offset
-
-```cangjie
-public var offset: Int32
-```
-
-**功能：** 表示删除内容的偏移位置。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var richEditorDeleteSpans
-
-```cangjie
-public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
-```
-
-**功能：** 表示删除的文本或者图片Span的具体信息。
-
-**类型：** ArrayList\<RichEditorSpanResult
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(Int32, RichEditorDeleteDirection, Int32, ArrayList\<RichEditorSpanResult>)
-
-```cangjie
-
-public init(
-    offset: Int32,
-    direction: RichEditorDeleteDirection,
-    length: Int32,
-    richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
-)
-```
-
-**功能：** 创建RichEditorDeleteValue类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|offset|Int32|是|-|删除内容的偏移位置。|
-|direction|[RichEditorDeleteDirection](#enum-richeditordeletedirection)|是|-|删除操作的方向。|
-|length|Int32|是|-|删除内容长度。|
-|richEditorDeleteSpans|ArrayList\<RichEditorSpanResult>|是|-|删除的文本或者图片Span的具体信息。|
-
-### class RichEditorImageSpanResult
-
-```cangjie
-public class RichEditorImageSpanResult <: RichEditorSpanResult {
-    public var spanPosition: RichEditorSpanPosition = RichEditorSpanPosition(0,(0, 0))
-    public var valuePixelMap: Option<PixelMap>= None
-    public var valueResourceStr: String = ""
-    public var imageStyle: RichEditorImageSpanStyleResult = RichEditorImageSpanStyleResult()
-    public var offsetInSpan:(Int32, Int32) =(0, 0)
-
-    public init(
-        spanPosition: RichEditorSpanPosition,
-        valuePixelMap: Option<PixelMap>,
-        valueResourceStr: String,
-        imageStyle: RichEditorImageSpanStyleResult,
-        offsetInSpan: (Int32, Int32)
-    )
-}
-```
-
-**功能：** 表示后端返回的图片信息的类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- RichEditorSpanResult
-
-#### var imageStyle
-
-```cangjie
-public var imageStyle: RichEditorImageSpanStyleResult = RichEditorImageSpanStyleResult()
-```
-
-**功能：** 表示图片样式。
-
-**类型：** [RichEditorImageSpanStyleResult](#class-richeditorimagespanstyleresult)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var offsetInSpan
-
-```cangjie
-public var offsetInSpan:(Int32, Int32) =(0, 0)
-```
-
-**功能：** 表示Span里图片的起始和结束位置。
-
-**类型：** (Int32,Int32)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var spanPosition
-
-```cangjie
-public var spanPosition: RichEditorSpanPosition = RichEditorSpanPosition(0,(0, 0))
-```
-
-**功能：** 表示Span位置。
-
-**类型：** [RichEditorSpanPosition](#class-richeditorspanposition)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var valuePixelMap
-
-```cangjie
-public var valuePixelMap: Option<PixelMap>= None
-```
-
-**功能：** 表示图片内容。
-
-**类型：** Option\<[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var valueResourceStr
-
-```cangjie
-public var valueResourceStr: String = ""
-```
-
-**功能：** 表示图片资源id。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(RichEditorSpanPosition, Option\<PixelMap>, String, RichEditorImageSpanStyleResult, (Int32,Int32))
-
-```cangjie
-
-public init(
-    spanPosition: RichEditorSpanPosition,
-    valuePixelMap: Option<PixelMap>,
-    valueResourceStr: String,
-    imageStyle: RichEditorImageSpanStyleResult,
-    offsetInSpan: (Int32, Int32)
-)
-```
-
-**功能：** 创建RichEditorImageSpanResult类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|spanPosition|[RichEditorSpanPosition](#class-richeditorspanposition)|是|-|Span位置。|
-|valuePixelMap|Option\<[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)>|是|-|图片内容。|
-|valueResourceStr|String|是|-|图片资源id。|
-|imageStyle|[RichEditorImageSpanStyleResult](#class-richeditorimagespanstyleresult)|是|-|图片样式。|
-|offsetInSpan|(Int32,Int32)|是|-|Span里图片的起始和结束位置。|
-
-### class RichEditorImageSpanStyleResult
-
-```cangjie
-public class RichEditorImageSpanStyleResult {
-    public var size:(Float64, Float64) =(0.0, 0.0)
-    public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.Center
-    public var objectFit: ImageFit = ImageFit.Auto
-    public var layoutStyle: RichEditorLayoutStyle = RichEditorLayoutStyle()
-}
-```
-
-**功能：** 后端返回的图片样式信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var layoutStyle
-
-```cangjie
-public var layoutStyle: RichEditorLayoutStyle = RichEditorLayoutStyle()
-```
-
-**功能：** 表示图片布局风格。
-
-**类型：** [RichEditorLayoutStyle](#class-richeditorlayoutstyle)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var objectFit
-
-```cangjie
-public var objectFit: ImageFit = ImageFit.Auto
-```
-
-**功能：** 表示图片缩放类型。
-
-**类型：** [ImageFit](./cj-common-types.md#enum-imagefit)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var size
-
-```cangjie
-public var size:(Float64, Float64) =(0.0, 0.0)
-```
-
-**功能：** 表示图片的宽度和高度。
-
-**类型：** (Float64,Float64)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var verticalAlign
-
-```cangjie
-public var verticalAlign: ImageSpanAlignment = ImageSpanAlignment.Center
-```
-
-**功能：** 表示图片垂直对齐方式。
-
-**类型：** [ImageSpanAlignment](cj-common-types.md#enum-imagespanalignment)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### class RichEditorInsertValue
-
-```cangjie
-public class RichEditorInsertValue {
-    public var insertOffset: Int32
-    public var insertValue: String
-
-    public init(
-        insertOffset: Int32,
-        insertValue: String
-    )
-}
-```
-
-**功能：** 插入文本信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var insertOffset
-
-```cangjie
-public var insertOffset: Int32
-```
-
-**功能：** 表示插入的文本偏移位置。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var insertValue
-
-```cangjie
-public var insertValue: String
-```
-
-**功能：** 表示插入的文本内容。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(Int32, String)
-
-```cangjie
-
-public init(
-    insertOffset: Int32,
-    insertValue: String
-)
-```
-
-**功能：** 创建RichEditorInsertValue类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|insertOffset|Int32|是|-|插入的文本偏移位置。|
-|insertValue|String|是|-|插入的文本内容。|
 
 ### interface RichEditorSpanResult
 
@@ -789,272 +284,88 @@ public init(
 public interface RichEditorSpanResult {}
 ```
 
-**功能：** 支持图文混排和文本交互式编辑的组件结果。
+**功能：** 定义RichEditor span结果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### class RichEditorSelection
-
-```cangjie
-public class RichEditorSelection {
-    public var selection:(Int32, Int32)
-    public var spans: ArrayList<RichEditorSpanResult>
-
-    public init(selection: (Int32, Int32), spans: ArrayList<RichEditorSpanResult>)
-}
-```
-
-**功能：** 选中内容信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var selection
-
-```cangjie
-public var selection:(Int32, Int32)
-```
-
-**功能：** 表示选中范围。
-
-**类型：** (Int32,Int32)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var spans
-
-```cangjie
-public var spans: ArrayList<RichEditorSpanResult>
-```
-
-**功能：** 表示Span信息。
-
-**类型：** ArrayList\<RichEditorSpanResult>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init((Int32,Int32), ArrayList\<RichEditorSpanResult>)
-
-```cangjie
-
-public init(selection: (Int32, Int32), spans: ArrayList<RichEditorSpanResult>)
-```
-
-**功能：** 创建RichEditorSelection类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|selection|(Int32,Int32)|是|-|选中范围。|
-|spans|ArrayList\<RichEditorSpanResult>|是|-|Span信息。|
+**起始版本：** 22
 
 ### class RichEditorSpanPosition
 
 ```cangjie
 public class RichEditorSpanPosition {
-    public var spanIndex: Int32
-    public var spanRange:(Int32, Int32)
-
+    public var spanIndex: ?Int32
+    public var spanRange: ?(Int32, Int32)
     public init(
-        spanIndex: Int32,
-        spanRange: (Int32, Int32)
+        spanIndex: ?Int32,
+        spanRange: ?(Int32, Int32)
     )
 }
 ```
 
-**功能：** Span位置信息。
+**功能：** 定义span位置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：**
+
+无
 
 #### var spanIndex
 
 ```cangjie
-public var spanIndex: Int32
+public var spanIndex: ?Int32
 ```
 
-**功能：** 表示Span索引值。
+**功能：** 定义span的索引。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var spanRange
 
 ```cangjie
-public var spanRange:(Int32, Int32)
+public var spanRange: ?(Int32, Int32)
 ```
 
-**功能：** 表示Span内容在RichEditor内的起始和结束位置。
+**功能：** span的范围。
 
-**类型：** (Int32,Int32)
+**类型：** ?(Int32, Int32)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Int32, (Int32,Int32))
+#### init(?Int32, ?(Int32, Int32))
 
 ```cangjie
-
 public init(
-    spanIndex: Int32,
-    spanRange: (Int32, Int32)
+    spanIndex: ?Int32,
+    spanRange: ?(Int32, Int32)
 )
 ```
 
-**功能：** 创建RichEditorSpanPosition类型的对象。
+**功能：** RichEditorSpanPosition构造函数
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|spanIndex|Int32|是|-|Span索引值。|
-|spanRange|(Int32,Int32)|是|-|Span内容在RichEditor内的起始和结束位置。|
-
-### class RichEditorTextSpanResult
-
-```cangjie
-public class RichEditorTextSpanResult <: RichEditorSpanResult {
-    public var spanPosition: RichEditorSpanPosition
-    public var value: String
-    public var textStyle: RichEditorTextStyleResult
-    public var offsetInSpan:(Int32, Int32)
-
-    public init(
-        spanPosition: RichEditorSpanPosition,
-        value: String,
-        textStyle: RichEditorTextStyleResult,
-        offsetInSpan: (Int32, Int32)
-    )
-}
-```
-
-**功能：** 后端返回的文本样式信息类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- RichEditorSpanResult
-
-#### var offsetInSpan
-
-```cangjie
-public var offsetInSpan:(Int32, Int32)
-```
-
-**功能：** 表示文本Span内容里有效内容的起始和结束位置。
-
-**类型：** (Int32,Int32)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var spanPosition
-
-```cangjie
-public var spanPosition: RichEditorSpanPosition
-```
-
-**功能：** 表示Span位置。
-
-**类型：** [RichEditorSpanPosition](#class-richeditorspanposition)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var textStyle
-
-```cangjie
-public var textStyle: RichEditorTextStyleResult
-```
-
-**功能：** 表示文本Span样式信息。
-
-**类型：** [RichEditorTextStyleResult](#class-richeditortextstyleresult)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var value
-
-```cangjie
-public var value: String
-```
-
-**功能：** 表示文本Span内容。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(RichEditorSpanPosition, String, RichEditorTextStyleResult, (Int32,Int32))
-
-```cangjie
-
-public init(
-    spanPosition: RichEditorSpanPosition,
-    value: String,
-    textStyle: RichEditorTextStyleResult,
-    offsetInSpan: (Int32, Int32)
-)
-```
-
-**功能：** 创建RichEditorTextSpanResult。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|spanPosition|[RichEditorSpanPosition](#class-richeditorspanposition)|是|-|Span位置。|
-|value|String|是|-|文本Span内容。|
-|textStyle|[RichEditorTextStyleResult](#class-richeditortextstyleresult)|是|-|文本Span样式信息。|
-|offsetInSpan|(Int32,Int32)|是|-|文本Span内容里有效内容的起始和结束位置。|
+|spanIndex|?Int32|是|-|span索引。初始值：0。|
+|spanRange|?(Int32, Int32)|是|-|span范围。初始值：(0, 0)。|
 
 ### class RichEditorTextStyleResult
 
@@ -1066,7 +377,6 @@ public class RichEditorTextStyleResult {
     public var fontWeight: Int32
     public var fontFamily: String
     public var decoration: DecorationStyleResult
-
     public init(
         fontColor: String,
         fontSize: Float64,
@@ -1078,27 +388,15 @@ public class RichEditorTextStyleResult {
 }
 ```
 
-**功能：** 后端返回的文本样式信息。
+**功能：** 定义文本样式结果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### var decoration
+**父类型：**
 
-```cangjie
-public var decoration: DecorationStyleResult
-```
-
-**功能：** 表示文本装饰线样式及其颜色。
-
-**类型：** [DecorationStyleResult](#class-decorationstyleresult)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+无
 
 #### var fontColor
 
@@ -1106,7 +404,7 @@ public var decoration: DecorationStyleResult
 public var fontColor: String
 ```
 
-**功能：** 表示文本颜色。
+**功能：** 字体颜色。
 
 **类型：** String
 
@@ -1114,23 +412,7 @@ public var fontColor: String
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var fontFamily
-
-```cangjie
-public var fontFamily: String
-```
-
-**功能：** 表示字体列表。
-
-**类型：** String
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var fontSize
 
@@ -1138,7 +420,7 @@ public var fontFamily: String
 public var fontSize: Float64
 ```
 
-**功能：** 表示字体大小。
+**功能：** 字体大小。
 
 **类型：** Float64
 
@@ -1146,7 +428,7 @@ public var fontSize: Float64
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var fontStyle
 
@@ -1154,15 +436,15 @@ public var fontSize: Float64
 public var fontStyle: FontStyle
 ```
 
-**功能：** 表示字体样式。
+**功能：** 字体样式。
 
-**类型：** [FontStyle](./cj-common-types.md#enum-fontstyle)
+**类型：** FontStyle
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var fontWeight
 
@@ -1170,7 +452,7 @@ public var fontStyle: FontStyle
 public var fontWeight: Int32
 ```
 
-**功能：** 表示字体粗细。
+**功能：** 字体粗细。
 
 **类型：** Int32
 
@@ -1178,12 +460,43 @@ public var fontWeight: Int32
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### var fontFamily
+
+```cangjie
+public var fontFamily: String
+```
+
+**功能：** 字体族。
+
+**类型：** String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var decoration
+
+```cangjie
+public var decoration: DecorationStyleResult
+```
+
+**功能：** 字体装饰。
+
+**类型：** DecorationStyleResult
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 #### init(String, Float64, FontStyle, Int32, String, DecorationStyleResult)
 
 ```cangjie
-
 public init(
     fontColor: String,
     fontSize: Float64,
@@ -1194,163 +507,1584 @@ public init(
 )
 ```
 
-**功能：** 创建RichEditorTextStyleResult。
+**功能：** RichEditorTextStyleResult构造函数
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|fontColor|String|是|-|文本颜色。|
+|fontColor|String|是|-|字体颜色。|
 |fontSize|Float64|是|-|字体大小。|
-|fontStyle|[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。|
+|fontStyle|FontStyle|是|-|字体样式。|
 |fontWeight|Int32|是|-|字体粗细。|
-|fontFamily|String|是|-|字体列表。|
-|decoration|[DecorationStyleResult](#class-decorationstyleresult)|是|-|文本装饰线样式及其颜色。|
+|fontFamily|String|是|-|字体族。|
+|decoration|DecorationStyleResult|是|-|字体装饰。|
 
-### class ShadowOptionsResult
-
-```cangjie
-public class ShadowOptionsResult {}
-```
-
-**功能：** 文字阴影效果。
-
-#### let color
+### class RichEditorImageSpanStyleResult
 
 ```cangjie
-public let color: String
+public class RichEditorImageSpanStyleResult {
+    public var size: ?(Float64, Float64)
+    public var verticalAlign: ?ImageSpanAlignment
+    public var objectFit: ?ImageFit
+    public var layoutStyle: ?RichEditorLayoutStyle
+}
 ```
 
-**功能：** 表示阴影的颜色。
+**功能：** 定义span图像样式结果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var size
+
+```cangjie
+public var size: ?(Float64, Float64)
+```
+
+**功能：** 图像大小。
+
+**类型：** ?(Float64, Float64)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var verticalAlign
+
+```cangjie
+public var verticalAlign: ?ImageSpanAlignment
+```
+
+**功能：** 图像垂直对齐。
+
+**类型：** ?ImageSpanAlignment
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var objectFit
+
+```cangjie
+public var objectFit: ?ImageFit
+```
+
+**功能：** 图像适应方式。
+
+**类型：** ?ImageFit
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var layoutStyle
+
+```cangjie
+public var layoutStyle: ?RichEditorLayoutStyle
+```
+
+**功能：** RichEditor图像布局样式。
+
+**类型：** ?RichEditorLayoutStyle
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+
+
+
+
+### class RichEditorTextSpanResult
+
+```cangjie
+public class RichEditorTextSpanResult <: RichEditorSpanResult {
+    public var spanPosition: RichEditorSpanPosition
+    public var value: String
+    public var textStyle: RichEditorTextStyleResult
+    public var offsetInSpan: (Int32, Int32)
+    public init(
+        spanPosition: RichEditorSpanPosition,
+        value: String,
+        textStyle: RichEditorTextStyleResult,
+        offsetInSpan: (Int32, Int32)
+    )
+}
+```
+
+**功能：** 定义文本span结果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+- RichEditorSpanResult
+
+#### var spanPosition
+
+```cangjie
+public var spanPosition: RichEditorSpanPosition
+```
+
+**功能：** 文本span的位置。
+
+**类型：** RichEditorSpanPosition
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var value
+
+```cangjie
+public var value: String
+```
+
+**功能：** 文本span的内容。
 
 **类型：** String
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
-#### let offsetX
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-```cangjie
-public let offsetX: Float64
-```
+**起始版本：** 22
 
-**功能：** 表示阴影的X轴偏移量。
-
-**类型：** Float64
-
-**读写能力：** 只读
-
-#### let offsetY
+#### var textStyle
 
 ```cangjie
-public let offsetY: Float64
+public var textStyle: RichEditorTextStyleResult
 ```
 
-**功能：** 表示阴影的Y轴偏移量。
+**功能：** 文本样式。
 
-**类型：** Float64
+**类型：** RichEditorTextStyleResult
 
-**读写能力：** 只读
+**读写能力：** 可读写
 
-#### let radius
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var offsetInSpan
 
 ```cangjie
-public let radius: Float64
+public var offsetInSpan: (Int32, Int32)
 ```
 
-**功能：** 表示阴影模糊半径。
+**功能：** span中的偏移量。
 
-**类型：** Float64
+**类型：** (Int32, Int32)
 
-**读写能力：** 只读
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(RichEditorSpanPosition, String, RichEditorTextStyleResult, (Int32, Int32))
+
+```cangjie
+public init(
+    spanPosition: RichEditorSpanPosition,
+    value: String,
+    textStyle: RichEditorTextStyleResult,
+    offsetInSpan: (Int32, Int32)
+)
+```
+
+**功能：** RichEditorTextSpanResult构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|spanPosition|RichEditorSpanPosition|是|-|文本span的位置。|
+|value|String|是|-|文本span的内容。|
+|textStyle|RichEditorTextStyleResult|是|-|文本样式。|
+|offsetInSpan|(Int32, Int32)|是|-|span中的偏移量。|
+
+### class RichEditorImageSpanResult
+
+```cangjie
+public class RichEditorImageSpanResult <: RichEditorSpanResult {
+    public var spanPosition: ?RichEditorSpanPosition
+    public var valuePixelMap: Option<PixelMap>
+    public var valueResourceStr: ?String
+    public var imageStyle: ?RichEditorImageSpanStyleResult
+    public var offsetInSpan: ?(Int32, Int32)
+    public init(
+        spanPosition!: ?RichEditorSpanPosition = Option.None,
+        valuePixelMap!: Option<PixelMap> = Option.None,
+        valueResourceStr!: ?String = None,
+        imageStyle!: ?RichEditorImageSpanStyleResult = None,
+        offsetInSpan!: ?(Int32, Int32) = None
+    )
+}
+```
+
+**功能：** 定义图像span。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+- RichEditorSpanResult
+
+#### var spanPosition
+
+```cangjie
+public var spanPosition: ?RichEditorSpanPosition
+```
+
+**功能：** 图像span的位置。
+
+**类型：** ?RichEditorSpanPosition
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var valuePixelMap
+
+```cangjie
+public var valuePixelMap: Option<PixelMap>
+```
+
+**功能：** 图像span的像素图。
+
+**类型：** Option\<PixelMap>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var valueResourceStr
+
+```cangjie
+public var valueResourceStr: ?String
+```
+
+**功能：** 图像span的资源字符串。
+
+**类型：** ?String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var imageStyle
+
+```cangjie
+public var imageStyle: ?RichEditorImageSpanStyleResult
+```
+
+**功能：** 图像属性。
+
+**类型：** ?RichEditorImageSpanStyleResult
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var offsetInSpan
+
+```cangjie
+public var offsetInSpan: ?(Int32, Int32)
+```
+
+**功能：** span中的偏移量。
+
+**类型：** ?(Int32, Int32)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?RichEditorSpanPosition, Option\<PixelMap>, ?String, ?RichEditorImageSpanStyleResult, ?(Int32, Int32))
+
+```cangjie
+public init(
+    spanPosition!: ?RichEditorSpanPosition = Option.None,
+    valuePixelMap!: Option<PixelMap> = Option.None,
+    valueResourceStr!: ?String = None,
+    imageStyle!: ?RichEditorImageSpanStyleResult = None,
+    offsetInSpan!: ?(Int32, Int32) = None
+)
+```
+
+**功能：** RichEditorImageSpanResult构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|spanPosition|?RichEditorSpanPosition|否|Option.None|**命名参数。** 图像span的位置。初始值：RichEditorSpanPosition(0, (0, 0))。|
+|valuePixelMap|Option\<PixelMap>|否|Option.None|**命名参数。** 图像span的像素图。|
+|valueResourceStr|?String|否|None|**命名参数。** 图像span的资源字符串。初始值：""。|
+|imageStyle|?RichEditorImageSpanStyleResult|否|None|**命名参数。** 图像属性。初始值：RichEditorImageSpanStyleResult()。|
+|offsetInSpan|?(Int32, Int32)|否|None|**命名参数。** span中的偏移量。初始值：(0, 0)。|
+
+### class RichEditorSelection
+
+```cangjie
+public class RichEditorSelection {
+    public var selection: ?(Int32, Int32)
+    public var spans: ?ArrayList<RichEditorSpanResult>
+    public init(selection: ?(Int32, Int32), spans: ?ArrayList<RichEditorSpanResult>)
+}
+```
+
+**功能：** 定义编辑的文本信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var selection
+
+```cangjie
+public var selection: ?(Int32, Int32)
+```
+
+**功能：** 位置信息。
+
+**类型：** ?(Int32, Int32)
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var spans
+
+```cangjie
+public var spans: ?ArrayList<RichEditorSpanResult>
+```
+
+**功能：** 选中的文本内容。
+
+**类型：** ?ArrayList\<RichEditorSpanResult>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?(Int32, Int32), ?ArrayList\<RichEditorSpanResult>)
+
+```cangjie
+public init(selection: ?(Int32, Int32), spans: ?ArrayList<RichEditorSpanResult>)
+```
+
+**功能：** RichEditorSelection构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|selection|?(Int32, Int32)|是|-|位置信息。初始值：(0, 0)。|
+|spans|?ArrayList\<RichEditorSpanResult>|是|-|选中的文本内容。初始值：ArrayList\<RichEditorSpanResult>()。|
+
+### class RichEditorDeleteValue
+
+```cangjie
+public class RichEditorDeleteValue {
+    public var offset: Int32
+    public var direction: RichEditorDeleteDirection
+    public var length: Int32
+    public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
+    public init(
+        offset: Int32,
+        direction: RichEditorDeleteDirection,
+        length: Int32,
+        richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
+    )
+}
+```
+
+**功能：** 提供从文本中删除值的接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var offset
+
+```cangjie
+public var offset: Int32
+```
+
+**功能：** 删除的偏移量。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var direction
+
+```cangjie
+public var direction: RichEditorDeleteDirection
+```
+
+**功能：** 删除的方向。
+
+**类型：** RichEditorDeleteDirection
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var length
+
+```cangjie
+public var length: Int32
+```
+
+**功能：** 删除的文本长度。
+
+**类型：** Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var richEditorDeleteSpans
+
+```cangjie
+public var richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
+```
+
+**功能：** 删除的span对象。
+
+**类型：** ArrayList\<RichEditorSpanResult>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(Int32, RichEditorDeleteDirection, Int32, ArrayList\<RichEditorSpanResult>)
+
+```cangjie
+public init(
+    offset: Int32,
+    direction: RichEditorDeleteDirection,
+    length: Int32,
+    richEditorDeleteSpans: ArrayList<RichEditorSpanResult>
+)
+```
+
+**功能：** RichEditorDeleteValue构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|offset|Int32|是|-|删除的偏移量。|
+|direction|RichEditorDeleteDirection|是|-|删除的方向。|
+|length|Int32|是|-|删除的文本长度。|
+|richEditorDeleteSpans|ArrayList\<RichEditorSpanResult>|是|-|删除的span对象。|
 
 ### class TextRange
 
 ```cangjie
 public class TextRange {
-    public var start: Int32
-    public var end: Int32
-
-    public init(start: Int32, end: Int32)
+    public var start: ?Int32
+    public var end: ?Int32
+    public init(start: ?Int32, end: ?Int32)
 }
 ```
 
-**功能：** 文本范围。
+**功能：** 定义文本类型组件的范围。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### var end
+**父类型：**
 
-```cangjie
-public var end: Int32
-```
-
-**功能：** 表示结束索引。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+无
 
 #### var start
 
 ```cangjie
-public var start: Int32
+public var start: ?Int32
 ```
 
-**功能：** 表示起始索引。
+**功能：** 起始偏移量。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Int32, Int32)
+#### var end
 
 ```cangjie
-
-public init(start: Int32, end: Int32)
+public var end: ?Int32
 ```
 
-**功能：** 创建文本范围对象。
+**功能：** 结束偏移量。
+
+**类型：** ?Int32
+
+**读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### init(?Int32, ?Int32)
+
+```cangjie
+public init(start: ?Int32, end: ?Int32)
+```
+
+**功能：** TextRange构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|Int32|是|-|起始索引。|
-|end|Int32|是|-|结束索引。|
+|start|?Int32|是|-|起始偏移量。初始值：-1。|
+|end|?Int32|是|-|结束偏移量。初始值：-1。|
+
+### class PasteEvent
+
+```cangjie
+public class PasteEvent {}
+```
+
+**功能：** 定义粘贴事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### func preventDefault()
+
+```cangjie
+public func preventDefault(): Unit
+```
+
+**功能：** 覆盖系统粘贴事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+### class RichEditorInsertValue
+
+```cangjie
+public class RichEditorInsertValue {
+    public var insertOffset: ?Int32
+    public var insertValue: ?String
+    public init(
+        insertOffset: ?Int32,
+        insertValue: ?String
+    )
+}
+```
+
+**功能：** 定义RichEditor插入值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var insertOffset
+
+```cangjie
+public var insertOffset: ?Int32
+```
+
+**功能：** 插入偏移量。
+
+**类型：** ?Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var insertValue
+
+```cangjie
+public var insertValue: ?String
+```
+
+**功能：** 插入值。
+
+**类型：** ?String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?Int32, ?String)
+
+```cangjie
+public init(
+    insertOffset: ?Int32,
+    insertValue: ?String
+)
+```
+
+**功能：** RichEditorInsertValue构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|insertOffset|?Int32|是|-|插入偏移量。初始值：0。|
+|insertValue|?String|是|-|插入值。初始值：""。|
+
+### class DecorationStyleResult
+
+```cangjie
+public class DecorationStyleResult {
+    public var decorationType: ?TextDecorationType
+    public var color: ResourceColor
+    public init(
+        decorationType: TextDecorationType,
+        color: ResourceColor
+    )
+}
+```
+
+**功能：** 定义装饰样式结果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var decorationType
+
+```cangjie
+public var decorationType: ?TextDecorationType
+```
+
+**功能：** 装饰类型。
+
+**类型：** ?TextDecorationType
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var color
+
+```cangjie
+public var color: ResourceColor
+```
+
+**功能：** 颜色。
+
+**类型：** ResourceColor
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(TextDecorationType, ResourceColor)
+
+```cangjie
+public init(
+    decorationType: TextDecorationType,
+    color: ResourceColor
+)
+```
+
+**功能：** DecorationStyleResult构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|decorationType|TextDecorationType|是|-|装饰类型。|
+|color|ResourceColor|是|-|颜色。|
+
+### class SelectionMenuOptions
+
+```cangjie
+public class SelectionMenuOptions {
+    public var onAppear: ?VoidCallback
+    public var onDisappear: ?VoidCallback
+    public init(onAppear!: ?() -> Unit = None, onDisappear!: ?() -> Unit = None)
+}
+```
+
+**功能：** 定义选择菜单选项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var onAppear
+
+```cangjie
+public var onAppear: ?VoidCallback
+```
+
+**功能：** 选择菜单出现时的回调函数。
+
+**类型：** ?VoidCallback
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var onDisappear
+
+```cangjie
+public var onDisappear: ?VoidCallback
+```
+
+**功能：** 选择菜单消失时的回调函数。
+
+**类型：** ?VoidCallback
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?() -> Unit, ?() -> Unit)
+
+```cangjie
+public init(onAppear!: ?() -> Unit = None, onDisappear!: ?() -> Unit = None)
+```
+
+**功能：** SelectionMenuOptions构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|onAppear|?() -> Unit|否|None|**命名参数。** 选择菜单出现时的回调函数。初始值：{=>}。|
+|onDisappear|?() -> Unit|否|None|**命名参数。** 选择菜单消失时的回调函数。初始值：{=>}。|
+
+### class RichEditorTextStyle
+
+```cangjie
+public class RichEditorTextStyle {
+    public var fontColor: ?ResourceColor
+    public var fontSize: ?Length
+    public var fontStyle: ?FontStyle
+    public var fontWeight: ?FontWeight
+    public var fontFamily: ?ResourceStr
+    public var decoration: ?TextDecorationOptions
+    public init(
+        fontColor!: ?ResourceColor = None,
+        fontSize!: ?Length = None,
+        fontStyle!: ?FontStyle = None,
+        fontWeight!: ?FontWeight = None,
+        fontFamily!: ?ResourceStr = None,
+        decoration!: ?TextDecorationOptions = None
+    )
+}
+```
+
+**功能：** 定义span文本样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var fontColor
+
+```cangjie
+public var fontColor: ?ResourceColor
+```
+
+**功能：** 字体颜色。
+
+**类型：** ?ResourceColor
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var fontSize
+
+```cangjie
+public var fontSize: ?Length
+```
+
+**功能：** 字体大小。
+
+**类型：** ?Length
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var fontStyle
+
+```cangjie
+public var fontStyle: ?FontStyle
+```
+
+**功能：** 字体样式。
+
+**类型：** ?FontStyle
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var fontWeight
+
+```cangjie
+public var fontWeight: ?FontWeight
+```
+
+**功能：** 字体粗细。
+
+**类型：** ?FontWeight
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var fontFamily
+
+```cangjie
+public var fontFamily: ?ResourceStr
+```
+
+**功能：** 字体族。
+
+**类型：** ?ResourceStr
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var decoration
+
+```cangjie
+public var decoration: ?TextDecorationOptions
+```
+
+**功能：** 字体装饰。
+
+**类型：** ?TextDecorationOptions
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?ResourceColor, ?Length, ?FontStyle, ?FontWeight, ?ResourceStr, ?TextDecorationOptions)
+
+```cangjie
+public init(
+    fontColor!: ?ResourceColor = None,
+    fontSize!: ?Length = None,
+    fontStyle!: ?FontStyle = None,
+    fontWeight!: ?FontWeight = None,
+    fontFamily!: ?ResourceStr = None,
+    decoration!: ?TextDecorationOptions = None
+)
+```
+
+**功能：** RichEditorTextStyle构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|fontColor|?ResourceColor|否|None|**命名参数。** 字体颜色。初始值：Color.Black。|
+|fontSize|?Length|否|None|**命名参数。** 字体大小。初始值：16.vp。|
+|fontStyle|?FontStyle|否|None|**命名参数。** 字体样式。初始值：FontStyle.Normal。|
+|fontWeight|?FontWeight|否|None|**命名参数。** 字体粗细。初始值：FontWeight.Normal。|
+|fontFamily|?ResourceStr|否|None|**命名参数。** 字体族。初始值：DEFAULT_FONT。|
+|decoration|?TextDecorationOptions|否|None|**命名参数。** 字体装饰。初始值：TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)。|
+
+### class RichEditorTextSpanOptions
+
+```cangjie
+public class RichEditorTextSpanOptions {
+    public var offset: ?Int32
+    public var style: ?RichEditorTextStyle
+    public init(offset!: ?Int32 = None, style!: ?RichEditorTextStyle = None)
+}
+```
+
+**功能：** 定义RichEditor的span选项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var offset
+
+```cangjie
+public var offset: ?Int32
+```
+
+**功能：** 添加文本span的偏移量。
+
+**类型：** ?Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var style
+
+```cangjie
+public var style: ?RichEditorTextStyle
+```
+
+**功能：** 文本样式。
+
+**类型：** ?RichEditorTextStyle
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?Int32, ?RichEditorTextStyle)
+
+```cangjie
+public init(offset!: ?Int32 = None, style!: ?RichEditorTextStyle = None)
+```
+
+**功能：** RichEditorTextSpanOptions构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|offset|?Int32|否|None|**命名参数。** 添加文本span的偏移量。初始值：Int32.Max。|
+|style|?RichEditorTextStyle|否|None|**命名参数。** 文本样式。初始值：RichEditorTextStyle()。|
+
+### class RichEditorLayoutStyle
+
+```cangjie
+public class RichEditorLayoutStyle {
+    public var margin: ?Margin
+    public var borderRadius: ?BorderRadiuses
+    public init(margin!: ?Margin = None, borderRadius!: ?BorderRadiuses = None)
+    public init(margin!: ?Length, borderRadius!: ?Length)
+}
+```
+
+**功能：** 定义richEditor图像布局样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var margin
+
+```cangjie
+public var margin: ?Margin
+```
+
+**功能：** 边距。
+
+**类型：** ?Margin
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var borderRadius
+
+```cangjie
+public var borderRadius: ?BorderRadiuses
+```
+
+**功能：** 边框圆角。
+
+**类型：** ?BorderRadiuses
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?Margin, ?BorderRadiuses)
+
+```cangjie
+public init(margin!: ?Margin = None, borderRadius!: ?BorderRadiuses = None)
+```
+
+**功能：** RichEditorLayoutStyle构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|margin|?Margin|否|None|**命名参数。** 边距。初始值：Margin()。|
+|borderRadius|?BorderRadiuses|否|None|**命名参数。** 边框圆角。初始值：BorderRadiuses()。|
+
+#### init(?Length, ?Length)
+
+```cangjie
+public init(margin!: ?Length, borderRadius!: ?Length)
+```
+
+**功能：** RichEditorLayoutStyle构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|margin|?Length|否|None|**命名参数。** 边距。|
+|borderRadius|?Length|否|None|**命名参数。** 边框圆角。|
+
+### class RichEditorImageSpanStyle
+
+```cangjie
+public class RichEditorImageSpanStyle {
+    public var size: Option<(Length, Length)>
+    public var verticalAlign: ?ImageSpanAlignment
+    public var objectFit: ?ImageFit
+    public var layoutStyle: RichEditorLayoutStyle
+    public init(
+        size!: Option<(Length, Length)> = Option.None,
+        verticalAlign!: ?ImageSpanAlignment = Option.None,
+        objectFit!: ?ImageFit = Option.None
+    )
+}
+```
+
+**功能：** 定义span图像样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var size
+
+```cangjie
+public var size: Option<(Length, Length)>
+```
+
+**功能：** 图像大小。
+
+**类型：** Option\<(Length, Length)>
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var verticalAlign
+
+```cangjie
+public var verticalAlign: ?ImageSpanAlignment
+```
+
+**功能：** 图像垂直对齐。
+
+**类型：** ?ImageSpanAlignment
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var objectFit
+
+```cangjie
+public var objectFit: ?ImageFit
+```
+
+**功能：** 图像适应方式。
+
+**类型：** ?ImageFit
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var layoutStyle
+
+```cangjie
+public var layoutStyle: RichEditorLayoutStyle
+```
+
+**功能：** 图像布局样式。
+
+**类型：** RichEditorLayoutStyle
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(Option\<(Length, Length)>, ?ImageSpanAlignment, ?ImageFit)
+
+```cangjie
+public init(
+    size!: Option<(Length, Length)> = Option.None,
+    verticalAlign!: ?ImageSpanAlignment = Option.None,
+    objectFit!: ?ImageFit = Option.None
+)
+```
+
+**功能：** RichEditorImageSpanStyle构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|size|Option\<(Length, Length)>|否|Option.None|**命名参数。** 图像大小。|
+|verticalAlign|?ImageSpanAlignment|否|Option.None|**命名参数。** 图像垂直对齐。初始值：ImageSpanAlignment.Bottom。|
+|objectFit|?ImageFit|否|Option.None|**命名参数。** 图像适应方式。初始值：ImageFit.Cover。|
+
+### class RichEditorImageSpanOptions
+
+```cangjie
+public class RichEditorImageSpanOptions {
+    public var offset: ?Int32
+    public var imageStyle: ?RichEditorImageSpanStyle
+    public init(
+        offset!: ?Int32 = None,
+        imageStyle!: ?RichEditorImageSpanStyle = None
+    )
+}
+```
+
+**功能：** 定义RichEditor的图像span选项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var offset
+
+```cangjie
+public var offset: ?Int32
+```
+
+**功能：** 添加图像span的偏移量。
+
+**类型：** ?Int32
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var imageStyle
+
+```cangjie
+public var imageStyle: ?RichEditorImageSpanStyle
+```
+
+**功能：** 图像样式。
+
+**类型：** ?RichEditorImageSpanStyle
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?Int32, ?RichEditorImageSpanStyle)
+
+```cangjie
+public init(
+    offset!: ?Int32 = None,
+    imageStyle!: ?RichEditorImageSpanStyle = None
+)
+```
+
+**功能：** RichEditorImageSpanOptions构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|offset|?Int32|否|None|**命名参数。** 添加图像span的偏移量。初始值：Int32.Max。|
+|imageStyle|?RichEditorImageSpanStyle|否|None|**命名参数。** 图像样式。初始值：RichEditorImageSpanStyle()。|
+
+### class RichEditorParagraphStyle
+
+```cangjie
+public class RichEditorParagraphStyle {
+    public var textAlign: ?TextAlign
+    public var leadingMargin: ?LeadingMarginType
+    public init(textAlign!: ?TextAlign = None)
+    public init(textAlign!: ?TextAlign = None, leadingMargin!: ?Length)
+    public init(textAlign!: ?TextAlign = None, leadingMargin!: ?LeadingMarginPlaceholder)
+}
+```
+
+**功能：** 定义段落样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var textAlign
+
+```cangjie
+public var textAlign: ?TextAlign
+```
+
+**功能：** 文本对齐。
+
+**类型：** ?TextAlign
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var leadingMargin
+
+```cangjie
+public var leadingMargin: ?LeadingMarginType
+```
+
+**功能：** 首行缩进。
+
+**类型：** ?LeadingMarginType
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?TextAlign)
+
+```cangjie
+public init(textAlign!: ?TextAlign = None)
+```
+
+**功能：** RichEditorParagraphStyle构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|textAlign|?TextAlign|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
+
+#### init(?TextAlign, ?Length)
+
+```cangjie
+public init(textAlign!: ?TextAlign = None, leadingMargin!: ?Length)
+```
+
+**功能：** RichEditorParagraphStyle构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|textAlign|?TextAlign|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
+|leadingMargin|?Length|否|None|**命名参数。** 首行缩进。|
+
+#### init(?TextAlign, ?LeadingMarginPlaceholder)
+
+```cangjie
+public init(textAlign!: ?TextAlign = None, leadingMargin!: ?LeadingMarginPlaceholder)
+```
+
+**功能：** RichEditorParagraphStyle构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|textAlign|?TextAlign|否|None|**命名参数。** 文本对齐。初始值：TextAlign.Start。|
+|leadingMargin|?LeadingMarginPlaceholder|是|-|**命名参数。** 首行缩进。|
+
+### class TextDecorationOptions
+
+```cangjie
+public class TextDecorationOptions {
+    public var decorationType: ?TextDecorationType
+    public var color: ?ResourceColor
+    public init(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None)
+}
+```
+
+**功能：** 定义文本装饰选项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：**
+
+无
+
+#### var decorationType
+
+```cangjie
+public var decorationType: ?TextDecorationType
+```
+
+**功能：** 装饰类型。
+
+**类型：** ?TextDecorationType
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var color
+
+```cangjie
+public var color: ?ResourceColor
+```
+
+**功能：** 颜色。
+
+**类型：** ?ResourceColor
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### init(?TextDecorationType, ?ResourceColor)
+
+```cangjie
+public init(decorationType!: ?TextDecorationType, color!: ?ResourceColor = None)
+```
+
+**功能：** TextDecorationOptions构造函数
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|decorationType|?TextDecorationType|是|-|**命名参数。** 装饰类型。初始值：TextDecorationType.None。|
+|color|?ResourceColor|否|None|**命名参数。** 颜色。初始值：Color.Black。|
 
 ### class LeadingMarginPlaceholder
 
 ```cangjie
 public class LeadingMarginPlaceholder {
     public var pixelMap: PixelMap
-    public var size:(Length, Length)
-    public init(pixelMap!: PixelMap, size!: (Length, Length))
+    public var size: ?(Length, Length)
+    public init(pixelMap!: PixelMap, size!: ?(Length, Length))
 }
 ```
 
-**功能：** 前导边距占位符，用于表示文本段落左侧与组件边缘之间的距离。
+**功能：** 定义段落的首行缩进占位符。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：**
+
+无
 
 #### var pixelMap
 
@@ -1358,50 +2092,51 @@ public class LeadingMarginPlaceholder {
 public var pixelMap: PixelMap
 ```
 
-**功能：** 图片内容。
+**功能：** 占位符像素图。
 
-**类型：** [PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)
+**类型：** PixelMap
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var size
 
 ```cangjie
-public var size:(Length, Length)
+public var size: ?(Length, Length)
 ```
 
-**功能：** 图片大小，不支持设置百分比。
+**功能：** 占位符大小。
 
-**类型：** ([Length](../BasicServicesKit/cj-apis-base.md#interface-length), [Length](../BasicServicesKit/cj-apis-base.md#interface-length))
+**类型：** ?(Length, Length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(PixelMap, (Length,Length))
+#### init(PixelMap, ?(Length, Length))
 
 ```cangjie
-public init(pixelMap!: PixelMap, size!: (Length, Length))
+public init(pixelMap!: PixelMap, size!: ?(Length, Length))
 ```
 
-**功能：** 创建LeadingMarginPlaceholder类型的对象。
+**功能：** LeadingMarginPlaceholder构造函数
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片内容。|
-|size|([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片大小，不支持设置百分比。|
+|pixelMap|PixelMap|是|-|**命名参数。** 占位符像素图。|
+|size|?(Length, Length)|是|-|**命名参数。** 占位符大小。初始值：(0.0.px, 0.0.px)。|
+
 
 ### class RichEditorBaseController
 
@@ -1409,53 +2144,53 @@ public init(pixelMap!: PixelMap, size!: (Length, Length))
 public open class RichEditorBaseController {}
 ```
 
-**功能：** RichEditor组件的控制器基类。
+**功能：** 提供RichEditor的基础控制器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func getCaretOffset()
 
 ```cangjie
-public func getCaretOffset(): Int64
+public func getCaretOffset(): Int32
 ```
 
-**功能：** 获取当前光标所在位置。
+**功能：** 从控制器获取光标偏移量。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **返回值：**
 
 |类型|说明|
-|:----|:----|
-|Int64|当前光标所在位置。|
+|:---|:---|
+|Int32|光标偏移量。|
 
-#### func setCaretOffset(Int64)
+#### func setCaretOffset(?Int32)
 
 ```cangjie
-public func setCaretOffset(offset: Int64): Bool
+public func setCaretOffset(offset: ?Int32): Bool
 ```
 
-**功能：** 设置光标位置。
+**功能：** 设置光标偏移量。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offset|Int64|是|-|光标偏移位置。超出文本范围时，设置失败。|
+|offset|?Int32|是|-|光标偏移量。初始值：-1。|
 
 **返回值：**
 
 |类型|说明|
-|:----|:----|
-|Bool|光标是否设置成功。|
+|:---|:---|
+|Bool|设置结果。|
 
 ### class RichEditorController
 
@@ -1465,15 +2200,15 @@ public class RichEditorController <: RichEditorBaseController {
 }
 ```
 
-**功能：** RichEditor组件的控制器。
+**功能：** 提供RichEditor的控制器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
-- [RichEditorBaseController](#class-richeditorbasecontroller)
+- RichEditorBaseController
 
 #### init()
 
@@ -1485,82 +2220,128 @@ public init()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### func addImageSpan(String, RichEditorImageSpanOptions)
-
-```cangjie
-public func addImageSpan(value!: String, options!: RichEditorImageSpanOptions = RichEditorImageSpanOptions()): Int32
-```
-
-**功能：** 添加图片内容，如果组件光标闪烁，插入后光标位置更新为新插入图片的后面。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|String|是|-|图片内容。|
-|options|[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|否|RichEditorImageSpanOptions()|图片选项。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|添加完成的ImageSpan所在的位置。|
-
-#### func addImageSpan(AppResource, RichEditorImageSpanOptions)
+#### func addTextSpan(?ResourceStr, ?RichEditorTextSpanOptions)
 
 ```cangjie
-public func addImageSpan(value!: AppResource, options!: RichEditorImageSpanOptions = RichEditorImageSpanOptions()): Int32
-```
-
-**功能：** 添加图片内容，如果组件光标闪烁，插入后光标位置更新为新插入图片的后面。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)|是|-|图片内容。|
-|options|[RichEditorImageSpanOptions](#class-richeditorimagespanoptions)|否|RichEditorImageSpanOptions()|图片选项。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|添加完成的ImageSpan所在的位置。|
-
-#### func addTextSpan(ResourceStr, RichEditorTextSpanOptions)
-
-```cangjie
-public func addTextSpan(value!: ResourceStr, options!: RichEditorTextSpanOptions = RichEditorTextSpanOptions()): Int32
+public func addTextSpan(content!: ?ResourceStr, options!: ?RichEditorTextSpanOptions = None): Int32
 ```
 
 **功能：** 添加文本内容，如果组件光标闪烁，插入后光标位置更新为新插入文本的后面。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。|
-|options|[RichEditorTextSpanOptions](#class-richeditortextspanoptions)|否|RichEditorTextSpanOptions()|文本选项。|
+|content|?ResourceStr|是|-|**命名参数。** 文本内容。初始值：""。|
+|options|?RichEditorTextSpanOptions|否|None|**命名参数。** 文本选项。初始值：RichEditorTextSpanOptions()。|
 
 **返回值：**
 
 |类型|说明|
-|:----|:----|
+|:---|:---|
 |Int32|添加完成的TextSpan所在的位置。|
+
+**异常：**
+
+- BusinessException：对应错误码如下表，详见[通用错误码](../errorcodes/cj-errorcode-universal.md)。
+
+	|错误码|说明|
+	|:---|:---|
+	|100001|Internal error: failed to allocate memory.|
+
+#### func addImageSpan(?ResourceStr, ?RichEditorImageSpanOptions)
+
+```cangjie
+public func addImageSpan(value!: ?ResourceStr, options!: ?RichEditorImageSpanOptions = None): Int32
+```
+
+**功能：** 添加图片内容，如果组件光标闪烁，插入后光标位置更新为新插入图片的后面。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|value|?ResourceStr|是|-|**命名参数。** 图片内容。初始值：""。|
+|options|?RichEditorImageSpanOptions|否|None|**命名参数。** 图片选项。初始值：RichEditorImageSpanOptions()。|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|Int32|添加完成的ImageSpan所在的位置。|
+
+#### func updateSpanStyle(?Int32, ?Int32, ?RichEditorTextStyle)
+
+```cangjie
+public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, textStyle!: ?RichEditorTextStyle): Unit
+```
+
+**功能：** 修改span样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|start|?Int32|否|None|**命名参数。** 起始位置。初始值：0。|
+|end|?Int32|否|None|**命名参数。** 结束位置。初始值：Int32.Max。|
+|textStyle|?RichEditorTextStyle|是|-|**命名参数。** 文本样式。初始值：RichEditorTextStyle()。|
+
+#### func updateSpanStyle(?Int32, ?Int32, ?RichEditorImageSpanStyle)
+
+```cangjie
+public func updateSpanStyle(start!: ?Int32 = None, end!: ?Int32 = None, imageStyle!: ?RichEditorImageSpanStyle): Unit
+```
+
+**功能：** 修改span样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|start|?Int32|否|None|**命名参数。** 起始位置。初始值：0。|
+|end|?Int32|否|None|**命名参数。** 结束位置。初始值：Int32.Max。|
+|imageStyle|?RichEditorImageSpanStyle|是|-|**命名参数。** 图像样式。初始值：RichEditorImageSpanStyle()。|
+
+#### func deleteSpans(?Int32, ?Int32)
+
+```cangjie
+public func deleteSpans(start!: ?Int32 = None, end!: ?Int32 = None): Unit
+```
+
+**功能：** 删除指定范围内的文本和图片。
+
+> **说明：**
+>
+> 当所有参数省略时，删除所有文本和图片。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|start|?Int32|否|None|**命名参数。** 起始位置，省略或者设置负值时表示从0开始。初始值：0。|
+|end|?Int32|否|None|**命名参数。** 结束位置，省略或者超出文本范围时表示到结尾。初始值：Int32.Max。|
 
 #### func closeSelectionMenu()
 
@@ -1572,842 +2353,52 @@ public func closeSelectionMenu(): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### func deleteSpans(Int32, Int32)
+#### func updateParagraphStyle(?Int32, ?Int32, ?RichEditorParagraphStyle)
 
 ```cangjie
-public func deleteSpans(start!: Int32 = 0, end!: Int32 = Int32.Max): Unit
+public func updateParagraphStyle(start!: ?Int32 = None, end!: ?Int32 = None, style!: ?RichEditorParagraphStyle): Unit
 ```
 
-**功能：** 删除指定范围内的文本和图片。
+**功能：** 修改span样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|Int32|否|0|起始位置，省略或者设置负值时表示从0开始。|
-|end|Int32|否|Int32.Max|结束位置，省略或者超出文本范围时表示到结尾。|
+|start|?Int32|否|None|**命名参数。** 起始位置。初始值：0。|
+|end|?Int32|否|None|**命名参数。** 结束位置。初始值：-1。|
+|style|?RichEditorParagraphStyle|是|-|**命名参数。** 段落样式。初始值：RichEditorParagraphStyle()。|
 
-#### func getSpans(Int32, Int32)
+#### func getSpans(?Int32, ?Int32)
 
 ```cangjie
-public func getSpans(start!: Int32 = -1, end!: Int32 = -1): ArrayList<RichEditorSpanResult>
+public func getSpans(start!: ?Int32 = None, end!: ?Int32 = None): ArrayList<RichEditorSpanResult>
 ```
 
 **功能：** 获取Span信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|Int32|否|-1|起始位置，省略或者设置负值时表示从0开始。|
-|end|Int32|否|-1|结束位置，省略或者超出文本范围时表示无穷大。|
+|start|?Int32|否|None|**命名参数。** 起始位置。初始值：-1。|
+|end|?Int32|否|None|**命名参数。** 结束位置。初始值：-1。|
 
 **返回值：**
 
 |类型|说明|
-|:----|:----|
-|ArrayList\<[RichEditorSpanResult](#interface-richeditorspanresult)>|存储span信息类型的数组。|
-
-#### func updateParagraphStyle(Int32, Int32, RichEditorParagraphStyle)
-
-```cangjie
-public func updateParagraphStyle(start!: Int32 = 0, end!: Int32 = -1, style!: RichEditorParagraphStyle): Unit
-```
-
-**功能：** 更新段落的样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|start|Int32|否|0|需要更新样式的文本起始位置，省略或者设置负值时表示从0开始。|
-|end|Int32|否|-1|需要更新样式的文本结束位置，省略或者超出文本范围时表示无穷大。|
-|style|[RichEditorParagraphStyle](#class-richeditorparagraphstyle)|是|-|段落样式。|
-
-#### func updateSpanStyle(Int32, Int32, RichEditorTextStyle)
-
-```cangjie
-public func updateSpanStyle(start!: Int32 = 0, end!: Int32 = Int32.Max, textStyle!: RichEditorTextStyle): Unit
-```
-
-**功能：** 表示添加图片的偏移位置和图片样式信息的类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|start|Int32|否|0|需要更新样式的文本起始位置，省略或者设置负值时表示从0开始。|
-|end|Int32|否|Int32.Max|需要更新样式的文本结束位置，省略或者超出文本范围时表示无穷大。|
-|textStyle|[RichEditorTextStyle](#class-richeditortextstyle)|是|-|文本样式。|
-
-#### func updateSpanStyle(Int32, Int32, RichEditorImageSpanStyle)
-
-```cangjie
-public func updateSpanStyle(start!: Int32 = 0, end!: Int32 = Int32.Max, imageStyle!: RichEditorImageSpanStyle): Unit
-```
-
-**功能：** 更新文本、图片或SymbolSpan样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|start|Int32|否|0|需要更新样式的文本起始位置，省略或者设置负值时表示从0开始。|
-|end|Int32|否|Int32.Max|需要更新样式的文本结束位置，省略或者超出文本范围时表示无穷大。|
-|imageStyle|[RichEditorImageSpanStyle](#class-richeditorimagespanstyle)|是|-|图片样式。|
-
-### class RichEditorImageSpanOptions
-
-```cangjie
-public class RichEditorImageSpanOptions {
-    public var offset: Int32
-    public var imageStyle: RichEditorImageSpanStyle
-    public init(
-        offset!: Int32 = Int32.Max,
-        imageStyle!: RichEditorImageSpanStyle = RichEditorImageSpanStyle()
-    )
-}
-```
-
-**功能：** 表示添加图片的偏移位置和图片样式信息的类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var imageStyle
-
-```cangjie
-public var imageStyle: RichEditorImageSpanStyle
-```
-
-**功能：** 表示图片样式信息的类型。省略时，使用系统默认图片信息。
-
-**类型：** [RichEditorImageSpanStyle](#class-richeditorimagespanstyle)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var offset
-
-```cangjie
-public var offset: Int32
-```
-
-**功能：** 表示添加图片的位置。省略时，添加到所有文本字符串的最后。当值小于0时，放在字符串最前面；当值大于字符串长度时，放在字符串最后面。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力:** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(Int32, RichEditorImageSpanStyle)
-
-```cangjie
-public init(
-    offset!: Int32 = Int32.Max,
-    imageStyle!: RichEditorImageSpanStyle = RichEditorImageSpanStyle()
-)
-```
-
-**功能：** 创建RichEditorImageSpanOptions类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|offset|Int32|否|Int32.Max|添加图片的位置。省略时，添加到所有文本字符串的最后。当值小于0时，放在字符串最前面；当值大于字符串长度时，放在字符串最后面。|
-|imageStyle|[RichEditorImageSpanStyle](#class-richeditorimagespanstyle)|否|RichEditorImageSpanStyle()|图片样式信息。省略时，使用系统默认图片信息。|
-
-### class RichEditorImageSpanStyle
-
-```cangjie
-public class RichEditorImageSpanStyle {
-    public var size: Option <(Length, Length)>
-    public var verticalAlign: ImageSpanAlignment
-    public var objectFit: ImageFit
-    public init(
-        size!: (Length, Length),
-        verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
-        objectFit!: ImageFit = ImageFit.Cover
-    )
-    public init(
-        verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
-        objectFit!: ImageFit = ImageFit.Cover
-    )
-}
-```
-
-**功能：** 图片样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var objectFit
-
-```cangjie
-public var objectFit: ImageFit
-```
-
-**功能：** 图片缩放类型。
-
-**类型：** [ImageFit](./cj-common-types.md#enum-imagefit)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var size
-
-```cangjie
-public var size: Option <(Length, Length)>
-```
-
-**功能：** 图片宽度和高度。
-
-**类型：** Option\<([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))>
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var verticalAlign
-
-```cangjie
-public var verticalAlign: ImageSpanAlignment
-```
-
-**功能：** 图片垂直对齐方式。
-
-**类型：** [ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init((Length,Length), ImageSpanAlignment, ImageFit)
-
-```cangjie
-public init(
-    size!: (Length, Length),
-    verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
-    objectFit!: ImageFit = ImageFit.Cover
-)
-```
-
-**功能：** 创建RichEditorImageSpanStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|size|([Length](../BasicServicesKit/cj-apis-base.md#interface-length),[Length](../BasicServicesKit/cj-apis-base.md#interface-length))|是|-|图片宽度和高度。|
-|verticalAlign|[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|否|ImageSpanAlignment.Baseline|图片垂直对齐方式。|
-|objectFit|[ImageFit](./cj-common-types.md#enum-imagefit)|否|ImageFit.Cover|图片缩放类型。|
-
-#### init(ImageSpanAlignment, ImageFit)
-
-```cangjie
-public init(
-    verticalAlign!: ImageSpanAlignment = ImageSpanAlignment.Baseline,
-    objectFit!: ImageFit = ImageFit.Cover
-)
-```
-
-**功能：** 创建RichEditorImageSpanStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|verticalAlign|[ImageSpanAlignment](./cj-common-types.md#enum-imagespanalignment)|否|ImageSpanAlignment.Baseline|图片垂直对齐方式。|
-|objectFit|[ImageFit](./cj-common-types.md#enum-imagefit)|否|ImageFit.Cover|图片缩放类型。|
-
-### class RichEditorLayoutStyle
-
-```cangjie
-public class RichEditorLayoutStyle {
-    public var margin: Margin
-    public var borderRadius: BorderRadiuses
-    public init(margin!: Margin = Margin(), borderRadius!: BorderRadiuses = BorderRadiuses())
-    public init(margin!: Length, borderRadius!: Length)
-}
-```
-
-**功能：** 图片布局风格。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var borderRadius
-
-```cangjie
-public var borderRadius: BorderRadiuses
-```
-
-**功能：** 圆角类型，用于描述组件边框圆角半径。
-
-**类型：** [BorderRadiuses](./cj-common-types.md#class-borderradiuses)
-
-**读写能力：** 可读写
-
-#### var margin
-
-```cangjie
-public var margin: Margin
-```
-
-**功能：** 外边距类型，用于描述组件不同方向的外边距。
-
-**类型：** [Margin](./cj-common-types.md#class-margin)
-
-**读写能力：** 可读写
-
-#### init(Margin, BorderRadiuses)
-
-```cangjie
-public init(margin!: Margin = Margin(), borderRadius!: BorderRadiuses = BorderRadiuses())
-```
-
-**功能：** 创建RichEditorLayoutStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|margin|[Margin](./cj-common-types.md#class-margin)|否|Margin()|外边距类型。|
-|borderRadius|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|否|BorderRadiuses()|圆角类型。|
-
-#### init(Length, Length)
-
-```cangjie
-public init(margin!: Length, borderRadius!: Length)
-```
-
-**功能：** 创建RichEditorLayoutStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|margin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|外边距值。|
-|borderRadius|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径值。|
-
-### class RichEditorParagraphStyle
-
-```cangjie
-public class RichEditorParagraphStyle {
-    public var textAlign: TextAlign
-    public var leadingMargin: LeadingMarginType
-    public init(textAlign!: TextAlign = TextAlign.Start)
-    public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length)
-    public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: LeadingMarginPlaceholder)
-}
-```
-
-**功能：** 段落样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var leadingMargin
-
-```cangjie
-public var leadingMargin: LeadingMarginType
-```
-
-**功能：** 表示文本段落缩进。
-
-**类型：** [LeadingMarginType](#enum-leadingmargintype)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var textAlign
-
-```cangjie
-public var textAlign: TextAlign
-```
-
-**功能：** 表示文本段落在水平方向的对齐方式。
-
-**类型:** [TextAlign](./cj-common-types.md#enum-textalign)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(TextAlign)
-
-```cangjie
-public init(textAlign!: TextAlign = TextAlign.Start)
-```
-
-**功能：** 创建RichEditorParagraphStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|textAlign|[TextAlign](./cj-common-types.md#enum-textalign)|否|TextAlign.Start|文本段落在水平方向的对齐方式。|
-
-#### init(TextAlign, Length)
-
-```cangjie
-public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: Length)
-```
-
-**功能：** 创建RichEditorParagraphStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|textAlign|[TextAlign](./cj-common-types.md#enum-textalign)|否|TextAlign.Start|文本段落在水平方向的对齐方式。|
-|leadingMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本段落缩进，不支持设置百分比。|
-
-#### init(TextAlign, LeadingMarginPlaceholder)
-
-```cangjie
-public init(textAlign!: TextAlign = TextAlign.Start, leadingMargin!: LeadingMarginPlaceholder)
-```
-
-**功能：** 创建RichEditorParagraphStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|textAlign|[TextAlign](./cj-common-types.md#enum-textalign)|否|TextAlign.Start|文本段落在水平方向的对齐方式。|
-|leadingMargin|[LeadingMarginPlaceholder](#class-leadingmarginplaceholder)|是|-|文本段落缩进，不支持设置百分比。|
-
-### class RichEditorTextSpanOptions
-
-```cangjie
-public class RichEditorTextSpanOptions {
-    public var offset: Int32
-    public var style: RichEditorTextStyle
-    public init(offset!: Int32 = Int32.Max, style!: RichEditorTextStyle = RichEditorTextStyle())
-}
-```
-
-**功能：** 添加文本的偏移位置和文本样式信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var offset
-
-```cangjie
-public var offset: Int32
-```
-
-**功能：** 表示添加文本的位置。省略时，添加到所有文本字符串的最后。当值小于0时，放在字符串最前面；当值大于字符串长度时，放在字符串最后面。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var style
-
-```cangjie
-public var style: RichEditorTextStyle
-```
-
-**功能：** 表示文本样式信息的类型。省略时，使用系统默认文本信息。
-
-**类型：** [RichEditorTextStyle](#class-richeditortextstyle)
-
-**读写能力:** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(Int32, RichEditorTextStyle)
-
-```cangjie
-public init(offset!: Int32 = Int32.Max, style!: RichEditorTextStyle = RichEditorTextStyle())
-```
-
-**功能：** 创建RichEditorTextSpanOptions类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|offset|Int32|否|Int32.Max|添加文本的位置。省略时，添加到所有文本字符串的最后。当值小于0时，放在字符串最前面；当值大于字符串长度时，放在字符串最后面。|
-|style|[RichEditorTextStyle](#class-richeditortextstyle)|否|RichEditorTextStyle()|文本样式信息。省略时，使用系统默认文本信息。|
-
-### class RichEditorTextStyle
-
-```cangjie
-public class RichEditorTextStyle {
-    public var fontColor: ResourceColor
-    public var fontSize: Length
-    public var fontStyle: FontStyle
-    public var fontWeight: FontWeight
-    public var fontFamily: ResourceStr
-    public var decoration: TextDecorationOptions
-    public init(
-        fontColor!: ResourceColor = Color.Black,
-        fontSize!: Length = 16.vp,
-        fontStyle!: FontStyle = FontStyle.Normal,
-        fontWeight!: FontWeight = FontWeight.Normal,
-        fontFamily!: ResourceStr = DEFAULT_FONT,
-        decoration!: TextDecorationOptions = TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)
-    )
-}
-```
-
-**功能：** 文本样式信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var decoration
-
-```cangjie
-public var decoration: TextDecorationOptions
-```
-
-**功能：** 文本装饰线样式及其颜色。
-
-**类型：** [TextDecorationOptions](#class-textdecorationoptions)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var fontColor
-
-```cangjie
-public var fontColor: ResourceColor
-```
-
-**功能：** 文本颜色。
-
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var fontFamily
-
-```cangjie
-public var fontFamily: ResourceStr
-```
-
-**功能：** 字体列表。
-
-**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var fontSize
-
-```cangjie
-public var fontSize: Length
-```
-
-**功能：** 字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var fontStyle
-
-```cangjie
-public var fontStyle: FontStyle
-```
-
-**功能：** 字体样式。
-
-**类型：** [FontStyle](./cj-common-types.md#enum-fontstyle)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本:** 21
-
-#### var fontWeight
-
-```cangjie
-public var fontWeight: FontWeight
-```
-
-**功能：** 字体粗细。
-
-**类型：** [FontWeight](./cj-common-types.md#enum-fontweight)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(ResourceColor, Length, FontStyle, FontWeight, ResourceStr, TextDecorationOptions)
-
-```cangjie
-public init(
-    fontColor!: ResourceColor = Color.Black,
-    fontSize!: Length = 16.vp,
-    fontStyle!: FontStyle = FontStyle.Normal,
-    fontWeight!: FontWeight = FontWeight.Normal,
-    fontFamily!: ResourceStr = DEFAULT_FONT,
-    decoration!: TextDecorationOptions = TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)
-)
-```
-
-**功能：** 创建RichEditorTextStyle类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|fontColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|文本颜色。|
-|fontSize|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.vp|字体大小，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。|
-|fontStyle|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|字体样式。|
-|fontWeight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal|字体粗细。|
-|fontFamily|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|DEFAULT_FONT|字体列表。|
-|decoration|[TextDecorationOptions](#class-textdecorationoptions)|否|TextDecorationOptions(decorationType: TextDecorationType.None, color: Color.Black)|文本装饰线样式及其颜色。|
-
-### class SelectionMenuOptions
-
-```cangjie
-public class SelectionMenuOptions {
-    public var onAppear: VoidCallback
-    public var onDisappear: VoidCallback
-    public init(onAppear!: () -> Unit = {=>}, onDisappear!: () -> Unit = {=>})
-}
-```
-
-**功能：** 菜单选项类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var onAppear
-
-```cangjie
-public var onAppear: VoidCallback
-```
-
-**功能：** 回调函数，自定义选择菜单弹出时触发回调函数。
-
-**类型：** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-voidcallback)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var onDisappear
-
-```cangjie
-public var onDisappear: VoidCallback
-```
-
-**功能：** 回调函数，自定义选择菜单关闭时触发回调函数。
-
-**类型：** [VoidCallback](../BasicServicesKit/cj-apis-base.md#type-voidcallback)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(() -> Unit, () -> Unit)
-
-```cangjie
-public init(onAppear!: () -> Unit = {=>}, onDisappear!: () -> Unit = {=>})
-```
-
-**功能：** 创建SelectionMenuOptions类型的对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|onAppear|()->Unit|否|{ => }|回调函数，自定义选择菜单弹出时触发回调函数。|
-|onDisappear|()->Unit|否|{ => }|回调函数，自定义选择菜单关闭时触发回调函数。|
-
-### class TextDecorationOptions
-
-```cangjie
-public class TextDecorationOptions {
-    public var decorationType: TextDecorationType
-    public var color: ResourceColor
-    public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black)
-}
-```
-
-**功能：** 文本装饰线的配置项。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var color
-
-```cangjie
-public var color: ResourceColor
-```
-
-**功能：**  设置文本装饰线颜色。
-
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var decorationType
-
-```cangjie
-public var decorationType: TextDecorationType
-```
-
-**功能：**  设置文本装饰线类型。
-
-**类型：** [TextDecorationType](./cj-common-types.md#enum-textdecorationtype)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(TextDecorationType, ResourceColor)
-
-```cangjie
-public init(decorationType!: TextDecorationType, color!: ResourceColor = Color.Black)
-```
-
-**功能：** 创建的文本装饰线对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|decorationType|[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-|装饰线类型。|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|装饰颜色。|
+|:---|:---|
+|ArrayList\<RichEditorSpanResult>|Span内容。|
 
 ### enum LeadingMarginType
 
@@ -2420,11 +2411,15 @@ public enum LeadingMarginType {
 }
 ```
 
-**功能：** 文本段落缩进类型。
+**功能：** 定义首行缩进类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：**
+
+无
 
 #### LengthType(Length)
 
@@ -2432,23 +2427,9 @@ public enum LeadingMarginType {
 LengthType(Length)
 ```
 
-**功能：** 文本段落缩进距离。
+**功能：** 长度类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### None
-
-```cangjie
-None
-```
-
-**功能：** 文本段落不缩进。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### PlaceholderType(LeadingMarginPlaceholder)
 
@@ -2456,306 +2437,19 @@ None
 PlaceholderType(LeadingMarginPlaceholder)
 ```
 
-**功能：** 前导边距占位符，用于表示文本段落左侧与组件边缘之间的距离。
+**功能：** 占位符类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**起始版本：** 22
 
-**起始版本：** 21
-
-### enum RichEditorDeleteDirection
+#### None
 
 ```cangjie
-public enum RichEditorDeleteDirection <: Equatable<RichEditorDeleteDirection> {
-    | BACKWARD
-    | FORWARD
-    | ...
-}
+None
 ```
 
-**功能：** 表示删除操作的方向。
+**功能：** 无。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<RichEditorDeleteDirection>
-
-#### BACKWARD
-
-```cangjie
-BACKWARD
-```
-
-**功能：** 表示向后删除。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### FORWARD
-
-```cangjie
-FORWARD
-```
-
-**功能：** 表示向前删除。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(RichEditorDeleteDirection)
-
-```cangjie
-public operator func !=(other: RichEditorDeleteDirection): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[RichEditorDeleteDirection](#enum-richeditordeletedirection)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(RichEditorDeleteDirection)
-
-```cangjie
-public operator func ==(other: RichEditorDeleteDirection): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[RichEditorDeleteDirection](#enum-richeditordeletedirection)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### enum RichEditorSpanType
-
-```cangjie
-public enum RichEditorSpanType <: Equatable<RichEditorSpanType> {
-    | TEXT
-    | IMAGE
-    | MIXED
-    | ...
-}
-```
-
-**功能：** 表示Span类型信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<RichEditorSpanType>
-
-#### IMAGE
-
-```cangjie
-IMAGE
-```
-
-**功能：** 表示Span为图像类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### MIXED
-
-```cangjie
-MIXED
-```
-
-**功能：** 表示Span为图文混合类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### TEXT
-
-```cangjie
-TEXT
-```
-
-**功能：** 表示Span为文字类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(RichEditorSpanType)
-
-```cangjie
-public operator func !=(other: RichEditorSpanType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[RichEditorSpanType](#enum-richeditorspantype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(RichEditorSpanType)
-
-```cangjie
-public operator func ==(other: RichEditorSpanType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[RichEditorSpanType](#enum-richeditorspantype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-#### func getValue()
-
-```cangjie
-public func getValue(): Int32
-```
-
-**功能：** 获取枚举的值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Int32|枚举的值。|
-
-### enum SpanType
-
-```cangjie
-public enum SpanType <: Equatable<SpanType> {
-    | TEXT
-    | IMAGE
-    | ...
-}
-```
-
-**功能：** 表示Span类型信息的类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<SpanType>
-
-#### IMAGE
-
-```cangjie
-IMAGE
-```
-
-**功能：** 表示Span为图像类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### TEXT
-
-```cangjie
-TEXT
-```
-
-**功能：** 表示Span为文字类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(SpanType)
-
-```cangjie
-public operator func !=(other: SpanType): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SpanType](#enum-spantype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(SpanType)
-
-```cangjie
-public operator func ==(other: SpanType): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SpanType](#enum-spantype)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### type OnDidChangeCallback
-
-```cangjie
-public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) -> Unit
-```
-
-**功能：** (rangeBefore: TextRange, rangeAfter: TextRange) -> Unit 的类型别名。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 ## 示例代码
 
@@ -2765,15 +2459,16 @@ public type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.*
-import kit.PerformanceAnalysisKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
+import ohos.hilog.*
 
 @Entry
 @Component
 class EntryView {
     let controller = RichEditorController()
 
-    @State var position: Int64 = 0
+    @State var position: Int32 = 0
 
     @Builder
     func builder(){
@@ -2797,31 +2492,31 @@ class EntryView {
         Column(space: 30) {
             Row {
                 Button("getCaretOffset")
-                .onClick {
+                .onClick({
                     evt =>
                     Hilog.info(0, "AppLogCj", controller.getCaretOffset().toString())
                     this.position = controller.getCaretOffset()
-                }.width(400.px).height(150.px)
+                }).width(400.px).height(150.px)
 
                 Text("position: ${this.position.toString()}")
             }
 
             Row {
                 Button("setCaretOffset 0")
-                .onClick {
+                .onClick({
                     evt =>
                     controller.setCaretOffset(0)
-                }.width(400.px).height(150.px)
+                }).width(400.px).height(150.px)
 
                 Text("position: ${this.position.toString()}")
             }
 
             Row {
                 Button("addText Hello")
-                .onClick {
+                .onClick({
                     evt =>
                     controller.addTextSpan(
-                        value: "Hello",
+                        content: "Hello",
                         options: RichEditorTextSpanOptions(
                             style: RichEditorTextStyle(
                                 fontColor: Color(0XFF1298),
@@ -2834,10 +2529,10 @@ class EntryView {
                             )
                         )
                     )
-                }.width(400.px).height(150.px)
+                }).width(400.px).height(150.px)
 
                 Button("addImage")
-                .onClick {
+                .onClick({
                     evt =>
                     controller.addImageSpan(
                         value: @r(app.media.startIcon),
@@ -2847,12 +2542,12 @@ class EntryView {
                             )
                         )
                     )
-                }.width(400.px).height(150.px)
+                }).width(400.px).height(150.px)
             }
 
             Row {
                 Button("updateParagraphStyle")
-                .onClick {
+                .onClick({
                     evt =>
                     let array = controller.updateParagraphStyle(
                         start: 0,
@@ -2862,7 +2557,7 @@ class EntryView {
                             leadingMargin: 24.px
                         )
                     )
-                }.width(400.px).height(150.px)
+                }).width(400.px).height(150.px)
             }
 
             RichEditor(controller)
@@ -2877,7 +2572,7 @@ class EntryView {
             .onReady({ => Hilog.info(0, "AppLogCj", "RichEditor onReady!!")})
             .onDeleteComplete({ => Hilog.info(0, "AppLogCj", "RichEditor onDeleteComplete!!")})
             .onSelect({ value =>
-                Hilog.info(0, "AppLogCj", "RichEditor onSelect. ${value.selection[0]} ~ ${value.selection[1]}")
+                Hilog.info(0, "AppLogCj", "RichEditor onSelect. ${value.selection.getOrThrow()[0]} ~ ${value.selection.getOrThrow()[1]}")
             })
         }
     }

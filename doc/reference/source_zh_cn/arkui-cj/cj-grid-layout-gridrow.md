@@ -16,14 +16,14 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Int32, Length, BreakPoints, GridRowDirection, () -> Unit)
+### init(?Int32, ?Length, ?BreakPoints, ?GridRowDirection, () -> Unit)
 
 ```cangjie
 public init(
-    columns!: Int32 = 12,
-    gutter!: Length = 0.vp,
-    breakpoints!: BreakPoints = BreakPoints(),
-    direction!: GridRowDirection = GridRowDirection.Row,
+    columns!: ?Int32,
+    gutter!: ?Length = None,
+    breakpoints!: ?BreakPoints = Option.None,
+    direction!: ?GridRowDirection = Option.None,
     child!: () -> Unit = {=>}
 )
 ```
@@ -32,26 +32,26 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|Int32|否|12|**命名参数。** 布局列数设置。<br>取值为大于0的整数，初始值：12。|
-|gutter|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 栅格布局间距，x代表水平方向。<br>初始值：0。|
-|breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()|**命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
-|direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|
-|child|()->Unit|否|{ => }| **命名参数。** GridRow容器的子组件。|
+|columns|?Int32|否|None| **命名参数。** 布局列数设置。<br>初始值：12|
+|gutter|?Length|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp|
+|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
+|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
+|child|() -> Unit|否|{=>}| **命名参数。** GridRow容器的子组件。|
 
-### init(GridRowColumnOption, Length, BreakPoints, GridRowDirection, () -> Unit)
+### init(?GridRowOptions, ?Length, ?BreakPoints, ?GridRowDirection, () -> Unit)
 
 ```cangjie
 public init(
-    columns!: GridRowColumnOption,
-    gutter!: Length = 0.vp,
-    breakpoints!: BreakPoints = BreakPoints(),
-    direction!: GridRowDirection = GridRowDirection.Row,
+    columns!: ?GridRowOptions = None,
+    gutter!: ?Length = None,
+    breakpoints!: ?BreakPoints = Option.None,
+    direction!: ?GridRowDirection = Option.None,
     child!: () -> Unit = {=>}
 )
 ```
@@ -60,26 +60,26 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|[GridRowColumnOption](#class-gridrowcolumnoption)|是|-| **命名参数。** 布局列数设置。|
-|gutter|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 栅格布局间距，x代表水平方向。<br>初始值：0。|
-|breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
-|direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|
-|child|()->Unit|否|{ => }| **命名参数。** GridRow 容器的子组件。|
+|columns|?GridRowOptions|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()|
+|gutter|?Length|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp|
+|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
+|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
+|child|() -> Unit|否|{=>}| **命名参数。** GridRow 容器的子组件。|
 
-### init(Int32, GutterOption, BreakPoints, GridRowDirection, () -> Unit)
+### init(?Int32, ?GutterOptions, ?BreakPoints, ?GridRowDirection, () -> Unit)
 
 ```cangjie
 public init(
-    columns!: Int32 = 12,
-    gutter!: GutterOption,
-    breakpoints!: BreakPoints = BreakPoints(),
-    direction!: GridRowDirection = GridRowDirection.Row,
+    columns!: ?Int32,
+    gutter!: ?GutterOptions,
+    breakpoints!: ?BreakPoints = Option.None,
+    direction!: ?GridRowDirection = Option.None,
     child!: () -> Unit = {=>}
 )
 ```
@@ -88,26 +88,26 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|Int32|否|12| **命名参数。** 布局列数设置。<br>取值为大于0的整数，初始值：12。|
-|gutter|[GutterOption](#class-gutteroption)|是|-| **命名参数。** 栅格布局间距，x代表水平方向。|
-|breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
-|direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|
-|child|()->Unit|否|{ => }| **命名参数。** GridRow 容器的子组件。|
+|columns|?Int32|否|None| **命名参数。** 布局列数设置。<br>初始值：12|
+|gutter|?GutterOptions|否|None| **命名参数。** 栅格布局间距。|
+|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
+|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
+|child|() -> Unit|否|{=>}| **命名参数。** GridRow 容器的子组件。|
 
-### init(GridRowColumnOption, GutterOption, BreakPoints, GridRowDirection, () -> Unit)
+### init(?GridRowOptions, ?GutterOptions, ?BreakPoints, ?GridRowDirection, () -> Unit)
 
 ```cangjie
 public init(
-    columns!: GridRowColumnOption,
-    gutter!: GutterOption,
-    breakpoints!: BreakPoints = BreakPoints(),
-    direction!: GridRowDirection = GridRowDirection.Row,
+    columns!: ?GridRowOptions = None,
+    gutter!: ?GutterOptions,
+    breakpoints!: ?BreakPoints = Option.None,
+    direction!: ?GridRowDirection = Option.None,
     child!: () -> Unit = {=>})
 ```
 
@@ -115,17 +115,17 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|[GridRowColumnOption](#class-gridrowcolumnoption)|是|-| **命名参数。** 布局列数设置。|
-|gutter|[GutterOption](#class-gutteroption)|是|-| **命名参数。** 栅格布局间距，x代表水平方向。|
-|breakpoints|[BreakPoints](#class-breakpoints)|否|BreakPoints()| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：<br>{<br>value: ["320vp", "600vp", "840vp"],reference: BreakpointsReference.WindowSize<br>}|
-|direction|[GridRowDirection](#enum-gridrowdirection)|否|GridRowDirection.Row| **命名参数。** 栅格布局排列方向。|
-|child|()->Unit|否|{ => }| **命名参数。** GridRow容器的子组件。|
+|columns|?GridRowOptions|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()|
+|gutter|?GutterOptions|否|None| **命名参数。** 栅格布局间距。|
+|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
+|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
+|child|() -> Unit|否|{=>}| **命名参数。** GridRow容器的子组件。|
 
 ## 通用属性/通用事件
 
@@ -135,43 +135,43 @@ public init(
 
 ## 组件属性
 
-### func alignItems(ItemAlign)
+### func alignItems(?ItemAlign)
 
 ```cangjie
-public func alignItems(value: ItemAlign): This
+public func alignItems(value: ?ItemAlign): This
 ```
 
 **功能：** 设置GridRow中的GridCol垂直主轴方向对齐方式。GridCol本身也可通过alignSelf([ItemAlign](./cj-common-types.md#enum-itemalign))设置自身对齐方式。当上述两种对齐方式都设置时，以GridCol自身设置为准。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ItemAlign](./cj-common-types.md#enum-itemalign)|是|-|GridRow中的GridCol垂直主轴方向对齐方式。<br>初始值：ItemAlign.Start<br>**说明：**<br>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。|
+|value|?ItemAlign|否|-|GridRow中的GridCol垂直主轴方向对齐方式。<br>初始值：ItemAlign.Start|
 
 ## 组件事件
 
-### func onBreakpointChange((String) -> Unit)
+### func onBreakpointChange(?(String) -> Unit)
 
 ```cangjie
-public func onBreakpointChange(callback: (String) -> Unit): This
+public func onBreakpointChange(callback: ?(String) -> Unit): This
 ```
 
 **功能：** 断点发生变化时触发回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(String)->Unit|是|-|断点发生变化时触发回调取值为"xs"、"sm"、"md"、"lg"、"xl"、"xxl"|
+|callback|?(String)->Unit|否|-|断点发生变化时触发回调取值为"xs"、"sm"、"md"、"lg"、"xl"、"xxl"<br>初始值：{ res: String => }|
 
 ## 基础类型定义
 
@@ -179,10 +179,10 @@ public func onBreakpointChange(callback: (String) -> Unit): This
 
 ```cangjie
 public class BreakPoints {
-    public var value: Array<Length>
-    public var reference: BreakpointsReference
-    public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
-        reference!: BreakpointsReference = BreakpointsReference.WindowSize
+    public var value: ?Array<Length>
+    public var reference: ?BreakpointsReference
+    public init(value!: ?Array<Length> = None,
+        reference!: ?BreakpointsReference = None
     )
 }
 ```
@@ -191,45 +191,47 @@ public class BreakPoints {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** 无
 
 #### var reference
 
 ```cangjie
-public var reference: BreakpointsReference
+public var reference: ?BreakpointsReference
 ```
 
 **功能：** 断点切换参照物。
 
-**类型：** [BreakpointsReference](#enum-breakpointsreference)
+**类型：** ?[BreakpointsReference](#enum-breakpointsreference)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var value
 
 ```cangjie
-public var value: Array<Length>
+public var value: ?Array<Length>
 ```
 
 **功能：** 断点位置的单调递增数组设置。
 
-**类型：** Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>
+**类型：** ?Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Array\<Length>, BreakpointsReference)
+#### init(?Array\<Length>, ?BreakpointsReference)
 
 ```cangjie
-public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
-    reference!: BreakpointsReference = BreakpointsReference.WindowSize
+public init(value!: ?Array<Length> = None,
+    reference!: ?BreakpointsReference = None
 )
 ```
 
@@ -237,34 +239,34 @@ public init(value!: Array<Length> = [320.vp, 600.vp, 840.vp],
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|否|[320.vp, 600.vp, 840.vp]| **命名参数。** 断点位置的单调递增数组设置|
-|reference|[BreakpointsReference](#enum-breakpointsreference)|否|BreakpointsReference.WindowSize| **命名参数。** 断点切换参照物。|
+|value|?Array\<[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)>|否|None| **命名参数。** 断点位置的单调递增数组设置<br>初始值：[320.vp, 600.vp, 840.vp]|
+|reference|?[BreakpointsReference](#enum-breakpointsreference)|否|None| **命名参数。** 断点切换参照物。<br>初始值：BreakpointsReference.WindowSize|
 
-### class GridRowSizeOption
+### class GridRowSizeOptions
 
 ```cangjie
-public class GridRowSizeOption {
-    public var xs: Length
-    public var sm: Length
-    public var md: Length
-    public var lg: Length
-    public var xl: Length
-    public var xxl: Length
+public class GridRowSizeOptions {
+    public var xs: ?Length
+    public var sm: ?Length
+    public var md: ?Length
+    public var lg: ?Length
+    public var xl: ?Length
+    public var xxl: ?Length
     public init(
-        xs!: Length = 0.vp,
-        sm!: Length = 0.vp,
-        md!: Length = 0.vp,
-        lg!: Length = 0.vp,
-        xl!: Length = 0.vp,
-        xxl!: Length = 0.vp
+        xs!: ?Length = None,
+        sm!: ?Length = None,
+        md!: ?Length = None,
+        lg!: ?Length = None,
+        xl!: ?Length = None,
+        xxl!: ?Length = None
     )
-    public init(value: Length)
+    public init(value: ?Length)
 }
 ```
 
@@ -272,158 +274,160 @@ public class GridRowSizeOption {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** 无
 
 #### var lg
 
 ```cangjie
-public var lg: Length
+public var lg: ?Length
 ```
 
 **功能：** 大宽度类型设备。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var md
 
 ```cangjie
-public var md: Length
+public var md: ?Length
 ```
 
 **功能：** 中等宽度类型设备。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var sm
 
 ```cangjie
-public var sm: Length
+public var sm: ?Length
 ```
 
 **功能：** 小宽度类型设备。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xl
 
 ```cangjie
-public var xl: Length
+public var xl: ?Length
 ```
 
 **功能：** 特大宽度类型设备。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xs
 
 ```cangjie
-public var xs: Length
+public var xs: ?Length
 ```
 
 **功能：** 最小宽度类型设备。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xxl
 
 ```cangjie
-public var xxl: Length
+public var xxl: ?Length
 ```
 
 **功能：** 超大宽度类型设备。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Length, Length, Length, Length, Length, Length)
+#### init(?Length, ?Length, ?Length, ?Length, ?Length, ?Length)
 
 ```cangjie
 public init(
-    xs!: Length = 0.vp,
-    sm!: Length = 0.vp,
-    md!: Length = 0.vp,
-    lg!: Length = 0.vp,
-    xl!: Length = 0.vp,
-    xxl!: Length = 0.vp
+    xs!: ?Length = None,
+    sm!: ?Length = None,
+    md!: ?Length = None,
+    lg!: ?Length = None,
+    xl!: ?Length = None,
+    xxl!: ?Length = None
 )
 ```
 
-**功能：** 构造一个GridRowColumnOption对象。
+**功能：** 构造一个GridRowSizeOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xs|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。|
-|sm|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。|
-|md|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。|
-|lg|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。|
-|xl|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。|
-|xxl|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。|
+|xs|?Length|否|None| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|sm|?Length|否|None| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|md|?Length|否|None| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|lg|?Length|否|None| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|xl|?Length|否|None| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
+|xxl|?Length|否|None| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
 
-#### init(Length)
+#### init(?Length)
 
 ```cangjie
-public init(value: Length)
+public init(value: ?Length)
 ```
 
-**功能：** 构造一个GridRowColumnOption对象。
+**功能：** 构造一个GridRowSizeOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。|
+|value|?Length|是|-|在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：0.vp|
 
-### class GutterOption
+### class GutterOptions
 
 ```cangjie
-public class GutterOption {
-    public init(x!: Length, y!: Length)
-    public init(x!: GridRowSizeOption, y!: GridRowSizeOption)
+public class GutterOptions {
+    public init(x!: ?Length = None, y!: ?Length = None)
+    public init(x!: ?GridRowSizeOptions, y!: ?GridRowSizeOptions)
 }
 ```
 
@@ -431,65 +435,67 @@ public class GutterOption {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Length, Length)
+**父类型：** 无
+
+#### init(?Length, ?Length)
 
 ```cangjie
-public init(x!: Length, y!: Length)
+public init(x!: ?Length = None, y!: ?Length = None)
 ```
 
-**功能：** 构造一个GutterOption类型的对象。
+**功能：** 构造一个GutterOptions类型的对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 栅格子组件x方向的间距|
-|y|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 栅格子组件y方向的间距|
+|x|?Length|否|None| **命名参数。** 栅格子组件x方向的间距。<br>初始值：0.vp|
+|y|?Length|否|None| **命名参数。** 栅格子组件y方向的间距。<br>初始值：0.vp|
 
-#### init(GridRowSizeOption, GridRowSizeOption)
+#### init(?GridRowSizeOptions, ?GridRowSizeOptions)
 
 ```cangjie
-public init(x!: GridRowSizeOption, y!: GridRowSizeOption)
+public init(x!: ?GridRowSizeOptions, y!: ?GridRowSizeOptions)
 ```
 
-**功能：** 构造一个GutterOption类型的对象。
+**功能：** 构造一个GutterOptions类型的对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|[GridRowSizeOption](#class-gridrowsizeoption)|是|-|**命名参数。** 栅格子组件x方向的间距|
-|y|[GridRowSizeOption](#class-gridrowsizeoption)|是|-|**命名参数。** 栅格子组件y方向的间距|
+|x|?GridRowSizeOptions|否|None| **命名参数。** 栅格子组件x方向的间距。<br>初始值：GridRowSizeOptions()|
+|y|?GridRowSizeOptions|否|None| **命名参数。** 栅格子组件y方向的间距。<br>初始值：GridRowSizeOptions()|
 
-### class GridRowColumnOption
+### class GridRowOptions
 
 ```cangjie
-public class GridRowColumnOption {
-    public var xs: Int32
-    public var sm: Int32
-    public var md: Int32
-    public var lg: Int32
-    public var xl: Int32
-    public var xxl: Int32
+public class GridRowOptions {
+    public var xs: ?Int32
+    public var sm: ?Int32
+    public var md: ?Int32
+    public var lg: ?Int32
+    public var xl: ?Int32
+    public var xxl: ?Int32
     public init(
-        xs!: Int32 = 2,
-        sm!: Int32 = 4,
-        md!: Int32 = 8,
-        lg!: Int32 = 12,
-        xl!: Int32 = 12,
-        xxl!: Int32 = 12
+        xs!: ?Int32 = None,
+        sm!: ?Int32 = None,
+        md!: ?Int32 = None,
+        lg!: ?Int32 = None,
+        xl!: ?Int32 = None,
+        xxl!: ?Int32 = None
     )
-    public init(value: Int32)
+    public init(value: ?Int32)
 }
 ```
 
@@ -497,158 +503,161 @@ public class GridRowColumnOption {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** 无
 
 #### var lg
 
 ```cangjie
-public var lg: Int32
+public var lg: ?Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var md
 
 ```cangjie
-public var md: Int32
+public var md: ?Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var sm
 
 ```cangjie
-public var sm: Int32
+public var sm: ?Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xl
 
 ```cangjie
-public var xl: Int32
+public var xl: ?Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xs
 
 ```cangjie
-public var xs: Int32
+public var xs: ?Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var xxl
 
 ```cangjie
-public var xxl: Int32
+public var xxl: ?Int32
 ```
 
 **功能：** **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Int32, Int32, Int32, Int32, Int32, Int32)
+#### init(?Int32, ?Int32, ?Int32, ?Int32, ?Int32, ?Int32)
 
 ```cangjie
 public init(
-    xs!: Int32 = 2,
-    sm!: Int32 = 4,
-    md!: Int32 = 8,
-    lg!: Int32 = 12,
-    xl!: Int32 = 12,
-    xxl!: Int32 = 12
+    xs!: ?Int32 = None,
+    sm!: ?Int32 = None,
+    md!: ?Int32 = None,
+    lg!: ?Int32 = None,
+    xl!: ?Int32 = None,
+    xxl!: ?Int32 = None
 )
 ```
 
-**功能：** 构造一个GridRowColumnOption对象。
+**功能：** 构造一个GridRowOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|xs|Int32|否|2| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。|
-|sm|Int32|否|4| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。|
-|md|Int32|否|8| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。|
-|lg|Int32|否|12| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。|
-|xl|Int32|否|12| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。|
-|xxl|Int32|否|12| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。|
+|xs|?Int32|否|None| **命名参数。** 在栅格大小为xs的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：2|
+|sm|?Int32|否|None| **命名参数。** 在栅格大小为sm的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：4|
+|md|?Int32|否|None| **命名参数。** 在栅格大小为md的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：8|
+|lg|?Int32|否|None| **命名参数。** 在栅格大小为lg的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
+|xl|?Int32|否|None| **命名参数。** 在栅格大小为xl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
+|xxl|?Int32|否|None| **命名参数。** 在栅格大小为xxl的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
 
-#### init(Int32)
+#### init(?Int32)
 
 ```cangjie
-public init(value: Int32)
+public init(value: ?Int32)
 ```
 
-**功能：** 构造一个GridRowColumnOption对象。
+**功能：** 构造一个GridRowOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-| 在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。|
+|value|?Int32|是|-| 在任意栅格大小的设备上，栅格子组件占据的列数或偏移的列数。<br>初始值：12|
 
 ### enum BreakpointsReference
 
 ```cangjie
-public enum BreakpointsReference {
+public enum BreakpointsReference <: Equatable<BreakpointsReference> {
     | WindowSize
     | ComponentSize
+    | ...
 }
 ```
 
@@ -656,7 +665,9 @@ public enum BreakpointsReference {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** Equatable\<BreakpointsReference>
 
 #### ComponentSize
 
@@ -668,7 +679,7 @@ ComponentSize
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### WindowSize
 
@@ -680,63 +691,63 @@ WindowSize
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-### func !=(BreakpointsReference)
+#### operator func !=(BreakpointsReference)
 
 ```cangjie
 public operator func !=(other: BreakpointsReference): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 比较两个枚举值是否不相等。
 
-**系统能力：** SystemCapability.Ability.AbilityBase
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[BreakpointsReference](#enum-breakpointsreference)|是|-|另一个枚举值。|
+|other|[BreakpointsReference](#enum-breakpointsreference)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
+|Bool|如果两个枚举值不相等则返回true，否则返回false。|
 
-
-### func ==(BreakpointsReference)
+#### operator func ==(BreakpointsReference)
 
 ```cangjie
 public operator func ==(other: BreakpointsReference): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
+**功能：** 比较两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Ability.AbilityBase
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[BreakpointsReference](#enum-breakpointsreference)|是|-|另一个枚举值。|
+|other|[BreakpointsReference](#enum-breakpointsreference)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
+|Bool|如果两个枚举值相等则返回true，否则返回false。|
 
 ### enum GridRowDirection
 
 ```cangjie
-public enum GridRowDirection {
+public enum GridRowDirection <: Equatable<GridRowDirection> {
     | Row
     | RowReverse
+    | ...
 }
 ```
 
@@ -744,7 +755,9 @@ public enum GridRowDirection {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** Equatable\<GridRowDirection>
 
 #### Row
 
@@ -756,7 +769,7 @@ Row
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### RowReverse
 
@@ -768,56 +781,55 @@ RowReverse
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-### func !=(GridRowDirection)
+#### operator func !=(GridRowDirection)
 
 ```cangjie
 public operator func !=(other: GridRowDirection): Bool
 ```
 
-**功能：** 判断两个枚举值是否不相等。
+**功能：** 比较两个枚举值是否不相等
 
-**系统能力：** SystemCapability.Ability.AbilityBase
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22。
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[GridRowDirection](#enum-gridrowdirection)|是|-|另一个枚举值。|
+|other|[GridRowDirection](#enum-gridrowdirection)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
+|Bool|如果两个枚举值不相等则返回true，否则返回false。|
 
-
-### func ==(GridRowDirection)
+#### operator func ==(GridRowDirection)
 
 ```cangjie
 public operator func ==(other: GridRowDirection): Bool
 ```
 
-**功能：** 判断两个枚举值是否相等。
+**功能：** 比较两个枚举值是否相等。
 
-**系统能力：** SystemCapability.Ability.AbilityBase
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|[GridRowDirection](#enum-gridrowdirection)|是|-|另一个枚举值。|
+|other|[GridRowDirection](#enum-gridrowdirection)|是|-|待比较的另一个枚举值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
+|Bool|如果两个枚举值相等则返回true，否则返回false。|
 
 ## 示例代码
 
@@ -839,9 +851,9 @@ class EntryView {
                 //设置栅格在不同宽度设备类型下对应的显示栅格列数。
                 //xs:最小宽度类型设备   sm:小宽度类型设备    md:中等宽度类型设备。
                 //lg:大宽度类型设备     xl:特大宽度类型设备  xxl:超大宽度类型设备。
-                columns: GridRowColumnOption(xs: 6, sm: 7, md: 8, lg: 9, xl: 10, xxl: 11),
+                columns: GridRowOptions(xs: 6, sm: 7, md: 8, lg: 9, xl: 10, xxl: 11),
                 //设置栅格布局间距，x代表水平方向，y代表垂直方向。
-                gutter: GutterOption(x: 5.vp, y: 10.vp),
+                gutter: GutterOptions(x: 5.vp, y: 10.vp),
                 //设置断点值的断点数列以及基于窗口或容器尺寸的相应参照。
                 breakpoints: BreakPoints(
                     //启用xs,sm,md,lg四个断点
@@ -875,7 +887,7 @@ class EntryView {
                 //设置布局列数为5列
                 columns: 5,
                 //设置栅格布局间距，水平方向为5vp，垂直方向10vp。
-                gutter: GutterOption(x: 5.vp, y: 10.vp),
+                gutter: GutterOptions(x: 5.vp, y: 10.vp),
                 //设置断点值的断点数列以及基于窗口或容器尺寸的相应参照。
                 breakpoints: BreakPoints(
                     //启用xs,sm,md,lg四个断点
@@ -894,7 +906,7 @@ class EntryView {
                         }
                         .borderWidth(2.vp)
                         .borderColor(color)
-                        .span(GridColColumnOption(xs: 2, sm: 3, md: 4, lg: 5, xl: 6, xxl: 7))
+                        .span(GridColOptions(xs: 2, sm: 3, md: 4, lg: 5, xl: 6, xxl: 7))
                     }
                 )
             }
