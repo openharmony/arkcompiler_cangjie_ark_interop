@@ -26,10 +26,10 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Option\<Scroller>, () -> Unit)
+### init(?Scroller, () -> Unit)
 
 ```cangjie
-public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>})
+public init(scroller!: ?Scroller = Option.None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建包含滚动控制器和子组件的网格容器。
@@ -42,7 +42,7 @@ public init(scroller!: Option<Scroller> = Option.None, child!: () -> Unit = {=>}
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|scroller|Option\<Scroller>|否|Option.None| **命名参数。** 可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
+|scroller|?Scroller|否|Option.None| **命名参数。** 可滚动组件的控制器，与可滚动组件绑定。<br> **说明：** <br>不允许和其他滚动类组件，如：[List](cj-scroll-swipe-list.md)、[Grid](cj-scroll-swipe-grid.md)、[Scroll](cj-scroll-swipe-scroll.md)等绑定同一个滚动控制对象。|
 |child|() -> Unit|否|{=>}| **命名参数。** 网格容器的子组件。|
 
 ## 通用属性/通用事件

@@ -28,7 +28,7 @@ public func bindPopup(show: ?Bool, popup: ?PopupOptions): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| show | ?Bool | 是 | \- | 弹窗显示状态。popup弹窗必须等待页面全部构建完成才能展示，因此show不能在页面构建中设置为true，否则会导致popup弹窗显示位置及形状错误。|
+| show | ?Bool | 是 | \- | 弹窗显示状态。popup弹窗必须等待页面全部构建完成才能展示，因此show不能在页面构建中设置为true，否则会导致popup弹窗显示位置及形状错误。<br>初始值：false。|
 | popup | ?[PopupOptions](#class-popupoptions) | 是 | \- | 配置当前弹窗提示的参数。 |
 
 **返回值：**
@@ -54,7 +54,7 @@ public func bindPopup(show: ?Bool, popup: ?CustomPopupOptions): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| show | ?Bool | 是 | \- | 弹窗显示状态。popup弹窗必须等待页面全部构建完成才能展示，因此show不能在页面构建中设置为true，否则会导致popup弹窗显示位置及形状错误。|
+| show | ?Bool | 是 | \- | 弹窗显示状态。popup弹窗必须等待页面全部构建完成才能展示，因此show不能在页面构建中设置为true，否则会导致popup弹窗显示位置及形状错误。<br>初始值：false。|
 | popup | ?[CustomPopupOptions](#class-custompopupoptions) | 是 | \- | 配置当前弹窗提示的参数。 |
 
 **返回值：**

@@ -79,7 +79,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|字体列表。<br>初始字体：'HarmonyOS Sans'。|
+|value|?ResourceStr|是|-|字体列表。<br>初始字体：'HarmonyOS Sans'。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 
@@ -151,7 +151,7 @@ public func format(value: ?String): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?String|是|-|自定义格式。<br>默认值：'HH:mm:ss.SS'。|
+|value|?String|是|-|自定义格式。<br>默认值：'HH:mm:ss.SS'。<br>初始值："HH:mm:ss.SS"。|
 
 ### func textShadow(?Array\<ShadowOptions>)
 

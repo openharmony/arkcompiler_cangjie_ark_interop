@@ -30,9 +30,9 @@ public init(span!: ?Int32 = None, offset!: ?Int32 = None, order!: ?Int32 = None,
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|span|?Int32|否|None| **命名参数。** 栅格子组件占用栅格容器组件([GridRow](./cj-grid-layout-gridrow.md))的列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。<br>初始值：1|
-|offset|?Int32|否|None| **命名参数。** 栅格子组件相对于前一个栅格子组件偏移的列数。<br>初始值：0|
-|order|?Int32|否|None| **命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br>初始值：0|
+|span|?Int32|否|None| **命名参数。** 栅格子组件占用栅格容器组件([GridRow](./cj-grid-layout-gridrow.md))的列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。<br>初始值：1。|
+|offset|?Int32|否|None| **命名参数。** 栅格子组件相对于前一个栅格子组件偏移的列数。<br>初始值：0。|
+|order|?Int32|否|None| **命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br>初始值：0。|
 |child|() -> Unit|否|{=>}| **命名参数。** GridCol容器的子组件。|
 
 ### init(?GridColOptions, ?GridColOptions, ?GridColOptions, () -> Unit)
@@ -56,9 +56,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|span|?GridColOptions|否|None| **命名参数。** 占用列数。<br>初始值：GridColOptions(1)|
-|offset|?GridColOptions|否|None| **命名参数。** 相对于前一个栅格子组件偏移的列数。<br>初始值：GridColOptions(0)|
-|order|?GridColOptions|否|None| **命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br>初始值：GridColOptions(0)|
+|span|?GridColOptions|是|-| **命名参数。** 占用列数。<br>初始值：GridColOptions(1)|
+|offset|?GridColOptions|是|-| **命名参数。** 相对于前一个栅格子组件偏移的列数。<br>初始值：GridColOptions(0)|
+|order|?GridColOptions|是|-| **命名参数。** 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br>初始值：GridColOptions(0)|
 |child|() -> Unit|否|{=>}| **命名参数。** GridCol 容器的子组件。|
 
 ## 通用属性/通用事件
@@ -85,7 +85,7 @@ public func gridColOffset(value: ?Int32): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Int32|否|-|相对于前一个栅格子组件偏移的列数。<br>初始值：12。|
+|value|?Int32|是|-|相对于前一个栅格子组件偏移的列数。<br>初始值：12。|
 
 ### func gridColOffset(?GridColOptions)
 
@@ -103,7 +103,7 @@ public func gridColOffset(value: ?GridColOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?GridColOptions|否|-|相对于前一个栅格子组件偏移的列数。|
+|value|?GridColOptions|是|-|相对于前一个栅格子组件偏移的列数。<br>初始值：GridColOptions()。|
 
 ### func order(?Int32)
 
@@ -121,7 +121,7 @@ public func order(value: ?Int32): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Int32|否|-|相对于前一个栅格子组件偏移的列数。<br>初始值：12。|
+|value|?Int32|是|-|相对于前一个栅格子组件偏移的列数。<br>初始值：12。|
 
 ### func order(?GridColOptions)
 
@@ -139,7 +139,7 @@ public func order(value: ?GridColOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?GridColOptions|否|-|元素的序号。|
+|value|?GridColOptions|是|-|元素的序号。<br>初始值：GridColOptions()。|
 
 ### func span(?Int32)
 
@@ -157,7 +157,7 @@ public func span(value: ?Int32): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Int32|否|-|占用列数。<br>初始值：12。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
+|value|?Int32|是|-|占用列数。<br>初始值：12。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
 
 ### func span(?GridColOptions)
 
@@ -175,7 +175,7 @@ public func span(value: ?GridColOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?GridColOptions|否|-|占用列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。|
+|value|?GridColOptions|是|-|占用列数。<br>span为0表示该元素不参与布局计算，即不会被渲染。<br>初始值：GridColOptions()。|
 
 ## 基础类型定义
 

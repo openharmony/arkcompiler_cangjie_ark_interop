@@ -28,7 +28,7 @@ public func geometryTransition(id: ?String, followWithoutTransition!: ?Bool = No
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|id|?String|是|-|用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。|
+|id|?String|是|-|用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。<br>初始值：""。|
 |followWithoutTransition|?Bool|否|None| **命名参数。** 仅用于if范式下标记始终在组件树上的组件是否跟随做共享动画。初始值: false|
 
 **返回值：**

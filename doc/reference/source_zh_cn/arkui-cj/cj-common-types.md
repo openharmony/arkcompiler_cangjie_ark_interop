@@ -562,7 +562,7 @@ public init(arr: Array<(String, Any)>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|arr|Array<(String, Any)>|是|-|存放组件构造参数元组的数组。|
+|arr|Array\<(String, Any)>|是|-|存放组件构造参数元组的数组。|
 
 ### func get\<T>(String)
 
@@ -1928,7 +1928,7 @@ public var onFinish: Option<() -> Unit>
 
 **功能：** 动画播放完成回调。
 
-**类型：** Option<() -> Unit>
+**类型：** Option\<() -> Unit>
 
 **读写能力：** 可读写
 
@@ -1990,7 +1990,7 @@ public init(duration!: ?Int32 = None, tempo!: ?Float32 = None, curve!: ?Curve = 
 |delay|?Int32|否|None|**命名参数。** 动画延迟播放时间，单位为ms(毫秒)。初始值为0。|
 |iterations|?Int32|否|None|**命名参数。** 动画播放次数。设置为-1时表示无限次播放。设置为0时表示无动画效果。初始值为1。|
 |playMode|?PlayMode|否|None|**命名参数。** 动画播放模式，默认播放完成后重头开始播放。初始值为PlayMode.Normal。|
-|onFinish|Option<() -> Unit>|否|Option.None|**命名参数。** 动画播放完成回调。|
+|onFinish|Option\<() -> Unit>|否|Option.None|**命名参数。** 动画播放完成回调。|
 |finishCallbackType|?FinishCallbackType|否|None|**命名参数。** 在动画中定义onFinish回调的类型。初始值为FinishCallbackType.Removed。|
 |expectedFrameRateRange|Option<[ExpectedFrameRateRange](./cj-animation-animation.md#class-expectedframeraterange)>|否|Option.None|**命名参数。** 设置动画的期望帧率。|
 
@@ -4487,10 +4487,10 @@ public init(backgroundColor!: Option<ResourceColor> = Option.None, onAppear!: Op
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |backgroundColor|Option<[ResourceColor](./cj-common-types.md#interface-resourcecolor)>|否|Option.None|**命名参数。** 半模态页面的背板颜色。默认值为Color.White。|
-|onAppear|Option<() -> Unit>|否|Option.None|**命名参数。** 半模态页面显示（动画结束后）回调函数。|
-|onDisappear|Option<() -> Unit>|否|Option.None|**命名参数。** 半模态页面回退（动画结束后）回调函数。|
-|onWillAppear|Option<() -> Unit>|否|Option.None|**命名参数。** 半模态页面显示（动画开始前）回调函数。|
-|onWillDisappear|Option<() -> Unit>|否|Option.None|**命名参数。** 半模态页面回退（动画开始前）回调函数。<br>**说明：**<br>不允许在onWillDisappear函数中修改状态变量，可能会导致组件行为不稳定。|
+|onAppear|Option\<() -> Unit>|否|Option.None|**命名参数。** 半模态页面显示（动画结束后）回调函数。|
+|onDisappear|Option\<() -> Unit>|否|Option.None|**命名参数。** 半模态页面回退（动画结束后）回调函数。|
+|onWillAppear|Option\<() -> Unit>|否|Option.None|**命名参数。** 半模态页面显示（动画开始前）回调函数。|
+|onWillDisappear|Option\<() -> Unit>|否|Option.None|**命名参数。** 半模态页面回退（动画开始前）回调函数。<br>**说明：**<br>不允许在onWillDisappear函数中修改状态变量，可能会导致组件行为不稳定。|
 |height|Option<[SheetSize](#enum-sheetsize)>|否|Option.None|**命名参数。** 半模态高度。<br>**说明：**<br>底部弹窗竖屏时，当设置detents时，该属性设置无效。<br>底部弹窗竖屏时，最大高度为距离信号栏8vp。<br>底部弹窗横屏时，该属性设置无效，高度为距离屏幕顶部8vp。<br>居中弹窗和跟手弹窗设置类型为SheetSize.Large和SheetSize.Mudium无效，显示默认高度560vp。居中弹窗和跟手弹窗最小高度为320vp，最大高度为窗口短边的90%。当使用Length设置的高度和使用SheetSize.FitContent自适应的高度大于最大高度，则显示最大高度，小于最小高度，则显示最小高度。|
 |detents|Option<Array<[SheetSize](#enum-sheetsize)>>|否|Option.None|**命名参数。** 半模态页面的切换高度档位。<br>**说明：**<br>底部弹窗竖屏生效，元组中第一个高度为初始高度。<br>面板可跟手滑动切换档位，松手后是否滑动至目标档位有两个判断条件：速度和距离。速度超过阈值，则执行滑动至与手速方向一致的目标档位；速度小于阈值，则引入距离判断条件，当位移距离>当前位置与目标位置的1/2，滑动至与手速方向一致的目标档位，位移距离当前位置与目标位置的1/2，返回至当前档位。速度阈值：1000，距离阈值：50%。|
 |preferType|Option<[SheetType](#enum-sheettype)>|否|Option.None|**命名参数。** 半模态页面的样式。<br>**说明：**<br>preferType不可设置为SheetType.Bottom|
@@ -4498,15 +4498,15 @@ public init(backgroundColor!: Option<ResourceColor> = Option.None, onAppear!: Op
 |dragBar|Option\<Bool>|否|Option.None|**命名参数。** 是否显示控制条。<br>**说明：**<br>半模态面板的dentents属性设置多个不同高度并且设置生效时，默认显示控制条。否则不显示控制条。|
 |blurStyle|Option\<BlurStyle>|否|Option.None|**命名参数。** 半模态面板的模糊背景。|
 |maskColor|Option<[Color](./cj-common-types.md#class-color)>|否|Option.None|**命名参数。** 半模态页面的背景蒙层颜色。|
-|title|Option<() -> Unit>|否|Option.None|**命名参数。** 半模态面板的标题。在使用时结合@Builder使用。|
+|title|Option\<() -> Unit>|否|Option.None|**命名参数。** 半模态面板的标题。在使用时结合@Builder使用。|
 |enableOutsideInteractive|Option\<Bool>|否|Option.None|**命名参数。** **命名参数。**  半模态所在页面是否允许交互。<br>**说明：**<br>设置为true时允许交互，不显示蒙层；设置为false时不允许交互，显示蒙层；若不进行设置，默认底部弹窗与居中弹窗不允许交互，跟手弹窗允许交互。当设置为true时，maskColor设置无效。|
 |shouldDismiss|Option<(SheetDismiss) -> Unit>|否|Option.None|**命名参数。** 半模态页面交互式关闭回调函数。<br>**说明：**<br>当用户执行下拉关闭/back事件/点击蒙层关闭/关闭按钮关闭交互操作时，如果注册该回调函数，则不会立刻关闭。|
 |onWillDismiss|Option<(DismissSheetAction) -> Unit>|否|Option.None|**命名参数。** 半模态页面的交互式关闭回调函数允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。<br>**说明：**<br>当用户触发关闭操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数中的reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。在onWillDismiss回调中，不能再做onWillDismiss拦截。建议在二次确认场景使用。|
 |onWillSpringBackWhenDismiss|Option<(SpringBackAction) -> Unit>|否|Option.None|**命名参数。**  半模态页面交互式关闭前控制回弹函数允许开发者注册，以控制半模态页面交互式关闭时的回弹效果。<br>**说明：**<br>当用户触发执行下拉关闭操作并同时注册该回调函数与shouldDimiss或onWillDismiss时，由开发者控制下滑关闭时是否回弹。在回调函数中可以通过调用springBack来实现回弹效果。也可以通过不调用springBack来取消回弹效果。<br>若不注册该回调函数，但注册shouldDimiss或onWillDismiss时，则默认在下滑关闭时，会触发回弹效果，回弹后再根据shouldDimiss或onWillDismiss内的回调行为决定半模态是否关闭。<br>如果不注册该回调函数，且未注册shouldDimiss或onWillDismiss时，默认在下滑关闭时，触发半模态关闭。|
-|onHeightDidChange|Option<(Float32) -> Unit>|否|Option.None|**命名参数。** **命名参数。**  半模态页面高度变化回调函数。<br>**说明：**<br>底部弹窗时，只有档位变化和拖拽跟手才返回每一帧高度，拉起半模态和避让软键盘只返回最后的高度，其他弹窗只在半模态拉起返回最后高度。返回值为px。|
-|onDetentsDidChange|Option<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面档位变化回调函数。<br>**说明：**<br>底部弹窗时，档位变化返回最后的高度。返回值为px。|
-|onWidthDidChange|Option<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面宽度变化回调函数。<br>**说明：**<br>宽度变化时返回最后的宽度。返回值为px。|
-|onTypeDidChange|Option<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面形态变化回调函数。<br>**说明：**<br>形态变化时返回最后的形态。|
+|onHeightDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。** **命名参数。**  半模态页面高度变化回调函数。<br>**说明：**<br>底部弹窗时，只有档位变化和拖拽跟手才返回每一帧高度，拉起半模态和避让软键盘只返回最后的高度，其他弹窗只在半模态拉起返回最后高度。返回值为px。|
+|onDetentsDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面档位变化回调函数。<br>**说明：**<br>底部弹窗时，档位变化返回最后的高度。返回值为px。|
+|onWidthDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面宽度变化回调函数。<br>**说明：**<br>宽度变化时返回最后的宽度。返回值为px。|
+|onTypeDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面形态变化回调函数。<br>**说明：**<br>形态变化时返回最后的形态。|
 |borderWidth|Option<[Length](./cj-common-types.md#interface-length)>|否|None|**命名参数。**  设置半模态页面的边框宽度。可分别设置4个边框宽度。<br>百分比参数方式：以父元素半模态页面宽的百分比来设置半模态页面的边框宽度。<br>当半模态页面左边框和右边框大于半模态页面宽度，半模态页面上边框和下边框大于半模态页面高度，显示可能不符合预期。<br>**说明：**<br>底部弹窗时，底部边框宽度设置无效。|
 |borderColor|Option<[Color](./cj-common-types.md#class-color)>|否|None|**命名参数。**  设置半模态页面的边框颜色。如果使用borderColor属性，需要和borderWidth属性一起使用。<br>**说明：**<br>底部弹窗时，底部边框颜色设置无效。|
 |borderStyle|Option<[EdgeStyles](./cj-class-common.md#class-edgestyles)>|否|None|**命名参数。**  设置半模态页面的边框样式。如果使用borderStyle属性，需要和borderWidth属性一起使用。<br>**说明：**<br>底部弹窗时，底部边框样式设置无效。|
@@ -4826,10 +4826,10 @@ public init(modalTransition!: ?ModalTransition = Option.None, onWillDismiss!: ?(
 |onWillDismiss|?((DismissContentCoverAction) -> Unit)|否|Option.None|**命名参数。** 内容覆盖交互式关闭时的回调函数。|
 |transition|?TransitionEffect|否|Option.None|**命名参数。** 全屏模态页面交互式关闭回调函数。|
 |backgroundColor|Option<[ResourceColor](./cj-common-types.md#interface-resourcecolor)>|否|Option.None|**命名参数。** sheet的背景色。默认值：**Color.White**。|
-|onAppear|Option<() -> Unit>|否|Option.None|**命名参数。** 全模态页面显示（动画结束后）回调函数。|
-|onDisappear|Option<() -> Unit>|否|Option.None|**命名参数。** 全模态页面回退（动画结束后）回调函数。|
-|onWillAppear|Option<() -> Unit>|否|Option.None|**命名参数。** 全模态页面显示（动画开始前）回调函数。|
-|onWillDisappear|Option<() -> Unit>|否|Option.None|**命名参数。** 全模态页面回退（动画开始前）回调函数。|
+|onAppear|Option\<() -> Unit>|否|Option.None|**命名参数。** 全模态页面显示（动画结束后）回调函数。|
+|onDisappear|Option\<() -> Unit>|否|Option.None|**命名参数。** 全模态页面回退（动画结束后）回调函数。|
+|onWillAppear|Option\<() -> Unit>|否|Option.None|**命名参数。** 全模态页面显示（动画开始前）回调函数。|
+|onWillDisappear|Option\<() -> Unit>|否|Option.None|**命名参数。** 全模态页面回退（动画开始前）回调函数。|
 
 ## class SheetDismiss
 
@@ -5281,7 +5281,7 @@ public init(offset!: ?Position = None, placement!: Option<Placement> = Option.No
 |placement|Option\<Placement>|否|Option.None|**命名参数。** 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br> **说明：**<br> placement值设置为undefined、null或没有设置此选项时，按未设置placement处理，当使用bindMenu，按初始值：Placement.BottomLeft设置。|
 |enableArrow|?Bool|否|None| **命名参数。** 是否显示箭头。如果菜单的大小和位置不足以放置箭头时，不会显示箭头。<br> **说明：** <br> enableArrow为true时，placement未设置或者值为非法值，默认在目标物上方显示，否则按照placement的位置优先显示。当前位置显示不下时，会自动调整位置，enableArrow为undefined时，不显示箭头。|
 |arrowOffset|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 箭头在菜单处的偏移。偏移量必须合法且转换为具体数值时大于0才会生效，另外该值生效时不会导致箭头超出菜单四周的安全距离。<br> 单位：vp<br> **说明：**<br> 箭头距菜单四周的安全距离为菜单圆角大小与箭头宽度的一半之和。<br> 根据配置的placement来计算是在水平还是垂直方向上偏移。<br> 箭头在菜单水平方向时，偏移量为箭头至最左侧箭头安全距离处的距离。箭头在菜单垂直方向时，偏移量为箭头至最上侧箭头安全距离处的距离。<br> 根据配置的placement的不同，箭头展示的默认位置不同：<br> 在菜单不发生避让的情况下，placement设置为Placement.Top、Placement.Bottom时，箭头显示在水平方向且默认居中；<br> placement设置为Placement.Left、Placement.Right时，箭头显示在垂直方向且默认居中；<br> placement设置为Placement.TopLeft、Placement.BottomLeft时，箭头默认显示在水平方向，且距离菜单左侧边缘距离为箭头安全距离；<br> placement设置为Placement.TopRight、Placement.BottomRight时，箭头默认显示在水平方向，且距离菜单右侧距离为箭头安全距离；<br> placement设置为Placement.LeftTop、Placement.RightTop时，箭头默认显示在垂直方向，且距离菜单上侧距离为箭头安全距离；<br> placement设置为Placement.LeftBottom、Placement.RightBottom时，箭头默认显示在垂直方向，且距离菜单下侧距离为箭头安全距离。|
-|preview|Option<() -> Unit>|否|Option.None| **命名参数。** 长按悬浮菜单或使用bindContextMenu显示菜单的预览内容样式，为用户自定义的内容。<br> **说明：** <br> - 不支持responseType为ResponseType.RightClick时触发，如果responseType为ResponseType.RightClick，则不会显示预览内容。<br> - 当未设置preview参数时，enableArrow参数生效。<br> - 当preview参数设置为CustomBuilder时，enableArrow为true时也不显示箭头。|
+|preview|Option\<() -> Unit>|否|Option.None| **命名参数。** 长按悬浮菜单或使用bindContextMenu显示菜单的预览内容样式，为用户自定义的内容。<br> **说明：** <br> - 不支持responseType为ResponseType.RightClick时触发，如果responseType为ResponseType.RightClick，则不会显示预览内容。<br> - 当未设置preview参数时，enableArrow参数生效。<br> - 当preview参数设置为CustomBuilder时，enableArrow为true时也不显示箭头。|
 |previewAnimationOptions|?[ContextMenuAnimationOptions](#class-contextmenuanimationoptions)|否|None|**命名参数。** 控制长按预览显示动画开始倍率和结束倍率（相对预览原图比例）。|
 |onAppear|?() -> Unit|否|None| **命名参数。** 菜单弹出时的事件回调。|
 |onDisappear|?() -> Unit|否|None| **命名参数。** 菜单消失时的事件回调。|

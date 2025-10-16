@@ -107,7 +107,7 @@ public func curve(value: ?Curve): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Curve|是|-|Swiper的动画曲线。|
+|value|?Curve|是|-|Swiper的动画曲线。<br>初始值：Curve.Linear。|
 
 ### func disableSwipe(?Bool)
 
@@ -173,7 +173,7 @@ public func displayMode(value: ?SwiperDisplayMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?SwiperDisplayMode|是|-|主轴方向上元素排列的模式。<br>初始值：SwiperDisplayMode.STRETCH。|
+|value|?SwiperDisplayMode|是|-|主轴方向上元素排列的模式。<br>初始值：SwiperDisplayMode.Stretch。|
 
 ### func duration(?UInt32)
 
@@ -267,7 +267,7 @@ public func indicator(indicator: ?DotIndicator): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|indicator|?DotIndicator|是|-|可选导航点指示器样式。<br>- DotIndicator：圆点指示器样式。|
+|indicator|?DotIndicator|是|-|可选导航点指示器样式。<br>- DotIndicator：圆点指示器样式。<br>初始值：DigitIndicator()。|
 
 ### func indicator(?DigitIndicator)
 
@@ -285,7 +285,7 @@ public func indicator(indicator: ?DigitIndicator): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|indicator|?DigitIndicator|是|-|可选导航点指示器样式。<br>- DigitIndicator：数字指示器样式。|
+|indicator|?DigitIndicator|是|-|可选导航点指示器样式。<br>- DigitIndicator：数字指示器样式。<br>初始值：DigitIndicator()。|
 
 ### func interval(?UInt32)
 
@@ -323,7 +323,7 @@ public func itemSpace(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|子组件与子组件之间间隙。<br/> 类型为Int64、Float64时，默认单位vp。<br>当设置数值小于0或超出Swiper组件宽度范围时，按照初始值处理。<br>初始值：0。|
+|value|?Length|是|-|子组件与子组件之间间隙。<br/> 类型为Int64、Float64时，默认单位vp。<br>当设置数值小于0或超出Swiper组件宽度范围时，按照初始值处理。<br>初始值：0.0.vp。|
 
 ### func loop(?Bool)
 

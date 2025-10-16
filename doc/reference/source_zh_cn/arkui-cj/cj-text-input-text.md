@@ -51,7 +51,7 @@ public init(controller!: ?TextController = None, child!: () -> Unit)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |controller|?TextController|否|None| **命名参数。** 给组件绑定一个控制器。|
-|child|() -> Unit|否|-| **命名参数。** Text容器的子组件。|
+|child|() -> Unit|是|-| **命名参数。** Text容器的子组件。|
 
 ### init(?TextController)
 
@@ -95,7 +95,7 @@ public func baselineOffset(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本基线的偏移量。|
+|value|?Length|是|-|文本基线的偏移量。<br>初始值：0.0.px。|
 
 ### func decoration(?TextDecorationType, ?ResourceColor, ?TextDecorationStyle)
 
@@ -114,9 +114,9 @@ public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceCo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|?TextDecorationType|是|-| **命名参数。** 装饰线类型。|
-|color|?ResourceColor|是|-| **命名参数。** 装饰线颜色。|
-|decorationStyle|?TextDecorationStyle|否|None| **命名参数。** 装饰线样式。|
+|decorationType|?TextDecorationType|是|-| **命名参数。** 装饰线类型。<br>初始值：TextDecorationType.None。|
+|color|?ResourceColor|是|-| **命名参数。** 装饰线颜色。<br>初始值：Color.Black。|
+|decorationStyle|?TextDecorationStyle|否|None| **命名参数。** 装饰线样式。<br>初始值：TextDecorationStyle.Solid。|
 
 ### func fontColor(?ResourceColor)
 
@@ -152,7 +152,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|文本的字体族。<br>初始值：HarmonyOS Sans。|
+|value|?ResourceStr|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 
@@ -224,7 +224,7 @@ public func lineHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的行高。<br>初始值：0.px。|
+|value|?Length|是|-|文本的行高。<br>初始值：0.0.px。|
 
 ### func lineSpacing(?Length)
 
@@ -242,7 +242,7 @@ public func lineSpacing(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的行间距。<br>初始值：0.vp。|
+|value|?Length|是|-|文本的行间距。<br>初始值：0.0.vp。|
 
 ### func maxFontSize(?Length)
 

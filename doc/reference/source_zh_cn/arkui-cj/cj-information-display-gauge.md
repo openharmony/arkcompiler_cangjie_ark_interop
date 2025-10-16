@@ -15,7 +15,7 @@ import kit.ArkUI.*
 ### init(?Float64, ?Float64, ?Float64, () -> Unit)
 
 ```cangjie
-public init(value!: ?Float64 = None, min!: ?Float64 = None, max!: ?Float64 = None, child!: () -> Unit = { => })
+public init(value!: ?Float64, min!: ?Float64 = None, max!: ?Float64 = None, child!: () -> Unit = { => })
 ```
 
 **功能：** 创建一个数据量规图表组件。
@@ -28,9 +28,9 @@ public init(value!: ?Float64 = None, min!: ?Float64 = None, max!: ?Float64 = Non
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Float64|否|None| **命名参数。** 初始值: 0.0 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br>**说明：**<br>value不在min和max范围内时使用min作为默认值。|
-|min|?Float64|否|None| **命名参数。** 初始值: 0.0 当前数据段最小值。|
-|max|?Float64|否|None| **命名参数。** 初始值: 100.0 当前数据段最大值。<br>**说明：**<br>max小于min时使用默认值0.0和100.0。<br>max和min支持负数。|
+|value|?Float64|是|-| **命名参数。** 初始值: 0.0。 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br>**说明：**<br>value不在min和max范围内时使用min作为默认值。|
+|min|?Float64|否|None| **命名参数。** 初始值: 0.0。 当前数据段最小值。|
+|max|?Float64|否|None| **命名参数。** 初始值: 100.0。 当前数据段最大值。<br>**说明：**<br>max小于min时使用默认值0.0和100.0。<br>max和min支持负数。|
 |child|()->Unit|否|{ => }| **命名参数。** 声明当前组件的子组件。|
 
 ## 通用属性/通用事件
@@ -121,10 +121,10 @@ public func colors(value: ?ResourceColor): This
 |:---|:---|:---|:---|:---|
 |value|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|量规图的颜色，支持分段颜色设置。|
 
-### func description(?() -> Unit)
+### func description(?CustomBuilder)
 
 ```cangjie
-public func description(builder: ?() -> Unit): This
+public func description(builder: ?CustomBuilder): This
 ```
 
 **功能：** 设置量规图的说明内容。
@@ -137,7 +137,7 @@ public func description(builder: ?() -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|builder|?()->Unit|是|-|说明内容，@Builder中的内容由开发者自定义，建议使用文本。|
+|builder|?CustomBuilder|是|-|说明内容，@Builder中的内容由开发者自定义，建议使用文本。<br>初始值：{ => }。|
 
 ### func endAngle(?Float64)
 
@@ -214,7 +214,7 @@ public func strokeWidth(length: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|length|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值: 4.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
+|length|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|环形量规图的环形厚度。<br>初始值: 4.0.vp。<br>单位：vp。<br>**说明：**<br>设置小于0的值时，按默认值显示。<br>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br>不支持百分比。|
 
 ### func trackShadow(?Float64, ?Float64, ?Float64)
 

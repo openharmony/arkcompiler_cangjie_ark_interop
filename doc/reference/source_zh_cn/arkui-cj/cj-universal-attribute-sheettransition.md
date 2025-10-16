@@ -28,7 +28,7 @@ public func bindSheet(isShow: ?Bool, builder: CustomBuilder, options!: ?SheetOpt
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| isShow | ?Bool |是|-| 是否显示半模态页面。 |
+| isShow | ?Bool |是|-| 是否显示半模态页面。 <br>初始值：false。|
 | builder | CustomBuilder | 是 | \- | 配置半模态页面内容。 |
 | options | ?SheetOptions | 否 | None | **命名参数。**  配置半模态页面的可选属性。 <br/>初始值：SheetOptions()。 |
 
