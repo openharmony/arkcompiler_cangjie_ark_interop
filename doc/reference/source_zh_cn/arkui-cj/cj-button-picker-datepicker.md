@@ -5,7 +5,7 @@
 ## 导入模块
 
 ```cangjie
-import kit.UIkit.*
+import kit.ArkUI.*
 ```
 
 ## 子组件
@@ -14,13 +14,13 @@ import kit.UIkit.*
 
 ## 创建组件
 
-### init(DateTime, DateTime, DateTime)
+### init(?DateTime, ?DateTime, ?DateTime)
 
 ```cangjie
 public init(
-    start!: DateTime = DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1),
-    end!: DateTime = DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31),
-    selected!: DateTime = DateTime.now()
+    start!: ?DateTime = None,
+    end!: ?DateTime = None,
+    selected!: ?DateTime = None
 )
 ```
 
@@ -28,15 +28,15 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型       | 必填  | 默认值                                                          | 说明                    |
 |:-------- |:-------- |:--- |:------------------------------------------------------------ |:--------------------- |
-| start    | DateTime | 否   | DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1)   | **命名参数。** 指定选择器的起始日期。 |
-| end      | DateTime | 否   | DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31) | **命名参数。** 指定选择器的结束日期。 |
-| selected | DateTime | 否   | DateTime.now()                                               | **命名参数。** 设置选中项的日期。   |
+| start    | ?DateTime | 否   | None | **命名参数。** 指定选择器的起始日期。<br>初始值: DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1)。|
+| end      | ?DateTime | 否   | None | **命名参数。** 指定选择器的结束日期。<br>初始值: DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31)。|
+| selected | ?DateTime | 否   | None | **命名参数。** 设置选中项的日期。<br>初始值: DateTime.now()。|
 
 ## 通用属性/通用事件
 
@@ -46,97 +46,97 @@ public init(
 
 ## 组件属性
 
-### func disappearTextStyle(PickerTextStyle)
+### func disappearTextStyle(?PickerTextStyle)
 
 ```cangjie
-public func disappearTextStyle(value: PickerTextStyle): This
+public func disappearTextStyle(value: ?PickerTextStyle): This
 ```
 
 **功能：** 设置过渡项（以选中项为基准向上或向下的第二项）的文本样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
-| 参数名   | 类型                                                                      | 必填  | 默认值 | 说明                                                                                             |
+| 参数名   | 类型 | 必填  | 默认值 | 说明|
 |:----- |:----------------------------------------------------------------------- |:--- |:--- |:---------------------------------------------------------------------------------------------- |
-| value | [PickerTextStyle](#class-pickertextstyle) | 是   | -   | 过渡项的文本颜色、字号、字体粗细。初始值为<br>{color: '#ff182431',font: {size: '14fp', weight: FontWeight.Regular}} |
+| value | ?PickerTextStyle| 是   | -   | 过渡项的文本颜色、字号、字体粗细。<br>初始值：{color: '#ff182431',font: {size: '14.fp', weight: FontWeight.Regular, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
 
-### func lunar(Bool)
+### func lunar(?Bool)
 
 ```cangjie
-public func lunar(value: Bool): This
+public func lunar(value: ?Bool): This
 ```
 
 **功能：** 设置弹窗的日期是否显示农历。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型   | 必填  | 默认值 | 说明                                                            |
 |:----- |:---- |:--- |:--- |:------------------------------------------------------------- |
-| value | Bool | 是   | -   | 日期是否显示农历。<br/> - true：展示农历。<br/> - false：不展示农历。<br>初始值：false。 |
+| value | ?Bool | 是   | -   | 日期是否显示农历。<br/> - true：展示农历。<br/> - false：不展示农历。<br>初始值: false。|
 
-### func selectedTextStyle(PickerTextStyle)
+### func selectedTextStyle(?PickerTextStyle)
 
 ```cangjie
-public func selectedTextStyle(value: PickerTextStyle): This
+public func selectedTextStyle(value: ?PickerTextStyle): This
 ```
 
 **功能：**设置选中项的文本样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                                                      | 必填  | 默认值 | 说明                                                                                 |
 |:----- |:----------------------------------------------------------------------- |:--- |:--- |:---------------------------------------------------------------------------------- |
-| value | [PickerTextStyle](#class-pickertextstyle) | 是   | -   | 文本样式值，初始值为<br>{color: '#ff007dff',font: {size: '20fp', weight: FontWeight.Medium}} |
+| value |?PickerTextStyle | 是   | -   | 文本样式值，<br>初始值：{color: '#ff007dff',font: {size: '20fp', weight: FontWeight.Medium, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
 
-### func textStyle(PickerTextStyle)
+### func textStyle(?PickerTextStyle)
 
 ```cangjie
-public func textStyle(value: PickerTextStyle): This
+public func textStyle(value: ?PickerTextStyle): This
 ```
 
 **功能：** 设置一般项（以选中项为基准向上或向下的第一项）的文本样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                                                                      | 必填  | 默认值 | 说明                                                                                             |
 |:----- |:----------------------------------------------------------------------- |:--- |:--- |:---------------------------------------------------------------------------------------------- |
-| value | [PickerTextStyle](#class-pickertextstyle) | 是   | -   | 一般项的文本颜色、字号、字体粗细。初始值为<br>{color: '#ff182431',font: {size: '16fp', weight: FontWeight.Regular}} |
+| value | ?PickerTextStyle | 是   | -   | 一般项的文本颜色、字号、字体粗细。<br>初始值：{color: '#ff182431',font: {size: '16.fp', weight: FontWeight.Regular, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
 
 ## 组件事件
 
-### func onDateChange(Callback\<DateTime,Unit>)
+### func onDateChange(?Callback\<DateTime,Unit>)
 
 ```cangjie
-public func onDateChange(callback: Callback<DateTime, Unit>): This
+public func onDateChange(callback: ?Callback<DateTime, Unit>): This
 ```
 
 **功能：** 选择日期时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 | 参数名      | 类型                                                                                                                                       | 必填  | 默认值 | 说明                                      |
 |:-------- |:---------------------------------------------------------------------------------------------------------------------------------------- |:--- |:--- |:--------------------------------------- |
-| callback | [Callback](../BasicServicesKit/cj-apis-base.md#type-callback)\<[DateTime](../ImageKit/cj-apis-image.md#datetime),Unit> | 是   | -   | 返回选中的时间，年月日为选中的日期，时分取决于当前系统时间的时分，秒恒为00。 |
+| callback | ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[DateTime](../apis/ImageKit/cj-apis-image.md#datetime),Unit> | 是   | -   | 返回选中的时间，年月日为选中的日期，时分取决于当前系统时间的时分，秒恒为00。<br>初始值: { _ => } |
 
 ## 基础类型定义
 
@@ -159,39 +159,7 @@ public class DatePickerResult {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var day
-
-```cangjie
-public var day: Int64
-```
-
-**功能：** 选中日期的日。
-
-**类型：** Int64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var month
-
-```cangjie
-public var month: Int64
-```
-
-**功能：** 选中日期的月。
-
-**类型：** Int64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var year
 
@@ -207,7 +175,40 @@ public var year: Int64
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### var month
+
+```cangjie
+public var month: Int64
+```
+
+**功能：** 选中日期的月。
+
+**类型：** Int64
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var day
+
+```cangjie
+public var day: Int64
+```
+
+**功能：** 选中日期的日。
+
+**类型：** Int64
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
 
 #### init(Int64, Int64, Int64)
 
@@ -223,7 +224,7 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
@@ -233,72 +234,6 @@ public init(
 | month | Int64 | 是   | -   | 选中日期的月。(0~11)，0表示1月，11表示12月。 |
 | day   | Int64 | 是   | -   | 选中日期的日。                      |
 
-### class PickerTextStyle
-
-```cangjie
-public class PickerTextStyle {
-    public var color:?ResourceColor
-    public var font:?Font
-    public init(color!: ?ResourceColor = None, font!: ?Font = None)
-}
-```
-
-**功能：** 选择器文本样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var color
-
-```cangjie
-public var color:?ResourceColor
-```
-
-**功能：** 设置选择器文本颜色。
-
-**类型：** ?[ResourceColor](cj-common-types.md#interface-resourcecolor)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var font
-
-```cangjie
-public var font:?Font
-```
-
-**功能：** 设置选择器文本字体。
-
-**类型：** ?[Font](cj-common-types.md#class-font)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(?ResourceColor, ?Font)
-
-```cangjie
-public init(color!: ?ResourceColor = None, font!: ?Font = None)
-```
-
-**功能：** 构造一个PickerTextStyle对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|color|?[ResourceColor](cj-common-types.md#interface-resourcecolor)|否|None|设置选择器文本颜色。|
-|font|?[Font](cj-common-types.md#class-font)|否|None|设置选择器文本字体。|
 
 ## 示例代码
 
@@ -310,7 +245,7 @@ public init(color!: ?ResourceColor = None, font!: ?Font = None)
 
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 import std.time.DateTime
 import std.time.Month

@@ -2,6 +2,12 @@
 
 计数器组件，提供相应的增加或者减少的计数操作。
 
+## 导入模块
+
+```cangjie
+import kit.ArkUI.*
+```
+
 ## 子组件
 
 可以包含子组件。
@@ -18,13 +24,13 @@ public init(content: () -> Unit)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|()->Unit|是|-|定义计数器组件和内容区。|
+|content|() -> Unit|是|-|定义计数器组件和内容区。|
 
 ## 通用属性/通用事件
 
@@ -34,79 +40,79 @@ public init(content: () -> Unit)
 
 ## 组件属性
 
-### func enableDec(Bool)
+### func enableDec(?Bool)
 
 ```cangjie
-public func enableDec(value: Bool): This
+public func enableDec(value: ?Bool): This
 ```
 
 **功能：** 设置减少按钮禁用或使能。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|减少按钮禁用或使能。<br>true表示按钮使能。<br>false表示按钮禁用。<br>初始值：true。|
+|value|?Bool|是|-|减少按钮禁用或使能。初始值: true<br>true表示按钮使能。<br>false表示按钮禁用。|
 
-### func enableInc(Bool)
+### func enableInc(?Bool)
 
 ```cangjie
-public func enableInc(value: Bool): This
+public func enableInc(value: ?Bool): This
 ```
 
 **功能：** 设置增加按钮禁用或使能。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|增加按钮禁用或使能。<br>true表示+按钮使能。<br>false表示+按钮禁用。<br>组件初始值：true。|
+|value|?Bool|是|-|增加按钮禁用或使能。初始值: true<br>true表示+按钮使能。<br>false表示+按钮禁用。|
 
 ## 组件事件
 
-### func onDec(VoidCallback)
+### func onDec(?VoidCallback)
 
 ```cangjie
-public func onDec(event: VoidCallback): This
+public func onDec(event: ?VoidCallback): This
 ```
 
 **功能：** 监听数值减少时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|VoidCallback|是|-|回调函数，Counter数值减少时触发。|
+|event|?VoidCallback|是|-|回调函数，Counter数值减少时触发。初始值: { => }|
 
-### func onInc(VoidCallback)
+### func onInc(?VoidCallback)
 
 ```cangjie
-public func onInc(event: VoidCallback): This
+public func onInc(event: ?VoidCallback): This
 ```
 
 **功能：** 监听数值增加触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|VoidCallback|是|-|回调函数，Counter数值增加时触发。|
+|event|?VoidCallback|是|-|回调函数，Counter数值增加时触发。初始值: { => }|
 
 ## 示例代码
 
@@ -126,12 +132,12 @@ class EntryView {
             Counter() {Text(this.value.toString())}
                 .margin(100.0)
                 .height(10.percent)
-                .onInc {
+                .onInc({ =>
                 this.value++
-            }
-                .onDec {
+            })
+                .onDec({ =>
                 this.value--
-            }
+            })
         }
     }
 }

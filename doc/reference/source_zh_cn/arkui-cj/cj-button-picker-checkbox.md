@@ -2,31 +2,37 @@
 
 多选框组件，通常用于某选项的打开或关闭。
 
+## 导入模块
+
+```cangjie
+import kit.ArkUI.*
+```
+
 ## 子组件
 
 无
 
 ## 创建组件
 
-### init(String, String, ?CustomBuilder)
+### init(?String, ?String, ?CustomBuilder)
 
 ```cangjie
-public init(name!: String = "", group!: String = "", indicatorBuilder!: ?CustomBuilder = None)
+public init(name!: ?String = None, group!: ?String = None, indicatorBuilder!: ?CustomBuilder = None)
 ```
 
 **功能：** 创建多选框组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|name|String|否|""|**命名参数。** 多选框名称。|
-|group|String|否|""|**命名参数。** 用于指定多选框所属群组的名称（即所属[CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup)的名称）。<br/>**说明**：<br/>未配合使用[CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup)组件时，此值无用。|
-|indicatorBuilder|?[CustomBuilder](./cj-common-types.md#type-custombuilder)|否|None|**命名参数。** 配置多选框的选中样式为自定义UI描述。自定义UI描述与Checkbox组件为中心点对齐显示。indicatorBuilder设置为None时，默认为indicatorBuilder未设置状态。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|name|?String|否|None|**命名参数。** 多选框名称。|
+|group|?String|否|None|**命名参数。** 用于指定多选框所属群组的名称（即所属[CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup)的名称）。<br/>**说明**：<br/>未配合使用[CheckboxGroup](./cj-button-picker-checkboxgroup.md#checkboxgroup)组件时，此值无用。|
+|indicatorBuilder|?CustomBuilder|否|None|**命名参数。** 配置多选框的选中样式为自定义UI描述。自定义UI描述与Checkbox组件为中心点对齐显示。indicatorBuilder设置为None时，默认为indicatorBuilder未设置状态。使用时结合[@Builder](../../../Dev_Guide/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 
 ## 通用属性/通用事件
 
@@ -36,79 +42,79 @@ public init(name!: String = "", group!: String = "", indicatorBuilder!: ?CustomB
 
 ## 组件属性
 
-### func select(Bool)
+### func select(?Bool)
 
 ```cangjie
-public func select(value: Bool): This
+public func select(value: ?Bool): This
 ```
 
 **功能：** 设置多选框是否被选中。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|多选框是否被选中。<br>初始值：false<br>值为true时，多选框被选中。值为false时，多选框不被选中。|
+|value|?Bool|是|-|多选框是否被选中。初始值：false。<br>值为true时，多选框被选中。值为false时，多选框不被选中。|
 
-### func selectedColor(ResourceColor)
+### func selectedColor(?ResourceColor)
 
 ```cangjie
-public func selectedColor(value: ResourceColor): This
+public func selectedColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置多选框选中状态颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](./../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|多选框选中状态颜色。<br>初始值：<br>@r(sys.color.ohos_id_color_text_primary_activated)。<br>异常值按照默认值处理。|
+|value|?ResourceColor|是|-|多选框选中状态颜色。初始值：0xff007dff。<br>异常值按照默认值处理。|
 
-### func shape(CheckBoxShape)
+### func shape(?CheckBoxShape)
 
 ```cangjie
-public func shape(value: CheckBoxShape): This
+public func shape(value: ?CheckBoxShape): This
 ```
 
 **功能：** 设置CheckBox组件形状，包括圆形和圆角方形。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[CheckBoxShape](./cj-common-types.md#enum-checkboxshape)|是|-|切换CheckBox组件形状，包括圆形和圆角方形。<br>初始值：<br>CheckBoxShape.Circle。|
+|value|?CheckBoxShape|是|-|切换CheckBox组件形状，包括圆形和圆角方形。初始值:  CheckBoxShape.Circle|
 
 ## 组件事件
 
-### func onChange(OnCheckboxChangeCallback)
+### func onChange(?OnCheckboxChangeCallback)
 
 ```cangjie
-public func onChange(callback: OnCheckboxChangeCallback): This
+public func onChange(callback: ?OnCheckboxChangeCallback): This
 ```
 
 **功能：** 当选中状态发生变化时，触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[OnCheckboxChangeCallback](#type-oncheckboxchangecallback)|是|-|当选中状态发生变化时，触发该回调。<br>\- Bool值为true时，表示已选中。<br>\- Bool值为false时，表示未选中。|
+|callback|?OnCheckboxChangeCallback|是|-|当选中状态发生变化时，触发该回调。初始值：{ _: Bool => }。<br>\- Bool值为true时，表示已选中。<br>\- Bool值为false时，表示未选中。|
 
 ## 基础类型定义
 
@@ -120,13 +126,11 @@ public type OnCheckboxChangeCallback = (Bool) -> Unit
 
 **功能：** (Bool) -> Unit 的类型别名。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**类型：** (Bool) -> Unit
 
 ## 示例代码
 
-### 示例1（设置多选框形状）
+### 示例一（设置多选框形状）
 
 该示例通过配置CheckBoxShape实现圆形和圆角方形多选框样式。
 

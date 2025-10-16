@@ -14,25 +14,25 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Float64, Float64, ProgressType)
+### init(?Float64, ?Float64, ?ProgressType)
 
 ```cangjie
-public init(value!: Float64, total!: Float64 = 100.0, progressType!: ProgressType = ProgressType.Linear)
+public init(value!: ?Float64, total!: ?Float64 = None, progressType!: ?ProgressType = None)
 ```
 
 **功能：** 创建进度条组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Float64|是|-|**命名参数。** 指定当前进度值。设置小于0的数值时置为0.0，设置大于total的数值时置为total。<br/>初始值：0.0|
-|total|Float64|否|100.0|**命名参数。** 指定进度总长。设置小于等于0的数值时置为100.0。|
-|progressType|[ProgressType](./cj-common-types.md#enum-progresstype)|否|ProgressType.Linear|指定进度条类型。|
+|value|?Float64|是|-|**命名参数。** 指定当前进度值。设置小于0的数值时置为0.0，设置大于total的数值时置为total。初始值：0.0|
+|total|?Float64|否|None|**命名参数。** 指定进度总长。设置小于等于0的数值时置为100.0。|
+|progressType|?ProgressType|否|None|**命名参数。** 指定进度条类型。|
 
 ## 通用属性/通用事件
 
@@ -46,79 +46,79 @@ public init(value!: Float64, total!: Float64 = 100.0, progressType!: ProgressTyp
 
 ## 组件属性
 
-### func color(ResourceColor)
+### func color(?ResourceColor)
 
 ```cangjie
-public func color(value: ResourceColor): This
+public func color(value: ?ResourceColor): This
 ```
 
 **功能：** 设置进度条前景色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|进度条前景色。<br/>初始值：<br/>- Capsule：'0x33007dff'<br/>- Ring：起始端：'0xff86c1ff'，结束端：'0xff254ff7'<br/>- 其他样式：'0xff007dff'|
+|value|?ResourceColor|是|-|进度条前景色。|
 
-### func style(Length, Int32, Length)
+### func style(?Length, ?Int32, ?Length)
 
 ```cangjie
-public func style(strokeWidth!: Length = 10.vp, scaleCount!: Int32 = 120, scaleWidth!: Length = 2.vp): This
+public func style(strokeWidth!: ?Length = None, scaleCount!: ?Int32 = None, scaleWidth!: ?Length = None): This
 ```
 
 **功能：** 设置进度条的样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|10.vp|**命名参数。** 设置进度条宽度（不支持百分比设置）。|
-|scaleCount|Int32|否|120|**命名参数。** 设置环形进度条总刻度数。|
-|scaleWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|2.vp|**命名参数。** 设置环形进度条刻度粗细（不支持百分比设置），刻度粗细大于进度条宽度时，为系统默认粗细。|
+|strokeWidth|?Length|否|None|**命名参数。** 设置进度条宽度（不支持百分比设置）。初始值：10.vp。|
+|scaleCount|?Int32|否|None|**命名参数。** 设置环形进度条总刻度数。初始值：120。|
+|scaleWidth|?Length|否|None|**命名参数。** 设置环形进度条刻度粗细（不支持百分比设置），刻度粗细大于进度条宽度时，为系统默认粗细。初始值：2.vp。|
 
-### func style(RingStyleOptions)
+### func style(?RingStyleOptions)
 
 ```cangjie
-public func style(value: RingStyleOptions): This
+public func style(value: ?RingStyleOptions): This
 ```
 
 **功能：** 设置进度条Ring的样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[RingStyleOptions](#class-ringstyleoptions)|是|-|设置Ring的样式。|
+|value|?RingStyleOptions|是|-|设置Ring的样式。|
 
-### func value(Float64)
+### func value(?Float64)
 
 ```cangjie
-public func value(value: Float64): This
+public func value(value: ?Float64): This
 ```
 
-**功能：** 设置当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。非法数值不生效。
+**功能：** 设置当前进度值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Float64|是|-|当前进度值。<br/>初始值：0|
+|value|?Float64|是|-|当前进度值。初始值：0|
 
 ## 基础类型定义
 
@@ -126,146 +126,146 @@ public func value(value: Float64): This
 
 ```cangjie
 public class RingStyleOptions <: CommonProgressStyleOptions {
-    public var strokeWidth: Length
-    public var shadow: Bool
-    public var status: ProgressStatus
-    public var enableSmoothEffect: Bool
-    public var enableScanEffect: Bool
-    public init(strokeWidth!: Length = 4.vp, shadow!: Bool = false,
-        status!: ProgressStatus = ProgressStatus.Progressing, enableSmoothEffect!: Bool = true,
-        enableScanEffect!: Bool = false)
+    public var strokeWidth: ?Length
+    public var shadow: ?Bool
+    public var status: ?ProgressStatus
+    public var enableSmoothEffect: ?Bool
+    public var enableScanEffect: ?Bool
+    public init(strokeWidth!: ?Length = None, shadow!: ?Bool = None, status!: ?ProgressStatus = None, enableSmoothEffect!: ?Bool = None, enableScanEffect!: ?Bool = None)
 }
 ```
 
-**功能：** 设置进度条Ring的样式。
+**功能：** 环形进度条样式选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **父类型：**
 
-- [CommonProgressStyleOptions](./cj-common-types.md#class-commonprogressstyleoptions)
+- [CommonProgressStyleOptions](#interface-commonprogressstyleoptions)
 
 #### var enableScanEffect
 
 ```cangjie
-public var enableScanEffect: Bool
+public var enableScanEffect: ?Bool
 ```
 
 **功能：** 扫光效果的开关。
 
-**类型：** Bool
+**类型：** ?Bool
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var enableSmoothEffect
 
 ```cangjie
-public var enableSmoothEffect: Bool
+public var enableSmoothEffect: ?Bool
 ```
 
 **功能：** 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。
 
-**类型：** Bool
+**类型：** ?Bool
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var shadow
 
 ```cangjie
-public var shadow: Bool
+public var shadow: ?Bool
 ```
 
 **功能：** 进度条阴影开关。
 
-**类型：** Bool
+**类型：** ?Bool
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var status
 
 ```cangjie
-public var status: ProgressStatus
+public var status: ?ProgressStatus
 ```
 
 **功能：** 进度条状态，当设置为LOADING时会开启检查更新动效，此时设置进度值不生效。当从LOADING设置为PROGRESSING，检查更新动效会执行到终点再停止。
 
-**类型：** [ProgressStatus](#enum-progressstatus)
+**类型：** ?ProgressStatus
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var strokeWidth
 
 ```cangjie
-public var strokeWidth: Length
+public var strokeWidth: ?Length
 ```
 
 **功能：** 设置进度条宽度（不支持百分比设置）。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?Length
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Length, Bool, ProgressStatus, Bool, Bool)
+#### init(?Length, ?Bool, ?ProgressStatus, ?Bool, ?Bool)
 
 ```cangjie
-public init(strokeWidth!: Length = 4.vp, shadow!: Bool = false,
-    status!: ProgressStatus = ProgressStatus.Progressing, enableSmoothEffect!: Bool = true,
-    enableScanEffect!: Bool = false)
+public init(strokeWidth!: ?Length = None, shadow!: ?Bool = None, status!: ?ProgressStatus = None, enableSmoothEffect!: ?Bool = None, enableScanEffect!: ?Bool = None)
 ```
 
 **功能：** 创建一个RingStyleOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|4.vp|**命名参数。** 设置进度条宽度（不支持百分比设置），宽度大于等于半径时，默认修改宽度至半径值的二分之一。|
-|shadow|Bool|否|false|**命名参数。** 进度条阴影开关。|
-|status|[ProgressStatus](#enum-progressstatus)|否|ProgressStatus.Progressing|**命名参数。** 进度条状态，当设置为LOADING时会开启检查更新动效，此时设置进度值不生效。当从LOADING设置为PROGRESSING，检查更新动效会执行到终点再停止。|
-|enableSmoothEffect|Bool|否|true|**命名参数。** 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。|
-|enableScanEffect|Bool|否|false|**命名参数。** 扫光效果的开关。|
+|strokeWidth|?Length|否|None|**命名参数。** 设置进度条宽度（不支持百分比设置），宽度大于等于半径时，默认修改宽度至半径值的二分之一。初始值：4.0.vp。|
+|shadow|?Bool|否|None|**命名参数。** 进度条阴影开关。初始值：false。|
+|status|?ProgressStatus|否|None|**命名参数。** 进度条状态，当设置为LOADING时会开启检查更新动效，此时设置进度值不生效。当从LOADING设置为PROGRESSING，检查更新动效会执行到终点再停止。初始值：ProgressStatus.Progressing。|
+|enableSmoothEffect|?Bool|否|None|**命名参数。** 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。初始值：true。|
+|enableScanEffect|?Bool|否|None|**命名参数。** 扫光效果的开关。初始值：false。|
 
 ### enum ProgressStatus
 
 ```cangjie
-public enum ProgressStatus {
+public enum ProgressStatus <: Equatable<ProgressStatus> {
     | Loading
     | Progressing
     | ...
 }
 ```
 
-**功能：** Progress组件的进度条状态。
+**功能：** 当前进度条的状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：**
+
+- Equatable\<ProgressStatus>
 
 #### Loading
 
@@ -273,11 +273,11 @@ public enum ProgressStatus {
 Loading
 ```
 
-**功能：** 加载中。
+**功能：** 加载状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### Progressing
 
@@ -285,11 +285,59 @@ Loading
 Progressing
 ```
 
-**功能：** 进度更新中。
+**功能：** 处理中状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### operator func !=(ProgressStatus)
+
+```cangjie
+public operator func !=(other: ProgressStatus): Bool
+```
+
+**功能：** 比较两个枚举值是否不相等。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ProgressStatus](#enum-progressstatus)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值不相等则返回true，否则返回false。|
+
+#### operator func ==(ProgressStatus)
+
+```cangjie
+public operator func ==(other: ProgressStatus): Bool
+```
+
+**功能：** 比较两个枚举值是否相等。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|other|[ProgressStatus](#enum-progressstatus)|是|-|待比较的另一个枚举值。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|Bool|如果两个枚举值相等则返回true，否则返回false。|
 
 ## 示例代码
 
@@ -377,7 +425,7 @@ class EntryView {
 }
 ```
 
-![progress1](figures/progress1.jpg)
+![progress1](figures/progress1.png)
 
 ### 示例2（设置环形进度条属性）
 
@@ -414,7 +462,7 @@ class EntryView {
 }
 ```
 
-![progress2](figures/progress2.jpg)
+![progress2](figures/progress2.png)
 
 ### 示例3（设置环形进度条动画）
 
@@ -478,9 +526,9 @@ class EntryView {
             Text('enableSmoothEffect: false').fontSize(9).fontColor(0xCCCCCC).width(90.percent).margin(5)
             Progress( value: this.value, total: 100.0, progressType: ProgressType.Linear ).style(RingStyleOptions(strokeWidth: 10, enableSmoothEffect: false ))
             Button('value +10')
-                .onClick{ evt =>
+                .onClick({ evt =>
                     this.value += 10.0
-            }.width(75).height(15).fontSize(9)
+            }).width(75).height(15).fontSize(9)
         }.width(50.percent).height(100.percent).margin( left: 20 )
     }
 }

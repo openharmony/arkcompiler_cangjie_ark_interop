@@ -14,24 +14,24 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(String, String)
+### init(?String, ?String)
 
 ```cangjie
-public init(value!: String, group!: String)
+public init(value!: ?String, group!: ?String)
 ```
 
 **功能：** 创建单选框组件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|String|是|-| **命名参数。** 当前单选框的值。|
-|group|String|是|-| **命名参数。** 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。|
+|value|?String|是|-|**命名参数。** 当前单选框的值。<br>初始值：""。|
+|group|?String|是|-|**命名参数。** 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。<br>初始值：""。|
 
 ## 通用属性/通用事件
 
@@ -41,45 +41,46 @@ public init(value!: String, group!: String)
 
 ## 组件属性
 
-### func checked(Bool)
+### func checked(?Bool)
 
 ```cangjie
-public func checked(value: Bool): This
+public func checked(value: ?Bool): This
 ```
 
 **功能：** 单选框的选中状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|设置单选框的选中状态。<br>初始值：false。<br/>**说明**：<br/>value为true时，表示从未选中变为选中。value为false时，表示从选中变为未选中。|
+|value|?Bool|是|-|设置单选框的选中状态。<br>初始值：false。<br>**说明**：value为true时，表示从未选中变为选中。value为false时，表示从选中变为未选中。|
 
 ## 组件事件
 
-### func onChange((Bool) -> Unit)
+### func onChange(?(Bool) -> Unit)
 
 ```cangjie
-public func onChange(callback: (Bool) -> Unit): This
+public func onChange(callback: ?(Bool) -> Unit): This
 ```
 
 **功能：** 单选框选中状态改变时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(Bool)->Unit|是|-|单选框的状态。|
+|callback|?(Bool)->Unit|是|-|单选框的状态。<br>初始值：{ _ => }。|
 
-## 示例 （设置底板颜色）
+
+## 示例代码
 
 该示例通过配置checkedBackgroundColor实现自定义单选框的底板颜色。
 
@@ -116,3 +117,4 @@ class EntryView {
 ```
 
 ![radio](figures/radio.gif)
+

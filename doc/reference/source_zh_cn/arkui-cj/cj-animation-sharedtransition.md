@@ -1,4 +1,4 @@
-# 共享元素转场 (sharedTransition)
+# 共享元素转场 （sharedTransition）
 
 可以通过设置组件的 sharedTransition 属性将该元素标记为共享元素并设置对应的共享元素转场动效。sharedTransition仅发生在页面路由（router）跳转时。
 
@@ -8,177 +8,34 @@
 import kit.ArkUI.*
 ```
 
-## class SharedTransitionOptions
+## func sharedTransition(String, ?SharedTransitionOptions)
 
 ```cangjie
-public class SharedTransitionOptions {
-    public var duration: Int32 = 1000
-    public var curve: Curve = Curve.Linear
-    public var delay: Int32 = 0
-    public var motionPath: MotionPathOptions = MotionPathOptions(path: "")
-    public var zIndex: Int32 = 0
-    public var effectType: SharedTransitionEffectType = SharedTransitionEffectType.Exchange
-    public init(
-        duration!: Int32 = 1000,
-        curve!: Curve = Curve.Linear,
-        delay!: Int32 = 0,
-        motionPath!: MotionPathOptions = MotionPathOptions(path: ""),
-        zIndex!: Int32 = 0,
-        effectType!: SharedTransitionEffectType = SharedTransitionEffectType.Exchange
-    )
-}
+public func sharedTransition(id: String, options!: ?SharedTransitionOptions = None): T
 ```
 
-**功能：** 共享转场选项。
+**功能：** 设置共享元素转场动效。
+
+> **说明：**
+>
+> type为SharedTransitionEffectType.Exchange时motionPath才会生效。type为SharedTransitionEffectType.Exchange时，效果为对匹配的共享元素产生位置、大小的过渡（可通过配置组件的border观察），不支持内容的过渡效果。例如，Text组件在两个页面上使用不同的fontSize属性值，即绘制内容有大小差异，在sharedTransition动画结束后的最后一帧，Text的fontSize效果会突变为跳转目标页fontSize的效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-### var curve
-
-```cangjie
-public var curve: Curve = Curve.Linear
-```
-
-**功能：** 设置共享转场的动画曲线。
-
-**类型：** [Curve](./cj-common-types.md#enum-curve)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var delay
-
-```cangjie
-public var delay: Int32 = 0
-```
-
-**功能：** 设置共享转场的延迟时间。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var duration
-
-```cangjie
-public var duration: Int32 = 1000
-```
-
-**功能：** 设置共享转场的持续时间。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var effectType
-
-```cangjie
-public var effectType: SharedTransitionEffectType = SharedTransitionEffectType.Exchange
-```
-
-**功能：** 设置共享转场的效果类型。
-
-**类型：** [SharedTransitionEffectType](./cj-common-types.md#enum-sharedtransitioneffecttype)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var motionPath
-
-```cangjie
-public var motionPath: MotionPathOptions = MotionPathOptions(path: "")
-```
-
-**功能：** 设置共享转场的运动路径。
-
-**类型：** [MotionPathOptions](./cj-animation-motionpath.md#class-motionpathoptions)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### var zIndex
-
-```cangjie
-public var zIndex: Int32 = 0
-```
-
-**功能：** 设置共享转场的层级。
-
-**类型：** Int32
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-### init(Int32, Curve, Int32, MotionPathOptions, Int32, SharedTransitionEffectType)
-
-```cangjie
-public init(
-    duration!: Int32 = 1000,
-    curve!: Curve = Curve.Linear,
-    delay!: Int32 = 0,
-    motionPath!: MotionPathOptions = MotionPathOptions(path: ""),
-    zIndex!: Int32 = 0,
-    effectType!: SharedTransitionEffectType = SharedTransitionEffectType.Exchange
-)
-```
-
-**功能：** 构造一个SharedTransitionOptions对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|duration|Int32|否|1000|设置共享转场的持续时间。|
-|curve|[Curve](./cj-common-types.md#enum-curve)|否|Curve.Linear|设置共享转场的动画曲线。|
-|delay|Int32|否|0|设置共享转场的延迟时间。|
-|motionPath|[MotionPathOptions](./cj-animation-motionpath.md#class-motionpathoptions)|否|MotionPathOptions(path: "")|设置共享转场的运动路径。|
-|zIndex|Int32|否|0|设置共享转场的层级。|
-|effectType|[SharedTransitionEffectType](./cj-common-types.md#enum-sharedtransitioneffecttype)|否|SharedTransitionEffectType.Exchange|设置共享转场的效果类型。|
-
-## func sharedTransition(String, SharedTransitionOptions)
-
-```cangjie
-public func sharedTransition(id: String, options!: SharedTransitionOptions = SharedTransitionOptions()): This
-```
-
-**功能：** 设置共享过渡动画。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |id|String|是|-|两个页面中id值相同且不为空字符串的组件即为共享元素，在页面转场时可显示共享元素转场动效。|
-|options|[SharedTransitionOptions](#class-sharedtransitionoptions)|否|SharedTransitionOptions()|共享过渡选项。|
+|options|?SharedTransitionOptions|否|None|**命名参数** 共享元素转场动画参数。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|T|返回组件实例。|
 
 ## 示例代码
 
@@ -202,9 +59,9 @@ class EntryView {
             Image(@r(app.media.startIcon))
                 .width(50)
                 .height(50)
-                .onClick {
+                .onClick({
                     e => getUIContext().getRouter()
-                }
+                })
                 .sharedTransition("sharedImage",
                     options: SharedTransitionOptions(duration: 800, curve: Curve.Linear, delay: 100))
         }

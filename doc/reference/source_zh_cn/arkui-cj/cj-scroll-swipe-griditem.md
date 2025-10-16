@@ -5,7 +5,7 @@
 > **说明：**
 >
 > - 仅支持作为[Grid](./cj-scroll-swipe-grid.md)组件的子组件使用。
-> - 当GridItem配合[LazyForEach](cj-state-rendering-lazyforeach.md)使用时，GridItem子组件在GridItem创建时创建。配合[if/else](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。
+> - 当GridItem配合[LazyForEach](cj-state-rendering-lazyforeach.md)使用时，GridItem子组件在GridItem创建时创建。配合[if/else](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../Dev_Guide/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。
 
 ## 导入模块
 
@@ -29,7 +29,7 @@ public init()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ### init(() -> Unit)
 
@@ -41,13 +41,13 @@ public init(child: () -> Unit)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|child|()->Unit|是|-|GridItem 容器的子组件。|
+|child|() -> Unit|是|-|GridItem 容器的子组件。|
 
 ## 通用属性/通用事件
 
@@ -57,77 +57,77 @@ public init(child: () -> Unit)
 
 ## 组件属性
 
-### func columnEnd(Int32)
+### func columnEnd(?Int32)
 
 ```cangjie
-public func columnEnd(columnEnd: Int32): This
+public func columnEnd(value: ?Int32): This
 ```
 
 **功能：** 设置当前元素终点列号。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columnEnd|Int32|是|-|当前元素终点列号，与columnStart配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总列数-1]。|
+|value|?Int32|是|-|当前元素终点列号，与columnStart配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总列数-1]。初始值:  0|
 
-### func columnStart(Int32)
+### func columnStart(?Int32)
 
 ```cangjie
-public func columnStart(columnStart: Int32): This
+public func columnStart(value: ?Int32): This
 ```
 
 **功能：** 设置当前元素起始列号。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columnStart|Int32|是|-|当前元素起始列号，与columnEnd配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总列数-1]|
+|value|?Int32|是|-|当前元素起始列号，与columnEnd配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总列数-1]初始值:  0|
 
-### func rowEnd(Int32)
+### func rowEnd(?Int32)
 
 ```cangjie
-public func rowEnd(rowEnd: Int32): This
+public func rowEnd(value: ?Int32): This
 ```
 
 **功能：** 设置当前元素终点行号。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|rowEnd|Int32|是|-|当前元素终点行号，与rowStart配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总行数-1]|
+|value|?Int32|是|-|当前元素终点行号，与rowStart配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总行数-1]初始值:  0|
 
-### func rowStart(Int32)
+### func rowStart(?Int32)
 
 ```cangjie
-public func rowStart(rowStart: Int32): This
+public func rowStart(value: ?Int32): This
 ```
 
 **功能：** 设置当前元素起始行号。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|rowStart|Int32|是|-|当前元素起始行号，与rowEnd配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总行数-1]|
+|value|?Int32|是|-|当前元素起始行号，与rowEnd配套使用。需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](./cj-scroll-swipe-grid.md#class-gridlayoutoptions)。<br/>取值范围：[0, 总行数-1]初始值:  0|
 
 ## 示例代码
 

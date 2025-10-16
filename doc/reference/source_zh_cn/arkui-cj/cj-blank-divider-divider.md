@@ -24,7 +24,7 @@ public init()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## 通用属性/通用事件
 
@@ -34,77 +34,77 @@ public init()
 
 ## 组件属性
 
-### func color(ResourceColor)
+### func color(?ResourceColor)
 
 ```cangjie
-public func color(value: ResourceColor): This
+public func color(value: ?ResourceColor): This
 ```
 
 **功能：** 设置分割线的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
-| 参数名   | 类型                                       | 必填  | 默认值 | 说明     |
-|:----- |:---------------------------------------- |:--- |:--- |:------ |
-| value | [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | 是   | -   | 分割线颜色。 |
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+| value | ?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor) | 是   | -   | 分割线颜色。初始值: 0x33182431 |
 
-### func lineCap(LineCapStyle)
+### func lineCap(?LineCapStyle)
 
 ```cangjie
-public func lineCap(value: LineCapStyle): This
+public func lineCap(value: ?LineCapStyle): This
 ```
 
 **功能：** 设置当前在容器中的分割线端点样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
-| 参数名   | 类型                                                                   | 必填  | 默认值 | 说明         |
-|:----- |:-------------------------------------------------------------------- |:--- |:--- |:---------- |
-| value | [LineCapStyle](./cj-common-types.md#enum-linecapstyle) | 是   | -   | 分割线条的端点样式。 |
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+| value | ?[LineCapStyle](./cj-common-types.md#enum-linecapstyle) | 是  | - | 分割线条的端点样式。初始值: LineCapStyle.Butt |
 
-### func strokeWidth(Length)
+### func strokeWidth(?Length)
 
 ```cangjie
-public func strokeWidth(value: Length): This
+public func strokeWidth(value: ?Length): This
 ```
 
 **功能：** 设置当前在容器中的分割线宽度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
-| 参数名   | 类型       | 必填  | 默认值 | 说明                                                                                                                                       |
-|:----- |:-------- |:--- |:--- |:---------------------------------------------------------------------------------------------------------------------------------------- |
-| value | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 是   | -   | 分割线宽度。不指定像素单位时，默认单位vp。不支持百分比设置。分割线的宽度不支持百分比设置。优先级低于通用属性[height](./cj-universal-attribute-size.md#func-heightlength)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+| value | ?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length) | 是 | - | 分割线宽度。不指定像素单位时，默认单位vp。不支持百分比设置。分割线的宽度不支持百分比设置。优先级低于通用属性[height](./cj-universal-attribute-size.md#func-heightlength)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。初始值: 1.0.px |
 
-### func vertical(Bool)
+### func vertical(?Bool)
 
 ```cangjie
-public func vertical(value: Bool): This
+public func vertical(value: ?Bool): This
 ```
 
 **功能：** 设置分割线的方向。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
-| 参数名   | 类型   | 必填  | 默认值 | 说明        |
-|:----- |:---- |:--- |:--- |:--------- |
-| value | Bool | 是   | -   | 设置分割线的方向。 |
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+| value | ?Bool | 是   | -   | 设置分割线的方向。初始值: false |
 
 ## 示例代码
 

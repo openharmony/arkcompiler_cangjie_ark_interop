@@ -14,18 +14,17 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Float64, Float64, Float64, Float64, SliderStyle, Axis, Bool)
+### init(?Float64, ?Float64, ?Float64, ?Float64, ?SliderStyle, ?Axis, ?Bool)
 
 ```cangjie
-
 public init(
-    min!: Float64 = 0.0,
-    max!: Float64 = 100.0,
-    step!: Float64 = 1.0,
-    value!: Float64 = min,
-    style!: SliderStyle = SliderStyle.OutSet,
-    direction!: Axis = Axis.Horizontal,
-    reverse!: Bool = false
+    min!: ?Float64 = None,
+    max!: ?Float64 = None,
+    step!: ?Float64 = None,
+    value!: ?Float64 = None,
+    style!: ?SliderStyle = None,
+    direction!: ?Axis = None,
+    reverse!: ?Bool = None
 )
 ```
 
@@ -33,19 +32,19 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|min|Float64|否|0.0| **命名参数。** 设置最小值。|
-|max|Float64|否|100.0| **命名参数。** 设置最大值。<br/>初始值：100。<br/>**说明：**<br/>min >= max异常情况，min取初始值0，max取初始值100。<br/>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。|
-|step|Float64|否|1.0| **命名参数。** 设置滑动条滑动步长。<br/>**说明：**<br/>当step<=0，或step>=max\-min时，取初始值。|
-|value|Float64|否|min| **命名参数。** 当前进度值。|
-|style|[SliderStyle](#enum-sliderstyle)|否|SliderStyle.OutSet| **命名参数。** 设置滑动条的滑块样式。|
-|direction|[Axis](./cj-common-types.md#enum-axis)|否|Axis.Horizontal| **命名参数。** 设置滑动条滑动方向为水平或竖直方向。|
-|reverse|Bool|否|false| **命名参数。** 设置滑动条取值范围是否反向。<br/>**说明：**<br/>设置为false时，水平方向滑动条为从左向右滑动，竖直方向滑动条从上向下滑动。<br/>设置为true时，水平方向滑动条为从右向左滑动，竖直方向滑动条从下向上滑动。|
+|min|?Float64|否|None| **命名参数。** 设置最小值。<br>初始值：0.0。|
+|max|?Float64|否|None| **命名参数。** 设置最大值。<br>初始值：100.0。<br>**说明**：min >= max异常情况，min取初始值0，max取初始值100。<br>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。|
+|step|?Float64|否|None| **命名参数。** 设置滑动条滑动步长。<br>初始值：1.0。<br>**说明**：当step<=0，或step>=max\-min时，取初始值。|
+|value|?Float64|否|None| **命名参数。** 当前进度值。<br>初始值：取min的值。|
+|style|?[SliderStyle](#enum-sliderstyle)|否|None| **命名参数。** 设置滑动条的滑块样式。<br>初始值：SliderStyle.OutSet。|
+|direction|?[Axis](./cj-common-types.md#enum-axis)|否|None| **命名参数。** 设置滑动条滑动方向为水平或竖直方向。<br>初始值：Axis.Horizontal。|
+|reverse|?Bool|否|None| **命名参数。** 设置滑动条取值范围是否反向。<br>初始值：false。<br>**说明**：<br>设置为false时，水平方向滑动条为从左向右滑动，竖直方向滑动条从上向下滑动。<br>设置为true时，水平方向滑动条为从右向左滑动，竖直方向滑动条从下向上滑动。|
 
 ## 通用属性/通用事件
 
@@ -55,11 +54,10 @@ public init(
 
 ## 组件属性
 
-### func blockBorderColor(ResourceColor)
+### func blockBorderColor(?ResourceColor)
 
 ```cangjie
-
-public func blockBorderColor(value: ResourceColor): This
+public func blockBorderColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置滑块描边颜色。
@@ -72,19 +70,18 @@ public func blockBorderColor(value: ResourceColor): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块描边颜色。<br/>初始值：0x00000000。|
+|value|?ResourceColor|是|-|滑块描边颜色。<br>初始值：0x00000000。|
 
-### func blockColor(ResourceColor)
+### func blockColor(?ResourceColor)
 
 ```cangjie
-
-public func blockColor(value: ResourceColor): This
+public func blockColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置滑块的颜色。
@@ -97,57 +94,54 @@ public func blockColor(value: ResourceColor): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块的颜色。<br/>初始值：@r(sys.color.ohos_id_color_foreground_contrary)。|
+|value|?ResourceColor|是|-|滑块的颜色。|
 
-### func selectedColor(ResourceColor)
+### func selectedColor(?ResourceColor)
 
 ```cangjie
-
-public func selectedColor(value: ResourceColor): This
+public func selectedColor(value: ?ResourceColor): This
 ```
 
 **功能：** 根据指定的Color设置滑轨已滑动部分的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨已滑动部分的颜色。<br/>初始值：@r(sys.color.ohos_id_color_emphasize)。|
+|value|?ResourceColor|是|-|滑轨已滑动部分的颜色。|
 
-### func showSteps(Bool)
+### func showSteps(?Bool)
 
 ```cangjie
-
-public func showSteps(value: Bool): This
+public func showSteps(value: ?Bool): This
 ```
 
 **功能：** 设置当前是否显示步长刻度值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|当前是否显示步长刻度值。<br/>初始值：false。|
+|value|?Bool|是|-|当前是否显示步长刻度值。<br>初始值：false。|
 
-### func showTips(Bool, ?ResourceStr)
+### func showTips(?Bool, ?ResourceStr)
 
 ```cangjie
-
-public func showTips(value: Bool, content!: ?ResourceStr = None): This
+public func showTips(value: ?Bool, content!: ?ResourceStr = None): This
 ```
 
 **功能：** 设置滑动时是否显示气泡提示。
@@ -158,39 +152,37 @@ tip的绘制区域为Slider自身节点的overlay。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|滑动时是否显示气泡提示。<br/>初始值：false。|
-|content|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None| **命名参数。** 气泡提示的文本内容，默认显示当前百分比。|
+|value|?Bool|是|-|滑动时是否显示气泡提示。<br>初始值：false。|
+|content|?ResourceStr|否|None| **命名参数。** 气泡提示的文本内容，默认显示当前百分比。|
 
-### func trackColor(ResourceColor)
+### func trackColor(?ResourceColor)
 
 ```cangjie
-
-public func trackColor(value: ResourceColor): This
+public func trackColor(value: ?ResourceColor): This
 ```
 
 **功能：** 根据指定的Color设置滑轨的背景颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨的背景颜色。<br/>**说明：**<br/>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。<br>初始值：@r(sys.color.ohos_id_color_component_normal)。|
+|value|?ResourceColor|是|-|滑轨的背景颜色。<br>**说明**：<br>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。|
 
-### func trackThickness(Length)
+### func trackThickness(?Length)
 
 ```cangjie
-
-public func trackThickness(value: Length): This
+public func trackThickness(value: ?Length): This
 ```
 
 **功能：** 根据指定的Length设置滑轨的粗细。设置为小于等于0的值时，取初始值。
@@ -203,21 +195,20 @@ public func trackThickness(value: Length): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|滑轨的粗细。<br/>初始值：当参数style的值设置SliderStyle.OutSet 时为 4.0.vp，SliderStyle.InSet时为20.0.vp。|
+|value|?Length|是|-|滑轨的粗细。<br/>初始值：当参数style的值设置SliderStyle.OutSet 时为 4.0.vp，SliderStyle.InSet时为20.0.vp。|
 
 ## 组件事件
 
-### func onChange((Float64,SliderChangeMode) -> Unit)
+### func onChange(?(Float64, SliderChangeMode) -> Unit)
 
 ```cangjie
-
-public func onChange(callback: (Float64, SliderChangeMode) -> Unit): This
+public func onChange(callback: ?(Float64, SliderChangeMode) -> Unit): This
 ```
 
 **功能：** Slider拖动或点击时触发事件回调。
@@ -228,209 +219,13 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(Float64,[SliderChangeMode](#enum-sliderchangemode))->Unit|是|-|Slider拖动或点击时触发事件回调。<br>参数一：当前滑动进度值，变化范围为对应步长steps数组。<br>参数二：事件触发的相关状态值。|
-
-## 基础类型定义
-
-### enum SliderChangeMode
-
-```cangjie
-public enum SliderChangeMode <: Equatable<SliderChangeMode> {
-    | Begin
-    | Moving
-    | End
-    | Click
-    | ...
-}
-```
-
-**功能：** Slider拖动或点击时触发事件的状态值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<SliderChangeMode>
-
-#### Begin
-
-```cangjie
-Begin
-```
-
-**功能：** 手势/鼠标接触或者按下滑块。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Click
-
-```cangjie
-Click
-```
-
-**功能：** 点击滑动条使滑块位置移动。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### End
-
-```cangjie
-End
-```
-
-**功能：** 手势/鼠标离开滑块。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Moving
-
-```cangjie
-Moving
-```
-
-**功能：** 正在拖动滑块过程中。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(SliderChangeMode)
-
-```cangjie
-public operator func !=(other: SliderChangeMode): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SliderChangeMode](#enum-sliderchangemode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(SliderChangeMode)
-
-```cangjie
-public operator func ==(other: SliderChangeMode): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SliderChangeMode](#enum-sliderchangemode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### enum SliderStyle
-
-```cangjie
-public enum SliderStyle <: Equatable<SliderStyle> {
-    | OutSet
-    | InSet
-    | ...
-}
-```
-
-**功能：** Slider的滑块与滑轨显示样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<SliderStyle>
-
-#### InSet
-
-```cangjie
-InSet
-```
-
-**功能：** 旋钮在内样式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### OutSet
-
-```cangjie
-OutSet
-```
-
-**功能：** 滑块在滑轨内。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(SliderStyle)
-
-```cangjie
-public operator func !=(other: SliderStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SliderStyle](#enum-sliderstyle)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(SliderStyle)
-
-```cangjie
-public operator func ==(other: SliderStyle): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SliderStyle](#enum-sliderstyle)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
+|callback|?(Float64, SliderChangeMode) -> Unit|是|-|Slider拖动或点击时触发事件回调。<br>参数一：当前滑动进度值，变化范围为对应步长steps数组。<br>参数二：事件触发的相关状态值。<br>初始值：{ _, _ => }。|
 
 ## 示例代码
 

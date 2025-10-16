@@ -14,30 +14,30 @@ import kit.ArkUI.*
 
 > **说明：**
 >
-> - 子组件类型：系统组件和自定义组件，不支持支持渲染控制类型（[if/else](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](../../../application-dev/source_zh_cn/arkui-cj/rendering_control/cj-rendering-control-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)）。
+> - 子组件类型：系统组件和自定义组件，不支持支持渲染控制类型（[if/else](../../../Dev_Guide/arkui-cj/rendering_control/cj-rendering-control-ifelse.md)、[ForEach](cj-state-rendering-foreach.md)、[LazyForEach](cj-state-rendering-lazyforeach.md)）。
 > - 子组件个数：必须且仅包含2个子组件。
 > - 子组件个数异常时：3个或以上子组件，显示第一个和第二个。1个子组件，显示侧边栏，内容区为空白。
 
 ## 创建组件
 
-### init(SideBarContainerType, () -> Unit)
+### init(?SideBarContainerType, () -> Unit)
 
 ```cangjie
-public init(sideBarType!: SideBarContainerType = SideBarContainerType.Embed, child!: () -> Unit = {=>})
+public init(sideBarType!: ?SideBarContainerType = None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建一个侧边栏容器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|sideBarType|[SideBarContainerType](./cj-common-types.md#enum-sidebarcontainertype)|否|SideBarContainerType.Embed|设置侧边栏的显示类型。<br/>初始值：SideBarContainerType.Embed。|
-|child|() -> Unit|否|{=>}|定义侧边栏和内容区。|
+|sideBarType|?SideBarContainerType|否|None| **命名参数。** 设置侧边栏的显示类型。<br>初始值：SideBarContainerType.Embed。|
+|child|() -> Unit|否|{=>}| **命名参数。** 定义侧边栏和内容区。|
 
 ## 通用属性/通用事件
 
@@ -47,46 +47,46 @@ public init(sideBarType!: SideBarContainerType = SideBarContainerType.Embed, chi
 
 ## 组件属性
 
-### func autoHide(Bool)
+### func autoHide(?Bool)
 
 ```cangjie
-public func autoHide(value: Bool): This
+public func autoHide(value: ?Bool): This
 ```
 
 **功能：** 设置当侧边栏拖拽到小于最小宽度后，是否自动隐藏。
 
 > **说明：**
 >
-> - 受minSideBarWidth属性方法影响，当minSideBarWidth属性方法未设置值时使用初始值。
+> - 受[minSideBarWidth](#func-minsidebarwidthlength)属性方法影响，当[minSideBarWidth](#func-minsidebarwidthlength)属性方法未设置值时使用初始值。
 > - 拖拽过程中判断是否要自动隐藏。小于最小宽度时需要阻尼效果触发隐藏（越界一段距离）。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|侧边栏拖拽到小于最小宽度后，是否自动隐藏。<br>true：会自动隐藏。<br>false：不会自动隐藏。<br>初始值：true。|
+|value|?Bool|否|-|侧边栏拖拽到小于最小宽度后，是否自动隐藏。<br>true：会自动隐藏。<br>false：不会自动隐藏。<br>初始值：true。|
 
-### func controlButton(ButtonStyle)
+### func controlButton(?ButtonStyle)
 
 ```cangjie
-public func controlButton(value: ButtonStyle): This
+public func controlButton(value: ?ButtonStyle): This
 ```
 
 **功能：** 设置侧边栏控制按钮的属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ButtonStyle](#class-buttonstyle)|是|-|侧边栏控制按钮的属性。|
+|value|?ButtonStyle|否|-|侧边栏控制按钮的属性。|
 
 ### func divider(?DividerStyle)
 
@@ -98,18 +98,18 @@ public func divider(value: ?DividerStyle): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[DividerStyle](#class-dividerstyle)|是|-|**命名参数。** 分割线的样式，默认显示分割线。输入为None时行为不做处理，分割线样式与默认保持一致。|
+|value|?DividerStyle|是|-|分割线的样式，默认显示分割线。<br>初始值：DividerStyle(strokeWidth: 1.vp)|
 
-### func maxSideBarWidth(Length)
+### func maxSideBarWidth(?Length)
 
 ```cangjie
-public func maxSideBarWidth(value: Length): This
+public func maxSideBarWidth(value: ?Length): This
 ```
 
 **功能：** 设置侧边栏最大宽度。
@@ -121,18 +121,18 @@ public func maxSideBarWidth(value: Length): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|设置侧边栏最大宽度。<br>初始值：280.vp。<br>单位：vp。|
+|value|?Length|否|-|设置侧边栏最大宽度。<br>单位：vp。<br>初始值：280.vp。|
 
-### func minContentWidth(Length)
+### func minContentWidth(?Length)
 
 ```cangjie
-public func minContentWidth(value: Length): This
+public func minContentWidth(value: ?Length): This
 ```
 
 **功能：** 设置SideBarContainer组件内容区可显示的最小宽度。
@@ -146,22 +146,22 @@ public func minContentWidth(value: Length): This
 >     - 如果autoHide属性为false，则会保持侧边栏宽度minSideBarWidth和内容区宽度minContentWidth不变，但内容区会被截断显示；
 >     - 如果autoHide属性为true，则会优先隐藏侧边栏，然后继续缩小至内容区宽度minContentWidth后，内容区宽度保持不变，但内容区会被截断显示。
 >
-> - minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minContentWidth未设置时，默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
+> - minContentWidth优先于侧边栏的[maxSideBarWidth](#func-maxsidebarwidthlength)与[sideBarWidth](#func-sidebarwidthlength)属性，minContentWidth未设置时，默认值优先级低于设置的[minSideBarWidth](#func-minsidebarwidthlength)与[maxSideBarWidth](#func-maxsidebarwidthlength)属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|SideBarContainer组件内容区可显示的最小宽度。<br>初始值：360.vp。<br>单位：vp。|
+|value|?Length|否|-|SideBarContainer组件内容区可显示的最小宽度。<br>单位：vp。<br>初始值：360.vp。|
 
-### func minSideBarWidth(Length)
+### func minSideBarWidth(?Length)
 
 ```cangjie
-public func minSideBarWidth(value: Length): This
+public func minSideBarWidth(value: ?Length): This
 ```
 
 **功能：** 设置侧边栏最小宽度。
@@ -173,72 +173,72 @@ public func minSideBarWidth(value: Length): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏最小宽度。<br>初始值：240.vp。|
+|value|?Length|否|-|侧边栏最小宽度。<br>初始值：240.vp。|
 
-### func showControlButton(Bool)
+### func showControlButton(?Bool)
 
 ```cangjie
-public func showControlButton(value: Bool): This
+public func showControlButton(value: ?Bool): This
 ```
 
 **功能：** 设置是否显示控制按钮。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否显示控制按钮。<br/>true：显示控制按钮。<br/>false：不显示控制按钮。<br/>初始值：true。|
+|value|?Bool|否|-|是否显示控制按钮。<br>true：显示控制按钮。<br>false：不显示控制按钮。<br>初始值：true。|
 
-### func showSideBar(Bool)
+### func showSideBar(?Bool)
 
 ```cangjie
-public func showSideBar(value: Bool): This
+public func showSideBar(value: ?Bool): This
 ```
 
 **功能：** 设置是否显示侧边栏。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否显示侧边栏。<br/>true：显示侧边栏。<br/>false：不显示侧边栏。<br/>初始值：true。|
+|value|?Bool|否|-|是否显示侧边栏。<br>true：显示侧边栏。<br>false：不显示侧边栏。<br>初始值：true。|
 
-### func sideBarPosition(SideBarPosition)
+### func sideBarPosition(?SideBarPosition)
 
 ```cangjie
-public func sideBarPosition(value: SideBarPosition): This
+public func sideBarPosition(value: ?SideBarPosition): This
 ```
 
 **功能：** 设置侧边栏显示位置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[SideBarPosition](./cj-common-types.md#enum-sidebarposition)|是|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
+|value|?SideBarPosition|否|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
 
-### func sideBarWidth(Length)
+### func sideBarWidth(?Length)
 
 ```cangjie
-public func sideBarWidth(value: Length): This
+public func sideBarWidth(value: ?Length): This
 ```
 
 **功能：** 设置侧边栏的宽度。
@@ -249,20 +249,20 @@ public func sideBarWidth(value: Length): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|侧边栏的宽度。<br>初始值：240.vp。<br>单位：vp。|
+|value|?Length|否|-|侧边栏的宽度。<br>单位：vp。<br>初始值：240.vp。|
 
 ## 组件事件
 
-### func onChange((Bool) -> Unit)
+### func onChange(?(Bool) -> Unit)
 
 ```cangjie
-public func onChange(callback: (Bool) -> Unit): This
+public func onChange(callback: ?(Bool) -> Unit): This
 ```
 
 **功能：** 当侧边栏的状态在显示和隐藏之间切换时触发该事件。
@@ -271,19 +271,19 @@ public func onChange(callback: (Bool) -> Unit): This
 >
 > 满足以下任意条件时触发该事件：
 >
-> - showSideBar属性值变换时。
-> - showSideBar属性自适应行为变化时。
-> - 分割线拖拽触发autoHide时。
+> - [showSideBar](#func-showsidebarbool)属性值变换时。
+> - [showSideBar](#func-showsidebarbool)属性自适应行为变化时。
+> - 分割线拖拽触发[autoHide](#func-autohidebool)时。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(Bool)->Unit|是|-|回调函数，当侧边栏的状态由隐藏变为显示时，参数值为true；当侧边栏的状态由显示变为隐藏时，参数值为false。|
+|callback|?(Bool)->Unit|否|-|回调函数，当侧边栏的状态由隐藏变为显示时，参数值为true；当侧边栏的状态由显示变为隐藏时，参数值为false。<br>初始值：{ _ => }。|
 
 ## 基础类型定义
 
@@ -291,102 +291,102 @@ public func onChange(callback: (Bool) -> Unit): This
 
 ```cangjie
 public class ButtonIconOptions {
-    public var shown: ResourceStr
-    public var hidden: ResourceStr
-    public var switching: ResourceStr
-    public init(shown!: ResourceStr, hidden!: ResourceStr, switching!: ResourceStr = "")
+    public var shown: ?ResourceStr
+    public var hidden: ?ResourceStr
+    public var switching: ?ResourceStr
+    public init(shown!: ?ResourceStr, hidden!: ?ResourceStr, switching!: ?ResourceStr = None)
 }
 ```
 
-**功能：**设置侧边栏控制按钮的图标。
+**功能：** 表示图标类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var hidden
-
-```cangjie
-public var hidden: ResourceStr
-```
-
-**功能：**设置侧边栏隐藏时控制按钮的图标。
-
-**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var shown
 
 ```cangjie
-public var shown: ResourceStr
+public var shown: ?ResourceStr
 ```
 
-**功能：**设置侧边栏显示时控制按钮的图标。
+**功能：** 侧边栏显示时控制按钮的图标。
 
-**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**类型：** ?ResourceStr
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+#### var hidden
+
+```cangjie
+public var hidden: ?ResourceStr
+```
+
+**功能：** 侧边栏隐藏时控制按钮的图标。
+
+**类型：** ?ResourceStr
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 #### var switching
 
 ```cangjie
-public var switching: ResourceStr
+public var switching: ?ResourceStr
 ```
 
-**功能：**设置侧边栏显示和隐藏状态切换时控制按钮的图标。
+**功能：** 侧边栏显示和隐藏状态切换时控制按钮的图标。
 
-**类型：** [ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)
+**类型：** ?ResourceStr
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(ResourceStr, ResourceStr, ResourceStr)
+#### init(?ResourceStr, ?ResourceStr, ?ResourceStr)
 
 ```cangjie
-public init(shown!: ResourceStr, hidden!: ResourceStr, switching!: ResourceStr = "")
+public init(shown!: ?ResourceStr, hidden!: ?ResourceStr, switching!: ?ResourceStr = None)
 ```
 
-**功能：**  构造 ButtonIconOptions对象。
+**功能：** 构造 ButtonIconOptions对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|shown|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏显示时控制按钮的图标。|
-|hidden|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|设置侧边栏隐藏时控制按钮的图标。|
-|switching|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|设置侧边栏显示和隐藏状态切换时控制按钮的图标。|
+|shown|?ResourceStr|是|-|**命名参数** 设置侧边栏显示时控制按钮的图标。|
+|hidden|?ResourceStr|是|-|**命名参数** 设置侧边栏隐藏时控制按钮的图标。|
+|switching|?ResourceStr|否|None|**命名参数** 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br>初始值：""|
 
 ### class ButtonStyle
 
 ```cangjie
 public class ButtonStyle {
-    public var left: Float64
-    public var top: Float64
-    public var width: Float64
-    public var height: Float64
-    public var icons: ButtonIconOptions
+    public var left: ?Float64
+    public var top: ?Float64
+    public var width: ?Float64
+    public var height: ?Float64
+    public var icons: ?ButtonIconOptions
     public init(
-        left!: Float64 = 16.0,
-        top!: Float64 = 48.0,
-        width!: Float64 = 24.0,
-        height!: Float64 = 24.0,
-        icons!: ButtonIconOptions = ButtonIconOptions(shown: "", hidden: "")
+        left!: ?Float64 = None,
+        top!: ?Float64 = None,
+        width!: ?Float64 = None,
+        height!: ?Float64 = None,
+        icons!: ?ButtonIconOptions = None
     )
 }
 ```
@@ -395,97 +395,97 @@ public class ButtonStyle {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var height
-
-```cangjie
-public var height: Float64
-```
-
-**功能：** **命名参数。** 设置侧边栏控制按钮的高度。<br>单位：vp。
-
-**类型：** Float64
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var icons
-
-```cangjie
-public var icons: ButtonIconOptions
-```
-
-**功能：** **命名参数。** 设置侧边栏控制按钮的图标。
-
-**类型：** [ButtonIconOptions](#class-buttoniconoptions)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var left
 
 ```cangjie
-public var left: Float64
+public var left: ?Float64
 ```
 
-**功能：** **命名参数。** 设置侧边栏控制按钮距离容器左界限的间距。<br>单位：vp。
+**功能：** 设置侧边栏控制按钮距离容器左界限的间距。<br>单位：vp。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var top
 
 ```cangjie
-public var top: Float64
+public var top: ?Float64
 ```
 
-**功能：** **命名参数。** 设置侧边栏控制按钮距离容器上界限的间距。<br>单位：vp。
+**功能：** 设置侧边栏控制按钮距离容器上界限的间距。<br>单位：vp。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var width
 
 ```cangjie
-public var width: Float64
+public var width: ?Float64
 ```
 
-**功能：** **命名参数。** 设置侧边栏控制按钮的宽度。<br>单位：vp。
+**功能：** 设置侧边栏控制按钮的宽度。<br>单位：vp。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Float64, Float64, Float64, Float64, ButtonIconOptions)
+#### var height
+
+```cangjie
+public var height: ?Float64
+```
+
+**功能：** 设置侧边栏控制按钮的高度。<br>单位：vp。
+
+**类型：** ?Float64
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var icons
+
+```cangjie
+public var icons: ?ButtonIconOptions
+```
+
+**功能：** 设置侧边栏控制按钮的图标。
+
+**类型：** ?ButtonIconOptions
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**读写能力：** 可读写
+
+**起始版本：** 22
+
+#### init(?Float64, ?Float64, ?Float64, ?Float64, ?ButtonIconOptions)
 
 ```cangjie
 public init(
-    left!: Float64 = 16.0,
-    top!: Float64 = 48.0,
-    width!: Float64 = 24.0,
-    height!: Float64 = 24.0,
-    icons!: ButtonIconOptions = ButtonIconOptions(shown: "", hidden: "")
+    left!: ?Float64 = None,
+    top!: ?Float64 = None,
+    width!: ?Float64 = None,
+    height!: ?Float64 = None,
+    icons!: ?ButtonIconOptions = None
 )
 ```
 
@@ -493,130 +493,130 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|left|Float64|否|16.0|**命名参数。** 设置侧边栏控制按钮距离容器左界限的间距。<br>单位：vp。|
-|top|Float64|否|48.0|**命名参数。** 设置侧边栏控制按钮距离容器上界限的间距。<br>单位：vp。|
-|width|Float64|否|24.0|**命名参数。** 设置侧边栏控制按钮的宽度。<br>单位：vp。|
-|height|Float64|否|24.0|**命名参数。** 设置侧边栏控制按钮的高度。<br>单位：vp。|
-|icons|[ButtonIconOptions](#class-buttoniconoptions)|否|ButtonIconOptions(shown: "", hidden: "")|**命名参数。** 设置侧边栏控制按钮的图标。|
+|left|?Float64|否|None|**命名参数** 设置侧边栏控制按钮距离容器左界限的间距。<br>单位：vp。<br>初始值：16.0。|
+|top|?Float64|否|None|**命名参数** 设置侧边栏控制按钮距离容器上界限的间距。<br>单位：vp。<br>初始值：48.0。|
+|width|?Float64|否|None|**命名参数** 设置侧边栏控制按钮的宽度。<br>单位：vp。<br>初始值：24.0。|
+|height|?Float64|否|None|**命名参数** 设置侧边栏控制按钮的高度。<br>单位：vp。<br>初始值：24.0。|
+|icons|?ButtonIconOptions|否|None|**命名参数** 设置侧边栏控制按钮的图标。<br>初始值：ButtonIconOptions(shown: "", hidden: "")。|
 
 ### class DividerStyle
 
 ```cangjie
 public class DividerStyle {
-    public var strokeWidth: Length
-    public var color:?ResourceColor
-    public var startMargin: Length
-    public var endMargin: Length
-    public init(strokeWidth!: Length, color!: ?ResourceColor = 0x08000000, startMargin!: Length = 0.vp,
-        endMargin!: Length = 0.vp)
+    public var strokeWidth: ?Length
+    public var color: ?ResourceColor
+    public var startMargin: ?Length
+    public var endMargin: ?Length
+    public init(strokeWidth!: ?Length, color!: ?ResourceColor = None, startMargin!: ?Length = None,
+        endMargin!: ?Length = None)
 }
 ```
 
-**功能：**SideBar分割线样式。
+**功能：** SideBar分割线样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 > **说明：**
 >
-> 针对侧边栏内容区设置[通用属性宽高](../../source_zh_cn/arkui-cj/cj-universal-attribute-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
+> 针对侧边栏内容区设置[通用属性宽高]()时，宽高都不生效，默认占满SideBarContainer的剩余空间。
 > 当showSideBar属性未设置时，依据组件大小进行自动显示：
 >
 > - 小于minSideBarWidth + minContentWidth：默认不显示侧边栏。
 > - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
 
+#### var strokeWidth
+
+```cangjie
+public var strokeWidth: ?Length
+```
+
+**功能：** 分割线的线宽。
+
+**类型：** ?Length
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
 #### var color
 
 ```cangjie
-public var color:?ResourceColor
+public var color: ?ResourceColor
 ```
 
-**功能：**分割线的颜色。
+**功能：** 分割线的颜色。
 
-**类型：** ?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** ?ResourceColor
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var endMargin
-
-```cangjie
-public var endMargin: Length
-```
-
-**功能：** 分割线与侧边栏底端的距离。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 #### var startMargin
 
 ```cangjie
-public var startMargin: Length
+public var startMargin: ?Length
 ```
 
 **功能：** 分割线与侧边栏顶端的距离。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?Length
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### var strokeWidth
+#### var endMargin
 
 ```cangjie
-public var strokeWidth: Length
+public var endMargin: ?Length
 ```
 
-**功能：**分割线的线宽。
+**功能：** 分割线与侧边栏底端的距离。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** ?Length
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Length, ?ResourceColor, Length, Length)
+#### init(?Length, ?ResourceColor, ?Length, ?Length)
 
 ```cangjie
-public init(strokeWidth!: Length, color!: ?ResourceColor = 0x08000000, startMargin!: Length = 0.vp,
-    endMargin!: Length = 0.vp)
+public init(strokeWidth!: ?Length, color!: ?ResourceColor = None, startMargin!: ?Length = None,
+    endMargin!: ?Length = None)
 ```
 
-**功能：**构造SideBarDividerStyle对象。
+**功能：** 构造DividerStyle对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|strokeWidth|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 分割线的线宽。<br/>初始值：1.vp。|
-|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|0x08000000|**命名参数。** 分割线的颜色。<br/>初始值：0x000000。|
-|startMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏顶端的距离。|
-|endMargin|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 分割线与侧边栏底端的距离。|
+|strokeWidth|?Length|是|-|**命名参数** 分割线的线宽。<br>初始值：1.vp。|
+|color|?ResourceColor|否|None|**命名参数** 分割线的颜色。<br>初始值：0x08000000。|
+|startMargin|?Length|否|None|**命名参数** 分割线与侧边栏顶端的距离。<br>初始值：0.vp。|
+|endMargin|?Length|否|None|**命名参数** 分割线与侧边栏底端的距离。<br>初始值：0.vp。|
 
 ## 示例代码
 
@@ -627,7 +627,8 @@ package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component

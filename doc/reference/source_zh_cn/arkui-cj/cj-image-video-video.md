@@ -12,7 +12,7 @@
 import kit.ArkUI.*
 ```
 
-## 需要权限
+## 权限列表
 
 使用网络视频时，需要申请权限ohos.permission.INTERNET。
 
@@ -22,31 +22,33 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(ResourceStr, PlaybackSpeed, ResourceStr, VideoController)
+### init(?ResourceStr, ?PlaybackSpeed, ?ResourceStr, ?VideoController)
 
 ```cangjie
 public init(
-    src!: ResourceStr = "",
-    currentProgressRate!: PlaybackSpeed = SpeedForward100X,
-    previewUri!: ResourceStr = "",
-    controller!: VideoController = VideoController()
+    src!: ?ResourceStr = None,
+    currentProgressRate!: ?PlaybackSpeed = Option.None,
+    previewUri!: ?ResourceStr = None,
+    controller!: ?VideoController = None
 )
 ```
 
 **功能：** 根据视频的数据源，播放倍速，预览图片和视频控制器创建一个 video 组件。
 
+**需要权限：** 使用网络视频时，需要申请权限ohos.permission.INTERNET。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频的数据源，支持本地视频和网络视频。<br/>string格式可用于加载网络视频和本地视频，常用于加载网络视频。<br/>\- 支持网络视频地址。<br/>\- 支持file://路径前缀的字符串，即应用沙箱URI：file://<bundleName>/<sandboxPath>。用于读取应用沙箱路径内的资源。需要保证目录包路径下的文件有可读权限。<br/>视频支持的格式是：mp4、mkv、TS。|
-|currentProgressRate|[PlaybackSpeed](#enum-playbackspeed)|否|SpeedForward100X|**命名参数。** 视频播放倍速。<br/>取值仅支持：0.75，1.0，1.25，1.75，2.0。|
-|previewUri|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 视频未播放时的预览图片路径。|
-|controller|[VideoController](#class-videocontroller)|否|VideoController()|**命名参数。** 设置视频控制器，可以控制视频的播放状态。|
+|src|?ResourceStr|否|None| **命名参数。** 视频的数据源，支持本地视频和网络视频。|
+|currentProgressRate|?PlaybackSpeed|否|Option.None| **命名参数。** 视频播放倍速。<br>初始值：SpeedForward100X。|
+|previewUri|?ResourceStr|否|None| **命名参数。** 视频未播放时的预览图片路径。|
+|controller|?VideoController|否|None| **命名参数。** 设置视频控制器，可以控制视频的播放状态。<br>初始值：VideoController()|
 
 ## 通用属性/通用事件
 
@@ -56,259 +58,259 @@ public init(
 
 ## 组件属性
 
-### func autoPlay(Bool)
+### func autoPlay(?Bool)
 
 ```cangjie
-public func autoPlay(value: Bool): This
+public func autoPlay(value: ?Bool): This
 ```
 
-**功能：** 设置是否自动播放。
+**功能：** 设置视频是否自动播放。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否自动播放。<br>初始值：false。|
+|value|?Bool|否|-|视频是否自动播放。<br>初始值：false。|
 
-### func controls(Bool)
+### func controls(?Bool)
 
 ```cangjie
-public func controls(value: Bool): This
+public func controls(value: ?Bool): This
 ```
 
 **功能：** 设置控制视频播放的控制栏是否显示。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|控制视频播放的控制栏是否显示。<br>初始值：true。|
+|value|?Bool|否|-|是否显示控制栏。<br>初始值：true。|
 
-### func loop(Bool)
+### func loop(?Bool)
 
 ```cangjie
-public func loop(value: Bool): This
+public func loop(value: ?Bool): This
 ```
 
 **功能：** 设置是否单个视频循环播放。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否单个视频循环播放。<br>初始值：false。|
+|value|?Bool|否|-|视频是否循环播放。<br>初始值：false。|
 
-### func muted(Bool)
+### func muted(?Bool)
 
 ```cangjie
-public func muted(value: Bool): This
+public func muted(value: ?Bool): This
 ```
 
-**功能：** 设置是否静音。
+**功能：** 设置视频是否静音。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否静音。<br>初始值：false。|
+|value|?Bool|否|-|视频是否静音。<br>初始值：false。|
 
-### func objectFit(ImageFit)
+### func objectFit(?ImageFit)
 
 ```cangjie
-public func objectFit(value: ImageFit): This
+public func objectFit(value: ?ImageFit): This
 ```
 
-**功能：** 设置视频显示模式。
+**功能：** 设置视频填充模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageFit](./cj-common-types.md#enum-imagefit)|是|-|视频显示模式。<br>初始值：Cover。|
+|value|?ImageFit|否|-|视频填充模式。<br>初始值：ImageFit.Cover。|
 
 ## 组件事件
 
-### func onError(VoidCallback)
+### func onError(?VoidCallback)
 
 ```cangjie
-public func onError(event: VoidCallback): This
+public func onError(event: ?VoidCallback): This
 ```
 
 **功能：** 播放失败时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，播放失败时触发。|
+|event|?VoidCallback|否|-|回调函数，播放失败时触发。<br>初始值：{ => }|
 
-### func onFinish(() -> Unit)
+### func onFinish(?VoidCallback)
 
 ```cangjie
-public func onFinish(event: () -> Unit): This
+public func onFinish(event: ?VoidCallback): This
 ```
 
 **功能：** 播放结束时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|()->Unit|是|-|回调函数，播放结束时触发。|
+|event|?VoidCallback|否|-|回调函数，播放结束时触发。<br>初始值：{ => }|
 
-### func onFullscreenChange(Callback\<FullscreenInfo,Unit>)
-
-```cangjie
-public func onFullscreenChange(callback: Callback<FullscreenInfo, Unit>): This
-```
-
-**功能：** 在全屏播放与非全屏播放状态之间切换时触发该事件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[FullscreenInfo](#class-fullscreeninfo),Unit>|是|-|回调函数，在全屏播放与非全屏播放状态之间切换时触发。|
-
-### func onPause(VoidCallback)
+### func onPause(?VoidCallback)
 
 ```cangjie
-public func onPause(event: VoidCallback): This
+public func onPause(event: ?VoidCallback): This
 ```
 
 **功能：** 暂停播放时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，暂停播放时触发。|
+|event|?VoidCallback|否|-|回调函数，暂停播放时触发。<br>初始值：{ => }|
 
-### func onPrepared(Callback\<PreparedInfo,Unit>)
+### func onPrepared(?Callback\<PreparedInfo, Unit>)
 
 ```cangjie
-public func onPrepared(callback: Callback<PreparedInfo, Unit>): This
+public func onPrepared(callback: ?Callback<PreparedInfo, Unit>): This
 ```
 
 **功能：** 视频准备完成时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PreparedInfo](#class-preparedinfo),Unit>|是|-|回调函数，视频准备完成时触发。|
+|callback|?Callback\<PreparedInfo, Unit>|否|-|回调函数，视频准备完成时触发。<br>初始值：{ _ => }|
 
-### func onSeeked(Callback\<PlaybackInfo,Unit>)
+### func onSeeked(?Callback\<PlaybackInfo, Unit>)
 
 ```cangjie
-public func onSeeked(callback: Callback<PlaybackInfo, Unit>): This
+public func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): This
 ```
 
 **功能：** 操作进度条完成后触发该事件，上报播放时间信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，操作进度条完成后触发。|
+|callback|?Callback\<PlaybackInfo, Unit>|否|-|回调函数，操作进度条完成后触发。<br>初始值：{ _ => }|
 
-### func onSeeking(Callback\<PlaybackInfo,Unit>)
+### func onSeeking(?Callback\<PlaybackInfo, Unit>)
 
 ```cangjie
-public func onSeeking(callback: Callback<PlaybackInfo, Unit>): This
+public func onSeeking(callback: ?Callback<PlaybackInfo, Unit>): This
 ```
 
 **功能：** 操作进度条过程时触发该事件，上报时间信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，操作进度条过程时触发。<br>参数值：当前视频的时长，单位为秒。|
+|callback|?Callback\<PlaybackInfo, Unit>|否|-|回调函数，操作进度条过程时触发。<br>初始值：{ _ => }|
 
-### func onStart(VoidCallback)
+### func onStart(?VoidCallback)
 
 ```cangjie
-public func onStart(event: VoidCallback): This
+public func onStart(event: ?VoidCallback): This
 ```
 
 **功能：** 播放时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|回调函数，播放时触发。|
+|event|?VoidCallback|否|-|回调函数，播放时触发。<br>初始值：{ => }|
 
-### func onUpdate(Callback\<PlaybackInfo,Unit>)
+### func onUpdate(?Callback\<PlaybackInfo, Unit>)
 
 ```cangjie
-public func onUpdate(callback: Callback<PlaybackInfo, Unit>): This
+public func onUpdate(callback: ?Callback<PlaybackInfo, Unit>): This
 ```
 
 **功能：** 说明播放进度变化时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[PlaybackInfo](#class-playbackinfo),Unit>|是|-|回调函数，说明播放进度变化时触发。|
+|callback|?Callback\<PlaybackInfo, Unit>|否|-|回调函数，说明播放进度变化时触发。<br>初始值：{ _ => }|
+
+### func onFullscreenChange(?Callback\<FullscreenInfo, Unit>)
+
+```cangjie
+public func onFullscreenChange(callback: ?Callback<FullscreenInfo, Unit>): This
+```
+
+**功能：** 视频进入和退出全屏时触发该回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**参数：**
+
+|参数名|类型|必填|默认值|说明|
+|:---|:---|:---|:---|:---|
+|callback|?Callback\<FullscreenInfo, Unit>|否|-|视频进入和退出全屏时的回调函数。<br>初始值：{ _ => }|
 
 ## 基础类型定义
 
@@ -316,7 +318,7 @@ public func onUpdate(callback: Callback<PlaybackInfo, Unit>): This
 
 ```cangjie
 public class FullscreenInfo {
-    public var fullscreen: Bool
+    public var fullscreen: ?Bool
 }
 ```
 
@@ -324,51 +326,39 @@ public class FullscreenInfo {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### var fullscreen
+#### var fullscreen: ?Bool
 
-```cangjie
-public var fullscreen: Bool
-```
+**功能：** 当前视频是否进入全屏播放状态。
 
-**功能：**当前视频是否进入全屏播放状态。
-
-**类型：** Bool
-
-**读写能力：** 可读写
+**起始版本：** 22
 
 ### class PlaybackInfo
 
 ```cangjie
 public class PlaybackInfo {
-    public var time: Int32
+    public var time: ?Int32
 }
 ```
 
-**功能：**用于描述当前视频播放的进度。
+**功能：** 用于描述当前视频播放的进度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### var time
+#### var time: ?Int32
 
-```cangjie
-public var time: Int32
-```
+**功能：** 当前视频播放的进度。单位：秒。
 
-**功能：**当前视频播放的进度。
-
-**类型：** Int32
-
-**读写能力：** 可读写
+**起始版本：** 22
 
 ### class PreparedInfo
 
 ```cangjie
 public class PreparedInfo {
-    public var duration: Int32
+    public var duration: ?Int32
 }
 ```
 
@@ -376,33 +366,33 @@ public class PreparedInfo {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### var duration
+#### var duration: ?Int32
 
-```cangjie
-public var duration: Int32
-```
+**功能：** 当前视频的时长。单位：秒。
 
-**功能：**当前视频的时长。
-
-**类型：** Int32
-
-**读写能力：** 可读写
+**起始版本：** 22
 
 ### class VideoController
 
 ```cangjie
 public class VideoController {
     public init()
+    public func start(): Unit
+    public func pause(): Unit
+    public func stop(): Unit
+    public func setCurrentTime(value: Int32, seekMode: ?SeekMode): Unit
+    public func requestFullscreen(value: ?Bool): Unit
+    public func exitFullscreen(): Unit
 }
 ```
 
-**功能：** VideoController对象可以控制一个或多个video。
+**功能：** 视频控制器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init()
 
@@ -410,11 +400,11 @@ public class VideoController {
 public init()
 ```
 
-**功能：** 创建一个 VideoController 对象。
+**功能：** VideoController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func exitFullscreen()
 
@@ -426,7 +416,7 @@ public func exitFullscreen(): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func pause()
 
@@ -438,44 +428,44 @@ public func pause(): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### func requestFullscreen(Bool)
+#### func requestFullscreen(?Bool)
 
 ```cangjie
-public func requestFullscreen(value: Bool): Unit
+public func requestFullscreen(value: ?Bool): Unit
 ```
 
 **功能：** 请求全屏播放。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否全屏（填充满应用窗口）播放。|
+|value|?Bool|否|-|是否全屏播放。<br>初始值：false。|
 
-#### func setCurrentTime(Int32, SeekMode)
+#### func setCurrentTime(Int32, ?SeekMode)
 
 ```cangjie
-public func setCurrentTime(value: Int32, seekMode: SeekMode): Unit
+public func setCurrentTime(value: Int32, seekMode: ?SeekMode): Unit
 ```
 
 **功能：** 指定视频播放的进度位置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|视频播放进度位置。<br/>单位：s。|
-|seekMode|[SeekMode](#enum-seekmode)|是|-|跳转模式。|
+|value|Int32|是|-|播放时间。|
+|seekMode|?SeekMode|否|-|搜索模式。<br>初始值：throw IllegalArgumentException("The type now is not supported.")|
 
 #### func start()
 
@@ -487,7 +477,7 @@ public func start(): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func stop()
 
@@ -499,240 +489,7 @@ public func stop(): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-### enum PlaybackSpeed
-
-```cangjie
-public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
-    | SpeedForward075X
-    | SpeedForward100X
-    | SpeedForward125X
-    | SpeedForward175X
-    | SpeedForward200X
-    | ...
-}
-```
-
-**功能：** 定义播放速度。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<PlaybackSpeed>
-
-#### SpeedForward075X
-
-```cangjie
-SpeedForward075X
-```
-
-**功能：** 0.75倍速播放。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### SpeedForward100X
-
-```cangjie
-SpeedForward100X
-```
-
-**功能：** 1倍速播放。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### SpeedForward125X
-
-```cangjie
-SpeedForward125X
-```
-
-**功能：** 1.25倍速播放。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### SpeedForward175X
-
-```cangjie
-SpeedForward175X
-```
-
-**功能：** 1.75倍速播放。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### SpeedForward200X
-
-```cangjie
-SpeedForward200X
-```
-
-**功能：** 2倍速播放。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(PlaybackSpeed)
-
-```cangjie
-public operator func !=(other: PlaybackSpeed): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[PlaybackSpeed](#enum-playbackspeed)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(PlaybackSpeed)
-
-```cangjie
-public operator func ==(other: PlaybackSpeed): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[PlaybackSpeed](#enum-playbackspeed)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
-
-### enum SeekMode
-
-```cangjie
-public enum SeekMode <: Equatable<SeekMode> {
-    | PreviousKeyframe
-    | NextKeyframe
-    | ClosestKeyframe
-    | Accurate
-    | ...
-}
-```
-
-**功能：** 跳转模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<SeekMode>
-
-#### Accurate
-
-```cangjie
-Accurate
-```
-
-**功能：** 精准跳转，不论是否为关键帧。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### ClosestKeyframe
-
-```cangjie
-ClosestKeyframe
-```
-
-**功能：** 跳转到最近的关键帧。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### NextKeyframe
-
-```cangjie
-NextKeyframe
-```
-
-**功能：** 跳转到后一个最近的关键帧。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### PreviousKeyframe
-
-```cangjie
-PreviousKeyframe
-```
-
-**功能：** 跳转到前一个最近的关键帧。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(SeekMode)
-
-```cangjie
-public operator func !=(other: SeekMode): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SeekMode](#enum-seekmode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等返回true，否则返回false。|
-
-#### func ==(SeekMode)
-
-```cangjie
-public operator func ==(other: SeekMode): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[SeekMode](#enum-seekmode)|是|-|另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等返回true，否则返回false。|
+**起始版本：** 22
 
 ## 示例代码
 
@@ -741,9 +498,9 @@ public operator func ==(other: SeekMode): Bool
 ```cangjie
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
-import kit.LocalizationKit.*
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
 
 @Entry
 @Component
@@ -834,3 +591,5 @@ class EntryView {
     }
 }
 ```
+
+![video](figures/imageVideo.gif)

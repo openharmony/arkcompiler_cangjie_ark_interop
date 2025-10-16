@@ -28,15 +28,15 @@ public init(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|range|Array\<String>|是|-| **命名参数。** 选择器的数据选择列表。不可设置为空数组，若设置为空数组，则不显示；若动态变化为空数组，则保持当前正常值显示。|
+|range|Array\<String>|是|-|**命名参数。** 选择器的数据选择列表。|
 |selected|?UInt32|否|Option.None| **命名参数。** 设置默认选中项在数组中的索引值。<br>初始值：0。|
-|value|?String|否|Option.None| **命名参数。** 设置默认选中项的值，优先级低于selected。<br>初始值：第一个元素值。<br>**说明：**<br>只有显示文本列表时该值有效。显示图片或图片加文本的列表时，该值无效。|
+|value|?String|否|Option.None| **命名参数。** 设置默认选中项的值，优先级低于selected。<br>初始值：第一个元素值。<br>**说明**：只有显示文本列表时该值有效。显示图片或图片加文本的列表时，该值无效。|
 
 ## 通用属性/通用事件
 
@@ -46,61 +46,74 @@ public init(
 
 ## 组件属性
 
-### func canLoop(Bool)
+### func canLoop(?Bool)
 
 ```cangjie
-public func canLoop(value: Bool): This
+public func canLoop(value: ?Bool): This
 ```
 
 **功能：** 设置是否可循环滚动。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否可循环滚动。<br>true：可循环，false：不可循环。<br>初始值：true。|
+|value|?Bool|是|-|是否可循环滚动。<br>true：可循环，false：不可循环。<br>初始值：true。|
 
-### func defaultPickerItemHeight(Length)
+### func defaultPickerItemHeight(?Length)
 
 ```cangjie
-public func defaultPickerItemHeight(value: Length): This
+public func defaultPickerItemHeight(value: ?Length): This
 ```
 
 **功能：** 设置Picker各选择项的高度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|Picker各选择项的高度。|
+|value|?Length|是|-|Picker各选择项的高度。|
 
 ## 组件事件
 
-### func onChange(OnTextPickerChangeCallback)
+### func onChange(?OnTextPickerChangeCallback)
 
 ```cangjie
-public func onChange(callback: OnTextPickerChangeCallback): This
+public func onChange(callback: ?OnTextPickerChangeCallback): This
 ```
 
-**功能：** 滑动选中TextPicker文本内容后，触发该回调。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。
+**功能：** 选择器选项发生变化时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|OnTextPickerChangeCallback|是|-|当前选中项的文本和索引值。|
+|callback|?OnTextPickerChangeCallback|是|-|选择器选项发生变化时的回调函数。<br>初始值：{ _, _ => }。|
+
+## 基础类型定义
+
+### type OnTextPickerChangeCallback
+
+```cangjie
+public type OnTextPickerChangeCallback = (String, UInt32) -> Unit
+```
+
+**功能：** TextPicker项目被选中事件的回调。
+
+**类型：** (String, UInt32) -> Unit
+
 
 ## 示例代码
 
@@ -115,7 +128,7 @@ public func onChange(callback: OnTextPickerChangeCallback): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 
 func loggerInfo(str: String) {
     Hilog.info(0, "CangjieTest", str)
@@ -141,4 +154,4 @@ class EntryView {
 }
 ```
 
-![textpicker](figures/textpicker.png)
+![textpicker](figures/textpicker.gif)

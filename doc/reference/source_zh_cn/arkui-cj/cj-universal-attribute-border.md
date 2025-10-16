@@ -8,249 +8,178 @@
 import kit.ArkUI.*
 ```
 
-## func border(Length, ResourceColor, Length, BorderStyle)
+## func border(?Length, ?ResourceColor, ?Length, ?BorderStyle)
 
 ```cangjie
-public func border(width!: Length, color!: ResourceColor = Color.Black, radius!: Length = 0.vp,
-    style!: BorderStyle = BorderStyle.Solid): This
+public func border(width!: ?Length, color!: ?ResourceColor = None, radius!: ?Length = None,
+    style!: ?BorderStyle = Option.None): T
 ```
 
 **功能：** 设置组件的边框样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black|边框颜色。|
-|radius|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|边框圆角半径。|
-|style|[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|BorderStyle.Solid|边框样式。|
+|width|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 边框宽度。初始值:  0.vp|
+|color|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None|**命名参数。** 边框颜色。初始值:  Color.Black|
+|radius|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 边框圆角半径。初始值:  0.vp|
+|style|?[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|Option.None|**命名参数。** 边框样式。初始值:  BorderStyle.Solid|
 
-## func borderColor(ResourceColor)
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|
+
+## func borderColor(?ResourceColor)
 
 ```cangjie
-public func borderColor(value: ResourceColor): This
+public func borderColor(value: ?ResourceColor): T
 ```
 
 **功能：** 设置组件的边框颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|边框颜色。|
+|value|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|边框颜色。初始值:  Color.Black|
 
-## func borderRadius(Length)
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|
+
+## func borderRadius(?Length)
 
 ```cangjie
-public func borderRadius(value: Length): This
+public func borderRadius(value: ?Length): T
 ```
 
 **功能：** 设置组件的圆角半径。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径。|
+|value|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径。初始值:  0.0.vp|
 
-## func borderRadius(Length, Length, Length, Length)
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|
+
+## func borderRadius(?Length, ?Length, ?Length, ?Length)
 
 ```cangjie
-public func borderRadius(topLeft!: Length = 0.vp, topRight!: Length = 0.vp, bottomLeft!: Length = 0.vp,
-    bottomRight!: Length = 0.vp): This
+public func borderRadius(topLeft!: ?Length = None, topRight!: ?Length = None, bottomLeft!: ?Length = None,
+    bottomRight!: ?Length = None): T
 ```
 
 **功能：** 设置组件的四个角的圆角半径。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|topLeft|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|左上角圆角半径。|
-|topRight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|右上角圆角半径。|
-|bottomLeft|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|左下角圆角半径。|
-|bottomRight|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|右下角圆角半径。|
+|topLeft|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 左上角圆角半径。初始值:  0.vp|
+|topRight|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 右上角圆角半径。初始值:  0.vp|
+|bottomLeft|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 左下角圆角半径。初始值:  0.vp|
+|bottomRight|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 右下角圆角半径。初始值:  0.vp|
 
-## func borderStyle(BorderStyle)
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|
+
+## func borderStyle(?BorderStyle)
 
 ```cangjie
-public func borderStyle(value: BorderStyle): This
+public func borderStyle(value: ?BorderStyle): T
 ```
 
 **功能：** 设置组件的边框样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[BorderStyle](./cj-common-types.md#enum-borderstyle)|是|-|边框样式值。|
+|value|?[BorderStyle](./cj-common-types.md#enum-borderstyle)|是|-|边框样式值。初始值:  BorderStyle.Solid|
 
-## func borderWidth(EdgeWidths)
+**返回值：**
 
-```cangjie
-public func borderWidth(value: EdgeWidths): This
-```
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|
 
-**功能：** 设置组件的亮度。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|value|[EdgeWidths](./cj-universal-attribute-border.md#class-edgewidths)|是|-|边缘宽度。|
-
-## func borderWidth(Length)
+## func borderWidth(?EdgeWidths)
 
 ```cangjie
-public func borderWidth(value: Length): This
+public func borderWidth(value: ?EdgeWidths): T
 ```
 
 **功能：** 设置组件的边框宽度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
+|value|?[EdgeWidths](./cj-common-types.md#class-edgewidths)|是|-|边缘宽度。|
 
-**异常：**
+**返回值：**
 
-- IllegalArgumentException：
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|
 
-  | 错误信息 | 可能原因 | 处理步骤 |
-  | :---- | :--- | :--- |
-  | Percentage values are not supported. | todo | todo |
-
-## 基础类型定义
-
-### class EdgeWidths
+## func borderWidth(?Length)
 
 ```cangjie
-public class EdgeWidths {
-    public var top: Length
-    public var right: Length
-    public var bottom: Length
-    public var left: Length
-    public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp)
-}
+public func borderWidth(value: ?Length): T
 ```
 
-**功能：** 设置弹窗背板的边框宽度。引入该对象时，至少传入一个参数。
+**功能：** 设置组件的边框宽度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-#### var bottom
-
-```cangjie
-public var bottom: Length
-```
-
-**功能：** 下侧边框宽度。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var left
-
-```cangjie
-public var left: Length
-```
-
-**功能：** 左侧边框宽度。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var right
-
-```cangjie
-public var right: Length
-```
-
-**功能：** 右侧边框宽度。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### var top
-
-```cangjie
-public var top: Length
-```
-
-**功能：** 上侧边框宽度。
-
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
-
-**读写能力：** 可读写
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### init(Length, Length, Length, Length)
-
-```cangjie
-public init(top!: Length = 0.vp, right!: Length = 0.vp, bottom!: Length = 0.vp, left!: Length = 0.vp)
-```
-
-**功能：** 构造EdgeWidths对象。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 上侧边框宽度。|
-|right|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 右侧边框宽度。|
-|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 下侧边框宽度。|
-|left|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|**命名参数。** 左侧边框宽度。|
+|value|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
+
+**返回值：**
+
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|

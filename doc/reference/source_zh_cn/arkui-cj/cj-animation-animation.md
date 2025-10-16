@@ -8,35 +8,29 @@
 import kit.ArkUI.*
 ```
 
-## func animationEnd()
+## func animation(?AnimateParam)
 
 ```cangjie
-public func animationEnd(): This
+public func animation(value: ?AnimateParam): T
 ```
 
-**功能：** 结束动画。
+**功能：** 设置组件的属性动画。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-## func animationStart(AnimateParam)
-
-```cangjie
-public func animationStart(value: AnimateParam): This
-```
-
-**功能：** 开始动画。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|动画参数。|
+|value|?AnimateParam|是|-|设置动画效果相关参数。|
+
+**返回值：**
+
+|类型|说明|
+|:----|:----|
+|T|返回组件实例。|
 
 ## 示例代码
 
@@ -48,7 +42,7 @@ public func animationStart(value: AnimateParam): This
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.PerformanceAnalysisKit.Hilog
+import ohos.hilog.*
 
 let animateOpt1 = AnimateParam(
     duration: 1200,
@@ -91,8 +85,8 @@ class EntryView {
     func build() {
         Column() {
             Button("change size")
-                .animationStart(animateOpt1)
-                .onClick {
+                .animation(animateOpt1)
+                .onClick({
                    evt =>
                     if (this.flag) {
                         this.widthSize = 150.vp
@@ -102,19 +96,17 @@ class EntryView {
                         this.heightSize = 100.vp
                     }
                     this.flag = !this.flag
-                }
+                })
                 .margin(30)
-                .animationEnd()
                 .width(this.widthSize)
                 .height(this.heightSize)
             Button('change rotate angle')
-                .animationStart(animateOpt2)
-                .onClick {
+                .animation(animateOpt2)
+                .onClick({
                    evt => this.rotateAngle = 90.0
-                }
+                })
                 .margin(50)
                 .rotate(angle:this.rotateAngle,)
-                .animationEnd()
         }
         .width(100.percent)
         .margin(top: 20)

@@ -26,7 +26,7 @@ public init()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## 通用属性/通用事件
 
@@ -40,23 +40,23 @@ public init()
 
 ## 组件属性
 
-### func color(ResourceColor)
+### func color(?ResourceColor)
 
 ```cangjie
-public func color(value: ResourceColor): This
+public func color(value: ?ResourceColor): This
 ```
 
-**功能：** ResourceColor类型设置当前加载进度条的前景色。
+**功能：** 设置当前加载进度条的前景色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|默认加载进度条的前景色。<br>初始值：0xff666666。|
+|value|?ResourceColor|是|-|初始值: 0xFF666666，默认加载进度条的前景色。|
 
 ## 示例代码
 

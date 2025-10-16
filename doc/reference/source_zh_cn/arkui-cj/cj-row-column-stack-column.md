@@ -14,24 +14,24 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(Length, () -> Unit)
+### init(?Length, () -> Unit)
 
 ```cangjie
-public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
+public init(space!: ?Length = None, child!: () -> Unit = {=>})
 ```
 
 **功能：** 创建一个纵向布局元素垂直方向间距为space且可以包含子组件的Column容器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|space|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.vp|纵向布局元素垂直方向间距。<br> space为负数或者[justifyContent](#func-justifycontentflexalign)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。 <br> 初始值：0 <br> 单位：vp <br> **说明：** <br> space为大于等于0的数字。|
-|child|()->Unit|否|{ => }|Column 容器的子组件|
+|space|?Length|否|None|**命名参数。** 纵向布局元素垂直方向间距。初始值: 0.vp<br>space为负数或者[justifyContent](#func-justifycontentflexalign)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。|
+|child|() -> Unit|否|{ => }|Column 容器的子组件|
 
 ## 通用属性/通用事件
 
@@ -41,41 +41,41 @@ public init(space!: Length = 0.vp, child!: () -> Unit = {=>})
 
 ## 组件属性
 
-### func alignItems(HorizontalAlign)
+### func alignItems(?HorizontalAlign)
 
 ```cangjie
-public func alignItems(value: HorizontalAlign): This
+public func alignItems(value: ?HorizontalAlign): This
 ```
 
 **功能：** 设置子组件在水平方向上的对齐格式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[HorizontalAlign](./cj-common-types.md#enum-horizontalalign)|是|-|子组件在水平方向上的对齐格式。<br> 初始值：HorizontalAlign.Center|
+|value|?HorizontalAlign|是|-|子组件在水平方向上的对齐格式。初始值: HorizontalAlign.Center|
 
-### func justifyContent(FlexAlign)
+### func justifyContent(?FlexAlign)
 
 ```cangjie
-public func justifyContent(value: FlexAlign): This
+public func justifyContent(value: ?FlexAlign): This
 ```
 
 **功能：** 设置子组件在垂直方向上的对齐格式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FlexAlign](./cj-common-types.md#enum-flexalign)|是|-|设置子组件在垂直方向上的对齐格式。 <br> 初始值：FlexAlign.Start|
+|value|?FlexAlign|是|-|设置子组件在垂直方向上的对齐格式。初始值: FlexAlign.Start|
 
 ## 示例代码
 

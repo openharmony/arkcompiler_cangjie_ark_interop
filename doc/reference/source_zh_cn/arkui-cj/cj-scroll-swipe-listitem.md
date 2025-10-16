@@ -24,13 +24,13 @@ public init(child: () -> Unit)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|child|()->Unit|是|-|容器内的ListItem子组件。|
+|child|() -> Unit|是|-|容器内的ListItem子组件。|
 
 ## 通用属性/通用事件
 
@@ -40,32 +40,32 @@ public init(child: () -> Unit)
 
 ## 组件属性
 
-### func selectable(Bool)
+### func selectable(?Bool)
 
 ```cangjie
-public func selectable(value: Bool): This
+public func selectable(value: ?Bool): This
 ```
 
-**功能：** 设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
+**功能：** 设置当前ListItem元素是否可选择。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|ListItem元素是否可编辑。<br/>初始值：false。|
+|value|?Bool|是|-|ListItem元素是否可选择。|
 
-### func swipeAction(CustomBuilder, CustomBuilder, SwipeEdgeEffect, (Float64) -> Unit)
+### func swipeAction(?CustomBuilder, ?CustomBuilder, ?SwipeEdgeEffect, ?(Float64) -> Unit)
 
 ```cangjie
 public func swipeAction(
-    start!: CustomBuilder = {=>},
-    end!: CustomBuilder = {=>},
-    edgeEffect!: SwipeEdgeEffect = SwipeEdgeEffect.Spring,
-    onOffsetChange!: (Float64) -> Unit = {_: Float64 =>}
+    start!: ?CustomBuilder = None,
+    end!: ?CustomBuilder = None,
+    edgeEffect!: ?SwipeEdgeEffect = Option.None,
+    onOffsetChange!: ?(Float64) -> Unit = None
 ): This
 ```
 
@@ -73,36 +73,36 @@ public func swipeAction(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|start|[CustomBuilder](./cj-common-types.md#type-custombuilder)|否|{ => }| **命名参数。** ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
-|end|[CustomBuilder](./cj-common-types.md#type-custombuilder)|否|{ => }| **命名参数。** ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。使用时结合[@Builder](../../../application-dev/source_zh_cn/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
-|edgeEffect|[SwipeEdgeEffect](./cj-common-types.md#enum-swipeedgeeffect)|否|SwipeEdgeEffect.Spring| **命名参数。** 滑动效果。|
-|onOffsetChange|(Float64)->Unit|否|{ _: Float64 => }| **命名参数。** 滑动操作偏移量更改时调用。<br/> **说明：**<br/>当列表项向左或向右滑动（当列表方向为“垂直”时），向上或向下滑动（当列方向为“水平”时）位置发生变化触发，以vp为单位。|
+|start|?CustomBuilder|否|None| **命名参数。** ListItem向右划动时item左边的组件（List垂直布局时）或ListItem向下划动时item上方的组件（List水平布局时）。|
+|end|?CustomBuilder|否|None| **命名参数。** ListItem向左划动时item右边的组件（List垂直布局时）或ListItem向上划动时item下方的组件（List水平布局时）。|
+|edgeEffect|?SwipeEdgeEffect|否|Option.None| **命名参数。** 滑动效果。|
+|onOffsetChange|?(Float64) -> Unit|否|None| **命名参数。** 滑动操作偏移量更改时调用。|
 
 ## 组件事件
 
-### func onSelect((Bool) -> Unit)
+### func onSelect(?(Bool) -> Unit)
 
 ```cangjie
-public func onSelect(event: (Bool) -> Unit): This
+public func onSelect(event: ?(Bool) -> Unit): This
 ```
 
-**功能：** ListItem元素被鼠标框选的状态改变时触发回调。
+**功能：** ListItem元素被选择的状态改变时触发回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|(Bool)->Unit|是|-|ListItem元素被鼠标框选的状态改变时触发回调。进入鼠标框选范围即被选中为true， 移出鼠标框选范围即未被选中为false。|
+|event|?(Bool) -> Unit|是|-|选择状态改变时的回调函数。|
 
 ## 示例代码
 
@@ -145,4 +145,4 @@ class EntryView {
 }
 ```
 
-![list1](figures/list1.gif)
+![list1](figures/listItem1.gif)

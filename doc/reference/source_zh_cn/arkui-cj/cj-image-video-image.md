@@ -5,7 +5,7 @@ Image为图片组件，常用于在应用中显示图片。支持png、jpg、jpe
 > 说明：
 >
 > - 使用快捷组合键对Image组件复制时，Image组件必须处于[获焦状态](./cj-universal-attribute-focus.md#func-focusontouchbool)。Image组件默认不获焦，需将[focusable](cj-apis-window.md#var-focusable)属性设置为true，即可使用TAB键将焦点切换到组件上，再将[focusOnTouch](./cj-universal-attribute-focus.md#func-focusontouchbool)  属性设置为true，即可实现点击获焦。
-> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](../ImageKit/cj-apis-image.md#svg标签说明)。
+> - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](../apis/ImageKit/cj-apis-image.md#svg标签说明)。
 > - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./cj-ui-framework.md#func-onvisibleareachangearrayfloat64-boolfloat64---unit)事件触发的，当可见阈值raitos大于0时，表明Image处于可见状态。
 
 ## 导入模块
@@ -30,10 +30,10 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(ResourceStr)
+### init(?ResourceStr)
 
 ```cangjie
-public init(src: ResourceStr)
+public init(src: ?ResourceStr)
 ```
 
 **功能：** 通过图片数据源获取图片，用于后续渲染展示。
@@ -46,18 +46,18 @@ public init(src: ResourceStr)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片的数据源。<br/>ResourceStr可用于加载网络图片和本地图片。|
+|src|?ResourceStr|否|-|图片的数据源。<br>初始值：""|
 
-### init(PixelMap)
+### init(?PixelMap)
 
 ```cangjie
-public init(src: PixelMap)
+public init(src: ?PixelMap)
 ```
 
 **功能：** 通过图片数据源获取图片，用于后续渲染展示。
@@ -70,13 +70,13 @@ public init(src: PixelMap)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[PixelMap](../ImageKit/cj-apis-image.md#class-pixelmap)|是|-|图片的数据源。<br/>PixelMap格式为像素图，常用于图片编辑的场景。|
+|src|?PixelMap|否|-|图片的数据源。<br/>PixelMap格式为像素图，常用于图片编辑的场景。|
 
 ## 通用属性/通用事件
 
@@ -90,28 +90,28 @@ public init(src: PixelMap)
 
 ## 组件属性
 
-### func alt(ResourceStr)
+### func alt(?ResourceStr)
 
 ```cangjie
-public func alt(src: ResourceStr): This
+public func alt(src: ?ResourceStr): This
 ```
 
 **功能：**设置图片加载时显示的占位图
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|加载时显示的占位图，不支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持网络图片。|
+|src|?ResourceStr|否|-|加载时显示的占位图，不支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持网络图片。<br>初始值：""|
 
-### func autoResize(Bool)
+### func autoResize(?Bool)
 
 ```cangjie
-public func autoResize(value: Bool): This
+public func autoResize(value: ?Bool): This
 ```
 
 **功能：** 设置图片解码过程中是否对图源自动缩放。
@@ -122,18 +122,18 @@ public func autoResize(value: Bool): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br/>初始值：false。|
+|value|?Bool|否|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br>初始值：false|
 
-### func fillColor(ResourceColor)
+### func fillColor(?ResourceColor)
 
 ```cangjie
-public func fillColor(value: ResourceColor): This
+public func fillColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置替换svg图片的填充颜色。仅对svg图源生效。
@@ -144,39 +144,39 @@ public func fillColor(value: ResourceColor): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置填充颜色。<br/>默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。|
+|value|?ResourceColor|否|-|设置填充颜色。|
 
-### func fitOriginalSize(Bool)
+### func fitOriginalSize(?Bool)
 
 ```cangjie
-public func fitOriginalSize(value: Bool): This
+public func fitOriginalSize(value: ?Bool): This
 ```
 
 **功能：** 设置图片的显示尺寸是否跟随图源尺寸。图片组件尺寸未设置时，其显示尺寸是否跟随图源尺寸。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否跟随图源尺寸。<br/>初始值：false。|
+|value|?Bool|否|-|是否跟随图源尺寸。<br>初始值：false|
 
-### func interpolation(ImageInterpolation)
+### func interpolation(?ImageInterpolation)
 
 ```cangjie
-public func interpolation(value: ImageInterpolation): This
+public func interpolation(value: ?ImageInterpolation): This
 ```
 
-**功能：** 设置图片的插值效果。
+**功能：** 设置图片的插值效果，即缓解图片在缩放时的锯齿问题。
 
 > **说明：**
 >
@@ -185,54 +185,54 @@ public func interpolation(value: ImageInterpolation): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageInterpolation](#enum-imageinterpolation)|是|-|图片的插值效果。<br/>初始值：ImageInterpolation.Low。|
+|value|?ImageInterpolation|否|-|图片的插值效果。<br>初始值：ImageInterpolation.Low|
 
-### func matchTextDirection(Bool)
+### func matchTextDirection(?Bool)
 
 ```cangjie
-public func matchTextDirection(value: Bool): This
+public func matchTextDirection(value: ?Bool): This
 ```
 
 **功能：** 设置图片是否跟随系统语言方向，在RTL语言环境下显示镜像翻转显示效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否跟随系统语言方向。<br/>初始值：false。|
+|value|?Bool|否|-|是否跟随系统语言方向。<br>初始值：false|
 
-### func objectFit(ImageFit)
+### func objectFit(?ImageFit)
 
 ```cangjie
-public func objectFit(value: ImageFit): This
+public func objectFit(value: ?ImageFit): This
 ```
 
 **功能：** 设置图片的填充效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageFit](./cj-common-types.md#enum-imagefit)|是|-|图片的填充效果。<br/>初始值：ImageFit.Cover。|
+|value|?ImageFit|否|-|图片的填充效果。<br>初始值：ImageFit.Cover|
 
-### func objectRepeat(ImageRepeat)
+### func objectRepeat(?ImageRepeat)
 
 ```cangjie
-public func objectRepeat(value: ImageRepeat): This
+public func objectRepeat(value: ?ImageRepeat): This
 ```
 
 **功能：** 设置图片的重复样式。
@@ -244,21 +244,21 @@ public func objectRepeat(value: ImageRepeat): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageRepeat](./cj-common-types.md#enum-imagerepeat)|是|-|图片的重复样式。<br/>初始值：ImageRepeat.NoRepeat。|
+|value|?ImageRepeat|否|-|图片的重复样式。<br>初始值：ImageRepeat.NoRepeat|
 
-### func renderMode(ImageRenderMode)
+### func renderMode(?ImageRenderMode)
 
 ```cangjie
-public func renderMode(value: ImageRenderMode): This
+public func renderMode(value: ?ImageRenderMode): This
 ```
 
-**功能：** 设置图片渲染的模式。
+**功能：** 设置图片的渲染模式。
 
 > **说明：**
 >
@@ -267,37 +267,37 @@ public func renderMode(value: ImageRenderMode): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ImageRenderMode](#enum-imagerendermode)|是|-|图片渲染的模式为原色或黑色。<br/>初始值：ImageRenderMode.Original。|
+|value|?ImageRenderMode|否|-|设置图片的渲染模式。SVG类型图源不支持该属性。<br>初始值：ImageRenderMode.Original|
 
-### func sourceSize(Length, Length)
+### func sourceSize(?Length, ?Length)
 
 ```cangjie
-public func sourceSize(width: Length, height: Length): This
+public func sourceSize(width: ?Length, height: ?Length): This
 ```
 
 **功能：** 将原始图片解码成 PixelMap 指定尺寸的图片。PixelMap资源不支持该函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|图片解码后的宽度。<br>单位：vp。|
-|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|图片解码后的高度。<br>单位：vp。|
+|width|?Length|否|-|图片解码后的宽度。<br>初始值：0.0.px|
+|height|?Length|否|-|图片解码后的高度。<br>初始值：0.0.px|
 
-### func syncLoad(Bool)
+### func syncLoad(?Bool)
 
 ```cangjie
-public func syncLoad(value: Bool): This
+public func syncLoad(value: ?Bool): This
 ```
 
 **功能：** 设置是否同步加载图片。
@@ -308,69 +308,69 @@ public func syncLoad(value: Bool): This
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br/>初始值：false。|
+|value|?Bool|否|-|是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>初始值：false|
 
 ## 组件事件
 
-### func onComplete(ImageCompleteCallback)
+### func onComplete(?ImageCompleteCallback)
 
 ```cangjie
-public func onComplete(callback: ImageCompleteCallback): This
+public func onComplete(callback: ?ImageCompleteCallback): This
 ```
 
 **功能：** 图片成功加载时触发该事件，返回成功加载的图片尺寸。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|ImageCompleteCallback|是|-|回调函数，图片成功加载时触发。|
+|callback|?ImageCompleteCallback|否|-|回调函数，图片成功加载时触发。<br>初始值：{ _ => }|
 
-### func onError(ImageErrorCallback)
+### func onError(?ImageErrorCallback)
 
 ```cangjie
-public func onError(callback: ImageErrorCallback): This
+public func onError(callback: ?ImageErrorCallback): This
 ```
 
 **功能：** 图片加载出现异常时触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。|
+|callback|?ImageErrorCallback|否|-|回调函数，图片加载出现异常时触发。<br>初始值：{ _ => }|
 
-### func onFinish(() -> Unit)
+### func onFinish(?(...) -> Unit)
 
 ```cangjie
-public func onFinish(event: () -> Unit): This
+public func onFinish(event: ?() -> Unit): This
 ```
 
 **功能：** 当加载的源文件为带动效的svg图片时，当svg动效播放完成时会触发该事件，如果动效为无限循环动效，则不会触发这个事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|()->Unit|是|-|回调函数，svg动效播放完成时触发。|
+|event|?() -> Unit|否|-|回调函数，svg动效播放完成时触发。<br>初始值：{ => }|
 
 ## 基础类型定义
 
@@ -378,7 +378,7 @@ public func onFinish(event: () -> Unit): This
 
 ```cangjie
 public class ColorFilter {
-    public init(array: Array<Float32>)
+    public init(value: ?Array<Float32>)
 }
 ```
 
@@ -386,39 +386,107 @@ public class ColorFilter {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### init(Array\<Float32>)
+**父类型：** 无
+
+#### init(?Array\<Float32>)
 
 ```cangjie
-public init(value: Array<Float32>)
+public init(value: ?Array<Float32>)
 ```
 
 **功能：** 构建一个颜色滤镜矩阵。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Array\<Float32>|是|-|4x5的滤镜矩阵。|
+|value|?Array\<Float32>|否|-|4x5的滤镜矩阵。<br>初始值：[]|
+
+### class ImageError
+
+```cangjie
+public class ImageError {
+    public var componentWidth: ?Float64
+    public var componentHeight: ?Float64
+    public var message: ?String
+}
+```
+
+**功能：** 图片加载异常时触发回调的返回对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+**父类型：** 无
+
+#### var componentHeight
+
+```cangjie
+public var componentHeight: ?Float64
+```
+
+**功能：** 组件的高度，单位为px。
+
+**类型：** ?Float64
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var componentWidth
+
+```cangjie
+public var componentWidth: ?Float64
+```
+
+**功能：** 组件的宽度，单位为px。
+
+**类型：** ?Float64
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+#### var message
+
+```cangjie
+public var message: ?String
+```
+
+**功能：** 错误信息。
+
+**类型：** ?String
+
+**读写能力：** 可读写
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
 
 ### class ImageLoadResult
 
 ```cangjie
 public class ImageLoadResult {
-    public var width: Float64
-    public var height: Float64
-    public var componentWidth: Float64
-    public var componentHeight: Float64
-    public var loadingStatus: Int32
-    public var contentWidth: Float64
-    public var contentHeight: Float64
-    public var contentOffsetX: Float64
-    public var contentOffsetY: Float64
+    public var width: ?Float64
+    public var height: ?Float64
+    public var componentWidth: ?Float64
+    public var componentHeight: ?Float64
+    public var loadingStatus: ?Int32
+    public var contentWidth: ?Float64
+    public var contentHeight: ?Float64
+    public var contentOffsetX: ?Float64
+    public var contentOffsetY: ?Float64
 }
 ```
 
@@ -426,44 +494,46 @@ public class ImageLoadResult {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
+
+**父类型：** 无
 
 #### var componentHeight
 
 ```cangjie
-public var componentHeight: Float64
+public var componentHeight: ?Float64
 ```
 
 **功能：** 组件的高度，单位为px。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var componentWidth
 
 ```cangjie
-public var componentWidth: Float64
+public var componentWidth: ?Float64
 ```
 
 **功能：** 组件的宽度，单位为px。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var contentHeight
 
 ```cangjie
-public var contentHeight: Float64
+public var contentHeight: ?Float64
 ```
 
 **功能：** 图片实际绘制的高度，单位为px。
@@ -472,18 +542,18 @@ public var contentHeight: Float64
 >
 > 仅在loadingStatus返回1时有效。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var contentOffsetX
 
 ```cangjie
-public var contentOffsetX: Float64
+public var contentOffsetX: ?Float64
 ```
 
 **功能：** 实际绘制内容相对于组件自身的x轴偏移，单位为px。
@@ -492,18 +562,18 @@ public var contentOffsetX: Float64
 >
 > 仅在loadingStatus返回1时有效。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var contentOffsetY
 
 ```cangjie
-public var contentOffsetY: Float64
+public var contentOffsetY: ?Float64
 ```
 
 **功能：** 实际绘制内容相对于组件自身的y轴偏移，单位为px。
@@ -512,18 +582,18 @@ public var contentOffsetY: Float64
 >
 > 仅在loadingStatus返回1时有效。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var contentWidth
 
 ```cangjie
-public var contentWidth: Float64
+public var contentWidth: ?Float64
 ```
 
 **功能：** 图片实际绘制的宽度，单位为px。
@@ -532,271 +602,81 @@ public var contentWidth: Float64
 >
 > 仅在loadingStatus返回1时有效。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var height
 
 ```cangjie
-public var height: Float64
+public var height: ?Float64
 ```
 
 **功能：** 图片的高度，单位为px。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var loadingStatus
 
 ```cangjie
-public var loadingStatus: Int32
+public var loadingStatus: ?Int32
 ```
 
 **功能：** 图片加载成功的状态。
 
-**类型：** Int32
+**类型：** ?Int32
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### var width
 
 ```cangjie
-public var width: Float64
+public var width: ?Float64
 ```
 
 **功能：** 图片的宽度，单位为px。
 
-**类型：** Float64
+**类型：** ?Float64
 
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
-
-### enum ImageInterpolation
-
-```cangjie
-public enum ImageInterpolation {
-    | None
-    | High
-    | Medium
-    | Low
-    | ...
-}
-```
-
-**功能：** 图像插值方式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<ImageInterpolation>
-
-#### High
-
-```cangjie
-High
-```
-
-**功能：** 高质量插值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Low
-
-```cangjie
-Low
-```
-
-**功能：** 低质量插值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Medium
-
-```cangjie
-Medium
-```
-
-**功能：** 中等质量插值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### None
-
-```cangjie
-None
-```
-
-**功能：** 无插值。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(ImageInterpolation)
-
-```cangjie
-public operator func !=(other: ImageInterpolation): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageInterpolation](#enum-imageinterpolation)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等时，返回true，否则返回false。|
-
-#### func ==(ImageInterpolation)
-
-```cangjie
-public operator func ==(other: ImageInterpolation): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageInterpolation](#enum-imageinterpolation)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等时，返回true，否则返回false。|
-
-### enum ImageRenderMode
-
-```cangjie
-public enum ImageRenderMode <: Equatable<ImageRenderMode> {
-    | Original
-    | Template
-    | ...
-}
-```
-
-**功能：** 图像渲染模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- Equatable\<ImageRenderMode>
-
-#### Original
-
-```cangjie
-Original
-```
-
-**功能：** 按照原图进行渲染，包括颜色。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### Template
-
-```cangjie
-Template
-```
-
-**功能：** 将图片渲染为模板图片，忽略图片的颜色信息。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### func !=(ImageRenderMode)
-
-```cangjie
-public operator func !=(other: ImageRenderMode): Bool
-```
-
-**功能：** 判断两个枚举值是否不相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageRenderMode](#enum-imagerendermode)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值不相等时，返回true，否则返回false。|
-
-#### func ==(ImageRenderMode)
-
-```cangjie
-public operator func ==(other: ImageRenderMode): Bool
-```
-
-**功能：** 判断两个枚举值是否相等。
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|other|[ImageRenderMode](#enum-imagerendermode)|是|-|传入的另一个枚举值。|
-
-**返回值：**
-
-|类型|说明|
-|:----|:----|
-|Bool|两个枚举值相等时，返回true，否则返回false。|
+**起始版本：** 22
 
 ## type ImageCompleteCallback
 
 ```cangjie
-public type ImageCompleteCallback =(ImageLoadResult) -> Unit
+public type ImageCompleteCallback = (ImageLoadResult) -> Unit
 ```
 
 **功能：** 图片加载完成回调函数类型。
 
+**起始版本：** 22
+
 ## type ImageErrorCallback
 
 ```cangjie
-public type ImageErrorCallback =(ImageError) -> Unit
+public type ImageErrorCallback = (ImageError) -> Unit
 ```
 
 **功能：** 图片加载错误回调函数类型。
+
+**起始版本：** 22
 
 ## 示例代码
 
@@ -810,7 +690,8 @@ public type ImageErrorCallback =(ImageError) -> Unit
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component
@@ -863,7 +744,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component
@@ -880,19 +762,19 @@ class EntryView {
             Image(this.src)
             .width(100)
             .height(100)
-            .onClick{
+            .onClick({
                     evt =>
                     this.src =this.imageTwo
-            }
+            })
             // 当加载图片为SVG格式时
             Image(this.src2)
             .width(100)
             .height(100)
-            .onFinish{
+            .onFinish({
                     // SVG动效播放完成时加载另一张图片
                     =>
                     this.src2 =this.imageOne
-            }
+            })
         }
     }
 }
@@ -910,7 +792,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component
@@ -919,7 +802,7 @@ class EntryView {
         Flex(direction: FlexDirection.Column, alignItems: ItemAlign.Start) {
             Row() {
                 // 加载png格式图片
-                Image(@r(app.media.view))
+                Image(@r(app.media.flower))
                 .width(110)
                 .height(110)
                 .margin(15)
@@ -927,7 +810,7 @@ class EntryView {
                 .border(width: 2, color: 0xFEC0CD)
                 .objectFit(ImageFit.Contain)
                 // 加载gif格式图片
-                Image(@r(app.media.view))
+                Image(@r(app.media.bybridhar_gif1))
                 .width(110)
                 .height(110)
                 .margin(15)
@@ -937,7 +820,7 @@ class EntryView {
             }
             Row() {
                 // 加载svg格式图片
-                Image(@r(app.media.view))
+                Image(@r(app.media.svg))
                 .width(110)
                 .height(110)
                 .margin(15)
@@ -955,7 +838,7 @@ class EntryView {
             }
             Row() {
                 // 加载png格式图片
-                Image(@r(app.media.view))
+                Image(@r(app.media.media1))
                 .width(110)
                 .height(110)
                 .margin(15)
@@ -963,7 +846,7 @@ class EntryView {
                 .border(width: 2, color: 0xFEC0CD)
                 .objectFit(ImageFit.Auto)
                 // 加载gif格式图片
-                Image(@r(app.media.view))
+                Image(@r(app.media.bybridhar_gif1))
                 .width(110)
                 .height(110)
                 .margin(15)
@@ -979,7 +862,7 @@ class EntryView {
 }
 ```
 
-![image4](figures/image10.jpg)
+![image4](figures/image10.gif)
 
 ### 示例4（切换显示不同类型图片）
 
@@ -991,7 +874,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component
@@ -1008,10 +892,10 @@ class EntryView {
                 .height(100)
             Button("点击切换Image的src")
                 .padding(20)
-                .onClick{
+                .onClick({
                     evt =>
                     this.imageSrcIndex = (this.imageSrcIndex + 1) % 2
-            }
+            })
         }
     }
 }
@@ -1029,7 +913,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1067,7 +952,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1100,7 +986,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 import ohos.arkui.component.ImageFit
 
 @Entry
@@ -1134,7 +1021,8 @@ class EntryView {
 package ohos_app_cangjie_entry
 import kit.ArkUI.*
 import ohos.arkui.state_macro_manage.*
-import kit.LocalizationKit.AppResource
+import ohos.i18n.*
+import ohos.resource_manager.*
 
 @Entry
 @Component

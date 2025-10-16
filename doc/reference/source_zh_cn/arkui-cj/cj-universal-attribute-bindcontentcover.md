@@ -13,86 +13,28 @@
 import kit.ArkUI.*
 ```
 
-## func bindContentCover(Bool, CustomBuilder, ContentCoverOptions)
+## func bindContentCover(?Bool, ?CustomBuilder, ?ContentCoverOptions)
 
 ```cangjie
-public func bindContentCover(isShow: Bool, builder: CustomBuilder,
-    options!: ContentCoverOptions = ContentCoverOptions()): This
+public func bindContentCover(isShow: ?Bool, builder: ?CustomBuilder, options!: ?ContentCoverOptions = None): T
 ```
 
-**功能：** 绑定内容覆盖层。
+**功能：** 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|isShow|Bool|是|-|是否显示。|
-|builder|[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|自定义构建器。|
-|options|[ContentCoverOptions](#class-contentcoveroptions)|否|ContentCoverOptions()|内容覆盖层选项。|
+|isShow|Bool|是|-|是否显示全屏模态页面。<br/>初始值：false。|
+|builder|?[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|配置全屏模态页面内容。|
+|options|?[ContentCoverOptions](./cj-common-types.md#class-contentcoveroptions)|否|None|**命名参数。** 配置全屏模态页面的可选属性。<br/>初始值：ContentCoverOptions()。|
 
-## 基础类型定义
+**返回值：**
 
-### class ContentCoverOptions
-
-```cangjie
-public class ContentCoverOptions <: BindOptions {
-    public init(
-        modalTransition!: ModalTransition = ModalTransition.Default,
-        onWillDismiss!: ?(DismissContentCoverAction) -> Unit = Option.None,
-        transition!: ?TransitionEffect = Option.None,
-        backgroundColor!: ?ResourceColor = Option.None,
-        onAppear!: ?() -> Unit = Option.None,
-        onDisappear!: ?() -> Unit = Option.None,
-        onWillAppear!: ?() -> Unit = Option.None,
-        onWillDisappear!: ?() -> Unit = Option.None
-    )
-}
-```
-
-**功能：** 全屏模态页面转场
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**父类型：**
-
-- [BindOptions](./cj-universal-attribute-sheettransition.md#class-bindoptions)
-
-#### init(ModalTransition, ?(DismissContentCoverAction) -> Unit, ?TransitionEffect, ?ResourceColor, ?() -> Unit, ?() -> Unit, ?() -> Unit, ?() -> Unit)
-
-```cangjie
-public init(
-    modalTransition!: ModalTransition = ModalTransition.Default,
-    onWillDismiss!: ?(DismissContentCoverAction) -> Unit = Option.None,
-    transition!: ?TransitionEffect = Option.None,
-    backgroundColor!: ?ResourceColor = Option.None,
-    onAppear!: ?() -> Unit = Option.None,
-    onDisappear!: ?() -> Unit = Option.None,
-    onWillAppear!: ?() -> Unit = Option.None,
-    onWillDisappear!: ?() -> Unit = Option.None
-)
-```
-
-**功能：** 构造一个ContentCoverOptions类型的对象
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-**参数：**
-
-|参数名|类型|必填|默认值|说明|
-|:---|:---|:---|:---|:---|
-|modalTransition|[ModalTransition](./cj-common-types.md#enum-modaltransition)|否|ModalTransition.Default|**命名参数。** 全屏模态页面的转场方式|
-|onWillDismiss|?([DismissContentCoverAction](./cj-common-types.md#class-dismisscontentcoveraction))->Unit|否|Option.None|**命名参数。** 全屏模态页面交互式关闭回调函数|
-|transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|Option.None|**命名参数。** 全屏模态页面的自定义转场方式|
-|backgroundColor|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Option.None|**命名参数。** 全模态页面的背板颜色。|
-|onAppear|?()->Unit|否|Option.None|**命名参数。** 全模态页面显示（动画结束后）回调函数|
-|onDisappear|?()->Unit|否|Option.None|**命名参数。** 全模态页面回退（动画结束后）回调函数|
-|onWillAppear|?()->Unit|否|Option.None|**命名参数。** 全模态页面显示（动画开始前）回调函数|
-|onWillDisappear|?()->Unit|否|Option.None|**命名参数。** 全模态页面回退（动画开始前）回调函数|
+|类型|说明|
+|:---|:---|
+|T|返回调用此接口的组件实例本身。|

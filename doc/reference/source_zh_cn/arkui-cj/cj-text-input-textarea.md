@@ -14,26 +14,26 @@ import kit.ArkUI.*
 
 ## 创建组件
 
-### init(ResourceStr, ResourceStr, TextAreaController)
+### init(?ResourceStr, ?ResourceStr, ?TextAreaController)
 
 ```cangjie
-public init(placeholder!: ResourceStr = "", text!: ResourceStr = "",
-    controller!: TextAreaController = TextAreaController())
+public init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None,
+    controller!: ?TextAreaController = None)
 ```
 
-**功能：** 创建TextArea组件。
+**功能：** 创建一个包含占位符文本、当前文本内容和控制器的TextArea对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|placeholder|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 无输入时的提示文本。<br/>输入内容后，提示文本不显示。仅设置placeholder属性时，手柄依然跟随拖动，手柄松开后光标停留在文字开头位置。|
-|text|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|""|**命名参数。** 输入框当前的文本内容。<br/>建议通过onChange事件将状态变量与文本实时绑定，避免组件刷新时TextArea中的文本内容异常。|
-|controller|[TextAreaController](#class-textareacontroller)|否|TextAreaController()|**命名参数。** TextArea控制器。|
+|placeholder|?ResourceStr|否|None| **命名参数。** 占位符文本，无输入时显示的文本。|
+|text|?ResourceStr|否|None| **命名参数。** TextArea的当前值。|
+|controller|?TextAreaController|否|None| **命名参数。** TextArea组件的控制器。|
 
 ## 通用属性/通用事件
 
@@ -43,358 +43,334 @@ public init(placeholder!: ResourceStr = "", text!: ResourceStr = "",
 
 ## 组件属性
 
-### func caretColor(ResourceColor)
+### func caretColor(?ResourceColor)
 
 ```cangjie
-public func caretColor(value: ResourceColor): This
+public func caretColor(value: ?ResourceColor): This
 ```
 
-**功能：** 设置输入框光标颜色。
+**功能：** 设置光标的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|输入框光标颜色。<br>初始值：0xFF0A59F7。|
+|value|?ResourceColor|是|-|光标的颜色。|
 
-### func enterKeyType(EnterKeyType)
+### func enterKeyType(?EnterKeyType)
 
 ```cangjie
-public func enterKeyType(value: EnterKeyType): This
+public func enterKeyType(value: ?EnterKeyType): This
 ```
 
-**功能：** 设置输入法回车键类型。
+**功能：** 设置软键盘输入按钮的类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[EnterKeyType](./cj-text-input-textinput.md#enum-enterkeytype)|是|-|输入法回车键类型。<br>初始值：EnterKeyType.NEW_LINE。|
+|value|?EnterKeyType|是|-|软键盘输入按钮的类型。<br>初始值：EnterKeyType.NewLine。|
 
-### func fontColor(ResourceColor)
+### func fontFamily(?ResourceStr)
 
 ```cangjie
-public func fontColor(value: ResourceColor): This
+public func fontFamily(value: ?ResourceStr): This
 ```
 
-**功能：** 设置字体颜色。
+**功能：** 设置文本的字体族。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。<br>初始值：0xE5000000。|
+|value|?ResourceStr|是|-|文本的字体族。<br>初始值：HarmonyOS Sans。|
 
-### func fontFamily(ResourceStr)
+### func fontColor(?ResourceColor)
 
 ```cangjie
-public func fontFamily(value: ResourceStr): This
+public func fontColor(value: ?ResourceColor): This
 ```
 
-**功能：** 设置字体列表。
+**功能：** 设置文本的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。默认字体'HarmonyOS Sans'。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../BasicServicesKit/cj-apis-base.md#func-registerfont)。|
+|value|?ResourceColor|是|-|文本的颜色。|
 
-### func fontSize(Length)
+### func fontSize(?Length)
 
 ```cangjie
-public func fontSize(value: Length): This
+public func fontSize(value: ?Length): This
 ```
 
-**功能：** 设置字体大小。
+**功能：** 设置文本的字体大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。Length为Int64、Float64类型时，使用fp单位。不支持设置百分比字符串。<br>初始值：16.fp。|
+|value|?Length|是|-|文本的字体大小。<br>初始值：16.fp。|
 
-### func fontStyle(FontStyle)
+### func fontStyle(?FontStyle)
 
 ```cangjie
-public func fontStyle(value: FontStyle): This
+public func fontStyle(value: ?FontStyle): This
 ```
 
-**功能：** 设置字体样式。
+**功能：** 设置文本的字体样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。<br>初始值：FontStyle.Normal。|
+|value|?FontStyle|是|-|文本的字体样式。<br>初始值：FontStyle.Normal。|
 
-### func fontWeight(FontWeight)
+### func fontWeight(?FontWeight)
 
 ```cangjie
-public func fontWeight(value: FontWeight): This
+public func fontWeight(value: ?FontWeight): This
 ```
 
-**功能：** 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
+**功能：** 设置文本的字体粗细。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细。<br>初始值：FontWeight.Normal。|
+|value|?FontWeight|是|-|文本的字体粗细。<br>初始值：FontWeight.Normal。|
 
-### func inputFilter(ResourceStr, ?(String) -> Unit)
+### func inputFilter(?ResourceStr, ?(String) -> Unit)
 
 ```cangjie
-public func inputFilter(value!: ResourceStr, error!: ?(String) -> Unit = None): This
+public func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit = None): This
 ```
 
-**功能：** 设置通过正则表达式设置输入过滤器。
-
-> **说明：**
->
-> 匹配表达式的输入允许显示，不匹配的输入将被过滤。仅支持单个字符匹配，不支持字符串匹配。
+**功能：** 设置文本的输入过滤规则。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 正则表达式。|
-|error|?(String)->Unit|否|None|**命名参数。** 正则匹配失败时，返回被过滤的内容。|
+|value|?ResourceStr|是|-| **命名参数。** 输入过滤规则。|
+|error|?(String) -> Unit|否|None| **命名参数。** 输入错误时的回调函数。|
 
-### func maxLength(UInt32)
+### func maxLength(?UInt32)
 
 ```cangjie
-public func maxLength(value: UInt32): This
+public func maxLength(value: ?UInt32): This
 ```
 
-**功能：** 设置文本的最大输入字符数。
-
-> **说明：**
->
-> 默认不设置最大输入字符数限制。到达文本最大字符限制，将无法继续输入字符，同时边框变为红色。
+**功能：** 设置文本的最大长度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|UInt32|是|-|文本的最大输入字符数。|
+|value|?UInt32|是|-|文本的最大长度。|
 
-### func placeholderColor(ResourceColor)
+### func onChange(?(String) -> Unit)
 
 ```cangjie
-public func placeholderColor(value: ResourceColor): This
+public func onChange(callback: ?(String) -> Unit): This
 ```
 
-**功能：** 设置placeholder文本颜色。
+**功能：** 输入框内容发生变化时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|placeholder文本颜色。<br>初始值：跟随主题。|
+|callback|?(String) -> Unit|是|-|输入框内容发生变化时的回调函数。|
 
-### func placeholderFont(Length, FontWeight, String, FontStyle)
+### func onCopy(?(String) -> Unit)
 
 ```cangjie
-public func placeholderFont(size!: Length, weight!: FontWeight = FontWeight.W400, family!: String = "",
-    style!: FontStyle = FontStyle.Normal): This
+public func onCopy(callback: ?(String) -> Unit): This
 ```
 
-**功能：** 设置placeholder文本样式，包括字体大小，字体粗细，字体族，字体风格。当前支持'HarmonyOS Sans'字体和[注册自定义字体](./cj-text-input-text.md#注册自定义字体)。
+**功能：** 使用剪贴板菜单时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 文本尺寸。 单位：fp。<br>初始值：16.fp。|
-|weight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.W400|**命名参数。** 文本的字体粗细。|
-|family|String|否|""|**命名参数。** 文本的字体列表。|
-|style|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal|**命名参数。** 文本的字体样式。|
+|callback|?(String) -> Unit|是|-|复制操作时的回调函数。|
 
-### func textAlign(TextAlign)
+### func onCut(?(String) -> Unit)
 
 ```cangjie
-public func textAlign(value: TextAlign): This
+public func onCut(callback: ?(String) -> Unit): This
 ```
 
-**功能：** 设置文本在输入框中的水平对齐方式。
-
-> **说明：**
->
-> - 支持TextAlign.Start、TextAlign.Center和TextAlign.End。
-> - 可通过[align](./cj-universal-attribute-location.md#func-alignalignment)属性控制文本段落在垂直方向上的位置，此组件中不可通过align属性控制文本段落在水平方向上的位置，即align属性中Alignment.TopStart、Alignment.Top、Alignment.TopEnd效果相同，控制内容在顶部，Alignment.Start、Alignment.Center、Alignment.End效果相同，控制内容垂直居中，Alignment.BottomStart、Alignment.Bottom、Alignment.BottomEnd效果相同，控制内容在底部。
-> - 当textAlign属性设置为TextAlign.JUSTIFY时，最后一行文本不参与两端对齐，为水平对齐首部效果。
+**功能：** 使用剪贴板菜单时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[TextAlign](./cj-common-types.md#enum-textalign)|是|-|文本在输入框中的水平对齐方式。仅支持TextAlign.Start、TextAlign.Center和TextAlign.End。<br>初始值：TextAlign.Start。|
+|callback|?(String) -> Unit|是|-|剪切操作时的回调函数。|
 
-## 组件事件
-
-### func onChange((String) -> Unit)
+### func onEditChange(?(Bool) -> Unit)
 
 ```cangjie
-public func onChange(callback: (String) -> Unit): This
+public func onEditChange(callback: ?(Bool) -> Unit): This
 ```
 
-**功能：** 输入内容发生变化时，触发该事件。
-
-> **说明：**
->
-> 在本回调中，若执行了光标操作，需要开发者在预上屏场景下依据previewText参数调整光标逻辑，以适应预上屏场景。触发该事件的条件：
->
-> - 键盘输入。
-> - 粘贴、剪切。
-> - 键盘快捷键Ctrl+v。
+**功能：** 判断文本编辑状态是否发生变化。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(String)->Unit|是|-|回调函数，当前输入文本内容变化时触发。|
+|callback|?(Bool) -> Unit|是|-|文本区域状态变化时触发的回调函数。|
 
-### func onCopy((String) -> Unit)
+### func onPaste(?(String) -> Unit)
 
 ```cangjie
-public func onCopy(callback: (String) -> Unit): This
+public func onPaste(callback: ?(String) -> Unit): This
 ```
 
-**功能：** 进行复制操作时，触发该事件。
+**功能：** 使用剪贴板菜单时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(String)->Unit|是|-|回调函数，复制时触发。参数：复制的文本内容。|
+|callback|?(String) -> Unit|是|-|粘贴操作时的回调函数。|
 
-### func onCut((String) -> Unit)
+### func onSubmit(?(EnterKeyType) -> Unit)
 
 ```cangjie
-public func onCut(callback: (String) -> Unit): This
+public func onSubmit(callback: ?(EnterKeyType) -> Unit): This
 ```
 
-**功能：** 进行剪切操作时，触发该事件。
+**功能：** 提交时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(String)->Unit|是|-|回调函数，剪切时触发。参数：剪切的文本内容。|
+|callback|?(EnterKeyType) -> Unit|是|-|提交时的回调函数。|
 
-### func onEditChange((Bool) -> Unit)
+### func placeholderColor(?ResourceColor)
 
 ```cangjie
-public func onEditChange(callback: (Bool) -> Unit): This
+public func placeholderColor(value: ?ResourceColor): This
 ```
 
-**功能：** 输入状态变化时，触发该事件。有光标时为编辑态，无光标时为非编辑态。
+**功能：** 设置占位符文本的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(Bool)->Unit|是|-|回调函数，编辑状态改变时触发。参数：当前编辑状态。参数为true表示正在输入。|
+|value|?ResourceColor|是|-|占位符文本的颜色。|
 
-### func onPaste((String) -> Unit)
+### func placeholderFont(?Length, ?FontWeight, ?String, ?FontStyle)
 
 ```cangjie
-public func onPaste(callback: (String) -> Unit): This
+public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!: ?String = None,
+    style!: ?FontStyle = None): This
 ```
 
-**功能：** 进行粘贴操作时，触发该事件。
+**功能：** 设置占位符文本的字体属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(String)->Unit|是|-|回调函数，粘贴时触发，返回粘贴的文本内容。|
+|size|?Length|是|-| **命名参数。** 占位符文本的字体大小。|
+|weight|?FontWeight|否|None| **命名参数。** 占位符文本的字体粗细。<br>初始值：FontWeight.W400。|
+|family|?String|否|None| **命名参数。** 占位符文本的字体族。<br>初始值：""。|
+|style|?FontStyle|否|None| **命名参数。** 占位符文本的字体样式。<br>初始值：FontStyle.Normal。|
 
-### func onSubmit((EnterKeyType) -> Unit)
+### func textAlign(?TextAlign)
 
 ```cangjie
-public func onSubmit(callback: (EnterKeyType) -> Unit): This
+public func textAlign(value: ?TextAlign): This
 ```
 
-**功能：** 按下输入法回车键触发该事件。
+**功能：** 设置文本的水平对齐方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|([EnterKeyType](./cj-text-input-textinput.md#enum-enterkeytype))->Unit|是|-|回调函数，按下回车键或者软键盘回车键触发。参数：当前软键盘回车键类型。类型为EnterKeyType.NEW_LINE时不触发onSubmit。|
+|value|?TextAlign|是|-|文本的水平对齐方式。<br>初始值：TextAlign.Start。|
 
 ## 基础类型定义
 
@@ -406,11 +382,11 @@ public class TextAreaController {
 }
 ```
 
-**功能：** TextArea组件的控制器。
+**功能：** TextAreaController是TextArea组件的控制器，可以定义该类型的对象并绑定至TextArea组件，实现对TextArea组件的控制。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init()
 
@@ -418,121 +394,29 @@ public class TextAreaController {
 public init()
 ```
 
-**功能：** 创建TextAreaController类型的对象。
+**功能：** TextAreaController的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
-#### func caretPosition(Int32)
+#### func caretPosition(?Int32)
 
 ```cangjie
-public func caretPosition(value: Int32): Unit
+public func caretPosition(value: ?Int32): Unit
 ```
 
-**功能：** 设置光标位置。
+**功能：** 设置插入光标的位置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Int32|是|-|光标的位置。|
-
-### enum TextAreaType
-
-```cangjie
-public enum TextAreaType {
-    | NORMAL
-    | NUMBER
-    | PHONE_NUMBER
-    | EMAIL
-    | NUMBER_DECIMAL
-    | URL
-    | ...
-}
-```
-
-**功能：** 表示输入框类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### EMAIL
-
-```cangjie
-EMAIL
-```
-
-**功能：** 表示邮箱地址输入模式。支持数字，字母，下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、{、|、}、~，以及@字符（只能存在一个@字符）。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### NORMAL
-
-```cangjie
-NORMAL
-```
-
-**功能：** 表示基本输入模式。支持输入数字、字母、下划线、空格、特殊字符。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### NUMBER
-
-```cangjie
-NUMBER
-```
-
-**功能：** 表示纯数字输入模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### NUMBER_DECIMAL
-
-```cangjie
-NUMBER_DECIMAL
-```
-
-**功能：** 表示带小数点的数字输入模式。支持数字、小数点（只能存在一个小数点）。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### PHONE_NUMBER
-
-```cangjie
-PHONE_NUMBER
-```
-
-**功能：** 表示电话号码输入模式。支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
-
-#### URL
-
-```cangjie
-URL
-```
-
-**功能：** 表示带URL的输入模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 21
+|value|?Int32|是|-|从字符串开始到光标位置的长度。|
 
 ## 示例代码
 
@@ -542,7 +426,7 @@ URL
 package ohos_app_cangjie_entry
 
 import kit.ArkUI.*
-import kit.PerformanceAnalysisKit.*
+import ohos.hilog.*
 import ohos.arkui.state_macro_manage.*
 
 @Entry

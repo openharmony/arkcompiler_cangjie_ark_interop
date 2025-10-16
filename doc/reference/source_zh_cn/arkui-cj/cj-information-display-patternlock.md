@@ -24,13 +24,13 @@ public init(controller!: ?PatternLockController = None)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|controller|?[PatternLockController](#class-patternlockcontroller)|否|None|**命名参数。** 设置PatternLock组件控制器，可用于控制组件状态重置。|
+|controller|?PatternLockController|否|None|**命名参数。** 设置PatternLock组件控制器，可用于控制组件状态重置。|
 
 ## 通用属性/通用事件
 
@@ -40,169 +40,169 @@ public init(controller!: ?PatternLockController = None)
 
 ## 组件属性
 
-### func activeColor(ResourceColor)
+### func activeColor(?ResourceColor)
 
 ```cangjie
-public func activeColor(value: ResourceColor): This
+public func activeColor(value: ?ResourceColor): This
 ```
 
-**功能：** 设置宫格圆点在“激活”状态的填充颜色，“激活”状态为手指经过圆点但还未选中的状态。
+**功能：** 设置宫格圆点在"激活"状态的填充颜色，"激活"状态为手指经过圆点但还未选中的状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“激活”状态的填充颜色。<br/>初始值：0xff182431。|
+|value|?ResourceColor|是|-|宫格圆点在"激活"状态的填充颜色。初始值：0xff182431。|
 
-### func autoReset(Bool)
+### func autoReset(?Bool)
 
 ```cangjie
-public func autoReset(value: Bool): This
+public func autoReset(value: ?Bool): This
 ```
 
 **功能：** 设置在完成密码输入后再次在组件区域按下时是否重置组件状态。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Bool|是|-|在完成密码输入后再次在组件区域按下时是否重置组件状态。为true时，完成密码输入后再次在组件区域按下时会重置组件状态（即清除之前输入的密码）；为false时，不会重置组件状态。<br/>初始值：true。|
+|value|?Bool|是|-|在完成密码输入后再次在组件区域按下时是否重置组件状态。为true时，完成密码输入后再次在组件区域按下时会重置组件状态（即清除之前输入的密码）；为false时，不会重置组件状态。初始值：true。|
 
-### func circleRadius(Length)
+### func circleRadius(?Length)
 
 ```cangjie
-public func circleRadius(value: Length): This
+public func circleRadius(value: ?Length): This
 ```
 
 **功能：** 设置宫格中圆点的半径。设置为0或负数时取初始值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|宫格中圆点的半径。<br/>初始值：6.vp。<br/>取值范围：(0, sideLength/11]，设置小于等于0的值时按初始值处理，超过最大值按最大值处理。|
+|value|?Length|是|-|宫格中圆点的半径。初始值：6.vp。|
 
-### func pathColor(ResourceColor)
+### func pathColor(?ResourceColor)
 
 ```cangjie
-public func pathColor(value: ResourceColor): This
+public func pathColor(value: ?ResourceColor): This
 ```
 
 **功能：** 设置连线的颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|连线的颜色。<br/>初始值：0x33182431。|
+|value|?ResourceColor|是|-|连线的颜色。初始值：0x33182431。|
 
-### func pathStrokeWidth(Length)
+### func pathStrokeWidth(?Length)
 
 ```cangjie
-public func pathStrokeWidth(value: Length): This
+public func pathStrokeWidth(value: ?Length): This
 ```
 
 **功能：** 设置连线的宽度。设置为0或负数时连线不显示。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|连线的宽度。<br/>初始值：12.vp。<br/>取值范围：[0, sideLength/3]，超过最大值按最大值处理。|
+|value|?Length|是|-|连线的宽度。初始值：12.vp。|
 
-### func regularColor(ResourceColor)
+### func regularColor(?ResourceColor)
 
 ```cangjie
-public func regularColor(value: ResourceColor): This
+public func regularColor(value: ?ResourceColor): This
 ```
 
-**功能：** 设置宫格圆点在“未选中”状态的填充颜色。
+**功能：** 设置宫格圆点在"未选中"状态的填充颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“未选中”状态的填充颜色。<br/>初始值：0xff182431。|
+|value|?ResourceColor|是|-|宫格圆点在"未选中"状态的填充颜色。初始值：0xff182431。|
 
-### func selectedColor(ResourceColor)
+### func selectedColor(?ResourceColor)
 
 ```cangjie
-public func selectedColor(value: ResourceColor): This
+public func selectedColor(value: ?ResourceColor): This
 ```
 
-**功能：** 设置宫格圆点在“选中“状态的填充颜色。
+**功能：** 设置宫格圆点在"选中"状态的填充颜色。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|宫格圆点在“选中”状态的填充颜色。<br/>初始值：0xff182431。|
+|value|?ResourceColor|是|-|宫格圆点在"选中"状态的填充颜色。初始值：0xff182431。|
 
-### func sideLength(Length)
+### func sideLength(?Length)
 
 ```cangjie
-public func sideLength(value: Length): This
+public func sideLength(value: ?Length): This
 ```
 
 **功能：** 设置组件的宽度和高度（宽高相同）。设置为0或负数时组件不显示。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件的宽度和高度。<br/>初始值：288.vp。|
+|value|?Length|是|-|组件的宽度和高度。初始值：288.vp。|
 
 ## 组件事件
 
-### func onPatternComplete((Array\<Int32>) -> Unit)
+### func onPatternComplete(?(Array\<Int32>) -> Unit)
 
 ```cangjie
-public func onPatternComplete(callback: (Array<Int32>) -> Unit): This
+public func onPatternComplete(callback: ?(Array<Int32>) -> Unit): This
 ```
 
 **功能：** 密码输入结束时，触发该事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 **参数：**
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|(Array\<Int32>)->Unit|是|-|密码输入结束时触发该回调。回调参数：与选中宫格圆点顺序一致的数字数组，数字为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。|
+|callback|?(Array\<Int32>) -> Unit|是|-|密码输入结束时触发该回调。回调参数：与选中宫格圆点顺序一致的数字数组，数字为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。|
 
 ## 基础类型定义
 
@@ -218,7 +218,7 @@ public class PatternLockController {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### init()
 
@@ -230,7 +230,7 @@ public init()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 #### func reset()
 
@@ -242,7 +242,7 @@ public func reset(): Unit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 21
+**起始版本：** 22
 
 ## 示例代码
 
