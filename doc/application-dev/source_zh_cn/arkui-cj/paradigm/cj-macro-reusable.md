@@ -107,23 +107,23 @@
 
                 // 父子嵌套控制
                 Text("Parent=child==is ${if(isPlaying) {""} else {"not"}} playing").fontSize(14)
-                Button("Parent=child===controll=${isPlaying}").margin(14).onClick {
+                Button("Parent=child===controll=${isPlaying}").margin(14).onClick({
                     e => isPlaying = !isPlaying
-                }
+                })
                 Text("==================").fontSize(14)
 
                 // 默认隐藏按钮控制
                 Text("Hiddenchild==is ${if(isPlaying01) {""} else {"not"}} playing").fontSize(14)
-                Button("Button===hiddenchild==control==${isPlaying01}").margin(14).onClick {
+                Button("Button===hiddenchild==control==${isPlaying01}").margin(14).onClick({
                    e  => isPlaying01 = !isPlaying01
-                }
+                })
                 Text("==================").fontSize(14)
 
                 // 默认显示按钮控制
                 Text("shownchid==is ${if(isPlaying02) {""} else {"not"}} playing").fontSize(14)
-                Button("Button===shownchid==control==${isPlaying02}").margin(14).onClick {
+                Button("Button===shownchid==control==${isPlaying02}").margin(14).onClick({
                     e => isPlaying02 = !isPlaying02
-                }
+                })
             }
         }
     }
@@ -138,9 +138,9 @@
             Column() {
                 // 复用
                 PlayButton02(isPlaying02: buttonPlaying)
-                Button(if(buttonPlaying) {"parent_pause"} else {"parent_play"}).margin(12).onClick {
+                Button(if(buttonPlaying) {"parent_pause"} else {"parent_play"}).margin(12).onClick({
                     e => buttonPlaying = !buttonPlaying
-                }
+                })
             }
         }
     }
@@ -207,9 +207,9 @@ public class EntryView {
             Button("Hello")
             .fontSize(30)
             .fontWeight(FontWeight.Bold)
-            .onClick{ =>
+            .onClick({evt =>
                 switch = !switch
-            }
+            })
             if (switch) {
                 Child(message: Message("Child"))
             }
@@ -269,11 +269,11 @@ class MyDataSource <: IDataSource<Int64> {
         data_.add(val)
     }
 
-    public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func registerDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = listener
     }
 
-    public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = None
     }
 }
@@ -293,7 +293,7 @@ public class EntryView {
             List() {
                 LazyForEach(
                     data,
-                    itemGeneratorFunc: {
+                    itemGenerator: {
                         item: Int64, idx: Int64 => ListItem() {
                             CardView(item: "${item}")
                         }
@@ -312,7 +312,7 @@ class CardView {
     var item: String = ""
     protected override func aboutToReuse(params: ReuseParams) {
         if (let Some(value) <- params.get<String>("item")) {
-            item = value as String ?? ""
+            item = value
             Hilog.info(0, "cangjie", "Recycle ===Child===")
         }
     }
@@ -338,6 +338,7 @@ import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.ArrayList
 import kit.PerformanceAnalysisKit.Hilog
+import kit.LocalizationKit.*
 
 class MyDataSource <: IDataSource<FriendMoment> {
     public MyDataSource(let data_: ArrayList<FriendMoment>) {}
@@ -353,11 +354,11 @@ class MyDataSource <: IDataSource<FriendMoment> {
         data_.add(val)
     }
 
-    public func onRegisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func registerDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = listener
     }
 
-    public func onUnregisterDataChangeListener(listener: DataChangeListener): Unit {
+    public func unregisterDataChangeListener(listener: DataChangeListener): Unit {
         listenerOp = None
     }
 }
@@ -379,8 +380,8 @@ public class FriendMoment {
 public class OneMoment {
     @State var moment: FriendMoment = FriendMoment("", "", @r(app.media.startIcon))
     protected override func aboutToReuse(params: ReuseParams) {
-        if (let Some(value) <- params.get<FriendMoment>("moment"))
-            let pVal = (value as FriendMoment) ?? FriendMoment("", "", @r(app.media.startIcon))
+        if (let Some(value) <- params.get<FriendMoment>("moment")) {
+            let pVal = value
             this.moment = pVal
             Hilog.info(0, "cangjie", "====aboutToReuse====OnMoment==复用了==== ${pVal.text}")
         }

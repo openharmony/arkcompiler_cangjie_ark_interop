@@ -237,10 +237,10 @@ class EntryView {
 
                 this.builder()
                 Button("点击改变builder_value内容")
-                .onClick{
+                .onClick({
                     e =>
                     this.builder_value = "builder_value被点击了"
-                }
+                })
             }
         }
     }
@@ -419,17 +419,17 @@ class EntryView {
     func build() {
         Column {
             Button("局部 Builder")
-            .onClick{
+            .onClick({
               e => this.isShow = true
-            }
+            })
             .fontSize(20)
             .margin(10)
             .bindSheet(this.isShow, myBuilder, options: SheetOptions(onDisappear: {=> this.isShow = false}) )
 
             Button("全局 Builder")
-            .onClick{
+            .onClick({
               e => this.isShow2 = true
-            }
+            })
             .fontSize(20)
             .margin(10)
             .bindSheet(this.isShow2, myBuilder2, options: SheetOptions(onDisappear: {=> this.isShow2 = false}) )
