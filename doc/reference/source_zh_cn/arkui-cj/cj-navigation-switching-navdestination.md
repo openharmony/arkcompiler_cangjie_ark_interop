@@ -101,7 +101,7 @@ public func title(value: ?ResourceStr, options!: ?NavigationTitleOptions = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|页面标题。|
+|value|?ResourceStr|是|-|页面标题。<br>初始值：{=>}。|
 |options|?NavigationTitleOptions|否|None|**命名参数** 标题栏选项。|
 
 ## 组件事件
@@ -122,7 +122,7 @@ public func onBackPressed(callback: ?() -> Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?() -> Bool||-|回调函数，当点击返回键时，触发该回调。返回值为true时，表示重写返回键逻辑，返回值为false时，表示回退到上一个页面。初始值：{ => true }。|
+|callback|?() -> Bool|是|-|回调函数，当点击返回键时，触发该回调。返回值为true时，表示重写返回键逻辑，返回值为false时，表示回退到上一个页面。初始值：{ => true }。|
 
 ### func onReady(?Callback\<NavDestinationContext, Unit>)
 

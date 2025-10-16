@@ -74,7 +74,7 @@ public func autoPlay(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|视频是否自动播放。<br>初始值：false。|
+|value|?Bool|是|-|视频是否自动播放。<br>初始值：false。|
 
 ### func controls(?Bool)
 
@@ -92,7 +92,7 @@ public func controls(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|是否显示控制栏。<br>初始值：true。|
+|value|?Bool|是|-|是否显示控制栏。<br>初始值：true。|
 
 ### func loop(?Bool)
 
@@ -110,7 +110,7 @@ public func loop(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|视频是否循环播放。<br>初始值：false。|
+|value|?Bool|是|-|视频是否循环播放。<br>初始值：false。|
 
 ### func muted(?Bool)
 
@@ -128,7 +128,7 @@ public func muted(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|视频是否静音。<br>初始值：false。|
+|value|?Bool|是|-|视频是否静音。<br>初始值：false。|
 
 ### func objectFit(?ImageFit)
 
@@ -146,7 +146,7 @@ public func objectFit(value: ?ImageFit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ImageFit|否|-|视频填充模式。<br>初始值：ImageFit.Cover。|
+|value|?ImageFit|是|-|视频填充模式。<br>初始值：ImageFit.Cover。|
 
 ## 组件事件
 
@@ -166,7 +166,7 @@ public func onError(event: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?VoidCallback|否|-|回调函数，播放失败时触发。<br>初始值：{ => }|
+|event|?VoidCallback|是|-|回调函数，播放失败时触发。<br>初始值：{ => }|
 
 ### func onFinish(?VoidCallback)
 
@@ -184,7 +184,7 @@ public func onFinish(event: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?VoidCallback|否|-|回调函数，播放结束时触发。<br>初始值：{ => }|
+|event|?VoidCallback|是|-|回调函数，播放结束时触发。<br>初始值：{ => }|
 
 ### func onPause(?VoidCallback)
 
@@ -202,7 +202,7 @@ public func onPause(event: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?VoidCallback|否|-|回调函数，暂停播放时触发。<br>初始值：{ => }|
+|event|?VoidCallback|是|-|回调函数，暂停播放时触发。<br>初始值：{ => }|
 
 ### func onPrepared(?Callback\<PreparedInfo, Unit>)
 
@@ -220,7 +220,7 @@ public func onPrepared(callback: ?Callback<PreparedInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<PreparedInfo, Unit>|否|-|回调函数，视频准备完成时触发。<br>初始值：{ _ => }|
+|callback|?Callback\<PreparedInfo, Unit>|是|-|回调函数，视频准备完成时触发。<br>初始值：{ _ => }|
 
 ### func onSeeked(?Callback\<PlaybackInfo, Unit>)
 
@@ -238,7 +238,7 @@ public func onSeeked(callback: ?Callback<PlaybackInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<PlaybackInfo, Unit>|否|-|回调函数，操作进度条完成后触发。<br>初始值：{ _ => }|
+|callback|?Callback\<PlaybackInfo, Unit>|是|-|回调函数，操作进度条完成后触发。<br>初始值：{ _ => }|
 
 ### func onSeeking(?Callback\<PlaybackInfo, Unit>)
 
@@ -256,7 +256,7 @@ public func onSeeking(callback: ?Callback<PlaybackInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<PlaybackInfo, Unit>|否|-|回调函数，操作进度条过程时触发。<br>初始值：{ _ => }|
+|callback|?Callback\<PlaybackInfo, Unit>|是|-|回调函数，操作进度条过程时触发。<br>初始值：{ _ => }|
 
 ### func onStart(?VoidCallback)
 
@@ -274,7 +274,7 @@ public func onStart(event: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?VoidCallback|否|-|回调函数，播放时触发。<br>初始值：{ => }|
+|event|?VoidCallback|是|-|回调函数，播放时触发。<br>初始值：{ => }|
 
 ### func onUpdate(?Callback\<PlaybackInfo, Unit>)
 
@@ -292,7 +292,7 @@ public func onUpdate(callback: ?Callback<PlaybackInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<PlaybackInfo, Unit>|否|-|回调函数，说明播放进度变化时触发。<br>初始值：{ _ => }|
+|callback|?Callback\<PlaybackInfo, Unit>|是|-|回调函数，说明播放进度变化时触发。<br>初始值：{ _ => }|
 
 ### func onFullscreenChange(?Callback\<FullscreenInfo, Unit>)
 
@@ -310,7 +310,7 @@ public func onFullscreenChange(callback: ?Callback<FullscreenInfo, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<FullscreenInfo, Unit>|否|-|视频进入和退出全屏时的回调函数。<br>初始值：{ _ => }|
+|callback|?Callback\<FullscreenInfo, Unit>|是|-|视频进入和退出全屏时的回调函数。<br>初始值：{ _ => }|
 
 ## 基础类型定义
 
@@ -446,7 +446,7 @@ public func requestFullscreen(value: ?Bool): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|是否全屏播放。<br>初始值：false。|
+|value|?Bool|是|-|是否全屏播放。<br>初始值：false。|
 
 #### func setCurrentTime(Int32, ?SeekMode)
 
@@ -465,7 +465,7 @@ public func setCurrentTime(value: Int32, seekMode: ?SeekMode): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|Int32|是|-|播放时间。|
-|seekMode|?SeekMode|否|-|搜索模式。<br>初始值：throw IllegalArgumentException("The type now is not supported.")|
+|seekMode|?SeekMode|是|-|搜索模式。|
 
 #### func start()
 

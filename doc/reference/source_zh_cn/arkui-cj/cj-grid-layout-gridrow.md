@@ -38,10 +38,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|?Int32|否|None| **命名参数。** 布局列数设置。<br>初始值：12|
-|gutter|?Length|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp|
-|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
-|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
+|columns|?Int32|是|-| **命名参数。** 布局列数设置。<br>初始值：12。|
+|gutter|?Length|否|None| **命名参数。** 栅格布局间距。<br>初始值：0.vp。|
+|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()。|
+|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row。|
 |child|() -> Unit|否|{=>}| **命名参数。** GridRow容器的子组件。|
 
 ### init(?GridRowOptions, ?Length, ?BreakPoints, ?GridRowDirection, () -> Unit)
@@ -94,8 +94,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|?Int32|否|None| **命名参数。** 布局列数设置。<br>初始值：12|
-|gutter|?GutterOptions|否|None| **命名参数。** 栅格布局间距。|
+|columns|?Int32|是|-| **命名参数。** 布局列数设置。<br>初始值：12|
+|gutter|?GutterOptions|是|-| **命名参数。** 栅格布局间距。|
 |breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
 |direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
 |child|() -> Unit|否|{=>}| **命名参数。** GridRow 容器的子组件。|
@@ -121,10 +121,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|columns|?GridRowOptions|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()|
-|gutter|?GutterOptions|否|None| **命名参数。** 栅格布局间距。|
-|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()|
-|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row|
+|columns|?GridRowOptions|否|None| **命名参数。** 布局列数设置。<br>初始值：GridRowOptions()。|
+|gutter|?GutterOptions|是|-| **命名参数。** 栅格布局间距。|
+|breakpoints|?BreakPoints|否|Option.None| **命名参数。** 断点值的断点数列以及基于窗口或容器尺寸的相应参照。<br>初始值：BreakPoints()。|
+|direction|?GridRowDirection|否|Option.None| **命名参数。** 栅格布局排列方向。<br>初始值：GridRowDirection.Row。|
 |child|() -> Unit|否|{=>}| **命名参数。** GridRow容器的子组件。|
 
 ## 通用属性/通用事件
@@ -151,7 +151,7 @@ public func alignItems(value: ?ItemAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ItemAlign|否|-|GridRow中的GridCol垂直主轴方向对齐方式。<br>初始值：ItemAlign.Start|
+|value|?ItemAlign|是|-|GridRow中的GridCol垂直主轴方向对齐方式。<br>初始值：ItemAlign.Start。|
 
 ## 组件事件
 
@@ -171,7 +171,7 @@ public func onBreakpointChange(callback: ?(String) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(String)->Unit|否|-|断点发生变化时触发回调取值为"xs"、"sm"、"md"、"lg"、"xl"、"xxl"<br>初始值：{ res: String => }|
+|callback|?(String)->Unit|是|-|断点发生变化时触发回调取值为"xs"、"sm"、"md"、"lg"、"xl"、"xxl"<br>初始值：{ res: String => }。|
 
 ## 基础类型定义
 

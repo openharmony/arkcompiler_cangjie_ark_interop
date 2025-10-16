@@ -144,7 +144,7 @@ public func buttonStyle(value: ?ButtonStyleMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ButtonStyleMode|是|-| Button组件的样式和重要程度。|
+|value|?ButtonStyleMode|是|-| Button组件的样式和重要程度。<br>初始值：ButtonStyleMode.Emphasized。|
 
 ### func fontColor(?ResourceColor)
 
@@ -162,7 +162,7 @@ public func fontColor(color: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|?ResourceColor|是|-| 按钮文本颜色。|
+|color|?ResourceColor|是|-| 按钮文本颜色。<br>初始值：Color(0xFFFFFF)。|
 
 ### func fontFamily(?ResourceStr)
 
@@ -180,7 +180,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-| 按钮文本内容。|
+|value|?ResourceStr|是|-| 按钮文本内容。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 
@@ -198,7 +198,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|按钮文本大小。|
+|value|?Length|是|-|按钮文本大小。<br>初始值：18.fp。|
 
 ### func fontStyle(?FontStyle)
 
@@ -216,7 +216,7 @@ public func fontStyle(value: ?FontStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontStyle|是|-| 按钮文本样式。|
+|value|?FontStyle|是|-| 按钮文本样式。<br>初始值：FontStyle.Normal。|
 
 ### func fontWeight(?FontWeight)
 
@@ -234,7 +234,7 @@ public func fontWeight(value: ?FontWeight): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontWeight|是|-| 按钮文本粗细。|
+|value|?FontWeight|是|-| 按钮文本粗细。<br>初始值：FontWeight.W500。|
 
 ### func shape(?ButtonType)
 
@@ -252,7 +252,7 @@ public func shape(value: ?ButtonType): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ButtonType|是|-|按键形状类型。|
+|value|?ButtonType|是|-|按键形状类型。<br>初始值：ButtonType.RoundRectangle。|
 
 ### func stateEffect(?Bool)
 
@@ -270,7 +270,7 @@ public func stateEffect(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|是|-|按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。|
+|value|?Bool|是|-|按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。<br>初始值：true。|
 
 ## 基础类型定义
 

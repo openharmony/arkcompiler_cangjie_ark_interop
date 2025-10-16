@@ -74,7 +74,7 @@ public func colorFilter(filter: ?ColorFilter): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|filter|?ColorFilter|是|-|颜色滤镜效果。|
+|filter|?ColorFilter|是|-|颜色滤镜效果。<br>初始值：ColorFilter([])。|
 
 ### func objectFit(?ImageFit)
 
@@ -92,7 +92,7 @@ public func objectFit(value: ?ImageFit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ImageFit|是|-|图片的缩放类型。|
+|value|?ImageFit|是|-|图片的缩放类型。<br>初始值：ImageFit.Cover。|
 
 ### func verticalAlign(?ImageSpanAlignment)
 
@@ -110,7 +110,7 @@ public func verticalAlign(value: ?ImageSpanAlignment): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ImageSpanAlignment|是|-|图片基于文本的对齐方式。|
+|value|?ImageSpanAlignment|是|-|图片基于文本的对齐方式。<br>初始值：ImageSpanAlignment.Bottom。|
 
 ## 组件事件
 
@@ -130,7 +130,7 @@ public func onComplete(callback: ?ImageCompleteCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?ImageCompleteCallback|是|-|回调函数，图片数据加载成功和解码成功时触发。参数：成功加载的图片尺寸。|
+|callback|?ImageCompleteCallback|是|-|回调函数，图片数据加载成功和解码成功时触发。参数：成功加载的图片尺寸。<br>初始值：{ _ => }。|
 
 ### func onError(?ImageErrorCallback)
 
@@ -148,7 +148,7 @@ public func onError(callback: ?ImageErrorCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。参数：图片加载异常信息。|
+|callback|?ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。参数：图片加载异常信息。<br>初始值：{ _ => }。|
 
 ## 示例代码
 

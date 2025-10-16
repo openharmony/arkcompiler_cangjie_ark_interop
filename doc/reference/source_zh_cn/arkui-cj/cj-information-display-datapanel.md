@@ -84,7 +84,7 @@ public func strokeWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|圆环粗细。初始值: 24.vp<br>单位：vp。<br>设置小于0的值时，按默认值显示。|
+|value|?Length|是|-|圆环粗细。初始值: 24.0.vp。<br>单位：vp。<br>设置小于0的值时，按默认值显示。|
 
 ### func trackBackgroundColor(?ResourceColor)
 
@@ -120,7 +120,7 @@ public func trackShadow(value: ?DataPanelShadowOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?DataPanelShadowOptions|是|-|投影样式。<br>不设置时，默认不开启投影。|
+|value|?DataPanelShadowOptions|是|-|投影样式。<br>不设置时，默认不开启投影。<br>初始值：DataPanelShadowOptions()。|
 
 ### func valueColors(?Array\<LinearGradient>)
 
