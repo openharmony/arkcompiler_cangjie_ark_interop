@@ -1492,7 +1492,7 @@ public static func getBundleInfoForSelf(bundleFlags: Int32): BundleInfo
 
 import kit.AbilityKit.*
 
-let bundleFlags = GET_BUNDLE_INFO_DEFAULT.getValue() | GET_BUNDLE_INFO_WITH_APPLICATION.getValue() | GET_BUNDLE_INFO_WITH_HAP_MODULE.getValue() | GET_BUNDLE_INFO_WITH_ABILITY.getValue()
+let bundleFlags = GET_BUNDLE_INFO_DEFAULT | GET_BUNDLE_INFO_WITH_APPLICATION | GET_BUNDLE_INFO_WITH_HAP_MODULE | GET_BUNDLE_INFO_WITH_ABILITY
 let res = BundleManager.getBundleInfoForSelf(bundleFlags)
 ```
 
