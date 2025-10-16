@@ -153,7 +153,7 @@
         // 此处使用public修饰符时会出现报错
         @StorageLink["sessionLink"] public var storage_link_value: String = "Hello"
         // 此处使用public修饰符时会出现报错
-        @Consume public var consume_value: String
+        @Consume public var consume_value: String = "Hello"
 
         func build() {
             Column {
@@ -196,7 +196,7 @@
         @LocalStorageLink["sessionLocalLink"] var local_link_value: String = "Hello"
         @StorageProp["sessionProp"] let storage_prop_value: String = "Hello"
         @StorageLink["sessionLink"] var storage_link_value: String = "Hello"
-        @Consume var consume_value: String
+        @Consume var consume_value: String = "Hello"
 
         func build() {
             Column {
