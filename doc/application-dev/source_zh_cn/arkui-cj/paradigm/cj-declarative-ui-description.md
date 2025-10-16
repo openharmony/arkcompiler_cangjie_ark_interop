@@ -111,7 +111,7 @@ class EntryView {
 
   ```cangjie
   Button("Click me")
-  .onClick({ =>
+  .onClick({ evt =>
     this.myText = "Cangjie"
   })
   ```
@@ -120,7 +120,7 @@ class EntryView {
 
   ```cangjie
   Button("add counter")
-    .onClick({ =>
+    .onClick({evt =>
       this.counter += 2
     })
   ```
@@ -128,9 +128,9 @@ class EntryView {
 - 使用声明的Lambda表达式，可以直接调用。
 
   ```cangjie
-  var fn: () -> Unit = {=>}
+  var fn: (ClickEvent) -> Unit = {evt =>}
   protected func aboutToAppear() {
-      fn = { =>
+      fn = {evt =>
           this.counter++
       }
   }
@@ -169,8 +169,8 @@ Column() {
       .width(100)
       .height(100)
     Button("click +1")
-      .onClick({ =>
-        Hilog.info(0, "cangjie", +1 clicked!");
+      .onClick({evt =>
+        Hilog.info(0, "cangjie", "+1 clicked!");
       })
   }
 }
