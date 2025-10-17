@@ -984,25 +984,25 @@ Utf16StringHandle Utf16String::Append(Utf16StringHandle subject) const
     return result;
 }
 
-uint32_t Utf16String::Write(Utf16StringHandle target, uint32_t offset)
+uint32_t Utf16String::Write(Utf16StringHandle src, uint32_t offset)
 {
     if (isLatin1_) {
         auto dst = const_cast<char*>(Latin1Data()) + offset;
-        if (target->isLatin1_) {
-            std::copy_n(target->Latin1Data(), target->length_, dst);
+        if (src->isLatin1_) {
+            std::copy_n(src->Latin1Data(), src->length_, dst);
         }
     } else {
         auto dst = const_cast<char16_t*>(Utf16Data()) + offset;
-        if (target->isLatin1_) {
-            auto targetData = target->Latin1Data();
-            for (uint32_t i = 0; i < target->length_; i++) {
+        if (src->isLatin1_) {
+            auto targetData = src->Latin1Data();
+            for (uint32_t i = 0; i < src->length_; i++) {
                 *dst++ = *targetData++;
             }
         } else {
-            std::copy_n(target->Utf16Data(), target->length_, dst);
+            std::copy_n(src->Utf16Data(), src->length_, dst);
         }
     }
-    return offset + target->length_;
+    return offset + src->length_;
 }
 
 Utf16StringHandle Utf16String::Join(const Utf16StringHandle *src, uint32_t length, Utf16StringHandle separator)
