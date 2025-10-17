@@ -310,7 +310,7 @@ class Test_dataSharePredicates {
         // 测试列名为空，array正常
         try {
             var predicates = DataSharePredicates()
-            predicates.`in`("", array.toArray())
+            predicates.inValues("", array.toArray())
             println(DEBUG_HEAD + "test_in error. It should throw an exception.")
             @Expect(false)
         } catch (e: BusinessException) {
@@ -322,7 +322,7 @@ class Test_dataSharePredicates {
         // 测试列名为空，array为空
         try {
             var predicates = DataSharePredicates()
-            predicates.`in`("", emptyArray.toArray())
+            predicates.inValues("", emptyArray.toArray())
             println(DEBUG_HEAD + "test_in error. It should throw an exception.")
             @Expect(false)
         } catch (e: BusinessException) {
@@ -334,7 +334,7 @@ class Test_dataSharePredicates {
         // 测试列名为空，arrary中类型不一致
         try {
             var predicates = DataSharePredicates()
-            predicates.`in`("", multiTypeArray)
+            predicates.inValues("", multiTypeArray)
             println(DEBUG_HEAD + "test_in error. It should throw an exception.")
             @Expect(false)
         } catch (e: BusinessException) {
@@ -346,7 +346,7 @@ class Test_dataSharePredicates {
         // 测试列名不为空， array中类型一致
         try {
             var predicates = DataSharePredicates()
-            predicates.`in`("AGE", array.toArray())
+            predicates.inValues("AGE", array.toArray())
             println(DEBUG_HEAD + "test_in error. It should throw an exception.")
             @Expect(true)
         } catch (e: BusinessException) {
@@ -358,7 +358,7 @@ class Test_dataSharePredicates {
         // 测试列名不为空， array为空
         try {
             var predicates = DataSharePredicates()
-            predicates.`in`("AGE", emptyArray.toArray())
+            predicates.inValues("AGE", emptyArray.toArray())
             println(DEBUG_HEAD + "test_in error. It should throw an exception.")
             @Expect(false)
         } catch (e: BusinessException) {
@@ -369,7 +369,7 @@ class Test_dataSharePredicates {
         // 测试列名不为空， array中类型不一致
         try {
             var predicates = DataSharePredicates()
-            predicates.`in`("AGE", multiTypeArray)
+            predicates.inValues("AGE", multiTypeArray)
             println(DEBUG_HEAD + "test_in error. It should throw an exception.")
             @Expect(false)
         } catch (e: BusinessException) {

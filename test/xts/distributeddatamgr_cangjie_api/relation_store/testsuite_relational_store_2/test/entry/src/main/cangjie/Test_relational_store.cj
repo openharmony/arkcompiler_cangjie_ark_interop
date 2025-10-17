@@ -612,10 +612,10 @@ class Test_relational_store {
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_in() {
-        rdbPridecates.`in`("test", allValueTypes)
-        rdbPridecates.`in`("test", Array<RelationalStoreValueType>())
+        rdbPridecates.inValues("test", allValueTypes)
+        rdbPridecates.inValues("test", Array<RelationalStoreValueType>())
         try {
-            rdbPridecates.`in`("", Array<RelationalStoreValueType>())
+            rdbPridecates.inValues("", Array<RelationalStoreValueType>())
             @Expect(false)
         } catch (e: BusinessException) {
             @Expect(e.code, 401)
@@ -633,10 +633,10 @@ class Test_relational_store {
     @TestCase
     @Tag[APILevel12, TestLevel0]
     func test_notIn() {
-        rdbPridecates.notIn("test", allValueTypes)
-        rdbPridecates.notIn("test", Array<RelationalStoreValueType>())
+        rdbPridecates.notInValues("test", allValueTypes)
+        rdbPridecates.notInValues("test", Array<RelationalStoreValueType>())
         try {
-            rdbPridecates.notIn("", Array<RelationalStoreValueType>())
+            rdbPridecates.notInValues("", Array<RelationalStoreValueType>())
             @Expect(false)
         } catch (e: BusinessException) {
             @Expect(e.code, 401)
@@ -1001,7 +1001,7 @@ class Test_relational_store {
     func test_update() {
         let rdbStore = store.getOrThrow()
         let predicates = RdbPredicates("EMPLOYEE")
-        predicates.`in`("NAME", [RelationalStoreValueType.StringValue("Peter")])
+        predicates.inValues("NAME", [RelationalStoreValueType.StringValue("Peter")])
         var values = HashMap<String, RelationalStoreValueType>()
         values.add("NAME", RelationalStoreValueType.StringValue("P"))
         values.add("AGE", RelationalStoreValueType.Integer(88))
@@ -1009,7 +1009,7 @@ class Test_relational_store {
 
         rdbStore.update(values, predicates)
         let resultSet = rdbStore.query(
-            RdbPredicates("EMPLOYEE").`in`("NAME", [RelationalStoreValueType.StringValue("P")]),
+            RdbPredicates("EMPLOYEE").inValues("NAME", [RelationalStoreValueType.StringValue("P")]),
             columns: ["ID", "NAME", "AGE", "SALARY"])
         @Expect(resultSet.goToNextRow())
         @Expect(resultSet.getString(resultSet.getColumnIndex("NAME")), "P")

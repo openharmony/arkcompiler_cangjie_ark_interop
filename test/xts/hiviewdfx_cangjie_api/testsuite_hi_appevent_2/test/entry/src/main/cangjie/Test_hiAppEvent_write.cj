@@ -46,8 +46,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -82,8 +82,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -118,8 +118,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -153,8 +153,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -189,8 +189,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -226,8 +226,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -263,8 +263,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -298,8 +298,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -335,8 +335,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -373,8 +373,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -410,8 +410,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -446,8 +446,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -482,8 +482,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -518,8 +518,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -554,8 +554,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -591,8 +591,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -628,8 +628,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -665,8 +665,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -702,8 +702,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -739,8 +739,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -776,8 +776,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -813,8 +813,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -849,8 +849,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -887,8 +887,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -923,8 +923,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -959,8 +959,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -996,8 +996,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -1033,8 +1033,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -1070,8 +1070,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -1121,8 +1121,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -1167,8 +1167,8 @@ public class Test_hiAppEvent_write {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
