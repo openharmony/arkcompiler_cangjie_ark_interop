@@ -17,7 +17,6 @@
  <!-- run -->
 
 ```cangjie
-// xxx.cj
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -25,7 +24,6 @@ import ohos.arkui.component.*
 import ohos.arkui.state_management.*
 import ohos.arkui.state_macro_manage.*
 import std.collection.*
-import ohos.prompt_action.ButtonInfo
 import ohos.arkui.ui_context.*
 import ohos.business_exception.BusinessException
 import kit.PerformanceAnalysisKit.*
@@ -56,7 +54,6 @@ class EntryView {
         }.width(100.percent).padding(top: 5)
     }
 }
-
 ```
 
 ![image](figures/UIContextShowMenu.gif)
@@ -92,7 +89,6 @@ class EntryView {
  <!-- run -->
 
 ```cangjie
-// xxx.cj
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -107,7 +103,7 @@ import kit.PerformanceAnalysisKit.*
 class EntryView {
     func build() {
         Column() {
-            Button('showActionSheet').onClick { e =>
+            Button('showActionSheet').onClick({ e =>
                 let confirm: ActionSheetButtonOptions = ActionSheetButtonOptions(value: "Confirm button", action: {=> Hilog.info(0, "cangjie", "Get Alert Dialog handled")},
                     defaultFocus: true, style: DialogButtonStyle.Default)
                 let sheets: Array<SheetInfo> = [
@@ -148,7 +144,7 @@ class EntryView {
                         alignment: DialogAlignment.Center,
                     )
                 )
-            }
+            })
         }.width(100.percent).margin(top: 5)
     }
 }
@@ -168,7 +164,6 @@ class EntryView {
  <!-- run -->
 
 ```cangjie
-// xxx.cj
 package ohos_app_cangjie_entry
 
 import ohos.base.*
@@ -184,7 +179,7 @@ class EntryView {
     func build() {
         Column() {
             Button('showAlertDialog')
-                .onClick {
+                .onClick({
                     evt =>
                     let primaryButton = AlertDialogButtonOptions(
                         value: 'cancel',
@@ -227,7 +222,7 @@ class EntryView {
                             secondaryButton: secondaryButton
                         )
                     )
-                }.width(100.percent).margin(top: 5)
+                }).width(100.percent).margin(top: 5)
         }
     }
 }
