@@ -7,11 +7,11 @@ TextInput、TextArea是输入框组件，通常用于响应用户的输入操作
 TextInput为单行输入框、TextArea为多行输入框。通过以下接口来创建。
 
 ```cangjie
-init(placeholder!: String = "", text!: String = "", controller!: TextInputController = TextInputController())
+init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None, controller!: ?TextInputController = None)
 ```
 
 ```cangjie
-init(placeholder!: String = "", text!: String = "", controller!: TextAreaController = TextAreaController())
+init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None,controller!: ?TextAreaController = None)
 ```
 
 - 单行输入框。
