@@ -25,7 +25,7 @@ class EntryView {
             Column() {
                 RichEditor(this.controller)
                     .onReady({=>
-                        this.controller.addTextSpan(value:"创建不使用属性字符串构建的RichEditor组件")
+                        this.controller.addTextSpan(content:"创建不使用属性字符串构建的RichEditor组件")
                     })
             }.width(200)
         }.height(200)
@@ -120,7 +120,7 @@ class EntryView {
             Column() {
                 RichEditor(this.controller)
                     .onReady({=>
-                        this.controller.addTextSpan(value:"onReady回调内容是组件内预置文本")
+                        this.controller.addTextSpan(content:"onReady回调内容是组件内预置文本")
                 })
             }.width(200)
         }.height(200)
@@ -158,10 +158,10 @@ class EntryView {
             Column() {
                 RichEditor(this.controller)
                     .onReady({=>
-                        this.controller.addTextSpan(value:"选中此处文本，触发onselect回调。")
+                        this.controller.addTextSpan(content:"选中此处文本，触发onselect回调。")
                     })
                     .onSelect({value1: RichEditorSelection=>
-                        this.controller.addTextSpan(value:"1234")
+                        this.controller.addTextSpan(content:"1234")
                     }).width(200).height(200)
                 Text("查看回调内容：").fontSize(10).fontColor(Color.Gray).width(200)
                 RichEditor(this.controller1)
@@ -200,10 +200,10 @@ class EntryView {
             Column() {
                 RichEditor(this.controller)
                     .onReady({=>
-                        this.controller.addTextSpan(value:"组件内图文变化前，触发回调。\n图文变化后，触发回调。")
+                        this.controller.addTextSpan(content:"组件内图文变化前，触发回调。\n图文变化后，触发回调。")
                     })
                     .onDidChange({ rangeBefore: TextRange, rangeAfter: TextRange=>
-                        this.controller1.addTextSpan(value:"\n图文变化后，触发回调：\nrangeBefore:" + "1234" +
+                        this.controller1.addTextSpan(content:"\n图文变化后，触发回调：\nrangeBefore:" + "1234" +
                             "\nrangeAfter：" + "2345")
                         }).width(180)
                 Text("查看回调内容：").fontSize(10).fontColor(Color.Gray).width(70)
@@ -241,14 +241,14 @@ class EntryView {
             Column() {
                 RichEditor(this.controller)
                     .onReady({=>
-                        this.controller.addTextSpan(value:"输入法输入内容前，触发回调。\n输入法完成输入后，触发回调。")
+                        this.controller.addTextSpan(content:"输入法输入内容前，触发回调。\n输入法完成输入后，触发回调。")
                     })
                     .aboutToIMEInput({value:   RichEditorInsertValue=>
-                        this.controller1.addTextSpan(value:"输入法输入内容前，触发回调：\n123")
+                        this.controller1.addTextSpan(content:"输入法输入内容前，触发回调：\n123")
                         return true;
                     })
                     .onIMEInputComplete({value: RichEditorTextSpanResult=>
-                        this.controller1.addTextSpan(value:"输入法完成输入后，触发回调：\n456")
+                        this.controller1.addTextSpan(content:"输入法完成输入后，触发回调：\n456")
                     }).width(200).height(200)
 
                 Text("查看回调内容：").fontSize(10).fontColor(Color.Gray).width(200)
@@ -287,10 +287,10 @@ class EntryView {
             Column() {
                 RichEditor(this.controller)
                     .onReady({=>
-                        this.controller.addTextSpan(value:"对此处文本进行复制粘贴操作可触发对应回调。")
+                        this.controller.addTextSpan(content:"对此处文本进行复制粘贴操作可触发对应回调。")
                     })
                     .onPaste({value1:PasteEvent=>
-                        this.controller1.addTextSpan(value:"触发onPaste回调\n")
+                        this.controller1.addTextSpan(content:"触发onPaste回调\n")
                     }).width(300).height(70)
                 Text("查看回调内容：").fontSize(10).fontColor(Color.Gray).width(300)
                 RichEditor(this.controller1)
@@ -331,9 +331,9 @@ class EntryView {
                 .width(200)
                 .height(300)
                 .fontSize(13)
-                .onClick{ evt =>
-                    this.controller.addTextSpan(value:"新添加一段文字。")
-                }
+                .onClick({ evt =>
+                    this.controller.addTextSpan(content:"新添加一段文字。")
+                })
             RichEditor(this.controller)
                 .width(200)
                 .height(200)
@@ -372,17 +372,17 @@ class EntryView {
                     .width(200)
                     .height(300)
                     .fontSize(13)
-                    .onClick{ evt =>
+                    .onClick({ evt =>
                         this.controller.addImageSpan(value: @r(app.media.startIcon),
                         options: RichEditorImageSpanOptions(
                             imageStyle: RichEditorImageSpanStyle(
                                 size: (24.vp, 24.vp)
                             )
                         ))
-                    }
+                    })
                 RichEditor(this.controller)
                     .onReady({=>
-                        this.controller.addTextSpan(value:"对此处文本进行复制粘贴操作可触发对应回调。")}).width(200).height(200)
+                        this.controller.addTextSpan(content:"对此处文本进行复制粘贴操作可触发对应回调。")}).width(200).height(200)
             }.width(200).height(300)
         }
     }

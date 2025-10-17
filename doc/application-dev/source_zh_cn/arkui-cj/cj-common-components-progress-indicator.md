@@ -143,13 +143,13 @@ class EntryView {
                 Row()
                     .width(100.percent)
                     .height(5)
-                Button("进度条+5").onClick {
+                Button("进度条+5").onClick ({
                     evt =>
                     this.progressValue += 5.0
                     if (this.progressValue > 100.0) {
                         this.progressValue = 0.0
                     }
-                }
+                })
             }
         }
         .width(100.percent)

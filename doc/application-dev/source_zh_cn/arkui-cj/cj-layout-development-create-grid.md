@@ -223,17 +223,17 @@ class EntryView {
             Row() {
               Row() {
                   Button("上一页")
-                  .onClick{ evt =>
-                      this.scroller.scrollPage(false)
-                  }.width(100)
+                  .onClick({ evt =>
+                      this.scroller.scrollPage(false, animation: false)
+                  }).width(100)
               }.width(50.percent)
               .justifyContent(FlexAlign.Center)
 
               Row() {
                   Button("下一页")
-                  .onClick{ evt =>
-                      this.scroller.scrollPage(true)
-                  }.width(100)
+                  .onClick({ evt =>
+                      this.scroller.scrollPage(true, animation: false)
+                  }).width(100)
               }.width(50.percent)
               .justifyContent(FlexAlign.Center)
             }
