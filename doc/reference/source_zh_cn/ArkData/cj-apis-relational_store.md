@@ -536,11 +536,11 @@ public init(name: String)
 |:---|:---|:---|:---|:---|
 |name|String|是|-|数据库表名。|
 
-### func `in`(String, Array\<ValueType>)
+### func inValues(String, Array\<ValueType>)
 
 ```cangjie
 
-public func `in`(field: String, value: Array<ValueType>): RdbPredicates
+public func inValues(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
 **功能：** 配置谓词，以匹配数据表的field列中的值在给定范围内的字段。
@@ -581,7 +581,7 @@ import kit.ArkData.*
 
 // 数据表的"NAME"列中在["Lisa", "Rose"]中的值
 let predicates = RdbPredicates("EMPLOYEE")
-predicates.`in`("NAME", [ValueType.string("Lisa"), ValueType.string("Rose")])
+predicates.inValues("NAME", [ValueType.string("Lisa"), ValueType.string("Rose")])
 ```
 
 ### func and()
@@ -1574,11 +1574,11 @@ let predicates = RdbPredicates("EMPLOYEE")
 predicates.notEqualTo("NAME", RelationalStoreValueType.string("Lisa"))
 ```
 
-### func notIn(String, Array\<ValueType>)
+### func notInValues(String, Array\<ValueType>)
 
 ```cangjie
 
-public func notIn(field: String, value: Array<ValueType>): RdbPredicates
+public func notInValues(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
 **功能：** 将谓词配置为匹配数据字段为ValueType且值超出给定范围的指定字段。
@@ -1619,7 +1619,7 @@ import kit.ArkData.*
 
 // 数据表的"NAME"列中不在["Lisa", "Rose"]中的值
 let predicates = RdbPredicates("EMPLOYEE")
-predicates.notIn("NAME", [ValueType.string("Lisa"), ValueType.string("Rose")])
+predicates.notInValues("NAME", [ValueType.string("Lisa"), ValueType.string("Rose")])
 ```
 
 ### func offsetAs(Int32)

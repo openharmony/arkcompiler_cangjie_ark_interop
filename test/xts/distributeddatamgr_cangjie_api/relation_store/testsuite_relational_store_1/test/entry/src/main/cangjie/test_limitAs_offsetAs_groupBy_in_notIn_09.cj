@@ -559,7 +559,7 @@ class Test_limitAs_offsetAs_groupBy_in_notIn_09 {
     @Tag[APILevel12, TestLevel0]
     func test_in_16(): Unit {
         let predicates = RdbPredicates("EMPLOYEE")
-        predicates.`in`("AGE",
+        predicates.inValues("AGE",
             [RelationalStoreValueType.Integer(1), RelationalStoreValueType.Integer(100),
                 RelationalStoreValueType.Integer(-400)])
         let resultSet = rdbStore.query(predicates, columns: ["ID", "NAME", "AGE", "SALARY", "CODES"])
@@ -592,7 +592,7 @@ class Test_limitAs_offsetAs_groupBy_in_notIn_09 {
     @Tag[APILevel12, TestLevel0]
     func test_in_17(): Unit {
         let predicates = RdbPredicates("EMPLOYEE")
-        predicates.notIn("AGE",
+        predicates.notInValues("AGE",
             [RelationalStoreValueType.Integer(1), RelationalStoreValueType.Integer(-400),
                 RelationalStoreValueType.Integer(101)])
         let resultSet = rdbStore.query(predicates, columns: ["ID", "NAME", "AGE", "SALARY", "CODES"])
@@ -612,7 +612,7 @@ class Test_limitAs_offsetAs_groupBy_in_notIn_09 {
     @Tag[APILevel12, TestLevel0]
     func test_notIn_18(): Unit {
         let predicates = RdbPredicates("EMPLOYEE")
-        predicates.notIn("CODES", [RelationalStoreValueType.Boolean(true)])
+        predicates.notInValues("CODES", [RelationalStoreValueType.Boolean(true)])
         let resultSet = rdbStore.query(predicates, columns: ["ID", "NAME", "AGE", "SALARY", "CODES"])
         @Expect(resultSet.rowCount, 300)
     }

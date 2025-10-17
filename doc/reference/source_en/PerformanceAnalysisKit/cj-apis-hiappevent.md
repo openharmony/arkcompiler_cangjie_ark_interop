@@ -1795,9 +1795,9 @@ public enum EventValueType <: ToString {
     | StringValue(String)
     | BoolValue(Bool)
     | ArrString(Array<String>)
-    | ArrI32(Array<Int32>)
+    | ArrInt32(Array<Int32>)
     | ArrBool(Array<Bool>)
-    | ArrF64(Array<Float64>)
+    | ArrFloat64(Array<Float64>)
     | Int64Value(Int64)
     | ArrInt64(Array<Int64>)
     | ...
@@ -1826,10 +1826,10 @@ ArrBool(Array<Bool>)
 
 **Since:** 21
 
-### ArrF64(Array\<Float64>)
+### ArrFloat64(Array\<Float64>)
 
 ```cangjie
-ArrF64(Array<Float64>)
+ArrFloat64(Array<Float64>)
 ```
 
 **Function:** Float64 type array data.
@@ -1838,10 +1838,10 @@ ArrF64(Array<Float64>)
 
 **Since:** 21
 
-### ArrI32(Array\<Int32>)
+### ArrInt32(Array\<Int32>)
 
 ```cangjie
-ArrI32(Array<Int32>)
+ArrInt32(Array<Int32>)
 ```
 
 **Function:** Int32 type array data.

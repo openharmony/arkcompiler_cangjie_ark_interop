@@ -72,8 +72,8 @@ class Test_hiappevent {
                 ("str_data", EventValueType.StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -127,8 +127,8 @@ class Test_hiappevent {
                 ("str_data", StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -290,8 +290,8 @@ class Test_hiappevent {
                 ("str_data", EventValueType.StringValue("strValue")),
                 ("flo_data", FloatValue(123.45)),
                 ("bool_data", BoolValue(true)),
-                ("arri32_data", ArrI32([1, 2, 3])),
-                ("arrf64_data", ArrF64([1.2])),
+                ("arri32_data", ArrInt32([1, 2, 3])),
+                ("arrf64_data", ArrFloat64([1.2])),
                 ("arrstr_data", ArrString(["123"])),
                 ("arrbool_data", ArrBool([true]))
             ])
@@ -640,9 +640,9 @@ class Test_hiappevent {
         let value_string = EventValueType.StringValue("123")
         let value_bool = EventValueType.BoolValue(true)
         let value_arrstring = EventValueType.ArrString(["123"])
-        let value_arrayi32 = EventValueType.ArrI32([123])
+        let value_arrayi32 = EventValueType.ArrInt32([123])
         let value_arraybool = EventValueType.ArrBool([true])
-        let value_arrayf64 = EventValueType.ArrF64([123.45])
+        let value_arrayf64 = EventValueType.ArrFloat64([123.45])
         @Expect(true)
     }
 

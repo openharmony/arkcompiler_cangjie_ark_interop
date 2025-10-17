@@ -488,10 +488,10 @@ public init(name: String)
 | :--------| :----- | :-------- | :------ | :------------------- |
 | name     | String | Yes       | -       | Name of the database table. |
 
-### func `in`(String, Array\<ValueType>)
+### func inValues(String, Array\<ValueType>)
 
 ```cangjie
-public func `in`(field: String, value: Array<ValueType>): RdbPredicates
+public func inValues(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
 **Description:** Configures the predicate to match fields where the value in the specified column `field` of the data table falls within the given range.
@@ -1178,11 +1178,11 @@ public func notEqualTo(field: String, value: ValueType): RdbPredicates
   | :---- | :--- |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 
-### func notIn(String, Array\<ValueType>)
+### func notInValues(String, Array\<ValueType>)
 
 ```cangjie
 
-public func notIn(field: String, value: Array<ValueType>): RdbPredicates
+public func notInValues(field: String, value: Array<ValueType>): RdbPredicates
 ```
 
 **Description:** Configures the predicate to match fields where the value in the `field` column of the data table is not in the specified range of `ValueType`.
