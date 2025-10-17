@@ -10,8 +10,8 @@
 
 | 名称                                       | 描述                                       |
 |:---------------------------------------- |:---------------------------------------- |
-|  onHover(callback: (isHover: Bool)->Unit) | 鼠标进入或退出组件时，触发该事件。<br>isHover：表示鼠标是否悬浮在组件上，鼠标进入时为true，退出时为false。|
-|  onMouse(callback: (event: MouseEvent)->Unit) | 当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，触发该事件。<br>event返回值包含触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。|
+|  onHover(event: ?(Bool) -> Unit) | 鼠标进入或退出组件时，触发该事件。<br>isHover：表示鼠标是否悬浮在组件上，鼠标进入时为true，退出时为false。|
+|  onMouse(event: ?(MouseEvent) -> Unit) | 当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，触发该事件。<br>event返回值包含触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。|
 
 鼠标事件的原理如下图所示：
 
@@ -30,7 +30,7 @@
 ### onHover
 
 ```cangjie
-public func onHover(callback: (Bool)->Unit): This
+public func onHover(event: ?(Bool) -> Unit): T
 ```
 
 鼠标悬浮事件。参数类型为Bool，表示鼠标进入组件或离开组件。该事件不支持自定义冒泡设置，默认父子冒泡。
@@ -94,7 +94,7 @@ class EntryView {
 ### onMouse
 
 ```cangjie
-public func onMouse(callback: (MouseEvent)->Unit): This
+public func onMouse(event: ?(MouseEvent) -> Unit): T
 ```
 
 鼠标事件回调。绑定该API的组件每当鼠标指针在该组件内产生行为（MouseAction）时，触发事件回调，参数为[MouseEvent](../../../reference/source_zh_cn/arkui-cj/cj-universal-event-mouse.md#class-mouseevent)对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
@@ -166,7 +166,7 @@ class EntryView {
 ### onKeyEvent
 
 ```cangjie
-public func onKeyEvent(callback: (KeyEvent)->Unit): This
+public func onKeyEvent(event: ?(KeyEvent) -> Unit): T
 ```
 
 当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为[KeyEvent](../../../reference/source_zh_cn/arkui-cj/cj-universal-event-key.md#class-keyevent)，可由该参数获得当前按键事件的按键行为（[KeyType](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keytype)）、按键英文名称（keyText）、事件来源设备类型（[KeySource](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-keysource)）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）。

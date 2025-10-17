@@ -90,7 +90,7 @@
                             .width(100.percent)
                             .height(50.vp)
                             .backgroundColor(color)
-                            .span(GridColColumnOption(xs: 2, sm: 3, md: 4, lg: 6, xl:   8, xxl: 12))
+                            .span(GridColOptions(xs: 2, sm: 3, md: 4, lg: 6, xl:   8, xxl: 12))
                     }
                 )
             }
@@ -119,7 +119,7 @@ GridRow中通过columns设置栅格布局的总列数。
         @State
         var bgColors: Array<Color> = [Color(213,213,213), Color(150,150,150), Color(0,74,175), Color(39,135,217), Color(61,157,180), Color(23,169,141), Color(255,192,0),Color(170,10,33),Color(213,213,213),Color(150,150,150), Color(0,74,175), Color(39,135,217)];
         func build() {
-            GridRow(columns: GridRowColumnOption(xs: 12, sm: 12, md: 12, lg: 12, xl:    12, xxl: 12)) {
+            GridRow(columns: GridRowOptions(xs: 12, sm: 12, md: 12, lg: 12, xl:    12, xxl: 12)) {
                 ForEach(
                     bgColors,
                     itemGeneratorFunc: {
@@ -215,7 +215,7 @@ GridRow中通过columns设置栅格布局的总列数。
 
     ![Grid2](figures/Grid2.png)
 
-- 当columns类型为GridRowColumnOption时，支持下面六种不同尺寸（xs, sm, md, lg, xl, xxl）设备的总列数设置，各个尺寸下数值可不同。
+- 当columns类型为GridRowOptions时，支持下面六种不同尺寸（xs, sm, md, lg, xl, xxl）设备的总列数设置，各个尺寸下数值可不同。
 
     <!-- run-->
 
@@ -231,7 +231,7 @@ GridRow中通过columns设置栅格布局的总列数。
         var bgColors: Array<Color> = [Color(213,213,213), Color(150,150,150), Color(0,74,175), Color(39,135,217), Color(61,157,180), Color(23,169,141), Color(255,192,0), Color(170,10,33)];
         func build() {
             GridRow(
-                columns: GridRowColumnOption(xs: 12, sm: 4, md: 8, lg: 12, xl: 12,  xxl: 12),
+                columns: GridRowOptions(xs: 12, sm: 4, md: 8, lg: 12, xl: 12,  xxl: 12),
                 breakpoints: BreakPoints(
                     value: [200.vp, 300.vp, 400.vp, 500.vp, 600.vp], //设置断点位置的单 调递增数组。
                     reference: BreakpointsReference.WindowSize
@@ -307,14 +307,14 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
     ```cangjie
     GridCol( span: 2 ){}
     GridCol(){}.span(2)
-    GridCol(){}.span(GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12))
+    GridCol(){}.span(GridColOptions(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12))
     ```
 
 - 设置offset。
 
     ```cangjie
     GridCol( offset: 2 ){}
-    GridCol(){}.gridColOffset((GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12)))
+    GridCol(){}.gridColOffset((GridColOptions(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12)))
     ```
 
 - 设置order。
@@ -322,7 +322,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
     ```cangjie
     GridCol( order: 2 ){}
     GridCol(){}.order(2)
-    GridCol(){}.order(GridColColumnOption(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12))
+    GridCol(){}.order(GridColOptions(xs:1, sm:2, md:3, lg:4, xl:12, xxl: 12))
     ```
 
 ### span
@@ -364,7 +364,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
     ![Grid8](figures/Grid8.png)
 
-- 当类型为GridColColumnOption时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
+- 当类型为GridColOptions时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
 
     <!-- run -->
 
@@ -391,7 +391,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                             .height(50.vp)
                         }
                         .backgroundColor(color)
-                        .span(GridColColumnOption(xs: 1, sm: 2, md: 3, lg: 4, xl: 12,   xxl: 12))
+                        .span(GridColOptions(xs: 1, sm: 2, md: 3, lg: 4, xl: 12,   xxl: 12))
                     }
                 )
             }
@@ -442,7 +442,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
     栅格默认分成12列，每一个子组件默认占1列，偏移2列，每个子组件及间距共占3列，一行放四个子组件。
 
-- 当类型为GridColColumnOption时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件所占列数设置,各个尺寸下数值可不同。
+- 当类型为GridColOptions时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件所占列数设置,各个尺寸下数值可不同。
 
     <!-- run -->
 
@@ -469,7 +469,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                             .height(50.vp)
                         }
                         .backgroundColor(color)
-                        .gridColOffset(GridColColumnOption(xs: 1, sm: 2, md: 3, lg: 4, xl: 12, xxl: 12))
+                        .gridColOffset(GridColOptions(xs: 1, sm: 2, md: 3, lg: 4, xl: 12, xxl: 12))
                     }
                 )
             }
@@ -534,7 +534,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
     ![Grid12](figures/Grid12.png)
 
-- 当类型为GridColColumnOption时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件排序次序设置。在xs设备中，子组件排列顺序为1234：sm为2341，md为3412，lg为2431。
+- 当类型为GridColOptions时，支持六种不同尺寸（xs, sm, md, lg, xl, xxl）设备中子组件排序次序设置。在xs设备中，子组件排列顺序为1234：sm为2341，md为3412，lg为2431。
 
     <!-- run -->
 
@@ -556,7 +556,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                     .height(50.vp)
                 }
                 .backgroundColor(Color.Red)
-                .order(GridColColumnOption(xs: 1, sm: 5, md: 3, lg: 7, xl: 12, xxl:     12))
+                .order(GridColOptions(xs: 1, sm: 5, md: 3, lg: 7, xl: 12, xxl:     12))
                 GridCol() {
                     Row() {
                         Text('2')
@@ -565,7 +565,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                     .height(50.vp)
                 }
                 .backgroundColor(Color(0xFFA500))
-                .order(GridColColumnOption(xs: 2, sm: 2, md: 6, lg: 1, xl: 12, xxl:     12))
+                .order(GridColOptions(xs: 2, sm: 2, md: 6, lg: 1, xl: 12, xxl:     12))
                 GridCol() {
                     Row() {
                         Text('3')
@@ -574,7 +574,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                     .height(50.vp)
                 }
                 .backgroundColor(Color(0xFFFF00))
-                .order(GridColColumnOption(xs: 3, sm: 3, md: 1, lg: 6, xl: 12, xxl:     12))
+                .order(GridColOptions(xs: 3, sm: 3, md: 1, lg: 6, xl: 12, xxl:     12))
                 GridCol() {
                     Row() {
                         Text('4')
@@ -583,7 +583,7 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
                     .height(50.vp)
                 }
                 .backgroundColor(Color.Green)
-                .order(GridColColumnOption(xs: 4, sm: 4, md: 2, lg: 5, xl: 12, xxl:     12))
+                .order(GridColOptions(xs: 4, sm: 4, md: 2, lg: 5, xl: 12, xxl:     12))
             }
         }
     }
@@ -618,7 +618,7 @@ class EntryView {
                         .height(90.percent)
                     }
                     .backgroundColor(0xff41dbaa)
-                    .span(GridColColumnOption(xs: 12, sm: 2, md: 12, lg: 12, xl: 12, xxl: 12))
+                    .span(GridColOptions(xs: 12, sm: 2, md: 12, lg: 12, xl: 12, xxl: 12))
                     GridCol() {
                         Row() {
                             Text('right').fontSize(24)
@@ -627,9 +627,9 @@ class EntryView {
                         .height(90.percent)
                     }
                     .backgroundColor(0xff4168db)
-                    .span(GridColColumnOption(xs: 12, sm: 10, md: 12, lg: 12, xl: 12, xxl: 12))
+                    .span(GridColOptions(xs: 12, sm: 10, md: 12, lg: 12, xl: 12, xxl: 12))
                 }.backgroundColor(0x19000000)
-            }.span(GridColColumnOption(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
+            }.span(GridColOptions(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
 
             GridCol() {
                 Row() {
@@ -640,7 +640,7 @@ class EntryView {
                 .width(100.percent)
                 .height(10.percent)
                 .backgroundColor(0xFEC0CD)
-            }.span(GridColColumnOption(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
+            }.span(GridColOptions(xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12))
         }
         .width(100.percent)
         .height(300)
