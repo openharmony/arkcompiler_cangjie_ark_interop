@@ -147,7 +147,7 @@ class Post{
         .size(width: 100.percent, height: this.itemHeight)
         .alignItems(HorizontalAlign.Start)
         .padding(left:10,top:10)
-        .onClick{
+        .onClick({
             evt =>
                 this.selecteIndex = -1
                 this.selecteIndex = this.index
@@ -169,7 +169,7 @@ class Post{
                         this.expandImageSize = 100
                     }
                 })
-        }
+        })
     }
 }
 ```
@@ -341,10 +341,10 @@ class EntryView {
         .padding(20)
         .size(width:360,height:780)
         .backgroundColor(Color.White)
-        .onClick{
+        .onClick({
             evt =>
             this.onPersonalPageBack(this.selectedIndex)
-        }
+        })
         .transition(TransitionEffect.asymmetric(
             TransitionEffect.opacity(0.99),TransitionEffect.OPACITY
         ))
@@ -389,10 +389,10 @@ class Post{
                 .size(width: this.avatarSize,height: this.avatarSize)
                 .borderRadius(this.avatarSize/2)
                 .clip(true)
-                .onClick{
+                .onClick({
                         evt =>
                         this.postOnAvatarClicked(this.index)
-                }
+                })
                 // 对头像绑定共享元素转场的id
                 .geometryTransition(this.index.toString(),followWithoutTransition: true)
                 .transition(TransitionEffect.OPACITY.animation(AnimateParam(duration: 350,curve: Curve.Friction)))

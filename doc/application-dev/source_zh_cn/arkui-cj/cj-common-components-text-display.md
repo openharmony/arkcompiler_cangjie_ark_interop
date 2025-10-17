@@ -164,9 +164,9 @@ Text可通过以下两种方式来创建：
                     Text() {
                         Span('I am Upper-span').fontSize(12)
                             .textCase(TextCase.UpperCase)
-                            .onClick{evt =>
-                                Hilog.info(1，'1', 'test', '我是Span——onClick')
-                            }
+                            .onClick({evt =>
+                                Hilog.info(1, '1', 'test', 'Span——onClick')
+                            })
                     }
               }
           }.height(100.percent).width(100.percent)
@@ -495,9 +495,9 @@ class EntryView {
         Scroll {
             Column {
                 Text('点我')
-                    .onClick{ evt =>
-                        Hilog.info(1，'1', 'test', '我是Text的点击响应事件')
-                    }
+                    .onClick({ evt =>
+                        Hilog.info(1, '1', 'test', 'Text的点击响应事件')
+                    })
             }
             .height(100.percent)
             .width(100.percent)

@@ -110,9 +110,9 @@ class EntryView {
                     }
                     this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
                         + event.touches[0].x.toString() + '\n' + 'y: ' + event.touches[0].y.toString()
-                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.value.toString()
-                        + ',' + event.target.area.globalPosition.y.value.toString() + ')\nwidth:'
-                        + event.target.area.width.value.toString() + '\nheight:' + event.target.area.height.value.toString()
+                        + '\nComponent globalPos:(' + event.target.getOrThrow().area.globalPosition.x.getOrThrow().value.toString()
+                        + ',' + event.target.getOrThrow().area.globalPosition.y.getOrThrow().value.toString() + ')\nwidth:'
+                        + event.target.getOrThrow().area.width.value.toString() + '\nheight:' + event.target.getOrThrow().area.height.value.toString()
                 })
             Button('Touch')
                 .height(50)
@@ -129,9 +129,9 @@ class EntryView {
                     }
                     this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
                         + event.touches[0].x.toString() + '\n' + 'y: ' + event.touches[0].y.toString()
-                        + '\nComponent globalPos:(' + event.target.area.globalPosition.x.value.toString()
-                        + ',' + event.target.area.globalPosition.y.value.toString() + ')\nwidth:'
-                        + event.target.area.width.value.toString() + '\nheight:' + event.target.area.height.value.toString()
+                        + '\nComponent globalPos:(' + event.target.getOrThrow().area.globalPosition.x.getOrThrow().value.toString()
+                        + ',' + event.target.getOrThrow().area.globalPosition.y.getOrThrow().value.toString() + ')\nwidth:'
+                        + event.target.getOrThrow().area.width.value.toString() + '\nheight:' + event.target.getOrThrow().area.height.value.toString()
                 })
             Text(this.text)
         }
