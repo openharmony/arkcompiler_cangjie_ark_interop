@@ -121,13 +121,13 @@ class EntryView {
                     .backgroundColor(0xFFFFFF)
                 Toggle(ToggleType.Switch)
                     .margin(left: 200, right: 10)
-                    .onChange {
+                    .onChange ({
                         isOn => if (isOn) {
                             getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Bluetooth is on.'))
                         } else {
                             getUIContext().getPromptAction().showToast(ShowToastOptions(message: 'Bluetooth is off.'))
                         }
-                    }
+                    })
             }.backgroundColor(0xFFFFFF)
         }
             .padding(10)
