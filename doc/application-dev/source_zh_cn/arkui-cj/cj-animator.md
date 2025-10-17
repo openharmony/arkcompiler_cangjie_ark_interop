@@ -146,7 +146,7 @@
 
 ```cangjie
 package ohos_app_cangjie_entry
-
+import ohos.arkui.ui_context.*
 import kit.ArkUI.*
 import std.math.*
 import ohos.arkui.state_macro_manage.*
@@ -166,7 +166,7 @@ class EntryView {
     @State
     var translateY: Int64 = 0
     protected override func onPageShow() {
-        this.backAnimator = getUIContext.createAnimator(AnimatorOptions(
+        this.backAnimator = this.getUIContext().createAnimator(AnimatorOptions(
           duration: 4000,
           easing: "ease",
           delay: 0,
