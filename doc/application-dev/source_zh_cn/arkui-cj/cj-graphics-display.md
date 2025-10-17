@@ -329,7 +329,7 @@ import ohos.resource_manager.*
 class EntryView {
     func build() {
         Column(space: 10) {
-            Row(50) {
+            Row(space: 5) {
                 Image(@r(app.media.example))
                     // 设置图片的渲染模式为原色
                     .renderMode(ImageRenderMode.Original)
@@ -376,7 +376,7 @@ import ohos.resource_manager.*
 class EntryView {
     func build() {
         Column() {
-            Row(50) {
+            Row(space: 5) {
                 Image(@r(app.media.example))
                     .sourceSize(40, 40)
                     .objectFit(ImageFit.ScaleDown)
@@ -422,17 +422,17 @@ class EntryView {
         0.0, 1.0, 0.0])
     func build() {
         Column() {
-            Row() {
-                Image(@r(app.media.example))
+            Text() {
+                ImageSpan(@r(app.media.example))
                     .width(40.percent)
                     .margin(10)
-                Image(@r(app.media.example))
+            }
+            Text() {
+                ImageSpan(@r(app.media.example))
                     .width(40.percent)
                     .colorFilter(colorFilter)
                     .margin(10)
             }
-            .width(100.percent)
-            .justifyContent(FlexAlign.Center)
         }
     }
 }
@@ -478,10 +478,10 @@ class EntryView {
                     .height(150)
                     .margin(15)
                     .onComplete({msg: ImageLoadResult =>
-                        this.widthValue = msg.width
-                        this.heightValue = msg.height
-                        this.componentWidth = msg.componentWidth
-                        this.componentHeight = msg.componentHeight
+                        this.widthValue = msg.width.getOrThrow()
+                        this.heightValue = msg.height.getOrThrow()
+                        this.componentWidth = msg.componentWidth.getOrThrow()
+                        this.componentHeight = msg.componentHeight.getOrThrow()
                     })
                     .onError({evt =>
                         Hilog.info(0, "cangjie", "load image fail")
