@@ -49,10 +49,10 @@ public init()
 
 **Since:** 21
 
-### func `in`(String, Array\<ValueType>)
+### func inValues(String, Array\<ValueType>)
 
 ```cangjie
-public func `in`(field: String, value: Array<ValueType>): DataSharePredicates
+public func inValues(field: String, value: Array<ValueType>): DataSharePredicates
 ```
 
 **Function:** Configures the predicate to match fields with values within the specified range. Currently, only RDB and KVDB(schema) support this predicate.
@@ -95,7 +95,7 @@ import kit.ArkData.*
 import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.`in`("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
+predicates.inValues("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
 ```
 
 ### func and()

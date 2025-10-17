@@ -49,10 +49,10 @@ public init()
 
 **起始版本：** 22
 
-### func `in`(String, Array\<ValueType>)
+### func inValues(String, Array\<ValueType>)
 
 ```cangjie
-public func `in`(field: String, value: Array<ValueType>): DataSharePredicates
+public func inValues(field: String, value: Array<ValueType>): DataSharePredicates
 ```
 
 **功能：** 用于配置谓词以匹配值在指范围内的字段。目前仅RDB及KVDB(schema)支持该谓词。
@@ -95,7 +95,7 @@ import kit.ArkData.*
 import ohos.data.values_bucket.ValueType as VBValueType
 
 let predicates = DataSharePredicates()
-predicates.`in`("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
+predicates.inValues("AGE", [VBValueType.Integer(18), VBValueType.Integer(20)])
 ```
 
 ### func and()

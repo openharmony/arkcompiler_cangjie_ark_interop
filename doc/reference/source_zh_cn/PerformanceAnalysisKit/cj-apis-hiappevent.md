@@ -1801,9 +1801,9 @@ public enum EventValueType <: ToString {
     | StringValue(String)
     | BoolValue(Bool)
     | ArrString(Array<String>)
-    | ArrI32(Array<Int32>)
+    | ArrInt32(Array<Int32>)
     | ArrBool(Array<Bool>)
-    | ArrF64(Array<Float64>)
+    | ArrFloat64(Array<Float64>)
     | Int64Value(Int64)
     | ArrInt64(Array<Int64>)
     | ...
@@ -1832,10 +1832,10 @@ ArrBool(Array<Bool>)
 
 **起始版本：** 22
 
-### ArrF64(Array\<Float64>)
+### ArrFloat64(Array\<Float64>)
 
 ```cangjie
-ArrF64(Array<Float64>)
+ArrFloat64(Array<Float64>)
 ```
 
 **功能：** Float64类型数组数据。
@@ -1844,10 +1844,10 @@ ArrF64(Array<Float64>)
 
 **起始版本：** 22
 
-### ArrI32(Array\<Int32>)
+### ArrInt32(Array\<Int32>)
 
 ```cangjie
-ArrI32(Array<Int32>)
+ArrInt32(Array<Int32>)
 ```
 
 **功能：** Int32类型数组数据。
