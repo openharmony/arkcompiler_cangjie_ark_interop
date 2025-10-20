@@ -27,9 +27,9 @@ class EntryView {
     func build() {
         Column {
             Button('CustomPopupOptions')
-                .onClick {
+                .onClick ({
                     e => this.handlePopup = !this.handlePopup
-                }
+                })
                 .bindPopup(
                     this.handlePopup,
                     CustomPopupOptions(builder: {=>}, showInSubWindow: false)
@@ -103,9 +103,9 @@ class EntryView {
         Column() {
             Button('CustomPopupOptions')
                 .margin(top: 200)
-                .onClick {
+                .onClick ({
                     e => this.handlePopup = !this.handlePopup
-                }
+                })
                 .bindPopup(
                     this.handlePopup,
                     CustomPopupOptions(
@@ -159,9 +159,9 @@ class EntryView {
             // CustomPopupOptions 类型设置弹框内容
             Button('CustomPopupOptions')
                 .position(x: 80, y: 300)
-                .onClick {
+                .onClick ({
                     e => this.customPopup = !this.customPopup
-                }
+                })
                 .bindPopup(
                     this.customPopup,
                     CustomPopupOptions(
@@ -224,9 +224,9 @@ class EntryView {
         Column() {
             Button('CustomPopupOptions')
                 .position(x: 100, y: 200)
-                .onClick {
+                .onClick ({
                     e => this.customPopup = !this.customPopup
-                }
+                })
                 .bindPopup(
                     this.customPopup,
                     CustomPopupOptions(
@@ -281,9 +281,9 @@ class EntryView {
     func build() {
         Column(space: 100) {
             Button('PopupOptions')
-                .onClick{
+                .onClick({
                     e => this.handlePopup = !this.handlePopup
-                }
+                })
                 .bindPopup(
                     this.handlePopup,
                     CustomPopupOptions(
