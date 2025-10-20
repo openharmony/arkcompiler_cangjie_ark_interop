@@ -60,7 +60,7 @@ public func resizeable(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|分割线是否可拖拽。<br>初始值：false。|
+|value|?Bool|是|-|分割线是否可拖拽。<br>初始值：false。|
 
 > **说明：**
 >

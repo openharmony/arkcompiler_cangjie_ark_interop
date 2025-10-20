@@ -39,7 +39,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|scroller|?Scroller|否|-|**命名参数。** 可滚动组件的控制器。用于与可滚动组件进行绑定。|
+|scroller|?Scroller|是|-|**命名参数。** 可滚动组件的控制器。用于与可滚动组件进行绑定。|
 |direction|?ScrollBarDirection|否|None|**命名参数。** 滚动条的方向，控制可滚动组件对应方向的滚动。初始值：ScrollBarDirection.Vertical。|
 |state|?BarState|否|None|**命名参数。** 滚动条状态。初始值：BarState.Auto。|
 |child|() -> Unit|是|-|**命名参数。** 容器内的子组件。|

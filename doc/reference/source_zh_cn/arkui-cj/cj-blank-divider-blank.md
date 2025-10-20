@@ -62,7 +62,7 @@ public func color(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|空白填充的填充颜色。|
+|value|?ResourceColor|是|-|空白填充的填充颜色。<br>初始值：Color.Transparent。|
 
 ## 示例代码
 

@@ -52,7 +52,7 @@ public init(src: ?ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|?ResourceStr|否|-|图片的数据源。<br>初始值：""|
+|src|?ResourceStr|是|-|图片的数据源。<br>初始值：""|
 
 ### init(?PixelMap)
 
@@ -76,7 +76,7 @@ public init(src: ?PixelMap)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|?PixelMap|否|-|图片的数据源。<br/>PixelMap格式为像素图，常用于图片编辑的场景。|
+|src|?PixelMap|是|-|图片的数据源。<br/>PixelMap格式为像素图，常用于图片编辑的场景。|
 
 ## 通用属性/通用事件
 
@@ -106,7 +106,7 @@ public func alt(src: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|?ResourceStr|否|-|加载时显示的占位图，不支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持网络图片。<br>初始值：""|
+|src|?ResourceStr|是|-|加载时显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），不支持网络图片。<br>初始值：""。|
 
 ### func autoResize(?Bool)
 
@@ -128,7 +128,7 @@ public func autoResize(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br>初始值：false|
+|value|?Bool|是|-|图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为1920x1080，而显示区域大小为200x200，则图片会降采样解码到200x200的尺寸，大幅度节省图片占用的内存。<br>初始值：false|
 
 ### func fillColor(?ResourceColor)
 
@@ -150,7 +150,7 @@ public func fillColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|否|-|设置填充颜色。|
+|value|?ResourceColor|是|-|设置填充颜色。|
 
 ### func fitOriginalSize(?Bool)
 
@@ -168,7 +168,7 @@ public func fitOriginalSize(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|是否跟随图源尺寸。<br>初始值：false|
+|value|?Bool|是|-|是否跟随图源尺寸。<br>初始值：false。|
 
 ### func interpolation(?ImageInterpolation)
 
@@ -191,7 +191,7 @@ public func interpolation(value: ?ImageInterpolation): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ImageInterpolation|否|-|图片的插值效果。<br>初始值：ImageInterpolation.Low|
+|value|?ImageInterpolation|是|-|图片的插值效果。<br>初始值：ImageInterpolation.Low。|
 
 ### func matchTextDirection(?Bool)
 
@@ -209,7 +209,7 @@ public func matchTextDirection(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|是否跟随系统语言方向。<br>初始值：false|
+|value|?Bool|是|-|是否跟随系统语言方向。<br>初始值：false。|
 
 ### func objectFit(?ImageFit)
 
@@ -227,7 +227,7 @@ public func objectFit(value: ?ImageFit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ImageFit|否|-|图片的填充效果。<br>初始值：ImageFit.Cover|
+|value|?ImageFit|是|-|图片的填充效果。<br>初始值：ImageFit.Cover。|
 
 ### func objectRepeat(?ImageRepeat)
 
@@ -250,7 +250,7 @@ public func objectRepeat(value: ?ImageRepeat): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ImageRepeat|否|-|图片的重复样式。<br>初始值：ImageRepeat.NoRepeat|
+|value|?ImageRepeat|是|-|图片的重复样式。<br>初始值：ImageRepeat.NoRepeat。|
 
 ### func renderMode(?ImageRenderMode)
 
@@ -273,7 +273,7 @@ public func renderMode(value: ?ImageRenderMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ImageRenderMode|否|-|设置图片的渲染模式。SVG类型图源不支持该属性。<br>初始值：ImageRenderMode.Original|
+|value|?ImageRenderMode|是|-|设置图片的渲染模式。SVG类型图源不支持该属性。<br>初始值：ImageRenderMode.Original。|
 
 ### func sourceSize(?Length, ?Length)
 
@@ -291,8 +291,8 @@ public func sourceSize(width: ?Length, height: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|否|-|图片解码后的宽度。<br>初始值：0.0.px|
-|height|?Length|否|-|图片解码后的高度。<br>初始值：0.0.px|
+|width|?Length|是|-|图片解码后的宽度。<br>初始值：0.0.px。|
+|height|?Length|是|-|图片解码后的高度。<br>初始值：0.0.px。|
 
 ### func syncLoad(?Bool)
 
@@ -314,7 +314,7 @@ public func syncLoad(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>初始值：false|
+|value|?Bool|是|-|是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>初始值：false。|
 
 ## 组件事件
 
@@ -334,7 +334,7 @@ public func onComplete(callback: ?ImageCompleteCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?ImageCompleteCallback|否|-|回调函数，图片成功加载时触发。<br>初始值：{ _ => }|
+|callback|?ImageCompleteCallback|是|-|回调函数，图片成功加载时触发。<br>初始值：{ _ => }。|
 
 ### func onError(?ImageErrorCallback)
 
@@ -352,9 +352,9 @@ public func onError(callback: ?ImageErrorCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?ImageErrorCallback|否|-|回调函数，图片加载出现异常时触发。<br>初始值：{ _ => }|
+|callback|?ImageErrorCallback|是|-|回调函数，图片加载出现异常时触发。<br>初始值：{ _ => }。|
 
-### func onFinish(?(...) -> Unit)
+### func onFinish(?() -> Unit)
 
 ```cangjie
 public func onFinish(event: ?() -> Unit): This
@@ -370,7 +370,7 @@ public func onFinish(event: ?() -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?() -> Unit|否|-|回调函数，svg动效播放完成时触发。<br>初始值：{ => }|
+|event|?() -> Unit|是|-|回调函数，svg动效播放完成时触发。<br>初始值：{ => }。|
 
 ## 基础类型定义
 

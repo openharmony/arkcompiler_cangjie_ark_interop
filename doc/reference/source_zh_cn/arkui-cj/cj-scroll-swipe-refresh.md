@@ -30,7 +30,7 @@ public init(value: ?RefreshOptions, child: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?RefreshOptions|否|-|设置组件刷新时的参数。|
+|value|?RefreshOptions|是|-|设置组件刷新时的参数。|
 |child|() -> Unit|是|-|声明容器子组件。|
 
 ## 通用属性/通用事件
@@ -59,7 +59,7 @@ public func onStateChange(callback: ?(RefreshStatus) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(RefreshStatus)-> Unit|是|-|刷新状态。|
+|callback|?(RefreshStatus)-> Unit|是|-|刷新状态。<br>初始值：{res: RefreshStatus =>}。|
 
 ### func onRefreshing(?() -> Unit)
 
@@ -77,7 +77,7 @@ public func onRefreshing(callback: ?() -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?()->Unit|是|-|进入刷新状态时触发回调。|
+|callback|?()->Unit|是|-|进入刷新状态时触发回调。<br>初始值：{=>}。|
 
 ## 基础类型定义
 

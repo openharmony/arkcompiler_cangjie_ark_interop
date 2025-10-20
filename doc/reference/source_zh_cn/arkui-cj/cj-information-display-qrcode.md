@@ -96,7 +96,7 @@ public func contentOpacity(value: ?AppResource): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?AppResource|是|-|二维码内容颜色的不透明度。|
+|value|?AppResource|是|-|二维码内容颜色的不透明度。<br>初始值：1.0。|
 
 ## 示例代码
 

@@ -129,7 +129,7 @@ public func onChange(callback: ?(Float64) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(Float64)->Unit|是|-|评分条的评分。|
+|callback|?(Float64)->Unit|是|-|评分条的评分。<br>初始值：{ _ => }。|
 
 ## 示例代码
 

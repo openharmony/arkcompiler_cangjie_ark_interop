@@ -71,10 +71,10 @@ public func bindSelectionMenu(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|spantype|?RichEditorSpanType|否|None|**命名参数。** 指定选择菜单的类型。|
-|content|?CustomBuilder|是|-|**命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
-|responseType|?ResponseType|否|None|**命名参数。** 指定选择菜单的响应类型。|
-|options|?SelectionMenuOptions|是|-|**命名参数。** 指定选择菜单的选项。|
+|spantype|?RichEditorSpanType|否|None|**命名参数。** 指定选择菜单的类型。<br>初始值：RichEditorSpanType.Text。|
+|content|?CustomBuilder|是|-|**命名参数。** 指定选择菜单的内容。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。<br>初始值：{ => }。|
+|responseType|?ResponseType|否|None|**命名参数。** 指定选择菜单的响应类型。<br>初始值：ResponseType.LongPress。|
+|options|?SelectionMenuOptions|是|-|**命名参数。** 指定选择菜单的选项。<br>初始值：SelectionMenuOptions()。|
 
 ### func copyOptions(?CopyOptions)
 
@@ -124,7 +124,7 @@ public func customKeyboard(value!: ?CustomBuilder): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?CustomBuilder|是|-|**命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|value|?CustomBuilder|是|-|**命名参数。** 富文本编辑器的自定义键盘。使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。<br>初始值：{ => }。|
 
 ## 组件事件
 
@@ -144,7 +144,7 @@ public func onReady(callback: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?VoidCallback|是|-|回调函数，富文本组件初始化完成后触发回调。|
+|callback|?VoidCallback|是|-|回调函数，富文本组件初始化完成后触发回调。<br>初始值：{ => }。|
 
 ### func aboutToIMEInput(?Callback\<RichEditorInsertValue, Bool>)
 
@@ -162,7 +162,7 @@ public func aboutToIMEInput(callback: ?Callback<RichEditorInsertValue, Bool>): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorInsertValue, Bool>|是|-|回调函数，输入法输入内容前触发。RichEditorInsertValue：输入法将要输入内容信息。true：组件执行添加内容操作。false：组件不执行添加内容操作。|
+|callback|?Callback\<RichEditorInsertValue, Bool>|是|-|回调函数，输入法输入内容前触发。RichEditorInsertValue：输入法将要输入内容信息。true：组件执行添加内容操作。false：组件不执行添加内容操作。<br>初始值：{ _ => false }。|
 
 ### func onIMEInputComplete(?Callback\<RichEditorTextSpanResult, Unit>)
 
@@ -180,7 +180,7 @@ public func onIMEInputComplete(callback: ?Callback<RichEditorTextSpanResult, Uni
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorTextSpanResult, Unit>|是|-|回调函数，输入法完成输入后触发回调。RichEditorTextSpanResult：输入法完成输入后的文本Span信息。|
+|callback|?Callback\<RichEditorTextSpanResult, Unit>|是|-|回调函数，输入法完成输入后触发回调。RichEditorTextSpanResult：输入法完成输入后的文本Span信息。<br>初始值：{ _ => false }。|
 
 ### func onDeleteComplete(?VoidCallback)
 
@@ -198,7 +198,7 @@ public func onDeleteComplete(callback: ?VoidCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?VoidCallback|是|-|回调函数，订阅输入法完成删除时触发。|
+|callback|?VoidCallback|是|-|回调函数，订阅输入法完成删除时触发。<br>初始值：{ => }。|
 
 ### func aboutToDelete(?Callback\<RichEditorDeleteValue, Bool>)
 
@@ -216,7 +216,7 @@ public func aboutToDelete(callback: ?Callback<RichEditorDeleteValue, Bool>): Thi
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorDeleteValue, Bool>|是|-|回调函数，输入法删除内容前触发该回调 。RichEditorDeleteValue：准备删除的内容所在的文本Span信息。true：组件执行删除操作。false：组件不执行删除操作。|
+|callback|?Callback\<RichEditorDeleteValue, Bool>|是|-|回调函数，输入法删除内容前触发该回调 。RichEditorDeleteValue：准备删除的内容所在的文本Span信息。true：组件执行删除操作。false：组件不执行删除操作。<br>初始值：{ _ => false }。|
 
 ### func onSelect(?Callback\<RichEditorSelection, Unit>)
 
@@ -234,7 +234,7 @@ public func onSelect(callback: ?Callback<RichEditorSelection, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<RichEditorSelection, Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。用手指选择时，松开手指触发回调。RichEditorSelection：选中的所有Span信息。|
+|callback|?Callback\<RichEditorSelection, Unit>|是|-|回调函数，鼠标左键按下选择，松开左键后触发回调。用手指选择时，松开手指触发回调。RichEditorSelection：选中的所有Span信息。<br>初始值：{ _ => }。|
 
 ### func onPaste(?PasteEventCallback)
 
@@ -256,7 +256,7 @@ public func onPaste(callback: ?PasteEventCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?PasteEventCallback|是|-|回调函数，完成粘贴前，触发回调。PasteEvent：定义用户粘贴事件。|
+|callback|?PasteEventCallback|是|-|回调函数，完成粘贴前，触发回调。PasteEvent：定义用户粘贴事件。<br>初始值：{ _ => }。|
 
 ### func onDidChange(?OnDidChangeCallback)
 
@@ -274,7 +274,7 @@ public func onDidChange(callback: ?OnDidChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?OnDidChangeCallback|是|-|回调函数，件执行增删操作后，触发回调。文本实际未发生增删时，不触发该回调。参数：图文变化前后的内容范围。|
+|callback|?OnDidChangeCallback|是|-|回调函数，件执行增删操作后，触发回调。文本实际未发生增删时，不触发该回调。参数：图文变化前后的内容范围。<br>初始值：{ rangeBefore: TextRange。|
 
 ## 基础类型定义
 

@@ -32,9 +32,9 @@ public func bindContextMenu(builder!: ?CustomBuilder, responseType!: ?ResponseTy
 
 |参数名|类型|必填|默认值|说明|
 | :--- | :--- | :--- | :--- | :--- |
-| builder | ?CustomBuilder | 是 | \- | **命名参数。** 自定义构建器。|
-| responseType | ?[ResponseType](./cj-common-types.md#enum-responsetype) |是|-| **命名参数。** 响应类型。|
-| options | ?[ContextMenuOptions](#class-contextmenuoptions) | 否 | None | **命名参数。** 上下文菜单选项。|
+| builder | ?CustomBuilder | 是 | \- | **命名参数。** 自定义构建器。<br>初始值：{ => }。|
+| responseType | ?[ResponseType](./cj-common-types.md#enum-responsetype) |是|-| **命名参数。** 响应类型。<br>初始值：ResponseType.LongPress。|
+| options | ?[ContextMenuOptions](#class-contextmenuoptions) | 否 | None | **命名参数。** 上下文菜单选项。<br>初始值：ContextMenuOptions()。|
 
 **返回值：**
 
@@ -84,7 +84,7 @@ public func bindMenu(builder!: ?CustomBuilder): T
 
 |参数名|类型|必填|默认值|说明|
 | :--- | :--- | :--- | :--- | :--- |
-| builder | ?CustomBuilder | 是 | \- | **命名参数。** 自定义构建器。|
+| builder | ?CustomBuilder | 是 | \- | **命名参数。** 自定义构建器。<br>初始值：{ => }。|
 
 **返回值：**
 

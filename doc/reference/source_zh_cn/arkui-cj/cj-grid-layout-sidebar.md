@@ -68,7 +68,7 @@ public func autoHide(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|侧边栏拖拽到小于最小宽度后，是否自动隐藏。<br>true：会自动隐藏。<br>false：不会自动隐藏。<br>初始值：true。|
+|value|?Bool|是|-|侧边栏拖拽到小于最小宽度后，是否自动隐藏。<br>true：会自动隐藏。<br>false：不会自动隐藏。<br>初始值：true。|
 
 ### func controlButton(?ButtonStyle)
 
@@ -86,7 +86,7 @@ public func controlButton(value: ?ButtonStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ButtonStyle|否|-|侧边栏控制按钮的属性。|
+|value|?ButtonStyle|是|-|侧边栏控制按钮的属性。|
 
 ### func divider(?DividerStyle)
 
@@ -127,7 +127,7 @@ public func maxSideBarWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|否|-|设置侧边栏最大宽度。<br>单位：vp。<br>初始值：280.vp。|
+|value|?Length|是|-|设置侧边栏最大宽度。<br>单位：vp。<br>初始值：280.vp。|
 
 ### func minContentWidth(?Length)
 
@@ -156,7 +156,7 @@ public func minContentWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|否|-|SideBarContainer组件内容区可显示的最小宽度。<br>单位：vp。<br>初始值：360.vp。|
+|value|?Length|是|-|SideBarContainer组件内容区可显示的最小宽度。<br>单位：vp。<br>初始值：360.vp。|
 
 ### func minSideBarWidth(?Length)
 
@@ -179,7 +179,7 @@ public func minSideBarWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|否|-|侧边栏最小宽度。<br>初始值：240.vp。|
+|value|?Length|是|-|侧边栏最小宽度。<br>初始值：240.vp。|
 
 ### func showControlButton(?Bool)
 
@@ -197,7 +197,7 @@ public func showControlButton(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|是否显示控制按钮。<br>true：显示控制按钮。<br>false：不显示控制按钮。<br>初始值：true。|
+|value|?Bool|是|-|是否显示控制按钮。<br>true：显示控制按钮。<br>false：不显示控制按钮。<br>初始值：true。|
 
 ### func showSideBar(?Bool)
 
@@ -215,7 +215,7 @@ public func showSideBar(value: ?Bool): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Bool|否|-|是否显示侧边栏。<br>true：显示侧边栏。<br>false：不显示侧边栏。<br>初始值：true。|
+|value|?Bool|是|-|是否显示侧边栏。<br>true：显示侧边栏。<br>false：不显示侧边栏。<br>初始值：true。|
 
 ### func sideBarPosition(?SideBarPosition)
 
@@ -233,7 +233,7 @@ public func sideBarPosition(value: ?SideBarPosition): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?SideBarPosition|否|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
+|value|?SideBarPosition|是|-|侧边栏显示位置。<br>初始值：SideBarPosition.Start。|
 
 ### func sideBarWidth(?Length)
 
@@ -255,7 +255,7 @@ public func sideBarWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|否|-|侧边栏的宽度。<br>单位：vp。<br>初始值：240.vp。|
+|value|?Length|是|-|侧边栏的宽度。<br>单位：vp。<br>初始值：240.vp。|
 
 ## 组件事件
 
@@ -283,7 +283,7 @@ public func onChange(callback: ?(Bool) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(Bool)->Unit|否|-|回调函数，当侧边栏的状态由隐藏变为显示时，参数值为true；当侧边栏的状态由显示变为隐藏时，参数值为false。<br>初始值：{ _ => }。|
+|callback|?(Bool)->Unit|是|-|回调函数，当侧边栏的状态由隐藏变为显示时，参数值为true；当侧边栏的状态由显示变为隐藏时，参数值为false。<br>初始值：{ _ => }。|
 
 ## 基础类型定义
 

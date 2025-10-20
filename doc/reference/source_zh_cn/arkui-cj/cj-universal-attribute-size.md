@@ -88,8 +88,8 @@ func size(width!: ?Length, height!: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|是|-|**命名参数** 组件的宽度|
-|height|?Length|是|-|**命名参数** 组件的高度|
+|width|?Length|是|-|**命名参数** 组件的宽度<br>初始值：0.0.vp。|
+|height|?Length|是|-|**命名参数** 组件的高度<br>初始值：0.0.vp。|
 
 **返回值：**
 
@@ -153,10 +153,10 @@ func padding(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|?Length|是|-|**命名参数** 上内边距|
-|right|?Length|是|-|**命名参数** 右内边距|
-|bottom|?Length|是|-|**命名参数** 下内边距|
-|left|?Length|是|-|**命名参数** 左内边距|
+|top|?Length|是|-|**命名参数** 上内边距<br>初始值：0.vp。|
+|right|?Length|是|-|**命名参数** 右内边距<br>初始值：0.vp。|
+|bottom|?Length|是|-|**命名参数** 下内边距<br>初始值：0.vp。|
+|left|?Length|是|-|**命名参数** 左内边距<br>初始值：0.vp。|
 
 **返回值：**
 
@@ -220,10 +220,10 @@ func margin(top!: ?Length, right!: ?Length, bottom!: ?Length, left!: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|?Length|是|-|**命名参数** 上外边距|
-|right|?Length|是|-|**命名参数** 右外边距|
-|bottom|?Length|是|-|**命名参数** 下外边距|
-|left|?Length|是|-|**命名参数** 左外边距|
+|top|?Length|是|-|**命名参数** 上外边距<br>初始值：0.vp。|
+|right|?Length|是|-|**命名参数** 右外边距<br>初始值：0.vp。|
+|bottom|?Length|是|-|**命名参数** 下外边距<br>初始值：0.vp。|
+|left|?Length|是|-|**命名参数** 左外边距<br>初始值：0.vp。|
 
 **返回值：**
 
@@ -255,7 +255,7 @@ func layoutWeight(value: ?Int32): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Int32|是|-|组件的布局权重|
+|value|?Int32|是|-|组件的布局权重<br>初始值：0。|
 
 **返回值：**
 
@@ -319,7 +319,7 @@ func displayPriority(value: ?Int32): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Int32|是|-|组件的显示优先级|
+|value|?Int32|是|-|组件的显示优先级<br>初始值：1。|
 
 **返回值：**
 
@@ -351,7 +351,7 @@ func responseRegion(value: ?Rectangle): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Rectangle|是|-|组件的响应区域|
+|value|?Rectangle|是|-|组件的响应区域<br>初始值：[Rectangle()]。|
 
 **返回值：**
 
@@ -383,7 +383,7 @@ func responseRegion(value: ?Array<Rectangle>): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Array\<Rectangle>|是|-|组件的响应区域数组|
+|value|?Array\<Rectangle>|是|-|组件的响应区域数组<br>初始值：[Rectangle()]。|
 
 **返回值：**
 
