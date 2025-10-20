@@ -100,7 +100,7 @@ public func style(value: ?RingStyleOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?RingStyleOptions|是|-|设置Ring的样式。|
+|value|?RingStyleOptions|是|-|设置Ring的样式。<br>初始值：RingStyleOptions()。|
 
 ### func value(?Float64)
 
@@ -118,7 +118,7 @@ public func value(value: ?Float64): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Float64|是|-|当前进度值。初始值：0|
+|value|?Float64|是|-|当前进度值。初始值：0.0。|
 
 ## 基础类型定义
 

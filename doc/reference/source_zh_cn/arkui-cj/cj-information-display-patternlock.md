@@ -56,7 +56,7 @@ public func activeColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|宫格圆点在"激活"状态的填充颜色。初始值：0xff182431。|
+|value|?ResourceColor|是|-|宫格圆点在"激活"状态的填充颜色。初始值：0xFF182431。|
 
 ### func autoReset(?Bool)
 
@@ -92,7 +92,7 @@ public func circleRadius(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|宫格中圆点的半径。初始值：6.vp。|
+|value|?Length|是|-|宫格中圆点的半径。初始值：6.0.vp。|
 
 ### func pathColor(?ResourceColor)
 
@@ -128,7 +128,7 @@ public func pathStrokeWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|连线的宽度。初始值：12.vp。|
+|value|?Length|是|-|连线的宽度。初始值：12.0.vp。|
 
 ### func regularColor(?ResourceColor)
 
@@ -146,7 +146,7 @@ public func regularColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|宫格圆点在"未选中"状态的填充颜色。初始值：0xff182431。|
+|value|?ResourceColor|是|-|宫格圆点在"未选中"状态的填充颜色。初始值：0xFF182431。|
 
 ### func selectedColor(?ResourceColor)
 
@@ -164,7 +164,7 @@ public func selectedColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|宫格圆点在"选中"状态的填充颜色。初始值：0xff182431。|
+|value|?ResourceColor|是|-|宫格圆点在"选中"状态的填充颜色。初始值：0xFF182431。|
 
 ### func sideLength(?Length)
 
@@ -182,7 +182,7 @@ public func sideLength(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|组件的宽度和高度。初始值：288.vp。|
+|value|?Length|是|-|组件的宽度和高度。初始值：288.0.vp。|
 
 ## 组件事件
 
@@ -202,7 +202,7 @@ public func onPatternComplete(callback: ?(Array<Int32>) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(Array\<Int32>) -> Unit|是|-|密码输入结束时触发该回调。回调参数：与选中宫格圆点顺序一致的数字数组，数字为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。|
+|callback|?(Array\<Int32>) -> Unit|是|-|密码输入结束时触发该回调。回调参数：与选中宫格圆点顺序一致的数字数组，数字为选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。<br>初始值：{ _ => }。|
 
 ## 基础类型定义
 

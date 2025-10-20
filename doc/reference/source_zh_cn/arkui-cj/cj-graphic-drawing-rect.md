@@ -57,7 +57,7 @@ public func radiusWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|圆角的宽度。初始值：0。默认单位：vp。|
+|value|?Length|是|-|圆角的宽度。初始值：0.vp|
 
 ### func radiusHeight(?Length)
 
@@ -75,7 +75,7 @@ public func radiusHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|设置圆角的高度。初始值：0。默认单位：vp。|
+|value|?Length|是|-|设置圆角的高度。初始值：0.vp。|
 
 ### func radius(?Length)
 
@@ -93,7 +93,7 @@ public func radius(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|圆角半径大小。初始值：0。默认单位：vp。|
+|value|?Length|是|-|圆角半径大小。初始值：0.vp。|
 
 ### func radius(?Array\<Length>)
 
@@ -111,7 +111,7 @@ public func radius(value: ?Array<Length>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Array\<Length>|是|-|左上、右上、右下、左下圆角半径大小。<br>初始值：0。<br>默认单位：vp。|
+|value|?Array\<Length>|是|-|左上、右上、右下、左下圆角半径大小。<br>初始值：0.vp。|
 
 ### func radius(?Array\<(Length, Length)>)
 

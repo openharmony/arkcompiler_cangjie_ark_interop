@@ -24,10 +24,10 @@ func constraintSize(minWidth!: ?Length = None, maxWidth!: ?Length = None, minHei
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|minWidth|?Length|否|None|**命名参数** 组件最小宽度 (初始值: 0.vp)|
-|maxWidth|?Length|否|None|**命名参数** 组件最大宽度 (初始值: Infinity)|
-|minHeight|?Length|否|None|**命名参数** 组件最小高度 (初始值: 0.vp)|
-|maxHeight|?Length|否|None|**命名参数** 组件最大高度 (初始值: Infinity)|
+|minWidth|?Length|否|None|**命名参数** 组件最小宽度 <br>初始值: 0.vp。|
+|maxWidth|?Length|否|None|**命名参数** 组件最大宽度 <br>初始值: (Float64.Inf).vp。|
+|minHeight|?Length|否|None|**命名参数** 组件最小高度 <br>初始值: 0.vp。|
+|maxHeight|?Length|否|None|**命名参数** 组件最大高度 <br>初始值: (Float64.Inf).vp。|
 
 **返回值：**
 
@@ -52,7 +52,7 @@ func align(value: ?Alignment): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Alignment|是|-|对齐方式|
+|value|?Alignment|是|-|对齐方式<br>初始值：Alignment.Center。|
 
 **返回值：**
 
@@ -77,7 +77,7 @@ func direction(value: ?Direction): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Direction|是|-|布局方向|
+|value|?Direction|是|-|布局方向<br>初始值：Direction.Auto。|
 
 **返回值：**
 
@@ -102,7 +102,7 @@ func alignRules(value: ?AlignRuleOptions): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?AlignRuleOptions|是|-|对齐规则选项|
+|value|?AlignRuleOptions|是|-|对齐规则选项<br>初始值：AlignRuleOptions()。|
 
 **返回值：**
 

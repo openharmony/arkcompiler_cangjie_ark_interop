@@ -57,7 +57,7 @@ public func endPoint(value: ?(Float64, Float64)): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?(Float64,Float64)|是|-|直线终点坐标点（相对坐标）。|
+|value|?(Float64,Float64)|是|-|直线终点坐标点（相对坐标）。<br>初始值：(0.0, 0.0)。|
 
 ### func startPoint(?(Float64,Float64))
 
@@ -75,7 +75,7 @@ public func startPoint(value: ?(Float64, Float64)): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?(Float64,Float64)|是|-|直线起点坐标点（相对坐标）。|
+|value|?(Float64,Float64)|是|-|直线起点坐标点（相对坐标）。<br>初始值：(0.0, 0.0)。|
 
 ## 示例代码
 

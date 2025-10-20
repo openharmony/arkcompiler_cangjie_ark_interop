@@ -77,7 +77,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|文本的字体族。<br>初始值：HarmonyOS Sans。|
+|value|?ResourceStr|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 

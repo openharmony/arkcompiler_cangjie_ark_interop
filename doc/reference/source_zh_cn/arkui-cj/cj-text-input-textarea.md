@@ -59,7 +59,7 @@ public func caretColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|光标的颜色。|
+|value|?ResourceColor|是|-|光标的颜色。<br>初始值：0xFF007DFF。|
 
 ### func enterKeyType(?EnterKeyType)
 
@@ -95,7 +95,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|文本的字体族。<br>初始值：HarmonyOS Sans。|
+|value|?ResourceStr|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontColor(?ResourceColor)
 
@@ -185,7 +185,7 @@ public func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit = None):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-| **命名参数。** 输入过滤规则。|
+|value|?ResourceStr|是|-| **命名参数。** 输入过滤规则。<br>初始值：""。|
 |error|?(String) -> Unit|否|None| **命名参数。** 输入错误时的回调函数。|
 
 ### func maxLength(?UInt32)
@@ -222,7 +222,7 @@ public func onChange(callback: ?(String) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(String) -> Unit|是|-|输入框内容发生变化时的回调函数。|
+|callback|?(String) -> Unit|是|-|输入框内容发生变化时的回调函数。<br>初始值：{ _ => }。|
 
 ### func onCopy(?(String) -> Unit)
 
@@ -240,7 +240,7 @@ public func onCopy(callback: ?(String) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(String) -> Unit|是|-|复制操作时的回调函数。|
+|callback|?(String) -> Unit|是|-|复制操作时的回调函数。<br>初始值：{ _ => }。|
 
 ### func onCut(?(String) -> Unit)
 
@@ -258,7 +258,7 @@ public func onCut(callback: ?(String) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(String) -> Unit|是|-|剪切操作时的回调函数。|
+|callback|?(String) -> Unit|是|-|剪切操作时的回调函数。<br>初始值：{ _ => }。|
 
 ### func onEditChange(?(Bool) -> Unit)
 
@@ -276,7 +276,7 @@ public func onEditChange(callback: ?(Bool) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(Bool) -> Unit|是|-|文本区域状态变化时触发的回调函数。|
+|callback|?(Bool) -> Unit|是|-|文本区域状态变化时触发的回调函数。<br>初始值：{ _ => }。|
 
 ### func onPaste(?(String) -> Unit)
 
@@ -294,7 +294,7 @@ public func onPaste(callback: ?(String) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(String) -> Unit|是|-|粘贴操作时的回调函数。|
+|callback|?(String) -> Unit|是|-|粘贴操作时的回调函数。<br>初始值：{ _ => }。|
 
 ### func onSubmit(?(EnterKeyType) -> Unit)
 
@@ -312,7 +312,7 @@ public func onSubmit(callback: ?(EnterKeyType) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(EnterKeyType) -> Unit|是|-|提交时的回调函数。|
+|callback|?(EnterKeyType) -> Unit|是|-|提交时的回调函数。<br>初始值：{ _ => }。|
 
 ### func placeholderColor(?ResourceColor)
 
@@ -349,7 +349,7 @@ public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|是|-| **命名参数。** 占位符文本的字体大小。|
+|size|?Length|是|-| **命名参数。** 占位符文本的字体大小。<br>初始值：16.0.fp。|
 |weight|?FontWeight|否|None| **命名参数。** 占位符文本的字体粗细。<br>初始值：FontWeight.W400。|
 |family|?String|否|None| **命名参数。** 占位符文本的字体族。<br>初始值：""。|
 |style|?FontStyle|否|None| **命名参数。** 占位符文本的字体样式。<br>初始值：FontStyle.Normal。|

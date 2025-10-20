@@ -115,7 +115,7 @@ public func onChange(callback: ?(Bool) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(Bool) -> Unit|是|-|组件选中状态变化时的回调函数。|
+|callback|?(Bool) -> Unit|是|-|组件选中状态变化时的回调函数。<br>初始值：{ _ => }。|
 
 ## 示例代码
 
