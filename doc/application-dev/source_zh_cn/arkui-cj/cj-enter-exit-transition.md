@@ -134,9 +134,9 @@ class EntryView {
 
             Button("Click")
             .margin(top: 320.vp)
-            .onClick{evt =>
+            .onClick({evt =>
                     this.isPresent = !this.isPresent
-                }
+                })
         }
         .width(100.percent)
         .height(60.percent)
