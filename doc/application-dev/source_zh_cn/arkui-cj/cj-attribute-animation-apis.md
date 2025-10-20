@@ -10,7 +10,7 @@
 ## 使用animateTo产生属性动画
 
 ```cangjie
-public func animateTo(animation: AnimateParam, callback: () -> Unit): Unit
+public func animateTo(value: AnimateParam, event: VoidCallback): Unit
 ```
 
 [animateTo](../../../reference/source_zh_cn/arkui-cj/cj-animation-animateto.md)接口参数中，animation指定[AnimateParam对象](../../../reference/source_zh_cn/arkui-cj/cj-animation-animateto.md#struct-animateparam)（包括时长、[Curve](../../../reference/source_zh_cn/arkui-cj/cj-common-types.md#enum-curve)等）callback为动画的闭包函数，闭包内变量改变产生的属性动画将遵循相同的动画参数。
@@ -44,7 +44,7 @@ class EntryView {
             .width(100.vp)
             .height(100.vp)
             .borderRadius(30.vp)
-            .onClick{ evt =>
+            .onClick({ evt =>
                     getUIContext().animateTo(AnimateParam(curve: Curve.Smooth),
                     { =>
                         this.animate = !this.animate
@@ -69,7 +69,7 @@ class EntryView {
                             this.translateX = 0.0
                         }
                     })
-            }
+            })
 
             //组件二
             Column {
@@ -125,7 +125,7 @@ class EntryView {
             .width(100.vp)
             .height(100.vp)
             .borderRadius(30.vp)
-            .onClick{ evt=>
+            .onClick({ evt=>
                     this.animate = !this.animate
                     if (this.animate) {
                         this.rotateValue = 90.0
@@ -142,7 +142,7 @@ class EntryView {
                     } else {
                         this.translateX = 0.0
                     }
-            }
+            })
             .animationEnd()
 
             //组件二
