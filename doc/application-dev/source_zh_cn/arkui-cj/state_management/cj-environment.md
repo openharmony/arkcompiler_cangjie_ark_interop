@@ -87,7 +87,7 @@ class EntryView {
         Row() {
             Column() {
                 Button("lang")
-                .onClick {
+                .onClick({
                     evt =>
                         if (lang.get()=='zh') {
                             Hilog.info(0, "Chinese", "你好")
@@ -95,7 +95,7 @@ class EntryView {
                             Hilog.info(0, "En", "Hello")
                         }
 
-                }
+                })
             }
         }
     }

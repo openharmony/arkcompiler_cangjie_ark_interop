@@ -673,7 +673,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
         func build() {
             Row() {
                 Button(this.titleName, ButtonOptions(shape: ButtonType.Capsule))
-                .onClick({ =>
+                .onClick({ event =>
                     this.thingsViewModel.chooseAll()
                     this.titleName = if (!this.thingsViewModel.isChoosen) {"全选"} else {"取消全选"}
                 })
@@ -706,9 +706,9 @@ View层根据需要来组织，但View层需要区分一下三种组件：
             Image(icon)
             .width(28)
             .height(28)
-            .onClick{ evt: ClickEvent =>
+            .onClick({ evt: ClickEvent =>
                 this.thingViewModel.updateIsFinish()
-                }
+            })
         }
 
         func build() {
@@ -725,7 +725,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
                 .fontSize(24)
                 .fontWeight(FontWeight.Bold)
                 .decoration(decorationType: if (this.thingViewModel.isFinish) {TextDecorationType.LineThrough} else {TextDecorationType.None}, color: Color.Black, decorationStyle: TextDecorationStyle.Solid)
-                .onClick{ event => this.thingViewModel.addSuffixes() }
+                .onClick({ event => this.thingViewModel.addSuffixes() })
             }
             .height(8.percent)
             .width(95.percent)
