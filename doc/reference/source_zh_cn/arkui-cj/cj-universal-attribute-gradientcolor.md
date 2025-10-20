@@ -32,7 +32,7 @@ public func linearGradient(angle!: ?Float64 = None, direction!: ?GradientDirecti
 |:---|:---|:---|:---|:---|
 | angle | ?Float64 | 否 | None | **命名参数。** 线性渐变的起始角度。0点方向顺时针旋转为正向角度。|
 | direction | ?[GradientDirection](./cj-common-types.md#enum-gradientdirection) | 否 | Option.None | **命名参数。** 线性渐变的方向，设置angle后不生效。<br>初始值：GradientDirection.Bottom。|
-| colors | ?Array\<(ResourceColor, Float64)> | 否 | None | **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。<br>初始值：[(Color.Transparent, 0.0)]。|
+| colors | ?Array\<([ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor), Float64)> | 否 | None | **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。<br>初始值：[(Color.Transparent, 0.0)]。|
 | repeating | ?Bool | 否 | None | **命名参数。** 为渐变的颜色重复着色。 <br>初始值：false。|
 
 
@@ -55,11 +55,11 @@ public func sweepGradient(center: ?(Length, Length), start!: ?Float64 = None, en
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| center | ?(Length, Length) | 是 | - | 中心点坐标，相对于当前组件左上角的坐标。 <br>初始值：(0.0.vp, 0.0.vp)。|
+| center | ?([Length](../BasicServicesKit/cj-apis-base.md#interface-length), [Length](../BasicServicesKit/cj-apis-base.md#interface-length)) | 是 | - | 中心点坐标，相对于当前组件左上角的坐标。 <br>初始值：(0.0.vp, 0.0.vp)。|
 | start | ?Float64 | 否 | None | **命名参数。** 角度渐变的起点。 <br>初始值：0.0。|
 | end | ?Float64 | 否 | None | **命名参数。** 角度渐变的终点。 <br>初始值：0.0。|
 | rotation | ?Float64 | 否 | None | **命名参数。** 角度渐变的旋转角度。 <br>初始值：0.0。|
-| colors | ?Array\<(ResourceColor, Float64)> | 否 | None | **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 <br>初始值：[(Color.Transparent, 0.0)]。|
+| colors | ?Array\<([ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor), Float64)> | 否 | None | **命名参数。** 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 <br>初始值：[(Color.Transparent, 0.0)]。|
 | repeating | ?Bool | 否 | None | **命名参数。** 为渐变的颜色重复着色。 <br>初始值：false。|
 
 
@@ -80,9 +80,9 @@ public func radialGradient(center: ?(Length, Length), radius: ?Length, colors: ?
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| center | ?(Length, Length) | 是 | \- | 中心点坐标，相对于当前组件左上角的坐标。 <br>初始值：(0.0.px, 0.0.px)。|
-| radius | ?Length | 是 | \- | 径向渐变的半径。 |
-| colors | ?Array\<(ResourceColor, Float64)> | 是 | \- | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 <br>初始值：[]。|
+| center | ?([Length](../BasicServicesKit/cj-apis-base.md#interface-length), [Length](../BasicServicesKit/cj-apis-base.md#interface-length)) | 是 | \- | 中心点坐标，相对于当前组件左上角的坐标。 <br>初始值：(0.0.px, 0.0.px)。|
+| radius | ?[Length](../BasicServicesKit/cj-apis-base.md#interface-length) | 是 | \- | 径向渐变的半径。 |
+| colors | ?Array\<([ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor), Float64)> | 是 | \- | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 <br>初始值：[]。|
 | repeating | ?Bool | 否 | None | **命名参数。** 为渐变的颜色重复着色。 <br>初始值：false。|
 
 

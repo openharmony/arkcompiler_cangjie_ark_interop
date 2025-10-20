@@ -24,7 +24,7 @@ public func foregroundColor(value: ?ColoringStrategy): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ColoringStrategy|是|-|设置组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。 <br/>初始值：Color.Transparent。|
+|value|?[ColoringStrategy](./cj-common-types.md#enum-coloringstrategy)|是|-|设置组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。 <br/>初始值：Color.Transparent。|
 
 **返回值：**
 
@@ -50,7 +50,7 @@ public func foregroundColor(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|设置组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。 <br/>初始值：Color.Transparent。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置组件的前景颜色或者根据智能取色策略设置前景颜色。不支持属性动画。 <br/>初始值：Color.Transparent。|
 
 **返回值：**
 

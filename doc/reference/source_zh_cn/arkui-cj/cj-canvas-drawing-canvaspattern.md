@@ -36,4 +36,4 @@ public func setTransform(transform: ?Matrix2D): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|transform|?Matrix2D|是|-|2D 变换矩阵。|
+|transform|?[Matrix2D](./cj-canvas-drawing-matrix2d.md#class-matrix2d)|是|-|2D 变换矩阵。|

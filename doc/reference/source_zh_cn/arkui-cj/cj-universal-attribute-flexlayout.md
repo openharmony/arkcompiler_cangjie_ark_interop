@@ -50,7 +50,7 @@ public func flexBasis(value: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件在父容器主轴方向上的基准尺寸。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|组件在父容器主轴方向上的基准尺寸。|
 
 **返回值：**
 

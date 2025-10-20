@@ -1500,6 +1500,8 @@ public init(
 | bottom | [Length](../BasicServicesKit/cj-apis-base.md#interface-length) | No | 80.vp | Sets the height of the pop-up window's bottom border from the navigation bar. |
 | showMode | [ToastShowMode](#enum-toastshowmode) | No | ToastShowMode.Default | Sets whether the pop-up window## enum HoverModeAreaType
 
+## enum HoverModeAreaType
+
 ```cangjie
 public enum HoverModeAreaType <: Equatable<HoverModeAreaType> {
     | TopScreen

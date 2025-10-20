@@ -49,7 +49,7 @@ func onDragStart(event: ?(DragInfo) -> DragItemInfo): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(DragInfo) -> DragItemInfo|是|-|回调函数，拖拽开始时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。<br/>返回参数为拖拽过程中显示的组件信息。|
+|event|?([DragInfo](./cj-common-types.md#class-draginfo)) -> [DragItemInfo](./cj-common-types.md#class-dragiteminfo)|是|-|回调函数，拖拽开始时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。<br/>返回参数为拖拽过程中显示的组件信息。|
 
 **返回值：**
 
@@ -74,7 +74,7 @@ func onDragStart(event: ?(DragInfo) -> CustomBuilder): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(DragInfo) -> CustomBuilder|是|-|回调函数，拖拽开始时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。<br/>返回参数为拖拽过程中显示的组件信息，使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
+|event|?([DragInfo](./cj-common-types.md#class-draginfo)) -> [CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|回调函数，拖拽开始时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。<br/>返回参数为拖拽过程中显示的组件信息，使用时结合[@Builder](../../../Dev_Guide/arkui-cj/paradigm/cj-macro-builder.md)和bind方法使用。|
 
 **返回值：**
 
@@ -99,7 +99,7 @@ func onDragStart(event: ?(DragInfo) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(DragInfo) -> Unit|是|-|回调函数，拖拽开始时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。<br/>返回参数为拖拽过程中显示的组件信息。|
+|event|?([DragInfo](./cj-common-types.md#class-draginfo)) -> Unit|是|-|回调函数，拖拽开始时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。<br/>返回参数为拖拽过程中显示的组件信息。|
 
 **返回值：**
 
@@ -128,7 +128,7 @@ func onDragEnter(event: ?(DragInfo) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(DragInfo) -> Unit|是|-|回调函数，拖拽进入组件范围时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。|
+|event|?([DragInfo](./cj-common-types.md#class-draginfo)) -> Unit|是|-|回调函数，拖拽进入组件范围时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。|
 
 **返回值：**
 
@@ -157,7 +157,7 @@ func onDragMove(event: ?(DragInfo) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(DragInfo) -> Unit|是|-|回调函数，拖拽进入组件范围移动时触发。|
+|event|?([DragInfo](./cj-common-types.md#class-draginfo)) -> Unit|是|-|回调函数，拖拽进入组件范围移动时触发。|
 
 **返回值：**
 
@@ -186,7 +186,7 @@ func onDragLeave(event: ?(DragInfo) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(DragInfo) -> Unit|是|-|回调函数，拖拽离开组件范围时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。|
+|event|?([DragInfo](./cj-common-types.md#class-draginfo)) -> Unit|是|-|回调函数，拖拽离开组件范围时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。|
 
 **返回值：**
 
@@ -211,7 +211,7 @@ func onDrop(event: ?(DragInfo) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(DragInfo) -> Unit|是|-|回调函数，本组件范围内停止拖拽行为时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。|
+|event|?([DragInfo](./cj-common-types.md#class-draginfo)) -> Unit|是|-|回调函数，本组件范围内停止拖拽行为时触发。<br/>传入参数为拖拽事件信息，包括拖拽点坐标。|
 
 **返回值：**
 

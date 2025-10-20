@@ -24,7 +24,7 @@ public func renderFit(fitMode: ?RenderFit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| fitMode | ?RenderFit  | 是  | - | 宽高动画过程中的组件内容填充方式。 <br/>初始值：RenderFit.TopLeft。|
+| fitMode | ?[RenderFit](./cj-common-types.md#enum-renderfit)  | 是  | - | 宽高动画过程中的组件内容填充方式。 <br/>初始值：RenderFit.TopLeft。|
 
 **返回值：**
 

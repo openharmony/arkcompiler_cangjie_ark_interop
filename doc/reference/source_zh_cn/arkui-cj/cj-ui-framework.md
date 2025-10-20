@@ -361,7 +361,7 @@ func onStateUpdate(info: String, dependentElmtIds: ArrayList<Int64>): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |info|String|是|-|-|
-|dependentElmtIds|[ArrayList](../apis/BasicServicesKit/cj-apis-collection.md#class-arraylist)\<Int64>|是|-|-|
+|dependentElmtIds|[ArrayList](../../../cj-user-manual/source_zh_cn/collections/collection_arraylist.md#arraylist)\<Int64>|是|-|-|
 
 ### func notifyRead(String)
 
@@ -917,7 +917,7 @@ public override func aboutToReuseInternal(param: ReuseParams): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|param|[ReuseParams](./cj-custom-component-lifecycle.md#class-reuseparams)|是|-|重用参数。|
+|param|[ReuseParams](./cj-common-types.md#class-reuseparams)|是|-|重用参数。|
 
 ### func createRecycle(CustomView, Bool, String, () -> Unit)
 
@@ -1036,7 +1036,7 @@ public func onStateUpdate(stateInfo: String, dependentElmtIds: ArrayList<Int64>)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |stateInfo|String|是|-|状态信息。|
-|dependentElmtIds|[ArrayList](../apis/BasicServicesKit/cj-apis-collection.md#class-arraylist)\<Int64>|是|-|依赖的元素ID列表。|
+|dependentElmtIds|[ArrayList](../../../cj-user-manual/source_zh_cn/collections/collection_arraylist.md#arraylist)\<Int64>|是|-|依赖的元素ID列表。|
 
 ### func id()
 
@@ -1122,7 +1122,7 @@ public func getUIContext(): UIContext
 
 |类型|说明|
 |:----|:----|
-|[UIContext](./cj-api-uicontext-uicontext.md#class-uicontext)|UI上下文。|
+|[UIContext](./cj-apis-uicontext-uicontext.md#class-uicontext)|UI上下文。|
 
 ## class ViewBuilder
 
@@ -1248,7 +1248,7 @@ public static func check(_: ViewBuilder)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|ViewBuilder|是|-|UI框架使用。|
+|_|[ViewBuilder](#class-viewbuilder)|是|-|UI框架使用。|
 
 ### static func check(CustomView)
 
@@ -1266,7 +1266,7 @@ public static func check(_: CustomView)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|_|CustomView|是|-|UI框架使用。|
+|_|[CustomView](#class-customview)|是|-|UI框架使用。|
 
 ## class CJPageEntry
 
@@ -1384,7 +1384,7 @@ public class If <: UINodeBase {
 
 **父类型：**
 
-- UINodeBase
+- [UINodeBase](./cj-ui-framework.md#class-uinodebase)
 
 ### init(() -> Unit)
 
@@ -1456,7 +1456,7 @@ public class EmptyComponent <: CommonMethodComponent<EmptyComponent> & EmptyComp
 
 **父类型：**
 
-- CommonMethodComponent\<EmptyComponent>
+- CommonMethodComponent\<[EmptyComponent](#class-emptycomponent)>
 - EmptyComponentAttribute
 
 ### init()
@@ -1500,7 +1500,7 @@ public class __Recycle__ <: CommonMethodComponent<__Recycle__> & RecycleAttribut
 
 **父类型：**
 
-- CommonMethodComponent\<\_\_Recycle\_\_>
+- CommonMethodComponent\<[\_\_Recycle\_\_](#class-__recycle__)>
 - RecycleAttribute
 
 ### init()

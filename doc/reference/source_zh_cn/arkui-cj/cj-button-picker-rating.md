@@ -95,9 +95,11 @@ public func starStyle(backgroundUri!: ?ResourceStr, foregroundUri!: ?ResourceStr
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|backgroundUri|?ResourceStr|是|-|**命名参数。** 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br>初始值：""。|
-|foregroundUri|?ResourceStr|是|-|**命名参数。** 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br>初始值：""。|
-|secondaryUri|?ResourceStr|否|None|**命名参数。** 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br>初始值： 取backgroundUri的值。|
+|backgroundUri|?[ResourceStr](./cj-common-types.md#interface-resourcestr)
+|是|-|**命名参数。** 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br>初始值：""。|
+|foregroundUri|?[ResourceStr](./cj-common-types.md#interface-resourcestr)
+|是|-|**命名参数。** 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br>初始值：""。|
+|secondaryUri|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br>初始值： 取backgroundUri的值。|
 
 > **说明：**
 >

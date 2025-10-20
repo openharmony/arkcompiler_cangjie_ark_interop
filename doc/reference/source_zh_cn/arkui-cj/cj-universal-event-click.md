@@ -24,7 +24,7 @@ func onClick(event: ?(ClickEvent) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(ClickEvent) -> Unit|是|-|回调函数，组件被点击时触发该回调。|
+|event|?([ClickEvent](./cj-common-types.md#class-clickevent)) -> Unit|是|-|回调函数，组件被点击时触发该回调。|
 
 **返回值：**
 
