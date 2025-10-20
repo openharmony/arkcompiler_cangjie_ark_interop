@@ -172,7 +172,7 @@ class EntryView {
             }
             .indicator(true)
 
-            Row(12) {
+            Row(space:12) {
                 Button('showNext').onClick({
                     evt => this
                         .swiperController
@@ -185,7 +185,7 @@ class EntryView {
                 })
             }
             .margin(5)
-            Row(12) {
+            Row(space:12) {
                 Text('Index:')
                 Button(this.targetIndex.toString()).onClick(
                     {
@@ -193,7 +193,7 @@ class EntryView {
                     })
             }
             .margin(5)
-            Row(12) {
+            Row(space:12) {
                 Text('AnimationMode:')
                 Button(this.animationModeStr.toString()).onClick(
                     {
