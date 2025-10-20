@@ -53,12 +53,12 @@ class EntryView {
       }
 
       Button('increase count')
-        .onClick({ =>
+        .onClick({ e =>
           this.count++;
         })
 
       Button('decrease count')
-        .onClick({ =>
+        .onClick({ e =>
           this.count--;
         })
     }
@@ -97,7 +97,7 @@ public class CounterView {
         Column(space: 20) {
           Text("${this.label}")
           Button("counter ${this.counter} +1")
-            .onClick({ =>
+            .onClick({ e =>
               this.counter += 1;
             })
         }
@@ -119,7 +119,7 @@ public class EntryView {
           CounterView( label: "CounterView #negative" )
         }
         Button("toggle ${this.toggle}")
-          .onClick({ =>
+          .onClick({ e =>
             this.toggle = !this.toggle;
           })
       }
@@ -152,11 +152,11 @@ class CounterView {
     var label: String = 'unknown';
 
     func build() {
-      Column( 20 ) {
+      Column(space: 20) {
         Text("${this.label}")
           .fontSize(20)
         Button("counter ${this.counter} +1")
-          .onClick({ =>
+          .onClick({ e =>
             this.counter += 1;
           })
       }
@@ -179,7 +179,7 @@ public class EntryView {
           CounterView( counter: counter, label: 'CounterView #negative' )
         }
         Button("toggle ${this.toggle}")
-          .onClick({ =>
+          .onClick({ e =>
             this.toggle = !this.toggle;
           })
       }
@@ -209,7 +209,7 @@ public class EntryView {
     @State var toggle: Bool = false;
     @State var toggleColor: Bool = false;
     func build() {
-      Column( 20 ) {
+      Column(space: 20) {
         Text('Before')
           .fontSize(15)
         if (this.toggle) {
@@ -237,11 +237,11 @@ public class EntryView {
         Text('After')
           .fontSize(15)
         Button('Toggle Outer')
-          .onClick({ =>
+          .onClick({ e =>
             this.toggle = !this.toggle;
           })
         Button('Toggle Inner')
-          .onClick({ =>
+          .onClick({ e =>
             this.toggleColor = !this.toggleColor;
           })
       }

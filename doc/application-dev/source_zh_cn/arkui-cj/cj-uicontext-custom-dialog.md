@@ -36,9 +36,9 @@
     func CustomDialog() {
         Column() {
             Text("Hello").height(50.vp)
-            Button("Close").onClick{
+            Button("Close").onClick({
                 evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
-            }
+            })
         }.margin(10.vp)
     }
     ```
@@ -68,23 +68,23 @@
         func CustomDialog() {
             Column() {
                 Text("Hello Content").height(60.vp)
-                Button("Close").onClick{
+                Button("Close").onClick({
                     evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
-                }
+                })
             }.margin(10.vp)
         }
 
         func build(){
             Button("open dialog and options")
                 .margin(top: 50)
-                .onClick {
+                .onClick({
                     evt => getUIContext().getPromptAction().openCustomDialog(
                         CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                         {
                             id => customdialogId = id
                         }
                     )
-                }
+                })
         }
     }
     ```
@@ -158,18 +158,18 @@ public class EntryView {
     func CustomDialog() {
         Column() {
             Text("Hello ").height(70.vp)
-            Button("Close").onClick{
+            Button("Close").onClick({
                 evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
-            }
+            })
         }.margin(15.vp)
     }
     @Builder
     func CustomDialog1() {
         Column() {
             Text("Hello Content").height(60.vp)
-            Button("Close").onClick{
+            Button("Close").onClick({
                evt => getUIContext().getPromptAction().closeCustomDialog(customdialogId)
-            }
+            })
         }.margin(10.vp)
     }
     func build() {
@@ -177,28 +177,27 @@ public class EntryView {
             Column(){
             Button("open dialog and options")
                 .margin(top: 50)
-                .onClick {
+                .onClick({
                         evt => getUIContext().getPromptAction().openCustomDialog(
                             CustomDialogOptions(builder: bind(this.CustomDialog, this)),
                             {
                                 id => customdialogId = id
                             }
                         )
-                    }
+                    })
             Button("open dialog and content")
                 .margin(top: 50)
-                .onClick {
+                .onClick({
                         evt => getUIContext().getPromptAction().openCustomDialog(
                             CustomDialogOptions(builder: bind(this.CustomDialog1, this)),
                             {
                                 id => customdialogId = id
                             }
                         )
-                    }
+                    })
         }.width(100.percent).padding(top:5)}
     }
 }
-
 ```
 
 ![UIContextPromptAction](figures/UIContextPromptAction.gif)

@@ -69,7 +69,7 @@ class EntryView {
         .backgroundColor(0XF5DC62)
         .onReady({
             =>
-            this.context.fillStyle(0X0097D4)
+            this.context.fillStyle = 0X0097D4
             this.context.fillRect(50.0, 50.0, 100.0, 100.0)
         })
     }
@@ -235,12 +235,12 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                   .onReady({
                       =>
                       // 文本填充
-                      this.context.font(size: 50.px, weight: FontWeight.Bolder, family: "sans-serif")
+                      this.context.font = "FontStyle.Normal bolder 50.px sans-serif"
                       this.context.fillText("Hello World!", 50.0, 100.0)
                       // 文本描边
-                      this.context.strokeStyle(0Xff0000)
+                      this.context.strokeStyle = 0Xff0000
                       this.context.lineWidth = 0.7
-                      this.context.font(size: 50.px, weight: FontWeight.Bolder, family: "sans-serif")
+                      this.context.font = "FontStyle.Normal bolder 50.px sans-serif"
                       this.context.strokeText("Hello World!", 50.0, 120.0)
                       }
                   )
@@ -284,7 +284,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                         grad.addColorStop(0.5, 0XFFFFF0)
                         grad.addColorStop(1.0, 0XBDDB69)
                         //用CanvasGradient对象填充矩形
-                        this.context.fillStyle(grad)
+                        this.context.fillStyle = grad
                         this.context.fillRect(0.0, 0.0, 400.0, 400.0)
                     }
                 )
@@ -322,7 +322,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                       {
                       =>
                           // 设定填充样式，填充颜色设为蓝色
-                          this.context.fillStyle(0X0097D4)
+                          this.context.fillStyle = 0X0097D4
                           // 以(50, 50)为左上顶点，画一个宽高200的矩形
                           this.context.fillRect(50.0, 50.0, 200.0, 200.0)
                           // 以(70, 70)为左上顶点，清除宽150高100的区域
@@ -370,7 +370,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
                       path.lineTo(250.0, 150.0)
                       path.closePath()
                       // 设定填充色为蓝色
-                      this.context.fillStyle(0X0097D4)
+                      this.context.fillStyle = 0X0097D4
                       // 使用填充的方式，将Path2D描述的五边形绘制在canvas组件内部
                       this.context.fill(path)
                       }
