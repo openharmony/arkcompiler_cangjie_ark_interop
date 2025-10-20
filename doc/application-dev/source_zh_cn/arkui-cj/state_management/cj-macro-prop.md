@@ -288,15 +288,15 @@ class EntryView {
             // 父组件的数据源的修改会同步给子组件
             Button("+1 - Nuggets in New Game")
                 .margin(10)
-                .onClick {
+                .onClick({
                     evt => this.countDownStartValue += 1
-                }
+                })
             // 父组件的修改会同步给子组件
             Button("-1  - Nuggets in New Game")
                 .margin(10)
-                .onClick {
+                .onClick({
                     evt => this.countDownStartValue -= 1
-                }
+                })
             CountDownComponent(count: this.countDownStartValue, costOfOneAttempt: 2)
         }
     }
@@ -334,9 +334,9 @@ class Child {
     func build() {
         Text("${this.value}")
             .fontSize(50.vp)
-            .onClick {
+            .onClick({
                 evt => this.value++
-            }
+            })
     }
 }
 
@@ -362,13 +362,13 @@ class EntryView {
                 )
                 Text('replace entire arr')
                     .fontSize(50)
-                    .onClick {
+                    .onClick({
                         evt => if (this.arr[0] == 1) {
                             this.arr = [3, 4, 5]
                         } else {
                             this.arr = [1, 2, 3]
                         }
-                    }
+                    })
             }
         }
     }
@@ -436,10 +436,10 @@ class ReaderComp {
             Text("...has${this.book.pages} pages!")
             Text("${this.book.readIt}")
                 .fontSize(50.vp)
-                .onClick {
+                .onClick({
                     evt =>
                         this.book.readIt = true
-                }
+                })
         }
     }
 }
@@ -486,9 +486,9 @@ class ReaderComp {
         Row() {
             Text(this.book.title)
             Text("...has${this.book.pages} pages!")
-            Text("${this.book.readIt}").onClick {
+            Text("${this.book.readIt}").onClick({
                 evt => this.book.readIt = true
-            }
+            })
         }
         .backgroundColor(0x00ff00)
         .width(312)
@@ -543,14 +543,13 @@ class EntryView {
                 .width(312)
                 .height(40)
                 .margin(12)
-                .onClick(
-                    {
-                        evt => if (this.allBooks.size > 0) {
-                            this.allBooks.remove(0)
-                        } else {
-                            Hilog.info(0, "cangjie", "length <= 0")
-                        }
-                    })
+                .onClick({
+                    evt => if (this.allBooks.size > 0) {
+                        this.allBooks.remove(0)
+                    } else {
+                        Hilog.info(0, "cangjie", "length <= 0")
+                    }
+                })
         }
     }
 }

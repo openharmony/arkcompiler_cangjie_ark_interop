@@ -56,13 +56,14 @@ class EntryView {
         Column {
             Text("Font Size List")
                 .fontSize(50)
-                .onClick {
+                .onClick({
                     evt =>
                         for(i in 0..this.styleList.size){
                             this.styleList[i].fontSize++
                         }
                         Hilog.info(0, "AppLogCj", "change font size")
                     }
+                )
             List() {
                 ForEach(this.styleList, {
                         item: TextStyles, _: Int64 =>
@@ -112,13 +113,13 @@ class EntryView {
         Column {
             Text("Font Size List")
                 .fontSize(50)
-                .onClick{
+                .onClick({
                     evt =>
                     for(i in 0..this.styleList.size){
                         this.styleList[i].fontSize++
                     }
                     Hilog.info(0,"AppLog: info","change font size")
-                }
+                })
             List(){
                 ForEach(this.styleList ,{
                         item: TextStyles, _:Int64 =>
