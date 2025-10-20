@@ -30,7 +30,7 @@ public init(value: ?ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|文本内容。<br>初始值：""。|
+|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。<br>初始值：""。|
 
 ## 通用属性/通用事件
 
@@ -60,8 +60,8 @@ public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceCo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|?TextDecorationType|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
-|color|?ResourceColor|否|None| **命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
+|decorationType|?[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
+|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None| **命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
 
 ### func fontColor(?ResourceColor)
 
@@ -79,7 +79,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|字体颜色。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
 
 ### func fontFamily(?ResourceStr)
 
@@ -97,7 +97,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|字体列表。<br>初始值："HarmonyOS Sans"。|
+|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 
@@ -115,7 +115,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|字体大小。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。|
 
 ### func fontStyle(?FontStyle)
 
@@ -133,7 +133,7 @@ public func fontStyle(value: ?FontStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontStyle|是|-|字体样式。<br>初始值：FontStyle.Normal。|
+|value|?[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|字体样式。<br>初始值：FontStyle.Normal。|
 
 ### func fontWeight(?FontWeight)
 
@@ -151,7 +151,7 @@ public func fontWeight(value: ?FontWeight): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontWeight|是|-|文本的字体粗细，设置过大可能会在不同字体下有截断。<br>初始值：FontWeight.Normal。|
+|value|?[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细，设置过大可能会在不同字体下有截断。<br>初始值：FontWeight.Normal。|
 
 ### func letterSpacing(?Length)
 
@@ -169,7 +169,7 @@ public func letterSpacing(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|字符间距。<br>初始值：0.0.px。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字符间距。<br>初始值：0.0.px。|
 
 ### func textCase(?TextCase)
 
@@ -187,7 +187,7 @@ public func textCase(value: ?TextCase): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?TextCase|是|-|文本大小写。<br>初始值：TextCase.Normal。|
+|value|?[TextCase](./cj-common-types.md#enum-textcase)|是|-|文本大小写。<br>初始值：TextCase.Normal。|
 
 ## 组件事件
 
@@ -207,7 +207,7 @@ public func onClick(event: ?(ClickEvent) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(ClickEvent) -> Unit|是|-|点击事件回调函数，点击事件回调。<br>初始值：{ _ => }。|
+|event|?([ClickEvent](./cj-common-types.md#class-clickevent)) -> Unit|是|-|点击事件回调函数，点击事件回调。<br>初始值：{ _ => }。|
 
 ## 基础类型定义
 
@@ -225,7 +225,7 @@ public abstract class BaseSpan <: UINodeBase {}
 
 **父类型：**
 
-- UINodeBase
+- [UINodeBase](./cj-ui-framework.md#class-uinodebase)
 
 
 ## 示例代码

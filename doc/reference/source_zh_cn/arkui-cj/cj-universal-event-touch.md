@@ -24,7 +24,7 @@ func onTouch(event: ?(TouchEvent) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(TouchEvent) -> Unit|是|-|回调函数，手指触摸动作触发该回调。<br>初始值：{ _: TouchEvent => }。|
+|event|?([TouchEvent](./cj-common-types.md#class-touchevent)) -> Unit|是|-|回调函数，手指触摸动作触发该回调。<br>初始值：{ _: TouchEvent => }。|
 
 **返回值：**
 

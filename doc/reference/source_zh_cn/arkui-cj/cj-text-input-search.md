@@ -35,10 +35,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|否|None|**命名参数。** 当前显示的搜索文本内容。初始值：""。|
-|placeholder|?ResourceStr|否|None|**命名参数。** 无输入时的提示文本。初始值：""。|
-|icon|Option\<AppResource>|否|None|**命名参数。** 搜索图标路径，默认使用系统搜索图标。|
-|controller|Option\<SearchController>|否|None|**命名参数。** Search组件控制器。|
+|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数。** 当前显示的搜索文本内容。初始值：""。|
+|placeholder|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数。** 无输入时的提示文本。初始值：""。|
+|icon|Option\<[AppResource](../LocalizationKit/cj-apis-resource.md#class-appresource)>|否|None|**命名参数。** 搜索图标路径，默认使用系统搜索图标。|
+|controller|Option\<[SearchController](#class-searchcontroller)>|否|None|**命名参数。** Search组件控制器。|
 
 ## 通用属性/通用事件
 
@@ -64,7 +64,7 @@ public func searchButton(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|**命名参数。** 搜索框末尾搜索按钮文本内容。初始值：""。|
+|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|**命名参数。** 搜索框末尾搜索按钮文本内容。初始值：""。|
 
 ### func placeholderColor(?ResourceColor)
 
@@ -82,7 +82,7 @@ public func placeholderColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|目标颜色。初始值：'#99182431'。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|目标颜色。初始值：'#99182431'。|
 
 ### func placeholderFont(?Length, ?FontWeight, ?FontStyle, ?ResourceStr)
 
@@ -105,10 +105,10 @@ public func placeholderFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|否|None|**命名参数。** placeholder的文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。初始值：16.fp。|
-|weight|?FontWeight|否|None|**命名参数。** placeholder字体的目标粗细。初始值：FontWeight.W400。|
-|style|?FontStyle|否|None|**命名参数。** placeholder字体的目标样式。初始值：FontStyle.Normal。|
-|family|?ResourceStr|否|None|**命名参数。** placeholder字体的样式族。初始值：""。|
+|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** placeholder的文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。初始值：16.fp。|
+|weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** placeholder字体的目标粗细。初始值：FontWeight.W400。|
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** placeholder字体的目标样式。初始值：FontStyle.Normal。|
+|family|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数。** placeholder字体的样式族。初始值：""。|
 
 ### func textFont(?Length, ?FontWeight, ?FontStyle, ?ResourceStr)
 
@@ -131,10 +131,10 @@ public func textFont(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|否|None|**命名参数。** 文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。初始值：16.fp。|
-|weight|?FontWeight|否|None|**命名参数。** 输入字体的目标粗细。初始值：FontWeight.W400。|
-|style|?FontStyle|否|None|**命名参数。** 输入字体的目标样式。初始值：FontStyle.Normal。|
-|family|?ResourceStr|否|None|**命名参数。** 输入字体的样式族。初始值：""。|
+|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 文本尺寸。Length为Int64、Float64类型时，使用fp单位。支持设置百分比字符串。初始值：16.fp。|
+|weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 输入字体的目标粗细。初始值：FontWeight.W400。|
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 输入字体的目标样式。初始值：FontStyle.Normal。|
+|family|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None|**命名参数。** 输入字体的样式族。初始值：""。|
 
 ### func copyOption(?CopyOptions)
 
@@ -157,7 +157,7 @@ public func copyOption(value: ?CopyOptions): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?CopyOptions|是|-|search组件的复制选项。初始值：CopyOptions.LocalDevice，支持设备内复制。|
+|value|?[CopyOptions](./cj-common-types.md#enum-copyoptions)|是|-|search组件的复制选项。初始值：CopyOptions.LocalDevice，支持设备内复制。|
 
 ## 组件事件
 
@@ -269,7 +269,7 @@ public class SearchController <: TextContentControllerBase {
 
 **父类型：**
 
-- TextContentControllerBase
+- [TextContentControllerBase](./cj-common-types.md#interface-textcontentcontrollerbase)
 
 #### init()
 

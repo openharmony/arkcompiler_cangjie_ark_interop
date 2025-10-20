@@ -30,8 +30,8 @@ public init(content: ?ResourceStr, controller!: ?TextController = None, child!: 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|?ResourceStr|是|-|文本内容。|
-|controller|?TextController|否|None| **命名参数。** 给组件绑定一个控制器。|
+|content|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。|
+|controller|?[TextController](#class-textcontroller)|否|None| **命名参数。** 给组件绑定一个控制器。|
 |child|() -> Unit|否|{=>}| **命名参数。** Text容器的子组件。|
 
 ### init(?TextController, () -> Unit)
@@ -50,7 +50,7 @@ public init(controller!: ?TextController = None, child!: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|controller|?TextController|否|None| **命名参数。** 给组件绑定一个控制器。|
+|controller|?[TextController](#class-textcontroller)|否|None| **命名参数。** 给组件绑定一个控制器。|
 |child|() -> Unit|是|-| **命名参数。** Text容器的子组件。|
 
 ### init(?TextController)
@@ -69,7 +69,7 @@ public init(controller!: ?TextController = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|controller|?TextController|否|None| **命名参数。** 给组件绑定一个控制器。|
+|controller|?[TextController](#class-textcontroller)|否|None| **命名参数。** 给组件绑定一个控制器。|
 
 ## 通用属性/通用事件
 
@@ -114,9 +114,9 @@ public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceCo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|decorationType|?TextDecorationType|是|-| **命名参数。** 装饰线类型。<br>初始值：TextDecorationType.None。|
-|color|?ResourceColor|是|-| **命名参数。** 装饰线颜色。<br>初始值：Color.Black。|
-|decorationStyle|?TextDecorationStyle|否|None| **命名参数。** 装饰线样式。<br>初始值：TextDecorationStyle.Solid。|
+|decorationType|?[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 装饰线类型。<br>初始值：TextDecorationType.None。|
+|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-| **命名参数。** 装饰线颜色。<br>初始值：Color.Black。|
+|decorationStyle|?[TextDecorationStyle](./cj-common-types.md#enum-textdecorationstyle)|否|None| **命名参数。** 装饰线样式。<br>初始值：TextDecorationStyle.Solid。|
 
 ### func fontColor(?ResourceColor)
 
@@ -134,7 +134,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|文本的颜色。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|文本的颜色。|
 
 ### func fontFamily(?ResourceStr)
 
@@ -152,7 +152,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
+|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 
@@ -170,7 +170,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的字体大小。<br>初始值：16.fp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的字体大小。<br>初始值：16.fp。|
 
 ### func fontStyle(?FontStyle)
 
@@ -188,7 +188,7 @@ public func fontStyle(value: ?FontStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontStyle|是|-|文本的字体样式。<br>初始值：FontStyle.Normal。|
+|value|?[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|文本的字体样式。<br>初始值：FontStyle.Normal。|
 
 ### func fontWeight(?FontWeight)
 
@@ -206,7 +206,7 @@ public func fontWeight(value: ?FontWeight): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontWeight|是|-|文本的字体粗细。|
+|value|?[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细。|
 
 ### func lineHeight(?Length)
 
@@ -224,7 +224,7 @@ public func lineHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的行高。<br>初始值：0.0.px。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的行高。<br>初始值：0.0.px。|
 
 ### func lineSpacing(?Length)
 
@@ -242,7 +242,7 @@ public func lineSpacing(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的行间距。<br>初始值：0.0.vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的行间距。<br>初始值：0.0.vp。|
 
 ### func maxFontSize(?Length)
 
@@ -260,7 +260,7 @@ public func maxFontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的最大字体大小。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的最大字体大小。|
 
 ### func maxLines(?Int32)
 
@@ -296,7 +296,7 @@ public func minFontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的最小字体大小。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的最小字体大小。|
 
 ### func textCase(?TextCase)
 
@@ -314,7 +314,7 @@ public func textCase(value: ?TextCase): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?TextCase|是|-|文本的大小写格式。<br>初始值：TextCase.Normal。|
+|value|?[TextCase](./cj-common-types.md#enum-textcase)|是|-|文本的大小写格式。<br>初始值：TextCase.Normal。|
 
 ### func textAlign(?TextAlign)
 
@@ -332,7 +332,7 @@ public func textAlign(value: ?TextAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?TextAlign|是|-|文本的水平对齐方式。<br>初始值：TextAlign.Start。|
+|value|?[TextAlign](./cj-common-types.md#enum-textalign)|是|-|文本的水平对齐方式。<br>初始值：TextAlign.Start。|
 
 ### func textOverflow(?TextOverflow)
 
@@ -350,7 +350,7 @@ public func textOverflow(value: ?TextOverflow): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?TextOverflow|是|-|文本的溢出处理方式。<br>初始值：TextOverflow.None。|
+|value|?[TextOverflow](./cj-common-types.md#enum-textoverflow)|是|-|文本的溢出处理方式。<br>初始值：TextOverflow.None。|
 
 ## 基础类型定义
 

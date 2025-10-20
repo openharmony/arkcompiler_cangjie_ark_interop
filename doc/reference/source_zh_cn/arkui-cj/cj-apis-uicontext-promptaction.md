@@ -39,7 +39,7 @@ public var buttons: Array<ButtonInfo>
 
 **功能：** 对话框中的按钮数组。
 
-**类型：** Array\<ButtonInfo>
+**类型：** Array\<[ButtonInfo](#class-buttoninfo)>
 
 **读写能力：** 可读写
 
@@ -87,7 +87,7 @@ public var title: ResourceStr
 
 **功能：** 要显示的文本标题。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -116,8 +116,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|ResourceStr|否|''| **命名参数。** 要显示的文本标题。|
-|buttons|Array\<ButtonInfo>|是|-| **命名参数。** 按钮数组。|
+|title|[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|''| **命名参数。** 要显示的文本标题。|
+|buttons|Array\<[ButtonInfo](#class-buttoninfo)>|是|-| **命名参数。** 按钮数组。|
 |showInSubWindow|Bool|否|false| **命名参数。** 是否在子窗口中显示。|
 |isModal|Bool|否|true| **命名参数。** 是否为模态对话框。|
 
@@ -174,7 +174,7 @@ public var alignment: DialogAlignment
 
 **功能：** 对话框在屏幕上的对齐方式。
 
-**类型：** DialogAlignment
+**类型：** [DialogAlignment](./cj-common-types.md#enum-dialogalignment)
 
 **读写能力：** 可读写
 
@@ -222,7 +222,7 @@ public var hoverModeArea: HoverModeAreaType
 
 **功能：** 悬停模式下对话框的显示区域。
 
-**类型：** HoverModeAreaType
+**类型：** [HoverModeAreaType](#enum-hovermodeareatype)
 
 **读写能力：** 可读写
 
@@ -254,7 +254,7 @@ public var keyboardAvoidMode: KeyboardAvoidMode
 
 **功能：** 自定义对话框的键盘避免模式。
 
-**类型：** KeyboardAvoidMode
+**类型：** [KeyboardAvoidMode](#enum-keyboardavoidmode)
 
 **读写能力：** 可读写
 
@@ -270,7 +270,7 @@ public var maskColor: ResourceColor
 
 **功能：** 自定义对话框遮罩颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -286,7 +286,7 @@ public var maskRect: Rectangle
 
 **功能：** 对话框遮罩区域。大小不能超过主窗口。
 
-**类型：** Rectangle
+**类型：** [Rectangle](./cj-common-types.md#class-rectangle)
 
 **读写能力：** 可读写
 
@@ -302,7 +302,7 @@ public var offset: Offset
 
 **功能：** 对话框偏移量。
 
-**类型：** Offset
+**类型：** [Offset](./cj-common-types.md#class-offset)
 
 **读写能力：** 可读写
 
@@ -398,7 +398,7 @@ public var transition: TransitionEffect
 
 **功能：** 自定义对话框打开/关闭时的过渡参数。
 
-**类型：** TransitionEffect
+**类型：** [TransitionEffect](./cj-animation-transition.md#class-transitioneffect)
 
 **读写能力：** 可读写
 
@@ -438,21 +438,21 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|maskRect|Rectangle|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)| **命名参数。** 对话框遮罩区域。|
-|alignment|DialogAlignment|否|DialogAlignment.Default| **命名参数。** 对话框在屏幕上的对齐方式。|
-|offset|Offset|否|Offset(0.vp, 0.vp)| **命名参数。** 对话框偏移量。|
+|maskRect|[Rectangle](./cj-common-types.md#class-rectangle)|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)| **命名参数。** 对话框遮罩区域。|
+|alignment|[DialogAlignment](./cj-common-types.md#enum-dialogalignment)|否|DialogAlignment.Default| **命名参数。** 对话框在屏幕上的对齐方式。|
+|offset|[Offset](./cj-common-types.md#class-offset)|否|Offset(0.vp, 0.vp)| **命名参数。** 对话框偏移量。|
 |isModal|Bool|否|true| **命名参数。** 是否为模态对话框。|
 |showInSubWindow|Bool|否|false| **命名参数。** 是否在子窗口中显示。|
 |autoCancel|Bool|否|true| **命名参数。** 是否允许用户点击遮罩层退出。|
-|maskColor|ResourceColor|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
-|transition|TransitionEffect|否|TransitionEffect.OPACITY| **命名参数。** 自定义对话框打开/关闭时的过渡参数。|
+|maskColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
+|transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|TransitionEffect.OPACITY| **命名参数。** 自定义对话框打开/关闭时的过渡参数。|
 |onDidAppear|() -> Unit|否|{=>}| **命名参数。** 对话框出现时的回调函数。|
 |onDidDisappear|() -> Unit|否|{=>}| **命名参数。** 对话框消失时的回调函数。|
 |onWillAppear|() -> Unit|否|{=>}| **命名参数。** 对话框打开动画开始前的回调函数。|
 |onWillDisappear|() -> Unit|否|{=>}| **命名参数。** 对话框关闭动画开始前的回调函数。|
-|keyboardAvoidMode|KeyboardAvoidMode|否|KeyboardAvoidMode.Default| **命名参数。** 自定义对话框的键盘避免模式。|
+|keyboardAvoidMode|[KeyboardAvoidMode](#enum-keyboardavoidmode)|否|KeyboardAvoidMode.Default| **命名参数。** 自定义对话框的键盘避免模式。|
 |enableHoverMode|Bool|否|false| **命名参数。** 是否响应悬停模式。|
-|hoverModeArea|HoverModeAreaType|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下对话框的显示区域。|
+|hoverModeArea|[HoverModeAreaType](#enum-hovermodeareatype)|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下对话框的显示区域。|
 
 ## class ButtonInfo
 
@@ -479,7 +479,7 @@ public var color: ResourceColor
 
 **功能：** 按钮文本颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -511,7 +511,7 @@ public var text: ResourceStr
 
 **功能：** 按钮中显示的文本。
 
-**类型：** ResourceStr
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -535,8 +535,8 @@ public init(text!: ResourceStr, color!: ResourceColor, primary!: Bool = false)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|text|ResourceStr|是|-| **命名参数。** 按钮文本内容。|
-|color|ResourceColor|是|-| **命名参数。** 按钮文本颜色。|
+|text|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。** 按钮文本内容。|
+|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-| **命名参数。** 按钮文本颜色。|
 |primary|Bool|否|false| **命名参数。** 按钮是否默认响应Enter/Space键。|
 
 ## class CustomDialogOptions
@@ -602,7 +602,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** 自定义对话框的背景颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -618,7 +618,7 @@ public var borderColor: EdgeColors
 
 **功能：** 自定义对话框的边框颜色。
 
-**类型：** EdgeColors
+**类型：** [EdgeColors](#class-edgecolors)
 
 **读写能力：** 可读写
 
@@ -634,7 +634,7 @@ public var borderRadius: BorderRadiuses
 
 **功能：** 自定义对话框的圆角半径。
 
-**类型：** BorderRadiuses
+**类型：** [BorderRadiuses](./cj-common-types.md#class-borderradiuses)
 
 **读写能力：** 可读写
 
@@ -650,7 +650,7 @@ public var borderStyle: EdgeStyles
 
 **功能：** 自定义对话框的边框样式。
 
-**类型：** EdgeStyles
+**类型：** [EdgeStyles](./cj-common-types.md#class-edgestyles)
 
 **读写能力：** 可读写
 
@@ -666,7 +666,7 @@ public var borderWidth: EdgeWidths
 
 **功能：** 自定义对话框的边框宽度。
 
-**类型：** EdgeWidths
+**类型：** [EdgeWidths](./cj-common-types.md#class-edgewidths)
 
 **读写能力：** 可读写
 
@@ -698,7 +698,7 @@ public var backgroundBlurStyle: BlurStyle
 
 **功能：** 对话框的背景模糊样式。
 
-**类型：** BlurStyle
+**类型：** [BlurStyle](./cj-common-types.md#enum-blurstyle)
 
 **读写能力：** 可读写
 
@@ -714,7 +714,7 @@ public var height: Length
 
 **功能：** 对话框的高度。
 
-**类型：** Length
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -730,7 +730,7 @@ public var shadow: ?ShadowOptions
 
 **功能：** 对话框的阴影。
 
-**类型：** ?ShadowOptions
+**类型：** ?[ShadowOptions](./cj-common-types.md#class-shadowoptions)
 
 **读写能力：** 可读写
 
@@ -746,7 +746,7 @@ public var width: Length
 
 **功能：** 对话框的宽度。
 
-**类型：** Length
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -798,30 +798,30 @@ public init(
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |builder|() -> Unit|是|-| **命名参数。** 自定义对话框内容。|
-|maskRect|Rectangle|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)| **命名参数。** 对话框遮罩区域。|
-|alignment|DialogAlignment|否|DialogAlignment.Default| **命名参数。** 对话框在屏幕上的对齐方式。|
-|offset|Offset|否|Offset(0.vp, 0.vp)| **命名参数。** 对话框偏移量。|
+|maskRect|[Rectangle](./cj-common-types.md#class-rectangle)|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)| **命名参数。** 对话框遮罩区域。|
+|alignment|[DialogAlignment](./cj-common-types.md#enum-dialogalignment)|否|DialogAlignment.Default| **命名参数。** 对话框在屏幕上的对齐方式。|
+|offset|[Offset](./cj-common-types.md#class-offset)|否|Offset(0.vp, 0.vp)| **命名参数。** 对话框偏移量。|
 |isModal|Bool|否|true| **命名参数。** 是否为模态对话框。|
 |showInSubWindow|Bool|否|false| **命名参数。** 是否在子窗口中显示。|
 |autoCancel|Bool|否|true| **命名参数。** 是否允许用户点击遮罩层退出。|
-|maskColor|ResourceColor|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
-|transition|TransitionEffect|否|TransitionEffect.OPACITY| **命名参数。** 自定义对话框打开/关闭时的过渡参数。|
+|maskColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
+|transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|TransitionEffect.OPACITY| **命名参数。** 自定义对话框打开/关闭时的过渡参数。|
 |onDidAppear|() -> Unit|否|{=>}| **命名参数。** 对话框出现时的回调函数。|
 |onDidDisappear|() -> Unit|否|{=>}| **命名参数。** 对话框消失时的回调函数。|
 |onWillAppear|() -> Unit|否|{=>}| **命名参数。** 对话框打开动画开始前的回调函数。|
 |onWillDisappear|() -> Unit|否|{=>}| **命名参数。** 对话框关闭动画开始前的回调函数。|
-|keyboardAvoidMode|KeyboardAvoidMode|否|KeyboardAvoidMode.Default| **命名参数。** 自定义对话框的键盘避免模式。|
+|keyboardAvoidMode|[KeyboardAvoidMode](#enum-keyboardavoidmode)|否|KeyboardAvoidMode.Default| **命名参数。** 自定义对话框的键盘避免模式。|
 |enableHoverMode|Bool|否|false| **命名参数。** 是否响应悬停模式。|
-|hoverModeArea|HoverModeAreaType|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下对话框的显示区域。|
-|backgroundColor|ResourceColor|否|Color.Transparent| **命名参数。** 自定义对话框的背景颜色。|
-|cornerRadius|BorderRadiuses|否|BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)| **命名参数。** 自定义对话框的圆角半径。|
-|borderWidth|EdgeWidths|否|EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)| **命名参数。** 自定义对话框的边框宽度。|
-|borderColor|EdgeColors|否|EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black)| **命名参数。** 自定义对话框的边框颜色。|
-|borderStyle|EdgeStyles|否|EdgeStyles()| **命名参数。** 自定义对话框的边框样式。|
-|width|Length|否|400.vp| **命名参数。** 对话框的宽度。|
-|height|Length|否|100.vp| **命名参数。** 对话框的高度。|
-|shadow|?ShadowOptions|否|None| **命名参数。** 对话框的阴影。|
-|backgroundBlurStyle|BlurStyle|否|BlurStyle.ComponentUltraThick| **命名参数。** 对话框的背景模糊样式。|
+|hoverModeArea|[HoverModeAreaType](#enum-hovermodeareatype)|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下对话框的显示区域。|
+|backgroundColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Transparent| **命名参数。** 自定义对话框的背景颜色。|
+|cornerRadius|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|否|BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)| **命名参数。** 自定义对话框的圆角半径。|
+|borderWidth|[EdgeWidths](./cj-common-types.md#class-edgewidths)|否|EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)| **命名参数。** 自定义对话框的边框宽度。|
+|borderColor|[EdgeColors](#class-edgecolors)|否|EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black)| **命名参数。** 自定义对话框的边框颜色。|
+|borderStyle|[EdgeStyles](./cj-common-types.md#class-edgestyles)|否|EdgeStyles()| **命名参数。** 自定义对话框的边框样式。|
+|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|400.vp| **命名参数。** 对话框的宽度。|
+|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|100.vp| **命名参数。** 对话框的高度。|
+|shadow|?[ShadowOptions](./cj-common-types.md#class-shadowoptions)|否|None| **命名参数。** 对话框的阴影。|
+|backgroundBlurStyle|[BlurStyle](./cj-common-types.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick| **命名参数。** 对话框的背景模糊样式。|
 
 ## class EdgeColors
 
@@ -854,7 +854,7 @@ public var bottom: ResourceColor
 
 **功能：** 边框的底部颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -870,7 +870,7 @@ public var left: ResourceColor
 
 **功能：** 边框的左侧颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -886,7 +886,7 @@ public var right: ResourceColor
 
 **功能：** 边框的右侧颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -902,7 +902,7 @@ public var top: ResourceColor
 
 **功能：** 边框的顶部颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -931,10 +931,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|ResourceColor|否|Color.Black| **命名参数。** 顶部边框颜色。|
-|right|ResourceColor|否|Color.Black| **命名参数。** 右侧边框颜色。|
-|bottom|ResourceColor|否|Color.Black| **命名参数。** 底部边框颜色。|
-|left|ResourceColor|否|Color.Black| **命名参数。** 左侧边框颜色。|
+|top|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 顶部边框颜色。|
+|right|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 右侧边框颜色。|
+|bottom|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 底部边框颜色。|
+|left|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 左侧边框颜色。|
 
 ## class ShowDialogOptions
 
@@ -986,7 +986,7 @@ public var alignment: DialogAlignment
 
 **功能：** 对话框在屏幕上的对齐方式。
 
-**类型：** DialogAlignment
+**类型：** [DialogAlignment](./cj-common-types.md#enum-dialogalignment)
 
 **读写能力：** 可读写
 
@@ -1002,7 +1002,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** 对话框的背景颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -1018,7 +1018,7 @@ public var backgroundBlurStyle: BlurStyle
 
 **功能：** 对话框的背景模糊样式。
 
-**类型：** BlurStyle
+**类型：** [BlurStyle](./cj-common-types.md#enum-blurstyle)
 
 **读写能力：** 可读写
 
@@ -1034,7 +1034,7 @@ public var buttons: Array<ButtonInfo>
 
 **功能：** 对话框中的按钮数组。支持多个按钮。
 
-**类型：** Array\<ButtonInfo>
+**类型：** Array\<[ButtonInfo](#class-buttoninfo)>
 
 **读写能力：** 可读写
 
@@ -1082,7 +1082,7 @@ public var hoverModeArea: HoverModeAreaType
 
 **功能：** 悬停模式下对话框的显示区域。
 
-**类型：** HoverModeAreaType
+**类型：** [HoverModeAreaType](#enum-hovermodeareatype)
 
 **读写能力：** 可读写
 
@@ -1114,7 +1114,7 @@ public var maskRect: Rectangle
 
 **功能：** 对话框遮罩区域。大小不能超过主窗口。
 
-**类型：** Rectangle
+**类型：** [Rectangle](./cj-common-types.md#class-rectangle)
 
 **读写能力：** 可读写
 
@@ -1130,7 +1130,7 @@ public var message: ResourceStr
 
 **功能：** 文本主体。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -1146,7 +1146,7 @@ public var offset: Offset
 
 **功能：** 对话框偏移量。
 
-**类型：** Offset
+**类型：** [Offset](./cj-common-types.md#class-offset)
 
 **读写能力：** 可读写
 
@@ -1162,7 +1162,7 @@ public var shadow: ?ShadowOptions
 
 **功能：** 对话框的阴影选项。
 
-**类型：** ?ShadowOptions
+**类型：** ?[ShadowOptions](./cj-common-types.md#class-shadowoptions)
 
 **读写能力：** 可读写
 
@@ -1194,7 +1194,7 @@ public var title: ResourceStr
 
 **功能：** 要显示的标题文本。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -1232,19 +1232,19 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|ResourceStr|否|''| **命名参数。** 标题文本。|
-|message|ResourceStr|否|''| **命名参数。** 文本主体。|
-|buttons|Array\<ButtonInfo>|否|[]| **命名参数。** 对话框中的按钮数组。|
-|alignment|DialogAlignment|否|DialogAlignment.Default| **命名参数。** 对话框在屏幕上的对齐方式。|
-|offset|Offset|否|Offset(0.vp, 0.vp)| **命名参数。** 对话框偏移量。|
-|maskRect|Rectangle|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)| **命名参数。** 对话框遮罩区域。|
+|title|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|''| **命名参数。** 标题文本。|
+|message|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|''| **命名参数。** 文本主体。|
+|buttons|Array\<[ButtonInfo](#class-buttoninfo)>|否|[]| **命名参数。** 对话框中的按钮数组。|
+|alignment|[DialogAlignment](./cj-common-types.md#enum-dialogalignment)|否|DialogAlignment.Default| **命名参数。** 对话框在屏幕上的对齐方式。|
+|offset|[Offset](./cj-common-types.md#class-offset)|否|Offset(0.vp, 0.vp)| **命名参数。** 对话框偏移量。|
+|maskRect|[Rectangle](./cj-common-types.md#class-rectangle)|否|Rectangle(x: 0.vp, y: 0.vp, width: 100.percent, height: 100.percent)| **命名参数。** 对话框遮罩区域。|
 |showInSubWindow|Bool|否|false| **命名参数。** 是否在子窗口中显示。|
 |isModal|Bool|否|true| **命名参数。** 是否为模态对话框。|
-|backgroundColor|Color|否|Color.Transparent| **命名参数。** 对话框的背景颜色。|
-|backgroundBlurStyle|BlurStyle|否|BlurStyle.ComponentUltraThick| **命名参数。** 对话框的背景模糊样式。|
-|shadow|?ShadowOptions|否|None| **命名参数。** 对话框的阴影选项。|
+|backgroundColor|[Color](./cj-common-types.md#class-color)|否|Color.Transparent| **命名参数。** 对话框的背景颜色。|
+|backgroundBlurStyle|[BlurStyle](./cj-common-types.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick| **命名参数。** 对话框的背景模糊样式。|
+|shadow|?[ShadowOptions](./cj-common-types.md#class-shadowoptions)|否|None| **命名参数。** 对话框的阴影选项。|
 |enableHoverMode|Bool|否|false| **命名参数。** 是否响应悬停模式。|
-|hoverModeArea|HoverModeAreaType|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下对话框的显示区域。|
+|hoverModeArea|[HoverModeAreaType](#enum-hovermodeareatype)|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下对话框的显示区域。|
 
 ## class ShowToastOptions
 
@@ -1293,7 +1293,7 @@ public var alignment: Alignment
 
 **功能：** Toast在屏幕上的对齐方式。
 
-**类型：** Alignment
+**类型：** [Alignment](./cj-common-types.md#enum-alignment)
 
 **读写能力：** 可读写
 
@@ -1309,7 +1309,8 @@ public var backgroundColor: ResourceColor
 
 **功能：** Toast的背景颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+
 
 **读写能力：** 可读写
 
@@ -1325,7 +1326,7 @@ public var bottom: Length
 
 **功能：** Toast对话框与屏幕底部的距离。
 
-**类型：** Length
+**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1373,7 +1374,7 @@ public var hoverModeArea: HoverModeAreaType
 
 **功能：** 悬停模式下Toast的显示区域。
 
-**类型：** HoverModeAreaType
+**类型：** [HoverModeAreaType](#enum-hovermodeareatype)
 
 **读写能力：** 可读写
 
@@ -1389,7 +1390,7 @@ public var message: ResourceStr
 
 **功能：** 要显示的文本。
 
-**类型：** ResourceStr
+**类型：** [ResourceStr](./cj-common-types.md#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -1405,7 +1406,7 @@ public var offset: Offset
 
 **功能：** Toast偏移量。
 
-**类型：** Offset
+**类型：** [Offset](./cj-common-types.md#class-offset)
 
 **读写能力：** 可读写
 
@@ -1421,7 +1422,7 @@ public var backgroundBlurStyle: BlurStyle
 
 **功能：** Toast的背景模糊样式。
 
-**类型：** BlurStyle
+**类型：** [BlurStyle](./cj-common-types.md#enum-blurstyle)
 
 **读写能力：** 可读写
 
@@ -1437,7 +1438,7 @@ public var shadow: ?ShadowOptions = None
 
 **功能：** Toast的阴影选项。
 
-**类型：** ?ShadowOptions
+**类型：** ?[ShadowOptions](./cj-common-types.md#class-shadowoptions)
 
 **读写能力：** 可读写
 
@@ -1453,7 +1454,7 @@ public var showMode: ToastShowMode
 
 **功能：** 确定Toast的显示模式。
 
-**类型：** ToastShowMode
+**类型：** [ToastShowMode](#enum-toastshowmode)
 
 **读写能力：** 可读写
 
@@ -1469,7 +1470,8 @@ public var textColor: ResourceColor
 
 **功能：** Toast的文本颜色。
 
-**类型：** ResourceColor
+**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+
 
 **读写能力：** 可读写
 
@@ -1506,18 +1508,18 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|message|ResourceStr|是|-| **命名参数。** 要显示的文本。|
+|message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。** 要显示的文本。|
 |duration|UInt32|否|1500| **命名参数。** Toast对话框的持续时间。|
-|bottom|Length|否|80.vp| **命名参数。** Toast对话框与屏幕底部的距离。|
-|showMode|ToastShowMode|否|ToastShowMode.Default| **命名参数。** Toast的显示模式。|
-|alignment|Alignment|否|Alignment.Bottom| **命名参数。** Toast在屏幕上的对齐方式。|
-|offset|Offset|否|Offset(0.vp, 0.vp)| **命名参数。** Toast偏移量。|
-|backgroundColor|Color|否|Color.Transparent| **命名参数。** Toast的背景颜色。|
-|textColor|Color|否|Color.Black| **命名参数。** Toast的文本颜色。|
-|backgroundBlurStyle|BlurStyle|否|BlurStyle.ComponentUltraThick| **命名参数。** Toast的背景模糊样式。|
-|shadow|?ShadowOptions|否|None| **命名参数。** Toast的阴影选项。|
+|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|80.vp| **命名参数。** Toast对话框与屏幕底部的距离。|
+|showMode|[ToastShowMode](#enum-toastshowmode)|否|ToastShowMode.Default| **命名参数。** Toast的显示模式。|
+|alignment|[Alignment](./cj-common-types.md#enum-alignment)|否|Alignment.Bottom| **命名参数。** Toast在屏幕上的对齐方式。|
+|offset|[Offset](./cj-common-types.md#class-offset)|否|Offset(0.vp, 0.vp)| **命名参数。** Toast偏移量。|
+|backgroundColor|[Color](./cj-common-types.md#class-color)|否|Color.Transparent| **命名参数。** Toast的背景颜色。|
+|textColor|[Color](./cj-common-types.md#class-color)|否|Color.Black| **命名参数。** Toast的文本颜色。|
+|backgroundBlurStyle|[BlurStyle](./cj-common-types.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick| **命名参数。** Toast的背景模糊样式。|
+|shadow|?[ShadowOptions](./cj-common-types.md#class-shadowoptions)|否|None| **命名参数。** Toast的阴影选项。|
 |enableHoverMode|Bool|否|false| **命名参数。** 是否响应悬停模式。|
-|hoverModeArea|HoverModeAreaType|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下Toast的显示区域。|
+|hoverModeArea|[HoverModeAreaType](#enum-hovermodeareatype)|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下Toast的显示区域。|
 
 ## class PromptAction
 
@@ -1565,7 +1567,7 @@ public func openCustomDialog(options: CustomDialogOptions, callBack: (Int32) -> 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|CustomDialogOptions|是|-|自定义对话框选项。|
+|options|[CustomDialogOptions](#class-customdialogoptions)|是|-|自定义对话框选项。|
 |callBack|(Int32) -> Unit|是|-|回调函数。|
 
 ### func showActionMenu(ActionMenuOptions, ShowActionMenuCallBack)
@@ -1584,8 +1586,8 @@ public func showActionMenu(option: ActionMenuOptions, callback!: ShowActionMenuC
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|option|ActionMenuOptions|是|-| **命名参数。** 操作菜单选项。|
-|callback|ShowActionMenuCallBack|否|defaultCallback| **命名参数。** 用于返回操作菜单响应结果的回调。|
+|option|[ActionMenuOptions](#class-actionmenuoptions)|是|-| **命名参数。** 操作菜单选项。|
+|callback|[ShowActionMenuCallBack](#type-showactionmenucallback)|否|defaultCallback| **命名参数。** 用于返回操作菜单响应结果的回调。|
 
 **异常：**
 
@@ -1611,8 +1613,8 @@ public func showDialog(option: ShowDialogOptions, callback!: ShowDialogCallBack 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|option|ShowDialogOptions|是|-| **命名参数。** 对话框选项。|
-|callback|ShowDialogCallBack|否|defaultCallback| **命名参数。** 用于返回对话框响应结果的回调。|
+|option|[ShowDialogOptions](#class-showdialogoptions)|是|-| **命名参数。** 对话框选项。|
+|callback|[ShowDialogCallBack](#type-showdialogcallback)|否|defaultCallback| **命名参数。** 用于返回对话框响应结果的回调。|
 
 **异常：**
 
@@ -1638,7 +1640,7 @@ public func showToast(option: ShowToastOptions): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|option|ShowToastOptions|是|-|Toast选项。|
+|option|[ShowToastOptions](#class-showtoastoptions)|是|-|Toast选项。|
 
 **异常：**
 
@@ -1666,7 +1668,7 @@ public enum HoverModeAreaType <: Equatable<HoverModeAreaType> {
 
 **父类型：**
 
-- Equatable\<HoverModeAreaType>
+- Equatable\<[HoverModeAreaType](#enum-hovermodeareatype)>
 
 ### TopScreen
 
@@ -1708,7 +1710,7 @@ public operator func !=(other: HoverModeAreaType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|HoverModeAreaType|是|-|要比较的另一个HoverModeAreaType实例。|
+|other|[HoverModeAreaType](#enum-hovermodeareatype)|是|-|要比较的另一个HoverModeAreaType实例。|
 
 **返回值：**
 
@@ -1732,7 +1734,7 @@ public operator func ==(other: HoverModeAreaType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|HoverModeAreaType|是|-|要比较的另一个HoverModeAreaType实例。|
+|other|[HoverModeAreaType](#enum-hovermodeareatype)|是|-|要比较的另一个HoverModeAreaType实例。|
 
 **返回值：**
 
@@ -1758,7 +1760,7 @@ public enum KeyboardAvoidMode <: Equatable<KeyboardAvoidMode> {
 
 **父类型：**
 
-- Equatable\<KeyboardAvoidMode>
+- Equatable\<[KeyboardAvoidMode](#enum-keyboardavoidmode)>
 
 ### Default
 
@@ -1800,7 +1802,7 @@ public operator func !=(other: KeyboardAvoidMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|KeyboardAvoidMode|是|-|要比较的另一个KeyboardAvoidMode实例。|
+|other|[KeyboardAvoidMode](#enum-keyboardavoidmode)|是|-|要比较的另一个KeyboardAvoidMode实例。|
 
 **返回值：**
 
@@ -1824,7 +1826,7 @@ public operator func ==(other: KeyboardAvoidMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|KeyboardAvoidMode|是|-|要比较的另一个KeyboardAvoidMode实例。|
+|other|[KeyboardAvoidMode](#enum-keyboardavoidmode)|是|-|要比较的另一个KeyboardAvoidMode实例。|
 
 **返回值：**
 
@@ -1850,7 +1852,7 @@ public enum ToastShowMode <: Equatable<ToastShowMode> {
 
 **父类型：**
 
-- Equatable\<ToastShowMode>
+- Equatable\<[ToastShowMode](#enum-toastshowmode)>
 
 ### Default
 
@@ -1892,7 +1894,7 @@ public operator func !=(other: ToastShowMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ToastShowMode|是|-|要比较的另一个ToastShowMode实例。|
+|other|[ToastShowMode](#enum-toastshowmode)|是|-|要比较的另一个ToastShowMode实例。|
 
 **返回值：**
 
@@ -1916,7 +1918,7 @@ public operator func ==(other: ToastShowMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ToastShowMode|是|-|要比较的另一个ToastShowMode实例。|
+|other|[ToastShowMode](#enum-toastshowmode)|是|-|要比较的另一个ToastShowMode实例。|
 
 **返回值：**
 

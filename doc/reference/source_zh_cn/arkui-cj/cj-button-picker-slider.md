@@ -42,7 +42,7 @@ public init(
 |max|?Float64|否|None| **命名参数。** 设置最大值。<br>初始值：100.0。<br>**说明**：min >= max异常情况，min取初始值0，max取初始值100。<br>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。|
 |step|?Float64|否|None| **命名参数。** 设置滑动条滑动步长。<br>初始值：1.0。<br>**说明**：当step<=0，或step>=max\-min时，取初始值。|
 |value|?Float64|否|None| **命名参数。** 当前进度值。<br>初始值：取min的值。|
-|style|?[SliderStyle](#enum-sliderstyle)|否|None| **命名参数。** 设置滑动条的滑块样式。<br>初始值：SliderStyle.OutSet。|
+|style|?[SliderStyle](./cj-common-types.md#enum-sliderstyle)|否|None| **命名参数。** 设置滑动条的滑块样式。<br>初始值：SliderStyle.OutSet。|
 |direction|?[Axis](./cj-common-types.md#enum-axis)|否|None| **命名参数。** 设置滑动条滑动方向为水平或竖直方向。<br>初始值：Axis.Horizontal。|
 |reverse|?Bool|否|None| **命名参数。** 设置滑动条取值范围是否反向。<br>初始值：false。<br>**说明**：<br>设置为false时，水平方向滑动条为从左向右滑动，竖直方向滑动条从上向下滑动。<br>设置为true时，水平方向滑动条为从右向左滑动，竖直方向滑动条从下向上滑动。|
 
@@ -76,7 +76,7 @@ public func blockBorderColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|滑块描边颜色。<br>初始值：0x00000000。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块描边颜色。<br>初始值：0x00000000。|
 
 ### func blockColor(?ResourceColor)
 
@@ -100,7 +100,7 @@ public func blockColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|滑块的颜色。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑块的颜色。|
 
 ### func selectedColor(?ResourceColor)
 
@@ -118,7 +118,7 @@ public func selectedColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|滑轨已滑动部分的颜色。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨已滑动部分的颜色。|
 
 ### func showSteps(?Bool)
 
@@ -159,7 +159,7 @@ tip的绘制区域为Slider自身节点的overlay。
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|?Bool|是|-|滑动时是否显示气泡提示。<br>初始值：false。|
-|content|?ResourceStr|否|None| **命名参数。** 气泡提示的文本内容，默认显示当前百分比。|
+|content|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** 气泡提示的文本内容，默认显示当前百分比。|
 
 ### func trackColor(?ResourceColor)
 
@@ -177,7 +177,7 @@ public func trackColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|滑轨的背景颜色。<br>**说明**：<br>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|滑轨的背景颜色。<br>**说明**：<br>设置渐变色时，若颜色断点颜色值为非法值或者渐变色断点为空时，渐变色不起效果。|
 
 ### func trackThickness(?Length)
 
@@ -201,7 +201,7 @@ public func trackThickness(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|滑轨的粗细。<br/>初始值：当参数style的值设置SliderStyle.OutSet 时为 4.0.vp，SliderStyle.InSet时为20.0.vp。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|滑轨的粗细。<br/>初始值：当参数style的值设置SliderStyle.OutSet 时为 4.0.vp，SliderStyle.InSet时为20.0.vp。|
 
 ## 组件事件
 
@@ -225,7 +225,7 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(Float64, SliderChangeMode) -> Unit|是|-|Slider拖动或点击时触发事件回调。<br>参数一：当前滑动进度值，变化范围为对应步长steps数组。<br>参数二：事件触发的相关状态值。<br>初始值：{ _, _ => }。|
+|callback|?(Float64, [SliderChangeMode](./cj-common-types.md#enum-sliderchangemode)) -> Unit|是|-|Slider拖动或点击时触发事件回调。<br>参数一：当前滑动进度值，变化范围为对应步长steps数组。<br>参数二：事件触发的相关状态值。<br>初始值：{ _, _ => }。|
 
 ## 示例代码
 

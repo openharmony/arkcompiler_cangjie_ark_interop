@@ -25,9 +25,9 @@ public func border(width!: ?Length, color!: ?ResourceColor = None, radius!: ?Len
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 边框宽度。初始值:  0.vp|
-|color|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None|**命名参数。** 边框颜色。初始值:  Color.Black|
-|radius|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 边框圆角半径。初始值:  0.vp|
+|width|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|**命名参数。** 边框宽度。初始值:  0.vp|
+|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None|**命名参数。** 边框颜色。初始值:  Color.Black|
+|radius|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 边框圆角半径。初始值:  0.vp|
 |style|?[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|Option.None|**命名参数。** 边框样式。初始值:  BorderStyle.Solid|
 
 **返回值：**
@@ -52,7 +52,7 @@ public func borderColor(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../apis/BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|边框颜色。初始值:  Color.Black|
+|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor) |是|-|边框颜色。初始值:  Color.Black|
 
 **返回值：**
 
@@ -76,7 +76,7 @@ public func borderRadius(value: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径。初始值:  0.0.vp|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|圆角半径。初始值:  0.0.vp|
 
 **返回值：**
 
@@ -101,10 +101,10 @@ public func borderRadius(topLeft!: ?Length = None, topRight!: ?Length = None, bo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|topLeft|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 左上角圆角半径。初始值:  0.vp|
-|topRight|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 右上角圆角半径。初始值:  0.vp|
-|bottomLeft|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 左下角圆角半径。初始值:  0.vp|
-|bottomRight|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 右下角圆角半径。初始值:  0.vp|
+|topLeft|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 左上角圆角半径。初始值:  0.vp|
+|topRight|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 右上角圆角半径。初始值:  0.vp|
+|bottomLeft|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 左下角圆角半径。初始值:  0.vp|
+|bottomRight|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 右下角圆角半径。初始值:  0.vp|
 
 **返回值：**
 
@@ -176,7 +176,7 @@ public func borderWidth(value: ?Length): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|边框宽度。|
 
 **返回值：**
 

@@ -34,9 +34,9 @@ public init(
 
 | 参数名      | 类型       | 必填  | 默认值                                                          | 说明                    |
 |:-------- |:-------- |:--- |:------------------------------------------------------------ |:--------------------- |
-| start    | ?DateTime | 否   | None | **命名参数。** 指定选择器的起始日期。<br>初始值: DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1)。|
-| end      | ?DateTime | 否   | None | **命名参数。** 指定选择器的结束日期。<br>初始值: DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31)。|
-| selected | ?DateTime | 否   | None | **命名参数。** 设置选中项的日期。<br>初始值: DateTime.now()。|
+| start    | ?[DateTime](../ImageKit/cj-apis-image.md#datetime) | 否   | None | **命名参数。** 指定选择器的起始日期。<br>初始值: DateTime.of(year: 1970, month: Month.of(1), dayOfMonth: 1)。|
+| end      | ?[DateTime](../ImageKit/cj-apis-image.md#datetime) | 否   | None | **命名参数。** 指定选择器的结束日期。<br>初始值: DateTime.of(year: 2100, month: Month.of(12), dayOfMonth: 31)。|
+| selected | ?[DateTime](../ImageKit/cj-apis-image.md#datetime) | 否   | None | **命名参数。** 设置选中项的日期。<br>初始值: DateTime.now()。|
 
 ## 通用属性/通用事件
 
@@ -62,7 +62,7 @@ public func disappearTextStyle(value: ?PickerTextStyle): This
 
 | 参数名   | 类型 | 必填  | 默认值 | 说明|
 |:----- |:----------------------------------------------------------------------- |:--- |:--- |:---------------------------------------------------------------------------------------------- |
-| value | ?PickerTextStyle| 是   | -   | 过渡项的文本颜色、字号、字体粗细。<br>初始值：{color: '#ff182431',font: {size: '14.fp', weight: FontWeight.Regular, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
+| value | ?[PickerTextStyle](./cj-common-types.md#class-pickertextstyle)| 是   | -   | 过渡项的文本颜色、字号、字体粗细。<br>初始值：{color: '#ff182431',font: {size: '14.fp', weight: FontWeight.Regular, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
 
 ### func lunar(?Bool)
 
@@ -98,7 +98,7 @@ public func selectedTextStyle(value: ?PickerTextStyle): This
 
 | 参数名   | 类型                                                                      | 必填  | 默认值 | 说明                                                                                 |
 |:----- |:----------------------------------------------------------------------- |:--- |:--- |:---------------------------------------------------------------------------------- |
-| value |?PickerTextStyle | 是   | -   | 文本样式值，<br>初始值：{color: '#ff007dff',font: {size: '20fp', weight: FontWeight.Medium, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
+| value |?[PickerTextStyle](./cj-common-types.md#class-pickertextstyle) | 是   | -   | 文本样式值，<br>初始值：{color: '#ff007dff',font: {size: '20fp', weight: FontWeight.Medium, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
 
 ### func textStyle(?PickerTextStyle)
 
@@ -116,7 +116,7 @@ public func textStyle(value: ?PickerTextStyle): This
 
 | 参数名   | 类型                                                                      | 必填  | 默认值 | 说明                                                                                             |
 |:----- |:----------------------------------------------------------------------- |:--- |:--- |:---------------------------------------------------------------------------------------------- |
-| value | ?PickerTextStyle | 是   | -   | 一般项的文本颜色、字号、字体粗细。<br>初始值：{color: '#ff182431',font: {size: '16.fp', weight: FontWeight.Regular, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
+| value | ?[PickerTextStyle](./cj-common-types.md#class-pickertextstyle) | 是   | -   | 一般项的文本颜色、字号、字体粗细。<br>初始值：{color: '#ff182431',font: {size: '16.fp', weight: FontWeight.Regular, family: 'HarmonyOS Sans', style: FontStyle.Normal}}。|
 
 ## 组件事件
 
@@ -136,7 +136,7 @@ public func onDateChange(callback: ?Callback<DateTime, Unit>): This
 
 | 参数名      | 类型                                                                                                                                       | 必填  | 默认值 | 说明                                      |
 |:-------- |:---------------------------------------------------------------------------------------------------------------------------------------- |:--- |:--- |:--------------------------------------- |
-| callback | ?[Callback](../apis/BasicServicesKit/cj-apis-base.md#type-callback)\<[DateTime](../apis/ImageKit/cj-apis-image.md#datetime),Unit> | 是   | -   | 返回选中的时间，年月日为选中的日期，时分取决于当前系统时间的时分，秒恒为00。<br>初始值: { _ => } |
+| callback | ?[Callback](../BasicServicesKit/cj-apis-base.md#type-Callback)\<[DateTime](../apis/ImageKit/cj-apis-image.md#datetime),Unit> | 是   | -   | 返回选中的时间，年月日为选中的日期，时分取决于当前系统时间的时分，秒恒为00。<br>初始值: { _ => } |
 
 ## 基础类型定义
 

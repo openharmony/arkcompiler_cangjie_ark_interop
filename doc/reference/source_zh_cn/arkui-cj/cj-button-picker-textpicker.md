@@ -80,7 +80,7 @@ public func defaultPickerItemHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|Picker各选择项的高度。|
+|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|Picker各选择项的高度。|
 
 ## 组件事件
 
@@ -100,7 +100,7 @@ public func onChange(callback: ?OnTextPickerChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?OnTextPickerChangeCallback|是|-|选择器选项发生变化时的回调函数。<br>初始值：{ _, _ => }。|
+|callback|?[OnTextPickerChangeCallback](#type-ontextpickerchangecallback)|是|-|选择器选项发生变化时的回调函数。<br>初始值：{ _, _ => }。|
 
 ## 基础类型定义
 

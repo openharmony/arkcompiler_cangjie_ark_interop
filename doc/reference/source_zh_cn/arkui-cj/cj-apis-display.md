@@ -1100,7 +1100,7 @@ public enum DisplayState <: Equatable<DisplayState> {
 
 **父类型：**
 
-- Equatable\<DisplayState>
+- Equatable\<[DisplayState](#enum-displaystate)>
 
 ### StateUnknown
 
@@ -1202,7 +1202,7 @@ public operator func !=(other: DisplayState): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|DisplayState|是|-|要比较的另一个DisplayState实例。|
+|other|[DisplayState](#enum-displaystate)|是|-|要比较的另一个DisplayState实例。|
 
 **返回值：**
 
@@ -1226,7 +1226,7 @@ public operator func ==(other: DisplayState): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|DisplayState|是|-|要比较的另一个DisplayState实例。|
+|other|[DisplayState](#enum-displaystate)|是|-|要比较的另一个DisplayState实例。|
 
 **返回值：**
 
@@ -1255,7 +1255,7 @@ public enum FoldDisplayMode <: Equatable<FoldDisplayMode> {
 
 **父类型：**
 
-- Equatable\<FoldDisplayMode>
+- Equatable\<[FoldDisplayMode](#enum-folddisplaymode)>
 
 ### FoldDisplayModeUnknown
 
@@ -1333,7 +1333,7 @@ public operator func !=(other: FoldDisplayMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|FoldDisplayMode|是|-|要比较的另一个FoldDisplayMode实例。|
+|other|[FoldDisplayMode](#enum-folddisplaymode)|是|-|要比较的另一个FoldDisplayMode实例。|
 
 **返回值：**
 
@@ -1357,7 +1357,7 @@ public operator func ==(other: FoldDisplayMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|FoldDisplayMode|是|-|要比较的另一个FoldDisplayMode实例。|
+|other|[FoldDisplayMode](#enum-folddisplaymode)|是|-|要比较的另一个FoldDisplayMode实例。|
 
 **返回值：**
 
@@ -1385,7 +1385,7 @@ public enum FoldStatus <: Equatable<FoldStatus> {
 
 **父类型：**
 
-- Equatable\<FoldStatus>
+- Equatable\<[FoldStatus](#enum-foldstatus)>
 
 ### FoldStatusUnknown
 
@@ -1451,7 +1451,7 @@ public operator func !=(other: FoldStatus): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|FoldStatus|是|-|要比较的另一个FoldStatus实例。|
+|other|[FoldStatus](#enum-foldstatus)|是|-|要比较的另一个FoldStatus实例。|
 
 **返回值：**
 
@@ -1475,7 +1475,7 @@ public operator func ==(other: FoldStatus): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|FoldStatus|是|-|要比较的另一个FoldStatus实例。|
+|other|[FoldStatus](#enum-foldstatus)|是|-|要比较的另一个FoldStatus实例。|
 
 **返回值：**
 
@@ -1507,7 +1507,7 @@ public enum ListenerType <: Equatable<ListenerType> {
 
 **父类型：**
 
-- Equatable\<ListenerType>
+- Equatable\<[ListenerType](#enum-listenertype)>
 
 ### ListenerTypeAdd
 
@@ -1621,7 +1621,7 @@ public operator func !=(other: ListenerType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ListenerType|是|-|要比较的另一个ListenerType实例。|
+|other|[ListenerType](#enum-listenertype)|是|-|要比较的另一个ListenerType实例。|
 
 **返回值：**
 
@@ -1645,7 +1645,7 @@ public operator func ==(other: ListenerType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ListenerType|是|-|要比较的另一个ListenerType实例。|
+|other|[ListenerType](#enum-listenertype)|是|-|要比较的另一个ListenerType实例。|
 
 **返回值：**
 
@@ -1673,7 +1673,7 @@ public enum Orientation <: Equatable<Orientation> {
 
 **父类型：**
 
-- Equatable\<Orientation>
+- Equatable\<[Orientation](#enum-orientation)>
 
 ### Portrait
 
@@ -1739,7 +1739,7 @@ public operator func !=(other: Orientation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|Orientation|是|-|要比较的另一个Orientation实例。|
+|other|[Orientation](#enum-orientation)|是|-|要比较的另一个Orientation实例。|
 
 **返回值：**
 
@@ -1763,7 +1763,7 @@ public operator func ==(other: Orientation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|Orientation|是|-|要比较的另一个Orientation实例。|
+|other|[Orientation](#enum-orientation)|是|-|要比较的另一个Orientation实例。|
 
 **返回值：**
 

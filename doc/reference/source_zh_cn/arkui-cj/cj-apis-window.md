@@ -124,7 +124,7 @@ public func getLastWindow(ctx: BaseContext): Window
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|ctx|BaseContext|是|-|当前应用程序上下文。|
+|ctx|[BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-|当前应用程序上下文。|
 
 **返回值：**
 
@@ -319,7 +319,7 @@ public var ctx: BaseContext
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**类型：** BaseContext
+**类型：** [BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)
 
 **读写能力：** 可读写
 
@@ -413,7 +413,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |name|String|是|-| **命名参数。** 窗口名称。|
 |windowType|[WindowType](#enum-windowtype)|是|-| **命名参数。** 窗口类型。|
-|ctx|BaseContext|是|-| **命名参数。** 当前应用上下文信息。|
+|ctx|[BaseContext](../AbilityKit/cj-apis-app-ability.md#class-basecontext)|是|-| **命名参数。** 当前应用上下文信息。|
 |displayId|Int64|否|-1| **命名参数。** 当前物理屏幕ID。|
 |parentId|Int64|否|-1| **命名参数。** 父窗口ID。|
 
@@ -1183,7 +1183,7 @@ public func off(callbackType: WindowCallbackType, callback: Callback1Argument<UI
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |callbackType|[WindowCallbackType](#enum-windowcallbacktype)|是|-|值固定为KeyboardHeightChange，表示键盘高度变化事件。|
-|callback|Callback1Argument\<UInt32>|是|-|用于返回当前键盘高度的回调，该高度为整数，单位为px。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<UInt32>|是|-|用于返回当前键盘高度的回调，该高度为整数，单位为px。|
 
 **异常：**
 
@@ -1210,7 +1210,7 @@ public func on(callbackType: WindowCallbackType, callback: Callback1Argument<UIn
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |callbackType|[WindowCallbackType](#enum-windowcallbacktype)|是|-|值固定为KeyboardHeightChange，表示键盘高度变化事件。|
-|callback|Callback1Argument\<UInt32>|是|-|用于返回当前键盘高度的回调，该高度为整数，单位为px。|
+|callback|[Callback1Argument](../arkinterop/cj-api-callback_invoke.md#class-callback1argument)\<UInt32>|是|-|用于返回当前键盘高度的回调，该高度为整数，单位为px。|
 
 **异常：**
 
@@ -2095,7 +2095,7 @@ public enum AvoidAreaType <: Equatable<AvoidAreaType> {
 
 **父类型：**
 
-- Equatable\<AvoidAreaType>
+- Equatable\<[AvoidAreaType](#enum-avoidareatype)>
 
 ### TypeSystem
 
@@ -2173,7 +2173,7 @@ public operator func !=(other: AvoidAreaType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|AvoidAreaType|是|-|要比较的另一个AvoidAreaType实例。|
+|other|[AvoidAreaType](#enum-avoidareatype)|是|-|要比较的另一个AvoidAreaType实例。|
 
 **返回值：**
 
@@ -2197,7 +2197,7 @@ public operator func ==(other: AvoidAreaType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|AvoidAreaType|是|-|要比较的另一个AvoidAreaType实例。|
+|other|[AvoidAreaType](#enum-avoidareatype)|是|-|要比较的另一个AvoidAreaType实例。|
 
 **返回值：**
 
@@ -2223,7 +2223,7 @@ public enum ColorSpace <: Equatable<ColorSpace> {
 
 **父类型：**
 
-- Equatable\<ColorSpace>
+- Equatable\<[ColorSpace](#enum-colorspace)>
 
 ### Default
 
@@ -2265,7 +2265,7 @@ public operator func !=(other: ColorSpace): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ColorSpace|是|-|要比较的另一个ColorSpace实例。|
+|other|[ColorSpace](#enum-colorspace)|是|-|要比较的另一个ColorSpace实例。|
 
 **返回值：**
 
@@ -2289,7 +2289,7 @@ public operator func ==(other: ColorSpace): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ColorSpace|是|-|要比较的另一个ColorSpace实例。|
+|other|[ColorSpace](#enum-colorspace)|是|-|要比较的另一个ColorSpace实例。|
 
 **返回值：**
 
@@ -2325,7 +2325,7 @@ public enum Orientation <: Equatable<Orientation> {
 
 **父类型：**
 
-- Equatable\<Orientation>
+- Equatable\<[Orientation](#enum-orientation)>
 
 ### Unspecified
 
@@ -2487,7 +2487,7 @@ public operator func !=(other: Orientation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|Orientation|是|-|要比较的另一个Orientation实例。|
+|other|[Orientation](#enum-orientation)|是|-|要比较的另一个Orientation实例。|
 
 **返回值：**
 
@@ -2511,7 +2511,7 @@ public operator func ==(other: Orientation): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|Orientation|是|-|要比较的另一个Orientation实例。|
+|other|[Orientation](#enum-orientation)|是|-|要比较的另一个Orientation实例。|
 
 **返回值：**
 
@@ -2537,7 +2537,7 @@ public enum SystemBarType <: Equatable<SystemBarType> {
 
 **父类型：**
 
-- Equatable\<SystemBarType>
+- Equatable\<[SystemBarType](#enum-systembartype)>
 
 ### Status
 
@@ -2579,7 +2579,7 @@ public operator func !=(other: SystemBarType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|SystemBarType|是|-|要比较的另一个SystemBarType实例。|
+|other|[SystemBarType](#enum-systembartype)|是|-|要比较的另一个SystemBarType实例。|
 
 **返回值：**
 
@@ -2603,7 +2603,7 @@ public operator func ==(other: SystemBarType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|SystemBarType|是|-|要比较的另一个SystemBarType实例。|
+|other|[SystemBarType](#enum-systembartype)|是|-|要比较的另一个SystemBarType实例。|
 
 **返回值：**
 
@@ -2641,7 +2641,7 @@ public enum WindowCallbackType <: Equatable<WindowCallbackType> {
 
 **父类型：**
 
-- Equatable\<WindowCallbackType>
+- Equatable\<[WindowCallbackType](#enum-windowcallbacktype)>
 
 ### WindowStageEvent
 
@@ -2827,7 +2827,7 @@ public operator func !=(other: WindowCallbackType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowCallbackType|是|-|要比较的另一个WindowCallbackType实例。|
+|other|[WindowCallbackType](#enum-windowcallbacktype)|是|-|要比较的另一个WindowCallbackType实例。|
 
 **返回值：**
 
@@ -2851,7 +2851,7 @@ public operator func ==(other: WindowCallbackType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowCallbackType|是|-|要比较的另一个WindowCallbackType实例。|
+|other|[WindowCallbackType](#enum-windowcallbacktype)|是|-|要比较的另一个WindowCallbackType实例。|
 
 **返回值：**
 
@@ -2880,7 +2880,7 @@ public enum WindowEventType <: Equatable<WindowEventType> {
 
 **父类型：**
 
-- Equatable\<WindowEventType>
+- Equatable\<[WindowEventType](#enum-windoweventtype)>
 
 ### WindowShown
 
@@ -2958,7 +2958,7 @@ public operator func !=(other: WindowEventType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowEventType|是|-|要比较的另一个WindowEventType实例。|
+|other|[WindowEventType](#enum-windoweventtype)|是|-|要比较的另一个WindowEventType实例。|
 
 **返回值：**
 
@@ -2982,7 +2982,7 @@ public operator func ==(other: WindowEventType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowEventType|是|-|要比较的另一个WindowEventType实例。|
+|other|[WindowEventType](#enum-windoweventtype)|是|-|要比较的另一个WindowEventType实例。|
 
 **返回值：**
 
@@ -3012,7 +3012,7 @@ public enum WindowStageEventType <: Equatable<WindowStageEventType> {
 
 **父类型：**
 
-- Equatable\<WindowStageEventType>
+- Equatable\<[WindowStageEventType](#enum-windowstageeventtype)>
 
 ### Shown
 
@@ -3102,7 +3102,7 @@ public operator func !=(other: WindowStageEventType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowStageEventType|是|-|要比较的另一个WindowStageEventType实例。|
+|other|[WindowStageEventType](#enum-windowstageeventtype)|是|-|要比较的另一个WindowStageEventType实例。|
 
 **返回值：**
 
@@ -3126,7 +3126,7 @@ public operator func ==(other: WindowStageEventType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowStageEventType|是|-|要比较的另一个WindowStageEventType实例。|
+|other|[WindowStageEventType](#enum-windowstageeventtype)|是|-|要比较的另一个WindowStageEventType实例。|
 
 **返回值：**
 
@@ -3156,7 +3156,7 @@ public enum WindowStatusType <: Equatable<WindowStatusType> {
 
 **父类型：**
 
-- Equatable\<WindowStatusType>
+- Equatable\<[WindowStatusType](#enum-windowstatustype)>
 
 ### Undefined
 
@@ -3246,7 +3246,7 @@ public operator func !=(other: WindowStatusType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowStatusType|是|-|要比较的另一个WindowStatusType实例。|
+|other|[WindowStatusType](#enum-windowstatustype)|是|-|要比较的另一个WindowStatusType实例。|
 
 **返回值：**
 
@@ -3270,7 +3270,7 @@ public operator func ==(other: WindowStatusType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowStatusType|是|-|要比较的另一个WindowStatusType实例。|
+|other|[WindowStatusType](#enum-windowstatustype)|是|-|要比较的另一个WindowStatusType实例。|
 
 **返回值：**
 
@@ -3298,7 +3298,7 @@ public enum WindowType <: Equatable<WindowType> {
 
 **父类型：**
 
-- Equatable\<WindowType>
+- Equatable\<[WindowType](#enum-windowtype)>
 
 ### TypeApp
 
@@ -3364,7 +3364,7 @@ public operator func !=(other: WindowType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowType|是|-|要比较的另一个WindowType实例。|
+|other|[WindowType](#enum-windowtype)|是|-|要比较的另一个WindowType实例。|
 
 **返回值：**
 
@@ -3388,7 +3388,7 @@ public operator func ==(other: WindowType): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|WindowType|是|-|要比较的另一个WindowType实例。|
+|other|[WindowType](#enum-windowtype)|是|-|要比较的另一个WindowType实例。|
 
 **返回值：**
 
