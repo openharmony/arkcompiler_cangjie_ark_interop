@@ -6,9 +6,9 @@ ForEach接口基于数组类型数据来进行循环渲染，需要与容器组�
 
 在ForEach循环渲染过程中，系统会为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。当这个键值变化时，仓颉将视为该数组元素已被替换或修改，并会基于新的键值创建一个新的组件。
 
-ForEach提供了一个名为keyGeneratorFunc的参数，这是一个函数，开发者可以通过它自定义键值的生成规则。如果开发者没有定义keyGenerator函数，则ArkUI框架会使用默认的键值生成函数。
+ForEach提供了一个名为keyGenerator的参数，这是一个函数，开发者可以通过它自定义键值的生成规则。如果开发者没有定义keyGenerator函数，则ArkUI框架会使用默认的键值生成函数。
 
-ArkUI框架对于ForEach的键值生成有一套特定的判断规则，这主要与itemGenerator函数的第二个参数index以及keyGeneratorFunc函数的第二个参数index有关。
+ArkUI框架对于ForEach的键值生成有一套特定的判断规则，这主要与itemGenerator函数的第二个参数index以及keyGenerator函数的第二个参数index有关。
 
 > **说明：**
 >
@@ -16,7 +16,7 @@ ArkUI框架对于ForEach的键值生成有一套特定的判断规则，这主�
 
 ## 组件创建规则
 
-在确定键值生成规则后，ForEach的第二个参数itemGeneratorFunc函数会根据键值生成规则为数据源的每个数组项创建组件。组件的创建包括两种情况：[ForEach首次渲染](#首次渲染)和[ForEach非首次渲染](#非首次渲染)。
+在确定键值生成规则后，ForEach的第二个参数itemGenerator函数会根据键值生成规则为数据源的每个数组项创建组件。组件的创建包括两种情况：[ForEach首次渲染](#首次渲染)和[ForEach非首次渲染](#非首次渲染)。
 
 ## 首次渲染
 
@@ -45,8 +45,8 @@ class EntryView {
     func build() {
         Row() {
             Column() {
-                ForEach(this.simpleList,itemGeneratorFunc: {item: String,idx:Int64 =>
-            ChildItem(item: item)}, keyGeneratorFunc: {item: String, idx: Int64 => return item})
+                ForEach(this.simpleList,itemGenerator: {item: String,idx:Int64 =>
+            ChildItem(item: item)}, keyGenerator: {item: String, idx: Int64 => return item})
             }
             .justifyContent(FlexAlign.Center)
             .width(100.percent)
@@ -64,7 +64,7 @@ class EntryView {
 
 ![onetwothree](figures/onetwothree.png)
 
-在上述代码中，键值生成规则是keyGeneratorFunc函数的返回值item。在ForEach渲染循环时，为数据源数组项依次生成键值one、two和three，并创建对应的ChildItem组件渲染到界面上。
+在上述代码中，键值生成规则是keyGenerator函数的返回值item。在ForEach渲染循环时，为数据源数组项依次生成键值one、two和three，并创建对应的ChildItem组件渲染到界面上。
 
 当不同数组项按照键值生成规则生成的键值相同时，框架的行为是未定义的。例如，在以下代码中，ForEach渲染相同的数据项two时，只创建了一个ChildItem组件，而没有创建多个具有相同键值的组件。
 
@@ -91,8 +91,8 @@ class EntryView {
     func build() {
         Row() {
             Column() {
-                ForEach(this.simpleList,itemGeneratorFunc: {item: String,idx:Int64 =>
-                    ChildItem(item: item)}, keyGeneratorFunc: {item: String, idx: Int64 => return item})
+                ForEach(this.simpleList,itemGenerator: {item: String,idx:Int64 =>
+                    ChildItem(item: item)}, keyGenerator: {item: String, idx: Int64 => return item})
             }
             .justifyContent(FlexAlign.Center)
             .width(100.percent)
@@ -143,8 +143,8 @@ class EntryView {
                 .onClick({evt=>
                 this.simpleList[2] = 'new three'
                 })
-                ForEach(this.simpleList,itemGeneratorFunc: {item: String,idx:Int64 =>
-                ChildItem(item: item)}, keyGeneratorFunc: {item: String, idx: Int64 => return item})
+                ForEach(this.simpleList,itemGenerator: {item: String,idx:Int64 =>
+                ChildItem(item: item)}, keyGenerator: {item: String, idx: Int64 => return item})
             }
             .justifyContent(FlexAlign.Center)
             .width(100.percent)
@@ -162,7 +162,7 @@ class EntryView {
 
 ![changenumthree.gif](figures/changenumthree.gif)
 
-从本例可以看出@State 能够监听到简单数据类型数组数据源 simpleList 数组项的变化。
+从本例可以看出[@State](../state_management/cj-macro-state.md)能够监听到简单数据类型数组数据源 simpleList 数组项的变化。
 
 1. 当 simpleList 数组项发生变化时，会触发 ForEach 进行重新渲染。
 2. ForEach 遍历新的数据源 ['one', 'two', 'new three']，并生成对应的键值one、two和new three。
@@ -223,7 +223,7 @@ class EntryView {
     @State var simpleList: Array<Int64> = [1, 2, 3, 4, 5]
     func build() {
         Column() {
-            ForEach(this.simpleList, itemGeneratorFunc: {item: Int64,idx:Int64 =>ArticleSkeletonView()}
+            ForEach(this.simpleList, itemGenerator: {item: Int64,idx:Int64 =>ArticleSkeletonView()}
             )
         }
         .padding(20)
@@ -324,11 +324,11 @@ class EntryView {
     func build() {
         Column(space: 5) {
             List() {
-                ForEach(this.articleList, itemGeneratorFunc: {item: Article,idx:Int64  =>
+                ForEach(this.articleList, itemGenerator: {item: Article,idx:Int64  =>
                     ListItem() {
                         ArticleCard(article: item)
                     }
-                    }, keyGeneratorFunc: {item: Article, idx: Int64 => return item.id})
+                    }, keyGenerator: {item: Article, idx: Int64 => return item.id})
             }
             .onReachEnd( {=>
                 this.isListReachEnd = true
@@ -369,7 +369,7 @@ class EntryView {
 
 ### 渲染结果非预期
 
-在本示例中，通过设置ForEach的第三个参数keyGeneratorFunc函数，自定义键值生成规则为数据源的索引index的字符串类型值。当点击父组件EntryView中“在第1项后插入新项”文本组件后，界面会出现非预期的结果。
+在本示例中，通过设置ForEach的第三个参数keyGenerator函数，自定义键值生成规则为数据源的索引index的字符串类型值。当点击父组件EntryView中“在第1项后插入新项”文本组件后，界面会出现非预期的结果。
 
  <!-- run -->
 
@@ -402,8 +402,8 @@ class EntryView {
             .onClick({ evt =>
                 this.simpleList.insert(1,'new item')
             })
-            ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>ChildItem(item: item)
-            },keyGeneratorFunc: {item: String, index: Int64 => index.toString()}
+            ForEach(this.simpleList, itemGenerator: {item: String ,idx:Int64 =>ChildItem(item: item)
+            },keyGenerator: {item: String, index: Int64 => index.toString()}
             )
         }
     .justifyContent(FlexAlign.Center)
@@ -430,7 +430,7 @@ ForEach依次遍历新数据源，遍历数据项"one"时生成键值"0"，存�
 
 ### 渲染性能降低
 
-在本示例中，ForEach的第三个参数keyGeneratorFunc函数处于缺省状态。当点击“在第1项后插入新项”文本组件后，ForEach将需要为第2个数组项以及其后的所有项重新创建组件。
+在本示例中，ForEach的第三个参数keyGenerator函数处于缺省状态。当点击“在第1项后插入新项”文本组件后，ForEach将需要为第2个数组项以及其后的所有项重新创建组件。
 
  <!-- run -->
 
@@ -466,7 +466,7 @@ class EntryView {
             .onClick({
                 evt =>this.simpleList.insert(1,'new item')
             })
-            ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>
+            ForEach(this.simpleList, itemGenerator: {item: String ,idx:Int64 =>
             ChildItem(item: item)}
             )
         }
@@ -496,12 +496,12 @@ class EntryView {
 2. 插入新项后，数据源simpleList变为['one', 'new item', 'two', 'three']，ArkUI框架监听到@State装饰的数据源长度变化触发ForEach重新渲染。
 3. ForEach依次遍历新数据源，遍历数据项one时生成键值0__one，键值已存在，因此不创建新组件。继续遍历数据项new item时生成键值1__new item，不存在相同键值，创建内容为new item的新组件并渲染。继续遍历数据项two生成键值2__two，不存在相同键值，创建内容为two的新组件并渲染。最后遍历数据项three时生成键值3__three，不存在相同键值，创建内容为three的新组件并渲染。
 
-尽管此示例中界面渲染的结果符合预期，但每次插入一条新数组项时，ForEach都会为从该数组项起后面的所有数组项全部重新创建组件。当数据源数据量较大或组件结构复杂时，由于组件无法得到复用，将导致性能体验不佳。因此，除非必要，否则不推荐将第三个参数keyGeneratorFunc函数处于缺省状态，以及在键值生成规则中包含数据项索引index。
+尽管此示例中界面渲染的结果符合预期，但每次插入一条新数组项时，ForEach都会为从该数组项起后面的所有数组项全部重新创建组件。当数据源数据量较大或组件结构复杂时，由于组件无法得到复用，将导致性能体验不佳。因此，除非必要，否则不推荐将第三个参数keyGenerator函数处于缺省状态，以及在键值生成规则中包含数据项索引index。
 
 正确渲染并保证效率的ForEach写法是：
 
 ```cangjie
-ForEach(this.simpleList, itemGeneratorFunc: {item: String ,idx:Int64 =>ChildItem(item: item)}, keyGeneratorFunc: {item: String, index: Int64 => item})
+ForEach(this.simpleList, itemGenerator: {item: String ,idx:Int64 =>ChildItem(item: item)}, keyGenerator: {item: String, index: Int64 => item})
 ```
 
-提供了第三个参数keyGeneratorFunc，在这个例子中，对数据源的不同数据项生成不同的key，并且对同一个数据项每次生成相同的key。
+提供了第三个参数keyGenerator，在这个例子中，对数据源的不同数据项生成不同的key，并且对同一个数据项每次生成相同的key。

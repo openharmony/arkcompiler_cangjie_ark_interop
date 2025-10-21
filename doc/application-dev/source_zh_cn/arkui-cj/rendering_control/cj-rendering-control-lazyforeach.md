@@ -63,11 +63,11 @@ public class EntryView {
                 Text(this.message).width(300.px)
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("item[${index}]: ${item}").fontSize(30).onAppear({=> this.message="appear:" + item})
                         }
-                    }, keyGeneratorFunc: { item: String, index: Int64 => item}
+                    }, keyGenerator: { item: String, index: Int64 => item}
                 )
             }.cachedCount(5)
 
@@ -117,11 +117,11 @@ public class EntryView {
                 Text(this.message).width(300.px)
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("item[${index}]: ${item}").fontSize(30).onAppear({=> this.message="appear:" + item})
                         }
-                    }, keyGeneratorFunc: { item: String, index: Int64 =>  return "samekey"}
+                    }, keyGenerator: { item: String, index: Int64 =>  return "samekey"}
                 )
             }.cachedCount(5)
 
@@ -177,7 +177,7 @@ public class EntryView {
                 })
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("item[${index}]: ${item}").fontSize(30)
                         }
@@ -247,14 +247,14 @@ public class EntryView {
                 })
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("item[${index}]: ${item}").fontSize(30)
                         }.onClick({ _ =>
                             // 点击删除子组件
                             this.dataSource.deleteData(findIndex(this.dataSource.getAllData(),item))
                         })
-                    }, keyGeneratorFunc: { item: String, index: Int64 => return item}
+                    }, keyGenerator: { item: String, index: Int64 => return item}
                 )
             }.cachedCount(5)
 
@@ -328,7 +328,7 @@ public class EntryView {
                 })
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("item[${index}]: ${item}").fontSize(30)
                         }.onClick({ _ =>
@@ -339,7 +339,7 @@ public class EntryView {
                                 this.moved.clear()
                             }
                         })
-                    }, keyGeneratorFunc: { item: String, index: Int64 => return item}
+                    }, keyGenerator: { item: String, index: Int64 => return item}
                 )
             }.cachedCount(5)
 
@@ -417,13 +417,13 @@ public class EntryView {
                 })
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("item[${index}]: ${item}").fontSize(30)
                         }.onClick({ _ =>
                             this.dataSource.changeData(findIndex(this.dataSource.getAllData(), item), item+"0")
                     })
-                }, keyGeneratorFunc: { item: String, index: Int64 => return item})
+                }, keyGenerator: { item: String, index: Int64 => return item})
 
         }.cachedCount(5)
 
@@ -490,14 +490,14 @@ public class EntryView {
                 })
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("item[${index}]: ${item}").fontSize(30)
                         }.onClick({ _ =>
                             this.dataSource.modifyAllData()
                             this.dataSource.reloadData()
                     })
-                }, keyGeneratorFunc: { item: String, index: Int64 => return item+index.toString()})
+                }, keyGenerator: { item: String, index: Int64 => return item+index.toString()})
         }.cachedCount(5)
 
         }.height(100.percent).height(100.percent)
@@ -566,11 +566,11 @@ public class EntryView {
                 })
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("${item}").fontSize(30)
                         }
-                }, keyGeneratorFunc: { item: String, index: Int64 => return item+index.toString()})
+                }, keyGenerator: { item: String, index: Int64 => return item+index.toString()})
         }.cachedCount(5)
 
         }.height(100.percent).height(100.percent)
@@ -621,11 +621,11 @@ public class EntryView {
                 })
             }
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text("${item}").fontSize(30)
                         }
-                }, keyGeneratorFunc: { item: String, index: Int64 => return item+index.toString()})
+                }, keyGenerator: { item: String, index: Int64 => return item+index.toString()})
         }.cachedCount(5)
 
         }.height(100.percent).height(100.percent)
@@ -665,7 +665,7 @@ public class EntryView {
 
 #### 改变数据子属性
 
-若仅靠LazyForEach的刷新机制，当item变化时若想更新子组件，需要将原来的子组件全部销毁再重新构建，在子组件结构较为复杂的情况下，靠改变键值去刷新渲染性能较低。因此框架提供了@Observed与@ObjectLink机制进行深度观测，可以做到仅刷新使用了该属性的组件，提高渲染性能。开发者可根据其自身业务特点选择使用哪种刷新方式。
+若仅靠LazyForEach的刷新机制，当item变化时若想更新子组件，需要将原来的子组件全部销毁再重新构建，在子组件结构较为复杂的情况下，靠改变键值去刷新渲染性能较低。因此框架提供了[@Observed](../state_management/cj-macro-observed-and-publish.md)与[@Link](../state_management/cj-macro-link.md)机制进行深度观测，可以做到仅刷新使用了该属性的组件，提高渲染性能。开发者可根据其自身业务特点选择使用哪种刷新方式。
 
 ```cangjie
 /** BasicDataSource代码见文档末尾附件: 泛型类型数组的BasicDataSource代码 **/
@@ -711,11 +711,11 @@ public class EntryView {
     public func build(): Unit {
         Column() {
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: StringData, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: StringData, index: Int64 =>
                         ListItem() {
                             ChildComponent(data: item)
                         }.onClick({ _ => item.message += "0"})
-                }, keyGeneratorFunc: { item: StringData, index: Int64 => return index.toString()})
+                }, keyGenerator: { item: StringData, index: Int64 => return index.toString()})
         }.cachedCount(5)
 
         }.height(100.percent).height(100.percent)
@@ -767,7 +767,7 @@ public class EntryView {
     public func build(): Unit {
         Column() {
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text(item)
                                 .fontSize(50)
@@ -776,7 +776,7 @@ public class EntryView {
                             this.dataSource.deleteData(index)
                         })
                         .margin(left: 10, right: 10)
-                }, keyGeneratorFunc: { item: String, index: Int64 => return item})
+                }, keyGenerator: { item: String, index: Int64 => return item})
             }.cachedCount(5)
         }.height(100.percent)
         .width(100.percent)
@@ -830,7 +830,7 @@ public class EntryView {
     public func build(): Unit {
         Column() {
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text(item)
                                 .fontSize(50)
@@ -841,7 +841,7 @@ public class EntryView {
                             this.dataSource.reloadData()
                         })
                         .margin(left: 10, right: 10)
-                }, keyGeneratorFunc: { item: String, index: Int64 => return item + index.toString()})
+                }, keyGenerator: { item: String, index: Int64 => return item + index.toString()})
             }.cachedCount(5)
         }.height(100.percent)
         .width(100.percent)
@@ -896,7 +896,7 @@ public class EntryView {
     public func build(): Unit {
         Column() {
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text(item)
                                 .width(100.percent)
@@ -963,7 +963,7 @@ public class EntryView {
     public func build(): Unit {
         Column() {
             List(space: 3) {
-                LazyForEach(dataSource, itemGeneratorFunc: { item: String, index: Int64 =>
+                LazyForEach(dataSource, itemGenerator: { item: String, index: Int64 =>
                         ListItem() {
                             Text(item)
                                 .width(100.percent)

@@ -5,7 +5,9 @@
 自定义组件具有以下特点：
 
 - 可组合：允许开发者组合使用系统组件、及其属性和方法。
+
 - 可重用：自定义组件可以被其他组件重用，并作为不同的实例在不同的父组件或容器中使用。
+
 - 数据驱动UI更新：通过状态变量的改变，来驱动UI的刷新。
 
 ## 自定义组件的基本用法
@@ -44,7 +46,17 @@ class EntryView {
 }
 ```
 
-要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍。
+要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍：
+
+- 自定义组件的基本结构
+
+- 成员函数/变量
+
+- 自定义组件的参数规定
+
+- build()函数
+
+- 自定义组件通用样式
 
 ## 自定义组件的基本结构
 
@@ -119,6 +131,7 @@ class MyComponent {
 自定义组件可以包含成员变量，成员变量具有以下约束：
 
 - 自定义组件的成员变量为私有的，且不建议声明成静态变量。
+
 - 自定义组件的成员变量本地初始化有些是可选的，有些是必选的。具体是否需要本地初始化，是否需要从父组件通过参数传递初始化子组件的成员变量，请参见[状态管理](../state_management/cj-state-management-overview.md)。
 
 ## 自定义组件的参数规定
@@ -155,7 +168,7 @@ class EntryView {
 
 下面的示例代码将父组件中的函数传递给子组件，并在子组件中调用。
 
- <!-- run -->
+<!-- run -->
 
 ```cangjie
 package ohos_app_cangjie_entry
@@ -198,7 +211,7 @@ class Child {
 - @Entry装饰的自定义组件，其build()函数下的根节点唯一且必要，且必须为容器组件，其中ForEach禁止作为根节点。
 - @Component装饰的自定义组件，其build()函数下的根节点唯一且必要，可以为非容器组件，其中ForEach禁止作为根节点。
 
-     <!-- run -->
+  <!-- run -->
 
   ```cangjie
   package ohos_app_cangjie_entry
@@ -327,3 +340,33 @@ class Child {
       }
   }
   ```
+
+## 自定义组件通用样式
+
+自定义组件通过“.”链式调用设置通用样式。
+
+```cangjie
+@Component
+class ChildComponent {
+    func build() {
+        Button("Hello World")
+    }
+}
+
+@Entry
+@Component
+class MyComponent {
+    func build() {
+        Row(){
+            ChildComponent()
+            .width(200)
+            .height(300)
+            .backgroundColor(Color.Red)
+        }
+    }
+}
+```
+
+> **说明：**
+>
+> ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的Button组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
