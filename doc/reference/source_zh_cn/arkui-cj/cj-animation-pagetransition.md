@@ -58,9 +58,9 @@ public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** x轴上的平移距离。初始值：0.0vp|
-|y|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** y轴上的平移距离。初始值：0.0vp|
-|z|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** z轴上的平移距离。初始值：0.0vp|
+|x|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** x轴上的平移距离。初始值：0.0vp|
+|y|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** y轴上的平移距离。初始值：0.0vp|
+|z|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** z轴上的平移距离。初始值：0.0vp|
 
 ### func scale(?Float32, ?Float32, ?Float32, ?Length, ?Length)
 
@@ -87,8 +87,8 @@ public func scale(
 |x|?Float32|否|None|**命名参数。** x轴上的缩放比例。初始值：1.0|
 |y|?Float32|否|None|**命名参数。** y轴上的缩放比例。初始值：1.0|
 |z|?Float32|否|None|**命名参数。** z轴上的缩放比例。初始值：1.0|
-|centerX|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 变换中心点x轴坐标。初始值：50.percent|
-|centerY|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 变换中心点y轴坐标。初始值：50.percent|
+|centerX|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点x轴坐标。初始值：50.percent|
+|centerY|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点y轴坐标。初始值：50.percent|
 
 ### func opacity(Float64)
 

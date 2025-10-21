@@ -48,7 +48,7 @@ prop unitType: LengthUnit
 
 **功能：** 长度属性的单位。
 
-**类型：** LengthUnit
+**类型：** [LengthUnit](#enum-lengthunit)
 
 **读写能力：** 只读
 
@@ -328,7 +328,7 @@ public prop unitType: LengthUnit
 
 **功能：** 长度属性的单位。
 
-**类型：** LengthUnit
+**类型：** [LengthUnit](#enum-lengthunit)
 
 **读写能力：** 只读
 
@@ -886,15 +886,88 @@ public init(touchType: TouchType, id: Int32, screenX: Float64, screenY: Float64,
 |x|Float64|是|-|触摸点相对于被触摸元素左边沿的X坐标。|
 |y|Float64|是|-|触摸点相对于被触摸元素上边沿的Y坐标。|
 
+## class BaseEvent
+
+```cangjie
+sealed abstract class BaseEvent {
+    public var target: ?EventTarget
+    public var timestamp: Int64
+    public var source: ?SourceType
+    public var deviceId: ?Int64
+}
+```
+
+**功能：** 点击事件的基类。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 22
+
+### var target
+
+```cangjie
+public var target: ?EventTarget
+```
+
+**功能：** 触发事件的元素对象。
+
+**类型：** ?[EventTarget](#class-eventtarget)
+
+**读写能力：** 可读写
+
+**起始版本：** 22
+
+### var timestamp
+
+```cangjie
+public var timestamp: Int64
+```
+
+**功能：** 事件时间戳，触发事件时距离系统启动的时间间隔。单位：ns
+
+**类型：** Int64
+
+**读写能力：** 可读写
+
+**起始版本：** 22
+
+### var source
+
+```cangjie
+public var source: ?SourceType
+```
+
+**功能：** 事件输入设备的类型。
+
+**类型：** ?[SourceType](#enum-sourcetype)
+
+**读写能力：** 可读写
+
+**起始版本：** 22
+
+### var deviceId
+
+```cangjie
+public var deviceId: ?Int64
+```
+
+**功能：** 触发当前事件的输入设备ID。初始值：0，取值范围：[0, +∞)。
+
+**类型：** ?Int64
+
+**读写能力：** 可读写
+
+**起始版本：** 22
+
 ## class ClickEvent
 
 ```cangjie
 public class ClickEvent <: BaseEvent {
-    public var x: Float64,
-    public var y: Float64,
-    public var windowX: Float64,
-    public var windowY: Float64,
-    public var displayX: Float64,
+    public var x: Float64
+    public var y: Float64
+    public var windowX: Float64
+    public var windowY: Float64
+    public var displayX: Float64
     public var displayY: Float64
 }
 ```
@@ -905,7 +978,9 @@ public class ClickEvent <: BaseEvent {
 
 **起始版本：** 22
 
-**父类型：** BaseEvent
+**父类型：**
+
+- [BaseEvent](#class-baseevent)
 
 ### var displayX
 
@@ -1095,7 +1170,7 @@ public var pixelMap: ?PixelMap
 
 **功能：** 设置拖拽过程中显示的图片。
 
-**类型：** ?[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)
+**类型：** ?[PixelMap](../../source_zh_cn/ImageKit/cj-apis-image.md#class-pixelmap)
 
 **读写能力：** 可读写
 
@@ -1115,7 +1190,7 @@ public init(pixelMap: ?PixelMap, builder: ?CustomBuilder, extraInfo: ?String)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|pixelMap|?[PixelMap](../apis/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|设置拖拽过程中显示的图片。|
+|pixelMap|?[PixelMap](../../source_zh_cn/ImageKit/cj-apis-image.md#class-pixelmap)|是|-|设置拖拽过程中显示的图片。|
 |builder|?[CustomBuilder](./cj-common-types.md#type-custombuilder)|是|-|使用自定义生成器进行绘图，如果设置了pixelMap，则忽略此值。|
 |extraInfo|?String|是|-|拖拽项的描述。|
 
@@ -1138,6 +1213,10 @@ public class MouseEvent <: BaseEvent {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
+
+**父类型：**
+
+- [BaseEvent](#class-baseevent)
 
 ### var action
 
@@ -1278,7 +1357,7 @@ public class TouchEvent <: BaseEvent {
 
 **父类型：**
 
-- BaseEvent
+- [BaseEvent](#class-baseevent)
 
 ### var eventType
 
@@ -1706,7 +1785,7 @@ public var curve: ?Curve
 
 **功能：** 设置共享转场的动画曲线。
 
-**类型：** ?Curve
+**类型：** ?[Curve](#enum-curve)
 
 **读写能力：** 可读写
 
@@ -1770,7 +1849,7 @@ public var effectType: ?SharedTransitionEffectType
 
 **功能：** 设置共享转场的效果类型。
 
-**类型：** ?SharedTransitionEffectType
+**类型：** ?[SharedTransitionEffectType](#enum-sharedtransitioneffecttype)
 
 **读写能力：** 可读写
 
@@ -1795,11 +1874,11 @@ public init(duration!: ?Int32 = None, curve!: ?Curve = None, delay!: ?Int32 = No
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |duration|?Int32|否|None|**命名参数。** 设置共享转场的动画曲线。初始值为1000。|
-|curve|?Curve|否|None|**命名参数。** 设置共享转场的动画曲线。初始值为Curve.Linear。|
+|curve|?[Curve](./cj-common-types.md#enum-curve)|否|None|**命名参数。** 设置共享转场的动画曲线。初始值为Curve.Linear。|
 |delay|?Int32|否|None|**命名参数。** 设置共享转场的延迟时间。初始值为0。|
 |motionPath|?[MotionPathOptions](#class-motionpathoptions)|否|None|**命名参数。** 设置共享转场的运动路径。初始值为MotionPathOptions(path: "")。|
 |zIndex|?Int32|否|None|**命名参数。** 设置共享转场的层级。初始值为0。|
-|effectType|?SharedTransitionEffectType|否|None|**命名参数。** 设置共享转场的效果类型。初始值为SharedTransitionEffectType.Exchange。|
+|effectType|?[SharedTransitionEffectType](./cj-common-types.md#enum-sharedtransitioneffecttype)|否|None|**命名参数。** 设置共享转场的效果类型。初始值为SharedTransitionEffectType.Exchange。|
 
 ## class AnimateParam
 
@@ -1864,7 +1943,7 @@ public var curve: ?Curve
 
 **功能：** 动画曲线。
 
-**类型：** ?Curve
+**类型：** ?[Curve](#enum-curve)
 
 **读写能力：** 可读写
 
@@ -1912,7 +1991,7 @@ public var playMode: ?PlayMode
 
 **功能：** 动画播放模式，默认播放完成后重头开始播放。
 
-**类型：** ?PlayMode
+**类型：** ?[PlayMode](#enum-playmode)
 
 **读写能力：** 可读写
 
@@ -1944,7 +2023,7 @@ public var finishCallbackType: ?FinishCallbackType
 
 **功能：** 在动画中定义onFinish回调的类型。
 
-**类型：** ?FinishCallbackType
+**类型：** ?[FinishCallbackType](#enum-finishcallbacktype)
 
 **读写能力：** 可读写
 
@@ -1960,7 +2039,7 @@ public var expectedFrameRateRange: Option<ExpectedFrameRateRange>
 
 **功能：** 设置动画的期望帧率。
 
-**类型：** Option<[ExpectedFrameRateRange](./cj-animation-animation.md#class-expectedframeraterange)>
+**类型：** Option<[ExpectedFrameRateRange](#class-expectedframeraterange)>
 
 **读写能力：** 可读写
 
@@ -1986,12 +2065,12 @@ public init(duration!: ?Int32 = None, tempo!: ?Float32 = None, curve!: ?Curve = 
 |:---|:---|:---|:---|:---|
 |duration|?Int32|否|None|**命名参数。** 动画持续时间，单位为毫秒。设置小于0的值时按0处理。初始值为1000。|
 |tempo|?Float32|否|None|**命名参数。** 动画播放速度，值越大动画播放越快，值越小播放越慢，为0时无动画效果。初始值为1.0。|
-|curve|?Curve|否|None|**命名参数。** 动画曲线。初始值为Curve.EaseInOut。|
+|curve|?[Curve](./cj-common-types.md#enum-curve)|否|None|**命名参数。** 动画曲线。初始值为Curve.EaseInOut。|
 |delay|?Int32|否|None|**命名参数。** 动画延迟播放时间，单位为ms(毫秒)。初始值为0。|
 |iterations|?Int32|否|None|**命名参数。** 动画播放次数。设置为-1时表示无限次播放。设置为0时表示无动画效果。初始值为1。|
-|playMode|?PlayMode|否|None|**命名参数。** 动画播放模式，默认播放完成后重头开始播放。初始值为PlayMode.Normal。|
+|playMode|?[PlayMode](./cj-common-types.md#enum-playmode)|否|None|**命名参数。** 动画播放模式，默认播放完成后重头开始播放。初始值为PlayMode.Normal。|
 |onFinish|Option\<() -> Unit>|否|Option.None|**命名参数。** 动画播放完成回调。|
-|finishCallbackType|?FinishCallbackType|否|None|**命名参数。** 在动画中定义onFinish回调的类型。初始值为FinishCallbackType.Removed。|
+|finishCallbackType|?[FinishCallbackType](./cj-common-types.md#enum-finishcallbacktype)|否|None|**命名参数。** 在动画中定义onFinish回调的类型。初始值为FinishCallbackType.Removed。|
 |expectedFrameRateRange|Option<[ExpectedFrameRateRange](./cj-animation-animation.md#class-expectedframeraterange)>|否|Option.None|**命名参数。** 设置动画的期望帧率。|
 
 ## class HorizontalAlignment
@@ -2034,7 +2113,7 @@ public var align: ?HorizontalAlign
 
 **功能：** 设置组件水平方向对齐方式。
 
-**类型：** ?HorizontalAlign
+**类型：** ?[HorizontalAlign](#enum-horizontalalign)
 
 **读写能力：** 可读写
 
@@ -2101,7 +2180,7 @@ public var align: ?VerticalAlign
 
 **功能：** 设置组件垂直方向对齐方式。
 
-**类型：** ?VerticalAlign
+**类型：** ?[VerticalAlign](#enum-verticalalign)
 
 **读写能力：** 可读写
 
@@ -2237,7 +2316,7 @@ public var weight: ?FontWeight
 
 **功能：** 设置文本的字体粗细。
 
-**类型：** ?FontWeight
+**类型：** ?[FontWeight](#enum-fontweight)
 
 **读写能力：** 可读写
 
@@ -2269,7 +2348,7 @@ public var style: ?FontStyle
 
 **功能：** 设置文本的字体样式。
 
-**类型：** ?FontStyle
+**类型：** ?[FontStyle](#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -2294,9 +2373,9 @@ public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?Resour
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。初始值为16.fp。|
-|weight|?FontWeight|否|None|**命名参数。** 设置文本的字体粗细。初始值为FontWeight.Normal。|
-|family|?ResourceStr|否|None|**命名参数。** 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。初始值为"HarmonyOS Sans"。|
-|style|?FontStyle|否|None|**命名参数。** 设置文本的字体样式。初始值为FontStyle.Normal。|
+|weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 设置文本的字体粗细。初始值为FontWeight.Normal。|
+|family|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。当前支持'HarmonyOS Sans'字体。初始值为"HarmonyOS Sans"。|
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 设置文本的字体样式。初始值为FontStyle.Normal。|
 
 ## class BorderRadiuses
 
@@ -2480,7 +2559,7 @@ public var shadowType: ?ShadowType
 
 **功能：** 设置阴影类型。
 
-**类型：** ?ShadowType
+**类型：** ?[ShadowType](#enum-shadowtype)
 
 **读写能力：** 可读写
 
@@ -2569,7 +2648,7 @@ public init(radius!: ?Float64, shadowType!: ?ShadowType = None, color!: ?Resourc
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |radius|?Float64|是|-|**命名参数。** 设置阴影的模糊半径。|
-|shadowType|?ShadowType|否|None|**命名参数。** 设置阴影类型。初始值为ShadowType.Color。|
+|shadowType|?[ShadowType](./cj-common-types.md#enum-shadowtype)|否|None|**命名参数。** 设置阴影类型。初始值为ShadowType.Color。|
 |color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|None|**命名参数。** 设置阴影颜色。初始值为Color.Black。|
 |offsetX|?Float64|否|None|**命名参数。** 设置阴影的水平偏移量。初始值为0.0。|
 |offsetY|?Float64|否|None|**命名参数。** 设置阴影的垂直偏移量。初始值为0.0。|
@@ -2910,7 +2989,7 @@ public var top: ?BorderStyle
 
 **功能：** 设置组件上边框样式。
 
-**类型：** ?BorderStyle
+**类型：** ?[BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -2926,7 +3005,7 @@ public var right: ?BorderStyle
 
 **功能：** 设置组件右边框样式。
 
-**类型：** ?BorderStyle
+**类型：** ?[BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -2942,7 +3021,7 @@ public var bottom: ?BorderStyle
 
 **功能：** 设置组件下边框样式。
 
-**类型：** ?BorderStyle
+**类型：** ?[BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -2958,7 +3037,7 @@ public var left: ?BorderStyle
 
 **功能：** 设置组件左边框样式。
 
-**类型：** ?BorderStyle
+**类型：** ?[BorderStyle](#enum-borderstyle)
 
 **读写能力：** 可读写
 
@@ -2982,10 +3061,10 @@ public init(top!: ?BorderStyle = None, right!: ?BorderStyle = None, bottom!: ?Bo
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|?BorderStyle|否|None|**命名参数。** 组件上边框样式。初始值为BorderStyle.Solid。|
-|right|?BorderStyle|否|None|**命名参数。** 组件右边框样式。初始值为BorderStyle.Solid。|
-|bottom|?BorderStyle|否|None|**命名参数。** 组件下边框样式。初始值为BorderStyle.Solid。|
-|left|?BorderStyle|否|None|**命名参数。** 组件左边框样式。初始值为BorderStyle.Solid。|
+|top|?[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|None|**命名参数。** 组件上边框样式。初始值为BorderStyle.Solid。|
+|right|?[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|None|**命名参数。** 组件右边框样式。初始值为BorderStyle.Solid。|
+|bottom|?[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|None|**命名参数。** 组件下边框样式。初始值为BorderStyle.Solid。|
+|left|?[BorderStyle](./cj-common-types.md#enum-borderstyle)|否|None|**命名参数。** 组件左边框样式。初始值为BorderStyle.Solid。|
 
 ## class MultiShadowOptions
 
@@ -3187,7 +3266,7 @@ public var weight: ?FontWeight
 
 **功能：** 设置文本的字体粗细。
 
-**类型：** ?FontWeight
+**类型：** ?[FontWeight](#enum-fontweight)
 
 **读写能力：** 可读写
 
@@ -3203,7 +3282,7 @@ public var family: ?ResourceStr
 
 **功能：** 设置文本的字体列表。
 
-**类型：** ?ResourceStr
+**类型：** ?[ResourceStr](#interface-resourcestr)
 
 **读写能力：** 可读写
 
@@ -3219,7 +3298,7 @@ public var style: ?FontStyle
 
 **功能：** 设置文本的字体样式。
 
-**类型：** ?FontStyle
+**类型：** ?[FontStyle](#enum-fontstyle)
 
 **读写能力：** 可读写
 
@@ -3244,9 +3323,9 @@ public init(size!: ?Length = None, weight!: ?FontWeight = None, family!: ?Resour
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 设置文本尺寸，Length为Int64、Float64类型时，使用fp单位。不支持百分比设置。初始值为16.fp。|
-|weight|?FontWeight|否|None|**命名参数。** 设置文本的字体粗细。初始值为FontWeight.Normal。|
-|family|?ResourceStr|否|None|**命名参数。**设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。初始值为"HarmonyOS Sans"。|
-|style|?FontStyle|否|None|**命名参数。** 设置文本的字体样式。初始值为FontStyle.Normal。|
+|weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 设置文本的字体粗细。初始值为FontWeight.Normal。|
+|family|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。**设置文本的字体列表。使用多个字体，使用','进行分割，优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。初始值为"HarmonyOS Sans"。|
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 设置文本的字体样式。初始值为FontStyle.Normal。|
 
 ## class BlurOptions
 
@@ -3323,7 +3402,7 @@ public var colorMode: ?ThemeColorMode
 
 **功能：** 内容模糊效果使用的深浅色模式。
 
-**类型：** ?ThemeColorMode
+**类型：** ?[ThemeColorMode](#enum-themecolormode)
 
 **读写能力：** 可读写
 
@@ -3339,7 +3418,7 @@ public var adaptiveColor: ?AdaptiveColor
 
 **功能：** 内容模糊效果使用的取色模式。
 
-**类型：** ?AdaptiveColor
+**类型：** ?[AdaptiveColor](#enum-adaptivecolor)
 
 **读写能力：** 可读写
 
@@ -3395,8 +3474,8 @@ public init(colorMode!: ?ThemeColorMode = None, adaptiveColor!: ?AdaptiveColor =
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|colorMode|?ThemeColorMode|否|None|**命名参数。** 内容模糊效果使用的深浅色模式。初始值为ThemeColorMode.System。|
-|adaptiveColor|?AdaptiveColor|否|None|**命名参数。** 内容模糊效果使用的取色模式。初始值为AdaptiveColor.Default。|
+|colorMode|?[ThemeColorMode](./cj-common-types.md#enum-themecolormode)|否|None|**命名参数。** 内容模糊效果使用的深浅色模式。初始值为ThemeColorMode.System。|
+|adaptiveColor|?[AdaptiveColor](./cj-common-types.md#enum-adaptivecolor)|否|None|**命名参数。** 内容模糊效果使用的取色模式。初始值为AdaptiveColor.Default。|
 |blurOptions|?[BlurOptions](#class-bluroptions)|否|None|**命名参数。** 灰阶模糊参数。初始值为BlurOptions([0.0, 0.0])。|
 |scale|?Float32|否|None|**命名参数。** 内容模糊效果程度。<br>取值范围：[0.0, 1.0]。初始值为1.0。|
 
@@ -3576,7 +3655,7 @@ public var onStateChange: ?(PopupStateChangeParam) -> Unit
 
 **功能：** 设置弹窗状态变化事件回调，参数为弹窗当前的显示状态。
 
-**类型：** ?(PopupStateChangeParam) -> Unit
+**类型：** ?([PopupStateChangeParam](#class-popupstatechangeparam)) -> Unit
 
 **读写能力：** 可读写
 
@@ -3592,7 +3671,7 @@ public var messageOptions: ?PopupMessageOptions
 
 **功能：** 设置弹窗信息文本参数。
 
-**类型：** ?PopupMessageOptions
+**类型：** ?[PopupMessageOptions](#class-popupmessageoptions)
 
 **读写能力：** 可读写
 
@@ -3672,7 +3751,7 @@ public var placement: ?Placement
 
 **功能：** 设置popup组件相对于目标的显示位置，默认值为Placement.Bottom。如果同时设置了placementOnTop和placement，则以placement的设置生效。
 
-**类型：** ?Placement
+**类型：** ?[Placement](#enum-placement)
 
 **读写能力：** 可读写
 
@@ -3688,7 +3767,7 @@ public var offset: ?Position
 
 **功能：** 设设置popup组件相对于placement设置的显示位置的偏移。不支持设置百分比。
 
-**类型：** ?[Position](./cj-class-common.md#class-position)
+**类型：** ?[Position](#class-position)
 
 **读写能力：** 可读写
 
@@ -3768,7 +3847,7 @@ public var arrowPointPosition: Option<ArrowPointPosition>
 
 **功能：** 设置气泡尖角相对于父组件显示位置，气泡尖角在垂直和水平方向上有 "Start"、"Center"、"End"三个位置点可选。以上所有位置点均位于父组件区域所在的范围内，不会超出父组件的边界范围。
 
-**类型：** Option<ArrowPointPosition>
+**类型：** Option<[ArrowPointPosition](#enum-arrowpointposition)>
 
 **读写能力：** 可读写
 
@@ -3832,7 +3911,7 @@ public var shadow: ?ShadowStyle
 
 **功能：** 设置气泡阴影。
 
-**类型：** ?ShadowStyle
+**类型：** ?[ShadowStyle](#enum-shadowstyle)
 
 **读写能力：** 可读写
 
@@ -3848,7 +3927,7 @@ public var backgroundBlurStyle: ?BlurStyle
 
 **功能：** 设置气泡模糊背景参数。
 
-**类型：** ?BlurStyle
+**类型：** ?[BlurStyle](#enum-blurstyle)
 
 **读写能力：** 可读写
 
@@ -3870,7 +3949,7 @@ public var transition: ?TransitionEffect
 > - 显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。
 > - 退出动效中按back键，不会打断退出动效，退出动效继续执行，back键不被响应。
 
-**类型：** ?TransitionEffect
+**类型：** ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)
 
 **读写能力：** 可读写
 
@@ -3890,7 +3969,7 @@ public var onWillDismiss: ?(DismissPopupAction) -> Unit
 >
 > 在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
-**类型：** ?(DismissPopupAction) -> Unit
+**类型：** ?([DismissPopupAction](#class-dismisspopupaction)) -> Unit
 
 **读写能力：** 可读写
 
@@ -3933,26 +4012,26 @@ public init(message!: ?String, primaryButton!: ?PopupButton = None, secondaryBut
 |message|?String|是|-|**命名参数。** 设置弹窗信息内容。|
 |primaryButton|?[PopupButton](#class-popupbutton)|否|None|**命名参数。** 设置第一个按钮。初始值为PopupButton(value: "", action: {=>})。|
 |secondaryButton|?[PopupButton](#class-popupbutton)|否|None|**命名参数。** 设置第二个按钮。初始值为PopupButton(value: "", action: {=>})。|
-|onStateChange|Option<(PopupStateChangeParam) -> Unit>|否|Option.None|**命名参数。** 设置弹窗状态变化事件回调。|
+|onStateChange|Option<([PopupStateChangeParam](#class-popupstatechangeparam)) -> Unit>|否|Option.None|**命名参数。** 设置弹窗状态变化事件回调。|
 |arrowOffset|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 设置popup箭头在弹窗处的偏移。初始值为0.vp。|
 |showInSubWindow|?Bool|否|None|**命名参数。** 设置是否在子窗口显示气泡。初始值为false。|
 |messageOptions|?[PopupMessageOptions](#class-popupmessageoptions)|否|None|**命名参数。** 设置弹窗信息文本参数。初始值为PopupMessageOptions()。|
 |mask|?[Color](./cj-common-types.md#class-color)|否|None|**命名参数。** 设置遮罩层的颜色。初始值为Color(0x1000000)。|
 |targetSpace|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 设置popup与目标的间隙。初始值为0.vp。|
-|placement|Option<Placement>|否|Option.None|**命名参数。** 设置popup组件相对于目标的显示位置。|
-|offset|?[Position](./cj-class-common.md#class-position)|否|None|**命名参数。** 设置popup组件相对于placement设置的显示位置的偏移。初始值为Position(x:0.0, y: 0.0)。|
+|placement|Option<[Placement](#enum-placement)>|否|Option.None|**命名参数。** 设置popup组件相对于目标的显示位置。|
+|offset|?[Position](#class-position)|否|None|**命名参数。** 设置popup组件相对于placement设置的显示位置的偏移。初始值为Position(x:0.0, y: 0.0)。|
 |enableArrow|?Bool|否|None|**命名参数。** 是否启用箭头，初始值为true。|
 |popupColor|?[Color](./cj-common-types.md#class-color)|否|None|**命名参数。** 设置提示气泡的颜色。初始值为Color(0x1000000)。|
 |autoCancel|?Bool|否|None|**命名参数。** 页面有操作时，设置是否自动关闭气泡。初始值为true。|
 |width|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 设置弹窗宽度。初始值为0.vp。|
-|arrowPointPosition|?ArrowPointPosition|否|None|**命名参数。** 设置气泡尖角相对于父组件显示位置。|
+|arrowPointPosition|?[ArrowPointPosition](./cj-common-types.md#enum-arrowpointposition)|否|None|**命名参数。** 设置气泡尖角相对于父组件显示位置。|
 |arrowWidth|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 箭头宽度。初始值为16.vp。|
 |arrowHeight|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 箭头高度。初始值为8.vp。|
 |radius|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 设置气泡圆角半径。初始值为20.vp。|
-|shadow|?ShadowStyle|否|None|**命名参数。** 设置气泡阴影。初始值为ShadowStyle.OuterDefaultMD。|
-|backgroundBlurStyle|Option\<BlurStyle>|否|Option.None|**命名参数。** 设置气泡模糊背景参数。初始值为BlurStyle.ComponentUltraThick。|
-|transition|Option\<TransitionEffect>|否|Option.None|**命名参数。** 自定义设置popup弹窗显示和退出的动画效果。|
-|onWillDismiss|Option\<(DismissPopupAction) -> Unit>|否|None|**命名参数。**设置拦截退出事件且执行回调函数。|
+|shadow|?[ShadowStyle](./cj-common-types.md#enum-shadowstyle)|否|None|**命名参数。** 设置气泡阴影。初始值为ShadowStyle.OuterDefaultMD。|
+|backgroundBlurStyle|Option\<[BlurStyle](#enum-blurstyle)>|否|Option.None|**命名参数。** 设置气泡模糊背景参数。初始值为BlurStyle.ComponentUltraThick。|
+|transition|Option\<[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)>|否|Option.None|**命名参数。** 自定义设置popup弹窗显示和退出的动画效果。|
+|onWillDismiss|Option\<([DismissPopupAction](#class-dismisspopupaction)) -> Unit>|否|None|**命名参数。**设置拦截退出事件且执行回调函数。|
 |followTransformOfTarget|?Bool|否|None|**命名参数。** 气泡绑定的宿主组件或其宿主组件的父容器添加了旋转、缩放等变换时，设置气泡是否能显示在对应变化后的位置上。|
 
 ## class MenuElement
@@ -3985,7 +4064,7 @@ public init(value!: ?ResourceStr, action!: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|**命名参数。** 菜单项文本。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|**命名参数。** 菜单项文本。|
 |action|() -> Unit|是|-|**命名参数。** 点击菜单项的事件回调。|
 
 ## class CustomPopupOptions
@@ -4038,7 +4117,7 @@ public var builder: CustomBuilder
 >
 > popup为通用属性，自定义popup中不支持再次弹出popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与popup弹窗的显隐无关，不能使用其生命周期判断popup弹窗的显隐。
 
-**类型：** CustomBuilder
+**类型：** [CustomBuilder](#type-custombuilder)
 
 **读写能力：** 可读写
 
@@ -4054,7 +4133,7 @@ public var placement: ?Placement
 
 **功能：** 设置气泡组件优先显示的位置，当前位置显示不下时，会自动调整位置
 
-**类型：** ?Placement
+**类型：** ?[Placement](#enum-placement)
 
 **读写能力：** 可读写
 
@@ -4134,7 +4213,7 @@ public var onStateChange: Option<(PopupStateChangeParam) -> Unit>
 
 **功能：** 设置弹窗状态变化事件回调，参数为弹窗当前的显示状态。
 
-**类型：** Option<(PopupStateChangeParam) -> Unit>
+**类型：** Option<([PopupStateChangeParam](#class-popupstatechangeparam)) -> Unit>
 
 **读写能力：** 可读写
 
@@ -4230,7 +4309,7 @@ public var offset: ?Position
 
 **功能：** 设置popup组件相对于placement设置的显示位置的偏移。不支持设置百分比。
 
-**类型：** ?[Position](./cj-class-common.md#class-position)
+**类型：** ?[Position](#class-position)
 
 **读写能力：** 可读写
 
@@ -4262,7 +4341,7 @@ public var arrowPointPosition: Option<ArrowPointPosition>
 
 **功能：** 设置气泡尖角相对于父组件显示位置，气泡尖角在垂直和水平方向上有 "Start"、"Center"、"End"三个位置点可选。以上所有位置点均位于父组件区域所在的范围内，不会超出父组件的边界范围。
 
-**类型：** Option<ArrowPointPosition>
+**类型：** Option<[ArrowPointPosition](#enum-arrowpointposition)>
 
 **读写能力：** 可读写
 
@@ -4326,7 +4405,7 @@ public var shadow: ?ShadowStyle
 
 **功能：** 弹出窗口阴影的样式。
 
-**类型：** ?ShadowStyle
+**类型：** ?[ShadowStyle](#enum-shadowstyle)
 
 **读写能力：** 可读写
 
@@ -4342,7 +4421,7 @@ public var backgroundBlurStyle: ?BlurStyle
 
 **功能：** 弹出窗口的背景模糊样式。
 
-**类型：** ?BlurStyle
+**类型：** ?[BlurStyle](#enum-blurstyle)
 
 **读写能力：** 可读写
 
@@ -4374,7 +4453,7 @@ public var transition: Option<TransitionEffect>
 
 **功能：** 自定义设置popup弹窗显示和退出的动画效果。
 
-**类型：** Option<TransitionEffect>
+**类型：** Option<[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)>
 
 **读写能力：** 可读写
 
@@ -4394,7 +4473,7 @@ public var onWillDismiss: Option<(DismissPopupAction) -> Unit>
 >
 > 在onWillDismiss回调中，不能再做onWillDismiss拦截。
 
-**类型：** Option<(DismissPopupAction) -> Unit>
+**类型：** Option<([DismissPopupAction](#class-dismisspopupaction)) -> Unit>
 
 **读写能力：** 可读写
 
@@ -4435,20 +4514,20 @@ public init(builder!: () -> Unit, placement!: ?Placement = Option.None, maskColo
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |builder|() -> Unit|是|-|**命名参数。** 提示气泡内容的构造器。|
-|placement|Option<Placement>|否|Option.None|**命名参数。** 气泡组件优先显示的位置。<br>**说明：** 当前位置显示不下时，会自动调整位置。初始值为Placement.Bottom。|
+|placement|Option<[Placement](#enum-placement)>|否|Option.None|**命名参数。** 气泡组件优先显示的位置。<br>**说明：** 当前位置显示不下时，会自动调整位置。初始值为Placement.Bottom。|
 |maskColor|?[Color](./cj-common-types.md#class-color)|否|None|**命名参数。**提示气泡遮障层的颜色。初始值为Color(0x1000000)。|
 |popupColor|?[Color](./cj-common-types.md#class-color)|否|None|**命名参数。** 提示气泡的背景颜色。初始值为Color(0x1000000)。|
 |enableArrow|?Bool|否|None|**命名参数。** 是否显示箭头。<br>**说明：** 如果箭头所在方位侧的气泡长度不足以显示下箭头，则会默认不显示箭头。比如：placement设置为Left，但气泡高度小于箭头的宽度（32vp），则实际不会显示箭头。初始值为true。|
 |autoCancel|?Bool|否|None|**命名参数。** 页面有操作时，是否自动关闭气泡。初始值为true。|
-|onStateChange|Option<(PopupStateChangeParam) -> Unit>|否|Option.None|**命名参数。** 弹窗状态变化事件回调，参数为弹窗当前的显示状态。|
+|onStateChange|Option<([PopupStateChangeParam](#class-popupstatechangeparam)) -> Unit>|否|Option.None|**命名参数。** 弹窗状态变化事件回调，参数为弹窗当前的显示状态。|
 |showInSubWindow|?Bool|否|None|**命名参数。** 是否在子窗口显示气泡。初始值为false。|
 |backgroundColor|?[Color](./cj-common-types.md#class-color)|否|None|**命名参数。** 提示气泡的背景颜色。初始值为Color(0x1000000)。|
 |arrowOffset|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** popup箭头在弹窗处的偏移。<br>**说明：** 箭头在气泡上下方时，数值为0表示箭头居最左侧，偏移量为箭头至最左侧的距离，默认居中。箭头在气泡左右侧时，偏移量为箭头至最上侧的距离，默认居中。如果显示在屏幕边缘，气泡会自动左右偏移，数值为0时箭头始终指向绑定组件。初始值为0.vp。|
 |mask|?[Color](./cj-common-types.md#class-color)|否|None|**命名参数。** 提示气泡遮障层的颜色。|
 |targetSpace|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 设置popup与目标的间隙。初始值为0.vp。|
-|offset|?[Position](./cj-class-common.md#class-position)|否|None|**命名参数。** popup组件相对于placement设置的显示位置的偏移。<br>**说明：** 不支持设置百分比。 |
+|offset|?[Position](#class-position)|否|None|**命名参数。** popup组件相对于placement设置的显示位置的偏移。<br>**说明：** 不支持设置百分比。 |
 |width|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 弹窗宽度。<br>**说明：**  showInSubWindow=true时最大高度为设备屏幕高度，showInSubWindow=false时最大高度为应用窗口高度。高度限定逻辑=最大高度-状态栏高度（没有时高度为0）-dock栏高度（没有时高度为0）-40VP-40VP。初始值为0.vp。|
-|arrowPointPosition|?ArrowPointPosition|否|None|**命名参数。** 气泡尖角相对于父组件显示位置，气泡尖角在垂直和水平方向上有 ”Start“、”Center“、”End“三个位置点可选。以上所有位置点均位于父组件区域的范围内，不会超出父组件的边界范围。|
+|arrowPointPosition|?[ArrowPointPosition](./cj-common-types.md#enum-arrowpointposition)|否|None|**命名参数。** 气泡尖角相对于父组件显示位置，气泡尖角在垂直和水平方向上有 ”Start“、”Center“、”End“三个位置点可选。以上所有位置点均位于父组件区域的范围内，不会超出父组件的边界范围。|
 |arrowWidth|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 箭头宽度。<br>**说明：** 若所设置的箭头宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。初始值为16.vp。|
 |arrowHeight|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 箭头高度。<br>**说明：** 不支持设置百分比。初始值为16.vp。|
 
@@ -4468,7 +4547,7 @@ public class SheetOptions <: BindOptions {
 
 **父类型：**
 
-- [BindOptions](#open-class-bindoptions)
+- [BindOptions](#class-bindoptions)
 
 ### init(Option\<ResourceColor>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<SheetSize>, Option\<Array\<SheetSize>>, Option\<SheetType>, Option\<Bool>, Option\<Bool>, Option\<BlurStyle>, Option\<Color>, Option\<() -> Unit>, Option\<Bool>, Option\<(SheetDismiss) -> Unit>, Option\<(DismissSheetAction) -> Unit>, Option\<(SpringBackAction) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<(Float32) -> Unit>, Option\<Length>, Option\<Color>, Option\<EdgeStyles>, Option\<Length>, Option\<ShadowOptions>, Option\<SheetMode>, Option\<ScrollSizeMode>)
 
@@ -4496,22 +4575,22 @@ public init(backgroundColor!: Option<ResourceColor> = Option.None, onAppear!: Op
 |preferType|Option<[SheetType](#enum-sheettype)>|否|Option.None|**命名参数。** 半模态页面的样式。<br>**说明：**<br>preferType不可设置为SheetType.Bottom|
 |showClose|Option\<Bool>|否|Option.None|**命名参数。** 是否显示关闭图标，默认显示关闭图标。使用关闭图标关闭半模态页面时，需要在onDisappear回调函数中将isShow参数置为false。|
 |dragBar|Option\<Bool>|否|Option.None|**命名参数。** 是否显示控制条。<br>**说明：**<br>半模态面板的dentents属性设置多个不同高度并且设置生效时，默认显示控制条。否则不显示控制条。|
-|blurStyle|Option\<BlurStyle>|否|Option.None|**命名参数。** 半模态面板的模糊背景。|
+|blurStyle|Option\<[BlurStyle](#enum-blurstyle)>|否|Option.None|**命名参数。** 半模态面板的模糊背景。|
 |maskColor|Option<[Color](./cj-common-types.md#class-color)>|否|Option.None|**命名参数。** 半模态页面的背景蒙层颜色。|
 |title|Option\<() -> Unit>|否|Option.None|**命名参数。** 半模态面板的标题。在使用时结合@Builder使用。|
 |enableOutsideInteractive|Option\<Bool>|否|Option.None|**命名参数。** **命名参数。**  半模态所在页面是否允许交互。<br>**说明：**<br>设置为true时允许交互，不显示蒙层；设置为false时不允许交互，显示蒙层；若不进行设置，默认底部弹窗与居中弹窗不允许交互，跟手弹窗允许交互。当设置为true时，maskColor设置无效。|
-|shouldDismiss|Option<(SheetDismiss) -> Unit>|否|Option.None|**命名参数。** 半模态页面交互式关闭回调函数。<br>**说明：**<br>当用户执行下拉关闭/back事件/点击蒙层关闭/关闭按钮关闭交互操作时，如果注册该回调函数，则不会立刻关闭。|
-|onWillDismiss|Option<(DismissSheetAction) -> Unit>|否|Option.None|**命名参数。** 半模态页面的交互式关闭回调函数允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。<br>**说明：**<br>当用户触发关闭操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数中的reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。在onWillDismiss回调中，不能再做onWillDismiss拦截。建议在二次确认场景使用。|
-|onWillSpringBackWhenDismiss|Option<(SpringBackAction) -> Unit>|否|Option.None|**命名参数。**  半模态页面交互式关闭前控制回弹函数允许开发者注册，以控制半模态页面交互式关闭时的回弹效果。<br>**说明：**<br>当用户触发执行下拉关闭操作并同时注册该回调函数与shouldDimiss或onWillDismiss时，由开发者控制下滑关闭时是否回弹。在回调函数中可以通过调用springBack来实现回弹效果。也可以通过不调用springBack来取消回弹效果。<br>若不注册该回调函数，但注册shouldDimiss或onWillDismiss时，则默认在下滑关闭时，会触发回弹效果，回弹后再根据shouldDimiss或onWillDismiss内的回调行为决定半模态是否关闭。<br>如果不注册该回调函数，且未注册shouldDimiss或onWillDismiss时，默认在下滑关闭时，触发半模态关闭。|
+|shouldDismiss|Option<([SheetDismiss](#class-sheetdismiss)) -> Unit>|否|Option.None|**命名参数。** 半模态页面交互式关闭回调函数。<br>**说明：**<br>当用户执行下拉关闭/back事件/点击蒙层关闭/关闭按钮关闭交互操作时，如果注册该回调函数，则不会立刻关闭。|
+|onWillDismiss|Option<([DismissSheetAction](#class-dismisssheetaction)) -> Unit>|否|Option.None|**命名参数。** 半模态页面的交互式关闭回调函数允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。<br>**说明：**<br>当用户触发关闭操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数中的reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。在onWillDismiss回调中，不能再做onWillDismiss拦截。建议在二次确认场景使用。|
+|onWillSpringBackWhenDismiss|Option<([SpringBackAction](#class-springbackaction)) -> Unit>|否|Option.None|**命名参数。**  半模态页面交互式关闭前控制回弹函数允许开发者注册，以控制半模态页面交互式关闭时的回弹效果。<br>**说明：**<br>当用户触发执行下拉关闭操作并同时注册该回调函数与shouldDimiss或onWillDismiss时，由开发者控制下滑关闭时是否回弹。在回调函数中可以通过调用springBack来实现回弹效果。也可以通过不调用springBack来取消回弹效果。<br>若不注册该回调函数，但注册shouldDimiss或onWillDismiss时，则默认在下滑关闭时，会触发回弹效果，回弹后再根据shouldDimiss或onWillDismiss内的回调行为决定半模态是否关闭。<br>如果不注册该回调函数，且未注册shouldDimiss或onWillDismiss时，默认在下滑关闭时，触发半模态关闭。|
 |onHeightDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。** **命名参数。**  半模态页面高度变化回调函数。<br>**说明：**<br>底部弹窗时，只有档位变化和拖拽跟手才返回每一帧高度，拉起半模态和避让软键盘只返回最后的高度，其他弹窗只在半模态拉起返回最后高度。返回值为px。|
 |onDetentsDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面档位变化回调函数。<br>**说明：**<br>底部弹窗时，档位变化返回最后的高度。返回值为px。|
 |onWidthDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面宽度变化回调函数。<br>**说明：**<br>宽度变化时返回最后的宽度。返回值为px。|
 |onTypeDidChange|Option\<(Float32) -> Unit>|否|Option.None|**命名参数。**  半模态页面形态变化回调函数。<br>**说明：**<br>形态变化时返回最后的形态。|
 |borderWidth|Option<[Length](./cj-common-types.md#interface-length)>|否|None|**命名参数。**  设置半模态页面的边框宽度。可分别设置4个边框宽度。<br>百分比参数方式：以父元素半模态页面宽的百分比来设置半模态页面的边框宽度。<br>当半模态页面左边框和右边框大于半模态页面宽度，半模态页面上边框和下边框大于半模态页面高度，显示可能不符合预期。<br>**说明：**<br>底部弹窗时，底部边框宽度设置无效。|
 |borderColor|Option<[Color](./cj-common-types.md#class-color)>|否|None|**命名参数。**  设置半模态页面的边框颜色。如果使用borderColor属性，需要和borderWidth属性一起使用。<br>**说明：**<br>底部弹窗时，底部边框颜色设置无效。|
-|borderStyle|Option<[EdgeStyles](./cj-class-common.md#class-edgestyles)>|否|None|**命名参数。**  设置半模态页面的边框样式。如果使用borderStyle属性，需要和borderWidth属性一起使用。<br>**说明：**<br>底部弹窗时，底部边框样式设置无效。|
+|borderStyle|Option<[EdgeStyles](#class-edgestyles)>|否|None|**命名参数。**  设置半模态页面的边框样式。如果使用borderStyle属性，需要和borderWidth属性一起使用。<br>**说明：**<br>底部弹窗时，底部边框样式设置无效。|
 |width|Option<[Length](./cj-common-types.md#interface-length)>|否|None|**命名参数。**  设置半模态页面的宽度。百分比参数方式：以父元素宽的百分比来设置半模态页面的宽度。|
-|shadow|Option<[ShadowOptions](./cj-class-common.md#class-shadowoptions)>|否|None|**命名参数。** 阴影。|
+|shadow|Option<[ShadowOptions](#class-shadowoptions)>|否|None|**命名参数。** 阴影。|
 |mode|Option<[SheetMode](#enum-sheetmode)>|否|None|**命名参数。**  设置半模态页面的阴影。|
 |scrollSizeMode|Option<[ScrollSizeMode](#enum-scrollsizemode)>|否|None|**命名参数。**  设置半模态面板滑动时，内容区域刷新时机。|
 
@@ -4555,7 +4634,7 @@ public var font: ?Font
 
 **功能：** 设置弹窗信息字体属性。不支持设置family。
 
-**类型：** ?[Font](./cj-class-common.md#class-font)
+**类型：** ?[Font](#class-font)
 
 **读写能力：** 可读写
 
@@ -4580,7 +4659,7 @@ public init(textColor!: ?ResourceColor = None, font!: ?Font = None)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |textColor|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|None|**命名参数。** 弹窗信息文本颜色。初始值为Color(0x000000)。|
-|font|?[Font](./cj-class-common.md#class-font)|否|None|**命名参数。** 弹窗信息字体属性。初始值为Font()。|
+|font|?[Font](#class-font)|否|None|**命名参数。** 弹窗信息字体属性。初始值为Font()。|
 
 ## class OverlayOffset
 
@@ -4804,7 +4883,7 @@ public class ContentCoverOptions <: BindOptions {
 
 **父类型：**
 
-- [BindOptions](#open-class-bindoptions)
+- [BindOptions](#class-bindoptions)
 
 ### init(?ModalTransition, ?(DismissContentCoverAction) -> Unit, ?TransitionEffect, Option\<ResourceColor>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit>, Option\<() -> Unit)
 
@@ -4822,9 +4901,9 @@ public init(modalTransition!: ?ModalTransition = Option.None, onWillDismiss!: ?(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|modalTransition|?ModalTransition|否|Option.None|**命名参数。** 全屏模态页面的转场方式。|
-|onWillDismiss|?((DismissContentCoverAction) -> Unit)|否|Option.None|**命名参数。** 内容覆盖交互式关闭时的回调函数。|
-|transition|?TransitionEffect|否|Option.None|**命名参数。** 全屏模态页面交互式关闭回调函数。|
+|modalTransition|?[ModalTransition](./cj-common-types.md#enum-modaltransition)|否|Option.None|**命名参数。** 全屏模态页面的转场方式。|
+|onWillDismiss|?(([DismissContentCoverAction](#class-dismisscontentcoveraction)) -> Unit)|否|Option.None|**命名参数。** 内容覆盖交互式关闭时的回调函数。|
+|transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|Option.None|**命名参数。** 全屏模态页面交互式关闭回调函数。|
 |backgroundColor|Option<[ResourceColor](./cj-common-types.md#interface-resourcecolor)>|否|Option.None|**命名参数。** sheet的背景色。默认值：**Color.White**。|
 |onAppear|Option\<() -> Unit>|否|Option.None|**命名参数。** 全模态页面显示（动画结束后）回调函数。|
 |onDisappear|Option\<() -> Unit>|否|Option.None|**命名参数。** 全模态页面回退（动画结束后）回调函数。|
@@ -5004,7 +5083,7 @@ public let reason: DismissReason
 
 **功能：** 关闭原因，返回本次拦截popup消失的事件原因。
 
-**类型：** DismissReason
+**类型：** [DismissReason](#enum-dismissreason)
 
 **读写能力：** 只读
 
@@ -5061,7 +5140,7 @@ public var offset: ?Position
 
 **功能：** 菜单弹出位置的偏移量，不会导致菜单显示超出屏幕范围。
 
-**类型：** ?[Position](./cj-class-common.md#class-position)
+**类型：** ?[Position](#class-position)
 
 **读写能力：** 可读写
 
@@ -5077,7 +5156,7 @@ public var placement: Option<Placement>
 
 **功能：** 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。
 
-**类型：** Option<Placement>
+**类型：** Option<[Placement](#enum-placement)>
 
 **读写能力：** 可读写
 
@@ -5125,7 +5204,7 @@ public var preview: ?CustomBuilder
 
 **功能：** 长按悬浮菜单或使用bindContextMenu显示菜单的预览内容样式，为用户自定义的内容。
 
-**类型：** ?CustomBuilder
+**类型：** ?[CustomBuilder](#type-custombuilder)
 
 **读写能力：** 可读写
 
@@ -5141,7 +5220,7 @@ public var previewAnimationOptions: ?ContextMenuAnimationOptions
 
 **功能：** 控制长按预览显示动画开始倍率和结束倍率（相对预览原图比例）。
 
-**类型：** ?ContextMenuAnimationOptions
+**类型：** ?[ContextMenuAnimationOptions](#class-contextmenuanimationoptions)
 
 **读写能力：** 可读写
 
@@ -5237,7 +5316,7 @@ public var backgroundBlurStyle: ?BlurStyle
 
 **功能：** 弹窗背板模糊材质。
 
-**类型：** ?BlurStyle
+**类型：** ?[BlurStyle](#enum-blurstyle)
 
 **读写能力：** 可读写
 
@@ -5253,7 +5332,7 @@ public var transition: ?TransitionEffect
 
 **功能：** 设置菜单显示和退出的过渡效果。
 
-**类型：** ?TransitionEffect
+**类型：** ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)
 
 **读写能力：** 可读写
 
@@ -5277,8 +5356,8 @@ public init(offset!: ?Position = None, placement!: Option<Placement> = Option.No
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|offset|?[Position](./cj-class-common.md#class-position)|否|None|**命名参数。** 菜单弹出位置的偏移量，不会导致菜单显示超出屏幕范围。<br> **说明：**<br> 菜单类型为相对⽗组件区域弹出时，⾃动根据菜单位置属性 (placement)将区域的宽或⾼计⼊偏移量中。<br> 当菜单相对父组件出现在上侧时（placement设置为Placement.TopLeft，Placement.Top，Placement.TopRight），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向上进行偏移。<br> 当菜单相对父组件出现在下侧时（placement设置为Placement.BottomLeft，Placement.Bottom，Placement.BottomRight），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 当菜单相对父组件出现在左侧时（placement设置为Placement.LeftTop，Placement.Left，Placement.LeftBottom），x为正值，菜单相对组件向左进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 当菜单相对父组件出现在右侧时（placement设置为Placement.RightTop，Placement.Right，Placement.RightBottom），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 如果菜单调整了显示位置（与placement初始值主方向不⼀致），则偏移值 (offset) 失效。|
-|placement|Option\<Placement>|否|Option.None|**命名参数。** 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br> **说明：**<br> placement值设置为undefined、null或没有设置此选项时，按未设置placement处理，当使用bindMenu，按初始值：Placement.BottomLeft设置。|
+|offset|?[Position](#class-position)|否|None|**命名参数。** 菜单弹出位置的偏移量，不会导致菜单显示超出屏幕范围。<br> **说明：**<br> 菜单类型为相对⽗组件区域弹出时，⾃动根据菜单位置属性 (placement)将区域的宽或⾼计⼊偏移量中。<br> 当菜单相对父组件出现在上侧时（placement设置为Placement.TopLeft，Placement.Top，Placement.TopRight），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向上进行偏移。<br> 当菜单相对父组件出现在下侧时（placement设置为Placement.BottomLeft，Placement.Bottom，Placement.BottomRight），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 当菜单相对父组件出现在左侧时（placement设置为Placement.LeftTop，Placement.Left，Placement.LeftBottom），x为正值，菜单相对组件向左进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 当菜单相对父组件出现在右侧时（placement设置为Placement.RightTop，Placement.Right，Placement.RightBottom），x为正值，菜单相对组件向右进行偏移，y为正值，菜单相对组件向下进行偏移。<br> 如果菜单调整了显示位置（与placement初始值主方向不⼀致），则偏移值 (offset) 失效。|
+|placement|Option\<[Placement](#enum-placement)>|否|Option.None|**命名参数。** 菜单组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br> **说明：**<br> placement值设置为undefined、null或没有设置此选项时，按未设置placement处理，当使用bindMenu，按初始值：Placement.BottomLeft设置。|
 |enableArrow|?Bool|否|None| **命名参数。** 是否显示箭头。如果菜单的大小和位置不足以放置箭头时，不会显示箭头。<br> **说明：** <br> enableArrow为true时，placement未设置或者值为非法值，默认在目标物上方显示，否则按照placement的位置优先显示。当前位置显示不下时，会自动调整位置，enableArrow为undefined时，不显示箭头。|
 |arrowOffset|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 箭头在菜单处的偏移。偏移量必须合法且转换为具体数值时大于0才会生效，另外该值生效时不会导致箭头超出菜单四周的安全距离。<br> 单位：vp<br> **说明：**<br> 箭头距菜单四周的安全距离为菜单圆角大小与箭头宽度的一半之和。<br> 根据配置的placement来计算是在水平还是垂直方向上偏移。<br> 箭头在菜单水平方向时，偏移量为箭头至最左侧箭头安全距离处的距离。箭头在菜单垂直方向时，偏移量为箭头至最上侧箭头安全距离处的距离。<br> 根据配置的placement的不同，箭头展示的默认位置不同：<br> 在菜单不发生避让的情况下，placement设置为Placement.Top、Placement.Bottom时，箭头显示在水平方向且默认居中；<br> placement设置为Placement.Left、Placement.Right时，箭头显示在垂直方向且默认居中；<br> placement设置为Placement.TopLeft、Placement.BottomLeft时，箭头默认显示在水平方向，且距离菜单左侧边缘距离为箭头安全距离；<br> placement设置为Placement.TopRight、Placement.BottomRight时，箭头默认显示在水平方向，且距离菜单右侧距离为箭头安全距离；<br> placement设置为Placement.LeftTop、Placement.RightTop时，箭头默认显示在垂直方向，且距离菜单上侧距离为箭头安全距离；<br> placement设置为Placement.LeftBottom、Placement.RightBottom时，箭头默认显示在垂直方向，且距离菜单下侧距离为箭头安全距离。|
 |preview|Option\<() -> Unit>|否|Option.None| **命名参数。** 长按悬浮菜单或使用bindContextMenu显示菜单的预览内容样式，为用户自定义的内容。<br> **说明：** <br> - 不支持responseType为ResponseType.RightClick时触发，如果responseType为ResponseType.RightClick，则不会显示预览内容。<br> - 当未设置preview参数时，enableArrow参数生效。<br> - 当preview参数设置为CustomBuilder时，enableArrow为true时也不显示箭头。|
@@ -5288,10 +5367,10 @@ public init(offset!: ?Position = None, placement!: Option<Placement> = Option.No
 |aboutToAppear|?() -> Unit|否|None| **命名参数。** 菜单显示动效前的事件回调。|
 |aboutToDisappear|?() -> Unit|否|None| **命名参数。** 菜单退出动效前的事件回调。|
 |backgroundColor|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|None|**命名参数。** 弹窗背板颜色。初始值为Color.Transparent。|
-|backgroundBlurStyle|Option\<BlurStyle>|否|Option.None| **命名参数。** 弹窗背板模糊材质。|
-|transition|?TransitionEffect|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：**<br> 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。<br> 详细描述见TransitionEffect对象说明。|
-|borderRadius|?[BorderRadiuses](./cj-class-common.md#class-borderradiuses)|否|None| **命名参数。** 设置菜单显示区域的圆角。|
-|layoutRegionMargin|?[Margin](./cj-class-common.md#class-margin)|否|None| **命名参数。** 设置菜单的布局区域的边距。|
+|backgroundBlurStyle|Option\<[BlurStyle](#enum-blurstyle)>|否|Option.None| **命名参数。** 弹窗背板模糊材质。|
+|transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：**<br> 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。<br> 详细描述见TransitionEffect对象说明。|
+|borderRadius|?[BorderRadiuses](#class-borderradiuses)|否|None| **命名参数。** 设置菜单显示区域的圆角。|
+|layoutRegionMargin|?[Margin](#class-margin)|否|None| **命名参数。** 设置菜单的布局区域的边距。|
 
 ## class DismissContentCoverAction
 
@@ -5315,7 +5394,7 @@ public let reason: DismissReason
 
 **功能：** 关闭原因类型。
 
-**类型：** DismissReason
+**类型：** [DismissReason](#enum-dismissreason)
 
 **读写能力：** 只读
 
@@ -5376,7 +5455,7 @@ public var transition: ?TransitionEffect
 
 **功能：** 设置菜单显示和退出的过渡效果。
 
-**类型：** ?TransitionEffect
+**类型：** ?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)
 
 **读写能力：** 可读写
 
@@ -5417,7 +5496,7 @@ public init(scale!: ?VArray<Float64, $2> = None, transition!: ?TransitionEffect 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |scale|?VArray<Float64, $2>|否|None| **命名参数。** 动画开始和结束时相对预览原图缩放比例。<br> **说明：** 缩放比例需要根据实际开发场景设置，建议设置值为小于预览图宽度或布局的最大限制。|
-|transition|?TransitionEffect|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：** 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。详细描述见TransitionEffect对象说明。|
+|transition|?[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|None| **命名参数。** 菜单显示和退出的过渡效果。<br> **说明：** 菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。详细描述见TransitionEffect对象说明。|
 |hoverScale|?VArray<Float64, $2>|否|None| **命名参数。** 预览自定义长按场景下，浮起原组件截图的缩放动画开始和结束时相对预览原图缩放比例，且有与预览图的切换的过渡动效。<br> **说明：** 倍率设置参数小于等于0时，不生效。<br> 设置transition接口时，不生效。<br>使用此接口且同时使用scale接口时，scale接口起始值不生效。<br> 为保障最佳体验，最终预览图尺寸不建议小于原组件截图尺寸。当前预览动效宽高会受组件截图和自定义预览大小影响，请根据实际使用情况自行保障展示效果。|
 
 ## class DismissSheetAction
@@ -5442,7 +5521,7 @@ public var reason: ?DismissReason
 
 **功能：** 半模态页面关闭原因。
 
-**类型：** ?DismissReason
+**类型：** ?[DismissReason](#enum-dismissreason)
 
 **读写能力：** 可读写
 
@@ -5481,7 +5560,7 @@ public enum LengthUnit <: Equatable<LengthUnit> {
 
 **起始版本：** 22
 
-**父类型：** Equatable\<LengthUnit>
+**父类型：** Equatable\<[LengthUnit](#enum-lengthunit)>
 
 ### Px
 
@@ -5652,7 +5731,7 @@ public enum ModalTransition <: Equatable<ModalTransition> {
 
 **父类型：**
 
-- Equatable\<ModalTransition>
+- Equatable\<[ModalTransition](#enum-modaltransition)>
 
 ### Default
 
@@ -5753,7 +5832,7 @@ public enum SheetSize <: Equatable<SheetSize> {
 
 **父类型：**
 
-- Equatable\<SheetSize>
+- Equatable\<[SheetSize](#enum-sheetsize)>
 
 ### Medium
 
@@ -5858,7 +5937,7 @@ public enum SheetType <: Equatable<SheetType> {
 
 **父类型：**
 
-- Equatable\<SheetType>
+- Equatable\<[SheetType](#enum-sheettype)>
 
 ### Bottom
 
@@ -5962,7 +6041,7 @@ public enum SheetMode <: Equatable<SheetMode> {
 
 **父类型：**
 
-- Equatable\<SheetMode>
+- Equatable\<[SheetMode](#enum-sheetmode)>
 
 ### Overlay
 
@@ -6054,7 +6133,7 @@ public enum ScrollSizeMode <: Equatable<ScrollSizeMode> {
 
 **父类型：**
 
-- Equatable\<ScrollSizeMode>
+- Equatable\<[ScrollSizeMode](enum-scrollsizemode)>
 
 ### FollowDetent
 
@@ -6096,7 +6175,7 @@ public operator func ==(other: ScrollSizeMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ScrollSizeMode|是|-|要比较的另一个ScrollSizeMode枚举。|
+|other|[ScrollSizeMode](./cj-common-types.md#enum-scrollsizemode)|是|-|要比较的另一个ScrollSizeMode枚举。|
 
 **返回值：**
 
@@ -6120,7 +6199,7 @@ public operator func !=(other: ScrollSizeMode): Bool
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|other|ScrollSizeMode|是|-|要比较的另一个ScrollSizeMode枚举。|
+|other|[ScrollSizeMode](./cj-common-types.md#enum-scrollsizemode)|是|-|要比较的另一个ScrollSizeMode枚举。|
 
 **返回值：**
 
@@ -6146,7 +6225,7 @@ public enum KeySource <: Equatable<KeySource> {
 
 **父类型：**
 
-- Equatable\<KeySource>
+- Equatable\<[KeySource](#enum-keysource)>
 
 ### Unknown
 
@@ -6344,7 +6423,7 @@ public enum ModifierKey <: Equatable<ModifierKey> {
 
 **父类型：**
 
-- Equatable\<ModifierKey>
+- Equatable\<[ModifierKey](#enum-modifierkey)>
 
 ### Ctrl
 
@@ -6460,7 +6539,7 @@ public enum FunctionKey <: Equatable<FunctionKey> {
 
 **父类型：**
 
-- Equatable\<FunctionKey>
+- Equatable\<[FunctionKey](#enum-functionkey)>
 
 ### Esc
 
@@ -6692,7 +6771,7 @@ public enum DataPanelType <: Equatable<DataPanelType> {
 
 **父类型：**
 
-- Equatable\<DataPanelType>
+- Equatable\<[DataPanelType](#enum-datapaneltype)>
 
 ### Circle
 
@@ -6782,7 +6861,7 @@ public enum ItemState <: Equatable<ItemState> {
 
 **父类型：**
 
-- Equatable\<ItemState>
+- Equatable\<[ItemState](#enum-itemstate)>
 
 ### Normal
 
@@ -6897,7 +6976,7 @@ public enum RefreshStatus <: Equatable<RefreshStatus> {
 
 **父类型：**
 
-- Equatable\<RefreshStatus>
+- Equatable\<[RefreshStatus](#enum-refreshstatus)>
 
 ### Inactive
 
@@ -7023,7 +7102,7 @@ public enum SeekMode <: Equatable<SeekMode> {
 
 **父类型：**
 
-- Equatable\<SeekMode>
+- Equatable\<[SeekMode](#enum-seekmode)>
 
 ### PreviousKeyframe
 
@@ -7138,7 +7217,7 @@ public enum PlaybackSpeed <: Equatable<PlaybackSpeed> {
 
 **父类型：**
 
-- Equatable\<PlaybackSpeed>
+- Equatable\<[PlaybackSpeed](#enum-playbackspeed)>
 
 ### SpeedForward075X
 
@@ -7263,7 +7342,7 @@ public enum SelectStatus <: Equatable<SelectStatus> {
 
 **父类型：**
 
-- Equatable\<SelectStatus>
+- Equatable\<[SelectStatus](#enum-selectstatus)>
 
 ### All
 
@@ -7365,7 +7444,7 @@ public enum AnimationStatus <: Equatable<AnimationStatus> {
 
 **父类型：**
 
-- Equatable\<AnimationStatus>
+- Equatable\<[AnimationStatus](#enum-animationstatus)>
 
 ### Initial
 
@@ -7479,7 +7558,7 @@ public enum FillMode <: Equatable<FillMode> {
 
 **父类型：**
 
-- Equatable\<FillMode>
+- Equatable\<[FillMode](#enum-fillmode)>
 
 ### None
 
@@ -7591,7 +7670,7 @@ public enum SwipeEdgeEffect <: Equatable<SwipeEdgeEffect> {
 
 **父类型：**
 
-- Equatable\<SwipeEdgeEffect>
+- Equatable\<[SwipeEdgeEffect](#enum-swipeedgeeffect)>
 
 ### Spring
 
@@ -7679,7 +7758,7 @@ public enum SharedTransitionEffectType <: Equatable<SharedTransitionEffectType> 
 
 **父类型：**
 
-- Equatable\<SharedTransitionEffectType>
+- Equatable\<[SharedTransitionEffectType](#enum-sharedtransitioneffecttype)>
 
 ### Static
 
@@ -7768,7 +7847,7 @@ public enum ScrollState <: Equatable<ScrollState> {
 
 **父类型：**
 
-- Equatable\<ScrollState>
+- Equatable\<[ScrollState](#enum-scrollstate)>
 
 ### Idle
 
@@ -7869,7 +7948,7 @@ public enum ImageSmoothingQuality <: Equatable<ImageSmoothingQuality> {
 
 **父类型：**
 
-- Equatable\<ImageSmoothingQuality>
+- Equatable\<[ImageSmoothingQuality](#enum-imagesmoothingquality)>
 
 ### Low
 
@@ -7969,7 +8048,7 @@ public enum GestureMask <: Equatable<GestureMask> {
 
 **父类型：**
 
-- Equatable\<GestureMask>
+- Equatable\<[GestureMask](#enum-gesturemask)>
 
 ### Normal
 
@@ -8058,7 +8137,7 @@ public enum SwipeDirection <: Equatable<SwipeDirection> {
 
 **父类型：**
 
-- Equatable\<SwipeDirection>
+- Equatable\<[SwipeDirection](#enum-swipedirection)>
 
 ### Horizontal
 
@@ -8165,7 +8244,7 @@ public enum PanDirection <: Equatable<PanDirection> {
 
 **父类型：**
 
-- Equatable\<PanDirection>
+- Equatable\<[PanDirection](#enum-pandirection)>
 
 ### None
 
@@ -8322,7 +8401,7 @@ public operator func !=(other: PanDirection): Bool
 ### operator func |(PanDirection)
 
 ```cangjie
-public operator func  func |(right: PanDirection): PanDirection
+public operator func |(right: PanDirection): PanDirection
 ```
 
 **功能：** 对PanDirection执行逻辑或(|)运算。
@@ -8342,7 +8421,7 @@ public operator func  func |(right: PanDirection): PanDirection
 ### operator func &(PanDirection)
 
 ```cangjie
-public operator func  func &(right: PanDirection): PanDirection
+public operator func &(right: PanDirection): PanDirection
 ```
 
 **功能：** 对PanDirection执行逻辑与(&)运算。
@@ -8378,7 +8457,7 @@ public enum GestureMode <: Equatable<GestureMode> {
 
 **父类型：**
 
-- Equatable\<GestureMode>
+- Equatable\<[GestureMode](#enum-gesturemode)>
 
 ### Sequence
 
@@ -8478,7 +8557,7 @@ public enum Axis <: Equatable<Axis> {
 
 **父类型：**
 
-- Equatable\<Axis>
+- Equatable\<[Axis](#enum-axis)>
 
 ### Vertical
 
@@ -8566,7 +8645,7 @@ public enum ResponseType <: Equatable<ResponseType> {
 
 **父类型：**
 
-- Equatable\<ResponseType>
+- Equatable\<[ResponseType](#enum-responsetype)>
 
 ### RightClick
 
@@ -8655,7 +8734,7 @@ public enum CopyOptions <: Equatable<CopyOptions> {
 
 **父类型：**
 
-- Equatable\<CopyOptions>
+- Equatable\<[CopyOptions](#enum-copyoptions)>
 
 ### None
 
@@ -8758,7 +8837,7 @@ public enum TouchType <: Equatable<TouchType> {
 
 **父类型：**
 
-- Equatable\<TouchType>
+- Equatable\<[TouchType](#enum-touchtype)>
 
 ### Down
 
@@ -8883,7 +8962,7 @@ public enum SideBarContainerType <: Equatable<SideBarContainerType> {
 
 **父类型：**
 
-- Equatable\<SideBarContainerType>
+- Equatable\<[SideBarContainerType](#enum-sidebarcontainertype)>
 
 ### Embed
 
@@ -8983,7 +9062,7 @@ public enum SideBarPosition <: Equatable<SideBarPosition> {
 
 **父类型：**
 
-- Equatable\<SideBarPosition>
+- Equatable\<[SideBarPosition](#enum-sidebarposition)>
 
 ### Start
 
@@ -9072,7 +9151,7 @@ public enum SourceType <: Equatable<SourceType> {
 
 **父类型：**
 
-- Equatable\<SourceType>
+- Equatable\<[SourceType](#enum-sourcetype)>
 
 ### Unknown
 
@@ -9176,7 +9255,7 @@ public enum MouseButton <: Equatable<MouseButton> {
 
 **父类型：**
 
-- Equatable\<MouseButton>
+- Equatable\<[MouseButton](#enum-mousebutton)>
 
 ### None
 
@@ -9315,7 +9394,7 @@ public enum MouseAction <: Equatable<MouseAction> {
 
 **父类型：**
 
-- Equatable\<MouseAction>
+- Equatable\<[MouseAction](#enum-mouseaction)>
 
 ### None
 
@@ -9439,7 +9518,7 @@ public enum SliderStyle <: Equatable<SliderStyle> {
 
 **父类型：**
 
-- Equatable\<SliderStyle>
+- Equatable\<[SliderStyle](#enum-sliderstyle)>
 
 ### OutSet
 
@@ -9529,7 +9608,7 @@ public enum ImageInterpolation <: Equatable<ImageInterpolation> {
 
 **父类型：**
 
-- Equatable\<ImageInterpolation>
+- Equatable\<[ImageInterpolation](#enum-imageinterpolation)>
 
 ### None
 
@@ -9642,7 +9721,7 @@ public enum BarState <: Equatable<BarState> {
 
 **父类型：**
 
-- Equatable\<BarState>
+- Equatable\<[BarState](#enum-barstate)>
 
 ### Off
 
@@ -9743,7 +9822,7 @@ public enum Visibility <: Equatable<Visibility> {
 
 **父类型：**
 
-- Equatable\<Visibility>
+- Equatable\<[Visibility](#enum-visibility)>
 
 ### Visible
 
@@ -9844,7 +9923,7 @@ public enum LineCapStyle <: Equatable<LineCapStyle> {
 
 **父类型：**
 
-- Equatable\<LineCapStyle>
+- Equatable\<[LineCapStyle](#enum-linecapstyle)>
 
 ### Butt
 
@@ -9947,7 +10026,7 @@ public enum ProgressType <: Equatable<ProgressType> {
 
 **父类型：**
 
-- Equatable\<ProgressType>
+- Equatable\<[ProgressType](#enum-progresstype)>
 
 ### Linear
 
@@ -10071,7 +10150,7 @@ public enum ImageRenderMode <: Equatable<ImageRenderMode> {
 
 **父类型：**
 
-- Equatable\<ImageRenderMode>
+- Equatable\<[ImageRenderMode](#enum-imagerendermode)>
 
 ### Original
 
@@ -10160,7 +10239,7 @@ public enum NavigationType <: Equatable<NavigationType> {
 
 **父类型：**
 
-- Equatable\<NavigationType>
+- Equatable\<[NavigationType](#enum-navigationtype)>
 
 ### Push
 
@@ -10259,7 +10338,7 @@ public enum SwiperDisplayMode <: Equatable<SwiperDisplayMode> {
 
 **父类型：**
 
-- Equatable\<SwiperDisplayMode>
+- Equatable\<[SwiperDisplayMode](#enum-swiperdisplaymode)>
 
 ### Stretch
 
@@ -10346,7 +10425,7 @@ public enum Curve <: Equatable<Curve> {
 
 **父类型：**
 
-- Equatable\<Curve>
+- Equatable\<[Curve](#enum-curve)>
 
 ### Linear
 
@@ -10567,7 +10646,7 @@ public enum EdgeEffect <: Equatable<EdgeEffect> {
 
 **父类型：**
 
-- Equatable\<EdgeEffect>
+- Equatable\<[EdgeEffect](#enum-edgeeffect)>
 
 ### Spring
 
@@ -10669,7 +10748,7 @@ public enum Edge <: Equatable<Edge> {
 
 **父类型：**
 
-- Equatable\<Edge>
+- Equatable\<[Edge](#enum-edge)>
 
 ### Top
 
@@ -10792,7 +10871,7 @@ public enum Placement <: Equatable<Placement> {
 
 **父类型：**
 
-- Equatable\<Placement>
+- Equatable\<[Placement](#enum-placement)>
 
 ### Left
 
@@ -11013,7 +11092,7 @@ public enum LineJoinStyle <: Equatable<LineJoinStyle> {
 
 **父类型：**
 
-- Equatable\<LineJoinStyle>
+- Equatable\<[LineJoinStyle](#enum-linejoinstyle)>
 
 ### Miter
 
@@ -11113,7 +11192,7 @@ public enum BarPosition <: Equatable<BarPosition> {
 
 **父类型：**
 
-- Equatable\<BarPosition>
+- Equatable\<[BarPosition](#enum-barposition)>
 
 ### Start
 
@@ -11201,7 +11280,7 @@ public enum BarMode <: Equatable<BarMode> {
 
 **父类型：**
 
-- Equatable\<BarMode>
+- Equatable\<[BarMode](#enum-barmode)>
 
 ### Fixed
 
@@ -11289,7 +11368,7 @@ public enum ShadowType <: Equatable<ShadowType> {
 
 **父类型：**
 
-- Equatable\<ShadowType>
+- Equatable\<[ShadowType](#enum-shadowtype)>
 
 ### Color
 
@@ -11379,7 +11458,7 @@ public enum TextDecorationType <: Equatable<TextDecorationType> {
 
 **父类型：**
 
-- Equatable\<TextDecorationType>
+- Equatable\<[TextDecorationType](#enum-textdecorationtype)>
 
 ### None
 
@@ -11492,7 +11571,7 @@ public enum TextAlign <: Equatable<TextAlign> {
 
 **父类型：**
 
-- Equatable\<TextAlign>
+- Equatable\<[TextAlign](#enum-textalign)>
 
 ### Start
 
@@ -11593,7 +11672,7 @@ public enum TextOverflow <: Equatable<TextOverflow> {
 
 **父类型：**
 
-- Equatable\<TextOverflow>
+- Equatable\<[TextOverflow](#enum-textoverflow)>
 
 ### Clip
 
@@ -11694,7 +11773,7 @@ public enum WordBreak <: Equatable<WordBreak> {
 
 **父类型：**
 
-- Equatable\<WordBreak>
+- Equatable\<[WordBreak](#enum-wordbreak)>
 
 ### Normal
 
@@ -11796,7 +11875,7 @@ public enum ImageRepeat <: Equatable<ImageRepeat> {
 
 **父类型：**
 
-- Equatable\<ImageRepeat>
+- Equatable\<[ImageRepeat](#enum-imagerepeat)>
 
 ### NoRepeat
 
@@ -11909,7 +11988,7 @@ public enum ImageSize <: Equatable<ImageSize> {
 
 **父类型：**
 
-- Equatable\<ImageSize>
+- Equatable\<[ImageSize](#enum-imagesize)>
 
 ### Contain
 
@@ -12013,7 +12092,7 @@ public enum ShadowStyle <: Equatable<ShadowStyle> {
 
 **父类型：**
 
-- Equatable\<ShadowStyle>
+- Equatable\<[ShadowStyle](#enum-shadowstyle)>
 
 ### OuterDefaultXS
 
@@ -12150,7 +12229,7 @@ public enum TextCase <: Equatable<TextCase> {
 
 **父类型：**
 
-- Equatable\<TextCase>
+- Equatable\<[TextCase](#enum-textcase)>
 
 ### Normal
 
@@ -12251,7 +12330,7 @@ public enum BorderStyle <: Equatable<BorderStyle> {
 
 **父类型：**
 
-- Equatable\<BorderStyle>
+- Equatable\<[BorderStyle](#enum-borderstyle)>
 
 ### Solid
 
@@ -12355,7 +12434,7 @@ public enum ImageFit <: Equatable<ImageFit> {
 
 **父类型：**
 
-- Equatable\<ImageFit>
+- Equatable\<[ImageFit](#enum-imagefit)>
 
 ### Fill
 
@@ -12492,7 +12571,7 @@ public enum Direction <: Equatable<Direction> {
 
 **父类型：**
 
-- Equatable\<Direction>
+- Equatable\<[Direction](#enum-direction)>
 
 ### Ltr
 
@@ -12592,7 +12671,7 @@ public enum ScrollDirection <: Equatable<ScrollDirection> {
 
 **父类型：**
 
-- Equatable\<ScrollDirection>
+- Equatable\<[ScrollDirection](#enum-scrolldirection)>
 
 ### Vertical
 
@@ -12680,7 +12759,7 @@ public enum ScrollBarDirection <: Equatable<ScrollBarDirection> {
 
 **父类型：**
 
-- Equatable\<ScrollBarDirection>
+- Equatable\<[ScrollBarDirection](#enum-scrollbardirection)>
 
 ### Vertical
 
@@ -12770,7 +12849,7 @@ public enum SliderChangeMode <: Equatable<SliderChangeMode> {
 
 **父类型：**
 
-- Equatable\<SliderChangeMode>
+- Equatable\<[SliderChangeMode](#enum-sliderchangemode)>
 
 ### Begin
 
@@ -12882,7 +12961,7 @@ public enum IndexerAlign <: Equatable<IndexerAlign> {
 
 **父类型：**
 
-- Equatable\<IndexerAlign>
+- Equatable\<[IndexerAlign](#enum-indexeralign)>
 
 ### Left
 
@@ -12973,7 +13052,7 @@ public enum InputType <: Equatable<InputType> {
 
 **父类型：**
 
-- Equatable\<InputType>
+- Equatable\<[InputType](#enum-inputtype)>
 
 ### Normal
 
@@ -13102,7 +13181,7 @@ public enum EnterKeyType <: Equatable<EnterKeyType> {
 
 **父类型：**
 
-- Equatable\<EnterKeyType>
+- Equatable\<[EnterKeyType](#enum-enterkeytype)>
 
 ### Go
 
@@ -13252,7 +13331,7 @@ public enum FlexDirection <: Equatable<FlexDirection> {
 
 **父类型：**
 
-- Equatable\<FlexDirection>
+- Equatable\<[FlexDirection](#enum-flexdirection)>
 
 ### Row
 
@@ -13365,7 +13444,7 @@ public enum FlexWrap <: Equatable<FlexWrap> {
 
 **父类型：**
 
-- Equatable\<FlexWrap>
+- Equatable\<[FlexWrap](#enum-flexwrap)>
 
 ### NoWrap
 
@@ -13469,7 +13548,7 @@ public enum FlexAlign <: Equatable<FlexAlign> {
 
 **父类型：**
 
-- Equatable\<FlexAlign>
+- Equatable\<[FlexAlign](#enum-flexalign)>
 
 ### Start
 
@@ -13609,7 +13688,7 @@ public enum ItemAlign <: Equatable<ItemAlign> {
 
 **父类型：**
 
-- Equatable\<ItemAlign>
+- Equatable\<[ItemAlign](#enum-itemalign)>
 
 ### Auto
 
@@ -13746,7 +13825,7 @@ public enum ToggleType <: Equatable<ToggleType> {
 
 **父类型：**
 
-- Equatable\<ToggleType>
+- Equatable\<[ToggleType](#enum-toggletype)>
 
 ### Checkbox
 
@@ -13852,7 +13931,7 @@ public enum FontStyle <: Equatable<FontStyle> {
 
 **父类型：**
 
-- Equatable\<FontStyle>
+- Equatable\<[FontStyle](#enum-fontstyle)>
 
 ### Normal
 
@@ -13947,7 +14026,7 @@ public enum Alignment <: Equatable<Alignment> {
 
 **父类型：**
 
-- Equatable\<Alignment>
+- Equatable\<[Alignment](#enum-alignment)>
 
 ### TopStart
 
@@ -14120,7 +14199,7 @@ public enum HorizontalAlign <: Equatable<HorizontalAlign> {
 
 **父类型：**
 
-- Equatable\<HorizontalAlign>
+- Equatable\<[HorizontalAlign](#enum-horizontalalign)>
 
 ### Start
 
@@ -14221,7 +14300,7 @@ public enum VerticalAlign <: Equatable<VerticalAlign> {
 
 **父类型：**
 
-- Equatable\<VerticalAlign>
+- Equatable\<[VerticalAlign](#enum-verticalalign)>
 
 ### Top
 
@@ -14334,7 +14413,7 @@ public enum FontWeight <: Equatable<FontWeight> {
 
 **父类型：**
 
-- Equatable\<FontWeight>
+- Equatable\<[FontWeight](#enum-fontweight)>
 
 ### Normal
 
@@ -14579,7 +14658,7 @@ public enum ListItemAlign <: Equatable<ListItemAlign> {
 
 **父类型：**
 
-- Equatable\<ListItemAlign>
+- Equatable\<[ListItemAlign](#enum-listitemalign)>
 
 ### Start
 
@@ -14680,7 +14759,7 @@ public enum StickyStyle <: Equatable<StickyStyle> {
 
 **父类型：**
 
-- Equatable\<StickyStyle>
+- Equatable\<[StickyStyle](#enum-stickystyle)>
 
 ### None
 
@@ -14781,7 +14860,7 @@ public enum RichEditorSpanType <: Equatable<RichEditorSpanType> {
 
 **父类型：**
 
-- Equatable\<RichEditorSpanType>
+- Equatable\<[RichEditorSpanType](#enum-richeditorspantype)>
 
 ### Text
 
@@ -14883,7 +14962,7 @@ public enum ImageSpanAlignment <: Equatable<ImageSpanAlignment> {
 
 **父类型：**
 
-- Equatable\<ImageSpanAlignment>
+- Equatable\<[ImageSpanAlignment](#enum-imagespanalignment)>
 
 ### Top
 
@@ -14995,7 +15074,7 @@ public enum RichEditorDeleteDirection <: Equatable<RichEditorDeleteDirection> {
 
 **父类型：**
 
-- Equatable\<RichEditorDeleteDirection>
+- Equatable\<[RichEditorDeleteDirection](#enum-richeditordeletedirection)>
 
 ### Backward
 
@@ -15084,7 +15163,7 @@ public enum MixedMode <: Equatable<MixedMode> {
 
 **父类型：**
 
-- Equatable\<MixedMode>
+- Equatable\<[MixedMode](#enum-mixedmode)>
 
 ### All
 
@@ -15186,7 +15265,7 @@ public enum PlayMode <: Equatable<PlayMode> {
 
 **父类型：**
 
-- Equatable\<PlayMode>
+- Equatable\<[PlayMode](#enum-playmode)>
 
 ### Normal
 
@@ -15305,7 +15384,7 @@ public enum GradientDirection <: Equatable<GradientDirection> {
 
 **父类型：**
 
-- Equatable\<GradientDirection>
+- Equatable\<[GradientDirection](#enum-gradientdirection)>
 
 ### Left
 
@@ -15491,7 +15570,7 @@ public enum RenderFit <: Equatable<RenderFit> {
 
 **父类型：**
 
-- Equatable\<RenderFit>
+- Equatable\<[RenderFit](#enum-renderfit)>
 
 ### Center
 
@@ -15755,7 +15834,7 @@ public enum DialogAlignment <: Equatable<DialogAlignment> {
 
 **父类型：**
 
-- Equatable\<DialogAlignment>
+- Equatable\<[DialogAlignment](#enum-dialogalignment)>
 
 ### Top
 
@@ -15941,7 +16020,7 @@ public enum BarrierDirection <: Equatable<BarrierDirection> {
 
 **父类型：**
 
-- Equatable\<BarrierDirection>
+- Equatable\<[BarrierDirection](#enum-barrierdirection)>
 
 ### Left
 
@@ -16054,7 +16133,7 @@ public enum SafeAreaType <: Equatable<SafeAreaType> {
 
 **父类型：**
 
-- Equatable\<SafeAreaType>
+- Equatable\<[SafeAreaType](#enum-safeareatype)>
 
 ### System
 
@@ -16156,7 +16235,7 @@ public enum SafeAreaEdge <: Equatable<SafeAreaEdge> {
 
 **父类型：**
 
-- Equatable\<SafeAreaEdge>
+- Equatable\<[SafeAreaEdge](#enum-safeareaedge)>
 
 ### Top
 
@@ -16267,7 +16346,7 @@ public enum ColoringStrategy <: Equatable<ColoringStrategy> {
 
 **父类型：**
 
-- Equatable\<ColoringStrategy>
+- Equatable\<[ColoringStrategy](#enum-coloringstrategy)>
 
 ### Invert
 
@@ -16345,7 +16424,7 @@ public enum NestedScrollMode <: Equatable<NestedScrollMode> {
 
 **父类型：**
 
-- Equatable\<NestedScrollMode>
+- Equatable\<[NestedScrollMode](#enum-nestedscrollmode)>
 
 ### SelfOnly
 
@@ -16458,7 +16537,7 @@ public enum ThemeColorMode <: Equatable<ThemeColorMode> {
 
 **父类型：**
 
-- Equatable\<ThemeColorMode>
+- Equatable\<[ThemeColorMode](#enum-themecolormode)>
 
 ### System
 
@@ -16558,7 +16637,7 @@ public enum AdaptiveColor <: Equatable<AdaptiveColor> {
 
 **父类型：**
 
-- Equatable\<AdaptiveColor>
+- Equatable\<[AdaptiveColor](#enum-adaptivecolor)>
 
 ### Default
 
@@ -16646,7 +16725,7 @@ public enum ControlSize <: Equatable<ControlSize> {
 
 **父类型：**
 
-- Equatable\<ControlSize>
+- Equatable\<[ControlSize](#enum-controlsize)>
 
 ### Small
 
@@ -16734,7 +16813,7 @@ public enum OptionWidthMode <: Equatable<OptionWidthMode> {
 
 **父类型：**
 
-- Equatable\<OptionWidthMode>
+- Equatable\<[OptionWidthMode](#enum-optionwidthmode)>
 
 ### FitContent
 
@@ -16822,7 +16901,7 @@ public enum ArrowPosition <: Equatable<ArrowPosition> {
 
 **父类型：**
 
-- Equatable\<ArrowPosition>
+- Equatable\<[ArrowPosition](#enum-arrowposition)>
 
 ### End
 
@@ -16911,7 +16990,7 @@ public enum MenuAlignType <: Equatable<MenuAlignType> {
 
 **父类型：**
 
-- Equatable\<MenuAlignType>
+- Equatable\<[MenuAlignType](#enum-menualigntype)>
 
 ### Start
 
@@ -17012,7 +17091,7 @@ public enum WebDarkMode <: Equatable<WebDarkMode> {
 
 **父类型：**
 
-- Equatable\<WebDarkMode>
+- Equatable\<[WebDarkMode](#enum-webdarkmode)>
 
 ### Off
 
@@ -17116,7 +17195,7 @@ public enum SourceTool <: Equatable<SourceTool> {
 
 **父类型：**
 
-- Equatable\<SourceTool>
+- Equatable\<[SourceTool](#enum-sourcetool)>
 
 ### Unknown
 
@@ -17256,7 +17335,7 @@ public enum Repetition <: Equatable<Repetition> {
 
 **父类型：**
 
-- Equatable\<Repetition>
+- Equatable\<[Repetition](#enum-repetition)>
 
 ### Repeat
 
@@ -17398,7 +17477,7 @@ public enum ScrollSource <: Equatable<ScrollSource> {
 
 **父类型：**
 
-- Equatable\<ScrollSource>
+- Equatable\<[ScrollSource](#enum-scrollsource)>
 
 ### Drag
 
@@ -17577,7 +17656,7 @@ public enum ContentType <: Equatable<ContentType> {
 
 **父类型：**
 
-- Equatable\<ContentType>
+- Equatable\<[ContentType](#enum-contenttype)>
 
 ### UserName
 
@@ -17894,7 +17973,7 @@ public enum MenuPolicy <: Equatable<MenuPolicy> {
 
 **父类型：**
 
-- Equatable\<MenuPolicy>
+- Equatable\<[MenuPolicy](#enum-menupolicy)>
 
 ### Default
 
@@ -17997,7 +18076,7 @@ public enum TextDecorationStyle <: Equatable<TextDecorationStyle> {
 
 **父类型：**
 
-- Equatable\<TextDecorationStyle>
+- Equatable\<[TextDecorationStyle](#enum-textdecorationstyle)>
 
 ### Solid
 
@@ -18122,7 +18201,7 @@ public enum LineBreakStrategy <: Equatable<LineBreakStrategy> {
 
 **父类型：**
 
-- Equatable\<LineBreakStrategy>
+- Equatable\<[LineBreakStrategy](#enum-linebreakstrategy)>
 
 ### Greedy
 
@@ -18222,7 +18301,7 @@ public enum TextContentStyle <: Equatable<TextContentStyle> {
 
 **父类型：**
 
-- Equatable\<TextContentStyle>
+- Equatable\<[TextContentStyle](#enum-textcontentstyle)>
 
 ### Default
 
@@ -18313,7 +18392,7 @@ public enum CheckBoxShape <: Equatable<CheckBoxShape> {
 
 **父类型：**
 
-- Equatable\<CheckBoxShape>
+- Equatable\<[CheckBoxShape](#enum-checkboxshape)>
 
 ### Circle
 
@@ -18402,7 +18481,7 @@ public enum TextHeightAdaptivePolicy <: Equatable<TextHeightAdaptivePolicy> {
 
 **父类型：**
 
-- Equatable\<TextHeightAdaptivePolicy>
+- Equatable\<[TextHeightAdaptivePolicy](#enum-textheightadaptivepolicy)>
 
 ### MaxLinesFirst
 
@@ -18503,7 +18582,7 @@ public enum ArrowPointPosition <: Equatable<ArrowPointPosition> {
 
 **父类型：**
 
-- Equatable\<ArrowPointPosition>
+- Equatable\<[ArrowPointPosition](#enum-arrowpointposition)>
 
 ### Start
 
@@ -18603,7 +18682,7 @@ public enum TitleHeight <: Equatable<TitleHeight> {
 
 **父类型：**
 
-- Equatable\<TitleHeight>
+- Equatable\<[TitleHeight](#enum-titleheight)>
 
 ### MainOnly
 
@@ -18691,7 +18770,7 @@ public enum DialogButtonStyle <: Equatable<DialogButtonStyle> {
 
 **父类型：**
 
-- Equatable\<DialogButtonStyle>
+- Equatable\<[DialogButtonStyle](#enum-dialogbuttonstyle)>
 
 ### Default
 
@@ -18779,7 +18858,7 @@ public enum LengthMetricsUnit <: Equatable<LengthMetricsUnit> {
 
 **父类型：**
 
-- Equatable\<LengthMetricsUnit>
+- Equatable\<[LengthMetricsUnit](#enum-lengthmetricsunit)>
 
 ### Default
 
@@ -18868,7 +18947,7 @@ public enum CanvasDirection <: Equatable<CanvasDirection> {
 
 **父类型：**
 
-- Equatable\<CanvasDirection>
+- Equatable\<[CanvasDirection](#enum-canvasdirection)>
 
 ### Inherit
 
@@ -18968,7 +19047,7 @@ public enum CanvasFillRule <: Equatable<CanvasFillRule> {
 
 **父类型：**
 
-- Equatable\<CanvasFillRule>
+- Equatable\<[CanvasFillRule](#enum-canvasfillrule)>
 
 ### EvenOdd
 
@@ -19056,7 +19135,7 @@ public enum FinishCallbackType <: Equatable<FinishCallbackType> {
 
 **父类型：**
 
-- Equatable\<FinishCallbackType>
+- Equatable\<[FinishCallbackType](#enum-finishcallbacktype)>
 
 ### Removed
 
@@ -19155,7 +19234,7 @@ public enum BlurStyle <: Equatable<BlurStyle> {
 
 **父类型：**
 
-- Equatable\<BlurStyle>
+- Equatable\<[BlurStyle](#enum-blurstyle)>
 
 ### Thin
 
@@ -19377,7 +19456,7 @@ public enum DismissReason <: Equatable<DismissReason> {
 
 **父类型：**
 
-- Equatable\<DismissReason>
+- Equatable\<[DismissReason](#enum-dismissreason)>
 
 ### PressBack
 
@@ -19489,7 +19568,7 @@ public enum TextInputStyle <: Equatable<TextInputStyle> {
 
 **父类型：**
 
-- Equatable\<TextInputStyle>
+- Equatable\<[TextInputStyle](#enum-textinputstyle)>
 
 ### Default
 
@@ -19581,7 +19660,7 @@ public enum TextAreaType <: Equatable<TextAreaType> {
 
 **父类型：**
 
-- Equatable\<TextAreaType>
+- Equatable\<[TextAreaType](#enum-textareatype)>
 
 ### Normal
 

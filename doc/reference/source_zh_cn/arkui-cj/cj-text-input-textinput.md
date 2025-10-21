@@ -30,8 +30,8 @@ public init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None, contr
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|placeholder|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None| **命名参数。** 占位符文本，无输入时显示的文本。|
-|text|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|否|None| **命名参数。** TextInput的当前值。|
+|placeholder|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** 占位符文本，无输入时显示的文本。|
+|text|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** TextInput的当前值。|
 |controller|?[TextInputController](#class-textinputcontroller)|否|None| **命名参数。** TextInput组件的控制器。|
 
 ## 通用属性/通用事件
@@ -58,7 +58,7 @@ public func caretColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|光标的颜色。<br>初始值：0xFF007DFF。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|光标的颜色。<br>初始值：0xFF007DFF。|
 
 ### func customKeyboard(?CustomBuilder, ?Bool)
 
@@ -131,7 +131,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontColor(?ResourceColor)
 
@@ -149,7 +149,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|文本的颜色。<br>初始值：0xdbffffff。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|文本的颜色。<br>初始值：0xdbffffff。|
 
 ### func fontSize(?Length)
 
@@ -167,7 +167,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的字体大小。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|文本的字体大小。|
 
 ### func fontStyle(?FontStyle)
 
@@ -221,7 +221,7 @@ public func inputFilter(value: ?ResourceStr, error!: ?(String) -> Unit = None): 
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|输入过滤规则。<br>初始值：""。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|输入过滤规则。<br>初始值：""。|
 |error|?(String) -> Unit|否|None| **命名参数。** 输入错误时的回调函数。|
 
 ### func maxLength(?UInt32)
@@ -276,7 +276,7 @@ public func placeholderColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|占位符文本的颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|占位符文本的颜色。|
 
 ### func placeholderFont(?Length, ?FontWeight, ?String, ?FontStyle)
 
@@ -295,7 +295,7 @@ public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 占位符文本的字体大小。<br>初始值：(-1.0).px。|
+|size|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 占位符文本的字体大小。<br>初始值：(-1.0).px。|
 |weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None| **命名参数。** 占位符文本的字体粗细。<br>初始值：FontWeight.W400。|
 |family|?String|否|None| **命名参数。** 占位符文本的字体族。<br>初始值：""。|
 |style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None| **命名参数。** 占位符文本的字体样式。<br>初始值：FontStyle.Normal。|

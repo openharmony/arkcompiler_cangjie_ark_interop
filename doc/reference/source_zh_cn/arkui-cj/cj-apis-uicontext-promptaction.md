@@ -270,7 +270,7 @@ public var maskColor: ResourceColor
 
 **功能：** 自定义对话框遮罩颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -444,7 +444,7 @@ public init(
 |isModal|Bool|否|true| **命名参数。** 是否为模态对话框。|
 |showInSubWindow|Bool|否|false| **命名参数。** 是否在子窗口中显示。|
 |autoCancel|Bool|否|true| **命名参数。** 是否允许用户点击遮罩层退出。|
-|maskColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
+|maskColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
 |transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|TransitionEffect.OPACITY| **命名参数。** 自定义对话框打开/关闭时的过渡参数。|
 |onDidAppear|() -> Unit|否|{=>}| **命名参数。** 对话框出现时的回调函数。|
 |onDidDisappear|() -> Unit|否|{=>}| **命名参数。** 对话框消失时的回调函数。|
@@ -479,7 +479,7 @@ public var color: ResourceColor
 
 **功能：** 按钮文本颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -511,7 +511,7 @@ public var text: ResourceStr
 
 **功能：** 按钮中显示的文本。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -536,7 +536,7 @@ public init(text!: ResourceStr, color!: ResourceColor, primary!: Bool = false)
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |text|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。** 按钮文本内容。|
-|color|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-| **命名参数。** 按钮文本颜色。|
+|color|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-| **命名参数。** 按钮文本颜色。|
 |primary|Bool|否|false| **命名参数。** 按钮是否默认响应Enter/Space键。|
 
 ## class CustomDialogOptions
@@ -602,7 +602,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** 自定义对话框的背景颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -714,7 +714,7 @@ public var height: Length
 
 **功能：** 对话框的高度。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -746,7 +746,7 @@ public var width: Length
 
 **功能：** 对话框的宽度。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -804,7 +804,7 @@ public init(
 |isModal|Bool|否|true| **命名参数。** 是否为模态对话框。|
 |showInSubWindow|Bool|否|false| **命名参数。** 是否在子窗口中显示。|
 |autoCancel|Bool|否|true| **命名参数。** 是否允许用户点击遮罩层退出。|
-|maskColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
+|maskColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color(0x33000000)| **命名参数。** 自定义对话框遮罩颜色。|
 |transition|[TransitionEffect](./cj-animation-transition.md#class-transitioneffect)|否|TransitionEffect.OPACITY| **命名参数。** 自定义对话框打开/关闭时的过渡参数。|
 |onDidAppear|() -> Unit|否|{=>}| **命名参数。** 对话框出现时的回调函数。|
 |onDidDisappear|() -> Unit|否|{=>}| **命名参数。** 对话框消失时的回调函数。|
@@ -813,13 +813,13 @@ public init(
 |keyboardAvoidMode|[KeyboardAvoidMode](#enum-keyboardavoidmode)|否|KeyboardAvoidMode.Default| **命名参数。** 自定义对话框的键盘避免模式。|
 |enableHoverMode|Bool|否|false| **命名参数。** 是否响应悬停模式。|
 |hoverModeArea|[HoverModeAreaType](#enum-hovermodeareatype)|否|HoverModeAreaType.BottomScreen| **命名参数。** 悬停模式下对话框的显示区域。|
-|backgroundColor|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Transparent| **命名参数。** 自定义对话框的背景颜色。|
+|backgroundColor|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Transparent| **命名参数。** 自定义对话框的背景颜色。|
 |cornerRadius|[BorderRadiuses](./cj-common-types.md#class-borderradiuses)|否|BorderRadiuses(topLeft: 32.vp, topRight: 32.vp, bottomLeft: 32.vp, bottomRight: 32.vp)| **命名参数。** 自定义对话框的圆角半径。|
 |borderWidth|[EdgeWidths](./cj-common-types.md#class-edgewidths)|否|EdgeWidths(top: 0.vp, right: 0.vp, bottom: 0.vp, left: 0.vp)| **命名参数。** 自定义对话框的边框宽度。|
 |borderColor|[EdgeColors](#class-edgecolors)|否|EdgeColors(top: Color.Black, right: Color.Black, bottom: Color.Black, left: Color.Black)| **命名参数。** 自定义对话框的边框颜色。|
 |borderStyle|[EdgeStyles](./cj-common-types.md#class-edgestyles)|否|EdgeStyles()| **命名参数。** 自定义对话框的边框样式。|
-|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|400.vp| **命名参数。** 对话框的宽度。|
-|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|100.vp| **命名参数。** 对话框的高度。|
+|width|[Length](./cj-common-types.md#interface-length)|否|400.vp| **命名参数。** 对话框的宽度。|
+|height|[Length](./cj-common-types.md#interface-length)|否|100.vp| **命名参数。** 对话框的高度。|
 |shadow|?[ShadowOptions](./cj-common-types.md#class-shadowoptions)|否|None| **命名参数。** 对话框的阴影。|
 |backgroundBlurStyle|[BlurStyle](./cj-common-types.md#enum-blurstyle)|否|BlurStyle.ComponentUltraThick| **命名参数。** 对话框的背景模糊样式。|
 
@@ -854,7 +854,7 @@ public var bottom: ResourceColor
 
 **功能：** 边框的底部颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -870,7 +870,7 @@ public var left: ResourceColor
 
 **功能：** 边框的左侧颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -886,7 +886,7 @@ public var right: ResourceColor
 
 **功能：** 边框的右侧颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -902,7 +902,7 @@ public var top: ResourceColor
 
 **功能：** 边框的顶部颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -931,10 +931,10 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|top|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 顶部边框颜色。|
-|right|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 右侧边框颜色。|
-|bottom|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 底部边框颜色。|
-|left|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 左侧边框颜色。|
+|top|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 顶部边框颜色。|
+|right|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 右侧边框颜色。|
+|bottom|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 底部边框颜色。|
+|left|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|Color.Black| **命名参数。** 左侧边框颜色。|
 
 ## class ShowDialogOptions
 
@@ -1002,7 +1002,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** 对话框的背景颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 **读写能力：** 可读写
 
@@ -1232,8 +1232,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|title|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|''| **命名参数。** 标题文本。|
-|message|[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|''| **命名参数。** 文本主体。|
+|title|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|''| **命名参数。** 标题文本。|
+|message|[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|''| **命名参数。** 文本主体。|
 |buttons|Array\<[ButtonInfo](#class-buttoninfo)>|否|[]| **命名参数。** 对话框中的按钮数组。|
 |alignment|[DialogAlignment](./cj-common-types.md#enum-dialogalignment)|否|DialogAlignment.Default| **命名参数。** 对话框在屏幕上的对齐方式。|
 |offset|[Offset](./cj-common-types.md#class-offset)|否|Offset(0.vp, 0.vp)| **命名参数。** 对话框偏移量。|
@@ -1309,7 +1309,7 @@ public var backgroundColor: ResourceColor
 
 **功能：** Toast的背景颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 
 **读写能力：** 可读写
@@ -1326,7 +1326,7 @@ public var bottom: Length
 
 **功能：** Toast对话框与屏幕底部的距离。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -1470,7 +1470,7 @@ public var textColor: ResourceColor
 
 **功能：** Toast的文本颜色。
 
-**类型：** [ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)
+**类型：** [ResourceColor](./cj-common-types.md#interface-resourcecolor)
 
 
 **读写能力：** 可读写
@@ -1510,7 +1510,7 @@ public init(
 |:---|:---|:---|:---|:---|
 |message|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。** 要显示的文本。|
 |duration|UInt32|否|1500| **命名参数。** Toast对话框的持续时间。|
-|bottom|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|80.vp| **命名参数。** Toast对话框与屏幕底部的距离。|
+|bottom|[Length](./cj-common-types.md#interface-length)|否|80.vp| **命名参数。** Toast对话框与屏幕底部的距离。|
 |showMode|[ToastShowMode](#enum-toastshowmode)|否|ToastShowMode.Default| **命名参数。** Toast的显示模式。|
 |alignment|[Alignment](./cj-common-types.md#enum-alignment)|否|Alignment.Bottom| **命名参数。** Toast在屏幕上的对齐方式。|
 |offset|[Offset](./cj-common-types.md#class-offset)|否|Offset(0.vp, 0.vp)| **命名参数。** Toast偏移量。|

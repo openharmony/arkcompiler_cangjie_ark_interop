@@ -162,7 +162,7 @@ public func fontColor(color: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-| 按钮文本颜色。<br>初始值：Color(0xFFFFFF)。|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-| 按钮文本颜色。<br>初始值：Color(0xFFFFFF)。|
 
 ### func fontFamily(?ResourceStr)
 

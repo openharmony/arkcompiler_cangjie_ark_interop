@@ -30,7 +30,7 @@ public init(value: ?ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|文本内容。<br>初始值：""。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|文本内容。<br>初始值：""。|
 
 ## 通用属性/通用事件
 
@@ -61,7 +61,7 @@ public func decoration(decorationType!: ?TextDecorationType, color!: ?ResourceCo
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |decorationType|?[TextDecorationType](./cj-common-types.md#enum-textdecorationtype)|是|-| **命名参数。** 文本装饰线样式。<br>初始值：TextDecorationType.None。|
-|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|否|None| **命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|None| **命名参数。** 文本装饰线颜色。<br>初始值：Color.Black。|
 
 ### func fontColor(?ResourceColor)
 
@@ -79,7 +79,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|字体颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|字体颜色。|
 
 ### func fontFamily(?ResourceStr)
 
@@ -97,7 +97,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|字体列表。<br>初始值："HarmonyOS Sans"。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|字体列表。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 
@@ -115,7 +115,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字体大小。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|字体大小。|
 
 ### func fontStyle(?FontStyle)
 
@@ -169,7 +169,7 @@ public func letterSpacing(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|字符间距。<br>初始值：0.0.px。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|字符间距。<br>初始值：0.0.px。|
 
 ### func textCase(?TextCase)
 

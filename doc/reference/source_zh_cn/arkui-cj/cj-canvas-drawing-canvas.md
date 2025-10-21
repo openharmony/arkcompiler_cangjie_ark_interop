@@ -194,7 +194,7 @@ public func addColorStop(offset: Float64, color: ?ResourceColor): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |offset|Float64|是|-|0到1之间的值，超出范围会抛出INDEX_SIZE_ERR错误。|
-|color|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|设置渐变颜色。|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|设置渐变颜色。|
 
 ## 示例代码
 
