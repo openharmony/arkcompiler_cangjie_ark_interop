@@ -24,7 +24,7 @@ public func backgroundColor(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|背景颜色。初始值:  Color.Transparent|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|背景颜色。初始值:  Color.Transparent|
 
 **返回值：**
 
@@ -48,7 +48,7 @@ public func backgroundImage(src: ?ResourceStr): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
+|src|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|图片资源路径。|
 
 **返回值：**
 
@@ -72,7 +72,7 @@ public func backgroundImage(src: ?ResourceStr, repeat: ?ImageRepeat): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|?[ResourceStr](../BasicServicesKit/cj-apis-base.md#interface-resourcestr)|是|-|图片资源路径。|
+|src|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|图片资源路径。|
 |repeat|?[ImageRepeat](./cj-common-types.md#enum-imagerepeat)|是|-|图片重复方式。初始值:  ImageRepeat.NoRepeat|
 
 **返回值：**
@@ -121,8 +121,8 @@ public func backgroundImagePosition(x!: ?Length = None, y!: ?Length = None): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** X轴位置。初始值:  0.vp|
-|y|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** Y轴位置。初始值:  0.vp|
+|x|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** X轴位置。初始值:  0.vp|
+|y|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** Y轴位置。初始值:  0.vp|
 
 **返回值：**
 
@@ -170,8 +170,8 @@ public func backgroundImageSize(width!: ?Length = None, height!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 图片宽度。初始值:  0.vp|
-|height|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 图片高度。初始值:  0.vp|
+|width|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 图片宽度。初始值:  0.vp|
+|height|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 图片高度。初始值:  0.vp|
 
 **返回值：**
 

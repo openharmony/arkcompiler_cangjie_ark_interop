@@ -369,9 +369,9 @@ class EntryView {
 
 ```cangjie
 package ohos_app_cangjie_entry
-internal import ohos.base.AppLog
-internal import ohos.ability.AbilityStage
-internal import ohos.ability.LaunchReason
+internal import ohos.hilog.*
+internal import ohos.app.ability.ability_stage.AbilityStage
+internal import ohos.app.ability.ability_constant.LaunchReason
 import kit.ArkUI.*
 
 let storage =  LocalStorage()
@@ -384,15 +384,15 @@ class MainAbility <: UIAbility {
     }
 
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
-        Hilog.info(0, "cangjie", MainAbility OnCreated.${want.abilityName}")
+        Hilog.info(0, "cangjie", "MainAbility OnCreated.${want.abilityName}")
         match (launchParam.launchReason) {
-            case LaunchReason.START_ABILITY => Hilog.info(0, "cangjie", START_ABILITY")
+            case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
             case _ => ()
         }
     }
 
     public override func onWindowStageCreate(windowStage: WindowStage): Unit {
-        Hilog.info(0, "cangjie", MainAbility onWindowStageCreate.")
+        Hilog.info(0, "cangjie", "MainAbility onWindowStageCreate.")
         windowStage.loadContent("EntryView")
     }
 }

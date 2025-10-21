@@ -37,7 +37,7 @@ public func animateTo(value: AnimateParam, event: VoidCallback): Unit
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|动画参数。|
-|event|[VoidCallback](../BasicServicesKit/cj-apis-base.md#type-VoidCallback)|是|-|动画执行的回调函数。|
+|event|[VoidCallback](./cj-common-types.md#type-VoidCallback)|是|-|动画执行的回调函数。|
 
 ### func createAnimator(AnimatorOptions)
 
@@ -79,13 +79,13 @@ public func fp2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func getContextMenuController()
 
@@ -193,13 +193,13 @@ public func lpx2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func px2fp(Length)
 
@@ -217,13 +217,13 @@ public func px2fp(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func px2lpx(Length)
 
@@ -241,13 +241,13 @@ public func px2lpx(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func px2vp(Length)
 
@@ -265,13 +265,13 @@ public func px2vp(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func showActionSheet(ActionSheetOptions)
 
@@ -361,10 +361,10 @@ public func vp2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<[Length](../BasicServicesKit/cj-apis-base.md#interface-length)>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|

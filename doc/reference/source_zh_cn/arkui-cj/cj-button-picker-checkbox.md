@@ -76,7 +76,7 @@ public func selectedColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|多选框选中状态颜色。初始值：0xff007dff。<br>异常值按照默认值处理。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|多选框选中状态颜色。初始值：0xff007dff。<br>异常值按照默认值处理。|
 
 ### func shape(?CheckBoxShape)
 

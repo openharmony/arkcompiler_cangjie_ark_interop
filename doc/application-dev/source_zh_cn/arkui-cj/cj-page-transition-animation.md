@@ -159,15 +159,15 @@ class EntryView {
 
              Row(space: 10){
                 Button("pushUrl")
-                  .onClick { evt =>
+                  .onClick ({ evt =>
                     // 路由到下一个页面，push操作
                     getUIContext().getRouter().pushUrl(url: "Page1")
-                  }
+                  })
                 Button("back")
-                    .onClick { evt =>
+                    .onClick ({ evt =>
                     // 返回到上一页面，相当于pop操作
                     getUIContext().getRouter().back()
-                  }
+                  })
             }.justifyContent(FlexAlign.Center)
         }
         .width(100.percent).height(100.percent)
@@ -214,15 +214,15 @@ class Page1 {
 
              Row(space: 10){
                 Button("pushUrl")
-                  .onClick { evt =>
+                  .onClick ({ evt =>
                     // 路由到下一个页面，push操作
                     getUIContext().getRouter().pushUrl(url: "EntryView")
-                  }
+                  })
                 Button("back")
-                    .onClick { evt =>
+                    .onClick( { evt =>
                     // 返回到上一页面，相当于pop操作
                     getUIContext().getRouter().back()
-                  }
+                  })
             }.justifyContent(FlexAlign.Center)
         }
         .width(100.percent).height(100.percent)
@@ -272,15 +272,15 @@ class EntryView {
 
              Row(space: 10){
                 Button("pushUrl")
-                  .onClick { evt =>
+                  .onClick ({ evt =>
                     // 路由到下一个页面，push操作
                     getUIContext().getRouter().pushUrl(url: "Page1")
-                  }
+                  })
                 Button("back")
-                    .onClick { evt =>
+                    .onClick({ evt =>
                     // 返回到上一页面，相当于pop操作
                     getUIContext().getRouter().back()
-                  }
+                  })
             }.justifyContent(FlexAlign.Center)
         }
         .width(100.percent).height(100.percent)
@@ -321,15 +321,15 @@ class Page1 {
 
              Row(space: 10){
                 Button("pushUrl")
-                  .onClick { evt =>
+                  .onClick ({ evt =>
                     // 路由到下一个页面，push操作
                     getUIContext().getRouter().pushUrl(url: "EntryView")
-                  }
+                  })
                 Button("back")
-                    .onClick { evt =>
+                    .onClick ({ evt =>
                     // 返回到上一页面，相当于pop操作
                     getUIContext().getRouter().back()
-                  }
+                  })
             }.justifyContent(FlexAlign.Center)
         }
         .width(100.percent).height(100.percent)

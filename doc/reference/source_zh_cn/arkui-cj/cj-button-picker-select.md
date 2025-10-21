@@ -99,7 +99,7 @@ public func font(
 |:---|:---|:---|:---|:---|
 |style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 用于指定字体样式。<br>初始值：FontStyle.Normal。|
 |weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 用于指定字体的粗细。<br>初始值：FontWeight.Medium。|
-|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 指定字号和行高，不支持百分比设置。<br>初始值：16.vp。|
+|size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 指定字号和行高，不支持百分比设置。<br>初始值：16.vp。|
 |family|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 指定字体系列。<br>初始值："sans-serif"。|
 
 ### func fontColor(?ResourceColor)
@@ -118,7 +118,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|下拉按钮本身的文本颜色。<br>初始值：@r(sys.color.ohos_id_color_text_primary)混合@r(sys.color.ohos_id_alpha_content_primary)的透明度。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|下拉按钮本身的文本颜色。<br>初始值：@r(sys.color.ohos_id_color_text_primary)混合@r(sys.color.ohos_id_alpha_content_primary)的透明度。|
 
 ### func selectedOptionBgColor(?ResourceColor)
 
@@ -136,7 +136,7 @@ public func selectedOptionBgColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|下拉菜单选中项的背景色。<br>初始值：@r(sys.color.ohos_id_color_component_activated)混合@r(sys.color.ohos_id_alpha_highlight_bg)的透明度。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|下拉菜单选中项的背景色。<br>初始值：@r(sys.color.ohos_id_color_component_activated)混合@r(sys.color.ohos_id_alpha_highlight_bg)的透明度。|
 
 ### func selectedOptionFont(?FontStyle, ?FontWeight, ?Length, ?String)
 
@@ -161,7 +161,7 @@ public func selectedOptionFont(
 |:---|:---|:---|:---|:---|
 |style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 用于指定字体样式。<br>初始值：FontStyle.Normal。|
 |weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 用于指定字体的粗细。<br>初始值：FontWeight.Medium。|
-|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 文本尺寸。不支持百分比设置。<br>初始值：16.vp。|
+|size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 文本尺寸。不支持百分比设置。<br>初始值：16.vp。|
 |family|?String|否|None|**命名参数。** 指定字体列表。<br>初始值："sans-serif"。|
 
 ### func selectedOptionFontColor(?ResourceColor)
@@ -180,7 +180,7 @@ public func selectedOptionFontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|下拉菜单选中项的文本颜色。<br>初始值：@r(sys.color.ohos_id_color_text_primary_activated)|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|下拉菜单选中项的文本颜色。<br>初始值：@r(sys.color.ohos_id_color_text_primary_activated)|
 
 ### func optionBgColor(?ResourceColor)
 
@@ -198,7 +198,7 @@ public func optionBgColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|下拉菜单项的背景色。<br>初始值：Color.Transparent。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|下拉菜单项的背景色。<br>初始值：Color.Transparent。|
 
 ### func optionFont(?FontStyle, ?FontWeight, ?Length, ?ResourceStr)
 
@@ -223,7 +223,7 @@ public func optionFont(
 |:---|:---|:---|:---|:---|
 |style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None|**命名参数。** 用于指定字体样式。<br>初始值：FontStyle.Normal。|
 |weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None|**命名参数。** 用于指定字体的粗细。<br>初始值：FontWeight.Medium。|
-|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 指定字号和行高，不支持百分比设置。<br>初始值：16.vp。|
+|size|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 指定字号和行高，不支持百分比设置。<br>初始值：16.vp。|
 |family|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None|**命名参数。** 指定字体系列。<br>初始值："sans-serif"。|
 
 ### func optionFontColor(?ResourceColor)
@@ -242,7 +242,7 @@ public func optionFontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|下拉菜单项的文本颜色。<br>初始值：@r(sys.color.ohos_id_color_text_primary)。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|下拉菜单项的文本颜色。<br>初始值：@r(sys.color.ohos_id_color_text_primary)。|
 
 ### func space(?Length)
 
@@ -260,7 +260,7 @@ public func space(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的文本与箭头之间的间距。<br>初始值：8.0.vp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|下拉菜单项的文本与箭头之间的间距。<br>初始值：8.0.vp。|
 
 ### func arrowPosition(?ArrowPosition)
 
@@ -335,7 +335,7 @@ public func optionWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单项的宽度。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|下拉菜单项的宽度。|
 
 ### func optionHeight(?Length)
 
@@ -357,7 +357,7 @@ public func optionHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|下拉菜单显示的最大高度。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|下拉菜单显示的最大高度。|
 
 ### func menuBackgroundColor(?ResourceColor)
 
@@ -375,7 +375,7 @@ public func menuBackgroundColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|下拉菜单的背景色。<br>初始值：Color.Transparent。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|下拉菜单的背景色。<br>初始值：Color.Transparent。|
 
 ### func menuBackgroundBlurStyle(?BlurStyle)
 

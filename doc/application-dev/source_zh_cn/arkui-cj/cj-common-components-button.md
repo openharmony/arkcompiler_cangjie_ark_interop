@@ -181,9 +181,9 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               Button('Register')
                 .width(300)
                 .margin(top: 20)
-                .onClick{ evt =>
+                .onClick({ evt =>
                     // 需要执行的操作
-                    }
+                    })
           }
           .padding(20)
       }
@@ -237,10 +237,10 @@ Button组件通常用于触发某些操作，可以绑定onClick事件来响应�
               .height(60)
               .position(x: 80.percent, y: 600)
               .shadow(radius: 10.0)
-              .onClick {
+              .onClick ({
                   evt =>
                   // 需要执行的操作
-              }
+              })
           }
           .width(100.percent)
           .height(100.percent)

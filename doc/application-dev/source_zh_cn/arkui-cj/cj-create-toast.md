@@ -96,10 +96,10 @@ class EntryView{
     func build(){
         Column(){
             Button("Show toast").fontSize(20)
-            .onClick{
-                    =>
-                    getUIContext().getPromptAction().showToast(message: "Hello Word",duration: 2000)
-            }
+            .onClick({
+                    evt=>
+                    getUIContext().getPromptAction().showToast(message: "Hello Word")
+            })
         }.size(width: 100.percent,height: 100.percent).justifyContent(FlexAlign.Center)
     }
 }

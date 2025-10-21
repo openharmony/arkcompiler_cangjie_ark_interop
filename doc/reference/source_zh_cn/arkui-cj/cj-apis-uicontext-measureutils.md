@@ -73,12 +73,12 @@ public init(
 |textContent|String|是|-| **命名参数。** 文本内容。|
 |fontWeight|[FontWeight](./cj-common-types.md#enum-fontweight)|否|FontWeight.Normal| **命名参数。** 字体粗细。初始值: FontWeight.Normal。|
 |fontFamily|String|否|"HarmonyOS Sans"| **命名参数。** 字体族。初始值: "HarmonyOS Sans"。|
-|constraintWidth|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 文本约束宽度。初始值: 0。|
-|fontSize|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|16.fp| **命名参数。** 字体大小。初始值: 16.fp|
-|lineHeight|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 行高。初始值: 0。|
-|baselineOffset|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0.0.vp| **命名参数。** 文本基线偏移。初始值: 0.0.vp。|
-|letterSpacing|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 字符间距。初始值: 0。|
-|textIndent|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|None| **命名参数。** 文本缩进。初始值: 0。|
+|constraintWidth|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 文本约束宽度。初始值: 0。|
+|fontSize|?[Length](./cj-common-types.md#interface-length)|否|16.fp| **命名参数。** 字体大小。初始值: 16.fp|
+|lineHeight|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 行高。初始值: 0。|
+|baselineOffset|?[Length](./cj-common-types.md#interface-length)|否|0.0.vp| **命名参数。** 文本基线偏移。初始值: 0.0.vp。|
+|letterSpacing|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 字符间距。初始值: 0。|
+|textIndent|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 文本缩进。初始值: 0。|
 |maxLines|UInt32|否|0| **命名参数。** 最大行数。初始值: 0。|
 |textAlign|[TextAlign](./cj-common-types.md#enum-textalign)|否|TextAlign.Start| **命名参数。** 文本对齐方式。初始值: TextAlign.Start。|
 |fontStyle|[FontStyle](./cj-common-types.md#enum-fontstyle)|否|FontStyle.Normal| **命名参数。** 字体样式。初始值: FontStyle.Normal。|
@@ -110,7 +110,7 @@ public var height: Length
 
 **功能：** 高度。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -126,7 +126,7 @@ public var width: Length
 
 **功能：** 宽度。
 
-**类型：** [Length](../BasicServicesKit/cj-apis-base.md#interface-length)
+**类型：** [Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -150,8 +150,8 @@ public init(width!: Length = 0, height!: Length = 0)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0| **命名参数。** 宽度。初始值: 0|
-|height|[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|否|0| **命名参数。** 高度。初始值: 0|
+|width|[Length](./cj-common-types.md#interface-length)|否|0| **命名参数。** 宽度。初始值: 0|
+|height|[Length](./cj-common-types.md#interface-length)|否|0| **命名参数。** 高度。初始值: 0|
 
 ## class MeasureUtils
 

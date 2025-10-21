@@ -59,7 +59,7 @@ public func caretColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|光标的颜色。<br>初始值：0xFF007DFF。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|光标的颜色。<br>初始值：0xFF007DFF。|
 
 ### func enterKeyType(?EnterKeyType)
 
@@ -113,7 +113,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|文本的颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|文本的颜色。|
 
 ### func fontSize(?Length)
 
@@ -131,7 +131,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-|文本的字体大小。<br>初始值：16.fp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|文本的字体大小。<br>初始值：16.fp。|
 
 ### func fontStyle(?FontStyle)
 
@@ -330,7 +330,7 @@ public func placeholderColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?[ResourceColor](../BasicServicesKit/cj-apis-base.md#interface-resourcecolor)|是|-|占位符文本的颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|占位符文本的颜色。|
 
 ### func placeholderFont(?Length, ?FontWeight, ?String, ?FontStyle)
 
@@ -349,7 +349,7 @@ public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?[Length](../BasicServicesKit/cj-apis-base.md#interface-length)|是|-| **命名参数。** 占位符文本的字体大小。<br>初始值：16.0.fp。|
+|size|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 占位符文本的字体大小。<br>初始值：16.0.fp。|
 |weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None| **命名参数。** 占位符文本的字体粗细。<br>初始值：FontWeight.W400。|
 |family|?String|否|None| **命名参数。** 占位符文本的字体族。<br>初始值：""。|
 |style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None| **命名参数。** 占位符文本的字体样式。<br>初始值：FontStyle.Normal。|
