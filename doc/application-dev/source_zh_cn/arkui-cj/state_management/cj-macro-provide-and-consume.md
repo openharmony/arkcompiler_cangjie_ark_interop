@@ -57,7 +57,7 @@ var age: Float64;
 
 |\@Provide传递/访问|说明|
 |:---|:---|
-|从父组件初始化和更新|可选，允许父组件中常规变量（常规变量对 \@Provide 赋值，只是数值的初始化，常规变量的变化不会触发UI刷新，只有状态变量才能触发UI刷新）、\@State、\@Link、\@Prop、\@Provide、\@Consume、\@Publish、\@StorageLink、\@StorageProp、\@LocalStorageLink 和 \@LocalStorageProp 装饰的变量装饰变量初始化子组件 \@Provide。|
+|从父组件初始化和更新|可选，允许父组件中常规变量（常规变量对 \@Provide 赋值，只是数值的初始化，常规变量的变化不会触发UI刷新，只有状态变量才能触发UI刷新）、[\@State](./cj-macro-state.md)、[\@Link](./cj-macro-link.md)、[\@Prop](./cj-macro-prop.md)、\@Provide、\@Consume、[\@Publish](./cj-macro-observed-and-publish.md)、[\@StorageLink](./cj-appstorage.md#storagelink)、[\@StorageProp](./cj-appstorage.md#storageprop)、[\@LocalStorageLink](./cj-localstorage.md#localstoragelink)和[\@LocalStorageProp](./cj-localstorage.md#localstorageprop)装饰的变量装饰变量初始化子组件 \@Provide。|
 |用于初始化子组件|允许，可用于初始化 \@State、\@Link、\@Prop、\@Provide。|
 |和父组件同步|否。|
 |和后代组件同步|和 \@Consume 双向同步。|
@@ -148,9 +148,9 @@ class Child{
 
 ![img1](figures/provide_1_datepicker.gif)
 
-- 当装饰的变量是HashMap时，可以观察到HashMap整体的赋值，同时可通过调用HashMap的接口set(), clear(), remove() 更新Map的值。
+- 当装饰的变量是HashMap时，可以观察到HashMap整体的赋值，同时可通过调用HashMap的接口set(), clear(), remove() 更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
-- 当装饰的变量是HashSet时，可以观察到HashSet整体的赋值，同时可通过调用HashSet的接口add(), clear(), remove() 更新Set的值。
+- 当装饰的变量是HashSet时，可以观察到HashSet整体的赋值，同时可通过调用HashSet的接口add(), clear(), remove() 更新Set的值。详见[装饰Set类型变量](#装饰set类型变量)。
 
 - 可以装饰函数类型变量，并观察到函数输出值的变化。
 
