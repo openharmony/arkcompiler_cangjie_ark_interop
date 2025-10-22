@@ -897,7 +897,7 @@ sealed abstract class BaseEvent {
 }
 ```
 
-**功能：** 点击事件的基类。
+**功能：** 基础事件类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

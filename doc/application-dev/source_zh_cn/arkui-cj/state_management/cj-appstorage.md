@@ -44,7 +44,7 @@ AppStorage中的属性可以被双向同步，数据可以是存在于本地或�
 |传递/访问|说明|
 |:---|:---|
 |从父节点初始化和更新|禁止，@StorageProp不支持从父节点初始化，只能AppStorage中key对应的属性初始化，如果没有对应key的话，将使用本地默认值初始化。|
-|初始化子节点|支持，可用于初始化@State、@Link、@Prop、@Provide。|
+|初始化子节点|支持，可用于初始化[@State](./cj-macro-state.md)、[@Link](./cj-macro-link.md)、[@Prop](./cj-macro-prop.md)、[@Provide](./cj-macro-provide-and-consume.md)。|
 |是否支持组件外访问|否。|
 
 **@StorageProp初始化规则图示**
@@ -134,13 +134,13 @@ AppStorage中的属性可以被双向同步，数据可以是存在于本地或�
 
 3. AppStorage与[PersistentStorage](./cj-persiststorage.md)以及[Environment](./cj-environment.md)配合使用时，需要注意以下几点：
 
-    a. 在AppStorage中创建属性后，调用PersistentStorage.persistProp()接口时，会使用在AppStorage中已经存在的值，并覆盖PersistentStorage中的同名属性，所以建议要使用相反的调用顺序，反例可见在[PersistentStorage之前访问AppStorage中的属性](./cj-persiststorage.md#在persistentstorage之后访问appstorage中的属性)。
+    a. 在AppStorage中创建属性后，调用PersistentStorage.[persistProp()](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-appstatemanagement.md#static-func-persistproptstring-t)接口时，会使用在AppStorage中已经存在的值，并覆盖PersistentStorage中的同名属性，所以建议要使用相反的调用顺序，反例可见在[PersistentStorage之前访问AppStorage中的属性](./cj-persiststorage.md#在persistentstorage之后访问appstorage中的属性)。
 
-    b. 如果在AppStorage中已经创建属性后，再调用Environment.envProp()创建同名的属性，会调用失败。因为AppStorage已经有同名属性，Environment环境变量不会再写入AppStorage中，所以建议AppStorage中属性不要使用Environment预置环境变量名。
+    b. 如果在AppStorage中已经创建属性后，再调用Environment.[envProp()](../../../../reference/source_zh_cn/arkui-cj/cj-state-rendering-appstatemanagement.md#static-func-envproptstring-t)创建同名的属性，会调用失败。因为AppStorage已经有同名属性，Environment环境变量不会再写入AppStorage中，所以建议AppStorage中属性不要使用Environment预置环境变量名。
 
-4. 状态宏装饰的变量，改变会引起UI的渲染更新，如果改变的变量不是用于UI更新，只是用于消息传递，推荐使用emitter方式。例子可见不建议借助@StorageLink的双向同步机制实现事件通知。
+4. 状态宏装饰的变量，改变会引起UI的渲染更新，如果改变的变量不是用于UI更新，只是用于消息传递，推荐使用emitter方式。例子可见[不建议借助@StorageLink的双向同步机制实现事件通知](#不建议借助storagelink的双向同步机制实现事件通知)。
 
-5. AppStorage同一进程内共享，UIAbility和UIExtensionAbility是两个进程，所以在UIExtensionAbility中不共享主进程的AppStorage。
+5. AppStorage同一进程内共享。
 
 ## 使用场景
 
@@ -230,7 +230,7 @@ class EntryView{
 
 示例代码中，TapImage中的单击事件，会触发AppStorage中tapIndex对应属性的改变。因为@StorageLink是双向同步，修改会同步回AppStorage中，所以，所有绑定AppStorage的tapIndex自定义组件里都能感知到tapIndex的变化。使用@Watch监听到tapIndex的变化后，修改状态变量tapColor从而触发UI刷新（此处tapIndex并未直接绑定在UI上，因此tapIndex的变化不会直接触发UI刷新）。
 
-使用该机制来实现事件通知需要确保AppStorage中的变量尽量不要直接绑定在UI上，且需要控制@Watch函数的复杂度（如果@Watch函数执行时间长，会影响UI刷新效率）。
+使用该机制来实现事件通知需要确保AppStorage中的变量尽量不要直接绑定在UI上，且需要控制[@Watch](./cj-macro-watch.md)函数的复杂度（如果@Watch函数执行时间长，会影响UI刷新效率）。
 
  <!-- run -->
 

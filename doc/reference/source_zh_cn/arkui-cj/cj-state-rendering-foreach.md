@@ -12,7 +12,8 @@ import kit.ArkUI.*
 
 ```cangjie
 public class ForEach<T> <: UINodeBase {
-    public init(CollectionEx<T>, ItemGenFuncType<T>, ?ItemGenFuncType<T>)
+    public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>,
+        keyGenerator!: ?KeyGenFuncType<T> = None) {}
     public init(subcomponent: () -> Unit)
 }
 ```
@@ -27,10 +28,10 @@ public class ForEach<T> <: UINodeBase {
 
 - UINodeBase
 
-### init(CollectionEx\<T>, ItemGenFuncType\<T>, ?ItemGenFuncType\<T>)
+### init(CollectionEx\<T>, ItemGenFuncType\<T>, ?KeyGenFuncType\<T>)
 
 ```cangjie
-public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>, keyGenerator!: ?ItemGenFuncType<T> = None)
+public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>, keyGenerator!: ?KeyGenFuncType<T> = None)
 ```
 
 **功能：** 定义ForEach组件。
@@ -45,7 +46,7 @@ public init(arr: CollectionEx<T>, itemGenerator!: ItemGenFuncType<T>, keyGenerat
 |:---|:---|:---|:---|:---|
 |arr|CollectionEx\<T>|是|-|用于UI中的数组集合。|
 |itemGenerator|ItemGenFuncType\<T>|否|-|项目生成函数。|
-|keyGenerator|?ItemGenFuncType\<T>|否|None|键生成函数。|
+|keyGenerator|?KeyGenFuncType\<T>|否|None|键生成函数。|
 
 ### init(() -> Unit)
 

@@ -202,9 +202,9 @@ public func onDataReloaded(): Unit
 
 ```cangjie
 public class LazyForEach<T> <: UINodeBase {
-    public init(IDataSource<T>, ItemGenFuncType<T>, ?KeyGenFuncType<T>)
+    public init(dataSource: IDataSource<T>, itemGenerator!: ItemGenFuncType<T>,
+        keyGenerator!: ?KeyGenFuncType<T> = None)
     public init()
-
 }
 ```
 

@@ -22,7 +22,7 @@
 
 ### 在ForEach中使用ObservedArrayList
 
-开发过程中常将对象数组与 ForEach 结合使用，但写法不当会导致 UI 不刷新。
+开发过程中常将对象数组与[ForEach](../rendering_control/cj-rendering-control-foreach.md)结合使用，但写法不当会导致 UI 不刷新。
 
  <!-- run -->
 

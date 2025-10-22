@@ -8,11 +8,11 @@
 
 ## 宏使用说明
 
-@Builder宏有两种使用方式，分别是定义在自定义组件内部的私有自定义构建函数和定义在全局的全局自定义构建函数。
+@Builder宏有两种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)和定义在全局的[全局自定义构建函数](#全局自定义构建函数)。
 
 ### 私有自定义构建函数
 
-定义的语法：
+示例：
 
  <!-- run -->
 
@@ -64,7 +64,7 @@ this.showTextBuilder()
 
 ### 全局自定义构建函数
 
-定义的语法：
+示例：
 
  <!-- run -->
 
@@ -379,9 +379,9 @@ class EntryView {
 }
 ```
 
-### 使用全局和局部的@Builder传入customBuilder类型
+### 使用全局和局部的@Builder传入CustomBuilder类型
 
-当某个参数类型为customBuilder的时候，可以把定义的@Builder函数传入，因为customBuilder实际是一个Function类型或者是Unit类型，而@Builder实际也是一个Function类型。此场景中通过把@Builder传入已实现特定的效果
+当某个参数类型为CustomBuilder的时候，可以把定义的@Builder函数传入，因为CustomBuilder实际是一个Function(() -> Unit)类型，而@Builder实际也是一个Function类型。此场景中通过把@Builder传入已实现特定的效果
 
  <!-- run -->
 
