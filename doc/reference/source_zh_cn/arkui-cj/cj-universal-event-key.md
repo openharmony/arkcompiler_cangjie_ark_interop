@@ -24,7 +24,7 @@ func onKeyEvent(event: ?(KeyEvent) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(KeyEvent) -> Unit|是|-|绑定该方法的组件获焦后，按键动作触发该回调。|
+|event|?([KeyEvent](./cj-common-types.md#class-keyevent)) -> Unit|是|-|绑定该方法的组件获焦后，按键动作触发该回调。|
 
 **返回值：**
 

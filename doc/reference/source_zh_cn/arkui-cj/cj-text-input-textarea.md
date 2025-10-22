@@ -31,9 +31,9 @@ public init(placeholder!: ?ResourceStr = None, text!: ?ResourceStr = None,
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|placeholder|?ResourceStr|否|None| **命名参数。** 占位符文本，无输入时显示的文本。|
-|text|?ResourceStr|否|None| **命名参数。** TextArea的当前值。|
-|controller|?TextAreaController|否|None| **命名参数。** TextArea组件的控制器。|
+|placeholder|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** 占位符文本，无输入时显示的文本。|
+|text|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** TextArea的当前值。|
+|controller|?[TextAreaController](#class-textareacontroller)|否|None| **命名参数。** TextArea组件的控制器。|
 
 ## 通用属性/通用事件
 
@@ -59,7 +59,7 @@ public func caretColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|光标的颜色。<br>初始值：0xFF007DFF。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|光标的颜色。<br>初始值：0xFF007DFF。|
 
 ### func enterKeyType(?EnterKeyType)
 
@@ -77,7 +77,7 @@ public func enterKeyType(value: ?EnterKeyType): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?EnterKeyType|是|-|软键盘输入按钮的类型。<br>初始值：EnterKeyType.NewLine。|
+|value|?[EnterKeyType](./cj-common-types.md#enum-enterkeytype)|是|-|软键盘输入按钮的类型。<br>初始值：EnterKeyType.NewLine。|
 
 ### func fontFamily(?ResourceStr)
 
@@ -95,7 +95,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|文本的字体族。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontColor(?ResourceColor)
 
@@ -113,7 +113,7 @@ public func fontColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|文本的颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|文本的颜色。|
 
 ### func fontSize(?Length)
 
@@ -131,7 +131,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|文本的字体大小。<br>初始值：16.fp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|文本的字体大小。<br>初始值：16.fp。|
 
 ### func fontStyle(?FontStyle)
 
@@ -149,7 +149,7 @@ public func fontStyle(value: ?FontStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontStyle|是|-|文本的字体样式。<br>初始值：FontStyle.Normal。|
+|value|?[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-|文本的字体样式。<br>初始值：FontStyle.Normal。|
 
 ### func fontWeight(?FontWeight)
 
@@ -167,7 +167,7 @@ public func fontWeight(value: ?FontWeight): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontWeight|是|-|文本的字体粗细。<br>初始值：FontWeight.Normal。|
+|value|?[FontWeight](./cj-common-types.md#enum-fontweight)|是|-|文本的字体粗细。<br>初始值：FontWeight.Normal。|
 
 ### func inputFilter(?ResourceStr, ?(String) -> Unit)
 
@@ -185,7 +185,7 @@ public func inputFilter(value!: ?ResourceStr, error!: ?(String) -> Unit = None):
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-| **命名参数。** 输入过滤规则。<br>初始值：""。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。** 输入过滤规则。<br>初始值：""。|
 |error|?(String) -> Unit|否|None| **命名参数。** 输入错误时的回调函数。|
 
 ### func maxLength(?UInt32)
@@ -312,7 +312,7 @@ public func onSubmit(callback: ?(EnterKeyType) -> Unit): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?(EnterKeyType) -> Unit|是|-|提交时的回调函数。<br>初始值：{ _ => }。|
+|callback|?([EnterKeyType](./cj-common-types.md#enum-enterkeytype)) -> Unit|是|-|提交时的回调函数。<br>初始值：{ _ => }。|
 
 ### func placeholderColor(?ResourceColor)
 
@@ -330,7 +330,7 @@ public func placeholderColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|占位符文本的颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|占位符文本的颜色。|
 
 ### func placeholderFont(?Length, ?FontWeight, ?String, ?FontStyle)
 
@@ -349,10 +349,10 @@ public func placeholderFont(size!: ?Length, weight!: ?FontWeight = None, family!
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|size|?Length|是|-| **命名参数。** 占位符文本的字体大小。<br>初始值：16.0.fp。|
-|weight|?FontWeight|否|None| **命名参数。** 占位符文本的字体粗细。<br>初始值：FontWeight.W400。|
+|size|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 占位符文本的字体大小。<br>初始值：16.0.fp。|
+|weight|?[FontWeight](./cj-common-types.md#enum-fontweight)|否|None| **命名参数。** 占位符文本的字体粗细。<br>初始值：FontWeight.W400。|
 |family|?String|否|None| **命名参数。** 占位符文本的字体族。<br>初始值：""。|
-|style|?FontStyle|否|None| **命名参数。** 占位符文本的字体样式。<br>初始值：FontStyle.Normal。|
+|style|?[FontStyle](./cj-common-types.md#enum-fontstyle)|否|None| **命名参数。** 占位符文本的字体样式。<br>初始值：FontStyle.Normal。|
 
 ### func textAlign(?TextAlign)
 
@@ -370,7 +370,7 @@ public func textAlign(value: ?TextAlign): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?TextAlign|是|-|文本的水平对齐方式。<br>初始值：TextAlign.Start。|
+|value|?[TextAlign](./cj-common-types.md#enum-textalign)|是|-|文本的水平对齐方式。<br>初始值：TextAlign.Start。|
 
 ## 基础类型定义
 

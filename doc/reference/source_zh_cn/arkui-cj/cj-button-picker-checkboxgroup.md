@@ -76,7 +76,7 @@ public func selectedColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|被选中或部分选中状态的颜色。|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|被选中或部分选中状态的颜色。|
 
 ## 组件事件
 
@@ -96,7 +96,7 @@ public func onChange(callback: ?OnCheckboxGroupChangeCallback): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?OnCheckboxGroupChangeCallback|是|-|多选框群组的信息。初始值:  { _ => }|
+|callback|?[OnCheckboxGroupChangeCallback](#type-oncheckboxgroupchangecallback)|是|-|多选框群组的信息。初始值:  { _ => }|
 
 ## 基础类型定义
 
@@ -143,7 +143,7 @@ public var status: SelectStatus
 
 **功能：** 选中状态。
 
-**类型：** [SelectStatus](#enum-selectstatus)
+**类型：** [SelectStatus](./cj-common-types.md#enum-selectstatus)
 
 **读写能力：** 可读写
 
@@ -170,7 +170,7 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|status|[SelectStatus](#enum-selectstatus)|是|-|选中状态。|
+|status|[SelectStatus](./cj-common-types.md#enum-selectstatus)|是|-|选中状态。|
 |name|Array\<String>|是|-|群组内所有被选中的多选框名称。|
 
 ### type OnCheckboxGroupChangeCallback

@@ -146,7 +146,7 @@ public func sendTouchEvent(event: TouchObject): Bool
 
 |名称|类型|必填|默认值|说明|
 | :-------   | :---------- | :------- | :-------- | :----------|
-| event | [TouchObject](./cj-universal-event-touch.md#class-touchobject) | 是   | - | 触发触摸事件的位置，event参数见[TouchEvent](./cj-universal-event-touch.md#class-touchevent)中TouchObject的介绍。 |
+| event | [TouchObject](./cj-common-types.md#class-touchobject) | 是   | - | 触发触摸事件的位置，event参数见[TouchEvent](./cj-common-types.md#class-touchevent)中TouchObject的介绍。 |
 
 **返回值：**
 
@@ -170,7 +170,7 @@ public func sendKeyEvent(event: KeyEvent): Bool
 
 |名称|类型|必填|默认值|说明|
 | :-------   | :---------- | :------- | :-------- | :----------|
-| event | [KeyEvent](./cj-universal-event-key.md#class-keyevent) | 是    | - | 按键事件，event参数见[KeyEvent](./cj-universal-event-key.md#class-keyevent)介绍。 |
+| event | [KeyEvent](./cj-common-types.md#class-keyevent) | 是    | - | 按键事件，event参数见[KeyEvent](./cj-common-types.md#class-keyevent)介绍。 |
 
 **返回值：**
 
@@ -194,7 +194,7 @@ public func sendMouseEvent(event: MouseEvent): Bool
 
 |名称|类型|必填|默认值|说明|
 | :-------   | :---------- | :------- | :-------- | :----------|
-| event | [MouseEvent](./cj-universal-event-mouse.md#class-mouseevent) | 是  | -  | 鼠标事件，event参数见[MouseEvent](./cj-universal-event-mouse.md#class-mouseevent)介绍。 |
+| event | [MouseEvent](./cj-common-types.md#class-mouseevent) | 是  | -  | 鼠标事件，event参数见[MouseEvent](./cj-common-types.md#class-mouseevent)介绍。 |
 
 **返回值：**
 

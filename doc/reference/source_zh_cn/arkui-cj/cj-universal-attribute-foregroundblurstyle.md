@@ -24,7 +24,7 @@ public func foregroundBlurStyle(value: ?BlurStyle): T
 
 |名称|类型|必填|默认值|说明|
 | :-------   | :---------- | :------- | :-------- | :----------|
-| value | ?BlurStyle |是|-| 内容模糊样式。 <br/>初始值：BlurStyle.None。 |
+| value | ?[BlurStyle](./cj-common-types.md#enum-blurstyle) |是|-| 内容模糊样式。 <br/>初始值：BlurStyle.None。 |
 
 **返回值：**
 
@@ -48,8 +48,8 @@ public func foregroundBlurStyle(value: ?BlurStyle, options: ?ForegroundBlurStyle
 
 |名称|类型|必填|默认值|说明|
 | :-------   | :---------- | :------- | :-------- | :----------|
-| value | ?BlurStyle |是|-| 内容模糊样式。 |
-| options | ?ForegroundBlurStyleOptions |是|-| 内容模糊选项。 |
+| value | ?[BlurStyle](./cj-common-types.md#enum-blurstyle) |是|-| 内容模糊样式。 |
+| options | ?[ForegroundBlurStyleOptions](./cj-common-types.md#class-foregroundblurstyleoptions) |是|-| 内容模糊选项。 |
 
 **返回值：**
 

@@ -58,9 +58,9 @@ public func translate(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** x轴上的平移距离。初始值：0.0vp|
-|y|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** y轴上的平移距离。初始值：0.0vp|
-|z|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** z轴上的平移距离。初始值：0.0vp|
+|x|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** x轴上的平移距离。初始值：0.0vp|
+|y|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** y轴上的平移距离。初始值：0.0vp|
+|z|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** z轴上的平移距离。初始值：0.0vp|
 
 ### func scale(?Float32, ?Float32, ?Float32, ?Length, ?Length)
 
@@ -87,8 +87,8 @@ public func scale(
 |x|?Float32|否|None|**命名参数。** x轴上的缩放比例。初始值：1.0|
 |y|?Float32|否|None|**命名参数。** y轴上的缩放比例。初始值：1.0|
 |z|?Float32|否|None|**命名参数。** z轴上的缩放比例。初始值：1.0|
-|centerX|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 变换中心点x轴坐标。初始值：50.percent|
-|centerY|?[Length](../apis/BasicServicesKit/cj-apis-base.md#interface-length)|否|None|**命名参数。** 变换中心点y轴坐标。初始值：50.percent|
+|centerX|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点x轴坐标。初始值：50.percent|
+|centerY|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点y轴坐标。初始值：50.percent|
 
 ### func opacity(Float64)
 
@@ -152,9 +152,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|routeType|?RouteType|否|Option.None|**命名参数。** 页面转场效果生效的路由类型。|
+|routeType|?[RouteType](#enum-routetype) |否|Option.None|**命名参数。** 页面转场效果生效的路由类型。|
 |duration|?Int32|否|None|**命名参数。** 动画的时长。单位：毫秒。取值范围：[0, +∞)。|
-|curve|?Curve|否|None|**命名参数。** 动画曲线。|
+|curve|?[Curve](./cj-common-types.md#enum-curve)|否|None|**命名参数。** 动画曲线。|
 |delay|?Int32|否|None|**命名参数。** 动画延迟时长。单位：毫秒。|
 
 ### func onEnter(?PageTransitionCallback)
@@ -173,7 +173,7 @@ public func onEnter(event: ?PageTransitionCallback)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?PageTransitionCallback|是|-|入场动画的逐帧回调直到入场动画结束，progress从0变化到1。|
+|event|?[PageTransitionCallback](#type-pagetransitioncallback)|是|-|入场动画的逐帧回调直到入场动画结束，progress从0变化到1。|
 
 ## class PageTransitionExit
 
@@ -219,9 +219,9 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|routeType|?RouteType|否|Option.None|**命名参数。** 页面转场效果生效的路由类型。|
+|routeType|?[RouteType](#enum-routetype)|否|Option.None|**命名参数。** 页面转场效果生效的路由类型。|
 |duration|?Int32|否|None|**命名参数。** 动画的时长。单位：毫秒。取值范围：[0, +∞)。|
-|curve|?Curve|否|None|**命名参数。** 动画曲线。|
+|curve|?[Curve](./cj-common-types.md#enum-curve)|否|None|**命名参数。** 动画曲线。|
 |delay|?Int32|否|None|**命名参数。** 动画延迟时长。单位：毫秒。|
 
 ### func onExit(?PageTransitionCallback)
@@ -240,7 +240,7 @@ public func onExit(event: ?PageTransitionCallback)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?PageTransitionCallback|是|-|出场动画的逐帧回调直到入场动画结束，progress从0变化到1。|
+|event|?[PageTransitionCallback](#type-pagetransitioncallback)|是|-|出场动画的逐帧回调直到入场动画结束，progress从0变化到1。|
 
 ## enum RouteType
 
@@ -261,7 +261,7 @@ public enum RouteType <: Equatable<RouteType> {
 
 **父类型：**
 
-- Equatable\<RouteType>
+- Equatable\<[RouteType](#enum-routetype)>
 
 ### None
 
@@ -367,7 +367,7 @@ public enum SlideEffect <: Equatable<SlideEffect> {
 
 **父类型：**
 
-- Equatable\<SlideEffect>
+- Equatable\<[SlideEffect](#enum-slideeffect)>
 
 ### Left
 

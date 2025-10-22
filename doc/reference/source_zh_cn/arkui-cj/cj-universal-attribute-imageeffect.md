@@ -49,7 +49,7 @@ public func colorBlend(value: ?ResourceColor): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|颜色混合值。初始值:  Color.Transparent|
+|value|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|颜色混合值。初始值:  Color.Transparent|
 
 **返回值：**
 
@@ -100,7 +100,7 @@ public func shadow(radius!: ?Float64, color!: ?ResourceColor = None, offsetX!: ?
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |radius|?Float64|是|-|**命名参数。** 阴影模糊半径。初始值:  0.0|
-|color|?ResourceColor|否|None|**命名参数。** 阴影颜色。初始值:  Color(0x666666)|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|否|None|**命名参数。** 阴影颜色。初始值:  Color(0x666666)|
 |offsetX|?Float64|否|None|**命名参数。** 阴影X轴偏移量。初始值:  0.0|
 |offsetY|?Float64|否|None|**命名参数。** 阴影Y轴偏移量。初始值:  0.0|
 

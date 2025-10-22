@@ -29,7 +29,7 @@ public func sharedTransition(id: String, options!: ?SharedTransitionOptions = No
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |id|String|是|-|两个页面中id值相同且不为空字符串的组件即为共享元素，在页面转场时可显示共享元素转场动效。|
-|options|?SharedTransitionOptions|否|None|**命名参数** 共享元素转场动画参数。<br>初始值：SharedTransitionOptions()。|
+|options|?[SharedTransitionOptions](#class-sharedtransitionoptions)|否|None|**命名参数** 共享元素转场动画参数。<br>初始值：SharedTransitionOptions()。|
 
 **返回值：**
 

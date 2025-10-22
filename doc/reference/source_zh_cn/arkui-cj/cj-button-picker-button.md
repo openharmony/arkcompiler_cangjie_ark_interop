@@ -61,7 +61,7 @@ public init(label: ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|label|ResourceStr|是|-|按钮文本内容。当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
+|label|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|按钮文本内容。当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
 
 ### init(?ButtonOptions)
 
@@ -79,7 +79,7 @@ public init(options: ?ButtonOptions)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|?ButtonOptions|是|-|配置按钮的显示样式。|
+|options|?[ButtonOptions](#class-buttonoptions)|是|-|配置按钮的显示样式。|
 
 ### init(?ButtonOptions, () -> Unit)
 
@@ -97,7 +97,7 @@ public init(options: ?ButtonOptions, child: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|?ButtonOptions|是|-|配置按钮的显示样式。|
+|options|?[ButtonOptions](#class-buttonoptions)|是|-|配置按钮的显示样式。|
 |child|() -> Unit|是|-|按钮包含的子组件。|
 
 ### init(?ResourceStr, ?ButtonOptions)
@@ -117,8 +117,8 @@ public init(label: ?ResourceStr, options: ?ButtonOptions)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|label|?ResourceStr|是|-|设置文本内容。当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
-|options|?ButtonOptions|是|-|配置按钮的显示样式。|
+|label|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|设置文本内容。当文本字符的长度超过按钮本身的宽度时，文本将会被截断。|
+|options|?[ButtonOptions](#class-buttonoptions)|是|-|配置按钮的显示样式。|
 
 ## 通用属性/通用事件
 
@@ -144,7 +144,7 @@ public func buttonStyle(value: ?ButtonStyleMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ButtonStyleMode|是|-| Button组件的样式和重要程度。<br>初始值：ButtonStyleMode.Emphasized。|
+|value|?[ButtonStyleMode](#enum-buttonstylemode)|是|-| Button组件的样式和重要程度。<br>初始值：ButtonStyleMode.Emphasized。|
 
 ### func fontColor(?ResourceColor)
 
@@ -162,7 +162,7 @@ public func fontColor(color: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|?ResourceColor|是|-| 按钮文本颜色。<br>初始值：Color(0xFFFFFF)。|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-| 按钮文本颜色。<br>初始值：Color(0xFFFFFF)。|
 
 ### func fontFamily(?ResourceStr)
 
@@ -180,7 +180,7 @@ public func fontFamily(value: ?ResourceStr): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceStr|是|-| 按钮文本内容。<br>初始值："HarmonyOS Sans"。|
+|value|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| 按钮文本内容。<br>初始值："HarmonyOS Sans"。|
 
 ### func fontSize(?Length)
 
@@ -198,7 +198,7 @@ public func fontSize(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|按钮文本大小。<br>初始值：18.fp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|按钮文本大小。<br>初始值：18.fp。|
 
 ### func fontStyle(?FontStyle)
 
@@ -216,7 +216,7 @@ public func fontStyle(value: ?FontStyle): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontStyle|是|-| 按钮文本样式。<br>初始值：FontStyle.Normal。|
+|value|?[FontStyle](./cj-common-types.md#enum-fontstyle)|是|-| 按钮文本样式。<br>初始值：FontStyle.Normal。|
 
 ### func fontWeight(?FontWeight)
 
@@ -234,7 +234,7 @@ public func fontWeight(value: ?FontWeight): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FontWeight|是|-| 按钮文本粗细。<br>初始值：FontWeight.W500。|
+|value|?[FontWeight](./cj-common-types.md#enum-fontweight)|是|-| 按钮文本粗细。<br>初始值：FontWeight.W500。|
 
 ### func shape(?ButtonType)
 
@@ -252,7 +252,7 @@ public func shape(value: ?ButtonType): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ButtonType|是|-|按键形状类型。<br>初始值：ButtonType.RoundRectangle。|
+|value|?[ButtonType](#enum-buttontype)|是|-|按键形状类型。<br>初始值：ButtonType.RoundRectangle。|
 
 ### func stateEffect(?Bool)
 
@@ -401,11 +401,11 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|shape|?ButtonType|否|None|**命名参数。** 按钮的形状。初始值：ButtonType.Capsule|
+|shape|?[ButtonType](#enum-buttontype)|否|None|**命名参数。** 按钮的形状。初始值：ButtonType.Capsule|
 |stateEffect|?Bool|否|None|**命名参数。** 按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。初始值：true|
-|buttonStyle|?ButtonStyleMode|否|None|**命名参数。** 描述按钮的样式和重要程度。初始值：ButtonStyleMode.Emphasized|
-|controlSize|?ControlSize|否|None|**命名参数。** 描述按钮的尺寸。初始值：ControlSize.Normal|
-|role|?ButtonRole|否|None|**命名参数。** 描述按钮的角色。初始值：ButtonRole.Normal|
+|buttonStyle|?[ButtonStyleMode](#enum-buttonstylemode)|否|None|**命名参数。** 描述按钮的样式和重要程度。初始值：ButtonStyleMode.Emphasized|
+|controlSize|?[ControlSize](./cj-common-types.md#enum-controlsize)|否|None|**命名参数。** 描述按钮的尺寸。初始值：ControlSize.Normal|
+|role|?[ButtonRole](#enum-buttonrole)|否|None|**命名参数。** 描述按钮的角色。初始值：ButtonRole.Normal|
 
 ### enum ButtonRole
 
@@ -425,7 +425,7 @@ public enum ButtonRole <: Equatable<ButtonRole> {
 
 **父类型：**
 
-- Equatable\<ButtonRole>
+- Equatable\<[ButtonRole](#enum-buttonrole)>
 
 #### Error
 
@@ -518,7 +518,7 @@ public enum ButtonStyleMode <: Equatable<ButtonStyleMode> {
 
 **父类型：**
 
-- Equatable\<ButtonStyleMode>
+- Equatable\<[ButtonStyleMode](#enum-buttonstylemode)>
 
 #### Emphasized
 
@@ -624,7 +624,7 @@ public enum ButtonType <: Equatable<ButtonType> {
 
 **父类型：**
 
-- Equatable\<ButtonType>
+- Equatable\<[ButtonType](#enum-buttontype)>
 
 #### Normal
 

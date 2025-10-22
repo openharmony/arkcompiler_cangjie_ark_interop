@@ -30,7 +30,7 @@ func onAreaChange(event: ?(Area, Area) -> Unit): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|event|?(Area, Area) -> Unit|是|-|组件区域变化时触发该回调。<br/>参数一：变化前的组件区域信息。<br/>参数二：变化后的组件区域信息。|
+|event|?([Area](./cj-common-types.md#class-area), [Area](./cj-common-types.md#class-area)) -> Unit|是|-|组件区域变化时触发该回调。<br/>参数一：变化前的组件区域信息。<br/>参数二：变化后的组件区域信息。|
 
 **返回值：**
 
