@@ -28,8 +28,8 @@ func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FunctionKey|是|-|功能键<br>初始值：""。|
-|keys|?Array\<ModifierKey>|是|-|修饰键数组|
+|value|?[FunctionKey](./cj-common-types.md#enum-functionkey)|是|-|功能键<br>初始值：""。|
+|keys|?Array\<[ModifierKey](./cj-common-types.md#enum-modifierkey)>|是|-|修饰键数组|
 
 **返回值：**
 
@@ -54,7 +54,7 @@ func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>): T
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|?String|是|-|快捷键字符串<br>初始值：""。|
-|keys|?Array\<ModifierKey>|是|-|修饰键数组|
+|keys|?Array\<[ModifierKey](./cj-common-types.md#enum-modifierkey)>|是|-|修饰键数组|
 
 **返回值：**
 
@@ -78,8 +78,8 @@ func keyboardShortcut(value: ?FunctionKey, keys: ?Array<ModifierKey>, action: ?(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?FunctionKey|是|-|功能键<br>初始值：""。|
-|keys|?Array\<ModifierKey>|是|-|修饰键数组|
+|value|?[FunctionKey](./cj-common-types.md#enum-functionkey)|是|-|功能键<br>初始值：""。|
+|keys|?Array\<[ModifierKey](./cj-common-types.md#enum-modifierkey)>|是|-|修饰键数组|
 |action|?() -> Unit|是|-|触发的操作|
 
 **返回值：**
@@ -105,7 +105,7 @@ func keyboardShortcut(value: ?String, keys: ?Array<ModifierKey>, action: ?() -> 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|?String|是|-|快捷键字符串<br>初始值：""。|
-|keys|?Array\<ModifierKey>|是|-|修饰键数组|
+|keys|?Array\<[ModifierKey](./cj-common-types.md#enum-modifierkey)>|是|-|修饰键数组|
 |action|?() -> Unit|是|-|触发的操作|
 
 **返回值：**

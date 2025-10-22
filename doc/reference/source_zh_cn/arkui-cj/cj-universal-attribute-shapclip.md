@@ -49,7 +49,7 @@ public func clipShape(value: ?BaseShape): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| value | ?BaseShape | 是 | \- | 对当前组件进行裁剪的指定形状。 |
+| value | ?[BaseShape](./cj-apis-shape.md#class-baseshape) | 是 | \- | 对当前组件进行裁剪的指定形状。 |
 
 **返回值：**
 
@@ -74,7 +74,7 @@ public func maskShape(value: BaseShape): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-| value | BaseShape | 是 | \- | 对当前组件进行遮罩指定的形状。 |
+| value | [BaseShape](./cj-apis-shape.md#class-baseshape) | 是 | \- | 对当前组件进行遮罩指定的形状。 |
 
 **返回值：**
 

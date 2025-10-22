@@ -48,7 +48,7 @@ public init(content: ?ResourceStr)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|content|?ResourceStr|是|-|HTML格式的字符串。初始值：""。|
+|content|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-|HTML格式的字符串。初始值：""。|
 
 ## 通用属性/通用事件
 

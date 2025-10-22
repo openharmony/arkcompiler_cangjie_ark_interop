@@ -30,7 +30,7 @@ public init(toggleType: ?ToggleType, isOn!: ?Bool = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|toggleType|?ToggleType|是|-|开关类型。<br>初始值：ToggleType.Switch。|
+|toggleType|?[ToggleType](./cj-common-types.md#enum-toggletype)|是|-|开关类型。<br>初始值：ToggleType.Switch。|
 |isOn|?Bool|否|None| **命名参数。** 开关是否打开。true：打开，false：关闭。<br>初始值：false。|
 
 ### init(?ToggleType, ?Bool, () -> Unit)
@@ -49,7 +49,7 @@ public init(toggleType: ?ToggleType, isOn: ?Bool, subcomponent: () -> Unit)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|toggleType|?ToggleType|是|-|开关类型。<br>初始值：ToggleType.Switch。|
+|toggleType|?[ToggleType](./cj-common-types.md#enum-toggletype)|是|-|开关类型。<br>初始值：ToggleType.Switch。|
 |isOn|?Bool|是|-|开关是否打开。true：打开，false：关闭。<br>初始值：false。|
 |subcomponent|() -> Unit|是|-|声明子组件。|
 
@@ -77,7 +77,7 @@ public func selectedColor(value: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?ResourceColor|是|-|设置组件打开状态的背景颜色。|
+|value|?[ResourceColor](cj-common-types.md#interface-resourcecolor)|是|-|设置组件打开状态的背景颜色。|
 
 ### func switchPointColor(?ResourceColor)
 
@@ -95,7 +95,7 @@ public func switchPointColor(color: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|?ResourceColor|是|-|Switch类型的圆形滑块颜色。|
+|color|?[ResourceColor](cj-common-types.md#interface-resourcecolor)|是|-|Switch类型的圆形滑块颜色。|
 
 ## 组件事件
 

@@ -36,8 +36,8 @@ public func animateTo(value: AnimateParam, event: VoidCallback): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|AnimateParam|是|-|动画参数。|
-|event|VoidCallback|是|-|动画执行的回调函数。|
+|value|[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|动画参数。|
+|event|[VoidCallback](./cj-common-types.md#type-VoidCallback)|是|-|动画执行的回调函数。|
 
 ### func createAnimator(AnimatorOptions)
 
@@ -55,13 +55,13 @@ public func createAnimator(options: AnimatorOptions): AnimatorResult
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|AnimatorOptions|是|-|动画选项。|
+|options|[AnimatorOptions](./cj-apis-uicontext-animator.md#class-animatoroptions)|是|-|动画选项。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|AnimatorResult|动画结果对象。|
+|[AnimatorResult](./cj-apis-uicontext-animator.md#class-animatorresult)|动画结果对象。|
 
 ### func fp2px(Length)
 
@@ -79,13 +79,13 @@ public func fp2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Length|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<Length>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func getContextMenuController()
 
@@ -103,7 +103,7 @@ public func getContextMenuController(): ContextMenuController
 
 |类型|说明|
 |:----|:----|
-|ContextMenuController|上下文菜单控制器对象。|
+|[ContextMenuController](./cj-apis-uicontext-contextmenucontroller.md#class-contextmenucontroller)|上下文菜单控制器对象。|
 
 ### func getFont()
 
@@ -121,7 +121,7 @@ public func getFont(): Font
 
 |类型|说明|
 |:----|:----|
-|Font|字体对象。|
+|[Font](cj-common-types.md#class-font)|字体对象。|
 
 ### func getMeasureUtils()
 
@@ -139,7 +139,7 @@ public func getMeasureUtils(): MeasureUtils
 
 |类型|说明|
 |:----|:----|
-|MeasureUtils|MeasureUtils对象。|
+|[MeasureUtils](./cj-apis-uicontext-measureutils.md#class-measureutils)|MeasureUtils对象。|
 
 ### func getPromptAction()
 
@@ -157,7 +157,7 @@ public func getPromptAction(): PromptAction
 
 |类型|说明|
 |:----|:----|
-|PromptAction|PromptAction对象。|
+|[PromptAction](./cj-apis-uicontext-promptaction.md#class-promptaction)|PromptAction对象。|
 
 ### func getRouter()
 
@@ -175,7 +175,7 @@ public func getRouter(): Router
 
 |类型|说明|
 |:----|:----|
-|Router|路由对象。|
+|[Router](../../../reference/source_zh_cn/arkui-cj/cj-apis-router.md#class-router)|路由对象。|
 
 ### func lpx2px(Length)
 
@@ -193,13 +193,13 @@ public func lpx2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Length|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<Length>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func px2fp(Length)
 
@@ -217,13 +217,13 @@ public func px2fp(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Length|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<Length>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func px2lpx(Length)
 
@@ -241,13 +241,13 @@ public func px2lpx(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Length|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<Length>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func px2vp(Length)
 
@@ -265,13 +265,13 @@ public func px2vp(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Length|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<Length>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|
 
 ### func showActionSheet(ActionSheetOptions)
 
@@ -289,7 +289,7 @@ public func showActionSheet(value: ActionSheetOptions): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|ActionSheetOptions|是|-|操作表参数。|
+|value|[ActionSheetOptions](./cj-dialog-actionsheet.md#class-actionsheetoptions)|是|-|操作表参数。|
 
 ### func showAlertDialog(AlertDialogParamWithConfirm)
 
@@ -307,7 +307,7 @@ public func showAlertDialog(options: AlertDialogParamWithConfirm): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|AlertDialogParamWithConfirm|是|-|警告对话框参数。|
+|options|[AlertDialogParamWithConfirm](./cj-dialog-alertdialog.md#class-alertdialogparamwithconfirm)|是|-|警告对话框参数。|
 
 ### func showAlertDialog(AlertDialogParamWithButtons)
 
@@ -325,7 +325,7 @@ public func showAlertDialog(options: AlertDialogParamWithButtons): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|AlertDialogParamWithButtons|是|-|警告对话框参数。|
+|options|[AlertDialogParamWithButtons](./cj-dialog-alertdialog.md#class-alertdialogparamwithbuttons)|是|-|警告对话框参数。|
 
 ### func showAlertDialog(AlertDialogParamWithOptions)
 
@@ -343,7 +343,7 @@ public func showAlertDialog(options: AlertDialogParamWithOptions): Unit
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|AlertDialogParamWithOptions|是|-|警告对话框参数。|
+|options|[AlertDialogParamWithOptions](./cj-dialog-alertdialog.md#class-alertdialogparamwithbuttons)|是|-|警告对话框参数。|
 
 ### func vp2px(Length)
 
@@ -361,10 +361,10 @@ public func vp2px(value: Length): Option<Length>
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|Length|是|-|要转换的值。|
+|value|[Length](./cj-common-types.md#interface-length)|是|-|要转换的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|Option\<Length>|转换后的值。|
+|Option\<[Length](./cj-common-types.md#interface-length)>|转换后的值。|

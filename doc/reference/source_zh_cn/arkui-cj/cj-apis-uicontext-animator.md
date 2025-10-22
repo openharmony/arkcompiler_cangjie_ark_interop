@@ -195,8 +195,8 @@ public init(
 |duration|Int32|是|-|**命名参数。** 动画播放的时长，单位毫秒。取值范围：[0, +∞)。|
 |easing|String|是|-|**命名参数。** 动画插值曲线。|
 |delay|Int32|是|-|**命名参数。** 动画延时播放时长，单位毫秒，设置为0时，表示不延时。设置为负数时动画提前播放，如果提前播放的时长大于动画总时长，动画直接过渡到终点。|
-|fill|AnimatorFill|是|-|**命名参数。** 动画执行后是否恢复到初始状态，动画执行后，动画结束时的状态（在最后一个关键帧中定义）将保留。|
-|direction|AnimatorDirection|是|-|**命名参数。** 动画播放模式。|
+|fill|[AnimatorFill](#enum-animatorfill)|是|-|**命名参数。** 动画执行后是否恢复到初始状态，动画执行后，动画结束时的状态（在最后一个关键帧中定义）将保留。|
+|direction|[AnimatorDirection](#enum-animatordirection)|是|-|**命名参数。** 动画播放模式。|
 |iterations|Int32|是|-|**命名参数。** 动画播放次数。设置为0时不播放，设置为-1时无限次播放，设置大于0时为播放次数。|
 |begin|Float64|是|-|**命名参数。** 动画插值起点。|
 |end|Float64|是|-|**命名参数。** 动画插值终点。|
@@ -482,7 +482,7 @@ public enum AnimatorFill <: Equatable<AnimatorFill> {
 
 **父类型：**
 
-- Equatable\<AnimatorFill>
+- Equatable\<[AnimatorFill](#enum-animatorfill)>
 
 ### None
 
@@ -600,7 +600,7 @@ public enum AnimatorDirection <: Equatable<AnimatorDirection> {
 
 **父类型：**
 
-- Equatable\<AnimatorDirection>
+- Equatable\<[AnimatorDirection](#enum-animatordirection)>
 
 ### Normal
 

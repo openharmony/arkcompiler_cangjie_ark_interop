@@ -36,7 +36,7 @@ public func fill(color: ?ResourceColor): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|color|?ResourceColor|是|-|填充区域的颜色。|
+|color|?[ResourceColor](./cj-common-types.md#interface-resourcecolor)|是|-|填充区域的颜色。|
 
 **返回值：**
 
@@ -60,7 +60,7 @@ public func height(height: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|height|?Length|是|-|图形高度。|
+|height|?[Length](./cj-common-types.md#interface-length)|是|-|图形高度。|
 
 **返回值：**
 
@@ -84,8 +84,8 @@ public func offset(x!: ?Length, y!: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?Length|是|-| **命名参数。** x轴偏移。<br>初始值：0.0.px。|
-|y|?Length|是|-| **命名参数。** y轴偏移。<br>初始值：0.0.px。|
+|x|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** x轴偏移。<br>初始值：0.0.px。|
+|y|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** y轴偏移。<br>初始值：0.0.px。|
 
 **返回值：**
 
@@ -109,8 +109,8 @@ public func size(width!: ?Length, height!: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|是|-| **命名参数。** 图形宽度。<br>初始值：0.0.vp。|
-|height|?Length|是|-| **命名参数。** 图形高度。<br>初始值：0.0.vp。|
+|width|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 图形宽度。<br>初始值：0.0.vp。|
+|height|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 图形高度。<br>初始值：0.0.vp。|
 
 **返回值：**
 
@@ -134,7 +134,7 @@ public func width(width: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|是|-|图形宽度。|
+|width|?[Length](./cj-common-types.md#interface-length)|是|-|图形宽度。|
 
 **返回值：**
 
@@ -176,8 +176,8 @@ public init(width!: ?Length = None, height!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|否|None| **命名参数。** 圆形宽度。<br>初始值：0.vp。|
-|height|?Length|否|None| **命名参数。** 圆形高度。<br>初始值：0.vp。|
+|width|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 圆形宽度。<br>初始值：0.vp。|
+|height|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 圆形高度。<br>初始值：0.vp。|
 
 ## class EllipseShape
 
@@ -213,8 +213,8 @@ public init(width!: ?Length = None, height!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|否|None| **命名参数。** 椭圆形宽度。<br>初始值：0.vp。|
-|height|?Length|否|None| **命名参数。** 椭圆形高度。<br>初始值：0.vp。|
+|width|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 椭圆形宽度。<br>初始值：0.vp。|
+|height|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 椭圆形高度。<br>初始值：0.vp。|
 
 ## class PathShape
 
@@ -251,7 +251,7 @@ public init(commands!: ?ResourceStr = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|commands|?ResourceStr|否|None| **命名参数。** 路径命令。<br>初始值：""。|
+|commands|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** 路径命令。<br>初始值：""。|
 
 ### init(?Length, ?Length, ?ResourceStr)
 
@@ -269,9 +269,9 @@ public init(width!: ?Length, height!: ?Length, commands!: ?ResourceStr = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|是|-| **命名参数。** 路径宽度。<br>初始值：0.vp。|
-|height|?Length|是|-| **命名参数。** 路径高度。<br>初始值：0.vp。|
-|commands|?ResourceStr|否|None| **命名参数。** 路径命令。<br>初始值：""。|
+|width|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 路径宽度。<br>初始值：0.vp。|
+|height|?[Length](./cj-common-types.md#interface-length)|是|-| **命名参数。** 路径高度。<br>初始值：0.vp。|
+|commands|?[ResourceStr](./cj-common-types.md#interface-resourcestr)|否|None| **命名参数。** 路径命令。<br>初始值：""。|
 
 ## class RectShape
 
@@ -307,8 +307,8 @@ public init(width!: ?Length = None, height!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|width|?Length|否|None| **命名参数。** 矩形宽度。<br>初始值：0.vp。|
-|height|?Length|否|None| **命名参数。** 矩形高度。<br>初始值：0.vp。|
+|width|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 矩形宽度。<br>初始值：0.vp。|
+|height|?[Length](./cj-common-types.md#interface-length)|否|None| **命名参数。** 矩形高度。<br>初始值：0.vp。|
 
 ### func radius(?Length)
 
@@ -326,7 +326,7 @@ public func radius(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|矩形圆角半径。<br>初始值：0.vp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|矩形圆角半径。<br>初始值：0.vp。|
 
 **返回值：**
 
@@ -350,7 +350,7 @@ public func radiusHeight(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|矩形垂直圆角半径。<br>初始值：0.vp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|矩形垂直圆角半径。<br>初始值：0.vp。|
 
 **返回值：**
 
@@ -374,7 +374,7 @@ public func radiusWidth(value: ?Length): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?Length|是|-|矩形水平圆角半径。<br>初始值：0.vp。|
+|value|?[Length](./cj-common-types.md#interface-length)|是|-|矩形水平圆角半径。<br>初始值：0.vp。|
 
 **返回值：**
 

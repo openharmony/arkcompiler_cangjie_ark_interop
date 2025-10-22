@@ -38,7 +38,7 @@ public init(unit!: ?LengthMetricsUnit = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|unit|?LengthMetricsUnit|否|None|**命名参数。** 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D]()。|
+|unit|?[LengthMetricsUnit](./cj-common-types.md#enum-lengthmetricsunit)|否|None|**命名参数。** 用来配置Matrix2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D]()。|
 
 ### prop scaleX
 

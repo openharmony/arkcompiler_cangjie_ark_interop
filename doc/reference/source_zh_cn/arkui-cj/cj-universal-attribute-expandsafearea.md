@@ -24,8 +24,8 @@ public func expandSafeArea(types!: ?Array<SafeAreaType> = None, edges!: ?Array<S
 
 |名称|类型|必填|默认值|说明|
 | :--- | :--- | :--- | :--- | :--- |
-| types | ?Array\<SafeAreaType> | 否 | None | **命名参数。**  配置扩展安全区域的类型。 <br/>初始值：[SafeAreaType.System, SafeAreaType.Cutout, SafeAreaType.Keyboard]。 |
-| edges | ?Array\<SafeAreaEdge> | 否 | None | **命名参数。**  配置扩展安全区域的方向。 <br/>初始值：[SafeAreaEdge.Top, SafeAreaEdge.Bottom, SafeAreaEdge.Start, SafeAreaEdge.End]。|
+| types | ?Array\<[SafeAreaType](./cj-common-types.md#enum-safeareatype)> | 否 | None | **命名参数。**  配置扩展安全区域的类型。 <br/>初始值：[SafeAreaType.System, SafeAreaType.Cutout, SafeAreaType.Keyboard]。 |
+| edges | ?Array\<[SafeAreaType](./cj-common-types.md#enum-safeareatype)> | 否 | None | **命名参数。**  配置扩展安全区域的方向。 <br/>初始值：[SafeAreaEdge.Top, SafeAreaEdge.Bottom, SafeAreaEdge.Start, SafeAreaEdge.End]。|
 
 > **说明：**
 >

@@ -56,7 +56,7 @@ public func transition(value: ?TransitionEffect, onFinish: ?TransitionFinishCall
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
 |value|?[TransitionEffect](#class-transitioneffect)|是|-|以函数的形式指定转场效果。|
-|onFinish|?TransitionFinishCallback|是|-|组件转场动画的结束回调类型。<br>该参数为true表示该转场回调是出现动画的结束回调，该参数为false表示该转场回调是消失动画的结束回调。|
+|onFinish|?[TransitionFinishCallback](./cj-common-types.md#type-transitionfinishcallback)|是|-|组件转场动画的结束回调类型。<br>该参数为true表示该转场回调是出现动画的结束回调，该参数为false表示该转场回调是消失动画的结束回调。|
 
 **返回值：**
 
@@ -89,7 +89,7 @@ public var x: ?Length
 
 **功能：** x轴上的平移距离。对于数字类型，单位为vp，取值范围为(-∞, +∞)。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -105,7 +105,7 @@ public var y: ?Length
 
 **功能：** y轴上的平移距离。对于数字类型，单位为vp，取值范围为(-∞, +∞)。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -121,8 +121,7 @@ public var z: ?Length
 
 **功能：** z轴上的平移距离。对于数字类型，单位为vp，取值范围为(-∞, +∞)。
 
-**类型：** ?Length
-
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 **读写能力：** 可读写
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -145,9 +144,9 @@ public init(x!: ?Length = None, y!: ?Length = None, z!: ?Length = None)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|x|?Length|否|None|**命名参数。** x轴上的平移距离。初始值：0.0.vp|
-|y|?Length|否|None|**命名参数。** y轴上的平移距离。初始值：0.0.vp|
-|z|?Length|否|None|**命名参数。** z轴上的平移距离。初始值：0.0.vp|
+|x|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** x轴上的平移距离。初始值：0.0.vp|
+|y|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** y轴上的平移距离。初始值：0.0.vp|
+|z|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** z轴上的平移距离。初始值：0.0.vp|
 
 ## class ScaleOptions
 
@@ -234,7 +233,7 @@ public var centerX: ?Length
 
 **功能：** 变换中心点（锚点）的X坐标。单位为vp。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -250,7 +249,7 @@ public var centerY: ?Length
 
 **功能：** 变换中心点（锚点）的Y坐标。单位为vp。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -278,8 +277,8 @@ public init(x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Float32 = None, cente
 |x|?Float32|否|None|**命名参数。** x轴上的缩放比例。初始值：1.0|
 |y|?Float32|否|None|**命名参数。** y轴上的缩放比例。初始值：1.0|
 |z|?Float32|否|None|**命名参数。** z轴上的缩放比例。初始值：1.0|
-|centerX|?Length|否|None|**命名参数。** 变换中心点（锚点）的X坐标。单位为vp。初始值：50.percent|
-|centerY|?Length|否|None|**命名参数。** 变换中心点（锚点）的Y坐标。单位为vp。初始值：50.percent|
+|centerX|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点（锚点）的X坐标。单位为vp。初始值：50.percent|
+|centerY|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点（锚点）的Y坐标。单位为vp。初始值：50.percent|
 
 ## class RotateOptions
 
@@ -376,7 +375,7 @@ public var centerX: ?Length
 
 **功能：** 变换中心点x轴坐标。表示组件变换中心点（即锚点）的x方向坐标。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -392,7 +391,7 @@ public var centerY: ?Length
 
 **功能：** 变换中心点y轴坐标。表示组件变换中心点（即锚点）的y方向坐标。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -408,7 +407,7 @@ public var centerZ: ?Length
 
 **功能：** Z轴锚点，即3D旋转中心点的z分量。
 
-**类型：** ?Length
+**类型：** ?[Length](./cj-common-types.md#interface-length)
 
 **读写能力：** 可读写
 
@@ -453,9 +452,9 @@ public init(angle: ?Float32, x!: ?Float32 = None, y!: ?Float32 = None, z!: ?Floa
 |x|?Float32|否|None|**命名参数。** 旋转轴向量的X坐标。初始值：0.0|
 |y|?Float32|否|None|**命名参数。** 旋转轴向量的Y坐标。初始值：0.0|
 |z|?Float32|否|None|**命名参数。** 旋转轴向量的Z坐标。初始值：0.0|
-|centerX|?Length|否|None|**命名参数。** 变换中心点（锚点）的X坐标。单位为vp。初始值：50.percent|
-|centerY|?Length|否|None|**命名参数。** 变换中心点（锚点）的Y坐标。单位为vp。初始值：50.percent|
-|centerZ|?Length|否|None|**命名参数。** Z轴锚点，即3D旋转中心点的z分量。初始值：0|
+|centerX|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点（锚点）的X坐标。单位为vp。初始值：50.percent|
+|centerY|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** 变换中心点（锚点）的Y坐标。单位为vp。初始值：50.percent|
+|centerZ|?[Length](./cj-common-types.md#interface-length)|否|None|**命名参数。** Z轴锚点，即3D旋转中心点的z分量。初始值：0|
 |perspective|?Float32|否|None|**命名参数。** 用户到z=0平面的距离。轴和旋转中心是基于坐标系设置的，当组件移动时坐标系保持不变。初始值：0.0|
 
 ## class TransitionEffect
@@ -482,7 +481,7 @@ public static let IDENTITY: TransitionEffect
 
 **功能：** 禁用转场效果。
 
-**类型：** TransitionEffect
+**类型：** [TransitionEffect](#class-transitioneffect)
 
 **读写能力：** 只读
 
@@ -498,7 +497,7 @@ public static let OPACITY: TransitionEffect
 
 **功能：** 定义透明度为0的转场效果，等效于TransitionEffect.opacity(0.0)。
 
-**类型：** TransitionEffect
+**类型：** [TransitionEffect](#class-transitioneffect)
 
 **读写能力：** 只读
 
@@ -514,7 +513,7 @@ public static let SLIDE: TransitionEffect
 
 **功能：** 定义滑动转场效果。
 
-**类型：** TransitionEffect
+**类型：** [TransitionEffect](#class-transitioneffect)
 
 **读写能力：** 只读
 
@@ -530,7 +529,7 @@ public static let SLIDE_SWITCH: TransitionEffect
 
 **功能：** 指定出现时从右先缩小再放大侧滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。
 
-**类型：** TransitionEffect
+**类型：** [TransitionEffect](#class-transitioneffect)
 
 **读写能力：** 只读
 
@@ -560,7 +559,7 @@ public static func opacity(alpha: Float64): TransitionEffect
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ### static func translate(TranslateOptions)
 
@@ -584,7 +583,7 @@ public static func translate(options: TranslateOptions): TransitionEffect
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ### static func scale(?ScaleOptions)
 
@@ -602,13 +601,13 @@ public static func scale(options: ?ScaleOptions): TransitionEffect
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|?ScaleOptions|是|-|设置组件转场时的缩放效果，为插入时起点和删除时终点的值。|
+|options|?[ScaleOptions](#class-scaleoptions)|是|-|设置组件转场时的缩放效果，为插入时起点和删除时终点的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ### static func rotate(?RotateOptions)
 
@@ -626,13 +625,13 @@ public static func rotate(options: ?RotateOptions): TransitionEffect
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|options|?RotateOptions|是|-|设置组件转场时的旋转效果，为插入时起点和删除时终点的值。|
+|options|?[RotateOptions](#class-rotateoptions)|是|-|设置组件转场时的旋转效果，为插入时起点和删除时终点的值。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ### static func move(TransitionEdge)
 
@@ -656,7 +655,7 @@ public static func move(edge: TransitionEdge): TransitionEffect
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ### static func asymmetric(TransitionEffect, TransitionEffect)
 
@@ -685,7 +684,7 @@ public static func asymmetric(appear: TransitionEffect, disappear: TransitionEff
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ### func animation(?AnimateParam)
 
@@ -707,13 +706,13 @@ public func animation(param: ?AnimateParam): TransitionEffect
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|param|?AnimateParam|是|-|动画效果参数。|
+|param|?[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|动画效果参数。|
 
 **返回值：**
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ### func combine(TransitionEffect)
 
@@ -737,7 +736,7 @@ public func combine(transitionEffect: TransitionEffect): TransitionEffect
 
 |类型|说明|
 |:----|:----|
-|TransitionEffect|返回转场效果。|
+|[TransitionEffect](#class-transitioneffect)|返回转场效果。|
 
 ## enum TransitionEdge
 
@@ -759,7 +758,7 @@ public enum TransitionEdge <: Equatable<TransitionEdge> {
 
 **父类型：**
 
-- Equatable\<TransitionEdge>
+- Equatable\<[TransitionEdge](#enum-transitionedge)>
 
 ### Top
 

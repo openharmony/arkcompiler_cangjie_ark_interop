@@ -38,8 +38,8 @@ public init(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|src|ResourceStr|是|-| **命名参数。** src不能通过状态变量（例如：@State）动态更改地址。|
-|controller|WebviewController|是|-| **命名参数。** 设置Web控制器。|
+|src|[ResourceStr](./cj-common-types.md#interface-resourcestr)|是|-| **命名参数。** src不能通过状态变量（例如：@State）动态更改地址。|
+|controller|[WebviewController](../ArkWeb/cj-apis-webview.md#class-webviewcontroller)|是|-| **命名参数。** 设置Web控制器。|
 
 ## 通用属性/通用事件
 
@@ -65,7 +65,7 @@ public func darkMode(mode: ?WebDarkMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|mode|?WebDarkMode|是|-|Web的深色模式为关闭、开启或跟随系统。<br>初始值：WebDarkMode.Off。|
+|mode|?[WebDarkMode](./cj-common-types.md#enum-webdarkmode)|是|-|Web的深色模式为关闭、开启或跟随系统。<br>初始值：WebDarkMode.Off。|
 
 ### func domStorageAccess(?Bool)
 
@@ -177,7 +177,7 @@ public func javaScriptProxy(funcList!: ?Array<(String) -> String>, name!: ?Strin
 |funcList|?Array\<(String)->String>|是|-| **命名参数。** 参与注册的应用侧JavaScript对象的同步方法。<br>初始值：[]。|
 |name|?String|是|-| **命名参数。** 注册对象的名称，与window中调用的对象名一致。<br>初始值：""。|
 |methodList|?Array\<String>|是|-| **命名参数。** 参与注册的应用侧JavaScript对象的异步方法。<br>初始值：[]。|
-|controller|?[WebviewController](../apis/ArkWeb/cj-apis-webview.md#class-webviewcontroller)|是|-| **命名参数。** 设置Web控制器。<br>初始值：WebviewController()。|
+|controller|?[WebviewController](../ArkWeb/cj-apis-webview.md#class-webviewcontroller)|是|-| **命名参数。** 设置Web控制器。<br>初始值：WebviewController()。|
 
 ### func mixedMode(?MixedMode)
 
@@ -195,7 +195,7 @@ public func mixedMode(mixedMode: ?MixedMode): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|mixedMode|?MixedMode|是|-|混合内容。<br>初始值：MixedMode.None。表示不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。|
+|mixedMode|?[MixedMode](./cj-common-types.md#enum-mixedmode)|是|-|混合内容。<br>初始值：MixedMode.None。表示不允许安全来源（secure origin）加载不安全来源（insecure origin）的内容。|
 
 ### func nestedScroll(?NestedScrollMode, ?NestedScrollMode)
 
@@ -216,8 +216,8 @@ public func nestedScroll(
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|scrollForward|?NestedScrollMode|是|-| **命名参数。** 向前滚动模式。<br>初始值：NestedScrollMode.SelfFirst。|
-|scrollBackward|?NestedScrollMode|是|-| **命名参数。** 向后滚动模式。<br>初始值：NestedScrollMode.SelfFirst。|
+|scrollForward|?[NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode)|是|-| **命名参数。** 向前滚动模式。<br>初始值：NestedScrollMode.SelfFirst。|
+|scrollBackward|?[NestedScrollMode](./cj-common-types.md#enum-nestedscrollmode)|是|-| **命名参数。** 向后滚动模式。<br>初始值：NestedScrollMode.SelfFirst。|
 
 ### func onlineImageAccess(?Bool)
 
@@ -291,7 +291,7 @@ public func onLoadIntercept(callback: ?Callback<OnLoadInterceptEvent, Bool>): Th
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<OnLoadInterceptEvent, Bool>|是|-|回调函数，截获资源加载时触发的回调。返回true表示阻止此次加载，否则允许此次加载。<br>初始值：{ _ => true}。|
+|callback|?Callback\<[OnLoadInterceptEvent](#class-onloadinterceptevent), Bool>|是|-|回调函数，截获资源加载时触发的回调。返回true表示阻止此次加载，否则允许此次加载。<br>初始值：{ _ => true}。|
 
 ### func onPageBegin(?Callback\<OnPageBeginEvent, Unit>)
 
@@ -309,7 +309,7 @@ public func onPageBegin(callback: ?Callback<OnPageBeginEvent, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<OnPageBeginEvent, Unit>|是|-|回调函数，网页加载开始时触发回调。<br>初始值：{ _ => }。|
+|callback|?Callback\<[OnPageBeginEvent](#class-onpagebeginevent), Unit>|是|-|回调函数，网页加载开始时触发回调。<br>初始值：{ _ => }。|
 
 ### func onPageEnd(?Callback\<OnPageEndEvent, Unit>)
 
@@ -327,7 +327,7 @@ public func onPageEnd(callback: ?Callback<OnPageEndEvent, Unit>): This
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|callback|?Callback\<OnPageEndEvent, Unit>|是|-|是否允许从网络加载图片资源。true表示设置允许从网络加载图片资源，false表示设置不允许从网络加载图片资源。<br>初始值：{ _ => }。|
+|callback|?Callback\<[OnPageEndEvent](#class-onpageendevent), Unit>|是|-|是否允许从网络加载图片资源。true表示设置允许从网络加载图片资源，false表示设置不允许从网络加载图片资源。<br>初始值：{ _ => }。|
 
 ## 基础类型定义
 

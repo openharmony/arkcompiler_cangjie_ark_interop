@@ -187,7 +187,7 @@ public init(settings: ?RenderingContextSettings)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|settings|?RenderingContextSettings|否|-|初始化设置。|
+|settings|?[RenderingContextSettings](./cj-canvas-drawing-canvas.md#class-renderingcontextsettings)|否|-|初始化设置。|
 
 ### prop fillStyle
 

@@ -24,7 +24,7 @@ public func animation(value: ?AnimateParam): T
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|value|?AnimateParam|是|-|设置动画效果相关参数。|
+|value|?[AnimateParam](./cj-common-types.md#class-animateparam)|是|-|设置动画效果相关参数。|
 
 **返回值：**
 
