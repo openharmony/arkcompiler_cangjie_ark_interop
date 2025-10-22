@@ -168,7 +168,7 @@ public init(refreshing!: ?Bindable<Bool>)
 
 |参数名|类型|必填|默认值|说明|
 |:---|:---|:---|:---|:---|
-|refreshing|?Bindable\<Bool>|否|-| **命名参数。** 标识刷新组件当前是否正在刷新。|
+|refreshing|?[Bindable](./cj-common-types.md#class-bindable)\<Bool>|否|-| **命名参数。** 标识刷新组件当前是否正在刷新。|
 
 
 ## 示例代码
